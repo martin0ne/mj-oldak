@@ -50,6 +50,7 @@ export default function Navbar() {
 
     const navLinks = [
         { href: '#uslugi', label: 'USŁUGI' },
+        { href: '#produkty', label: 'PRODUKTY' },
         { href: '#proces', label: 'PROCES' },
         { href: '#kontakt', label: 'KONTAKT' },
     ];
