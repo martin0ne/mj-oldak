@@ -488,6 +488,7 @@ function ProductCard({ product, expanded, onToggle, onLightbox }) {
                         </button>
                         <a
                             href={manual}
+                            download
                             className="px-5 py-2.5 rounded-[2rem] border border-dark/20 text-dark font-sans font-bold text-sm hover:bg-dark/[0.05] hover:-translate-y-[1px] transition no-underline"
                         >
                             Pobierz manual PDF

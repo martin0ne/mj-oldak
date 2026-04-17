@@ -96,7 +96,7 @@ export default function Footer() {
                                 aria-required="true"
                                 value={formData.name}
                                 onChange={handleChange}
-                                className="w-full bg-primary/[0.05] border border-primary/10 rounded-xl px-5 py-4 font-mono text-sm text-primary placeholder:text-primary/25 outline-none focus:border-accent/40 focus:bg-primary/[0.08] transition-all duration-300"
+                                className="w-full bg-primary/[0.12] border border-primary/25 rounded-xl px-5 py-4 font-mono text-sm text-primary placeholder:text-primary/45 outline-none focus:border-accent/60 focus:bg-primary/[0.18] transition-all duration-300"
                                 placeholder="Jan Kowalski"
                             />
                         </div>
@@ -110,7 +110,7 @@ export default function Footer() {
                                 aria-required="true"
                                 value={formData.email}
                                 onChange={handleChange}
-                                className="w-full bg-primary/[0.05] border border-primary/10 rounded-xl px-5 py-4 font-mono text-sm text-primary placeholder:text-primary/25 outline-none focus:border-accent/40 focus:bg-primary/[0.08] transition-all duration-300"
+                                className="w-full bg-primary/[0.12] border border-primary/25 rounded-xl px-5 py-4 font-mono text-sm text-primary placeholder:text-primary/45 outline-none focus:border-accent/60 focus:bg-primary/[0.18] transition-all duration-300"
                                 placeholder="jan@firma.pl"
                             />
                         </div>
