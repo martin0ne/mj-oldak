@@ -145,7 +145,7 @@ export default function Footer() {
                 <div>
                     <h2 className="font-sans font-bold text-2xl uppercase tracking-tighter mb-4">MJ.OLDAK</h2>
                     <p className="font-mono text-sm text-primary/50 max-w-sm leading-relaxed">
-                        Wdrażamy systemy zdolne do pracy 24/7. Precision longevity and automation.
+                        AI systems &amp; automation dla polskich firm. 4 gotowe produkty + custom solutions. RODO compliant, własność kodu.
                     </p>
                 </div>
 
@@ -153,6 +153,7 @@ export default function Footer() {
                     <h4 className="font-mono text-xs uppercase text-primary/40 mb-6">Nawigacja</h4>
                     <ul className="space-y-4 font-sans text-sm font-medium">
                         <li><a href="#uslugi" className="hover:text-accent transition-colors">Usługi</a></li>
+                        <li><a href="#produkty" className="hover:text-accent transition-colors">Produkty</a></li>
                         <li><a href="#proces" className="hover:text-accent transition-colors">Protokół</a></li>
                         <li><a href="#kontakt" className="hover:text-accent transition-colors">Kontakt</a></li>
                     </ul>

@@ -1,11 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { FileText, Mail, Calendar, BarChart3, ChevronDown, X } from 'lucide-react';
+import { FileText, Mail, Calendar, BarChart3, ChevronDown, X, Sparkles } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const PRODUCTS = [
+const ACCOUNTING_PRODUCTS = [
     {
         id: 'ocr',
         n: '01',
@@ -44,17 +44,17 @@ const PRODUCTS = [
         n: '02',
         name: 'EMAIL',
         Icon: Mail,
-        tagline: 'Klasyfikacja maili + drafty odpowiedzi',
+        tagline: 'Auto-klasyfikacja maili + gotowe drafty odpowiedzi',
         status: 'READY',
         statusColor: '#22c55e',
         port: 8081,
         desc:
-            'Wkleja maila → system klasyfikuje (PILNE / NORMALNE / SPAM) i pisze draft odpowiedzi w stylu Twojego biura. Konfiguracja przez `company_profile.json`: opis biura, kategorie, ton komunikacji.',
+            'System sam klasyfikuje przychodzące maile (PILNE / NORMALNE / SPAM) i pisze drafty odpowiedzi w stylu Twojego biura. Ty tylko akceptujesz lub edytujesz przed wysyłką — bez ręcznego sortowania.',
         bullets: [
-            'Klasyfikacja w 3 kategoriach (konfigurowalne)',
-            'Draft po polsku z poprawną odmianą',
-            'Ton dopasowany do biura (formalny / ciepły)',
-            'Edycja draftu przed wysyłką + batch processing',
+            'Pełna automatyzacja: AI klasyfikuje → pisze draft → Ty akceptujesz',
+            'Konfigurowalne kategorie (PILNE / NORMALNE / SPAM lub własne)',
+            'Draft po polsku w tonie biura (formalny / ciepły)',
+            'Batch processing dla starszych maili z inboxu',
         ],
         screenshots: ['/products/email/1.jpg', '/products/email/2.jpg', '/products/email/3.jpg', '/products/email/4.jpg'],
         output: `KATEGORIA: PILNE
@@ -87,7 +87,7 @@ Biuro Rachunkowe Nowak`,
             'VAT-7, VAT-7K, CIT-8, PIT-36/37, ZUS, JPK_VAT — wszystko',
             'Tryby wysyłki: tekst / SMTP / Gmail OAuth',
             'Per-klient konfiguracja (mail / telefon / forma rozliczenia)',
-            'Dashboard nadchodzących terminów na 14/30 dni',
+            'Synchronizacja z Google Calendar / Outlook (wkrótce)',
         ],
         screenshots: ['/products/deadline/1.jpg', '/products/deadline/2.jpg', '/products/deadline/3.jpg', '/products/deadline/4.jpg'],
         output: `# PRZYPOMNIENIA — 14 dni do przodu
@@ -137,10 +137,45 @@ Wygenerowano: 02.04.2026 09:14`,
     },
 ];
 
+const INDUSTRIES = [
+    {
+        id: 'accounting',
+        label: 'Biura rachunkowe',
+        sub: '4 produkty',
+        active: true,
+        products: ACCOUNTING_PRODUCTS,
+    },
+    {
+        id: 'sales',
+        label: 'Przedstawiciele handlowi',
+        sub: 'wkrótce',
+        active: false,
+        teaser: 'Te same moduły dostosowane do pipeline sprzedaży: OCR wizytówek z konferencji, auto-odpowiedzi do leadów, follow-up scheduler i tygodniowe raporty pipeline.',
+    },
+    {
+        id: 'retail',
+        label: 'Sklepy / E-commerce',
+        sub: 'wkrótce',
+        active: false,
+        teaser: 'OCR faktur od dostawców, auto-klasyfikacja reklamacji, harmonogram zamówień i dostaw, dzienne/tygodniowe raporty sprzedaży.',
+    },
+    {
+        id: 'universal',
+        label: 'Uniwersalne',
+        sub: 'wkrótce',
+        active: false,
+        teaser: 'Każdy z 4 modułów można dopasować do dowolnego back-office: kancelarii, przychodni, fundacji, agencji. Powiedz czego potrzebujesz — zbudujemy.',
+    },
+];
+
+
 export default function Products() {
     const sectionRef = useRef(null);
+    const [industryId, setIndustryId] = useState('accounting');
     const [expandedId, setExpandedId] = useState(null);
     const [lightbox, setLightbox] = useState(null);
+
+    const industry = INDUSTRIES.find((i) => i.id === industryId);
 
     useEffect(() => {
         const ctx = gsap.context(() => {
@@ -161,6 +196,11 @@ export default function Products() {
         return () => ctx.revert();
     }, []);
 
+    // Reset expanded card when switching industries
+    useEffect(() => {
+        setExpandedId(null);
+    }, [industryId]);
+
     const toggle = (id) => setExpandedId((prev) => (prev === id ? null : id));
 
     return (
@@ -169,7 +209,7 @@ export default function Products() {
             id="produkty"
             className="py-32 px-6 md:px-12 max-w-7xl mx-auto"
         >
-            <div className="mb-16">
+            <div className="mb-12">
                 <div className="flex items-center gap-3 mb-4">
                     <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
                     <span className="font-mono text-[10px] text-dark/40 uppercase tracking-widest">
@@ -180,25 +220,104 @@ export default function Products() {
                     Cztery moduły, <span className="font-serif italic font-normal text-accent">jeden system.</span>
                 </h2>
                 <p className="text-dark/70 font-mono text-sm max-w-xl leading-relaxed">
-                    Każdy produkt działa solo. Razem tworzą kompletny back-office dla biura rachunkowego.
-                    Kliknij kartę aby zobaczyć szczegóły, screenshoty i przykładowy output.
+                    Każdy produkt działa solo. Razem tworzą kompletny back-office dostosowany do Twojej branży.
                 </p>
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                {PRODUCTS.map((p) => (
-                    <ProductCard
-                        key={p.id}
-                        product={p}
-                        expanded={expandedId === p.id}
-                        onToggle={() => toggle(p.id)}
-                        onLightbox={setLightbox}
-                    />
-                ))}
+            {/* Industry tabs */}
+            <div className="mb-10 flex flex-wrap gap-2">
+                {INDUSTRIES.map((ind) => {
+                    const isActive = ind.id === industryId;
+                    return (
+                        <button
+                            key={ind.id}
+                            onClick={() => setIndustryId(ind.id)}
+                            className={`group flex items-center gap-2 px-5 py-3 rounded-[2rem] border font-sans font-bold text-xs uppercase tracking-widest transition-all ${
+                                isActive
+                                    ? 'bg-dark text-primary border-dark'
+                                    : 'bg-transparent text-dark/70 border-dark/15 hover:border-dark/40 hover:text-dark'
+                            }`}
+                        >
+                            <span>{ind.label}</span>
+                            <span
+                                className={`font-mono text-[9px] uppercase tracking-widest px-2 py-0.5 rounded-full ${
+                                    isActive
+                                        ? 'bg-accent/20 text-accent'
+                                        : 'bg-dark/5 text-dark/40 group-hover:bg-dark/10'
+                                }`}
+                            >
+                                {ind.sub}
+                            </span>
+                        </button>
+                    );
+                })}
             </div>
+
+            {industry.active ? (
+                <>
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+                        {industry.products.map((p) => (
+                            <ProductCard
+                                key={p.id}
+                                product={p}
+                                expanded={expandedId === p.id}
+                                onToggle={() => toggle(p.id)}
+                                onLightbox={setLightbox}
+                            />
+                        ))}
+                    </div>
+
+                    {/* Personalizacja note */}
+                    <div className="mt-10 rounded-[2rem] border border-accent/30 bg-accent/[0.04] p-8 flex flex-col md:flex-row items-start md:items-center gap-6">
+                        <div className="w-12 h-12 rounded-2xl bg-accent/15 flex items-center justify-center shrink-0">
+                            <Sparkles className="w-6 h-6 text-accent" />
+                        </div>
+                        <div className="flex-1">
+                            <h3 className="font-sans font-bold text-lg uppercase tracking-tight mb-1 text-dark">
+                                Każdy produkt personalizujemy pod Twój biznes
+                            </h3>
+                            <p className="font-mono text-sm text-dark/70 leading-relaxed">
+                                Te 4 moduły to baza — dostosujemy je do Twoich procesów, integracji i branżowej specyfiki.
+                                Z chęcią porozmawiam o tym, co potrzebujesz, i zbuduję wersję skrojoną pod Ciebie.
+                            </p>
+                        </div>
+                        <a
+                            href="#kontakt"
+                            className="px-5 py-3 rounded-[2rem] bg-accent text-primary font-sans font-bold text-xs uppercase tracking-widest hover:scale-[1.03] transition no-underline whitespace-nowrap"
+                        >
+                            Porozmawiajmy →
+                        </a>
+                    </div>
+                </>
+            ) : (
+                <IndustryTeaser industry={industry} />
+            )}
 
             {lightbox && <Lightbox src={lightbox} onClose={() => setLightbox(null)} />}
         </section>
+    );
+}
+
+function IndustryTeaser({ industry }) {
+    return (
+        <div className="rounded-[2rem] border border-dark/10 bg-dark/[0.04] p-12 md:p-16 text-center">
+            <div className="inline-flex items-center gap-2 mb-6 px-4 py-2 rounded-full bg-dark/10 font-mono text-[10px] uppercase tracking-widest text-dark/60">
+                <span className="w-1.5 h-1.5 rounded-full bg-yellow-500 animate-pulse" />
+                W planach · {industry.label}
+            </div>
+            <h3 className="font-sans font-bold text-2xl md:text-3xl uppercase tracking-tight mb-5 text-dark max-w-2xl mx-auto">
+                Wkrótce — <span className="font-serif italic font-normal text-accent">porozmawiajmy.</span>
+            </h3>
+            <p className="font-mono text-sm text-dark/70 leading-relaxed max-w-2xl mx-auto mb-8">
+                {industry.teaser}
+            </p>
+            <a
+                href="#kontakt"
+                className="inline-block px-6 py-3 rounded-[2rem] bg-accent text-primary font-sans font-bold text-sm uppercase tracking-widest hover:scale-[1.03] transition no-underline"
+            >
+                Zgłoś zainteresowanie →
+            </a>
+        </div>
     );
 }
 
@@ -209,10 +328,10 @@ function ProductCard({ product, expanded, onToggle, onLightbox }) {
 
     return (
         <div
-            className={`product-card group bg-dark/[0.05] border rounded-[2rem] transition-all duration-500 overflow-hidden ${
+            className={`product-card group bg-dark/[0.07] border rounded-[2rem] transition-all duration-500 overflow-hidden self-start ${
                 expanded
-                    ? 'border-accent/30 shadow-[0_8px_40px_rgba(230,59,46,0.15)]'
-                    : 'border-dark/10 hover:border-accent/20 hover:shadow-[0_8px_40px_rgba(230,59,46,0.10)]'
+                    ? 'border-accent/40 shadow-[0_8px_40px_rgba(230,59,46,0.18)]'
+                    : 'border-dark/15 hover:border-accent/30 hover:bg-dark/[0.09] hover:shadow-[0_8px_40px_rgba(230,59,46,0.10)]'
             }`}
         >
             {/* Header (always visible) */}
@@ -225,7 +344,7 @@ function ProductCard({ product, expanded, onToggle, onLightbox }) {
                 <div className="flex items-start justify-between gap-4 mb-4">
                     <div className="flex items-center gap-3">
                         <span className="font-mono text-[11px] text-dark/40 tracking-widest">{n}</span>
-                        <div className="w-10 h-10 rounded-xl bg-dark/[0.05] border border-dark/10 flex items-center justify-center">
+                        <div className="w-10 h-10 rounded-xl bg-dark/[0.08] border border-dark/15 flex items-center justify-center">
                             <Icon className="w-5 h-5 text-accent" />
                         </div>
                     </div>
@@ -296,6 +415,12 @@ function ProductCard({ product, expanded, onToggle, onLightbox }) {
                                     </li>
                                 ))}
                             </ul>
+                            <div className="mt-6 pt-6 border-t border-dark/10 flex items-start gap-3 font-mono text-xs text-dark/60 leading-relaxed">
+                                <Sparkles className="w-3.5 h-3.5 text-accent mt-[2px] shrink-0" />
+                                <span>
+                                    Personalizujemy ten moduł pod Twój biznes — integracje, kategorie, ton, branding.
+                                </span>
+                            </div>
                         </div>
                     )}
 
@@ -367,9 +492,12 @@ function ProductCard({ product, expanded, onToggle, onLightbox }) {
                         >
                             Pobierz manual PDF
                         </a>
-                        <span className="font-mono text-[10px] text-dark/40 uppercase tracking-widest ml-auto">
-                            Pakiet od 800 zł/mies
-                        </span>
+                        <a
+                            href="#kontakt"
+                            className="px-5 py-2.5 rounded-[2rem] bg-accent text-primary font-sans font-bold text-sm hover:scale-[1.03] transition no-underline"
+                        >
+                            Personalizujmy →
+                        </a>
                     </div>
                 </div>
             </div>
