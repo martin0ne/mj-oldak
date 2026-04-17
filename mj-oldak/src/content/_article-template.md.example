@@ -1,0 +1,64 @@
+---
+title: "Tytuł artykułu — max 120 znaków"
+excerpt: "Krótki opis artykułu — 1-2 zdania, max 280 znaków. Pojawia się w karcie listy + meta description."
+publishedAt: 2026-04-17
+author: "Marcin Ołdak"
+category: "edukacja"
+tags: ["automatyzacja", "biuro-rachunkowe"]
+cover: "/articles/covers/template.jpg"
+coverAlt: "Opis okładki dla a11y"
+readingTime: 5
+featured: false
+draft: true
+metaTitle: "Custom title pod Google (max 70)"
+metaDescription: "Pełny meta description pod Google (120-160 znaków)."
+keywords: ["agent ai", "automatyzacja", "biuro rachunkowe"]
+linkedinUrl: "https://linkedin.com/posts/marcin-oldak-link"
+---
+
+## Wprowadzenie
+
+Tutaj wprowadzenie artykułu — hook, kontekst, dlaczego to ważne dla czytelnika.
+
+## Główna sekcja H2
+
+Treść z bullet points:
+
+- Punkt pierwszy
+- Punkt drugi
+- Punkt trzeci
+
+### Podsekcja H3
+
+Treść podsekcji z **wyróżnieniami** i [linkami](https://example.com).
+
+> Cytat lub kluczowa myśl wyróżniona blockquote
+
+## Druga sekcja H2
+
+Tabela:
+
+| Kolumna A | Kolumna B |
+|-----------|-----------|
+| Wartość 1 | Wartość 2 |
+
+Kod:
+
+```python
+def hello():
+    print("Hello, MJ.OLDAK!")
+```
+
+## FAQ
+
+### Pytanie 1
+
+Odpowiedź.
+
+### Pytanie 2
+
+Odpowiedź.
+
+## Podsumowanie
+
+Główne wnioski + CTA.

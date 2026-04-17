@@ -1,0 +1,47 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+export interface Props {
+  articles: CollectionEntry<'articles'>[];
+}
+
+const { articles } = Astro.props;
+
+const fmtDate = (d: Date) => new Intl.DateTimeFormat('pl-PL', { day: 'numeric', month: 'short', year: 'numeric' }).format(d);
+---
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+  {articles.map((a) => {
+    const slug = a.id.replace(/\.md$/, '');
+    return (
+      <a href={`/artykuly/${slug}/`} class="group block rounded-[2rem] bg-dark/[0.05] border border-dark/10 hover:border-accent/40 hover:bg-dark/[0.07] transition-all overflow-hidden no-underline">
+        {a.data.cover && (
+          <div class="aspect-[16/9] overflow-hidden bg-dark/[0.05]">
+            <img src={a.data.cover} alt={a.data.coverAlt ?? a.data.title} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+          </div>
+        )}
+        <div class="p-6">
+          <div class="flex items-center gap-2 mb-3 font-mono text-[10px] uppercase tracking-widest text-dark/40">
+            <span>{a.data.category}</span>
+            <span>·</span>
+            <span>{fmtDate(a.data.publishedAt)}</span>
+          </div>
+          <h3 class="font-sans font-bold text-lg uppercase tracking-tight text-dark mb-2 group-hover:text-accent transition leading-tight">
+            {a.data.title}
+          </h3>
+          <p class="font-mono text-xs text-dark/60 leading-relaxed line-clamp-3">
+            {a.data.excerpt}
+          </p>
+        </div>
+      </a>
+    );
+  })}
+</div>
+
+<style>
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+</style>

@@ -1,0 +1,70 @@
+---
+import '../styles/global.css';
+
+export interface Props {
+  title?: string;
+  description?: string;
+  canonical?: string;
+  ogImage?: string;
+  ogType?: 'website' | 'article';
+  publishedTime?: string;
+  author?: string;
+  tags?: string[];
+}
+
+const {
+  title = 'MJ.OLDAK — AI Systems & Automation',
+  description = 'Budowa agentów AI, automatyzacja procesów, consulting technologiczny.',
+  canonical,
+  ogImage = '/og-image.jpg',
+  ogType = 'website',
+  publishedTime,
+  author = 'Marcin Ołdak',
+  tags = [],
+} = Astro.props;
+
+const siteURL = 'https://mj-oldak.com';
+const canonicalURL = canonical ?? new URL(Astro.url.pathname, siteURL).toString();
+const ogImageURL = ogImage.startsWith('http') ? ogImage : `${siteURL}${ogImage}`;
+---
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content={description} />
+  <meta name="author" content={author} />
+  <meta name="theme-color" content="#111111" />
+
+  <meta property="og:type" content={ogType} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={canonicalURL} />
+  <meta property="og:image" content={ogImageURL} />
+  <meta property="og:locale" content="pl_PL" />
+  <meta property="og:site_name" content="MJ.OLDAK" />
+  {publishedTime && <meta property="article:published_time" content={publishedTime} />}
+  {ogType === 'article' && <meta property="article:author" content={author} />}
+  {tags.map((tag) => <meta property="article:tag" content={tag} />)}
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={ogImageURL} />
+
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="canonical" href={canonicalURL} />
+  <link rel="sitemap" href="/sitemap-index.xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Space+Grotesk:wght@400;500;700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+    rel="stylesheet"
+  />
+  <title>{title}</title>
+  <slot name="head" />
+</head>
+<body class="bg-background text-dark font-sans m-0 p-0 overflow-x-hidden min-h-[100dvh] flex flex-col">
+  <slot />
+</body>
+</html>

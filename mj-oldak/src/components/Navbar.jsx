@@ -49,24 +49,25 @@ export default function Navbar() {
     }, []);
 
     const navLinks = [
-        { href: '#uslugi', label: 'USŁUGI' },
-        { href: '#produkty', label: 'PRODUKTY' },
-        { href: '#proces', label: 'PROCES' },
-        { href: '#kontakt', label: 'KONTAKT' },
+        { href: '/#uslugi', label: 'USŁUGI' },
+        { href: '/#produkty', label: 'PRODUKTY' },
+        { href: '/artykuly/', label: 'ARTYKUŁY' },
+        { href: '/#proces', label: 'PROCES' },
+        { href: '/#kontakt', label: 'KONTAKT' },
     ];
 
     return (
         <nav
             ref={navRef}
             aria-label="Menu główne"
-            className={`fixed top-6 left-1/2 -translate-x-1/2 z-50 px-6 py-4 rounded-[3rem] w-[90%] max-w-4xl transition-all duration-500 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] ${
+            className={`fixed top-6 left-1/2 -translate-x-1/2 z-50 px-6 py-4 rounded-[3rem] w-[92%] max-w-5xl transition-all duration-500 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] ${
                 isDark
                     ? 'bg-dark/60 backdrop-blur-xl border border-primary/10 text-primary'
                     : 'bg-background/70 backdrop-blur-xl border border-dark/10 text-dark'
             }`}
         >
             <div className="flex items-center justify-between">
-                <a href="#" className="font-sans font-bold text-xl tracking-tight uppercase no-underline">
+                <a href="/" className="font-sans font-bold text-xl tracking-tight uppercase no-underline">
                     MJ.OLDAK
                 </a>
 
@@ -78,7 +79,7 @@ export default function Navbar() {
                 </div>
 
                 <div className="flex items-center gap-3">
-                    <a href="#kontakt" className="hidden sm:inline-block relative overflow-hidden group px-6 py-3 rounded-[2rem] bg-accent text-primary font-sans font-medium text-sm transition-transform duration-300 hover:scale-[1.03] ease-[cubic-bezier(0.25,0.46,0.45,0.94)] no-underline">
+                    <a href="/#kontakt" className="hidden sm:inline-block relative overflow-hidden group px-6 py-3 rounded-[2rem] bg-accent text-primary font-sans font-medium text-sm transition-transform duration-300 hover:scale-[1.03] ease-[cubic-bezier(0.25,0.46,0.45,0.94)] no-underline">
                         <span className="relative z-10">Rozpocznij</span>
                         <span className="absolute inset-0 bg-dark transform scale-x-0 origin-left transition-transform duration-300 ease-out group-hover:scale-x-100 z-0"></span>
                     </a>
@@ -117,7 +118,7 @@ export default function Navbar() {
                         </a>
                     ))}
                     <a
-                        href="#kontakt"
+                        href="/#kontakt"
                         className="sm:hidden mt-2 px-6 py-3 rounded-[2rem] bg-accent text-primary font-sans font-medium text-sm no-underline"
                         onClick={() => setMobileOpen(false)}
                     >

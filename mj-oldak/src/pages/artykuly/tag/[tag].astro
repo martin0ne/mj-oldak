@@ -1,0 +1,90 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Navbar from '../../../components/Navbar.jsx';
+import Footer from '../../../components/Footer.jsx';
+import { TAGS } from '../../../content.config';
+
+export async function getStaticPaths() {
+  const all = await getCollection('articles', ({ data }) => !data.draft);
+  return TAGS.map((tag) => ({
+    params: { tag },
+    props: {
+      tag,
+      articles: all
+        .filter((a) => a.data.tags.includes(tag))
+        .sort((a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime()),
+    },
+  }));
+}
+
+const { tag, articles } = Astro.props;
+const fmtDate = (d: Date) => new Intl.DateTimeFormat('pl-PL', { day: 'numeric', month: 'long', year: 'numeric' }).format(d);
+---
+<BaseLayout
+  title={`Artykuły · #${tag} — MJ.OLDAK`}
+  description={`Wszystkie artykuły z tagiem #${tag} na blogu MJ.OLDAK.`}
+>
+  <div class="noise-overlay"></div>
+  <Navbar client:load />
+
+  <section class="pt-32 pb-12 px-6 md:px-12 max-w-7xl mx-auto w-full">
+    <a href="/artykuly/" class="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-widest text-dark/60 hover:text-accent transition no-underline mb-8">
+      <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+      Wszystkie artykuły
+    </a>
+    <div class="flex items-center gap-2 mb-4">
+      <span class="w-2 h-2 rounded-full bg-accent animate-pulse"></span>
+      <span class="font-mono text-[10px] uppercase tracking-widest text-dark/40">[ TAG ]</span>
+    </div>
+    <h1 class="font-sans font-bold text-5xl md:text-7xl uppercase tracking-tight text-dark mb-4 leading-none">
+      <span class="text-accent">#</span>{tag}
+    </h1>
+    <p class="font-mono text-base text-dark/60 max-w-2xl">{articles.length} {articles.length === 1 ? 'artykuł' : 'artykułów'}</p>
+  </section>
+
+  <section class="px-6 md:px-12 max-w-7xl mx-auto pb-32">
+    {articles.length === 0 ? (
+      <div class="rounded-[2rem] bg-dark/[0.04] border border-dark/10 p-12 text-center">
+        <p class="font-mono text-sm text-dark/60">Jeszcze brak artykułów w tym tagu.</p>
+      </div>
+    ) : (
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {articles.map((a) => {
+          const slug = a.id.replace(/\.md$/, '');
+          return (
+            <a href={`/artykuly/${slug}/`} class="group block rounded-[2rem] bg-dark/[0.05] border border-dark/10 hover:border-accent/40 hover:bg-dark/[0.07] transition-all overflow-hidden no-underline">
+              {a.data.cover && (
+                <div class="aspect-[16/9] overflow-hidden bg-dark/[0.05]">
+                  <img src={a.data.cover} alt={a.data.coverAlt ?? a.data.title} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+                </div>
+              )}
+              <div class="p-6">
+                <div class="flex items-center gap-2 mb-3 font-mono text-[10px] uppercase tracking-widest text-dark/40">
+                  <span class="text-accent">{a.data.category}</span>
+                  <span>·</span>
+                  <span>{fmtDate(a.data.publishedAt)}</span>
+                </div>
+                <h3 class="font-sans font-bold text-lg uppercase tracking-tight text-dark mb-2 group-hover:text-accent transition leading-tight">
+                  {a.data.title}
+                </h3>
+                <p class="font-mono text-xs text-dark/60 leading-relaxed line-clamp-3">{a.data.excerpt}</p>
+              </div>
+            </a>
+          );
+        })}
+      </div>
+    )}
+  </section>
+
+  <Footer client:visible />
+</BaseLayout>
+
+<style>
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+</style>

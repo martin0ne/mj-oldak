@@ -1,8 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
+    './src/**/*.{astro,js,jsx,ts,tsx,md,mdx}',
   ],
   theme: {
     extend: {
@@ -21,8 +20,8 @@ export default {
         '2rem': '2rem',
         '3rem': '3rem',
         '4rem': '4rem',
-      }
+      },
     },
   },
   plugins: [],
-}
+};
