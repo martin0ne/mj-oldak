@@ -124,7 +124,7 @@ export default function Footer() {
                                 rows={4}
                                 value={formData.message}
                                 onChange={handleChange}
-                                className="w-full bg-primary/[0.05] border border-primary/10 rounded-xl px-5 py-4 font-mono text-sm text-primary placeholder:text-primary/25 outline-none focus:border-accent/40 focus:bg-primary/[0.08] transition-all duration-300 resize-none"
+                                className="w-full bg-primary/[0.12] border border-primary/25 rounded-xl px-5 py-4 font-mono text-sm text-primary placeholder:text-primary/45 outline-none focus:border-accent/60 focus:bg-primary/[0.18] transition-all duration-300 resize-none"
                                 placeholder="Opowiedz nam o swoim projekcie..."
                             />
                         </div>
