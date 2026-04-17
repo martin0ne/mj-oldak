@@ -56,7 +56,7 @@ export default function Hero() {
                     Budowa agentów AI · Automatyzacja procesów · Consulting technologiczny
                 </p>
 
-                <a href="#kontakt" className="hero-reveal relative overflow-hidden group px-8 py-4 rounded-[2rem] bg-accent text-primary font-sans font-bold text-lg transition-transform duration-300 hover:scale-[1.03] ease-[cubic-bezier(0.25,0.46,0.45,0.94)] inline-block no-underline">
+                <a href="/#kontakt" className="hero-reveal relative overflow-hidden group px-8 py-4 rounded-[2rem] bg-accent text-primary font-sans font-bold text-lg transition-transform duration-300 hover:scale-[1.03] ease-[cubic-bezier(0.25,0.46,0.45,0.94)] inline-block no-underline">
                     <span className="relative z-10">Zacznijmy budować</span>
                     <span className="absolute inset-0 bg-dark transform scale-x-0 origin-left transition-transform duration-300 ease-out group-hover:scale-x-100 z-0"></span>
                 </a>

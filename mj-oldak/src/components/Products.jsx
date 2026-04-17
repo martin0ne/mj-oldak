@@ -282,7 +282,7 @@ export default function Products() {
                             </p>
                         </div>
                         <a
-                            href="#kontakt"
+                            href="/#kontakt"
                             className="px-5 py-3 rounded-[2rem] bg-accent text-primary font-sans font-bold text-xs uppercase tracking-widest hover:scale-[1.03] transition no-underline whitespace-nowrap"
                         >
                             Porozmawiajmy →
@@ -312,7 +312,7 @@ function IndustryTeaser({ industry }) {
                 {industry.teaser}
             </p>
             <a
-                href="#kontakt"
+                href="/#kontakt"
                 className="inline-block px-6 py-3 rounded-[2rem] bg-accent text-primary font-sans font-bold text-sm uppercase tracking-widest hover:scale-[1.03] transition no-underline"
             >
                 Zgłoś zainteresowanie →
@@ -494,7 +494,7 @@ function ProductCard({ product, expanded, onToggle, onLightbox }) {
                             Pobierz manual PDF
                         </a>
                         <a
-                            href="#kontakt"
+                            href="/#kontakt"
                             className="px-5 py-2.5 rounded-[2rem] bg-accent text-primary font-sans font-bold text-sm hover:scale-[1.03] transition no-underline"
                         >
                             Personalizujmy →
