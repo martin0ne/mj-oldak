@@ -1,0 +1,98 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.jsx';
+import Footer from '../../components/Footer.jsx';
+import ArticlesBrowser from '../../components/ArticlesBrowser.jsx';
+import { TAGS } from '../../content.config';
+
+const all = await getCollection('articles', ({ data }) => !data.draft);
+const articles = all
+  .map((a) => ({
+    slug: a.id.replace(/\.md$/, ''),
+    title: a.data.title,
+    excerpt: a.data.excerpt,
+    publishedAt: a.data.publishedAt.toISOString(),
+    publishedDateLabel: new Intl.DateTimeFormat('pl-PL', { day: 'numeric', month: 'long', year: 'numeric' }).format(a.data.publishedAt),
+    category: a.data.category,
+    tags: a.data.tags,
+    cover: a.data.cover ?? null,
+    coverAlt: a.data.coverAlt ?? a.data.title,
+    readingTime: a.data.readingTime ?? null,
+    featured: a.data.featured,
+  }))
+  .sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime());
+
+const featured = articles.find((a) => a.featured) ?? articles[0];
+const restOfArticles = featured ? articles.filter((a) => a.slug !== featured.slug) : articles;
+---
+<BaseLayout
+  title="Artykuły — MJ.OLDAK"
+  description="Praktyczna wiedza o agentach AI, automatyzacji i wdrożeniach AI w polskich firmach. Case studies, tutoriale, analiza rynku."
+>
+  <div class="noise-overlay"></div>
+  <Navbar client:load />
+
+  <section class="pt-32 pb-12 px-6 md:px-12 max-w-7xl mx-auto w-full">
+    <div class="flex items-center gap-2 mb-4">
+      <span class="w-2 h-2 rounded-full bg-accent animate-pulse"></span>
+      <span class="font-mono text-[10px] uppercase tracking-widest text-dark/40">[ 05 / ARTYKUŁY ]</span>
+    </div>
+    <h1 class="font-sans font-bold text-5xl md:text-7xl uppercase tracking-tight text-dark mb-6 leading-none">
+      Praktyczna <span class="font-serif italic font-normal text-accent">wiedza.</span>
+    </h1>
+    <p class="font-mono text-base text-dark/70 max-w-2xl leading-relaxed">
+      AI dla polskich firm bez ściemy. Case studies z biur rachunkowych, koszty wdrożeń, kompliance, demo techniczne.
+    </p>
+  </section>
+
+  {articles.length === 0 ? (
+    <section class="px-6 md:px-12 max-w-7xl mx-auto py-20">
+      <div class="rounded-[2rem] bg-dark/[0.05] border border-dark/10 p-12 text-center">
+        <p class="font-mono text-sm text-dark/60">Pierwsze artykuły w drodze. Zapisz się na newsletter, żeby nie przegapić.</p>
+      </div>
+    </section>
+  ) : (
+    <>
+      {featured && (
+        <section class="px-6 md:px-12 max-w-7xl mx-auto mb-16">
+          <a href={`/artykuly/${featured.slug}/`} class="group block rounded-[3rem] overflow-hidden border border-dark/10 bg-dark/[0.05] hover:border-accent/40 transition-all no-underline">
+            <div class="grid grid-cols-1 lg:grid-cols-5">
+              {featured.cover && (
+                <div class="lg:col-span-3 aspect-video lg:aspect-auto overflow-hidden bg-dark/[0.05]">
+                  <img src={featured.cover} alt={featured.coverAlt} class="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-700" loading="eager" />
+                </div>
+              )}
+              <div class={`p-8 md:p-12 flex flex-col justify-center ${featured.cover ? 'lg:col-span-2' : 'lg:col-span-5'}`}>
+                <div class="flex items-center gap-2 mb-4 font-mono text-[10px] uppercase tracking-widest text-accent">
+                  <span class="w-1.5 h-1.5 rounded-full bg-accent animate-pulse"></span>
+                  Wyróżniony · {featured.category}
+                </div>
+                <h2 class="font-sans font-bold text-3xl md:text-4xl uppercase tracking-tight text-dark mb-4 group-hover:text-accent transition leading-tight">
+                  {featured.title}
+                </h2>
+                <p class="font-mono text-sm text-dark/70 leading-relaxed mb-6">
+                  {featured.excerpt}
+                </p>
+                <div class="flex items-center gap-3 font-mono text-[10px] uppercase tracking-widest text-dark/40">
+                  <span>{featured.publishedDateLabel}</span>
+                  {featured.readingTime && <><span>·</span><span>{featured.readingTime} min czytania</span></>}
+                </div>
+              </div>
+            </div>
+          </a>
+        </section>
+      )}
+
+      <section class="px-6 md:px-12 max-w-7xl mx-auto pb-32">
+        <ArticlesBrowser
+          client:load
+          articles={restOfArticles}
+          allTags={[...TAGS]}
+        />
+      </section>
+    </>
+  )}
+
+  <Footer client:visible />
+</BaseLayout>
