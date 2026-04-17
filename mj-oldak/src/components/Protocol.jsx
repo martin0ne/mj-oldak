@@ -37,18 +37,29 @@ export default function Protocol() {
                     gsap.to(card, {
                         scrollTrigger: {
                             trigger: cards[i + 1],
-                            start: 'top bottom',
-                            end: 'top 40%',
-                            scrub: true,
+                            start: 'top 70%',
+                            end: 'top 10%',
+                            scrub: 0.5,
+                            invalidateOnRefresh: true,
                         },
-                        scale: 0.95,
+                        scale: 0.96,
                         opacity: 0,
                         ease: 'none',
+                        immediateRender: false,
                     });
                 }
             });
+
+            ScrollTrigger.refresh();
         }, containerRef);
-        return () => ctx.revert();
+
+        const onLoad = () => ScrollTrigger.refresh();
+        window.addEventListener('load', onLoad);
+
+        return () => {
+            window.removeEventListener('load', onLoad);
+            ctx.revert();
+        };
     }, []);
 
     return (
