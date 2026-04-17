@@ -2,6 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+/* @-symbol fix: Space Mono renderuje '@' jako mało czytelny mały glyph.
+   Override TYLKO znaku @ (U+0040) na wyraźniejszy font (Inter / system-ui).
+   Dotyczy wszystkich elementów (body, mono, sans). */
+@font-face {
+  font-family: 'AtSymbolFix';
+  src: local('Inter'), local('Helvetica Neue'), local('Arial');
+  unicode-range: U+0040;
+  font-weight: 700;
+}
+
 @layer base {
   html {
     scroll-behavior: smooth;
@@ -9,6 +19,13 @@
   }
   body {
     @apply bg-background text-dark font-sans m-0 p-0 overflow-x-hidden;
+    font-family: 'AtSymbolFix', 'Space Grotesk', system-ui, sans-serif;
+  }
+  .font-mono {
+    font-family: 'AtSymbolFix', 'Space Mono', monospace !important;
+  }
+  .font-sans {
+    font-family: 'AtSymbolFix', 'Space Grotesk', system-ui, sans-serif !important;
   }
 }
 
