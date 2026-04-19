@@ -1,7 +1,7 @@
 # MJ.OLDAK — Brand Style Guide
 
 > Single source of truth dla identyfikacji wizualnej marki.
-> Dokument oparty na stronie internetowej mj-oldak.com.
+> Dokument oparty na stronie internetowej mjoldak.com.
 
 ---
 
@@ -331,4 +331,4 @@ borderRadius: {
 
 ---
 
-*Dokument wygenerowany na podstawie strony mj-oldak.com — luty 2026*
+*Dokument wygenerowany na podstawie strony mjoldak.com — luty 2026*

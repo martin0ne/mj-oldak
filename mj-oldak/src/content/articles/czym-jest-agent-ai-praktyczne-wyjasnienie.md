@@ -134,7 +134,7 @@ Czas wdrożenia: 2-4 tygodnie od audytu do działającego systemu.
 
 Jeśli to brzmi sensownie dla Twojej firmy — masz dwie ścieżki:
 
-1. **Spotkanie + demo.** Bezpłatne, 30 minut, online. Pokażę live action: wrzucam Twoją prawdziwą fakturę do agenta i wyciągamy dane na żywo. [Napisz na contact@mj-oldak.com](/#kontakt).
+1. **Spotkanie + demo.** Bezpłatne, 30 minut, online. Pokażę live action: wrzucam Twoją prawdziwą fakturę do agenta i wyciągamy dane na żywo. [Napisz na contact@mjoldak.com](/#kontakt).
 
 2. **Dalej czytaj.** [Case study: 4 godziny dziennie skrócone do 20 minut](/artykuly/case-study-4h-dziennie-do-20-minut/) — konkretna historia z mojego pierwszego pilotażu.
 

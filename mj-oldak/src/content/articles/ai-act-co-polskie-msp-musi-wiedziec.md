@@ -355,7 +355,7 @@ Art. 14 AI Act wymaga, żeby system high-risk był pod skutecznym nadzorem czło
 
 ## Następne kroki
 
-Jeśli masz czucie, że Twoje biuro jest "gdzieś w szarej strefie" i nie wiesz, czy używany OCR to high-risk czy nie — napisz. W 30 minut bezpłatnej konsultacji zmapujemy Twoje systemy, sklasyfikujemy ryzyko i wskażemy 3 najpilniejsze kroki. [Kontakt: contact@mj-oldak.com](/#kontakt).
+Jeśli masz czucie, że Twoje biuro jest "gdzieś w szarej strefie" i nie wiesz, czy używany OCR to high-risk czy nie — napisz. W 30 minut bezpłatnej konsultacji zmapujemy Twoje systemy, sklasyfikujemy ryzyko i wskażemy 3 najpilniejsze kroki. [Kontakt: contact@mjoldak.com](/#kontakt).
 
 Jeśli chcesz zacząć od zrozumienia samej technologii, zanim wejdziesz w compliance — polecam [Czym jest agent AI? Praktyczne wyjaśnienie](/artykuly/czym-jest-agent-ai-praktyczne-wyjasnienie/).
 

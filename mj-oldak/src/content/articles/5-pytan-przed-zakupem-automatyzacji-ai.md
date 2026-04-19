@@ -347,7 +347,7 @@ Jeśli doczytałeś do końca — jesteś w 5% właścicieli MŚP, którzy podch
 
 Masz dwie ścieżki:
 
-1. **Audyt AI u mnie**. 3 500 zł, 2 tygodnie, konkretny raport z mapą procesów + rekomendacja wdrożenia (lub rekomendacja żeby NIE wdrażać — czasem to jest właściwa odpowiedź). [Napisz na contact@mj-oldak.com](/#kontakt).
+1. **Audyt AI u mnie**. 3 500 zł, 2 tygodnie, konkretny raport z mapą procesów + rekomendacja wdrożenia (lub rekomendacja żeby NIE wdrażać — czasem to jest właściwa odpowiedź). [Napisz na contact@mjoldak.com](/#kontakt).
 
 2. **Samoocena najpierw**. Przejdź przez 5 pytań tego artykułu z kartką i długopisem. Jeśli na 4 z 5 masz konkretne odpowiedzi — jesteś gotowy na rozmowę z vendorem.
 

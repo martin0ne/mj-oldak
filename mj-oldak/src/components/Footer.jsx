@@ -76,7 +76,7 @@ export default function Footer() {
                         <ul className="footer-reveal space-y-4 font-mono text-sm">
                             <li className="flex items-center gap-3">
                                 <span className="w-1.5 h-1.5 rounded-full bg-green-500" />
-                                <a href="mailto:contact@mj-oldak.com" className="hover:text-accent transition-colors">contact@mj-oldak.com</a>
+                                <a href="mailto:contact@mjoldak.com" className="hover:text-accent transition-colors">contact@mjoldak.com</a>
                             </li>
                             <li className="flex items-center gap-3">
                                 <span className="w-1.5 h-1.5 rounded-full bg-primary/30" />
@@ -168,7 +168,7 @@ export default function Footer() {
                 <div>
                     <h4 className="font-mono text-xs uppercase text-primary/40 mb-6">Kontakt</h4>
                     <ul className="space-y-4 font-mono text-sm">
-                        <li><a href="mailto:contact@mj-oldak.com" className="hover:text-accent transition-colors">contact@mj-oldak.com</a></li>
+                        <li><a href="mailto:contact@mjoldak.com" className="hover:text-accent transition-colors">contact@mjoldak.com</a></li>
                         <li className="text-primary/50">Warszawa, Polska</li>
                     </ul>
                 </div>
