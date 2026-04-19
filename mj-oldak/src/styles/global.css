@@ -16,6 +16,8 @@
   html {
     scroll-behavior: smooth;
     scroll-padding-top: 100px;
+    background-color: #F5F3EE;
+    overscroll-behavior-y: none;
   }
   body {
     @apply bg-background text-dark font-sans m-0 p-0 overflow-x-hidden;
@@ -27,6 +29,21 @@
   .font-sans {
     font-family: 'AtSymbolFix', 'Space Grotesk', system-ui, sans-serif !important;
   }
+}
+
+/* Navbar entrance — CSS-only żeby uniknąć flash (React → useEffect → GSAP) */
+@keyframes navEnter {
+  from {
+    transform: translate(-50%, -80px);
+    opacity: 0;
+  }
+  to {
+    transform: translate(-50%, 0);
+    opacity: 1;
+  }
+}
+.navbar-enter {
+  animation: navEnter 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.15s backwards;
 }
 
 /* Protocol step animations */
