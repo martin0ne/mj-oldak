@@ -126,15 +126,24 @@ function StepTwoAnim() {
 function StepThreeAnim() {
     return (
         <svg viewBox="0 0 200 100" className="w-full h-1/2 stroke-accent drop-shadow-[0_0_8px_rgba(230,59,46,0.6)]">
+            {/* Statyczna linia bazowa — zawsze widoczna */}
             <path
                 d="M 0 50 L 40 50 L 50 20 L 70 80 L 100 10 L 120 70 L 140 50 L 200 50"
                 fill="none"
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                className="animate-[dash_2s_linear_infinite]"
-                strokeDasharray="200"
-                strokeDashoffset="200"
+                opacity="0.25"
+            />
+            {/* Animowany "strumień danych" — dashed pattern płynie w nieskończoność */}
+            <path
+                d="M 0 50 L 40 50 L 50 20 L 70 80 L 100 10 L 120 70 L 140 50 L 200 50"
+                fill="none"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeDasharray="16 8"
+                className="animate-[dash_1.5s_linear_infinite]"
             />
         </svg>
     );
