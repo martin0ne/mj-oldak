@@ -9,17 +9,7 @@ export default function Navbar() {
     const [isDark, setIsDark] = useState(true);
     const [mobileOpen, setMobileOpen] = useState(false);
 
-    useEffect(() => {
-        const nav = navRef.current;
-        gsap.set(nav, { y: -100, opacity: 0 });
-        gsap.to(nav, {
-            y: 0,
-            opacity: 1,
-            duration: 1,
-            ease: 'power3.out',
-            delay: 0.5
-        });
-    }, []);
+    // Entrance animation handled via CSS `@keyframes navEnter` in global.css — zero flash, zero GSAP collision with translate-x-1/2.
 
     useEffect(() => {
         const darkSections = document.querySelectorAll('[data-nav-theme="dark"]');
@@ -60,7 +50,7 @@ export default function Navbar() {
         <nav
             ref={navRef}
             aria-label="Menu główne"
-            className={`fixed top-6 left-1/2 -translate-x-1/2 z-50 px-6 py-4 rounded-[3rem] w-[92%] max-w-5xl transition-all duration-500 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] ${
+            className={`navbar-enter fixed top-6 left-1/2 -translate-x-1/2 z-50 px-6 py-4 rounded-[3rem] w-[92%] max-w-5xl transition-colors duration-500 ${
                 isDark
                     ? 'bg-dark/60 backdrop-blur-xl border border-primary/10 text-primary'
                     : 'bg-background/70 backdrop-blur-xl border border-dark/10 text-dark'
