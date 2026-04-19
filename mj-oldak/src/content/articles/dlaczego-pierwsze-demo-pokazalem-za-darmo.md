@@ -161,7 +161,7 @@ Różnica jest w tym, kto nosi ciężar. Podczas demo ja siedzę na rozmowie, ja
 
 ---
 
-Jeśli prowadzisz biuro rachunkowe albo MŚP, które ma dużo powtarzalnej pracy na fakturach, mailach albo deadlineach — [napisz na contact@mj-oldak.com](/#kontakt). Pokażę demo na twoich realnych danych (zanonimizowanych), bezpłatnie. Jak widzisz wyżej — wciąż mam jeszcze kilka slotów w pipeline case studies.
+Jeśli prowadzisz biuro rachunkowe albo MŚP, które ma dużo powtarzalnej pracy na fakturach, mailach albo deadlineach — [napisz na contact@mjoldak.com](/#kontakt). Pokażę demo na twoich realnych danych (zanonimizowanych), bezpłatnie. Jak widzisz wyżej — wciąż mam jeszcze kilka slotów w pipeline case studies.
 
 Jeśli chcesz zobaczyć, jak wyglądają liczby po wdrożeniu, przeczytaj [case study: 4 godziny dziennie skrócone do 20 minut](/artykuly/case-study-4h-dziennie-do-20-minut/) albo [3 zadania, które twoi pracownicy robią ręcznie, a nie muszą](/artykuly/3-zadania-pracownicy-robia-recznie-a-nie-musza/).
 

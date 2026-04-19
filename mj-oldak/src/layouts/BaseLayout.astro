@@ -25,7 +25,7 @@ const {
   includeOrganizationSchema = false,
 } = Astro.props;
 
-const siteURL = 'https://mj-oldak.com';
+const siteURL = 'https://mjoldak.com';
 const canonicalURL = canonical ?? new URL(Astro.url.pathname, siteURL).toString();
 const ogImageURL = ogImage.startsWith('http') ? ogImage : `${siteURL}${ogImage}`;
 
@@ -51,7 +51,7 @@ const organizationSchema = {
   ],
   contactPoint: {
     '@type': 'ContactPoint',
-    email: 'contact@mj-oldak.com',
+    email: 'contact@mjoldak.com',
     contactType: 'sales',
     areaServed: 'PL',
     availableLanguage: ['Polish', 'English'],

@@ -274,6 +274,6 @@ Wzór: `(czas_przed − czas_po) × liczba_transakcji × stawka_godzinowa`. Staw
 
 > Automatyzacja w biurze rachunkowym to nie sprint na 60 godzin. To maraton, w którym pierwsze kilometry są cięższe niż środek — ale dystans się skraca, im dalej biegniesz.
 
-Jeśli prowadzisz biuro rachunkowe i chcesz policzyć realne 60 godzin dla *swojego* przypadku — nie ogólnej średniej — [napisz na contact@mj-oldak.com](/#kontakt) i usiądźmy do liczb. Zrobię darmową analizę na podstawie Twoich danych, bez prezentacji sprzedażowej.
+Jeśli prowadzisz biuro rachunkowe i chcesz policzyć realne 60 godzin dla *swojego* przypadku — nie ogólnej średniej — [napisz na contact@mjoldak.com](/#kontakt) i usiądźmy do liczb. Zrobię darmową analizę na podstawie Twoich danych, bez prezentacji sprzedażowej.
 
 [Czytaj dalej: Case study — 4 godziny dziennie skrócone do 20 minut](/artykuly/case-study-4h-dziennie-do-20-minut/)

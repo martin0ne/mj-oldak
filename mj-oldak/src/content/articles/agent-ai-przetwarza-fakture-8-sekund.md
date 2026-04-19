@@ -305,7 +305,7 @@ Nie. Zastąpi **najnudniejszą 1/3 jej pracy** — przepisywanie danych. Reszta 
 
 ## Co dalej
 
-Jeśli chcesz zobaczyć pipeline w akcji na **Twojej własnej fakturze** (zanonimizowana, nic nie zostaje w mojej bazie) — [napisz na contact@mj-oldak.com](/#kontakt). 20-minutowe demo, pokazuję live każdy krok: Azure DI raw response, Claude classification, NIP validation, final insert do mockowego Comarcha.
+Jeśli chcesz zobaczyć pipeline w akcji na **Twojej własnej fakturze** (zanonimizowana, nic nie zostaje w mojej bazie) — [napisz na contact@mjoldak.com](/#kontakt). 20-minutowe demo, pokazuję live każdy krok: Azure DI raw response, Claude classification, NIP validation, final insert do mockowego Comarcha.
 
 > Pipeline AI nie musi być czarną skrzynką. Im więcej widzisz "pod spodem", tym lepiej oceniasz, czy to ma sens dla Twojego biura.
 

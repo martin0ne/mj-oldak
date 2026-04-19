@@ -201,7 +201,7 @@ Plus jednorazowe koszty wdrożenia (mój czas, 2-4 tygodnie): 8 000 — 18 000 z
 
 Jeśli chcesz zobaczyć ten stack w akcji:
 
-- **Demo na żywo** — pokazuję jak agent przetwarza Twoją prawdziwą fakturę w Azure DI + Claude Sonnet w czasie rzeczywistym. 30 minut, bezpłatnie. [Napisz na contact@mj-oldak.com](/#kontakt).
+- **Demo na żywo** — pokazuję jak agent przetwarza Twoją prawdziwą fakturę w Azure DI + Claude Sonnet w czasie rzeczywistym. 30 minut, bezpłatnie. [Napisz na contact@mjoldak.com](/#kontakt).
 - **Tutoriale** — w przygotowaniu seria pod hood (architektura agenta od zera, n8n setup od podstaw, integracja z Comarch Optima). [Zapisz się na newsletter](#newsletter), żeby nie przegapić.
 
 > Najlepszy stack to ten, który przetrwa zmianę requirements za 6 miesięcy bez przepisywania od zera. n8n + Claude + SQLite spełnia ten test od roku.

@@ -284,7 +284,7 @@ Agent emailowy dla biura rachunkowego to jedna z **najlepiej policzalnych inwest
 
 Ale to działa **tylko wtedy**, kiedy nie skracamy ścieżek. Bez DPA i ZDR — nie ma rozmowy. Bez human review — nie ma rozmowy. Z agentem interpretującym przepisy podatkowe — nie ma rozmowy.
 
-Jeśli Twoje biuro spełnia te założenia i wolumen maili jest na tyle duży, że liczby zaczynają mieć sens, [napisz na contact@mj-oldak.com](/#kontakt). Zrobię audyt zanonimizowanej próbki Twojej skrzynki, pokażę rozkład kategorii i powiem uczciwie — warto czy nie.
+Jeśli Twoje biuro spełnia te założenia i wolumen maili jest na tyle duży, że liczby zaczynają mieć sens, [napisz na contact@mjoldak.com](/#kontakt). Zrobię audyt zanonimizowanej próbki Twojej skrzynki, pokażę rozkład kategorii i powiem uczciwie — warto czy nie.
 
 > Najlepsza automatyzacja to ta, której payback można policzyć w miesiącach, a compliance zmieścić na jednej kartce. Agent mailowy dla biura rachunkowego spełnia oba testy.
 

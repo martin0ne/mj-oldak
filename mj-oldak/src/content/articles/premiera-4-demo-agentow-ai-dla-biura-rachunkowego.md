@@ -166,10 +166,10 @@ Polska jest sceptyczna, ale trend jest jednoznaczny. Biura rachunkowe są w tej 
 Każde demo jest do odpalenia. Masz trzy ścieżki.
 
 **1. Test sama, za darmo, dzisiaj.**
-Wchodzisz na [mj-oldak.com/demo](https://mj-oldak.com/demo), wybierasz agenta, wrzucasz swój plik (faktura PDF, fragment skrzynki .mbox, lista terminów CSV — jak wygodnie). Widzisz output w przeglądarce. Nic nie instalujesz. Dane z demo są usuwane po 24h.
+Wchodzisz na [mjoldak.com/demo](https://mjoldak.com/demo), wybierasz agenta, wrzucasz swój plik (faktura PDF, fragment skrzynki .mbox, lista terminów CSV — jak wygodnie). Widzisz output w przeglądarce. Nic nie instalujesz. Dane z demo są usuwane po 24h.
 
 **2. Spotkanie 30 minut online.**
-Pokażę live na Twoich danych (możesz przynieść 5 faktur z ostatniego miesiąca). Zero prezentacji slajdowej. [Umów przez kalendarz](/#kontakt) albo napisz na [contact@mj-oldak.com](mailto:contact@mj-oldak.com).
+Pokażę live na Twoich danych (możesz przynieść 5 faktur z ostatniego miesiąca). Zero prezentacji slajdowej. [Umów przez kalendarz](/#kontakt) albo napisz na [contact@mjoldak.com](mailto:contact@mjoldak.com).
 
 **3. Pilotaż 30 dni.**
 Wdrażamy jeden moduł (najczęściej Invoice) na Twoim realnym volume. Po 30 dniach decydujesz: zostaje, rozbudowujemy do pełnego pakietu, albo się rozchodzimy. Koszt pilotażu: 1 500 zł, liczy się na poczet wdrożenia jeśli zostajesz.
@@ -206,6 +206,6 @@ Jeśli prowadzisz biuro rachunkowe i czytasz to do końca — wejdź na demo. Wr
 
 > Nie chcę sprzedać AI każdemu biuru w Polsce. Chcę, żeby 10 biur, które zdecydują się wcześnie, miało za rok spokojniejsze wieczory i więcej czasu na klientów.
 
-[Testuj demo za darmo](https://mj-oldak.com/demo) albo [napisz bezpośrednio](/#kontakt). Jeśli potrzebujesz najpierw kontekstu, zacznij od [Czym jest agent AI — praktyczne wyjaśnienie](/artykuly/czym-jest-agent-ai-praktyczne-wyjasnienie/) albo [Case study: 4h dziennie do 20 minut](/artykuly/case-study-4h-dziennie-do-20-minut/).
+[Testuj demo za darmo](https://mjoldak.com/demo) albo [napisz bezpośrednio](/#kontakt). Jeśli potrzebujesz najpierw kontekstu, zacznij od [Czym jest agent AI — praktyczne wyjaśnienie](/artykuly/czym-jest-agent-ai-praktyczne-wyjasnienie/) albo [Case study: 4h dziennie do 20 minut](/artykuly/case-study-4h-dziennie-do-20-minut/).
 
 Do usłyszenia.

@@ -224,7 +224,7 @@ Wtedy nie warto budować custom agenta. Sensowniejsze są gotowe narzędzia (Sal
 
 ## Policzmy to dla Twojej firmy
 
-Jeśli pracujesz w biurze rachunkowym, MŚP usługowym lub produkcyjnym — napisz na [contact@mj-oldak.com](/#kontakt), daj mi 15 minut rozmowy i zanonimizowaną próbkę 20 dokumentów. W odpowiedzi dostaniesz:
+Jeśli pracujesz w biurze rachunkowym, MŚP usługowym lub produkcyjnym — napisz na [contact@mjoldak.com](/#kontakt), daj mi 15 minut rozmowy i zanonimizowaną próbkę 20 dokumentów. W odpowiedzi dostaniesz:
 
 - Realny koszt ręcznego przepisywania w Twojej firmie (liczby, nie "nawet 80%")
 - Ile z tego da się zautomatyzować przy obecnym stacku

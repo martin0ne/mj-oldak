@@ -18,7 +18,7 @@ const publishedISO = publishedAt.toISOString();
 const updatedISO = updatedAt?.toISOString();
 const dateFormatted = new Intl.DateTimeFormat('pl-PL', { day: 'numeric', month: 'long', year: 'numeric' }).format(publishedAt);
 
-const siteURL = 'https://mj-oldak.com';
+const siteURL = 'https://mjoldak.com';
 const articleURL = `${siteURL}/artykuly/${article.id.replace(/\.md$/, '')}/`;
 const ogImageURL = cover ? (cover.startsWith('http') ? cover : `${siteURL}${cover}`) : `${siteURL}/og-image.jpg`;
 
@@ -30,7 +30,7 @@ const jsonLd = {
   image: ogImageURL,
   datePublished: publishedISO,
   dateModified: updatedISO ?? publishedISO,
-  author: { '@type': 'Person', name: author, url: 'https://mj-oldak.com/' },
+  author: { '@type': 'Person', name: author, url: 'https://mjoldak.com/' },
   publisher: {
     '@type': 'Organization',
     name: 'MJ.OLDAK',
