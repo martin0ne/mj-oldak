@@ -1,2 +1,9 @@
 User-agent: *
 Allow: /
+
+# Disallow internal paths
+Disallow: /api/
+Disallow: /_astro/
+
+# Sitemap
+Sitemap: https://mj-oldak.com/sitemap-index.xml

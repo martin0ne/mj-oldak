@@ -9,7 +9,7 @@ import Protocol from '../components/Protocol.jsx';
 import LatestArticles from '../components/LatestArticles.astro';
 import Footer from '../components/Footer.jsx';
 ---
-<BaseLayout>
+<BaseLayout includeOrganizationSchema={true}>
   <div class="noise-overlay"></div>
   <Navbar client:load />
   <main>

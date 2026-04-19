@@ -10,6 +10,7 @@ export interface Props {
   publishedTime?: string;
   author?: string;
   tags?: string[];
+  includeOrganizationSchema?: boolean;
 }
 
 const {
@@ -21,11 +22,61 @@ const {
   publishedTime,
   author = 'Marcin Ołdak',
   tags = [],
+  includeOrganizationSchema = false,
 } = Astro.props;
 
 const siteURL = 'https://mj-oldak.com';
 const canonicalURL = canonical ?? new URL(Astro.url.pathname, siteURL).toString();
 const ogImageURL = ogImage.startsWith('http') ? ogImage : `${siteURL}${ogImage}`;
+
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'MJ.OLDAK',
+  legalName: 'MJ.OLDAK SYSTEMS',
+  url: siteURL,
+  logo: `${siteURL}/favicon.svg`,
+  description: 'Budowa agentów AI i automatyzacja procesów dla polskich MŚP — głównie biur rachunkowych.',
+  founder: { '@type': 'Person', name: 'Marcin Ołdak' },
+  foundingDate: '2026',
+  areaServed: { '@type': 'Country', name: 'Polska' },
+  knowsAbout: [
+    'Agenci AI',
+    'Automatyzacja procesów biznesowych',
+    'OCR faktur',
+    'Claude API',
+    'n8n workflow automation',
+    'Azure Document Intelligence',
+    'AI dla biur rachunkowych',
+  ],
+  contactPoint: {
+    '@type': 'ContactPoint',
+    email: 'contact@mj-oldak.com',
+    contactType: 'sales',
+    areaServed: 'PL',
+    availableLanguage: ['Polish', 'English'],
+  },
+  sameAs: [
+    'https://www.linkedin.com/in/marcin-oldak',
+    'https://github.com/martin0ne',
+  ],
+};
+
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  url: siteURL,
+  name: 'MJ.OLDAK',
+  inLanguage: 'pl-PL',
+  potentialAction: {
+    '@type': 'SearchAction',
+    target: {
+      '@type': 'EntryPoint',
+      urlTemplate: `${siteURL}/artykuly/?q={search_term_string}`,
+    },
+    'query-input': 'required name=search_term_string',
+  },
+};
 ---
 <!doctype html>
 <html lang="pl">
@@ -62,6 +113,14 @@ const ogImageURL = ogImage.startsWith('http') ? ogImage : `${siteURL}${ogImage}`
     rel="stylesheet"
   />
   <title>{title}</title>
+
+  {includeOrganizationSchema && (
+    <>
+      <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
+      <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
+    </>
+  )}
+
   <slot name="head" />
 </head>
 <body class="bg-background text-dark font-sans m-0 p-0 overflow-x-hidden min-h-[100dvh] flex flex-col">
