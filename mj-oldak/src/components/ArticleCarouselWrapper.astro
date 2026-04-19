@@ -1,0 +1,62 @@
+---
+import { getCollection } from 'astro:content';
+import ArticleCarousel from './ArticleCarousel.jsx';
+
+export interface Props {
+  heading?: string;
+  subheading?: string;
+  sectionLabel?: string;
+  count?: number;
+  preferFeatured?: boolean;
+}
+
+const {
+  heading = 'Praktyczna wiedza.',
+  subheading = 'AI dla polskich firm bez ściemy. Case studies z biur rachunkowych, koszty wdrożeń, compliance, demo techniczne.',
+  sectionLabel = '[ 05 / ARTYKUŁY ]',
+  count = 5,
+  preferFeatured = true,
+} = Astro.props;
+
+const all = await getCollection('articles', ({ data }) => !data.draft);
+
+// Stabilny shuffle per build (używa numer dnia roku jako seed)
+const now = new Date();
+const seed = now.getFullYear() * 1000 + Math.floor((now.getTime() - new Date(now.getFullYear(), 0, 0).getTime()) / 86400000);
+
+function seededShuffle<T>(arr: T[], seedVal: number): T[] {
+  const copy = [...arr];
+  let s = seedVal;
+  for (let i = copy.length - 1; i > 0; i--) {
+    s = (s * 9301 + 49297) % 233280;
+    const j = Math.floor((s / 233280) * (i + 1));
+    [copy[i], copy[j]] = [copy[j], copy[i]];
+  }
+  return copy;
+}
+
+const pool = preferFeatured
+  ? [...all.filter((a) => a.data.featured), ...all.filter((a) => !a.data.featured)]
+  : [...all];
+
+const shuffled = seededShuffle(pool, seed);
+const selected = shuffled.slice(0, count);
+
+const articles = selected.map((a) => ({
+  slug: a.id.replace(/\.md$/, ''),
+  title: a.data.title,
+  excerpt: a.data.excerpt,
+  category: a.data.category,
+  publishedDateLabel: new Intl.DateTimeFormat('pl-PL', { day: 'numeric', month: 'long', year: 'numeric' }).format(a.data.publishedAt),
+  cover: a.data.cover ?? null,
+  coverAlt: a.data.coverAlt ?? a.data.title,
+  readingTime: a.data.readingTime ?? null,
+}));
+---
+<ArticleCarousel
+  client:load
+  articles={articles}
+  heading={heading}
+  subheading={subheading}
+  sectionLabel={sectionLabel}
+/>

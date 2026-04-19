@@ -105,16 +105,16 @@ export default function ArticlesBrowser({ articles, allTags }) {
                             className="group block rounded-[2rem] bg-dark/[0.05] border border-dark/10 hover:border-accent/40 hover:bg-dark/[0.07] transition-all overflow-hidden no-underline"
                         >
                             {a.cover && (
-                                <div className="aspect-[16/9] overflow-hidden bg-dark/[0.05]">
+                                <div className="aspect-[4/3] overflow-hidden bg-dark/[0.05]">
                                     <img src={a.cover} alt={a.coverAlt} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
                                 </div>
                             )}
                             <div className="p-6">
-                                <div className="flex items-center gap-2 mb-3 font-mono text-[10px] uppercase tracking-widest text-dark/40">
-                                    <span className="text-accent">{a.category}</span>
-                                    <span>·</span>
+                                <div className="flex items-center gap-2 mb-3 font-sans font-medium text-xs uppercase tracking-[0.15em] text-dark/50">
+                                    <span className="font-bold text-accent">{a.category}</span>
+                                    <span className="text-dark/30">·</span>
                                     <span>{a.publishedDateLabel}</span>
-                                    {a.readingTime && <><span>·</span><span>{a.readingTime} min</span></>}
+                                    {a.readingTime && <><span className="text-dark/30">·</span><span>{a.readingTime} min</span></>}
                                 </div>
                                 <h3 className="font-sans font-bold text-lg uppercase tracking-tight text-dark mb-2 group-hover:text-accent transition leading-tight">
                                     {a.title}
@@ -124,7 +124,7 @@ export default function ArticlesBrowser({ articles, allTags }) {
                                 </p>
                                 <div className="flex flex-wrap gap-1.5">
                                     {a.tags.slice(0, 3).map((tag) => (
-                                        <span key={tag} className="font-mono text-[9px] uppercase tracking-widest px-2 py-1 rounded-full bg-dark/[0.06] text-dark/50">#{tag}</span>
+                                        <span key={tag} className="font-sans font-medium text-[10px] uppercase tracking-[0.15em] px-2 py-1 rounded-full bg-dark/[0.06] text-dark/60">#{tag}</span>
                                     ))}
                                 </div>
                             </div>
