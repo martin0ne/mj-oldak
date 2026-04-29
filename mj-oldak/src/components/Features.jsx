@@ -378,7 +378,8 @@ function CursorProtocolScheduler() {
                     .to(execBtn, { scale: 0.93, duration: 0.1, yoyo: true, repeat: 1, backgroundColor: '#E63B2E' }, '-=0.15')
                     .to(execBtn, { backgroundColor: '#E8E4DD', color: '#111111', duration: 0.3, delay: 0.3 })
                     .to(cursor, { opacity: 0, duration: 0.4, delay: 0.5 })
-                    .to(dayCell, { backgroundColor: 'transparent', color: '', scale: 1, duration: 0.3 }, '+=0.3')
+                    .to(dayCell, { backgroundColor: 'rgba(230,59,46,0.1)', color: '#E63B2E', scale: 1, duration: 0.4 }, '+=0.3')
+                    .set(dayCell, { clearProps: 'all' })
                     .to(execBtn, { backgroundColor: '#111111', color: '#E8E4DD', duration: 0.3 }, '<');
             }, gridRef);
 
@@ -418,13 +419,11 @@ function CursorProtocolScheduler() {
                                     key={i}
                                     ref={isAnimTarget ? dayCellRef : undefined}
                                     className={`aspect-square rounded-md border flex items-center justify-center font-mono text-[11px] cursor-default transition-all duration-200 ${
-                                        isAnimTarget
-                                            ? 'border-primary/10 text-primary/60'
-                                            : isActive
-                                                ? 'border-accent/30 text-accent bg-accent/10'
-                                                : hoveredDay === i
-                                                    ? 'border-primary/20 text-primary/60 bg-primary/5'
-                                                    : 'border-primary/5 text-primary/30'
+                                        isActive
+                                            ? 'border-accent/30 text-accent bg-accent/10'
+                                            : hoveredDay === i
+                                                ? 'border-primary/30 text-primary/80 bg-primary/10'
+                                                : 'border-primary/5 text-primary/30'
                                     }`}
                                     onMouseEnter={() => setHoveredDay(i)}
                                     onMouseLeave={() => setHoveredDay(null)}
