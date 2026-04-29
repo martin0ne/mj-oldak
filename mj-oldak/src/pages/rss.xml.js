@@ -2,7 +2,7 @@ import rss from '@astrojs/rss';
 import { getCollection } from 'astro:content';
 
 export async function GET(context) {
-    const articles = await getCollection('articles', ({ data }) => !data.draft);
+    const articles = await getCollection('articles', ({ data }) => !data.draft && data.publishedAt <= new Date());
     return rss({
         title: 'MJ.OLDAK — Artykuły',
         description: 'AI dla polskich firm bez ściemy. Case studies z biur rachunkowych, koszty wdrożeń, kompliance, demo techniczne.',
