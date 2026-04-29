@@ -228,7 +228,7 @@ Technicznie — tak. Claude API + n8n + Azure Document Intelligence + Twoja Coma
 
 Jeśli któraś z tych trzech liczb Cię kłuje — 45 godzin tygodniowo na ręczne zadania, 100 000 zł rocznie kosztu, 55 zł jako godzina Twojego pracownika — umówmy się na bezpłatne 30-minutowe demo. Wrzucisz swoją prawdziwą fakturę do mojego agenta i zobaczysz proces na żywo.
 
-[Napisz na contact@mjoldak.com albo zarezerwuj termin przez formularz](/#kontakt). Nie sprzedaję pakietów. Sprzedaję zwrot z inwestycji poniżej 6 miesięcy — albo nie sprzedaję nic.
+[Napisz na biuro@mjoldak.pl albo zarezerwuj termin przez formularz](/#kontakt). Nie sprzedaję pakietów. Sprzedaję zwrot z inwestycji poniżej 6 miesięcy — albo nie sprzedaję nic.
 
 > Najlepsza inwestycja w automatyzację to ta, która zwraca się w mniej niż 6 miesięcy. Wszystko powyżej to spekulacja.
 
