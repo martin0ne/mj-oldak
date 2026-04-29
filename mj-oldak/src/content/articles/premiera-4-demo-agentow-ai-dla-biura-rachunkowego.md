@@ -169,7 +169,7 @@ Każde demo jest do odpalenia. Masz trzy ścieżki.
 Wchodzisz na [mjoldak.com/demo](https://mjoldak.com/demo), wybierasz agenta, wrzucasz swój plik (faktura PDF, fragment skrzynki .mbox, lista terminów CSV — jak wygodnie). Widzisz output w przeglądarce. Nic nie instalujesz. Dane z demo są usuwane po 24h.
 
 **2. Spotkanie 30 minut online.**
-Pokażę live na Twoich danych (możesz przynieść 5 faktur z ostatniego miesiąca). Zero prezentacji slajdowej. [Umów przez kalendarz](/#kontakt) albo napisz na [contact@mjoldak.com](mailto:contact@mjoldak.com).
+Pokażę live na Twoich danych (możesz przynieść 5 faktur z ostatniego miesiąca). Zero prezentacji slajdowej. [Umów przez kalendarz](/#kontakt) albo napisz na [biuro@mjoldak.pl](mailto:biuro@mjoldak.pl).
 
 **3. Pilotaż 30 dni.**
 Wdrażamy jeden moduł (najczęściej Invoice) na Twoim realnym volume. Po 30 dniach decydujesz: zostaje, rozbudowujemy do pełnego pakietu, albo się rozchodzimy. Koszt pilotażu: 1 500 zł, liczy się na poczet wdrożenia jeśli zostajesz.
