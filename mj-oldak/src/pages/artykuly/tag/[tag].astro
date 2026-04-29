@@ -6,7 +6,7 @@ import Footer from '../../../components/Footer.jsx';
 import { TAGS } from '../../../content.config';
 
 export async function getStaticPaths() {
-  const all = await getCollection('articles', ({ data }) => !data.draft);
+  const all = await getCollection('articles', ({ data }) => !data.draft && data.publishedAt <= new Date());
   return TAGS.map((tag) => ({
     params: { tag },
     props: {

@@ -7,7 +7,7 @@ import ArticlesBrowser from '../../components/ArticlesBrowser.jsx';
 import ArticleCarouselWrapper from '../../components/ArticleCarouselWrapper.astro';
 import { TAGS } from '../../content.config';
 
-const all = await getCollection('articles', ({ data }) => !data.draft);
+const all = await getCollection('articles', ({ data }) => !data.draft && data.publishedAt <= new Date());
 const articles = all
   .map((a) => ({
     slug: a.id.replace(/\.md$/, ''),
