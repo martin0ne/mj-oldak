@@ -25,7 +25,7 @@ const {
   includeOrganizationSchema = false,
 } = Astro.props;
 
-const siteURL = 'https://mjoldak.com';
+const siteURL = 'https://www.mjoldak.pl';
 const canonicalURL = canonical ?? new URL(Astro.url.pathname, siteURL).toString();
 const ogImageURL = ogImage.startsWith('http') ? ogImage : `${siteURL}${ogImage}`;
 
