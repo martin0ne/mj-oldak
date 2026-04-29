@@ -156,7 +156,7 @@ Jeśli te trzy są na ✅ — porozmawiajmy.
 
 Aktualnie wdrażam tę samą architekturę u 2 kolejnych klientów (oba biura rachunkowe — przypadek użycia jeszcze lepiej dopasowany niż firma usługowa, bo maile są jeszcze bardziej powtarzalne).
 
-Jeśli prowadzisz biuro lub MŚP z dużą skrzynką — [napisz na contact@mj-oldak.com](/#kontakt) i pokażę demo na Twojej (zanonimizowanej) próbce maili.
+Jeśli prowadzisz biuro lub MŚP z dużą skrzynką — [napisz na biuro@mjoldak.pl](/#kontakt) i pokażę demo na Twojej (zanonimizowanej) próbce maili.
 
 > Najlepsza inwestycja w automatyzację to ta, która zwraca się w mniej niż 6 miesięcy. Wszystko powyżej to spekulacja.
 
