@@ -333,7 +333,7 @@ function TelemetryTypewriter() {
     );
 }
 
-// ─── Widget 3: Consulting AI ──────────────────────────────────────────
+// ─── Widget 3: Wdrożenia AI ───────────────────────────────────────────
 function CursorProtocolScheduler() {
     const gridRef = useRef(null);
     const cursorRef = useRef(null);
@@ -396,8 +396,8 @@ function CursorProtocolScheduler() {
         <TiltCard className="feature-card bg-dark rounded-[2rem] p-8 h-[420px] flex flex-col relative overflow-hidden group border border-primary/5 hover:border-accent/20 transition-colors duration-500 shadow-lg hover:shadow-[0_8px_40px_rgba(230,59,46,0.15)]">
             <div ref={gridRef} className="flex flex-col h-full">
                 <div className="relative z-10">
-                    <h3 className="font-sans font-bold text-2xl text-primary mb-2">Consulting AI</h3>
-                    <p className="font-mono text-sm text-primary/50 mb-6 max-w-[220px]">Audyty technologiczne i strategia wdrożeń.</p>
+                    <h3 className="font-sans font-bold text-2xl text-primary mb-2">Wdrożenia AI</h3>
+                    <p className="font-mono text-sm text-primary/50 mb-6 max-w-[220px]">Diagnoza procesów i wdrożenie automatyzacji AI.</p>
                 </div>
 
                 <div className="flex-1 border border-primary/10 rounded-xl p-4 bg-[#0a0a0a] relative flex flex-col justify-between">
