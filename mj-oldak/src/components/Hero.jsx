@@ -53,7 +53,7 @@ export default function Hero() {
                 <div className="hero-reveal w-16 h-[2px] bg-accent mb-6"></div>
 
                 <p className="hero-reveal text-primary/70 font-mono text-sm md:text-base max-w-lg mb-10 leading-relaxed">
-                    Budowa agentów AI · Automatyzacja procesów · Consulting technologiczny
+                    Budowa agentów AI · Automatyzacja procesów · Wdrożenia technologiczne
                 </p>
 
                 <a href="/#kontakt" className="hero-reveal relative overflow-hidden group px-8 py-4 rounded-[2rem] bg-accent text-primary font-sans font-bold text-lg transition-transform duration-300 hover:scale-[1.03] ease-[cubic-bezier(0.25,0.46,0.45,0.94)] inline-block no-underline">
