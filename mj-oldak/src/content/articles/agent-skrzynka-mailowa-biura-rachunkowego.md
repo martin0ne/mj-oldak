@@ -270,7 +270,7 @@ Zadziała z Gmailem, Microsoft 365, a także zwykłym IMAP (home.pl, OVH, własn
 Od audytu do produkcji: 6–10 tygodni. Z czego 2 tygodnie to papier (DPA, DPIA, klauzule), 4–6 tygodni to implementacja i pilotaż, reszta to tuning.
 
 ### Czy muszę kupować Claude API sam, czy to idzie przez Ciebie?
-Zależnie od modelu współpracy: albo biuro podpisuje DPA z Anthropic i płaci API bezpośrednio (większa kontrola), albo idzie jako subprocessor przez moją infrastrukturę MJO Systems (mniejszy narzut administracyjny). Obie opcje działają — polecam pierwszą dla biur z >5 pracownikami.
+Zależnie od modelu współpracy: albo biuro podpisuje DPA z Anthropic i płaci API bezpośrednio (większa kontrola), albo idzie jako subprocessor przez moją infrastrukturę MJ.OLDAK (mniejszy narzut administracyjny). Obie opcje działają — polecam pierwszą dla biur z >5 pracownikami.
 
 ## Podsumowanie
 
