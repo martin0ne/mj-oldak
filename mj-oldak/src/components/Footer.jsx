@@ -38,8 +38,12 @@ export default function Footer() {
 
     // Pipeline 2 — Google Sheets via Apps Script (persistent log)
     // Content-Type: text/plain bypass'uje CORS preflight; Apps Script i tak parsuje postData.contents jako JSON
+    // Hardcoded fallback URL — Apps Script endpoint jest publicly POST-owalny by design
+    // (anyone access webhook + honeypot defense + rate limit Google), więc URL nie jest sekretem.
+    // Migrate na proper env var w peacetime jeśli build-time scope zacznie działać w CF Pages.
+    const SHEETS_WEBHOOK_FALLBACK = 'https://script.google.com/macros/s/AKfycbxAN6FfpCW0TJ_8KdJQEnWbx5J6I2RlPYEZDuiTOrqvMqmvs8RdFAEJzZGNsESR2poP2Q/exec';
     const sendViaSheets = (trimmed) => {
-        const url = import.meta.env.VITE_LEADS_WEBHOOK_URL;
+        const url = import.meta.env.VITE_LEADS_WEBHOOK_URL || SHEETS_WEBHOOK_FALLBACK;
         if (!url) return Promise.reject(new Error('sheets_not_configured'));
 
         return fetch(url, {
