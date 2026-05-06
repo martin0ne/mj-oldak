@@ -1,3 +1,4 @@
+// v1.1 leads pipeline (2026-05-06) — Sheets via Apps Script + mailto fallback
 import { useState, useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
