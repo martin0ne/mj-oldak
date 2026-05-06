@@ -12,27 +12,104 @@ export default function Footer() {
 
     const handleChange = (e) => {
         setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
+        // Reset error/sent state when user starts editing again — daje świeży retry experience
+        if (status === 'error' || status === 'sent') {
+            setStatus('idle');
+        }
     };
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        const trimmed = { name: formData.name.trim(), email: formData.email.trim(), message: formData.message.trim() };
-        if (!trimmed.name || !trimmed.email || !trimmed.message) return;
+    // Pipeline 1 — EmailJS (notification do biuro@mjoldak.pl)
+    const sendViaEmailJS = (trimmed) => {
+        const hasConfig = Boolean(
+            import.meta.env.VITE_EMAILJS_SERVICE_ID &&
+            import.meta.env.VITE_EMAILJS_TEMPLATE_ID &&
+            import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+        );
+        if (!hasConfig) return Promise.reject(new Error('emailjs_not_configured'));
 
-        setStatus('sending');
-        emailjs.send(
+        return emailjs.send(
             import.meta.env.VITE_EMAILJS_SERVICE_ID,
             import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
             { from_name: trimmed.name, from_email: trimmed.email, message: trimmed.message },
             import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
-        ).then(() => {
+        );
+    };
+
+    // Pipeline 2 — Google Sheets via Apps Script (persistent log)
+    // Content-Type: text/plain bypass'uje CORS preflight; Apps Script i tak parsuje postData.contents jako JSON
+    const sendViaSheets = (trimmed) => {
+        const url = import.meta.env.VITE_LEADS_WEBHOOK_URL;
+        if (!url) return Promise.reject(new Error('sheets_not_configured'));
+
+        return fetch(url, {
+            method: 'POST',
+            headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+            body: JSON.stringify({
+                name: trimmed.name,
+                email: trimmed.email,
+                message: trimmed.message,
+                source: typeof window !== 'undefined' ? window.location.href : '',
+                user_agent: typeof navigator !== 'undefined' ? navigator.userAgent : '',
+                referrer: typeof document !== 'undefined' ? document.referrer : ''
+            })
+        }).then(r => {
+            if (!r.ok) throw new Error('sheets_http_' + r.status);
+            return r.json();
+        }).then(payload => {
+            if (payload && payload.status !== 'ok') throw new Error('sheets_' + (payload.error || 'unknown'));
+            return payload;
+        });
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        const trimmed = { name: formData.name.trim(), email: formData.email.trim(), message: formData.message.trim() };
+        if (!trimmed.name || !trimmed.email || !trimmed.message) return;
+
+        // Safety net: lokalna kopia leada (browser localStorage) — survives all pipeline failures
+        try {
+            const lead = { ...trimmed, timestamp: new Date().toISOString() };
+            const existing = JSON.parse(localStorage.getItem('mjoldak_lead_backup') || '[]');
+            localStorage.setItem('mjoldak_lead_backup', JSON.stringify([...existing.slice(-9), lead]));
+            console.log('[MJ.OLDAK] Lead captured locally:', lead);
+        } catch (_) {
+            // localStorage disabled (private browsing) — silently continue
+        }
+
+        setStatus('sending');
+
+        // Hybrid pipeline — EmailJS + Google Sheets w parallel. Promise.allSettled = jeden fail nie blokuje drugiego.
+        const results = await Promise.allSettled([
+            sendViaEmailJS(trimmed),
+            sendViaSheets(trimmed)
+        ]);
+
+        const emailOk = results[0].status === 'fulfilled';
+        const sheetsOk = results[1].status === 'fulfilled';
+
+        if (!emailOk) console.warn('[MJ.OLDAK] EmailJS pipeline failed:', results[0].reason);
+        if (!sheetsOk) console.warn('[MJ.OLDAK] Sheets pipeline failed:', results[1].reason);
+
+        if (emailOk || sheetsOk) {
+            // Co najmniej jeden pipeline złapał lead — sukces dla user'a
+            console.log('[MJ.OLDAK] Lead delivered:', { emailOk, sheetsOk });
             setStatus('sent');
             setFormData({ name: '', email: '', message: '' });
             setTimeout(() => setStatus('idle'), 4000);
-        }).catch(() => {
+        } else {
+            // Oba fail — fallback UI (mailto: link z prefilled treścią)
+            console.error('[MJ.OLDAK] Both pipelines failed — fallback to mailto');
             setStatus('error');
-            setTimeout(() => setStatus('idle'), 4000);
-        });
+            // NIE czyścimy formData — user widzi swoje dane i ma fallback mailto: poniżej
+            // NIE auto-reset error — zostaje aż user zacznie ponowną edycję (handleChange)
+        }
+    };
+
+    // Build mailto: fallback link z prefilled subject + body z aktualnego formData
+    const mailtoFallback = () => {
+        const subject = `Kontakt ze strony MJ.OLDAK — ${formData.name || 'wiadomość'}`;
+        const body = `${formData.message}\n\n---\nOd: ${formData.name}\nEmail: ${formData.email}`;
+        return `mailto:biuro@mjoldak.pl?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     };
 
     useEffect(() => {
@@ -141,6 +218,20 @@ export default function Footer() {
                             </span>
                             <span className="absolute inset-0 bg-dark transform scale-x-0 origin-left transition-transform duration-300 ease-out group-hover:scale-x-100 z-0"></span>
                         </button>
+
+                        {status === 'error' && (
+                            <div className="footer-reveal p-5 rounded-xl bg-red-500/10 border border-red-500/30">
+                                <p className="font-mono text-sm text-primary/90 mb-4 leading-relaxed">
+                                    Wysyłka automatyczna nie zadziałała. Wyślij wiadomość bezpośrednio na nasz adres — Twoja treść powyżej zostanie automatycznie wstawiona:
+                                </p>
+                                <a
+                                    href={mailtoFallback()}
+                                    className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-accent text-primary font-bold text-xs uppercase tracking-widest hover:scale-[1.03] transition-transform no-underline"
+                                >
+                                    Wyślij na biuro@mjoldak.pl
+                                </a>
+                            </div>
+                        )}
                     </form>
                 </div>
             </div>
