@@ -226,19 +226,13 @@ Wdrażamy jeden z **4 produktów MJ.OLDAK** (OCR Invoice Reader / Email Assistan
 
 Najpierw 15-min **discovery call**. Pytamy co robisz, gdzie boli, jakie masz wymagania regulacyjne. Jeśli mamy fit dla Twojego biura → ustalamy **pilot za darmo na 4 tygodnie**. Jeśli nie → polecamy lepiej dopasowane rozwiązanie (SaldeoSMART, Comarch built-in, autoMEE) bez ego.
 
-### Co dostajesz w pilocie 4-tygodniowym
+### Co dostajesz
 
 - Mapping workflow biura + identyfikacja najmocniejszego pain pointa
 - Konfiguracja jednego agenta z integracją do Twojego systemu (Optima/Symfonia/Comarch)
-- Bezpłatny **double-check security + compliance**: weryfikacja RODO, lokalności danych, procedur AI Act dla **tego konkretnego use case**
+- **Double-check security + compliance**: weryfikacja RODO, lokalności danych, procedur AI Act dla **tego konkretnego use case**
 - Raport ewaluacyjny po 4 tygodniach z konkretnymi metrykami
 - Pełna dokumentacja kodu i konfiguracji — **klient ma własność**, brak lock-in
-
-### Cennik — transparentnie
-
-W maju 2026 jesteśmy **wartime startup** — nie mamy jeszcze publicznego cennika. Pierwsze pilotażowe wdrożenia są darmowe (case study + feedback w zamian). Cennik post-pilot ustalimy **wspólnie z pierwszym płatnym klientem** — bo to klient (a nie my) wie ile to jest dla niego warte.
-
-To uczciwe wartime positioning: **NIE chcemy zgadywać cen z sufitu**, kiedy realnie nie znamy jeszcze pełnej skali wartości dla Twojego biura.
 
 ### Pierwszy krok — 15 min, zero zobowiązania
 
