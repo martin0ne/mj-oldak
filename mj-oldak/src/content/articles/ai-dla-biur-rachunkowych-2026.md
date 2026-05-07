@@ -261,18 +261,18 @@ Wymagaj DPA z dostawcą API (OpenAI/Anthropic oferują standardowe). Plus minima
 
 Default: **Claude Sonnet 4.6** (najlepszy w polskim do treści i agentów). Alternative: Gemini 3.1 Pro (lider rankingu PL ogólnego), GPT-5 (prawo i podatki). Self-hosted gdy wymagana lokalizacja danych w EU: Llama 4 / Qwen 3.5 / Mistral Small na Ollamie lub OVH. **Skalowalność > eksperymenty** — stawiamy na sprawdzoną jakość komercyjną lub dojrzałe open-source.
 
-## Co dalej
+## Możemy Ci pomóc
 
-Jeśli któryś z 5 zastosowań rezonuje z Twoim pain pointem:
+Wdrażamy konkretny agent AI w Twoim biurze rachunkowym (OCR / Email / Deadline / Reporting / KSeF Monitoring) z integracją do Twojego systemu (Optima / Symfonia / Comarch). 4-tygodniowy pilot — discovery → setup → real use → ewaluacja. Klient ma własność kodu, brak lock-in.
 
-- **Read more:** [„MJ.OLDAK — kim jesteśmy"](/artykuly/mj-oldak-kim-jestesmy-co-budujemy/) — kim jesteśmy, jak współpracujemy
-- **Technical:** [„LLM, RAG, prompt engineering"](/artykuly/llm-rag-prompt-engineering-msp/) — minimum techniczne dla decyzji
-- **Conceptual:** [„Czym jest agent AI?"](/artykuly/czym-jest-agent-ai-dla-ksiegowego/) — co potrafi, czego nie
-- **Compliance:** [„AI Act 2026"](/artykuly/ai-act-2026-biuro-rachunkowe-compliance/) — 18-pozycyjny checklist
+Email: [biuro@mjoldak.pl](mailto:biuro@mjoldak.pl) z jednym zdaniem o Twoim największym pain pointcie. 15 min rozmowy, zero prezentacji slajdów.
 
-**Pierwszy 15-min discovery call:** [biuro@mjoldak.pl](mailto:biuro@mjoldak.pl) lub formularz [na stronie głównej](/#kontakt).
+## Powiązane artykuły
 
-Bez prezentacji slajdów. Pytamy, co robisz, gdzie boli. Jeśli mamy fit → ustalamy 4-tygodniowy pilot za darmo. Jeśli nie → polecamy lepiej dopasowane rozwiązanie (SaldeoSMART, Comarch built-in, autoMEE).
+- [„MJ.OLDAK — kim jesteśmy, co budujemy, dla kogo"](/artykuly/mj-oldak-kim-jestesmy-co-budujemy/) — pełen kontekst kim jesteśmy
+- [„Czym jest agent AI?"](/artykuly/czym-jest-agent-ai-dla-ksiegowego/) — co potrafi, czego nie
+- [„LLM, RAG, prompt engineering"](/artykuly/llm-rag-prompt-engineering-msp/) — minimum techniczne dla decyzji
+- [„AI Act 2026 — co biura rachunkowe muszą wiedzieć"](/artykuly/ai-act-2026-biuro-rachunkowe-compliance/) — 18-pozycyjny checklist
 
 ---
 

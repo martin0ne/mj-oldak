@@ -10,7 +10,7 @@ cover: "/articles/covers/mj-oldak-kim-jestesmy-co-budujemy.jpg"
 coverAlt: "MJ.OLDAK - agencja AI dla polskich biur rachunkowych - cover"
 readingTime: 12
 featured: true
-draft: false
+draft: true
 metaTitle: "MJ.OLDAK — Agencja AI dla biur rachunkowych w Polsce | Wrocław"
 metaDescription: "MJ.OLDAK buduje agentów AI dla polskich biur rachunkowych. 4 produkty: OCR faktur, email assistant, deadline tracker, raporty. Pilot za darmo, RODO compliant."
 keywords: ["MJ.OLDAK", "agencja AI Wrocław", "AI biuro rachunkowe", "automatyzacja księgowości Polska", "agent AI księgowość", "KSeF AI", "OCR faktur biuro rachunkowe"]
@@ -117,7 +117,7 @@ W MJ.OLDAK kod, który wdrażamy u klienta, **jest jego własnością**. Po pilo
 - Możliwość zatrudnienia innego dewelopera do dalszego rozwoju
 - Brak miesięcznego lock-in
 
-Dlaczego? Bo **biuro rachunkowe operuje na wrażliwych danych klientów**. Nie chcemy być punktem awarii. Plus: jeśli MJ.OLDAK znika z rynku za rok (a w wartime startup tak się zdarza), klient nie zostaje bez systemu.
+Dlaczego? Bo **biuro rachunkowe operuje na wrażliwych danych klientów**. Klient nigdy nie zostaje uzależniony od pojedynczego dostawcy — kod jest jego własnością od dnia 1.
 
 ## Jak wygląda współpraca
 
@@ -142,7 +142,7 @@ Co dostajesz, jeśli kończymy: **wszystko, co skonfigurowaliśmy**. Bez ukrytyc
 - Email/Slack support `<24h` response
 - Reference rights (case study, testimonial — opcjonalnie)
 
-Cennik post-pilot ustalamy indywidualnie po pierwszej walidacji. Modele rozważane: pakiet podstawowy / pricing oparty o liczbę klientów biura / pricing oparty o godziny zaoszczędzone (results-based). Wartime: nie mamy jeszcze publicznego cennika — chcemy pierwszy ustalić z konkretnym klientem.
+Cennik post-pilot ustalamy indywidualnie po ewaluacji w Twoim biurze. Modele dostosowane do skali: pakiet podstawowy, pricing per liczba klientów biura, lub results-based (godziny zaoszczędzone × stawka). Konkretny model wybiera się po pierwszych 4 tygodniach — gdy znamy realny zakres pracy.
 
 ## Pierwszy pilot — kogo szukamy
 

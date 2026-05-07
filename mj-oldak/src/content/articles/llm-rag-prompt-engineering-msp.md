@@ -217,10 +217,15 @@ Modele halucynują fakty podatkowe i prawne — **czerwone linie w prompcie syst
 5. **Koszty API spadły 80%** — wdrożenie AI dla MŚP jest dziś dostępne finansowo nawet bez dedykowanego budżetu IT.
 6. **Nie pomijaj OVH Endpoints** jeśli compliance RODO i europejska lokalizacja danych są priorytetem.
 
-## Co dalej
+## Możemy Ci pomóc
 
-- [„Czym jest agent AI? Praktyczne wyjaśnienie dla księgowego"](/artykuly/czym-jest-agent-ai-dla-ksiegowego/) — co potrafi agent (i czego NIE potrafi)
+Pomagamy MŚP wybrać właściwy stack AI dla konkretnego use case: prompt engineering jako entry point, RAG dla wiedzy firmowej, lokalne open-source gdy wymagana lokalizacja danych. 4-tygodniowy pilot z konfiguracją dopasowaną do Twojego workflow.
+
+Email: [biuro@mjoldak.pl](mailto:biuro@mjoldak.pl) z opisem use case (np. „chcę żeby AI pomagał mi w X").
+
+## Powiązane artykuły
+
+- [„MJ.OLDAK — kim jesteśmy"](/artykuly/mj-oldak-kim-jestesmy-co-budujemy/) — kim jesteśmy, jak współpracujemy
+- [„Czym jest agent AI? Praktyczne wyjaśnienie dla księgowego"](/artykuly/czym-jest-agent-ai-dla-ksiegowego/) — co potrafi agent (i czego nie)
 - [„AI dla biur rachunkowych w 2026 — przewodnik krok po kroku"](/artykuly/ai-dla-biur-rachunkowych-2026/) — comprehensive guide
 - [„AI Act 2026 — co polskie biura rachunkowe muszą wiedzieć"](/artykuly/ai-act-2026-biuro-rachunkowe-compliance/) — compliance checklist
-
-[Kontakt → biuro@mjoldak.pl](mailto:biuro@mjoldak.pl)

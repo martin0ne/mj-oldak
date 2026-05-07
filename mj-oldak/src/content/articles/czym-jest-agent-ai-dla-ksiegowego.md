@@ -178,13 +178,15 @@ Trend w polskich biurach: **redefinicja ról** — mniej ręcznego wpisywania, w
 - Specyficzne workflow wymagające custom AI (lepiej zacznij od off-the-shelf SaaS jak SaldeoSMART)
 - Niska tolerancja na błędy + brak budżetu na human review (paradoksalnie: agenci wymagają więcej review niż brak agentów na początku)
 
-## Co dalej
+## Możemy Ci pomóc
 
-Jeśli któryś z 5 agentów rezonuje z Twoim pain pointem — zapraszamy na 15-min discovery call. **Bez prezentacji slajdów, bez sprzedaży.** Pytamy, co robisz, gdzie boli.
+Każdy z 5 agentów (OCR / Email / Deadline / Reporting / KSeF Monitoring) wdrażamy w 4-tygodniowym pilocie. Konfiguracja dostosowana do Twojego workflow + integracja z Twoim systemem (Optima / Symfonia / Comarch). Klient ma własność kodu.
 
-Plus warto przeczytać:
+Email: [biuro@mjoldak.pl](mailto:biuro@mjoldak.pl) — jedno zdanie o Twoim pain pointcie wystarczy.
+
+## Powiązane artykuły
+
 - [„MJ.OLDAK — kim jesteśmy, co budujemy, dla kogo"](/artykuly/mj-oldak-kim-jestesmy-co-budujemy/) — kim jesteśmy i jak współpracujemy
 - [„AI dla biur rachunkowych w 2026 — przewodnik krok po kroku"](/artykuly/ai-dla-biur-rachunkowych-2026/) — comprehensive guide
+- [„LLM, RAG, prompt engineering"](/artykuly/llm-rag-prompt-engineering-msp/) — który model dla Twojego biura
 - [„AI Act 2026 — co polskie biura rachunkowe muszą wiedzieć"](/artykuly/ai-act-2026-biuro-rachunkowe-compliance/) — compliance checklist
-
-[Kontakt → biuro@mjoldak.pl](mailto:biuro@mjoldak.pl)
