@@ -1,7 +1,7 @@
 ---
 title: "LLM, RAG, prompt engineering — minimum techniczne dla decyzji biznesowej"
 slug: "llm-rag-prompt-engineering-msp"
-excerpt: "LLM (Claude, GPT, Gemini), RAG vs fine-tuning, polski model Bielik, koszty API 2026, 5 zasad prompt engineering dla polskich treści. Bez żargonu, dla decydenta MŚP."
+excerpt: "LLM (Claude, GPT, Gemini), RAG vs fine-tuning, koszty API 2026, lokalne open-source modele na Ollamie/OVH, 5 zasad prompt engineering dla polskich treści. Bez żargonu."
 publishedAt: 2026-05-07
 author: "Marcin Ołdak"
 category: "edukacja"
@@ -12,8 +12,8 @@ readingTime: 9
 featured: false
 draft: false
 metaTitle: "LLM, RAG, prompt engineering — minimum dla MŚP 2026"
-metaDescription: "Co MŚP musi wiedzieć o AI w 2026: LLM (Claude, GPT, Gemini), RAG vs fine-tuning, Bielik, koszty API, 5 zasad prompt engineering dla polskich treści."
-keywords: ["LLM", "RAG", "prompt engineering", "Bielik", "Claude API", "GPT API", "AI dla MŚP", "koszty API 2026"]
+metaDescription: "Co MŚP musi wiedzieć o AI w 2026: LLM (Claude, GPT, Gemini), RAG vs fine-tuning, lokalne modele open-source na Ollama/OVH, koszty API, 5 zasad promptu PL."
+keywords: ["LLM", "RAG", "prompt engineering", "Claude API", "GPT API", "Ollama", "AI dla MŚP", "koszty API 2026"]
 ---
 
 Słyszysz na konferencjach: LLM, RAG, fine-tuning, prompt engineering. Czujesz, że powinieneś rozumieć — ale konkretne wybory utykają. Ten artykuł to **minimum techniczne dla decydenta bez zaplecza IT**: właściciela biura rachunkowego, dyrektora operacyjnego, managera, który rozważa wdrożenie AI w polskim MŚP. 9 minut czytania.
@@ -64,7 +64,7 @@ Na podstawie polskiego benchmarku LLM 2026 (12 modeli, 20 zadań w języku polsk
 | **Gemini 3.1 Pro** (Google) | 23/40 🥇 | Dedukcja, fakty, humor, kontekst kulturowy |
 | **Claude Sonnet 4.6** (Anthropic) | 22/40 🥈 | Zarządzanie, maile biznesowe, copywriting |
 | **GPT-5.2** (OpenAI) | 21/40 🥉 | Prawo, podatki, wiedza ogólna o Polsce |
-| **Bielik 11B v3** (SpeakLeash) | 11/40 | Fakty o Polsce, prawo i VAT, lokalny hosting |
+| **Llama 4** / **Qwen 3.5** (open-source) | 22/40 🥈 | Self-hosted na Ollamie/OVH, korekta PL, full data sovereignty |
 
 ### Claude Sonnet 4.6 — najlepsza równowaga jakość/cena dla treści
 
@@ -78,30 +78,43 @@ W teście PLCC z marca 2026 (benchmark Hugging Face) GPT-5 Pro plasuje się obok
 
 Wygrał całościowy ranking polskiego testu 2026. Wyróżnia się w **dedukcji opartej na wiedzy o Polsce, humorze i zadaniach culturally-aware**. Oferuje okno kontekstu **1M tokenów** — przewaga przy analizie dużych zbiorów dokumentów.
 
-## Bielik 2.x — kiedy stosować, ograniczenia
+## Lokalne modele open-source — kiedy stosować
 
-### Co to jest
+Część polskich firm ma wymóg **lokalizacji danych w Polsce / EU** (RODO, tajemnica handlowa, branża regulowana). W takiej sytuacji rozwiązaniem są **modele open-source uruchamiane lokalnie** (Ollama / własny serwer / OVH AI Endpoints).
 
-Bielik to rodzina **polskich modeli LLM** tworzonych przez SpeakLeash + ACK Cyfronet AGH, trenowana na superkomputerach Helios i Athena. W 2026 wszedł w fazę dojrzałej rodziny: od **Bielik-1.5B-v3** (urządzenia edge), przez **Bielik-11B-v2.x/v3**, po **Bielik-PL-11B-v3.0-Instruct** z **dedykowanym tokenizerem polskim** (kwiecień 2026 — pierwszy w historii projektu).
+**Top wybór 2026 dla self-hosted:**
 
-W marcu 2026 zaprezentowano **Bielik-R** — pierwszy polski LLM z wbudowanymi zdolnościami rozumowania (chain-of-thought).
-
-### Kiedy Bielik ma sens dla MŚP
-
-| Scenariusz | Bielik | Modele komercyjne |
+| Model | Rozmiar | Zastosowanie |
 |---|---|---|
-| Dane muszą zostać w Polsce (RODO, tajemnica handlowa) | ✅ Self-hosted | ❌ Chmura zagraniczna |
-| RAG na polskich dokumentach firmowych | ✅ | ✅ Też dobry |
-| Duże wolumeny (>50M tokenów/mies.) | ✅ Brak kosztu per-token | ❌ Szybko rośnie koszt |
-| Szybkie wdrożenie czata ogólnego | ❌ Wymaga infrastruktury | ✅ Gotowe w godziny |
-| Multimodalność (obrazy, PDF OCR) | ❌ Ograniczona | ✅ Claude / GPT / Gemini |
+| **Llama 4** (Meta) | 70B / 405B | Polski język na top poziomie, multimodal, ogólny |
+| **Qwen 3.5 Plus** (Alibaba) | 32B / 72B | Reasoning, code, polski OK, dobre przy długich kontekstach |
+| **Mistral Small 3.2** (Mistral) | 24B | Europejski compliance, GDPR-friendly z natury |
+| **gpt-oss-120b** (OpenAI open-weight) | 120B | Reasoning na poziomie zbliżonym do GPT-4 |
+
+### Kiedy lokalny self-host ma sens dla MŚP
+
+| Scenariusz | Self-hosted (Ollama / OVH) | Modele komercyjne API |
+|---|---|---|
+| Dane muszą zostać lokalnie / EU (RODO, branża regulowana) | ✅ Full data sovereignty | ❌ Chmura USA |
+| Duże wolumeny (>50M tokenów/mies.) | ✅ Brak kosztu per-token (po setup) | ❌ Szybko rośnie koszt |
+| Szybkie wdrożenie ogólnego asystenta | ❌ Wymaga infrastruktury | ✅ Gotowe w godziny |
+| Multimodalność (obrazy, PDF OCR) | ⚠️ Llama 4 OK | ✅ Claude / GPT / Gemini |
+| Najnowsze capabilities (extended thinking, agent SDK) | ⚠️ Opóźnione | ✅ Anthropic / OpenAI |
+
+### Praktyczne setup options dla polskiego MŚP
+
+1. **Ollama na własnym serwerze** — najprostsze. Llama 4 / Qwen / Mistral na zwykłym serwerze z GPU (np. RTX 4090). Czas setup: 1-2 dni, wymaga dewelopera.
+2. **OVH AI Endpoints** (datacenter Gravelines, Francja) — zarządzane endpointy z gotowymi modelami. Mistral Small 3.2: €0,09 / 1M tokens input. **EU compliance out-of-the-box.**
+3. **Hybrid** — Claude API dla zadań wymagających najlepszej jakości + lokalny model dla zadań masowych z wrażliwymi danymi.
 
 ### Ograniczenia, o których musisz wiedzieć
 
-- **Brak wbudowanej moderacji** — może generować nieodpowiednie treści bez dodatkowych guardrails
-- W testach z 02/2026 model **odmawiał odpowiedzi na pytania o Holokaust** (po angielsku) — niestabilność w edge-case'ach
-- **Jakość konwersacyjna** (humor, pytania otwarte, kreatywność) jest wyraźnie niższa niż modele komercyjne
+- **Brak wbudowanej moderacji** w open-source modelach — może generować nieodpowiednie treści bez dodatkowych guardrails
+- **Jakość konwersacyjna** zwykle niższa niż top komercyjne (Claude Sonnet 4.6 / Gemini 3.1 Pro)
 - **NIE jest „plug and play"** — wymaga zespołu technicznego do wdrożenia i utrzymania
+- **Aktualizacje opóźnione** w stosunku do najnowszych capabilities komercyjnych
+
+> **Polski model Bielik (SpeakLeash + Cyfronet AGH)** jest projektem badawczym wartym wzmianki, ale w 2026 ma wyniki niższe od najlepszych open-source (Llama 4, Qwen 3.5). Dla wartime MŚP rekomendujemy **generyczne open-source na Ollamie/OVH** + komercyjne API gdy potrzebna top jakość.
 
 ## Koszty API 2026 — porównanie
 
@@ -130,7 +143,7 @@ Dla MŚP wymagających **europejskiej lokalizacji danych** (RODO compliance), OV
 | gpt-oss-20b (reasoning) | €0.04 | €0.15 |
 | Meta-Llama-3.3-70B | €0.67 | €0.67 |
 
-**Uwaga:** OVH NIE oferuje Bielika ani Claude'a. Modele OpenAI i Anthropic dostępne wyłącznie przez ich własne API.
+**Uwaga:** OVH NIE oferuje Claude'a — modele OpenAI i Anthropic dostępne wyłącznie przez ich własne API. OVH skupia się na open-source ekosystemie (Llama, Qwen, Mistral, gpt-oss) z europejskim compliance.
 
 ### Przykładowy koszt miesięczny MŚP
 
@@ -200,7 +213,7 @@ Modele halucynują fakty podatkowe i prawne — **czerwone linie w prompcie syst
 1. **Zacznij od prompt engineering** — zero kosztów technicznych. To edukacja zespołu, nie infrastruktura.
 2. **Wdrożenie RAG** to optymalny krok 2: rozwiązuje 80% potrzeb „AI na własnych danych" przy rozsądnym budżecie.
 3. **Modele 2026:** Gemini 3.1 Pro wygrywa polskie benchmarki ogólne. Claude Sonnet 4.6 dominuje w treściach. GPT-5 i GPT-5.2 — prawo i podatki.
-4. **Bielik** ma sens przy: suwerenności danych (self-hosted), dużych wolumenach, regulacyjnym przymusie lokalizacji.
+4. **Lokalne open-source modele** (Llama 4, Qwen 3.5, Mistral) na Ollamie/OVH mają sens przy: suwerenności danych (self-hosted), dużych wolumenach (po setup brak kosztu per-token), regulacyjnym przymusie lokalizacji.
 5. **Koszty API spadły 80%** — wdrożenie AI dla MŚP jest dziś dostępne finansowo nawet bez dedykowanego budżetu IT.
 6. **Nie pomijaj OVH Endpoints** jeśli compliance RODO i europejska lokalizacja danych są priorytetem.
 

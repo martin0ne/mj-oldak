@@ -208,11 +208,57 @@ Typowe biuro używające AI do automatyzacji, asystentów tekstowych i chatbotó
 - Kary są proporcjonalne — MŚP stosuje niższy próg — ale nawet 1% obrotu może boleć
 - **Czas na dostosowanie mija 2 sierpnia 2026 r.**
 
-## Co dalej
+## Możemy Ci pomóc
 
-- [„MJ.OLDAK — kim jesteśmy"](/artykuly/mj-oldak-kim-jestesmy-co-budujemy/) — kim jesteśmy, jak pomagamy w compliance
+Compliance AI Act dla biura rachunkowego to **nie pojedynczy event**, tylko proces — inwentarz, polityka, szkolenia, monitoring, dokumentacja. Większość biur, z którymi rozmawiamy, ma fragmenty (np. AI Literacy zorganizowane), ale brakuje im **całościowego obrazu** i konkretnych dowodów dla potencjalnej kontroli KRiBSI/UODO.
+
+### Trzy ścieżki wejścia, w zależności od Twojego stanu
+
+**Ścieżka 1 — Klient już używa AI (Claude/GPT/OCR/chatbot), ale bez compliance**
+
+Robimy **AI Act Audit**: przegląd 18-pozycyjnego checklist'u na Twojej infrastrukturze, raport z rekomendacjami, gotowe szablony dokumentów (polityka AI, rejestr systemów, procedura incydentów, klauzula DPA). Wynik: **konkretna mapa drogowa do 2 sierpnia 2026**, z priorytetami quick wins.
+
+**Ścieżka 2 — Klient zaczyna z AI i chce od razu zrobić to porządnie**
+
+Wdrażamy jeden z **4 produktów MJ.OLDAK** (OCR Invoice Reader / Email Assistant / Deadline Agent / Reporting Agent) **z compliance wbudowanym od dnia 1**. Audit nie jest wtedy oddzielną usługą — jest częścią pilota. Sprawdzamy bezpieczeństwo, lokalność danych, procedury RODO + AI Act równolegle z konfiguracją workflow.
+
+**Ścieżka 3 — Klient nie używa AI i nie wie czy chce**
+
+Najpierw 15-min **discovery call**. Pytamy co robisz, gdzie boli, jakie masz wymagania regulacyjne. Jeśli mamy fit dla Twojego biura → ustalamy **pilot za darmo na 4 tygodnie**. Jeśli nie → polecamy lepiej dopasowane rozwiązanie (SaldeoSMART, Comarch built-in, autoMEE) bez ego.
+
+### Co dostajesz w pilocie 4-tygodniowym
+
+- Mapping workflow biura + identyfikacja najmocniejszego pain pointa
+- Konfiguracja jednego agenta z integracją do Twojego systemu (Optima/Symfonia/Comarch)
+- Bezpłatny **double-check security + compliance**: weryfikacja RODO, lokalności danych, procedur AI Act dla **tego konkretnego use case**
+- Raport ewaluacyjny po 4 tygodniach z konkretnymi metrykami
+- Pełna dokumentacja kodu i konfiguracji — **klient ma własność**, brak lock-in
+
+### Cennik — transparentnie
+
+W maju 2026 jesteśmy **wartime startup** — nie mamy jeszcze publicznego cennika. Pierwsze pilotażowe wdrożenia są darmowe (case study + feedback w zamian). Cennik post-pilot ustalimy **wspólnie z pierwszym płatnym klientem** — bo to klient (a nie my) wie ile to jest dla niego warte.
+
+To uczciwe wartime positioning: **NIE chcemy zgadywać cen z sufitu**, kiedy realnie nie znamy jeszcze pełnej skali wartości dla Twojego biura.
+
+### Pierwszy krok — 15 min, zero zobowiązania
+
+Email: [biuro@mjoldak.pl](mailto:biuro@mjoldak.pl) z jednym zdaniem: *„Cześć, używamy [AI tools] / nie używamy AI. Chcielibyśmy porozmawiać o [pain point]."*
+
+Plan rozmowy:
+- **0-3 min:** kim jesteśmy, kim Ty jesteś
+- **3-12 min:** Twoje pain points + co już próbowałeś
+- **12-15 min:** czy jest fit, kolejne kroki
+
+Zero prezentacji slajdów. Zero hard sell. Zwykła rozmowa o Twoim biurze.
+
+---
+
+## Powiązane artykuły
+
+- [„MJ.OLDAK — kim jesteśmy, co budujemy, dla kogo"](/artykuly/mj-oldak-kim-jestesmy-co-budujemy/) — pełen kontekst kim jesteśmy
 - [„AI dla biur rachunkowych w 2026 — przewodnik krok po kroku"](/artykuly/ai-dla-biur-rachunkowych-2026/) — comprehensive guide
-- [„Czym jest agent AI?"](/artykuly/czym-jest-agent-ai-dla-ksiegowego/) — co potrafi, czego nie
+- [„Czym jest agent AI?"](/artykuly/czym-jest-agent-ai-dla-ksiegowego/) — co potrafi, czego nie potrafi
+- [„LLM, RAG, prompt engineering — minimum techniczne"](/artykuly/llm-rag-prompt-engineering-msp/) — który model wybrać dla Twojego biura
 
 [Kontakt → biuro@mjoldak.pl](mailto:biuro@mjoldak.pl)
 

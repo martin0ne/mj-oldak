@@ -255,11 +255,11 @@ Dla bardzo małych biur ROI z AI jest niski (manual procesy są tańsze). Rozwa�
 
 **Czy moje dane będą bezpieczne?**
 
-Wymagaj DPA z dostawcą API (OpenAI/Anthropic oferują standardowe). Plus minimalizacja danych w promptach (NIE wysyłaj PESEL, pełnych imion). Plus offline-first opcja dla najbardziej wrażliwych przypadków (Bielik self-hosted).
+Wymagaj DPA z dostawcą API (OpenAI/Anthropic oferują standardowe). Plus minimalizacja danych w promptach (NIE wysyłaj PESEL, pełnych imion). Plus offline-first opcja dla najbardziej wrażliwych przypadków — generic open-source (Llama 4, Qwen, Mistral) self-hosted na Ollamie lub OVH AI Endpoints (Francja, GDPR-friendly).
 
 **Z jakimi modelami pracować?**
 
-Default: Claude Sonnet 4.6 (najlepszy w polskim do treści). Alternative: Gemini 3.1 Pro (lider rankingu PL ogólnego), GPT-5 (prawo i podatki). Self-hosted: Bielik 11B (gdy wymagana lokalizacja danych).
+Default: **Claude Sonnet 4.6** (najlepszy w polskim do treści i agentów). Alternative: Gemini 3.1 Pro (lider rankingu PL ogólnego), GPT-5 (prawo i podatki). Self-hosted gdy wymagana lokalizacja danych w EU: Llama 4 / Qwen 3.5 / Mistral Small na Ollamie lub OVH. **Skalowalność > eksperymenty** — stawiamy na sprawdzoną jakość komercyjną lub dojrzałe open-source.
 
 ## Co dalej
 

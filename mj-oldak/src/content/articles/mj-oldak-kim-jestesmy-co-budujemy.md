@@ -205,9 +205,9 @@ Phase 1: Optima, Symfonia, Comarch (priorytet). Phase 2 (po pierwszych pilotach)
 
 Zachowujesz konfigurację bez kosztu. My zachowujemy honest feedback (dla nas to złoto). Kończymy z friend status — być może wrócisz za rok, gdy potrzebujesz innego agenta.
 
-**Czy używacie polskich modeli (Bielik) czy zachodnich (Claude/GPT)?**
+**Z jakimi modelami AI pracujecie?**
 
-Mix. Claude Sonnet 4.6 dla treści (najlepszy w polskim). Claude Haiku dla tanich zadań (klasyfikacja). Bielik 11B dla self-hosted gdy klient wymaga danych w Polsce. Więcej w naszym artykule [„LLM, RAG, Prompt Engineering — minimum techniczne dla decyzji biznesowej"](/artykuly/llm-rag-prompt-engineering-msp/).
+Domyślnie **Claude Sonnet 4.6** (Anthropic) — najlepszy w polskim do treści i agentów. **Claude Haiku** dla tanich zadań masowych (klasyfikacja, ekstrakcja). Gdy klient wymaga **lokalizacji danych w Polsce/EU** — generic open-source (Llama 4, Qwen 3.5, Mistral) na Ollamie lub OVH AI Endpoints (Francja, GDPR-friendly). Stawiamy na **skalowalność i sprawdzoną jakość**, NIE eksperymenty. Więcej w artykule [„LLM, RAG, Prompt Engineering — minimum techniczne dla decyzji biznesowej"](/artykuly/llm-rag-prompt-engineering-msp/).
 
 ---
 
