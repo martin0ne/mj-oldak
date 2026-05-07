@@ -9,7 +9,7 @@ cover: "/articles/covers/biuro-rachunkowe-oszczedza-60h-miesiecznie.jpg"
 coverAlt: "Cover artykułu: biuro rachunkowe oszczędza 60 godzin miesięcznie"
 readingTime: 12
 featured: false
-draft: false
+draft: true
 metaTitle: "Biuro rachunkowe — 60h oszczędności miesięcznie (case study 2026)"
 metaDescription: "Anatomia automatyzacji w polskim biurze rachunkowym. Cztery procesy, realne liczby, ukryte koszty i cytaty z Poltax, autoMEE oraz EY Polska."
 keywords: ["automatyzacja biura rachunkowego", "AI dla księgowych", "OCR faktur", "oszczędność czasu biuro rachunkowe", "case study automatyzacja", "koszty wdrożenia AI"]

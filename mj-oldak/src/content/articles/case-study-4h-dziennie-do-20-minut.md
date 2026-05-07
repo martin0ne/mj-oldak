@@ -9,7 +9,7 @@ cover: "/articles/covers/case-study-4h-dziennie-do-20-minut.jpg"
 coverAlt: "Cover artykułu: 4 godziny dziennie do 20 minut"
 readingTime: 8
 featured: false
-draft: false
+draft: true
 metaTitle: "4h obsługi klienta dziennie skrócone do 20 min — case study"
 metaDescription: "Pilotaż agenta AI dla obsługi maili w MŚP. Konkretne liczby przed/po, koszt, ROI, pułapki i co zrobiłem inaczej w drugiej iteracji."
 keywords: ["case study agent ai", "automatyzacja obsługi klienta", "ai dla msp", "claude api workflow", "redukcja czasu pracy"]

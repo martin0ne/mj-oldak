@@ -9,7 +9,7 @@ cover: "/articles/covers/ile-kosztuje-godzina-recznego-przepisywania-danych.jpg"
 coverAlt: "Cover artykułu: kalkulator kosztu ręcznego przepisywania danych 2026"
 readingTime: 8
 featured: false
-draft: false
+draft: true
 metaTitle: "Ile kosztuje godzina ręcznego przepisywania danych — kalkulator 2026"
 metaDescription: "Policz realny koszt ręcznego przepisywania danych w Twojej firmie. Mediana PL, narzut ZUS, efektywne godziny, case studies i kalkulator ROI automatyzacji."
 keywords: ["koszt pracownika 2026", "koszt ręcznego przepisywania danych", "automatyzacja biura rachunkowego", "tce pracownik biurowy", "roi automatyzacji ai", "koszt api llm 2026"]

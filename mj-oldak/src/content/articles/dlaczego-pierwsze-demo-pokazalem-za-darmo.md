@@ -9,7 +9,7 @@ cover: "/articles/covers/dlaczego-pierwsze-demo-pokazalem-za-darmo.jpg"
 coverAlt: "Cover artykułu: Dlaczego pierwsze demo AI pokazałem za darmo"
 readingTime: 8
 featured: false
-draft: false
+draft: true
 metaTitle: "Dlaczego pierwsze demo AI pokazałem za darmo — solo-founder"
 metaDescription: "Darmowe demo to nie obniżka ceny. To strategia edukacji rynku, reciprocity i budowania case studies. Konkretne liczby i moment, kiedy przestać."
 keywords: ["sprzedaż ai", "darmowe demo", "pilotaż ai", "solo founder polska", "biuro rachunkowe ai", "pricing pre-pmf"]

@@ -9,7 +9,7 @@ cover: "/articles/covers/ai-act-co-polskie-msp-musi-wiedziec.jpg"
 coverAlt: "Cover artykułu: AI Act 2026 — co polskie MŚP musi wdrożyć"
 readingTime: 14
 featured: true
-draft: false
+draft: true
 metaTitle: "AI Act 2026 dla MŚP — checklist do 2 sierpnia 2026"
 metaDescription: "AI Act wchodzi etapami. 2.08.2026 = transparentność + high-risk. Praktyczny przewodnik dla biur rachunkowych i MŚP z checklistą 10 kroków."
 keywords: ["ai act", "ai act 2026", "ai act msp", "ai act rodo", "compliance ai biuro rachunkowe", "art 50 ai act", "digital omnibus"]

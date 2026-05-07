@@ -9,7 +9,7 @@ cover: "/articles/covers/agent-ai-przetwarza-fakture-8-sekund.jpg"
 coverAlt: "Cover artykułu: Agent AI przetwarza fakturę w 8 sekund"
 readingTime: 13
 featured: false
-draft: false
+draft: true
 metaTitle: "Agent AI czyta polską fakturę w 8 sekund — pipeline Azure + Claude"
 metaDescription: "Pipeline OCR dla polskich faktur: Azure Document Intelligence + Claude Sonnet. Breakdown 8 sekund, koszt 0,08 zł, 93% accuracy, walidacja NIP, compliance RODO."
 keywords: ["ocr polskie faktury", "azure document intelligence", "agent ai faktury", "claude sonnet ocr", "walidacja nip python", "automatyzacja biura rachunkowego", "jpk_v7 gtu"]

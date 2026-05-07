@@ -9,7 +9,7 @@ cover: "/articles/covers/premiera-4-demo-agentow-ai-dla-biura-rachunkowego.jpg"
 coverAlt: "Cover artykułu: Premiera 4 demo agentów AI dla biura rachunkowego"
 readingTime: 8
 featured: true
-draft: false
+draft: true
 metaTitle: "Premiera: 4 demo agentów AI dla biura rachunkowego 2026"
 metaDescription: "Cztery demo agentów AI dla biur rachunkowych: faktury, maile, terminy, raporty. Testuj za darmo. Stack n8n + Claude + Azure. Integracja Comarch Optima / wFirma."
 keywords: ["agent ai biuro rachunkowe", "automatyzacja biura rachunkowego", "ocr faktur", "ai dla księgowych", "demo agent ai", "ksef 2026"]

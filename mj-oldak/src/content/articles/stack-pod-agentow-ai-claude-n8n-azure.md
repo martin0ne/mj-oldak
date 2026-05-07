@@ -9,7 +9,7 @@ cover: "/articles/covers/stack-pod-agentow-ai-claude-n8n-azure.jpg"
 coverAlt: "Cover artykułu: Stack pod agentów AI — Claude, n8n, Azure"
 readingTime: 10
 featured: false
-draft: false
+draft: true
 metaTitle: "Stack technologiczny do budowy agentów AI w 2026"
 metaDescription: "Claude API, n8n, Azure Document Intelligence — konkretne narzędzia do produkcyjnych agentów AI. Koszty, alternatywy, kiedy co wybierać."
 keywords: ["claude api", "n8n workflow", "azure document intelligence", "stack ai 2026", "build ai agents"]

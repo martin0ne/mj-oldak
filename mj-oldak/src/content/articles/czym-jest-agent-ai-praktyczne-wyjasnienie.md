@@ -9,7 +9,7 @@ cover: "/articles/covers/czym-jest-agent-ai-praktyczne-wyjasnienie.jpg"
 coverAlt: "Cover artykułu: Czym jest agent AI — Praktyczne wyjaśnienie"
 readingTime: 5
 featured: true
-draft: false
+draft: true
 metaTitle: "Czym jest agent AI? Wyjaśnienie dla małych firm"
 metaDescription: "Agent AI to nie chatbot. Tłumaczę bez żargonu czym różni się od tradycyjnej automatyzacji — z konkretnymi przykładami z biur rachunkowych."
 keywords: ["agent ai", "automatyzacja procesów", "ai dla msp", "biuro rachunkowe ai", "claude api"]

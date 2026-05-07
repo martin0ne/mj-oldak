@@ -9,7 +9,7 @@ cover: "/articles/covers/agent-skrzynka-mailowa-biura-rachunkowego.jpg"
 coverAlt: "Cover artykułu: Agent AI do obsługi skrzynki mailowej biura rachunkowego"
 readingTime: 11
 featured: false
-draft: false
+draft: true
 metaTitle: "Agent AI do maili w biurze rachunkowym — stack, koszty, RODO"
 metaDescription: "Jak zbudować agenta AI do obsługi skrzynki biura rachunkowego: Claude Haiku 4.5, n8n, Postmark. Koszty ~130 zł/mies, compliance RODO i AI Act."
 keywords: ["agent ai biuro rachunkowe", "automatyzacja maili biuro rachunkowe", "claude haiku 4.5", "n8n claude", "ai act biuro rachunkowe", "rodo ai", "obsługa klienta ai"]

@@ -9,7 +9,7 @@ cover: "/articles/covers/3-zadania-pracownicy-robia-recznie-a-nie-musza.jpg"
 coverAlt: "Cover artykułu: 3 zadania, które pracownicy robią ręcznie a nie muszą"
 readingTime: 9
 featured: false
-draft: false
+draft: true
 metaTitle: "3 zadania, które pracownicy robią ręcznie — i nie muszą"
 metaDescription: "Przepisywanie faktur, maile, raporty — 3 zadania pochłaniające dziesiątki godzin tygodniowo w polskich MŚP. Liczby, koszt i architektura agenta AI."
 keywords: ["automatyzacja biura rachunkowego", "agent ai polska", "przepisywanie faktur ocr", "obsługa maili klientów ai", "koszty pracodawcy 2026", "n8n claude azure", "automatyzacja raportów", "ai dla msp"]

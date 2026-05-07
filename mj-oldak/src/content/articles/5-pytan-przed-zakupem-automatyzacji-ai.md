@@ -9,7 +9,7 @@ cover: "/articles/covers/5-pytan-przed-zakupem-automatyzacji-ai.jpg"
 coverAlt: "Cover artykułu: 5 pytań przed zakupem automatyzacji AI"
 readingTime: 12
 featured: true
-draft: false
+draft: true
 metaTitle: "5 pytań przed zakupem automatyzacji AI — checklist MŚP 2026"
 metaDescription: "Kompletny checklist przed zakupem AI: problem, dane, champion, TCO 3 lata, exit clause. Plus red flags, RODO, AI Act i przykładowe SLA."
 keywords: ["zakup ai", "tco automatyzacji", "ai act msp", "rodo ai", "dpa sub-processors", "soc 2 iso 27001", "due diligence ai vendor", "automatyzacja dla msp"]
