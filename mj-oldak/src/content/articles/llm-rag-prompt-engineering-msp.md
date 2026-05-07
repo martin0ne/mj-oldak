@@ -2,7 +2,7 @@
 title: "LLM, RAG, prompt engineering — minimum techniczne dla decyzji biznesowej"
 slug: "llm-rag-prompt-engineering-msp"
 excerpt: "LLM (Claude, GPT, Gemini), RAG vs fine-tuning, koszty API 2026, lokalne open-source modele na Ollamie/OVH, 5 zasad prompt engineering dla polskich treści. Bez żargonu."
-publishedAt: 2026-05-07
+publishedAt: 2026-05-11
 author: "Marcin Ołdak"
 category: "edukacja"
 tags: ["automatyzacja", "tutorial", "biuro-rachunkowe"]

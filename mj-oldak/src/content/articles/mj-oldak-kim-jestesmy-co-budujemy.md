@@ -2,7 +2,7 @@
 title: "MJ.OLDAK — kim jesteśmy, co budujemy, dla kogo polskich biur rachunkowych"
 slug: "mj-oldak-kim-jestesmy-co-budujemy"
 excerpt: "Mała agencja AI z Wrocławia. 4 produkty Phase 1 dla biur rachunkowych. Pilot za darmo, klient ma własność kodu, RODO compliant. Zero hype'u, Polish realities first."
-publishedAt: 2026-05-07
+publishedAt: 2026-05-11
 author: "Marcin Ołdak"
 category: "edukacja"
 tags: ["biuro-rachunkowe", "automatyzacja", "compliance"]
