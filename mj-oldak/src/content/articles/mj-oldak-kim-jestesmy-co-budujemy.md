@@ -144,36 +144,29 @@ Co dostajesz, jeśli kończymy: **wszystko, co skonfigurowaliśmy**. Bez ukrytyc
 
 Cennik post-pilot ustalamy indywidualnie po pierwszej walidacji. Modele rozważane: pakiet podstawowy / pricing oparty o liczbę klientów biura / pricing oparty o godziny zaoszczędzone (results-based). Wartime: nie mamy jeszcze publicznego cennika — chcemy pierwszy ustalić z konkretnym klientem.
 
-## Co się stało dotychczas — transparency wartime
+## Pierwszy pilot — kogo szukamy
 
-Tu jestem szczery. **MJ.OLDAK nie ma jeszcze paying klienta.** Stan na maj 2026:
+Rekrutujemy **5-7 biur partnerów pilotowych** z Wrocławia i okolic na pierwsze 4-tygodniowe wdrożenia. Profil idealnego pilota:
 
-- ✅ JDG zarejestrowane (po L4)
-- ✅ 4 produkty zbudowane na poziomie MVP, dostępne do demo
-- ✅ Strona [www.mjoldak.pl](https://www.mjoldak.pl) live z dokumentacją produktów
-- ✅ Form kontaktowy działa, leady spływają do CRM
-- ⏳ Pierwszy pilot — w trakcie poszukiwania (5-7 biur z Wrocławia + okolic preferowane)
-- ⏳ Cold mail batch 1 — ~15.05.2026 (12 biur w pierwszej fali)
-- ⏳ Mom Test calls 14-21.05 → discovery realnych pain pointów
+- Biuro 5-30 pracowników, 50-200 klientów
+- Konkretny pain point (faktury / KSeF / email / raporty) — nie „chcemy AI ogólnie"
+- Otwartość na iteracyjne wdrożenie + 1 godzinny call w tygodniu
+- Zgoda na case study po zakończeniu pilota (anonimizacja klientów OK)
 
-Dlaczego o tym piszę? Bo **wartość zaufania w branży księgowej buduje się przez transparentność, nie przez fake social proof**. Wiele agencji AI w Polsce ma na stronie „Setki zadowolonych klientów" — kiedy realnie obsługuje 3.
+Co dostajesz w zamian: konfiguracja jednego agenta zintegrowanego z Twoim systemem, double-check security + compliance, dokumentacja kodu i konfiguracji jako Twoja własność.
 
-My piszemy: 0 paying klientów, 4 produkty, pilot za darmo dla 5-7 pierwszych biur. To jest stan na maj 2026. Za 6 miesięcy ten paragraf zaktualizujemy z konkretnymi liczbami.
+## Specjalizacja, którą wybraliśmy
 
-### Kim jesteśmy, kim NIE jesteśmy
+**Robimy:**
+- Wdrożenia AI dla polskich biur rachunkowych — KSeF + Optima/Symfonia/Comarch + RODO + AI Act compliance
+- Konfigurację agentów AI dostosowaną do specyfiki klientów Twojego biura
+- Kod jako własność klienta — brak lock-in
 
-**Jesteśmy:**
-- Agencją wdrożeniową AI dla polskich biur rachunkowych
-- Specjalistami w niche: KSeF + Optima/Symfonia/Comarch + RODO compliance
-- Firmą wartime — bullet, NIE cannonball; pilot, NIE skala
-
-**NIE jesteśmy:**
-- Nie sprzedajemy oprogramowania jako licencji per user
-- Nie obiecujemy „pełnej automatyzacji bez Twojego udziału"
-- Nie mamy enterprise sales (kiedyś może)
-- Nie konkurujemy z Comarch / SaldeoSMART na polu produktu — to walka z platformą dystrybucji
-
-Jeśli szukasz partnera, który **wdroży konkretny agent AI w Twoim biurze, a nie sprzeda Ci subskrypcję** — możemy się dogadać.
+**NIE robimy:**
+- Licencji SaaS per user
+- Obietnic „pełnej automatyzacji bez Twojego udziału"
+- Konkurowania z Comarch / SaldeoSMART na polu produktu — to walka z platformą dystrybucji
+- Generic AI consulting bez integracji z polskim stackiem księgowym
 
 ## Pierwszy kontakt
 
