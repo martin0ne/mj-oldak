@@ -1,7 +1,7 @@
 ---
 import BaseLayout from './BaseLayout.astro';
 import Navbar from '../components/Navbar.jsx';
-import Footer from '../components/Footer.jsx';
+import ContactSection from '../components/ContactSection.astro';
 import NewsletterSignup from '../components/NewsletterSignup.jsx';
 import RelatedArticles from '../components/RelatedArticles.astro';
 import type { CollectionEntry } from 'astro:content';
@@ -130,7 +130,7 @@ const breadcrumbsLd = {
     )}
   </article>
 
-  <Footer client:visible />
+  <ContactSection />
 </BaseLayout>
 
 <style is:global>

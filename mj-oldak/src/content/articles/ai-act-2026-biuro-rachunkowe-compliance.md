@@ -2,7 +2,7 @@
 title: "AI Act 2026 — co polskie biura rachunkowe muszą wiedzieć"
 slug: "ai-act-2026-biuro-rachunkowe-compliance"
 excerpt: "AI Act od 2 sierpnia 2026 — pełne stosowanie. Klasyfikacja ryzyka biur rachunkowych, 18-pozycyjny compliance checklist, obowiązki przy używaniu Claude/GPT API, kary do 35M EUR."
-publishedAt: 2026-05-11
+publishedAt: 2026-05-09
 author: "Marcin Ołdak"
 category: "edukacja"
 tags: ["ai-act", "compliance", "biuro-rachunkowe"]
