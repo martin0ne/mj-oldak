@@ -2,7 +2,7 @@
 title: "AI dla biur rachunkowych w 2026 — przewodnik krok po kroku"
 slug: "ai-dla-biur-rachunkowych-2026"
 excerpt: "Comprehensive guide AI dla polskich biur rachunkowych: stan rynku 2026, mapa zastosowań, ROI w liczbach, framework 4-tygodniowego pilota, AI Act compliance, common pitfalls."
-publishedAt: 2026-05-09
+publishedAt: 2026-05-25
 author: "Marcin Ołdak"
 category: "edukacja"
 tags: ["biuro-rachunkowe", "automatyzacja", "compliance"]

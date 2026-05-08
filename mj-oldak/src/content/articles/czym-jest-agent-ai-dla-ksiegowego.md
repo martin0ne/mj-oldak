@@ -2,7 +2,7 @@
 title: "Czym jest agent AI? Praktyczne wyjaśnienie dla księgowego"
 slug: "czym-jest-agent-ai-dla-ksiegowego"
 excerpt: "Agent AI vs chatbot vs RPA — czym się różnią. 5 konkretnych zastosowań w biurze rachunkowym (OCR, email, deadliny, raporty, KSeF). Co potrafi, co NIE potrafi. Bez hype'u."
-publishedAt: 2026-05-09
+publishedAt: 2026-05-18
 author: "Marcin Ołdak"
 category: "edukacja"
 tags: ["automatyzacja", "biuro-rachunkowe", "tutorial"]
