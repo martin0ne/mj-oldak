@@ -1,15 +1,9 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-
 const title = 'MJ.OLDAK — Agenci AI dla biur rachunkowych w Polsce | OCR faktur, KSeF, automatyzacja';
 const description = 'Buduje AI agentów dla polskich biur rachunkowych: OCR faktur w 8 sekund, klasyfikacja maili klientów, kalendarz podatkowy 2026 (VAT, JPK, KSeF), raporty miesięczne PDF. Pilot za darmo. Stack: Claude API + Azure Document Intelligence + Astro.';
 ---
-<BaseLayout
-  title={title}
-  description={description}
-  ogImage="/photos/hero-5048.jpg"
-  includeOrganizationSchema={true}
->
+<BaseLayout title={title} description={description} ogImage="/photos/hero-5048.jpg" includeOrganizationSchema={true}>
 <style is:global>
 
   :root {
@@ -61,31 +55,33 @@ const description = 'Buduje AI agentów dla polskich biur rachunkowych: OCR fakt
   body.shader-mode .pilot-section .shader-bg,
   body.shader-mode .contact .shader-bg { opacity: 1; }
 
-  /* SCRIM behind content — readability OVER any shader accent */
+  /* SCRIM behind content — SUBTLE, only contrast booster, NIE bleach */
   section.story::before, .contact::before {
     content: ''; position: absolute; inset: 0; z-index: 1;
     pointer-events: none;
     transition: background var(--transition-dur) ease;
   }
-  /* Dark sections: dark scrim radial from content area */
+  /* Dark sections: subtle dark vignette */
   section.story.dark::before, .pilot-section::before, .contact::before {
     background: radial-gradient(ellipse at 50% 40%,
-      color-mix(in srgb, var(--dark) 65%, transparent) 0%,
-      color-mix(in srgb, var(--dark) 40%, transparent) 50%,
-      color-mix(in srgb, var(--dark) 25%, transparent) 100%);
+      color-mix(in srgb, var(--dark) 25%, transparent) 0%,
+      color-mix(in srgb, var(--dark) 10%, transparent) 60%,
+      transparent 100%);
   }
-  /* Light sections: light scrim — keep Sea Navy text readable */
+  /* Light sections: subtle light vignette */
   section.story.light::before {
     background: radial-gradient(ellipse at 50% 40%,
-      color-mix(in srgb, var(--bg) 70%, transparent) 0%,
-      color-mix(in srgb, var(--bg) 45%, transparent) 50%,
-      color-mix(in srgb, var(--bg) 25%, transparent) 100%);
+      color-mix(in srgb, var(--bg) 30%, transparent) 0%,
+      color-mix(in srgb, var(--bg) 12%, transparent) 60%,
+      transparent 100%);
   }
-  /* Content text-shadow — extra readability buffer */
-  section.story.dark, .pilot-section, .contact { text-shadow: 0 1px 12px rgba(13,27,50,0.6); }
-  section.story.light { text-shadow: 0 1px 8px rgba(228,219,205,0.55); }
+  /* Text-shadow — minimalna 2-3px halo, bez bleached look */
+  section.story.dark, .pilot-section, .contact { text-shadow: 0 1px 3px rgba(13,27,50,0.5); }
+  section.story.light { text-shadow: 0 1px 2px rgba(228,219,205,0.45); }
   /* CTAs / buttons / badges — no shadow (have own bg) */
-  .cta, .cta-nav, .b-badge, .station .num, .station .label { text-shadow: none; }
+  .cta, .cta-nav, .b-badge, .station .num, .station .label, .station .desc, .ocr-fields .key, .ocr-fields .val { text-shadow: none; }
+  /* H1/H2 boost weight + contrast w shader sections */
+  section.story h2.section-title, .hero h1 { font-weight: 800; }
   /* Dark sections — subtle scrim behind content for readability over animated shader */
   body.shader-mode .contact::before,
   body.shader-mode section.story.dark::before,
@@ -817,7 +813,6 @@ const description = 'Buduje AI agentów dla polskich biur rachunkowych: OCR fakt
 </style>
 
 
-
 <div class="scroll-progress"><div class="bar" id="scrollBar"></div></div>
 
 <nav class="nav">
@@ -1445,7 +1440,6 @@ window.addEventListener('scroll', () => {
 }, { passive: true });
 
 </script>
-
 
 
 <script is:inline>
