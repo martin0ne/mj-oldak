@@ -83,6 +83,24 @@ const description = 'Buduje AI agentów dla polskich biur rachunkowych: OCR fakt
   /* H1/H2 boost weight + contrast w shader sections */
   section.story h2.section-title, .hero h1 { font-weight: 800; }
 
+  /* Eyebrow + lede readability boost na shader bg */
+  section.story.dark .eyebrow, .pilot-section .eyebrow, .contact .eyebrow {
+    opacity: 0.95 !important; color: var(--accent);
+    text-shadow: 0 1px 4px rgba(13,27,50,0.7);
+  }
+  section.story.dark .lede, .pilot-section .lede, .contact .lede {
+    opacity: 1 !important; color: #fff;
+    text-shadow: 0 1px 6px rgba(13,27,50,0.65);
+  }
+  section.story.light .eyebrow {
+    opacity: 0.95 !important; color: var(--accent);
+    text-shadow: 0 1px 3px rgba(228,219,205,0.6);
+  }
+  section.story.light .lede {
+    opacity: 1 !important; color: var(--dark);
+    text-shadow: 0 1px 4px rgba(228,219,205,0.55);
+  }
+
   /* === Cursor spotlight back, BEZ mix-blend-mode (gladkie radial overlay) === */
   section.story::after, .contact::after, .pilot-section::after {
     content: ''; position: absolute; inset: 0; z-index: 1;
