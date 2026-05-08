@@ -330,8 +330,8 @@ function ProductCard({ product, expanded, onToggle, onLightbox }) {
         <div
             className={`product-card group bg-dark/[0.07] border rounded-[2rem] transition-all duration-500 overflow-hidden self-start ${
                 expanded
-                    ? 'border-accent/40 shadow-[0_8px_40px_rgba(230,59,46,0.18)]'
-                    : 'border-dark/15 hover:border-accent/30 hover:bg-dark/[0.09] hover:shadow-[0_8px_40px_rgba(230,59,46,0.10)]'
+                    ? 'border-accent/40 shadow-[0_8px_40px_rgba(79,142,186,0.18)]'
+                    : 'border-dark/15 hover:border-accent/30 hover:bg-dark/[0.09] hover:shadow-[0_8px_40px_rgba(79,142,186,0.10)]'
             }`}
         >
             {/* Header (always visible) */}

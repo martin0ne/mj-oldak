@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<title>MJ.OLDAK · Operating Grid</title>
+<link rel="stylesheet" href="/colors_and_type.css">
+<style>
+  *,*::before,*::after { box-sizing: border-box; }
+  html, body { margin:0; height:100%; background:var(--color-dark); overflow:hidden; cursor:crosshair; }
+  canvas { position:absolute; inset:0; width:100%; height:100%; display:block; }
+  .hud { position:absolute; left:28px; top:24px; z-index:2; font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.14em; color: color-mix(in srgb, var(--color-primary) 60%, transparent); }
+  .hud .dot { display:inline-block; width:6px; height:6px; border-radius:999px; background:var(--color-accent); margin-right:8px; vertical-align:middle; animation:pulse 1.6s ease-in-out infinite; }
+  @keyframes pulse { 0%,100% { opacity:.4 } 50% { opacity:1 } }
+  .title { position:absolute; left:28px; bottom:32px; z-index:2; font-family:'Manrope',sans-serif; font-weight:800; letter-spacing:-0.02em; color:var(--color-primary); font-size:clamp(40px,5vw,72px); line-height:1; }
+  .title em { font-family:'Fraunces',serif; font-style:italic; font-weight:400; font-variation-settings:'opsz' 144,'SOFT' 100; color: var(--color-accent); }
+  .meta { position:absolute; right:28px; bottom:32px; z-index:2; font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.14em; color: color-mix(in srgb, var(--color-primary) 50%, transparent); text-align:right; line-height:1.6; }
+  .crosshair { position:absolute; left:28px; top:54px; z-index:2; font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.12em; color: color-mix(in srgb, var(--color-accent) 80%, transparent); }
+</style>
+<style>
+  /* Embed mode — hide demo UI labels when iframe-loaded as bg */
+  .hud, .title, .meta { display: none !important; }
+  body { background: transparent !important; overflow: hidden !important; margin: 0 !important; }
+  canvas { display: block !important; }
+</style>
+</head>
+<body>
+<canvas id="c"></canvas>
+<div class="hud"><span class="dot"></span>SHADER · 04 / OPERATING GRID</div>
+<div class="crosshair" id="ch">CURSOR · X 000 · Y 000</div>
+<h1 class="title">Operating <em>grid.</em></h1>
+<div class="meta">KURSOR ZAGĘSZCZA SIATKĘ · KLIKNIJ DLA RIPPLE<br>WARM MID × SEA NAVY</div>
+
+<script>
+const c = document.getElementById('c');
+const ctx = c.getContext('2d');
+const ch = document.getElementById('ch');
+let W=0,H=0, DPR = Math.min(2, devicePixelRatio || 1);
+function size(){ W=c.width=innerWidth*DPR; H=c.height=innerHeight*DPR; c.style.width=innerWidth+'px'; c.style.height=innerHeight+'px'; }
+size(); addEventListener('resize', size);
+
+let mx=-9999, my=-9999;
+addEventListener('mousemove', e => {
+  mx = e.clientX*DPR; my = e.clientY*DPR;
+  ch.textContent = `CURSOR · X ${String(e.clientX).padStart(3,'0')} · Y ${String(e.clientY).padStart(3,'0')}`;
+});
+addEventListener('mouseleave', () => { mx=-9999; my=-9999; });
+
+const ripples = [];
+addEventListener('click', e => ripples.push({ x: e.clientX*DPR, y: e.clientY*DPR, t: 0 }));
+
+const S = 28*DPR; // grid spacing
+
+let t = 0;
+function frame(){
+  t += 1;
+
+  ctx.fillStyle = '#0D1B32';
+  ctx.fillRect(0,0,W,H);
+
+  const cols = Math.ceil(W/S) + 1;
+  const rows = Math.ceil(H/S) + 1;
+
+  for (let r = 0; r < rows; r++){
+    for (let cN = 0; cN < cols; cN++){
+      const x = cN*S, y = r*S;
+      const dx = x - mx, dy = y - my;
+      const d = Math.sqrt(dx*dx + dy*dy);
+
+      // base dim dots
+      let size = 1.0*DPR;
+      let alpha = 0.18;
+      let col = '202,194,174';
+
+      // cursor cluster highlight (~140px)
+      const R = 140*DPR;
+      if (d < R){
+        const k = 1 - d/R;
+        size = 1*DPR + k*3.5*DPR;
+        alpha = 0.18 + k*0.65;
+        if (k > 0.6) col = '79,142,186'; // accent for inner
+      }
+
+      // ripple influence
+      for (const ri of ripples){
+        const rdx = x - ri.x, rdy = y - ri.y;
+        const rd = Math.sqrt(rdx*rdx + rdy*rdy);
+        const ringR = ri.t * Math.max(W,H) * 0.7;
+        const w = 30*DPR;
+        if (Math.abs(rd - ringR) < w){
+          const k = 1 - Math.abs(rd - ringR)/w;
+          alpha = Math.max(alpha, 0.7 * k * (1 - ri.t));
+          size = Math.max(size, 1*DPR + k*2.4*DPR*(1-ri.t));
+          col = '79,142,186';
+        }
+      }
+
+      // gentle live flicker
+      if ((cN*7 + r*13 + Math.floor(t*0.6)) % 199 === 0){
+        alpha = Math.min(0.9, alpha + 0.4);
+        col = '200,126,59';
+      }
+
+      ctx.fillStyle = `rgba(${col},${alpha})`;
+      ctx.beginPath();
+      ctx.arc(x, y, size, 0, Math.PI*2);
+      ctx.fill();
+    }
+  }
+
+  // ripple decay
+  for (let i=ripples.length-1;i>=0;i--){
+    ripples[i].t += 0.008;
+    if (ripples[i].t > 1) ripples.splice(i,1);
+  }
+
+  // hairline crosshair on cursor
+  if (mx > -1000){
+    ctx.strokeStyle = 'rgba(79,142,186,0.18)';
+    ctx.lineWidth = 0.6*DPR;
+    ctx.beginPath();
+    ctx.moveTo(0, my); ctx.lineTo(W, my);
+    ctx.moveTo(mx, 0); ctx.lineTo(mx, H);
+    ctx.stroke();
+  }
+
+  requestAnimationFrame(frame);
+}
+frame();
+</script>
+</body>
+</html>

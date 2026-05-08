@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<title>MJ.OLDAK · Sunset Liquid</title>
+<link rel="stylesheet" href="/colors_and_type.css">
+<style>
+  *,*::before,*::after { box-sizing: border-box; }
+  html, body { margin:0; height:100%; background:var(--color-dark); overflow:hidden; cursor:crosshair; }
+  canvas { position:absolute; inset:0; width:100%; height:100%; display:block; }
+  .hud { position:absolute; left:28px; top:24px; z-index:2; font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.14em; color: color-mix(in srgb, var(--color-primary) 60%, transparent); }
+  .hud .dot { display:inline-block; width:6px; height:6px; border-radius:999px; background:var(--color-sunset); margin-right:8px; vertical-align:middle; animation:pulse 1.6s ease-in-out infinite; }
+  @keyframes pulse { 0%,100% { opacity:.4 } 50% { opacity:1 } }
+  .title { position:absolute; left:28px; bottom:32px; z-index:2; font-family:'Manrope',sans-serif; font-weight:800; letter-spacing:-0.02em; color:var(--color-primary); font-size:clamp(40px,5vw,72px); line-height:1; }
+  .title em { font-family:'Fraunces',serif; font-style:italic; font-weight:400; font-variation-settings:'opsz' 144,'SOFT' 100; color: var(--color-sunset); }
+  .meta { position:absolute; right:28px; bottom:32px; z-index:2; font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.14em; color: color-mix(in srgb, var(--color-primary) 50%, transparent); text-align:right; line-height:1.6; }
+</style>
+<style>
+  /* Embed mode — hide demo UI labels when iframe-loaded as bg */
+  .hud, .title, .meta { display: none !important; }
+  body { background: transparent !important; overflow: hidden !important; margin: 0 !important; }
+  canvas { display: block !important; }
+</style>
+</head>
+<body>
+<canvas id="c"></canvas>
+<div class="hud"><span class="dot"></span>SHADER · 03 / SUNSET LIQUID</div>
+<h1 class="title">Sunset <em>liquid.</em></h1>
+<div class="meta">PORUSZ MYSZKĄ · POWIERZCHNIA REAGUJE<br>SEA NAVY × SUNSET TERRACOTTA</div>
+
+<script>
+const c = document.getElementById('c');
+const ctx = c.getContext('2d', { willReadFrequently: false });
+let W=0,H=0, DPR = Math.min(2, devicePixelRatio || 1);
+function size(){ W=c.width=innerWidth*DPR; H=c.height=innerHeight*DPR; c.style.width=innerWidth+'px'; c.style.height=innerHeight+'px'; }
+size(); addEventListener('resize', size);
+
+let mx=0.5, my=0.5, tx=0.5, ty=0.5;
+addEventListener('mousemove', e => { tx = e.clientX/innerWidth; ty = e.clientY/innerHeight; });
+
+let t = 0;
+function frame(){
+  t += 0.008;
+  // smooth follow
+  mx += (tx - mx) * 0.06;
+  my += (ty - my) * 0.06;
+
+  ctx.fillStyle = '#0D1B32';
+  ctx.fillRect(0,0,W,H);
+
+  // Liquid metal-ish stack of wide gradient bands warped toward cursor
+  const bands = 60;
+  for (let i = 0; i < bands; i++){
+    const k = i / (bands - 1);
+    const baseY = H * k;
+
+    // warp toward cursor
+    const cx = mx * W, cy = my * H;
+    const distY = (baseY - cy) / H;
+    const warpAmt = Math.exp(-Math.abs(distY)*3) * 60 * DPR;
+    const phase = t + k * 6;
+
+    ctx.beginPath();
+    for (let x = 0; x <= W; x += 8*DPR){
+      const dx = (x - cx) / W;
+      const localWarp = warpAmt * Math.exp(-dx*dx*4);
+      const y = baseY
+        + Math.sin(x*0.005 + phase) * 12 * DPR
+        + Math.sin(x*0.012 + phase*1.4) * 6 * DPR
+        - localWarp * Math.sign(distY || 1);
+      if (x === 0) ctx.moveTo(x, y);
+      else ctx.lineTo(x, y);
+    }
+    ctx.lineTo(W, baseY + 30*DPR);
+    ctx.lineTo(0, baseY + 30*DPR);
+    ctx.closePath();
+
+    // alternating bands of sunset / dark / primary
+    let col;
+    const wave = Math.sin(k * 14 + t*0.6) * 0.5 + 0.5;
+    if (wave > 0.7) col = `rgba(200,126,59,${0.18 + wave*0.18})`;
+    else if (wave > 0.45) col = `rgba(13,27,50,${0.05})`;
+    else if (wave > 0.2) col = `rgba(202,194,174,${0.06 + wave*0.06})`;
+    else col = `rgba(79,142,186,${0.05 + (1-wave)*0.06})`;
+    ctx.fillStyle = col;
+    ctx.fill();
+  }
+
+  // cursor flare
+  const flare = ctx.createRadialGradient(mx*W, my*H, 0, mx*W, my*H, 320*DPR);
+  flare.addColorStop(0, 'rgba(200,126,59,0.32)');
+  flare.addColorStop(0.5, 'rgba(200,126,59,0.06)');
+  flare.addColorStop(1, 'rgba(200,126,59,0)');
+  ctx.fillStyle = flare;
+  ctx.fillRect(0,0,W,H);
+
+  // grain
+  const gd = ctx.createImageData(W, H);
+  // grain via random fillRect (cheaper than imagedata)
+  // skipping for perf
+
+  // vignette
+  const vg = ctx.createRadialGradient(W/2, H/2, Math.min(W,H)*0.35, W/2, H/2, Math.max(W,H)*0.65);
+  vg.addColorStop(0, 'rgba(13,27,50,0)');
+  vg.addColorStop(1, 'rgba(13,27,50,0.55)');
+  ctx.fillStyle = vg;
+  ctx.fillRect(0,0,W,H);
+
+  requestAnimationFrame(frame);
+}
+frame();
+</script>
+</body>
+</html>

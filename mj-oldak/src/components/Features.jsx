@@ -93,7 +93,7 @@ export default function Features() {
 const AGENTS = [
     { id: 1, label: 'LLM Integration', status: 'Active', color: '#22c55e', desc: 'GPT-4o · Claude · Gemini' },
     { id: 2, label: 'RAG Pipeline', status: 'Syncing', color: '#3b82f6', desc: 'Embeddings · Vector Search' },
-    { id: 3, label: 'Custom Agents', status: 'Deployed', color: '#E63B2E', desc: 'Task Execution · Tool Use' },
+    { id: 3, label: 'Custom Agents', status: 'Deployed', color: '#4F8EBA', desc: 'Task Execution · Tool Use' },
     { id: 4, label: 'Vector DB', status: 'Online', color: '#a855f7', desc: 'Pinecone · Qdrant · Weaviate' },
 ];
 
@@ -137,7 +137,7 @@ function DiagnosticShuffler() {
     };
 
     return (
-        <TiltCard className="feature-card bg-dark rounded-[2rem] p-8 h-[420px] flex flex-col relative overflow-hidden group border border-primary/5 hover:border-accent/20 transition-colors duration-500 shadow-lg hover:shadow-[0_8px_40px_rgba(230,59,46,0.15)]">
+        <TiltCard className="feature-card bg-dark rounded-[2rem] p-8 h-[420px] flex flex-col relative overflow-hidden group border border-primary/5 hover:border-accent/20 transition-colors duration-500 shadow-lg hover:shadow-[0_8px_40px_rgba(79,142,186,0.15)]">
             <div className="relative z-10">
                 <div className="flex items-center gap-2 mb-2">
                     <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
@@ -288,7 +288,7 @@ function TelemetryTypewriter() {
     }, []);
 
     return (
-        <TiltCard className="feature-card bg-dark rounded-[2rem] p-8 h-[420px] flex flex-col border border-primary/5 hover:border-accent/20 transition-colors duration-500 shadow-lg hover:shadow-[0_8px_40px_rgba(230,59,46,0.15)]">
+        <TiltCard className="feature-card bg-dark rounded-[2rem] p-8 h-[420px] flex flex-col border border-primary/5 hover:border-accent/20 transition-colors duration-500 shadow-lg hover:shadow-[0_8px_40px_rgba(79,142,186,0.15)]">
             <div className="flex justify-between items-center mb-4">
                 <h3 className="font-sans font-bold text-2xl text-primary">Automatyzacja</h3>
                 <div className="flex items-center gap-2">
@@ -372,13 +372,13 @@ function CursorProtocolScheduler() {
                     .to(cursor, { opacity: 1, duration: 0.3 })
                     .to(cursor, { x: dayPos.x, y: dayPos.y, duration: 1.2, ease: 'power3.inOut' })
                     .to(cursor, { scale: 0.85, duration: 0.08, yoyo: true, repeat: 1 })
-                    .to(dayCell, { backgroundColor: '#E63B2E', color: '#E8E4DD', scale: 1.1, duration: 0.25 }, '-=0.15')
+                    .to(dayCell, { backgroundColor: '#4F8EBA', color: '#E8E4DD', scale: 1.1, duration: 0.25 }, '-=0.15')
                     .to(cursor, { x: btnPos.x, y: btnPos.y, duration: 1.2, ease: 'power3.inOut', delay: 0.4 })
                     .to(cursor, { scale: 0.85, duration: 0.08, yoyo: true, repeat: 1 })
-                    .to(execBtn, { scale: 0.93, duration: 0.1, yoyo: true, repeat: 1, backgroundColor: '#E63B2E' }, '-=0.15')
+                    .to(execBtn, { scale: 0.93, duration: 0.1, yoyo: true, repeat: 1, backgroundColor: '#4F8EBA' }, '-=0.15')
                     .to(execBtn, { backgroundColor: '#E8E4DD', color: '#111111', duration: 0.3, delay: 0.3 })
                     .to(cursor, { opacity: 0, duration: 0.4, delay: 0.5 })
-                    .to(dayCell, { backgroundColor: 'rgba(230,59,46,0.1)', color: '#E63B2E', scale: 1, duration: 0.4 }, '+=0.3')
+                    .to(dayCell, { backgroundColor: 'rgba(79,142,186,0.1)', color: '#4F8EBA', scale: 1, duration: 0.4 }, '+=0.3')
                     .set(dayCell, { clearProps: 'all' })
                     .to(execBtn, { backgroundColor: '#111111', color: '#E8E4DD', duration: 0.3 }, '<');
             }, gridRef);
@@ -393,7 +393,7 @@ function CursorProtocolScheduler() {
     }, []);
 
     return (
-        <TiltCard className="feature-card bg-dark rounded-[2rem] p-8 h-[420px] flex flex-col relative overflow-hidden group border border-primary/5 hover:border-accent/20 transition-colors duration-500 shadow-lg hover:shadow-[0_8px_40px_rgba(230,59,46,0.15)]">
+        <TiltCard className="feature-card bg-dark rounded-[2rem] p-8 h-[420px] flex flex-col relative overflow-hidden group border border-primary/5 hover:border-accent/20 transition-colors duration-500 shadow-lg hover:shadow-[0_8px_40px_rgba(79,142,186,0.15)]">
             <div ref={gridRef} className="flex flex-col h-full">
                 <div className="relative z-10">
                     <h3 className="font-sans font-bold text-2xl text-primary mb-2">Wdrożenia AI</h3>

@@ -39,7 +39,7 @@ export default function Hero() {
             {/* Content strictly bottom-left */}
             <div className="relative z-30 w-full max-w-5xl">
                 <div className="hero-reveal flex items-baseline gap-3 mb-4">
-                    <span className="w-3 h-3 bg-accent rounded-full animate-pulse shadow-[0_0_12px_rgba(230,59,46,0.6)]"></span>
+                    <span className="w-3 h-3 bg-accent rounded-full animate-pulse shadow-[0_0_12px_rgba(79,142,186,0.6)]"></span>
                     <span className="font-mono text-xs text-primary/60 uppercase tracking-[0.3em]">System Online</span>
                 </div>
 

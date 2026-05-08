@@ -6,15 +6,19 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: '#F5F3EE',
-        primary: '#E8E4DD',
-        accent: '#E63B2E',
-        dark: '#111111',
+        // Brand v2.1 — derived from Marcin's coastal/travel photos (sea-dominant)
+        background: '#E4DBCD',  // warm sand/linen
+        primary: '#CAC2AE',     // warm mid surface
+        accent: '#4F8EBA',      // deep sea blue
+        dark: '#0D1B32',        // deep sea navy
+        sunset: '#C87E3B',      // optional secondary — sunset terracotta
       },
       fontFamily: {
-        sans: ['"Space Grotesk"', 'sans-serif'],
-        serif: ['"DM Serif Display"', 'serif'],
-        mono: ['"Space Mono"', 'monospace'],
+        // Brand v2.1 — Manrope (display) + Fraunces (italic em) + Inter (body) + JetBrains Mono (tech)
+        sans: ['Inter', '"Space Grotesk"', 'system-ui', 'sans-serif'],
+        display: ['Manrope', 'Inter', 'sans-serif'],
+        serif: ['Fraunces', '"DM Serif Display"', 'Georgia', 'serif'],
+        mono: ['"JetBrains Mono"', '"Space Mono"', 'ui-monospace', 'monospace'],
       },
       borderRadius: {
         '2rem': '2rem',

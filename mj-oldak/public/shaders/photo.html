@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<title>MJ.OLDAK · Photo Glow</title>
+<link rel="stylesheet" href="/colors_and_type.css">
+<style>
+  *,*::before,*::after { box-sizing: border-box; }
+  html, body { margin:0; height:100%; background:var(--color-dark); overflow:hidden; cursor:crosshair; }
+  canvas { position:absolute; inset:0; width:100%; height:100%; display:block; }
+  .hud { position:absolute; left:28px; top:24px; z-index:2; font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.14em; color: rgba(228,219,205,0.7); }
+  .hud .dot { display:inline-block; width:6px; height:6px; border-radius:999px; background: var(--accent, #4F8EBA); margin-right:8px; vertical-align:middle; animation:pulse 1.6s ease-in-out infinite; }
+  @keyframes pulse { 0%,100% { opacity:.4 } 50% { opacity:1 } }
+  .title { position:absolute; left:28px; bottom:32px; z-index:2; font-family:'Manrope',sans-serif; font-weight:800; letter-spacing:-0.02em; color:#E4DBCD; font-size:clamp(40px,5vw,72px); line-height:1; text-shadow: 0 2px 24px rgba(0,0,0,0.5); }
+  .title em { font-family:'Fraunces',serif; font-style:italic; font-weight:400; font-variation-settings:'opsz' 144,'SOFT' 100; color: var(--accent, #4F8EBA); }
+  .meta { position:absolute; right:28px; bottom:32px; z-index:2; font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.14em; color: rgba(228,219,205,0.7); text-align:right; line-height:1.6; text-shadow: 0 1px 12px rgba(0,0,0,0.5); }
+  .switcher { position:absolute; right:28px; top:24px; z-index:3; display:flex; gap:6px; }
+  .switcher button {
+    width:24px; height:24px; border-radius:999px; border:1.5px solid rgba(228,219,205,0.3);
+    background: transparent; cursor:pointer; padding:0;
+    transition: border-color .2s, transform .2s;
+  }
+  .switcher button.is-active { border-color: var(--accent, #4F8EBA); transform: scale(1.15); }
+  .switcher button[data-id="0798"] { background: #846046; }
+  .switcher button[data-id="5048"] { background: #66A8E1; }
+  .switcher button[data-id="5088"] { background: #7D6250; }
+  .switcher button[data-id="5236"] { background: #C49478; }
+  .switcher button[data-id="5350"] { background: #9A6D4A; }
+  .switcher button[data-id="5579"] { background: #8C6449; }
+  .switcher button[data-id="6147"] { background: #9E833E; }
+  .switcher button[data-id="7543"] { background: #8F5621; }
+</style>
+<style>
+  /* Embed mode — hide demo UI labels when iframe-loaded as bg */
+  .hud, .title, .meta { display: none !important; }
+  body { background: transparent !important; overflow: hidden !important; margin: 0 !important; }
+  canvas { display: block !important; }
+</style>
+</head>
+<body>
+<canvas id="c"></canvas>
+<div class="hud"><span class="dot"></span>SHADER · 05 / PHOTO GLOW · <span id="pid">PHOTO_5048</span></div>
+<div class="switcher" id="sw">
+  <button data-id="0798" data-accent="#846046"></button>
+  <button data-id="5048" data-accent="#4F8EBA" class="is-active"></button>
+  <button data-id="5088" data-accent="#7D6250"></button>
+  <button data-id="5236" data-accent="#C49478"></button>
+  <button data-id="5350" data-accent="#9A6D4A"></button>
+  <button data-id="5579" data-accent="#8C6449"></button>
+  <button data-id="6147" data-accent="#9E833E"></button>
+  <button data-id="7543" data-accent="#8F5621"></button>
+</div>
+<h1 class="title">Photo <em>glow.</em></h1>
+<div class="meta">KURSOR PROWADZI ŚWIATŁO · KLIKNIJ TARCZĘ ZMIENI ZDJĘCIE<br>FOTOGRAFIA · MARCIN OŁDAK</div>
+
+<script>
+const c = document.getElementById('c');
+const ctx = c.getContext('2d');
+let W=0,H=0, DPR = Math.min(2, devicePixelRatio || 1);
+function size(){ W=c.width=innerWidth*DPR; H=c.height=innerHeight*DPR; c.style.width=innerWidth+'px'; c.style.height=innerHeight+'px'; }
+size(); addEventListener('resize', size);
+
+let mx = -9999, my = -9999;
+addEventListener('mousemove', e => { mx = e.clientX*DPR; my = e.clientY*DPR; });
+addEventListener('mouseleave', () => { mx = -9999; my = -9999; });
+
+let img = null, accent = '#4F8EBA', currentId = '5048';
+function load(id){
+  currentId = id;
+  document.getElementById('pid').textContent = `PHOTO_${id}`;
+  const ni = new Image();
+  ni.onload = () => { img = ni; };
+  ni.src = `../../assets/hero-${id}.jpg`;
+}
+document.getElementById('sw').addEventListener('click', e => {
+  const b = e.target.closest('button'); if (!b) return;
+  document.querySelectorAll('#sw button').forEach(x => x.classList.remove('is-active'));
+  b.classList.add('is-active');
+  accent = b.dataset.accent;
+  document.documentElement.style.setProperty('--accent', accent);
+  load(b.dataset.id);
+});
+document.documentElement.style.setProperty('--accent', accent);
+load('5048');
+
+function hexToRgb(h){
+  h = h.replace('#','');
+  const n = parseInt(h, 16);
+  return [n>>16 & 255, n>>8 & 255, n & 255];
+}
+
+function frame(){
+  ctx.fillStyle = '#0D1B32';
+  ctx.fillRect(0,0,W,H);
+
+  if (img){
+    // cover-fit
+    const ar = img.width / img.height;
+    const sar = W / H;
+    let dw, dh, dx, dy;
+    if (ar > sar) { dh = H; dw = H * ar; dx = (W - dw)/2; dy = 0; }
+    else { dw = W; dh = W / ar; dx = 0; dy = (H - dh)/2; }
+    ctx.drawImage(img, dx, dy, dw, dh);
+
+    // tonal overlay (slight desat / dark)
+    ctx.fillStyle = 'rgba(13,27,50,0.32)';
+    ctx.fillRect(0,0,W,H);
+
+    // cursor spotlight bloom
+    if (mx > -1000) {
+      const [r,g,b] = hexToRgb(accent);
+      const grd = ctx.createRadialGradient(mx, my, 0, mx, my, 360*DPR);
+      grd.addColorStop(0, `rgba(${r},${g},${b},0.45)`);
+      grd.addColorStop(0.5, `rgba(${r},${g},${b},0.12)`);
+      grd.addColorStop(1, `rgba(${r},${g},${b},0)`);
+      ctx.globalCompositeOperation = 'screen';
+      ctx.fillStyle = grd;
+      ctx.fillRect(0,0,W,H);
+      ctx.globalCompositeOperation = 'source-over';
+    }
+  }
+
+  // vignette
+  const vg = ctx.createRadialGradient(W/2,H/2, Math.min(W,H)*0.35, W/2,H/2, Math.max(W,H)*0.7);
+  vg.addColorStop(0, 'rgba(13,27,50,0)');
+  vg.addColorStop(1, 'rgba(13,27,50,0.55)');
+  ctx.fillStyle = vg;
+  ctx.fillRect(0,0,W,H);
+
+  // grain
+  for (let i=0;i<140;i++){
+    ctx.fillStyle = `rgba(228,219,205,${Math.random()*0.04})`;
+    ctx.fillRect(Math.random()*W, Math.random()*H, 1, 1);
+  }
+
+  requestAnimationFrame(frame);
+}
+frame();
+</script>
+</body>
+</html>

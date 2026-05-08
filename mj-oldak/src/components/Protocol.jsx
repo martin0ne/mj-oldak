@@ -118,14 +118,14 @@ function StepTwoAnim() {
                     ))}
                 </div>
             ))}
-            <div className="absolute top-0 left-0 w-full h-1 bg-accent/80 shadow-[0_0_15px_rgba(230,59,46,0.8)] animate-[scan_3s_ease-in-out_infinite_alternate]"></div>
+            <div className="absolute top-0 left-0 w-full h-1 bg-accent/80 shadow-[0_0_15px_rgba(79,142,186,0.8)] animate-[scan_3s_ease-in-out_infinite_alternate]"></div>
         </div>
     );
 }
 
 function StepThreeAnim() {
     return (
-        <svg viewBox="0 0 200 100" className="w-full h-1/2 stroke-accent drop-shadow-[0_0_8px_rgba(230,59,46,0.6)]">
+        <svg viewBox="0 0 200 100" className="w-full h-1/2 stroke-accent drop-shadow-[0_0_8px_rgba(79,142,186,0.6)]">
             {/* Statyczna linia bazowa — zawsze widoczna */}
             <path
                 d="M 0 50 L 40 50 L 50 20 L 70 80 L 100 10 L 120 70 L 140 50 L 200 50"

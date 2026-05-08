@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<title>MJ.OLDAK · Sand Drift</title>
+<link rel="stylesheet" href="/colors_and_type.css">
+<style>
+  *,*::before,*::after { box-sizing: border-box; }
+  html, body { margin:0; height:100%; background:var(--color-background); overflow:hidden; cursor:crosshair; }
+  canvas { position:absolute; inset:0; width:100%; height:100%; display:block; }
+  .hud {
+    position:absolute; left:28px; top:24px; z-index:2;
+    font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:0.14em;
+    color: color-mix(in srgb, var(--color-dark) 60%, transparent);
+  }
+  .hud .dot { display:inline-block; width:6px; height:6px; border-radius:999px; background:var(--color-sunset); margin-right:8px; vertical-align:middle; animation:pulse 1.6s ease-in-out infinite; }
+  @keyframes pulse { 0%,100% { opacity:.4 } 50% { opacity:1 } }
+  .title {
+    position:absolute; left:28px; bottom:32px; z-index:2;
+    font-family:'Manrope', sans-serif; font-weight:800; letter-spacing:-0.02em;
+    color: var(--color-dark);
+    font-size: clamp(40px, 5vw, 72px); line-height:1;
+  }
+  .title em { font-family:'Fraunces', serif; font-style:italic; font-weight:400; font-variation-settings:'opsz' 144, 'SOFT' 100; }
+  .meta { position:absolute; right:28px; bottom:32px; z-index:2; font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.14em; color: color-mix(in srgb, var(--color-dark) 55%, transparent); text-align:right; line-height:1.6; }
+</style>
+<style>
+  /* Embed mode — hide demo UI labels when iframe-loaded as bg */
+  .hud, .title, .meta { display: none !important; }
+  body { background: transparent !important; overflow: hidden !important; margin: 0 !important; }
+  canvas { display: block !important; }
+</style>
+</head>
+<body>
+<canvas id="c"></canvas>
+<div class="hud"><span class="dot"></span>SHADER · 02 / SAND DRIFT</div>
+<h1 class="title">Sand <em>drift.</em></h1>
+<div class="meta">PRZESUŃ MYSZKĄ · KLIKNIJ DLA ŚLADU<br>WARM SAND × WARM MID</div>
+
+<script>
+const c = document.getElementById('c');
+const ctx = c.getContext('2d');
+let W=0,H=0, DPR = Math.min(2, devicePixelRatio || 1);
+function size(){ W=c.width=innerWidth*DPR; H=c.height=innerHeight*DPR; c.style.width=innerWidth+'px'; c.style.height=innerHeight+'px'; init(); }
+addEventListener('resize', size);
+
+const css = getComputedStyle(document.documentElement);
+const sand = css.getPropertyValue('--color-background').trim() || '#E4DBCD';
+const mid = css.getPropertyValue('--color-primary').trim() || '#CAC2AE';
+const dark = css.getPropertyValue('--color-dark').trim() || '#0D1B32';
+const sunset = css.getPropertyValue('--color-sunset').trim() || '#C87E3B';
+
+const N = 1400;
+let parts = [];
+function init(){
+  parts = [];
+  for (let i=0;i<N;i++){
+    parts.push({
+      x: Math.random()*W, y: Math.random()*H,
+      hx: 0, hy: 0,
+      ox: Math.random()*W, oy: Math.random()*H,
+      sz: 0.8 + Math.random()*1.6,
+      tone: Math.random(),
+    });
+    parts[i].ox = parts[i].x; parts[i].oy = parts[i].y;
+  }
+}
+
+let mx=0.5, my=0.5;
+addEventListener('mousemove', e => { mx = e.clientX*DPR; my = e.clientY*DPR; });
+addEventListener('mouseleave', () => { mx = -9999; my = -9999; });
+
+const prints = [];
+addEventListener('click', e => {
+  prints.push({ x: e.clientX*DPR, y: e.clientY*DPR, t: 0 });
+});
+
+size();
+
+let tm = 0;
+function frame(){
+  tm += 0.005;
+  ctx.fillStyle = sand;
+  ctx.fillRect(0,0,W,H);
+
+  // subtle background grain
+  for (let i=0;i<60;i++){
+    ctx.fillStyle = `rgba(13,27,50,${0.02})`;
+    ctx.fillRect(Math.random()*W, Math.random()*H, 1, 1);
+  }
+
+  // big slow blobs of warm mid for depth
+  for (let i=0;i<3;i++){
+    const a = 0.05;
+    const cx = (0.2 + i*0.3) * W + Math.sin(tm*0.4 + i)*60;
+    const cy = (0.4 + (i%2)*0.3) * H + Math.cos(tm*0.5 + i)*50;
+    const grd = ctx.createRadialGradient(cx,cy,0,cx,cy,Math.max(W,H)*0.4);
+    grd.addColorStop(0, `rgba(202,194,174,${a*2})`);
+    grd.addColorStop(1, `rgba(202,194,174,0)`);
+    ctx.fillStyle = grd;
+    ctx.fillRect(0,0,W,H);
+  }
+
+  // particles: pushed away from cursor, return to home
+  for (const p of parts){
+    const dx = p.x - mx, dy = p.y - my;
+    const d2 = dx*dx + dy*dy;
+    const r = 160*DPR;
+    if (d2 < r*r && d2 > 0){
+      const d = Math.sqrt(d2);
+      const f = (1 - d/r) * 0.35;
+      p.hx += (dx/d) * f * 6;
+      p.hy += (dy/d) * f * 6;
+    }
+    // print influence
+    for (const pr of prints){
+      const px = p.x - pr.x, py = p.y - pr.y;
+      const pd2 = px*px + py*py;
+      const pr_r = 80*DPR + pr.t*200*DPR;
+      if (pd2 < pr_r*pr_r){
+        const pd = Math.sqrt(pd2)+0.0001;
+        const f = (1 - pd/pr_r) * (1-pr.t) * 0.15;
+        p.hx += (px/pd) * f * 8;
+        p.hy += (py/pd) * f * 8;
+      }
+    }
+    // return to home with damping
+    p.hx *= 0.92; p.hy *= 0.92;
+    p.x = p.ox + p.hx + Math.sin(tm + p.ox*0.01) * 4;
+    p.y = p.oy + p.hy + Math.cos(tm + p.oy*0.01) * 4;
+
+    const tone = p.tone;
+    const col = tone < 0.6 ? `rgba(13,27,50,${0.15 + tone*0.2})` :
+                tone < 0.92 ? `rgba(202,194,174,${0.45 + tone*0.3})` :
+                              `rgba(200,126,59,${0.5 + tone*0.3})`;
+    ctx.fillStyle = col;
+    ctx.fillRect(p.x - p.sz, p.y - p.sz, p.sz*2, p.sz*2);
+  }
+
+  // animate prints
+  for (let i=prints.length-1;i>=0;i--){
+    prints[i].t += 0.012;
+    if (prints[i].t > 1) prints.splice(i,1);
+  }
+
+  requestAnimationFrame(frame);
+}
+frame();
+</script>
+</body>
+</html>
