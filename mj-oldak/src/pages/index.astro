@@ -1,15 +1,9 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-
 const title = 'MJ.OLDAK — Agenci AI dla biur rachunkowych w Polsce | OCR faktur, KSeF, automatyzacja';
 const description = 'Buduje AI agentów dla polskich biur rachunkowych: OCR faktur w 8 sekund, klasyfikacja maili klientów, kalendarz podatkowy 2026 (VAT, JPK, KSeF), raporty miesięczne PDF. Pilot za darmo. Stack: Claude API + Azure Document Intelligence + Astro.';
 ---
-<BaseLayout
-  title={title}
-  description={description}
-  ogImage="/photos/hero-5048.jpg"
-  includeOrganizationSchema={true}
->
+<BaseLayout title={title} description={description} ogImage="/photos/hero-5048.jpg" includeOrganizationSchema={true}>
 <style is:global>
 
   :root {
@@ -53,14 +47,56 @@ const description = 'Buduje AI agentów dla polskich biur rachunkowych: OCR fakt
   body.shader-mode .hero { background-image: none !important; }
   body.shader-mode .hero::after { opacity: 0.4; }
   /* Sections niżej: shader visible jako ambient ZAWSZE + cursor reactions ON */
-  section.story.light .shader-bg { opacity: 0.7; pointer-events: auto; }
-  section.story.dark .shader-bg, .pilot-section .shader-bg, .contact .shader-bg { opacity: 0.85; pointer-events: auto; }
-  /* W shader-mode section ambient się boostuje do 1 */
+  section.story.light .shader-bg { opacity: 0.55; pointer-events: auto; }
+  section.story.dark .shader-bg, .pilot-section .shader-bg, .contact .shader-bg { opacity: 0.7; pointer-events: auto; }
+  /* W shader-mode section ambient się boostuje */
   body.shader-mode section.story.light .shader-bg { opacity: 0.85; }
   body.shader-mode section.story.dark .shader-bg,
   body.shader-mode .pilot-section .shader-bg,
   body.shader-mode .contact .shader-bg { opacity: 1; }
-  /* Content musi być nad shader (z-index: 2 default in section base — already set) */
+
+  /* SCRIM behind content — SUBTLE, only contrast booster, NIE bleach */
+  section.story::before, .contact::before {
+    content: ''; position: absolute; inset: 0; z-index: 1;
+    pointer-events: none;
+    transition: background var(--transition-dur) ease;
+  }
+  /* Dark sections: subtle dark vignette */
+  section.story.dark::before, .pilot-section::before, .contact::before {
+    background: radial-gradient(ellipse at 50% 40%,
+      color-mix(in srgb, var(--dark) 25%, transparent) 0%,
+      color-mix(in srgb, var(--dark) 10%, transparent) 60%,
+      transparent 100%);
+  }
+  /* Light sections: subtle light vignette */
+  section.story.light::before {
+    background: radial-gradient(ellipse at 50% 40%,
+      color-mix(in srgb, var(--bg) 30%, transparent) 0%,
+      color-mix(in srgb, var(--bg) 12%, transparent) 60%,
+      transparent 100%);
+  }
+  /* Text-shadow — minimalna 2-3px halo, bez bleached look */
+  section.story.dark, .pilot-section, .contact { text-shadow: 0 1px 3px rgba(13,27,50,0.5); }
+  section.story.light { text-shadow: 0 1px 2px rgba(228,219,205,0.45); }
+  /* CTAs / buttons / badges — no shadow (have own bg) */
+  .cta, .cta-nav, .b-badge, .station .num, .station .label, .station .desc, .ocr-fields .key, .ocr-fields .val { text-shadow: none; }
+  /* H1/H2 boost weight + contrast w shader sections */
+  section.story h2.section-title, .hero h1 { font-weight: 800; }
+
+  /* === Cursor spotlight back, BEZ mix-blend-mode (gladkie radial overlay) === */
+  section.story::after, .contact::after, .pilot-section::after {
+    content: ''; position: absolute; inset: 0; z-index: 1;
+    pointer-events: none;
+    background: radial-gradient(circle 320px at var(--mx, 50%) var(--my, 50%),
+      color-mix(in srgb, var(--accent) 18%, transparent) 0%,
+      color-mix(in srgb, var(--accent) 6%, transparent) 35%,
+      transparent 75%);
+    transition: opacity 0.3s ease;
+    opacity: 0;
+  }
+  section.story:hover::after, .contact:hover::after, .pilot-section:hover::after {
+    opacity: 1;
+  }
   /* Dark sections — subtle scrim behind content for readability over animated shader */
   body.shader-mode .contact::before,
   body.shader-mode section.story.dark::before,
@@ -792,7 +828,6 @@ const description = 'Buduje AI agentów dla polskich biur rachunkowych: OCR fakt
 </style>
 
 
-
 <div class="scroll-progress"><div class="bar" id="scrollBar"></div></div>
 
 <nav class="nav">
@@ -1236,6 +1271,17 @@ function resetProgress() {
 
 loadPhotos();
 
+// Cursor spotlight: mouse position → CSS variables per section
+document.querySelectorAll('section.story, .contact, .pilot-section').forEach(sec => {
+  sec.addEventListener('mousemove', e => {
+    const r = sec.getBoundingClientRect();
+    const x = ((e.clientX - r.left) / r.width) * 100;
+    const y = ((e.clientY - r.top) / r.height) * 100;
+    sec.style.setProperty('--mx', x + '%');
+    sec.style.setProperty('--my', y + '%');
+  });
+});
+
 // ─── Photo / Shader mode toggle (Hero only — sections always have ambient shader) ───
 const STORAGE_KEY = 'mjoldak-bg-mode';
 
@@ -1422,7 +1468,6 @@ window.addEventListener('scroll', () => {
 </script>
 
 
-
 <script is:inline>
 
 const ROTATE_MS = 8000;
@@ -1487,6 +1532,17 @@ function resetProgress() {
 }
 
 loadPhotos();
+
+// Cursor spotlight: mouse position → CSS variables per section
+document.querySelectorAll('section.story, .contact, .pilot-section').forEach(sec => {
+  sec.addEventListener('mousemove', e => {
+    const r = sec.getBoundingClientRect();
+    const x = ((e.clientX - r.left) / r.width) * 100;
+    const y = ((e.clientY - r.top) / r.height) * 100;
+    sec.style.setProperty('--mx', x + '%');
+    sec.style.setProperty('--my', y + '%');
+  });
+});
 
 // ─── Photo / Shader mode toggle (Hero only — sections always have ambient shader) ───
 const STORAGE_KEY = 'mjoldak-bg-mode';
