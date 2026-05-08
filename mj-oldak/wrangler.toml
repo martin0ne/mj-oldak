@@ -5,7 +5,7 @@ pages_build_output_dir = "dist"
 [[d1_databases]]
 binding = "DB"
 database_name = "mj-oldak-newsletter"
-database_id = "REPLACE_AFTER_CREATING_D1_IN_CF_DASHBOARD"
+database_id = "c1d7109b-bf50-4cf6-a129-dc99deeab471"
 
 [vars]
 PUBLIC_SITE_URL = "https://mjoldak.pl"
