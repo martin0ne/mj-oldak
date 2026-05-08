@@ -1,0 +1,16 @@
+name = "mj-oldak"
+compatibility_date = "2025-01-01"
+pages_build_output_dir = "dist"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "mj-oldak-newsletter"
+database_id = "REPLACE_AFTER_CREATING_D1_IN_CF_DASHBOARD"
+
+[vars]
+PUBLIC_SITE_URL = "https://mjoldak.pl"
+
+# Secrets (set via CF dashboard Pages → Settings → Environment variables → Production):
+#   RESEND_API_KEY = re_xxx (after signing up at resend.com)
+#   NEWSLETTER_FROM_EMAIL = noreply@mjoldak.pl  (after domain verify in Resend)
+#                          OR onboarding@resend.dev (MVP fallback before domain verify)

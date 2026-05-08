@@ -1,0 +1,67 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Wypisano z newslettera · MJ.OLDAK"
+  description="Adres email został usunięty z listy newslettera MJ.OLDAK."
+>
+  <main class="confirmation">
+    <div class="card">
+      <div class="badge muted">Wypisano</div>
+      <h1>Twój adres jest <em>usunięty</em>.</h1>
+      <p class="lead">Nie wyślę Ci więcej newslettera. Dziennik zgód zostanie zachowany przez 24 miesiące dla celów dowodowych (RODO).</p>
+      <p class="muted">Jeśli kiedyś zmienisz zdanie — zawsze możesz zapisać się ponownie na <a href="/artykuly/">stronie artykułów</a>.</p>
+      <div class="actions">
+        <a href="/" class="cta primary">Strona główna</a>
+        <a href="mailto:biuro@mjoldak.pl?subject=Pytanie%20do%20MJ.OLDAK" class="cta secondary">Napisz mi</a>
+      </div>
+    </div>
+  </main>
+</BaseLayout>
+
+<style>
+  .confirmation {
+    min-height: 80vh; display: flex; align-items: center; justify-content: center;
+    padding: 80px 24px; background: #E4DBCD;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+  .card {
+    max-width: 560px; width: 100%;
+    background: rgba(13, 27, 50, 0.04);
+    border: 1px solid rgba(13, 27, 50, 0.12);
+    border-radius: 24px; padding: 56px 48px; text-align: center;
+  }
+  .badge {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: rgba(13, 27, 50, 0.6);
+    background: rgba(13, 27, 50, 0.08);
+    padding: 6px 14px; border-radius: 999px; margin-bottom: 24px;
+  }
+  h1 {
+    font-family: 'Manrope', sans-serif; font-weight: 800;
+    font-size: 44px; line-height: 1.05; letter-spacing: -0.02em;
+    color: #0D1B32; margin: 0 0 24px;
+  }
+  h1 em {
+    font-family: 'Fraunces', serif; font-style: italic; font-weight: 400;
+    color: rgba(13, 27, 50, 0.55);
+  }
+  .lead { font-size: 18px; line-height: 1.55; color: #0D1B32; margin: 0 0 16px; }
+  .muted { font-size: 14px; line-height: 1.6; color: rgba(13, 27, 50, 0.6); margin: 0 0 32px; }
+  .muted a { color: #4F8EBA; text-decoration: underline; }
+  .actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  .cta {
+    display: inline-block;
+    font-family: 'Manrope', sans-serif; font-weight: 700;
+    font-size: 14px; letter-spacing: 0.02em; text-transform: uppercase;
+    padding: 14px 28px; border-radius: 999px;
+    text-decoration: none; transition: transform 0.2s;
+  }
+  .cta.primary { background: #0D1B32; color: #E4DBCD; }
+  .cta.secondary { background: transparent; color: #0D1B32; border: 1px solid rgba(13, 27, 50, 0.3); }
+  .cta:hover { transform: translateY(-2px); }
+  @media (max-width: 600px) { .card { padding: 40px 28px; } h1 { font-size: 34px; } }
+</style>

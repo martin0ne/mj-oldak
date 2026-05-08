@@ -1,0 +1,69 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const reason = Astro.url.searchParams.get('reason');
+const messages = {
+  expired: 'Link potwierdzający wygasł (ważny przez 24h od zapisu).',
+  error: 'Coś poszło nie tak po naszej stronie.',
+};
+const message = (reason && messages[reason]) || 'Link jest niepoprawny lub został już wykorzystany.';
+---
+
+<BaseLayout
+  title="Błąd · MJ.OLDAK"
+  description="Coś poszło nie tak — sprawdź link lub spróbuj ponownie."
+>
+  <main class="confirmation">
+    <div class="card">
+      <div class="badge">⚠ Błąd</div>
+      <h1>Coś nie zadziałało.</h1>
+      <p class="lead">{message}</p>
+      <p class="muted">Możesz spróbować zapisać się jeszcze raz albo napisać do mnie bezpośrednio.</p>
+      <div class="actions">
+        <a href="/artykuly/" class="cta primary">Zapisz się ponownie</a>
+        <a href="mailto:biuro@mjoldak.pl" class="cta secondary">Napisz mi</a>
+      </div>
+    </div>
+  </main>
+</BaseLayout>
+
+<style>
+  .confirmation {
+    min-height: 80vh; display: flex; align-items: center; justify-content: center;
+    padding: 80px 24px; background: #E4DBCD;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+  .card {
+    max-width: 560px; width: 100%;
+    background: rgba(13, 27, 50, 0.04);
+    border: 1px solid rgba(200, 126, 59, 0.4);
+    border-radius: 24px; padding: 56px 48px; text-align: center;
+  }
+  .badge {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: #C87E3B;
+    background: rgba(200, 126, 59, 0.12);
+    padding: 6px 14px; border-radius: 999px; margin-bottom: 24px;
+  }
+  h1 {
+    font-family: 'Manrope', sans-serif; font-weight: 800;
+    font-size: 44px; line-height: 1.05; letter-spacing: -0.02em;
+    color: #0D1B32; margin: 0 0 24px;
+  }
+  .lead { font-size: 18px; line-height: 1.55; color: #0D1B32; margin: 0 0 16px; }
+  .muted { font-size: 14px; line-height: 1.6; color: rgba(13, 27, 50, 0.6); margin: 0 0 32px; }
+  .actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  .cta {
+    display: inline-block;
+    font-family: 'Manrope', sans-serif; font-weight: 700;
+    font-size: 14px; letter-spacing: 0.02em; text-transform: uppercase;
+    padding: 14px 28px; border-radius: 999px;
+    text-decoration: none; transition: transform 0.2s;
+  }
+  .cta.primary { background: #0D1B32; color: #E4DBCD; }
+  .cta.secondary { background: transparent; color: #0D1B32; border: 1px solid rgba(13, 27, 50, 0.3); }
+  .cta:hover { transform: translateY(-2px); }
+  @media (max-width: 600px) { .card { padding: 40px 28px; } h1 { font-size: 34px; } }
+</style>
