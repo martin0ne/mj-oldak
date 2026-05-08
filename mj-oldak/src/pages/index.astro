@@ -172,6 +172,11 @@ const description = 'Buduje AI agentów dla polskich biur rachunkowych: OCR fakt
     font-size: 15px; color: #fff; padding-right: 16px;
     border-right: 1px solid rgba(255,255,255,0.18);
   }
+  .nav .brand-link {
+    text-decoration: none; cursor: pointer;
+    transition: opacity 0.2s ease;
+  }
+  .nav .brand-link:hover { opacity: 0.78; }
   .nav-links { display: flex; gap: 4px; }
   .nav a.link {
     color: #fff; opacity: 0.78; padding: 8px 16px; border-radius: 999px;
@@ -851,7 +856,7 @@ const description = 'Buduje AI agentów dla polskich biur rachunkowych: OCR fakt
 <div class="scroll-progress"><div class="bar" id="scrollBar"></div></div>
 
 <nav class="nav">
-  <strong>MJ.OLDAK</strong>
+  <a href="#top" class="brand-link" onclick="event.preventDefault(); window.scrollTo({top: 0, behavior: 'smooth'});"><strong>MJ.OLDAK</strong></a>
   <div class="nav-links">
     <a href="#help" class="link" data-spy="help">Pomagamy</a>
     <a href="#products" class="link" data-spy="products">Produkty</a>
