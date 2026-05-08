@@ -53,14 +53,39 @@ const description = 'Buduje AI agentów dla polskich biur rachunkowych: OCR fakt
   body.shader-mode .hero { background-image: none !important; }
   body.shader-mode .hero::after { opacity: 0.4; }
   /* Sections niżej: shader visible jako ambient ZAWSZE + cursor reactions ON */
-  section.story.light .shader-bg { opacity: 0.7; pointer-events: auto; }
-  section.story.dark .shader-bg, .pilot-section .shader-bg, .contact .shader-bg { opacity: 0.85; pointer-events: auto; }
-  /* W shader-mode section ambient się boostuje do 1 */
+  section.story.light .shader-bg { opacity: 0.55; pointer-events: auto; }
+  section.story.dark .shader-bg, .pilot-section .shader-bg, .contact .shader-bg { opacity: 0.7; pointer-events: auto; }
+  /* W shader-mode section ambient się boostuje */
   body.shader-mode section.story.light .shader-bg { opacity: 0.85; }
   body.shader-mode section.story.dark .shader-bg,
   body.shader-mode .pilot-section .shader-bg,
   body.shader-mode .contact .shader-bg { opacity: 1; }
-  /* Content musi być nad shader (z-index: 2 default in section base — already set) */
+
+  /* SCRIM behind content — readability OVER any shader accent */
+  section.story::before, .contact::before {
+    content: ''; position: absolute; inset: 0; z-index: 1;
+    pointer-events: none;
+    transition: background var(--transition-dur) ease;
+  }
+  /* Dark sections: dark scrim radial from content area */
+  section.story.dark::before, .pilot-section::before, .contact::before {
+    background: radial-gradient(ellipse at 50% 40%,
+      color-mix(in srgb, var(--dark) 65%, transparent) 0%,
+      color-mix(in srgb, var(--dark) 40%, transparent) 50%,
+      color-mix(in srgb, var(--dark) 25%, transparent) 100%);
+  }
+  /* Light sections: light scrim — keep Sea Navy text readable */
+  section.story.light::before {
+    background: radial-gradient(ellipse at 50% 40%,
+      color-mix(in srgb, var(--bg) 70%, transparent) 0%,
+      color-mix(in srgb, var(--bg) 45%, transparent) 50%,
+      color-mix(in srgb, var(--bg) 25%, transparent) 100%);
+  }
+  /* Content text-shadow — extra readability buffer */
+  section.story.dark, .pilot-section, .contact { text-shadow: 0 1px 12px rgba(13,27,50,0.6); }
+  section.story.light { text-shadow: 0 1px 8px rgba(228,219,205,0.55); }
+  /* CTAs / buttons / badges — no shadow (have own bg) */
+  .cta, .cta-nav, .b-badge, .station .num, .station .label { text-shadow: none; }
   /* Dark sections — subtle scrim behind content for readability over animated shader */
   body.shader-mode .contact::before,
   body.shader-mode section.story.dark::before,
