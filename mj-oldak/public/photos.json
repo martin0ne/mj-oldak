@@ -1,0 +1,51 @@
+[
+  {
+    "name": "IMG_0798",
+    "src": "/photos/hero-0798.jpg",
+    "accent": "#846046",
+    "dark": "#311F14"
+  },
+  {
+    "name": "IMG_5048",
+    "src": "/photos/hero-5048.jpg",
+    "accent": "#66A8E1",
+    "dark": "#2F2E18"
+  },
+  {
+    "name": "IMG_5088",
+    "src": "/photos/hero-5088.jpg",
+    "accent": "#7D6250",
+    "dark": "#252829"
+  },
+  {
+    "name": "IMG_5236",
+    "src": "/photos/hero-5236.jpg",
+    "accent": "#C49478",
+    "dark": "#38432F"
+  },
+  {
+    "name": "IMG_5350",
+    "src": "/photos/hero-5350.jpg",
+    "accent": "#9A6D4A",
+    "dark": "#23262B"
+  },
+  {
+    "name": "IMG_5579",
+    "src": "/photos/hero-5579.jpg",
+    "accent": "#8C6449",
+    "dark": "#14100E",
+    "lowRes": true
+  },
+  {
+    "name": "IMG_7543",
+    "src": "/photos/hero-7543.jpg",
+    "accent": "#8F5621",
+    "dark": "#231C18"
+  },
+  {
+    "name": "IMG_6147",
+    "src": "/photos/hero-6147.jpg",
+    "accent": "#9E833E",
+    "dark": "#464F23"
+  }
+]

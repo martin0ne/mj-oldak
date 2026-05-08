@@ -44,7 +44,7 @@ export default function Philosophy() {
             <div
                 className="philo-bg absolute inset-0 inset-y-[-10%] z-0 opacity-20 mix-blend-overlay"
                 style={{
-                    background: 'radial-gradient(ellipse at 30% 50%, rgba(230,59,46,0.15) 0%, transparent 60%), radial-gradient(ellipse at 70% 30%, rgba(232,228,221,0.08) 0%, transparent 50%)',
+                    background: 'radial-gradient(ellipse at 30% 50%, rgba(79,142,186,0.15) 0%, transparent 60%), radial-gradient(ellipse at 70% 30%, rgba(232,228,221,0.08) 0%, transparent 50%)',
                 }}
             />
 

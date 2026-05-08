@@ -20,6 +20,7 @@
     "gsap": "^3.14.2",
     "lucide-react": "^0.575.0",
     "minisearch": "^7.1.1",
+    "package-manager-detector": "^1.6.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0"
   },
