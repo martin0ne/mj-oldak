@@ -9,8 +9,8 @@ database_id = "c1d7109b-bf50-4cf6-a129-dc99deeab471"
 
 [vars]
 PUBLIC_SITE_URL = "https://mjoldak.pl"
+NEWSLETTER_FROM_EMAIL = "onboarding@resend.dev"
+# ↑ Switch to "noreply@mjoldak.pl" after Resend domain verify completes
 
-# Secrets (set via CF dashboard Pages → Settings → Environment variables → Production):
-#   RESEND_API_KEY = re_xxx (after signing up at resend.com)
-#   NEWSLETTER_FROM_EMAIL = noreply@mjoldak.pl  (after domain verify in Resend)
-#                          OR onboarding@resend.dev (MVP fallback before domain verify)
+# Secrets (set via CF dashboard Pages → Settings → Variables and Secrets → +Add):
+#   RESEND_API_KEY = re_xxx (encrypted, from resend.com → API Keys → Create)
