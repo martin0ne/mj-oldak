@@ -83,7 +83,20 @@ const description = 'Buduje AI agentów dla polskich biur rachunkowych: OCR fakt
   /* H1/H2 boost weight + contrast w shader sections */
   section.story h2.section-title, .hero h1 { font-weight: 800; }
 
-  /* Cursor spotlight removed — mix-blend-mode psuł rendering tekstu */
+  /* === Cursor spotlight back, BEZ mix-blend-mode (gladkie radial overlay) === */
+  section.story::after, .contact::after, .pilot-section::after {
+    content: ''; position: absolute; inset: 0; z-index: 1;
+    pointer-events: none;
+    background: radial-gradient(circle 320px at var(--mx, 50%) var(--my, 50%),
+      color-mix(in srgb, var(--accent) 18%, transparent) 0%,
+      color-mix(in srgb, var(--accent) 6%, transparent) 35%,
+      transparent 75%);
+    transition: opacity 0.3s ease;
+    opacity: 0;
+  }
+  section.story:hover::after, .contact:hover::after, .pilot-section:hover::after {
+    opacity: 1;
+  }
   /* Dark sections — subtle scrim behind content for readability over animated shader */
   body.shader-mode .contact::before,
   body.shader-mode section.story.dark::before,
@@ -1258,7 +1271,16 @@ function resetProgress() {
 
 loadPhotos();
 
-// Cursor spotlight removed (zob. CSS commit 192be40 → 7ec226c rollback)
+// Cursor spotlight: mouse position → CSS variables per section
+document.querySelectorAll('section.story, .contact, .pilot-section').forEach(sec => {
+  sec.addEventListener('mousemove', e => {
+    const r = sec.getBoundingClientRect();
+    const x = ((e.clientX - r.left) / r.width) * 100;
+    const y = ((e.clientY - r.top) / r.height) * 100;
+    sec.style.setProperty('--mx', x + '%');
+    sec.style.setProperty('--my', y + '%');
+  });
+});
 
 // ─── Photo / Shader mode toggle (Hero only — sections always have ambient shader) ───
 const STORAGE_KEY = 'mjoldak-bg-mode';
@@ -1511,7 +1533,16 @@ function resetProgress() {
 
 loadPhotos();
 
-// Cursor spotlight removed (zob. CSS commit 192be40 → 7ec226c rollback)
+// Cursor spotlight: mouse position → CSS variables per section
+document.querySelectorAll('section.story, .contact, .pilot-section').forEach(sec => {
+  sec.addEventListener('mousemove', e => {
+    const r = sec.getBoundingClientRect();
+    const x = ((e.clientX - r.left) / r.width) * 100;
+    const y = ((e.clientY - r.top) / r.height) * 100;
+    sec.style.setProperty('--mx', x + '%');
+    sec.style.setProperty('--my', y + '%');
+  });
+});
 
 // ─── Photo / Shader mode toggle (Hero only — sections always have ambient shader) ───
 const STORAGE_KEY = 'mjoldak-bg-mode';
