@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<title>MJ.OLDAK · Social</title>
+<style>
+  @font-face { font-family: 'Manrope'; src: url('../../public/fonts/Manrope.ttf') format('truetype'); font-weight: 100 900; font-display: block; }
+  @font-face { font-family: 'Fraunces'; src: url('../../public/fonts/Fraunces.ttf') format('truetype'); font-display: block; }
+  @font-face { font-family: 'Fraunces'; src: url('../../public/fonts/Fraunces-Italic.ttf') format('truetype'); font-style: italic; font-display: block; }
+  @font-face { font-family: 'Inter'; src: url('../../public/fonts/Inter.ttf') format('truetype'); font-display: block; }
+  @font-face { font-family: 'JetBrains Mono'; src: url('../../public/fonts/JetBrainsMono.ttf') format('truetype'); font-display: block; }
+
+  :root {
+    --bg: #E4DBCD;
+    --primary: #CAC2AE;
+    --dark: #0D1B32;
+    --accent: #4F8EBA;
+    --sunset: #C87E3B;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1080px; height: 1080px; overflow: hidden; background: var(--bg); -webkit-font-smoothing: antialiased; }
+
+  .frame { display: none; width: 1080px; height: 1080px; padding: 72px 80px 96px 80px; position: relative; flex-direction: column; }
+  .frame.active { display: flex; }
+
+  /* scanlines + noise overlay (DESIGN.md §5) */
+  .frame::before {
+    content: ''; position: absolute; inset: 0; pointer-events: none; z-index: 1;
+    background: repeating-linear-gradient(0deg, transparent 0, transparent 1px, rgba(13,27,50,0.05) 1px, rgba(13,27,50,0.05) 2px);
+  }
+  .frame::after {
+    content: ''; position: absolute; inset: 0; pointer-events: none; z-index: 2;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='400'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.05 0 0 0 0 0.1 0 0 0 0 0.18 0 0 0 0.04 0'/></filter><rect width='400' height='400' filter='url(%23n)'/></svg>");
+    opacity: 0.5;
+  }
+  .frame > * { position: relative; z-index: 3; }
+
+  .logo {
+    font-family: 'Manrope', sans-serif; font-weight: 800;
+    color: var(--dark); font-size: 22px; letter-spacing: 0.04em;
+  }
+  .eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 18px; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--dark); opacity: 0.65;
+  }
+  .headline {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 800; color: var(--dark);
+    line-height: 0.98; letter-spacing: -0.025em;
+  }
+  .headline em {
+    font-family: 'Fraunces', serif; font-style: italic;
+    font-weight: 400;
+    color: var(--accent);
+  }
+  .body {
+    font-family: 'Inter', sans-serif; font-weight: 400;
+    font-size: 28px; line-height: 1.5; color: var(--dark); opacity: 0.85;
+  }
+  .footer {
+    margin-top: auto; display: flex; justify-content: space-between; align-items: flex-end;
+    font-family: 'JetBrains Mono', monospace; font-size: 19px;
+    color: var(--dark); opacity: 0.95; letter-spacing: 0.05em;
+    padding-top: 22px; border-top: 1px solid rgba(13,27,50,0.18);
+    font-weight: 500; line-height: 1.5;
+  }
+
+  /* slide-1: hero */
+  #slide-1 .eyebrow { margin-top: 40px; }
+  #slide-1 .headline { font-size: 92px; margin-top: 200px; }
+  #slide-1 .sub-eyebrow { margin-top: 36px; }
+
+  /* slide-2: pain */
+  #slide-2 .number {
+    font-family: 'Manrope', sans-serif; font-weight: 800;
+    font-size: 260px; line-height: 0.85; color: var(--accent);
+    letter-spacing: -0.05em; margin: 60px 0 24px;
+  }
+  #slide-2 .headline { font-size: 54px; }
+  #slide-2 .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 56px; }
+  #slide-2 .item {
+    font-family: 'Inter', sans-serif; font-weight: 500; font-size: 24px;
+    color: var(--dark); padding: 18px 22px;
+    background: rgba(13,27,50,0.06); border-left: 3px solid var(--accent);
+  }
+
+  /* slide-3: solution */
+  #slide-3 .headline { font-size: 76px; margin-top: 80px; }
+  #slide-3 .bento { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 60px; }
+  #slide-3 .card {
+    background: rgba(13,27,50,0.04); border: 1px solid rgba(13,27,50,0.14);
+    padding: 28px; border-radius: 4px;
+  }
+  #slide-3 .card .num {
+    font-family: 'JetBrains Mono', monospace; font-size: 13px;
+    color: var(--accent); letter-spacing: 0.18em; margin-bottom: 10px;
+  }
+  #slide-3 .card .name {
+    font-family: 'Manrope', sans-serif; font-weight: 800;
+    font-size: 30px; color: var(--dark); margin-bottom: 10px;
+  }
+  #slide-3 .card .desc {
+    font-family: 'Inter', sans-serif; font-size: 18px;
+    color: var(--dark); opacity: 0.75; line-height: 1.4;
+  }
+
+  /* slide-4: manifesto */
+  #slide-4 .headline { font-size: 78px; margin-top: 180px; }
+  #slide-4 .body { margin-top: 56px; }
+
+  /* slide-5: CTA */
+  #slide-5 .headline { font-size: 72px; margin-top: 100px; }
+  #slide-5 .body { margin-top: 32px; }
+  #slide-5 .cta-box {
+    margin-top: 56px;
+    background: var(--dark); color: var(--bg);
+    padding: 36px 40px; border-radius: 4px;
+  }
+  #slide-5 .cta-box .label {
+    font-family: 'JetBrains Mono', monospace; font-size: 14px;
+    letter-spacing: 0.2em; opacity: 0.7; margin-bottom: 14px;
+  }
+  #slide-5 .cta-box .email {
+    font-family: 'Manrope', sans-serif; font-weight: 800;
+    font-size: 38px; color: var(--bg);
+  }
+  #slide-5 .cta-box .url {
+    font-family: 'JetBrains Mono', monospace; font-size: 18px;
+    color: var(--accent); margin-top: 18px;
+  }
+
+  /* square-aiact */
+  #square-aiact .headline { font-size: 80px; margin-top: 80px; }
+  #square-aiact .body { margin-top: 36px; }
+  #square-aiact .stat {
+    margin-top: 56px; padding: 28px 32px;
+    border-left: 4px solid var(--sunset);
+    background: rgba(200,126,59,0.10);
+    font-family: 'JetBrains Mono', monospace; font-size: 22px; color: var(--dark);
+    line-height: 1.7; letter-spacing: 0.02em;
+  }
+  #square-aiact .stat strong {
+    font-family: 'Manrope', sans-serif; font-weight: 800;
+    color: var(--sunset); font-size: 26px;
+  }
+
+  /* quote-aiact — Variant B Data-driven (pattern interrupt vs Type-driven carousel) */
+  #quote-aiact { background: var(--bg); }
+  #quote-aiact .eyebrow { color: var(--sunset); }
+  #quote-aiact .mega-number {
+    font-family: 'Manrope', sans-serif; font-weight: 800;
+    font-size: 320px; line-height: 0.82; color: var(--sunset);
+    letter-spacing: -0.06em; margin: 80px 0 0;
+  }
+  #quote-aiact .mega-unit {
+    font-family: 'Manrope', sans-serif; font-weight: 800;
+    font-size: 120px; line-height: 0.85; color: var(--dark);
+    letter-spacing: -0.04em; margin-top: 4px;
+  }
+  #quote-aiact .context {
+    font-family: 'Manrope', sans-serif; font-weight: 800;
+    font-size: 42px; line-height: 1.15; color: var(--dark);
+    letter-spacing: -0.02em; margin-top: 56px;
+  }
+  #quote-aiact .context em {
+    font-family: 'Fraunces', serif; font-style: italic;
+    font-weight: 400; color: var(--accent);
+  }
+  #quote-aiact .source {
+    font-family: 'JetBrains Mono', monospace; font-size: 20px;
+    color: var(--dark); opacity: 0.7; letter-spacing: 0.06em;
+    margin-top: 40px; text-transform: uppercase;
+  }
+</style>
+</head>
+<body>
+  <section class="frame" id="slide-1">
+    <div class="logo">MJ.OLDAK</div>
+    <div class="eyebrow">01 / 05 · Launch announcement</div>
+    <h1 class="headline">Agencja AI<br>dla polskich<br><em>biur rachunkowych</em>.</h1>
+    <div class="eyebrow sub-eyebrow">solo-founder · pilot za darmo · Wrocław / Warszawa</div>
+    <div class="footer">
+      <span>mjoldak.pl</span>
+      <span>biuro@mjoldak.pl</span>
+    </div>
+  </section>
+
+  <section class="frame" id="slide-2">
+    <div class="logo">MJ.OLDAK</div>
+    <div class="eyebrow">02 / 05 · Problem</div>
+    <div class="number">60h</div>
+    <h2 class="headline">miesięcznie. Tyle traci<br>biuro na <em>ręcznych</em><br><em>zadaniach</em>.</h2>
+    <div class="grid">
+      <div class="item">→ przepisywanie faktur</div>
+      <div class="item">→ obsługa skrzynki</div>
+      <div class="item">→ pilnowanie deadlinów</div>
+      <div class="item">→ raporty dla klientów</div>
+    </div>
+    <div class="footer">
+      <span>mjoldak.pl</span>
+      <span>źródło: Finerto · EY Polska</span>
+    </div>
+  </section>
+
+  <section class="frame" id="slide-3">
+    <div class="logo">MJ.OLDAK</div>
+    <div class="eyebrow">03 / 05 · Co budujemy</div>
+    <h2 class="headline"><em>4 produkty.</em><br>4 tygodnie wdrożenia.<br>Pilot za darmo.</h2>
+    <div class="bento">
+      <div class="card"><div class="num">01 — OCR</div><div class="name">Faktury</div><div class="desc">PDF / foto → dane strukturalne w 8 sekund</div></div>
+      <div class="card"><div class="num">02 — EMAIL</div><div class="name">Skrzynka</div><div class="desc">Klasyfikacja + szkice odpowiedzi</div></div>
+      <div class="card"><div class="num">03 — DEADLINE</div><div class="name">Kalendarz</div><div class="desc">JPK · KSeF · ZUS · CIT — przed terminem</div></div>
+      <div class="card"><div class="num">04 — REPORT</div><div class="name">Raporty</div><div class="desc">PDF + email do klienta automatycznie</div></div>
+    </div>
+    <div class="footer">
+      <span>mjoldak.pl</span>
+      <span>RODO · własność kodu klienta</span>
+    </div>
+  </section>
+
+  <section class="frame" id="slide-4">
+    <div class="logo">MJ.OLDAK</div>
+    <div class="eyebrow">04 / 05 · Manifest</div>
+    <h2 class="headline">Budujemy agentów,<br>których obsługujesz<br><em>jak człowieka</em>.</h2>
+    <div class="body">Człowiek-w-pętli. Twoja księgowa zatwierdza, agent wykonuje.<br>Zero black-boxów. Polish realities first.</div>
+    <div class="footer">
+      <span>mjoldak.pl</span>
+      <span>Wrocław · Warszawa</span>
+    </div>
+  </section>
+
+  <section class="frame" id="slide-5">
+    <div class="logo">MJ.OLDAK</div>
+    <div class="eyebrow">05 / 05 · Pilot</div>
+    <h2 class="headline">Sprawdź, czy biuro<br><em>to zaoszczędzi</em>.</h2>
+    <div class="body">4 tygodnie pilotu. Zero ryzyka. Zero kosztu wdrożenia.</div>
+    <div class="cta-box">
+      <div class="label">NAPISZ</div>
+      <div class="email">biuro@mjoldak.pl</div>
+      <div class="url">→ mjoldak.pl</div>
+    </div>
+    <div class="footer">
+      <span>linkedin.com/in/mjoldak</span>
+      <span>Wrocław · Warszawa</span>
+    </div>
+  </section>
+
+  <section class="frame" id="square-aiact">
+    <div class="logo">MJ.OLDAK · NOWY ARTYKUŁ</div>
+    <div class="eyebrow">edukacja · 11.05.2026</div>
+    <h2 class="headline">AI Act 2026 —<br>masz <em>18-punktowy</em><br>checklist?</h2>
+    <div class="body">Co polskie biuro rachunkowe musi wiedzieć przed pełnym stosowaniem 02.08.2026.</div>
+    <div class="stat">
+      klasyfikacja: <strong>high-risk</strong><br>
+      kary do: <strong>35 mln EUR</strong><br>
+      deadline: <strong>02.08.2026</strong>
+    </div>
+    <div class="footer">
+      <span>mjoldak.pl/artykuly</span>
+      <span>czytaj cały artykuł →</span>
+    </div>
+  </section>
+
+  <section class="frame" id="quote-aiact">
+    <div class="logo">MJ.OLDAK</div>
+    <div class="eyebrow">AI Act 2026 · biuro rachunkowe</div>
+    <div class="mega-number">35M</div>
+    <div class="mega-unit">EUR.</div>
+    <h2 class="context">Maksymalna kara<br>za <em>złamanie AI Act</em>.<br>02.08.2026 — pełne stosowanie.</h2>
+    <div class="source">Art. 99 · Rozporządzenie (UE) 2024/1689</div>
+    <div class="footer">
+      <span>mjoldak.pl/artykuly/ai-act-2026</span>
+      <span>cały artykuł →</span>
+    </div>
+  </section>
+
+  <script>
+    const hash = window.location.hash.slice(1) || 'slide-1';
+    const target = document.getElementById(hash);
+    if (target) target.classList.add('active');
+    // signal fonts loaded for headless screenshot
+    document.fonts.ready.then(() => { document.body.dataset.ready = 'true'; });
+  </script>
+</body>
+</html>
