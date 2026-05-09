@@ -23,6 +23,8 @@
 
   .frame { display: none; width: 1080px; height: 1080px; padding: 72px 80px 96px 80px; position: relative; flex-direction: column; }
   .frame.active { display: flex; }
+  /* dynamic frame dims override (set via JS from data-w/data-h) */
+  .frame[data-w] { width: var(--fw, 1080px); height: var(--fh, 1080px); }
 
   /* scanlines + noise overlay (DESIGN.md §5) */
   .frame::before {
@@ -144,6 +146,200 @@
   #square-aiact .stat strong {
     font-family: 'Manrope', sans-serif; font-weight: 800;
     color: var(--sunset); font-size: 26px;
+  }
+
+  /* SOUL VARIANTS — bardziej editorial, więcej depth (matching website vibe) */
+
+  /* G — Editorial Photo (full-bleed photo + dark overlay + Fraunces moment) */
+  #soul-photo {
+    padding: 0; background: var(--dark);
+  }
+  #soul-photo .photo-bg {
+    position: absolute; inset: 0; z-index: 0;
+    background-image: url('../../public/photos/hero-5048.jpg');
+    background-size: cover; background-position: center;
+  }
+  #soul-photo .overlay {
+    position: absolute; inset: 0; z-index: 1;
+    background: linear-gradient(135deg, rgba(13,27,50,0.78) 0%, rgba(13,27,50,0.45) 50%, rgba(200,126,59,0.35) 100%);
+  }
+  #soul-photo .content {
+    position: relative; z-index: 4; height: 100%;
+    padding: 72px 80px 96px 80px;
+    display: flex; flex-direction: column;
+  }
+  #soul-photo .logo, #soul-photo .eyebrow, #soul-photo .footer { color: var(--bg); }
+  #soul-photo .eyebrow { color: rgba(228,219,205,0.85); }
+  #soul-photo .headline {
+    color: var(--bg); font-size: 80px; line-height: 1.0;
+    margin-top: auto; padding-top: 80px;
+  }
+  #soul-photo .headline em {
+    color: #FAB988; /* warm sunset glow on photo */
+  }
+  #soul-photo .accent-line {
+    width: 80px; height: 4px; background: var(--sunset);
+    margin: 32px 0 0; box-shadow: 0 0 20px rgba(200,126,59,0.6);
+  }
+  #soul-photo .footer {
+    margin-top: 48px; padding-top: 22px;
+    border-top: 1px solid rgba(228,219,205,0.25);
+    color: rgba(228,219,205,0.95);
+  }
+
+  /* H — Fraunces Editorial Giant Quote (atmospheric gradient, type-as-art) */
+  #soul-quote {
+    background: radial-gradient(ellipse at 30% 20%, rgba(200,126,59,0.18) 0%, transparent 55%),
+                radial-gradient(ellipse at 80% 90%, rgba(79,142,186,0.20) 0%, transparent 60%),
+                var(--bg);
+  }
+  #soul-quote::before { opacity: 0.4; } /* softer scanlines */
+  #soul-quote .mark {
+    font-family: 'Fraunces', serif; font-style: italic;
+    font-size: 200px; line-height: 0.7; color: var(--accent);
+    opacity: 0.32; margin-top: -10px;
+  }
+  #soul-quote .quote {
+    font-family: 'Fraunces', serif; font-style: italic;
+    font-weight: 400; font-size: 100px; line-height: 1.05;
+    color: var(--dark); letter-spacing: -0.02em;
+    margin-top: 24px; max-width: 900px;
+  }
+  #soul-quote .quote strong {
+    font-weight: 400; color: var(--sunset);
+  }
+  #soul-quote .accent-divider {
+    width: 96px; height: 3px; background: var(--sunset);
+    margin-top: 56px;
+  }
+  #soul-quote .attribution {
+    margin-top: 24px;
+    font-family: 'JetBrains Mono', monospace; font-size: 18px;
+    color: var(--dark); opacity: 0.7; letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  #soul-quote .footer { margin-top: auto; }
+
+  /* I — Inverted Dark Mode (sea-blue radial glow, dramatic mood shift) */
+  #soul-dark {
+    background:
+      radial-gradient(ellipse at 70% 30%, rgba(79,142,186,0.35) 0%, transparent 55%),
+      radial-gradient(ellipse at 20% 90%, rgba(200,126,59,0.22) 0%, transparent 50%),
+      var(--dark);
+    color: var(--bg);
+  }
+  #soul-dark::before {
+    background: repeating-linear-gradient(0deg, transparent 0, transparent 1px, rgba(228,219,205,0.04) 1px, rgba(228,219,205,0.04) 2px);
+  }
+  #soul-dark .logo { color: var(--bg); }
+  #soul-dark .eyebrow { color: rgba(228,219,205,0.65); }
+  #soul-dark .eyebrow em { color: var(--sunset); font-style: normal; font-weight: 600; }
+  #soul-dark .headline {
+    color: var(--bg); font-size: 86px;
+    margin-top: 120px; line-height: 1.0;
+  }
+  #soul-dark .headline em {
+    font-family: 'Fraunces', serif; font-style: italic;
+    font-weight: 400; color: var(--sunset);
+  }
+  #soul-dark .body {
+    margin-top: 36px; color: rgba(228,219,205,0.85);
+    font-size: 26px; max-width: 820px;
+  }
+  #soul-dark .stat-line {
+    margin-top: 56px;
+    font-family: 'JetBrains Mono', monospace; font-size: 22px;
+    color: rgba(228,219,205,0.7); letter-spacing: 0.08em;
+    padding: 22px 28px; border-left: 4px solid var(--sunset);
+    background: rgba(228,219,205,0.04);
+  }
+  #soul-dark .stat-line strong {
+    color: var(--sunset); font-family: 'Manrope', sans-serif;
+    font-weight: 800; letter-spacing: 0;
+  }
+  #soul-dark .footer {
+    color: rgba(228,219,205,0.8);
+    border-top: 1px solid rgba(228,219,205,0.18);
+  }
+
+  /* list-czym-jest — Variant E List-driven, square 1080×1080 (article 18.05) */
+  #list-czym-jest .headline { font-size: 64px; margin-top: 60px; }
+  #list-czym-jest .body { margin-top: 28px; opacity: 0.78; font-size: 24px; }
+  #list-czym-jest .list { margin-top: 48px; display: flex; flex-direction: column; gap: 14px; }
+  #list-czym-jest .row {
+    display: flex; align-items: center; gap: 24px;
+    padding: 22px 26px; background: rgba(13,27,50,0.05);
+    border-left: 4px solid var(--accent);
+  }
+  #list-czym-jest .row .num {
+    font-family: 'JetBrains Mono', monospace; font-size: 16px;
+    color: var(--accent); letter-spacing: 0.16em;
+    min-width: 56px; flex-shrink: 0;
+  }
+  #list-czym-jest .row .name {
+    font-family: 'Manrope', sans-serif; font-weight: 800;
+    font-size: 28px; color: var(--dark);
+    min-width: 200px; flex-shrink: 0;
+  }
+  #list-czym-jest .row .desc {
+    font-family: 'Inter', sans-serif; font-size: 19px;
+    color: var(--dark); opacity: 0.75; line-height: 1.35;
+  }
+
+  /* bento-pillar — Variant F Bento-driven 2×2, square 1080×1080 (article 25.05 Pillar) */
+  #bento-pillar .headline { font-size: 60px; margin-top: 56px; }
+  #bento-pillar .body { margin-top: 24px; opacity: 0.78; font-size: 22px; }
+  #bento-pillar .bento {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+    margin-top: 48px;
+  }
+  #bento-pillar .card {
+    background: rgba(13,27,50,0.06); padding: 28px 30px; border-radius: 4px;
+    border: 1px solid rgba(13,27,50,0.14);
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  #bento-pillar .card .when {
+    font-family: 'JetBrains Mono', monospace; font-size: 13px;
+    color: var(--sunset); letter-spacing: 0.18em; text-transform: uppercase;
+  }
+  #bento-pillar .card .name {
+    font-family: 'Manrope', sans-serif; font-weight: 800;
+    font-size: 32px; color: var(--dark); line-height: 1.05;
+    letter-spacing: -0.02em;
+  }
+  #bento-pillar .card .desc {
+    font-family: 'Inter', sans-serif; font-size: 17px;
+    color: var(--dark); opacity: 0.75; line-height: 1.4;
+  }
+
+  /* linkedin-cover — 1584×396 banner, avatar safe zone left ~460px */
+  #linkedin-cover { padding: 0; flex-direction: row; }
+  #linkedin-cover .cover-content {
+    margin-left: 460px; flex: 1; height: 100%;
+    padding: 56px 64px 56px 0;
+    display: flex; flex-direction: column; justify-content: center;
+  }
+  #linkedin-cover .cover-eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 17px; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--dark); opacity: 0.65;
+  }
+  #linkedin-cover .cover-headline {
+    font-family: 'Manrope', sans-serif; font-weight: 800;
+    color: var(--dark); font-size: 64px; line-height: 1.04;
+    letter-spacing: -0.025em; margin-top: 16px;
+  }
+  #linkedin-cover .cover-headline em {
+    font-family: 'Fraunces', serif; font-style: italic;
+    font-weight: 400; color: var(--accent);
+  }
+  #linkedin-cover .cover-tagline {
+    margin-top: 24px;
+    font-family: 'JetBrains Mono', monospace; font-size: 18px;
+    color: var(--dark); opacity: 0.85; letter-spacing: 0.04em;
+  }
+  #linkedin-cover .cover-tagline strong {
+    font-weight: 600; color: var(--accent); opacity: 1;
   }
 
   /* quote-aiact — Variant B Data-driven (pattern interrupt vs Type-driven carousel) */
@@ -276,10 +472,123 @@
     </div>
   </section>
 
+  <section class="frame" id="soul-photo">
+    <div class="photo-bg"></div>
+    <div class="overlay"></div>
+    <div class="content">
+      <div class="logo">MJ.OLDAK</div>
+      <div class="eyebrow">manifest · 2026</div>
+      <h1 class="headline">Polskie biura<br>rachunkowe nie<br>potrzebują AI.<br>Potrzebują <em>czasu</em>.</h1>
+      <div class="accent-line"></div>
+      <div class="footer">
+        <span>mjoldak.pl</span>
+        <span>biuro@mjoldak.pl</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="frame" id="soul-quote">
+    <div class="logo">MJ.OLDAK</div>
+    <div class="eyebrow">edukacja · cytat z artykułu</div>
+    <div class="mark">"</div>
+    <h2 class="quote">Człowiek-w-pętli to nie ograniczenie agenta.<br>To <strong>jego największa</strong> przewaga.</h2>
+    <div class="accent-divider"></div>
+    <div class="attribution">— pillar 25.05.2026 · mjoldak.pl/artykuly</div>
+    <div class="footer">
+      <span>mjoldak.pl</span>
+      <span>Wrocław · Warszawa</span>
+    </div>
+  </section>
+
+  <section class="frame" id="soul-dark">
+    <div class="logo">MJ.OLDAK</div>
+    <div class="eyebrow">02.08.2026 · <em>AI Act</em> · pełne stosowanie</div>
+    <h2 class="headline">Twoje biuro to<br><em>high-risk system</em><br>w rozumieniu UE.</h2>
+    <div class="body">Dokumentacja, governance, human oversight. Nie sankcja — obowiązek.</div>
+    <div class="stat-line">
+      kary do <strong>35M EUR</strong> · deadline <strong>96 dni</strong>
+    </div>
+    <div class="footer">
+      <span>mjoldak.pl/artykuly/ai-act</span>
+      <span>cały artykuł →</span>
+    </div>
+  </section>
+
+  <section class="frame" id="list-czym-jest">
+    <div class="logo">MJ.OLDAK · NOWY ARTYKUŁ</div>
+    <div class="eyebrow">edukacja · 18.05.2026</div>
+    <h2 class="headline"><em>5 zastosowań</em><br>agenta AI w biurze<br>rachunkowym.</h2>
+    <div class="body">Co konkretnie automatyzuje, gdzie ma sens.</div>
+    <div class="list">
+      <div class="row"><span class="num">01</span><span class="name">OCR faktur</span><span class="desc">PDF / foto → dane strukturalne w 8 sekund</span></div>
+      <div class="row"><span class="num">02</span><span class="name">Email inbox</span><span class="desc">Klasyfikacja + szkice odpowiedzi do klientów</span></div>
+      <div class="row"><span class="num">03</span><span class="name">Deadliny</span><span class="desc">JPK · KSeF · ZUS · CIT — alert przed terminem</span></div>
+      <div class="row"><span class="num">04</span><span class="name">Raporty</span><span class="desc">PDF + email do klienta automatycznie</span></div>
+      <div class="row"><span class="num">05</span><span class="name">KSeF monitor</span><span class="desc">Status faktur, błędy, e-doręczenia</span></div>
+    </div>
+    <div class="footer">
+      <span>mjoldak.pl/artykuly</span>
+      <span>czytaj cały artykuł →</span>
+    </div>
+  </section>
+
+  <section class="frame" id="bento-pillar">
+    <div class="logo">MJ.OLDAK · PRZEWODNIK 2026</div>
+    <div class="eyebrow">edukacja · 25.05.2026</div>
+    <h2 class="headline"><em>4 presje</em> na biuro<br>rachunkowe w 2026.</h2>
+    <div class="body">KSeF, JPK_CIT, AI Act, deficyt kadrowy — jednocześnie.</div>
+    <div class="bento">
+      <div class="card">
+        <div class="when">01.04.2026</div>
+        <div class="name">KSeF<br>obowiązkowy</div>
+        <div class="desc">E-faktury dla wszystkich JDG/spółek powyżej progu</div>
+      </div>
+      <div class="card">
+        <div class="when">2026 · pełny rok</div>
+        <div class="name">JPK_CIT</div>
+        <div class="desc">Nowy schemat raportowania CIT do MF — tooling stack drift</div>
+      </div>
+      <div class="card">
+        <div class="when">02.08.2026</div>
+        <div class="name">AI Act<br>pełne stosowanie</div>
+        <div class="desc">High-risk classification — kary do 35M EUR za naruszenie</div>
+      </div>
+      <div class="card">
+        <div class="when">trend od 2024</div>
+        <div class="name">Deficyt<br>kadrowy</div>
+        <div class="desc">Brak juniorów, retencja seniorów, koszty pracy ↑</div>
+      </div>
+    </div>
+    <div class="footer">
+      <span>mjoldak.pl/artykuly</span>
+      <span>cały przewodnik →</span>
+    </div>
+  </section>
+
+  <section class="frame" id="linkedin-cover" data-w="1584" data-h="396">
+    <div class="cover-content">
+      <div class="cover-eyebrow">MJ.OLDAK · Wrocław / Warszawa</div>
+      <h1 class="cover-headline">Agencja AI dla polskich<br><em>biur rachunkowych</em>.</h1>
+      <div class="cover-tagline"><strong>→</strong> pilot za darmo · 4 tygodnie · mjoldak.pl</div>
+    </div>
+  </section>
+
   <script>
     const hash = window.location.hash.slice(1) || 'slide-1';
     const target = document.getElementById(hash);
-    if (target) target.classList.add('active');
+    if (target) {
+      target.classList.add('active');
+      // override html/body/frame dims if section declares custom size
+      const w = target.dataset.w, h = target.dataset.h;
+      if (w && h) {
+        document.documentElement.style.width = w + 'px';
+        document.documentElement.style.height = h + 'px';
+        document.body.style.width = w + 'px';
+        document.body.style.height = h + 'px';
+        target.style.setProperty('--fw', w + 'px');
+        target.style.setProperty('--fh', h + 'px');
+      }
+    }
     // signal fonts loaded for headless screenshot
     document.fonts.ready.then(() => { document.body.dataset.ready = 'true'; });
   </script>

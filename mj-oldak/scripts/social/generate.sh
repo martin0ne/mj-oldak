@@ -13,16 +13,20 @@ if [ ! -f "$CHROME" ]; then
   exit 1
 fi
 
-SLIDES=("slide-1" "slide-2" "slide-3" "slide-4" "slide-5" "square-aiact" "quote-aiact")
+SLIDES=("slide-1" "slide-2" "slide-3" "slide-4" "slide-5" "square-aiact" "quote-aiact" "list-czym-jest" "bento-pillar" "soul-photo" "soul-quote" "soul-dark" "linkedin-cover")
 
 for id in "${SLIDES[@]}"; do
-  echo "→ rendering $id"
+  case "$id" in
+    linkedin-cover) SIZE="1584,396" ;;
+    *) SIZE="1080,1080" ;;
+  esac
+  echo "→ rendering $id ($SIZE)"
   "$CHROME" \
     --headless=new \
     --disable-gpu \
     --hide-scrollbars \
     --no-sandbox \
-    --window-size=1080,1080 \
+    --window-size="$SIZE" \
     --virtual-time-budget=3000 \
     --allow-file-access-from-files \
     --screenshot="$OUT/$id.png" \
