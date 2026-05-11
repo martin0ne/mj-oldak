@@ -448,6 +448,17 @@ const description = 'Buduje AI agentów dla polskich biur rachunkowych: OCR fakt
     transition: background-image var(--transition-dur) ease;
     background-image: url('/photos/hero-5236.jpg');
   }
+  /* help-mock: OCR demo widget zamiast brand photo (sekcja 02 Pomagamy — Marcin pon 11.05 „chcę screenshot OCR Invoice Reader, nie zdjęcia") */
+  .help-photo.help-mock {
+    background-image: none !important;
+    background: color-mix(in srgb, var(--dark) 92%, transparent);
+    padding: 0; display: flex; align-items: stretch;
+    aspect-ratio: 4/3; max-height: 360px;
+  }
+  .help-photo.help-mock .help-screenshot {
+    margin: 0; flex: 1; min-height: 0;
+    border-radius: 28px; border: 1px solid rgba(255,255,255,0.10);
+  }
   .pain-list { list-style: none; }
   .pain-list li {
     padding: 12px 0; border-bottom: 1px solid color-mix(in srgb, var(--dark) 12%, transparent);
@@ -955,7 +966,32 @@ const description = 'Buduje AI agentów dla polskich biur rachunkowych: OCR fakt
     <p class="lede">Twoi pracownicy spędzają <strong>4-8 godzin dziennie</strong> na ręcznym wprowadzaniu faktur, klasyfikacji maili klientów, pilnowaniu deadline'ów <strong>VAT, ZUS, JPK_V7, KSeF</strong>. Polskie biura rachunkowe tracą tygodniowo <strong>25-40 godzin</strong> na powtarzalnej pracy. Agenci AI MJ.OLDAK redukują to do minut — dane z faktur za 8 sekund, automatyczne szkice maili w stylu Twojego biura, kalendarz podatkowy 2026 zsynchronizowany per klient.</p>
 
     <div class="help-grid">
-      <div class="help-photo" id="helpPhoto"></div>
+      <div class="help-photo help-mock" id="helpPhoto">
+        <div class="bento-screenshot help-screenshot">
+          <div class="titlebar"><span></span><span></span><span></span></div>
+          <div class="body">
+            <div class="ocr-demo">
+              <div class="ocr-doc">
+                <div class="ocr-doc-line"></div>
+                <div class="ocr-doc-line"></div>
+                <div class="ocr-doc-line"></div>
+                <div class="ocr-doc-line"></div>
+                <div class="ocr-doc-line"></div>
+              </div>
+              <div class="ocr-arrow">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>
+                <span class="arrow-label">8s</span>
+              </div>
+              <div class="ocr-fields">
+                <div class="row"><span class="key">NIP</span><span class="val">542-12-12-456</span></div>
+                <div class="row"><span class="key">Data</span><span class="val">07.05.2026</span></div>
+                <div class="row"><span class="key">Netto</span><span class="val">2 450,00 zł</span></div>
+                <div class="row"><span class="key">VAT 23%</span><span class="val">563,50 zł</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
       <ul class="pain-list">
         <li><span class="ic">01</span><span><strong>OCR faktur PDF/zdjęcie</strong> → dane strukturalne za 8 sekund. Zero ręcznego przepisywania.</span></li>
         <li><span class="ic">02</span><span><strong>Klasyfikacja maili klientów</strong> + szkice odpowiedzi. Skrzynka pod kontrolą.</span></li>
