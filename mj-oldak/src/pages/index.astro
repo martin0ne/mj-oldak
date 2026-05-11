@@ -574,7 +574,7 @@ const description = 'Buduje AI agentów dla polskich biur rachunkowych: OCR fakt
     font-size: 10px;
   }
   .bento-screenshot .body.placeholder::before {
-    content: 'mockup · placeholder · do zrobienia w peacetime';
+    content: 'Live u Ciebie podczas pilotu';
     position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%);
     font-family: 'JetBrains Mono'; font-size: 9px; letter-spacing: 0.18em;
     text-transform: uppercase; opacity: 0.4;
@@ -701,7 +701,7 @@ const description = 'Buduje AI agentów dla polskich biur rachunkowych: OCR fakt
   .station .num {
     font-family: 'Manrope'; font-weight: 800; font-size: 56px; line-height: 1;
     letter-spacing: -0.03em; color: var(--dark);
-    opacity: 0.4;
+    opacity: 0.7;
     transition: opacity 0.3s, color var(--transition-dur) ease;
   }
   .station.active .num, .station:hover .num { opacity: 1; }
@@ -709,17 +709,18 @@ const description = 'Buduje AI agentów dla polskich biur rachunkowych: OCR fakt
   .station .label {
     font-family: 'JetBrains Mono', monospace; font-size: 12px;
     text-transform: uppercase; letter-spacing: 0.2em; margin-top: 16px;
-    color: var(--dark); opacity: 0.55;
+    color: var(--dark); opacity: 0.85;
     transition: opacity 0.3s;
   }
   .station.active .label, .station:hover .label { opacity: 1; }
   .station .desc {
-    font-family: 'Inter'; font-size: 13px; line-height: 1.45; opacity: 0;
-    margin-top: 10px; max-height: 0; overflow: hidden;
-    transition: opacity 0.4s, max-height 0.4s;
+    font-family: 'Inter'; font-size: 13px; line-height: 1.5; opacity: 0.72;
+    margin-top: 10px; max-height: 120px;
+    color: var(--dark);
+    transition: opacity 0.4s;
   }
   .station.active .desc, .station:hover .desc {
-    opacity: 0.78; max-height: 100px;
+    opacity: 0.95;
   }
 
   /* ── Section 05 — Pilot CTA ── */
@@ -848,6 +849,19 @@ const description = 'Buduje AI agentów dla polskich biur rachunkowych: OCR fakt
     section.story { padding: 110px 24px 60px; }
     .nav { padding: 6px 6px 6px 16px; gap: 4px; font-size: 11px; overflow-x: auto; }
     .nav-links { display: none; }
+  }
+
+  /* Phone-specific fine-tune (≤480px) — fix hero overflow + nav cramped */
+  @media (max-width: 480px) {
+    .nav { padding: 5px 5px 5px 12px; font-size: 10px; gap: 3px; }
+    .nav .cta-nav { padding: 6px 10px; font-size: 10px; }
+    .hero h1 { font-size: clamp(32px, 9vw, 56px); }
+    .hero-text-block { padding: 20px 20px 24px 24px; margin-left: -24px; max-width: calc(100vw - 8px); }
+    .hero h1 em { letter-spacing: -0.01em; }
+    section.story { padding: 80px 18px 48px; }
+    section.story h2.section-title { font-size: clamp(28px, 7vw, 40px); word-wrap: break-word; }
+    .station .num { font-size: 42px; }
+    .station .desc { font-size: 12px; }
   }
 
   /* Compliance — newsletter inline (home) */
@@ -1263,13 +1277,13 @@ const description = 'Buduje AI agentów dla polskich biur rachunkowych: OCR fakt
     </div>
     <div class="footer-bar">
       <span>MJ.OLDAK · 2026 · <a href="https://www.mjoldak.pl" target="_blank" rel="noopener" style="border-bottom: 1px dotted currentColor;">www.mjoldak.pl</a></span>
-      <span>build: preview · sandbox</span>
+      <span>biuro@mjoldak.pl</span>
     </div>
   </div>
 </section>
 
-<!-- HUD (carousel info) -->
-<div class="hud">
+<!-- HUD (carousel info) — dev-only, hidden on production -->
+<div class="hud" style="display:none">
   <div class="lbl">Aktualne zdjęcie</div>
   <div class="row">
     <span id="hudName">0798</span>
