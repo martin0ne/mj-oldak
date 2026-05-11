@@ -490,20 +490,21 @@ const description = 'Buduje AI agentów dla polskich biur rachunkowych: OCR fakt
   .products-bento[data-expand="deadline"] { grid-template-columns: 2.5fr 1fr; grid-template-rows: 1fr 2.3fr; }
   .products-bento[data-expand="reporting"]{ grid-template-columns: 1fr 2.5fr; grid-template-rows: 1fr 2.3fr; }
   .bento-card { transition: border-color var(--transition-dur) ease, transform 0.4s cubic-bezier(.4,1.2,.5,1), box-shadow var(--transition-dur) ease, opacity 0.4s; }
-  .products-bento[data-expand] .bento-card:not(.expanded) { opacity: 0.55; }
+  .products-bento[data-expand] .bento-card:not(.expanded) { opacity: 0.78; }
   .bento-card.expanded {
     border-color: var(--accent);
     box-shadow: 0 24px 64px color-mix(in srgb, var(--accent) 35%, transparent);
+    background: rgba(13, 27, 50, 0.95) !important;
   }
   .bento-card .b-extra { display: none; margin-top: 14px; padding-top: 14px; border-top: 1px solid color-mix(in srgb, var(--primary) 14%, transparent); }
   .bento-card.expanded .b-extra { display: block; }
   .bento-card .b-extra h5 {
-    font-family: 'JetBrains Mono'; font-size: 10px; letter-spacing: 0.25em;
-    text-transform: uppercase; opacity: 0.55; margin-bottom: 8px;
+    font-family: 'JetBrains Mono'; font-size: 11px; letter-spacing: 0.22em;
+    text-transform: uppercase; opacity: 0.95; margin-bottom: 10px; color: var(--accent);
   }
   .bento-card .b-extra ul {
-    list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 4px 18px;
-    font-family: 'Inter'; font-size: 13px;
+    list-style: none; display: grid; grid-template-columns: 1fr; gap: 8px;
+    font-family: 'Inter'; font-size: 14px;
   }
   .bento-card .b-extra ul li { padding: 4px 0; opacity: 0.88; display: grid; grid-template-columns: auto 1fr; gap: 10px; }
   .bento-card .b-extra ul li::before { content: '▸'; color: var(--accent); font-family: 'JetBrains Mono'; }
