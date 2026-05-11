@@ -46,14 +46,14 @@ const description = 'Buduje AI agentów dla polskich biur rachunkowych: OCR fakt
   body.shader-mode .hero .shader-bg { opacity: 1; pointer-events: auto; }
   body.shader-mode .hero { background-image: none !important; }
   body.shader-mode .hero::after { opacity: 0.4; }
-  /* Sections niżej: shader visible jako ambient ZAWSZE + cursor reactions ON */
-  section.story.light .shader-bg { opacity: 0.32; pointer-events: auto; }
-  section.story.dark .shader-bg, .pilot-section .shader-bg, .contact .shader-bg { opacity: 0.7; pointer-events: auto; }
-  /* W shader-mode section ambient się boostuje */
-  body.shader-mode section.story.light .shader-bg { opacity: 0.85; }
+  /* Sections niżej: shader visible jako ambient ZAWSZE, cursor reactions OFF default (fix hover-induced lag — shader iframes mają mousemove handlers + pointer-events:auto = freeze-resume jank gdy mouse hover na child elements bento/stations) */
+  section.story.light .shader-bg { opacity: 0.32; pointer-events: none; }
+  section.story.dark .shader-bg, .pilot-section .shader-bg, .contact .shader-bg { opacity: 0.7; pointer-events: none; }
+  /* W shader-mode section ambient się boostuje + cursor reactivity ON (świadome user opt-in via SHADER toggle pill) */
+  body.shader-mode section.story.light .shader-bg { opacity: 0.85; pointer-events: auto; }
   body.shader-mode section.story.dark .shader-bg,
   body.shader-mode .pilot-section .shader-bg,
-  body.shader-mode .contact .shader-bg { opacity: 1; }
+  body.shader-mode .contact .shader-bg { opacity: 1; pointer-events: auto; }
 
   /* SCRIM behind content — SUBTLE, only contrast booster, NIE bleach */
   section.story::before, .contact::before {
