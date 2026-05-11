@@ -10,13 +10,14 @@ interface Env {
   RESEND_API_KEY: string;
   NEWSLETTER_FROM_EMAIL: string;
   PUBLIC_SITE_URL: string;
+  CONTACT_NOTIFICATION_TO?: string; // override default (use for Resend sandbox / pre-domain-verify)
 }
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const CONSENT_VERSION = '2026-05-08-v1';
 const RATE_LIMIT_COUNT = 5;
 const RATE_LIMIT_MINUTES = 10;
-const NOTIFICATION_TO = 'biuro@mjoldak.pl';
+const DEFAULT_NOTIFICATION_TO = 'biuro@mjoldak.pl';
 const MAX_NAME = 200;
 const MAX_MSG = 5000;
 
@@ -72,6 +73,8 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
     const html = renderForwardEmail({ name, email, message, source, ip, ua });
     const text = `Imię/biuro: ${name}\nEmail: ${email}\n\n${message}\n\n--\nSource: ${source}\nIP: ${ip}\nConsent: ${CONSENT_VERSION}`;
 
+    const notificationTo = env.CONTACT_NOTIFICATION_TO || DEFAULT_NOTIFICATION_TO;
+
     const resendResp = await fetch('https://api.resend.com/emails', {
       method: 'POST',
       headers: {
@@ -80,7 +83,7 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
       },
       body: JSON.stringify({
         from: env.NEWSLETTER_FROM_EMAIL,
-        to: NOTIFICATION_TO,
+        to: notificationTo,
         reply_to: email,
         subject: `[mjoldak.pl] Kontakt: ${name.slice(0, 80)}`,
         html,
