@@ -505,8 +505,25 @@ const description = 'Buduje AI agentów dla polskich biur rachunkowych: OCR fakt
     list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 4px 18px;
     font-family: 'Inter'; font-size: 13px;
   }
-  .bento-card .b-extra ul li { padding: 4px 0; opacity: 0.78; display: grid; grid-template-columns: auto 1fr; gap: 10px; }
+  .bento-card .b-extra ul li { padding: 4px 0; opacity: 0.88; display: grid; grid-template-columns: auto 1fr; gap: 10px; }
   .bento-card .b-extra ul li::before { content: '▸'; color: var(--accent); font-family: 'JetBrains Mono'; }
+  .bento-card .b-extra ul li strong { color: var(--accent); font-weight: 700; }
+  .bento-card .b-extra .b-extra-desc {
+    font-family: 'Inter'; font-size: 14px; line-height: 1.5;
+    opacity: 0.9; margin: 0 0 4px 0; color: inherit;
+  }
+  /* Expand affordance — „+" w prawym górnym (klient widzi że karta klikalna) */
+  .bento-card::after {
+    content: '+';
+    position: absolute; top: 16px; right: 20px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 24px; font-weight: 200; line-height: 1;
+    color: var(--accent); opacity: 0.55;
+    transition: opacity 0.3s, transform 0.3s, color 0.3s;
+    pointer-events: none;
+  }
+  .bento-card:hover::after { opacity: 1; transform: scale(1.25); }
+  .bento-card.expanded::after { content: '−'; opacity: 1; transform: scale(1.1); color: var(--sunset); }
   .bento-card {
     border-radius: 22px; padding: 22px 24px;
     position: relative; overflow: hidden;
@@ -1025,10 +1042,10 @@ const description = 'Buduje AI agentów dla polskich biur rachunkowych: OCR fakt
           <span class="b-badge">Live u klienta</span>
           <p class="b-desc">Faktura PDF/zdjęcie → dane strukturalne za 8s. JSON do Comarch / Optima / iFirma.</p>
           <div class="b-extra">
-            <h5>Co dostajesz dziś</h5>
-            <ul><li>Azure Document Intelligence</li><li>Claude post-processing</li><li>PL VAT, NIP walidacja</li><li>API + UI do biura</li></ul>
-            <h5 style="margin-top:14px">Roadmap · planowane</h5>
-            <ul><li>Auto-import do Comarch</li><li>JPK detection</li><li>Faktura korygująca</li></ul>
+            <h5>Co to za program</h5>
+            <p class="b-extra-desc">Odczytuje faktury PDF, JPG, skany. Zamiast 5 minut ręcznego przepisywania w Comarch / Optima — 8 sekund + JSON gotowy do importu.</p>
+            <h5 style="margin-top:14px">Jak pomaga w życiu</h5>
+            <ul><li>Oszczędzasz <strong>40h miesięcznie</strong> na ręcznym przepisywaniu</li><li>Auto-walidacja NIP + kwoty VAT — eliminujesz literówki w księgowości</li><li>Bez kopiuj-wklej — JSON od razu do Comarch / Optima / iFirma</li><li>Twoja księgowa skupia się na klientach, NIE na klawiaturze</li></ul>
           </div>
         </div>
         <div class="bento-screenshot">
@@ -1063,10 +1080,10 @@ const description = 'Buduje AI agentów dla polskich biur rachunkowych: OCR fakt
           <span class="b-badge">Beta</span>
           <p class="b-desc">Klasyfikacja maili klientów + automatyczne szkice + Gmail/Calendar.</p>
           <div class="b-extra">
-            <h5>Co dostajesz dziś</h5>
-            <ul><li>Auto-klasyfikacja folderów</li><li>AI szkice odpowiedzi</li><li>Gmail/Calendar sync</li><li>Reguły per klient</li></ul>
-            <h5 style="margin-top:14px">Roadmap</h5>
-            <ul><li>Outlook 365</li><li>SMS bridge</li><li>Per-klient ton-of-voice</li></ul>
+            <h5>Co to za program</h5>
+            <p class="b-extra-desc">Twoja skrzynka mailowa pod kontrolą — AI sortuje maile (klient / US / ZUS / spam), pisze szkice odpowiedzi w Twoim tonie, synchronizuje z Gmail i kalendarzem.</p>
+            <h5 style="margin-top:14px">Jak pomaga w życiu</h5>
+            <ul><li><strong>4h dziennie na obsługę maili → 1h</strong> (3h zaoszczędzone na klienta lub odpoczynek)</li><li>Mail od US / ZUS / klienta segregowany automatycznie — żaden nie czeka 3 dni</li><li>Szkice odpowiedzi gotowe — klikasz „wyślij" zamiast pisać od zera</li><li>Klient czuje że szybko reagujesz — buduje zaufanie</li></ul>
           </div>
         </div>
         <div class="bento-screenshot">
@@ -1081,10 +1098,10 @@ const description = 'Buduje AI agentów dla polskich biur rachunkowych: OCR fakt
           <span class="b-badge">Pilot</span>
           <p class="b-desc">VAT, JPK, KSeF — przypomnienia per klient.</p>
           <div class="b-extra">
-            <h5>Co dostajesz dziś</h5>
-            <ul><li>Kalendarz podatkowy 2026</li><li>Per-klient timeline</li><li>KSeF tracking</li><li>Email + SMS reminder</li></ul>
-            <h5 style="margin-top:14px">Roadmap</h5>
-            <ul><li>KSeF API live</li><li>SMS gateway PL</li><li>Auto-fill VAT-7 prep</li></ul>
+            <h5>Co to za program</h5>
+            <p class="b-extra-desc">Kalendarz podatkowy 2026 zsynchronizowany per klient. VAT, JPK_V7, KSeF, ZUS, CIT — przypomnienie zanim klient zadzwoni z pretensją.</p>
+            <h5 style="margin-top:14px">Jak pomaga w życiu</h5>
+            <ul><li><strong>Zero przegapionych deadline'ów</strong> = zero kar US dla Twoich klientów</li><li>Klient widzi że nad nim panujesz — łatwiej Cię polecać innym</li><li>SMS / email 7 dni przed terminem — Ty wiesz pierwszy, klient drugi</li><li>Spokojna głowa: nawet jeśli zapomnisz, system pamięta</li></ul>
           </div>
         </div>
         <div class="bento-screenshot">
@@ -1099,10 +1116,10 @@ const description = 'Buduje AI agentów dla polskich biur rachunkowych: OCR fakt
           <span class="b-badge">Pilot</span>
           <p class="b-desc">Raporty klientowskie auto-PDF + email. Bez Excela.</p>
           <div class="b-extra">
-            <h5>Co dostajesz dziś</h5>
-            <ul><li>PDF auto-generated</li><li>Email do klienta</li><li>Miesięczne podsumowanie</li><li>Brand klienta na PDF</li></ul>
-            <h5 style="margin-top:14px">Roadmap</h5>
-            <ul><li>Charts &amp; wykresy</li><li>Comarch/Optima sync</li><li>WhatsApp delivery</li></ul>
+            <h5>Co to za program</h5>
+            <p class="b-extra-desc">Generuje miesięczne raporty PDF z danych księgowych. Bez Excela, bez kopiuj-wklej, bez wieczornej pracy w piątek. Email do klienta automatycznie.</p>
+            <h5 style="margin-top:14px">Jak pomaga w życiu</h5>
+            <ul><li><strong>Raport dla klienta w 2 minuty</strong> zamiast 2 godziny szukania w Excelu</li><li>Profesjonalny format Twojego biura — klient czuje że płaci za „value-added service"</li><li>Email automatycznie 5. dnia miesiąca — klient widzi punktualność</li><li>Łatwiej wytłumaczyć cennik — „tu masz raport, oto wartość"</li></ul>
           </div>
         </div>
         <div class="bento-screenshot">
