@@ -47,7 +47,7 @@ const description = 'Buduje AI agentów dla polskich biur rachunkowych: OCR fakt
   body.shader-mode .hero { background-image: none !important; }
   body.shader-mode .hero::after { opacity: 0.4; }
   /* Sections niżej: shader visible jako ambient ZAWSZE + cursor reactions ON */
-  section.story.light .shader-bg { opacity: 0.55; pointer-events: auto; }
+  section.story.light .shader-bg { opacity: 0.32; pointer-events: auto; }
   section.story.dark .shader-bg, .pilot-section .shader-bg, .contact .shader-bg { opacity: 0.7; pointer-events: auto; }
   /* W shader-mode section ambient się boostuje */
   body.shader-mode section.story.light .shader-bg { opacity: 0.85; }
@@ -499,8 +499,10 @@ const description = 'Buduje AI agentów dla polskich biur rachunkowych: OCR fakt
   .bento-card {
     border-radius: 22px; padding: 22px 24px;
     position: relative; overflow: hidden;
-    border: 1px solid color-mix(in srgb, var(--primary) 14%, transparent);
-    background: color-mix(in srgb, var(--primary) 5%, transparent);
+    border: 1px solid color-mix(in srgb, var(--primary) 22%, transparent);
+    background: color-mix(in srgb, var(--dark) 78%, transparent);
+    backdrop-filter: blur(20px) saturate(1.4);
+    -webkit-backdrop-filter: blur(20px) saturate(1.4);
     transition: border-color var(--transition-dur) ease, transform 0.4s cubic-bezier(.4,1.4,.5,1), box-shadow var(--transition-dur) ease;
     cursor: pointer;
     display: flex; flex-direction: column; justify-content: space-between;
@@ -509,12 +511,13 @@ const description = 'Buduje AI agentów dla polskich biur rachunkowych: OCR fakt
   .bento-card:hover {
     border-color: var(--accent);
     transform: translateY(-4px) scale(1.01);
-    box-shadow: 0 20px 56px color-mix(in srgb, var(--accent) 25%, transparent);
+    box-shadow: 0 20px 56px color-mix(in srgb, var(--accent) 28%, transparent);
+    background: color-mix(in srgb, var(--dark) 88%, transparent);
   }
-  .bento-card[data-area="ocr"]      { grid-area: ocr; background: linear-gradient(160deg, color-mix(in srgb, var(--accent) 22%, transparent), color-mix(in srgb, var(--primary) 6%, transparent)); }
-  .bento-card[data-area="email"]    { grid-area: email; background: linear-gradient(200deg, color-mix(in srgb, var(--accent) 12%, transparent), color-mix(in srgb, var(--primary) 5%, transparent)); }
-  .bento-card[data-area="deadline"] { grid-area: deadline; background: linear-gradient(180deg, color-mix(in srgb, var(--sunset) 10%, transparent), color-mix(in srgb, var(--primary) 4%, transparent)); }
-  .bento-card[data-area="reporting"]{ grid-area: reporting; background: linear-gradient(200deg, color-mix(in srgb, var(--sunset) 14%, transparent), color-mix(in srgb, var(--primary) 5%, transparent)); }
+  .bento-card[data-area="ocr"]      { grid-area: ocr; background: linear-gradient(160deg, color-mix(in srgb, var(--accent) 32%, color-mix(in srgb, var(--dark) 80%, transparent)), color-mix(in srgb, var(--dark) 85%, transparent)); }
+  .bento-card[data-area="email"]    { grid-area: email; background: linear-gradient(200deg, color-mix(in srgb, var(--accent) 22%, color-mix(in srgb, var(--dark) 80%, transparent)), color-mix(in srgb, var(--dark) 85%, transparent)); }
+  .bento-card[data-area="deadline"] { grid-area: deadline; background: linear-gradient(180deg, color-mix(in srgb, var(--sunset) 20%, color-mix(in srgb, var(--dark) 80%, transparent)), color-mix(in srgb, var(--dark) 85%, transparent)); }
+  .bento-card[data-area="reporting"]{ grid-area: reporting; background: linear-gradient(200deg, color-mix(in srgb, var(--sunset) 25%, color-mix(in srgb, var(--dark) 80%, transparent)), color-mix(in srgb, var(--dark) 85%, transparent)); }
 
   .bento-card .b-num {
     font-family: 'JetBrains Mono', monospace; font-size: 10px; opacity: 0.55;
