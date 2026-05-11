@@ -9,12 +9,11 @@ database_id = "c1d7109b-bf50-4cf6-a129-dc99deeab471"
 
 [vars]
 PUBLIC_SITE_URL = "https://mjoldak.pl"
-NEWSLETTER_FROM_EMAIL = "onboarding@resend.dev"
-# ↑ Switch to "noreply@mjoldak.pl" after Resend domain verify completes
-CONTACT_NOTIFICATION_TO = "marcin.oldak00@gmail.com"
-# ↑ Resend sandbox mode (pre-domain-verify): forward contact form to Marcin's
-# registered Resend account email. After domain verify completes: switch to
-# "biuro@mjoldak.pl" (or unset for fallback to default biuro@mjoldak.pl).
+NEWSLETTER_FROM_EMAIL = "noreply@mjoldak.pl"
+# ↑ mjoldak.pl domain verified in Resend 2026-05-11 13:19 (DKIM + SPF MX + SPF TXT).
+# Sandbox mode OFF: can send from noreply@mjoldak.pl to any recipient.
+# CONTACT_NOTIFICATION_TO removed — fallback DEFAULT_NOTIFICATION_TO = biuro@mjoldak.pl
+# in functions/api/contact/submit.ts now works (no sandbox restriction).
 
 # Secrets (set via CF dashboard Pages → Settings → Variables and Secrets → +Add):
 #   RESEND_API_KEY = re_xxx (encrypted, from resend.com → API Keys → Create)
