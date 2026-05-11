@@ -68,7 +68,13 @@ addEventListener('click', e => {
 });
 
 let t = 0;
+let paused = false;
+addEventListener('message', e => {
+  if (e.data === 'shader-pause') paused = true;
+  else if (e.data === 'shader-resume' && paused) { paused = false; frame(); }
+});
 function frame() {
+  if (paused) return;
   t += 0.006;
 
   // base wash

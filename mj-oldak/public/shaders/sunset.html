@@ -39,7 +39,13 @@ let mx=0.5, my=0.5, tx=0.5, ty=0.5;
 addEventListener('mousemove', e => { tx = e.clientX/innerWidth; ty = e.clientY/innerHeight; });
 
 let t = 0;
+let paused = false;
+addEventListener('message', e => {
+  if (e.data === 'shader-pause') paused = true;
+  else if (e.data === 'shader-resume' && paused) { paused = false; frame(); }
+});
 function frame(){
+  if (paused) return;
   t += 0.008;
   // smooth follow
   mx += (tx - mx) * 0.06;

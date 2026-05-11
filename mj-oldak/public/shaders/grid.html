@@ -51,7 +51,13 @@ addEventListener('click', e => ripples.push({ x: e.clientX*DPR, y: e.clientY*DPR
 const S = 28*DPR; // grid spacing
 
 let t = 0;
+let paused = false;
+addEventListener('message', e => {
+  if (e.data === 'shader-pause') paused = true;
+  else if (e.data === 'shader-resume' && paused) { paused = false; frame(); }
+});
 function frame(){
+  if (paused) return;
   t += 1;
 
   ctx.fillStyle = '#0D1B32';
