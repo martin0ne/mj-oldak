@@ -10,14 +10,21 @@
     <h2>Pisz, dzwoń,<br>spotykajmy się.</h2>
 
     <div class="contact-split">
-      <form class="pilot-form contact-form" onsubmit="event.preventDefault(); window.location.href='mailto:biuro@mjoldak.pl?subject=' + encodeURIComponent('Kontakt z mjoldak.pl') + '&body=' + encodeURIComponent((this.elements[0].value ? 'Imię: ' + this.elements[0].value + '\n' : '') + (this.elements[1].value ? 'Email: ' + this.elements[1].value + '\n\n' : '') + (this.elements[2].value || ''));">
-        <label>Imię i biuro</label>
-        <input type="text" placeholder="Anna Kowalska, Biuro Rachunkowe XYZ" />
-        <label>Email</label>
-        <input type="email" placeholder="anna@biuro.pl" />
-        <label>O czym chcesz pogadać (1 zdanie)</label>
-        <textarea rows="3" placeholder="Np. szukamy konsultacji w sprawie OCR faktur..."></textarea>
-        <button type="submit" class="cta" style="margin-top: 12px; width: 100%; justify-content: center; border: 0;">Wyślij wiadomość →</button>
+      <form class="pilot-form contact-form" id="contact-form" novalidate>
+        <label for="cf-name">Imię i biuro</label>
+        <input id="cf-name" name="name" type="text" required maxlength="200" placeholder="Anna Kowalska, Biuro Rachunkowe XYZ" />
+        <label for="cf-email">Email</label>
+        <input id="cf-email" name="email" type="email" required placeholder="anna@biuro.pl" />
+        <label for="cf-message">O czym chcesz pogadać (1 zdanie)</label>
+        <textarea id="cf-message" name="message" rows="3" required maxlength="5000" placeholder="Np. szukamy konsultacji w sprawie OCR faktur..."></textarea>
+        {/* Honeypot — boty wypełniają, ludzie nie. Hidden via inline style + tabindex/autocomplete off */}
+        <input type="text" name="website" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;" aria-hidden="true" />
+        <label class="cf-consent">
+          <input type="checkbox" id="cf-consent" name="consent" required />
+          <span>Akceptuję <a href="/polityka-prywatnosci/" target="_blank" rel="noopener">politykę prywatności</a>. Twoje dane (imię, email, treść) trafiają do biuro@mjoldak.pl i są przechowywane do momentu odpowiedzi (max 24 mies). RODO Art. 6 ust. 1 lit. b — działania przed zawarciem umowy.</span>
+        </label>
+        <button type="submit" id="cf-submit" class="cta" style="margin-top: 16px; width: 100%; justify-content: center; border: 0;">Wyślij wiadomość →</button>
+        <div id="cf-status" class="cf-status" role="status" aria-live="polite"></div>
       </form>
 
       <div class="contact-info">
@@ -138,6 +145,28 @@
     outline: none; border-color: var(--accent-cs);
     box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent-cs) 25%, transparent);
   }
+  .cf-consent {
+    display: flex; align-items: flex-start; gap: 10px; margin: 8px 0 0;
+    font-family: 'Inter', sans-serif; font-size: 12px; line-height: 1.5;
+    color: rgba(255,255,255,0.72); cursor: pointer;
+  }
+  .cf-consent input[type="checkbox"] {
+    width: 16px; height: 16px; margin: 3px 0 0; flex-shrink: 0;
+    accent-color: var(--accent-cs); cursor: pointer;
+  }
+  .cf-consent a {
+    color: rgba(255,255,255,0.95); text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .cf-consent a:hover { color: var(--accent-cs); }
+  .cf-status {
+    margin-top: 12px; padding: 0; min-height: 1.4em;
+    font-family: 'JetBrains Mono', monospace; font-size: 12px;
+    color: rgba(255,255,255,0.85); letter-spacing: 0.04em;
+  }
+  .cf-status.success { color: #7FBF7F; }
+  .cf-status.error { color: #E89A7F; }
+  .pilot-form button[disabled] { opacity: 0.5; cursor: not-allowed; }
   .contact-info { display: flex; flex-direction: column; gap: 24px; color: #fff; }
   .contact-grid {
     display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px;
@@ -187,3 +216,73 @@
     .footer-bar { flex-direction: column; gap: 8px; }
   }
 </style>
+
+<script>
+  const form = document.getElementById('contact-form') as HTMLFormElement | null;
+  const status = document.getElementById('cf-status') as HTMLDivElement | null;
+  const submitBtn = document.getElementById('cf-submit') as HTMLButtonElement | null;
+
+  if (form && status && submitBtn) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const fd = new FormData(form);
+      const name = (fd.get('name') as string || '').trim();
+      const email = (fd.get('email') as string || '').trim();
+      const message = (fd.get('message') as string || '').trim();
+      const consent = fd.get('consent') === 'on';
+      const website = fd.get('website') as string || ''; // honeypot
+
+      if (!name || !email || !message) {
+        status.textContent = 'Wypełnij wszystkie pola.';
+        status.className = 'cf-status error';
+        return;
+      }
+      if (!consent) {
+        status.textContent = 'Zaakceptuj politykę prywatności.';
+        status.className = 'cf-status error';
+        return;
+      }
+
+      submitBtn.disabled = true;
+      status.textContent = 'Wysyłam…';
+      status.className = 'cf-status';
+
+      try {
+        const resp = await fetch('/api/contact/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name, email, message, consent: true, website,
+            source: window.location.pathname,
+          }),
+        });
+
+        if (resp.ok) {
+          form.reset();
+          status.textContent = '✓ Wysłane. Odpowiem w ciągu 24h na ' + email + '.';
+          status.className = 'cf-status success';
+          submitBtn.disabled = false;
+          setTimeout(() => { if (status) { status.textContent = ''; status.className = 'cf-status'; } }, 12000);
+          return;
+        }
+
+        if (resp.status === 429) {
+          const data = await resp.json().catch(() => ({}));
+          status.textContent = data.error || 'Zbyt wiele wiadomości. Spróbuj za chwilę.';
+          status.className = 'cf-status error';
+          submitBtn.disabled = false;
+          return;
+        }
+
+        const data = await resp.json().catch(() => ({}));
+        status.textContent = data.error || 'Coś poszło nie tak. Napisz bezpośrednio: biuro@mjoldak.pl';
+        status.className = 'cf-status error';
+        submitBtn.disabled = false;
+      } catch (err) {
+        status.textContent = 'Błąd połączenia. Napisz bezpośrednio: biuro@mjoldak.pl';
+        status.className = 'cf-status error';
+        submitBtn.disabled = false;
+      }
+    });
+  }
+</script>

@@ -850,6 +850,48 @@ const description = 'Buduje AI agentów dla polskich biur rachunkowych: OCR fakt
     .nav-links { display: none; }
   }
 
+  /* Compliance — newsletter inline (home) */
+  .nl-consent {
+    display: flex; align-items: flex-start; gap: 8px; margin-top: 10px;
+    font-family: 'Inter', sans-serif; font-size: 11px; line-height: 1.45;
+    color: rgba(13,27,50,0.62); cursor: pointer;
+  }
+  .nl-consent input[type="checkbox"] {
+    width: 14px; height: 14px; margin: 2px 0 0; flex-shrink: 0;
+    accent-color: var(--accent); cursor: pointer;
+  }
+  .nl-consent a { color: var(--dark); text-decoration: underline; text-underline-offset: 2px; }
+  .nl-consent a:hover { color: var(--accent); }
+  .nl-status {
+    margin-top: 8px; min-height: 1.2em;
+    font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--dark);
+    letter-spacing: 0.04em;
+  }
+  .nl-status.success { color: #2F8C5A; }
+  .nl-status.error { color: #C44A1F; }
+  .newsletter-inline button[disabled] { opacity: 0.5; cursor: not-allowed; }
+
+  /* Compliance — contact form (home, sec 07) */
+  .cf-consent-home {
+    display: flex; align-items: flex-start; gap: 10px; margin: 8px 0 0;
+    font-family: 'Inter', sans-serif; font-size: 12px; line-height: 1.5;
+    color: rgba(255,255,255,0.72); cursor: pointer;
+  }
+  .cf-consent-home input[type="checkbox"] {
+    width: 16px; height: 16px; margin: 3px 0 0; flex-shrink: 0;
+    accent-color: var(--accent); cursor: pointer;
+  }
+  .cf-consent-home a { color: rgba(255,255,255,0.95); text-decoration: underline; text-underline-offset: 2px; }
+  .cf-consent-home a:hover { color: var(--accent); }
+  .cfh-status {
+    margin-top: 12px; min-height: 1.4em;
+    font-family: 'JetBrains Mono', monospace; font-size: 12px;
+    color: rgba(255,255,255,0.85); letter-spacing: 0.04em;
+  }
+  .cfh-status.success { color: #7FBF7F; }
+  .cfh-status.error { color: #E89A7F; }
+  .pilot-form button[disabled] { opacity: 0.5; cursor: not-allowed; }
+
 </style>
 
 
@@ -1129,12 +1171,18 @@ const description = 'Buduje AI agentów dla polskich biur rachunkowych: OCR fakt
     </div>
     <div style="margin-top: 32px; display: flex; justify-content: space-between; align-items: center; gap: 32px; flex-wrap: wrap;">
       <a href="/artykuly/" class="cta cta-light magnet">Wszystkie artykuły →</a>
-      <form class="newsletter-inline" onsubmit="event.preventDefault(); alert('Preview — form aktywny na live.')">
+      <form class="newsletter-inline" id="nl-inline-form" novalidate>
         <span class="nl-label">Newsletter — case study + obserwacje co miesiąc</span>
         <div class="nl-row">
-          <input type="email" placeholder="twój@email.pl" required>
-          <button type="submit" class="cta magnet">Zapisz się →</button>
+          <input type="email" name="email" placeholder="twój@email.pl" required>
+          <button type="submit" id="nl-inline-submit" class="cta magnet">Zapisz się →</button>
         </div>
+        <input type="text" name="website" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;" aria-hidden="true">
+        <label class="nl-consent">
+          <input type="checkbox" id="nl-inline-consent" name="consent" required>
+          <span>Akceptuję <a href="/polityka-prywatnosci/" target="_blank" rel="noopener">politykę prywatności</a>. Subskrypcja wymaga potwierdzenia w mailu (double opt-in). Wypisanie 1 klikiem.</span>
+        </label>
+        <div id="nl-inline-status" class="nl-status" role="status" aria-live="polite"></div>
       </form>
     </div>
   </div>
@@ -1148,14 +1196,20 @@ const description = 'Buduje AI agentów dla polskich biur rachunkowych: OCR fakt
     <h2>Pisz, dzwoń,<br>spotykajmy się.</h2>
 
     <div class="contact-split">
-      <form class="pilot-form contact-form" onsubmit="event.preventDefault(); alert('Preview — form aktywny na live.')">
-        <label>Imię i biuro</label>
-        <input type="text" placeholder="Anna Kowalska, Biuro Rachunkowe XYZ">
-        <label>Email</label>
-        <input type="email" placeholder="anna@biuro.pl">
-        <label>O czym chcesz pogadać (1 zdanie)</label>
-        <textarea rows="3" placeholder="Np. szukamy konsultacji w sprawie OCR faktur..."></textarea>
-        <button type="submit" class="cta magnet" style="margin-top: 12px; width: 100%; justify-content: center; border: 0;">Wyślij wiadomość →</button>
+      <form class="pilot-form contact-form" id="contact-form-home" novalidate>
+        <label for="cfh-name">Imię i biuro</label>
+        <input id="cfh-name" name="name" type="text" required maxlength="200" placeholder="Anna Kowalska, Biuro Rachunkowe XYZ">
+        <label for="cfh-email">Email</label>
+        <input id="cfh-email" name="email" type="email" required placeholder="anna@biuro.pl">
+        <label for="cfh-message">O czym chcesz pogadać (1 zdanie)</label>
+        <textarea id="cfh-message" name="message" rows="3" required maxlength="5000" placeholder="Np. szukamy konsultacji w sprawie OCR faktur..."></textarea>
+        <input type="text" name="website" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;" aria-hidden="true">
+        <label class="cf-consent-home">
+          <input type="checkbox" id="cfh-consent" name="consent" required>
+          <span>Akceptuję <a href="/polityka-prywatnosci/" target="_blank" rel="noopener">politykę prywatności</a>. Twoje dane (imię, email, treść) trafiają do biuro@mjoldak.pl i są przechowywane do momentu odpowiedzi (max 24 mies). RODO Art. 6 ust. 1 lit. b — działania przed zawarciem umowy.</span>
+        </label>
+        <button type="submit" id="cfh-submit" class="cta magnet" style="margin-top: 16px; width: 100%; justify-content: center; border: 0;">Wyślij wiadomość →</button>
+        <div id="cfh-status" class="cfh-status" role="status" aria-live="polite"></div>
       </form>
 
       <div class="contact-info">
@@ -1753,5 +1807,93 @@ window.addEventListener('scroll', () => {
 }, { passive: true });
 
 
+</script>
+
+<script>
+  // Newsletter inline + Contact form (home) — RODO+PKE compliant fetch handlers
+  document.addEventListener('DOMContentLoaded', () => {
+    // Newsletter inline (under articles section)
+    const nlForm = document.getElementById('nl-inline-form');
+    const nlStatus = document.getElementById('nl-inline-status');
+    const nlSubmit = document.getElementById('nl-inline-submit');
+    if (nlForm && nlStatus && nlSubmit) {
+      nlForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const fd = new FormData(nlForm);
+        const email = ((fd.get('email') || '') + '').trim().toLowerCase();
+        const consent = fd.get('consent') === 'on';
+        const website = ((fd.get('website') || '') + '');
+        if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { nlStatus.textContent = 'Nieprawidłowy email.'; nlStatus.className = 'nl-status error'; return; }
+        if (!consent) { nlStatus.textContent = 'Zaakceptuj politykę prywatności.'; nlStatus.className = 'nl-status error'; return; }
+        nlSubmit.disabled = true; nlStatus.textContent = 'Wysyłam…'; nlStatus.className = 'nl-status';
+        try {
+          const resp = await fetch('/api/newsletter/subscribe', {
+            method: 'POST', headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email, consent: true, source: window.location.pathname, website }),
+          });
+          if (resp.ok) {
+            nlForm.reset();
+            nlStatus.textContent = '✓ Sprawdź skrzynkę — wysłałem link potwierdzający (ważny 24h).';
+            nlStatus.className = 'nl-status success';
+          } else if (resp.status === 409) {
+            nlStatus.textContent = 'Już zapisany — sprawdź skrzynkę.'; nlStatus.className = 'nl-status';
+          } else {
+            const data = await resp.json().catch(() => ({}));
+            nlStatus.textContent = data.error || 'Coś poszło nie tak. Spróbuj na /artykuly/.';
+            nlStatus.className = 'nl-status error';
+          }
+        } catch (err) {
+          nlStatus.textContent = 'Błąd połączenia.'; nlStatus.className = 'nl-status error';
+        } finally {
+          nlSubmit.disabled = false;
+          setTimeout(() => { nlStatus.textContent = ''; nlStatus.className = 'nl-status'; }, 12000);
+        }
+      });
+    }
+
+    // Contact form (home, sec 07 KONTAKT)
+    const cfForm = document.getElementById('contact-form-home');
+    const cfStatus = document.getElementById('cfh-status');
+    const cfSubmit = document.getElementById('cfh-submit');
+    if (cfForm && cfStatus && cfSubmit) {
+      cfForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const fd = new FormData(cfForm);
+        const name = ((fd.get('name') || '') + '').trim();
+        const email = ((fd.get('email') || '') + '').trim().toLowerCase();
+        const message = ((fd.get('message') || '') + '').trim();
+        const consent = fd.get('consent') === 'on';
+        const website = ((fd.get('website') || '') + '');
+        if (!name || !email || !message) { cfStatus.textContent = 'Wypełnij wszystkie pola.'; cfStatus.className = 'cfh-status error'; return; }
+        if (!consent) { cfStatus.textContent = 'Zaakceptuj politykę prywatności.'; cfStatus.className = 'cfh-status error'; return; }
+        cfSubmit.disabled = true; cfStatus.textContent = 'Wysyłam…'; cfStatus.className = 'cfh-status';
+        try {
+          const resp = await fetch('/api/contact/submit', {
+            method: 'POST', headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name, email, message, consent: true, source: window.location.pathname, website }),
+          });
+          if (resp.ok) {
+            cfForm.reset();
+            cfStatus.textContent = '✓ Wysłane. Odpowiem w ciągu 24h na ' + email + '.';
+            cfStatus.className = 'cfh-status success';
+          } else if (resp.status === 429) {
+            const data = await resp.json().catch(() => ({}));
+            cfStatus.textContent = data.error || 'Zbyt wiele wiadomości. Spróbuj za chwilę.';
+            cfStatus.className = 'cfh-status error';
+          } else {
+            const data = await resp.json().catch(() => ({}));
+            cfStatus.textContent = data.error || 'Coś poszło nie tak. Napisz: biuro@mjoldak.pl';
+            cfStatus.className = 'cfh-status error';
+          }
+        } catch (err) {
+          cfStatus.textContent = 'Błąd połączenia. Napisz: biuro@mjoldak.pl';
+          cfStatus.className = 'cfh-status error';
+        } finally {
+          cfSubmit.disabled = false;
+          setTimeout(() => { cfStatus.textContent = ''; cfStatus.className = 'cfh-status'; }, 15000);
+        }
+      });
+    }
+  });
 </script>
 </BaseLayout>
