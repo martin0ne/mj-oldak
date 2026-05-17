@@ -3,7 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 const title = 'MJ.OLDAK — Agenci AI dla biur rachunkowych w Polsce | OCR faktur, KSeF, automatyzacja';
 const description = 'Buduje AI agentów dla polskich biur rachunkowych: OCR faktur w 8 sekund, klasyfikacja maili klientów, kalendarz podatkowy 2026 (VAT, JPK, KSeF), raporty miesięczne PDF. Pilot za darmo. Stack: Claude API + Azure Document Intelligence + Astro.';
 ---
-<BaseLayout title={title} description={description} ogImage="/photos/hero-5048.jpg" includeOrganizationSchema={true}>
+<BaseLayout title={title} description={description} ogImage="/social/og-image.jpg" includeOrganizationSchema={true}>
 <style is:global>
 
   :root {
@@ -1032,8 +1032,8 @@ const description = 'Buduje AI agentów dla polskich biur rachunkowych: OCR fakt
   <iframe class="shader-bg" data-shader-src="/shaders/coastal.html" loading="lazy" title="Coastal currents shader"></iframe>
   <div class="container">
     <div class="eyebrow">03 — co budujemy</div>
-    <h2 class="section-title">Cztery produkty,<br><em>jeden stack.</em></h2>
-    <p class="lede" style="opacity:0.78">Każdy działa osobno. Razem stanowią kompletny operacyjny stack dla biura — od dokumentu klienta do raportu.</p>
+    <h2 class="section-title">Cztery moduły.<br><em>Jedno biuro spokojne przed KSeF 2027.</em></h2>
+    <p class="lede" style="opacity:0.78">Dla biur rachunkowych <strong>5-15 osób</strong>. Każdy z 4 produktów rozwiązuje konkretny pain — faktury, maile, deadliny, raporty. Razem zwracają <strong>40-60h miesięcznie</strong> i dają audit trail wymagany od <strong>01.01.2027</strong>. Pilot za darmo, 4 tygodnie.</p>
 
     <div class="products-bento" id="productsBento">
       <button class="bento-card" data-area="ocr">
@@ -1128,6 +1128,11 @@ const description = 'Buduje AI agentów dla polskich biur rachunkowych: OCR fakt
           <div class="body placeholder"></div>
         </div>
       </button>
+    </div>
+
+    <div class="products-footer" style="margin-top:48px; display:flex; flex-wrap:wrap; gap:14px; align-items:center; justify-content:center;">
+      <a href="https://notebooklm.google.com/notebook/d0e23199-daa3-4586-9bf5-183afffe77f8" target="_blank" rel="noopener" style="padding:14px 24px; border:1px solid color-mix(in srgb, var(--dark) 28%, transparent); border-radius:32px; font-family:'JetBrains Mono'; font-size:13px; letter-spacing:0.02em; color:var(--dark); transition:background 0.25s, border-color 0.25s;">Zobacz live demo notebooka →</a>
+      <a href="/#kontakt" style="padding:14px 24px; background:var(--accent); color:var(--primary); border-radius:32px; font-family:'JetBrains Mono'; font-size:13px; font-weight:600; letter-spacing:0.02em; transition:transform 0.25s;">Umów 20-min Mom Test call →</a>
     </div>
   </div>
 </section>
@@ -1435,20 +1440,15 @@ document.querySelectorAll('section.story, .contact, .pilot-section').forEach(sec
 // ─── Photo / Shader mode toggle (Hero only — sections always have ambient shader) ───
 const STORAGE_KEY = 'mjoldak-bg-mode';
 
-// Load ALL shader iframes immediately (sections need them as ambient bg, hero lazy)
-document.querySelectorAll('iframe.shader-bg[data-shader-src]').forEach(f => {
-  // Skip hero iframe — load only when shader-mode active to save resources
-  const isHero = f.closest('.hero') !== null;
-  if (!isHero && !f.src) f.src = f.dataset.shaderSrc;
-});
+// Shader iframes load ONLY on shader-mode opt-in (6 iframes × rAF loop = lag).
+// Default mode: sections rely on CSS scrim/vignette as ambient fallback.
 
 function setMode(mode) {
   document.body.classList.toggle('shader-mode', mode === 'shader');
   document.getElementById('modeLabel').textContent = mode === 'shader' ? 'PHOTO' : 'SHADER';
   localStorage.setItem(STORAGE_KEY, mode);
-  // Lazy-load hero shader only when entering shader mode
   if (mode === 'shader') {
-    document.querySelectorAll('.hero iframe.shader-bg[data-shader-src]').forEach(f => {
+    document.querySelectorAll('iframe.shader-bg[data-shader-src]').forEach(f => {
       if (!f.src) f.src = f.dataset.shaderSrc;
     });
   }
