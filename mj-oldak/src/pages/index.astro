@@ -424,6 +424,7 @@ const description = 'Buduje AI agentów dla polskich biur rachunkowych: OCR fakt
     font-variation-settings: "opsz" 144, "SOFT" 100;
     text-transform: lowercase; letter-spacing: -0.015em;
   }
+  h2.section-title em .proper { text-transform: none; }
   .lede {
     font-family: 'Inter'; font-size: 19px; line-height: 1.5; font-weight: 400;
     max-width: 720px; margin-bottom: 28px; opacity: 0.9;
@@ -490,7 +491,7 @@ const description = 'Buduje AI agentów dla polskich biur rachunkowych: OCR fakt
   .products-bento[data-expand="deadline"] { grid-template-columns: 2.5fr 1fr; grid-template-rows: 1fr 2.3fr; }
   .products-bento[data-expand="reporting"]{ grid-template-columns: 1fr 2.5fr; grid-template-rows: 1fr 2.3fr; }
   .bento-card { transition: border-color var(--transition-dur) ease, transform 0.4s cubic-bezier(.4,1.2,.5,1), box-shadow var(--transition-dur) ease, opacity 0.4s; }
-  .products-bento[data-expand] .bento-card:not(.expanded) { opacity: 0.78; }
+  .products-bento[data-expand] .bento-card:not(.expanded) { opacity: 1; }
   .bento-card.expanded {
     border-color: var(--accent);
     box-shadow: 0 24px 64px color-mix(in srgb, var(--accent) 35%, transparent);
@@ -535,7 +536,7 @@ const description = 'Buduje AI agentów dla polskich biur rachunkowych: OCR fakt
     transition: border-color var(--transition-dur) ease, transform 0.4s cubic-bezier(.4,1.4,.5,1), box-shadow var(--transition-dur) ease;
     cursor: pointer;
     display: flex; flex-direction: column; justify-content: space-between;
-    color: inherit;
+    color: var(--primary);
   }
   .bento-card:hover {
     border-color: var(--accent);
@@ -1032,7 +1033,7 @@ const description = 'Buduje AI agentów dla polskich biur rachunkowych: OCR fakt
   <iframe class="shader-bg" data-shader-src="/shaders/coastal.html" loading="lazy" title="Coastal currents shader"></iframe>
   <div class="container">
     <div class="eyebrow">03 — co budujemy</div>
-    <h2 class="section-title">Cztery moduły.<br><em>Jedno biuro spokojne przed KSeF 2027.</em></h2>
+    <h2 class="section-title">Cztery moduły.<br><em>Jedno biuro spokojne przed <span class="proper">KSeF</span> 2027.</em></h2>
     <p class="lede" style="opacity:0.78">Dla biur rachunkowych <strong>5-15 osób</strong>. Każdy z 4 produktów rozwiązuje konkretny pain — faktury, maile, deadliny, raporty. Razem zwracają <strong>40-60h miesięcznie</strong> i dają audit trail wymagany od <strong>01.01.2027</strong>. Pilot za darmo, 4 tygodnie.</p>
 
     <div class="products-bento" id="productsBento">
