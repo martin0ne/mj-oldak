@@ -1920,7 +1920,11 @@ document.querySelectorAll('.nav a.link[href^="#"], a[href^="#"][data-spy]').forE
     const target = document.getElementById(targetId);
     if (!target) return;
     e.preventDefault();
-    target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    // #articles ma >100vh content (3 cards + button + newsletter) — block 'end'
+    // pokazuje bottom (cards+button+newsletter visible, headline na top cropped).
+    // Inne sekcje używają 'center' (default fit).
+    const blockMode = targetId === 'articles' ? 'end' : 'center';
+    target.scrollIntoView({ behavior: 'smooth', block: blockMode });
   });
 });
 
