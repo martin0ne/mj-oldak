@@ -496,7 +496,26 @@ const description = 'Buduje AI agentów dla polskich biur rachunkowych: OCR fakt
     border-color: var(--accent);
     box-shadow: 0 24px 64px color-mix(in srgb, var(--accent) 35%, transparent);
     background: rgba(13, 27, 50, 0.95) !important;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+    gap: 28px;
+    align-items: stretch;
+    text-align: left;
   }
+  .bento-card.expanded > div:first-child {
+    overflow-y: auto;
+    max-height: 70vh;
+    padding-right: 8px;
+    min-width: 0;
+  }
+  .bento-card.expanded .bento-screenshot {
+    margin-top: 0;
+    height: 100%;
+    min-height: 100%;
+  }
+  .products-bento[data-expand] { height: auto; min-height: 56vh; }
+  .bento-screenshot .body.with-image { padding: 0; }
+  .bento-screenshot .body.with-image img { width: 100%; height: 100%; object-fit: cover; display: block; }
   .bento-card .b-extra { display: none; margin-top: 14px; padding-top: 14px; border-top: 1px solid color-mix(in srgb, var(--primary) 14%, transparent); }
   .bento-card.expanded .b-extra { display: block; }
   .bento-card .b-extra h5 {
@@ -1052,26 +1071,8 @@ const description = 'Buduje AI agentów dla polskich biur rachunkowych: OCR fakt
         </div>
         <div class="bento-screenshot">
           <div class="titlebar"><span></span><span></span><span></span></div>
-          <div class="body">
-            <div class="ocr-demo">
-              <div class="ocr-doc">
-                <div class="ocr-doc-line"></div>
-                <div class="ocr-doc-line"></div>
-                <div class="ocr-doc-line"></div>
-                <div class="ocr-doc-line"></div>
-                <div class="ocr-doc-line"></div>
-              </div>
-              <div class="ocr-arrow">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>
-                <span class="arrow-label">8s</span>
-              </div>
-              <div class="ocr-fields">
-                <div class="row"><span class="key">NIP</span><span class="val">542-12-12-456</span></div>
-                <div class="row"><span class="key">Data</span><span class="val">07.05.2026</span></div>
-                <div class="row"><span class="key">Netto</span><span class="val">2 450,00 zł</span></div>
-                <div class="row"><span class="key">VAT 23%</span><span class="val">563,50 zł</span></div>
-              </div>
-            </div>
+          <div class="body with-image">
+            <img src="/products/ocr/1.jpg" alt="OCR Invoice Reader — screenshot" loading="lazy">
           </div>
         </div>
       </button>
@@ -1090,7 +1091,7 @@ const description = 'Buduje AI agentów dla polskich biur rachunkowych: OCR fakt
         </div>
         <div class="bento-screenshot">
           <div class="titlebar"><span></span><span></span><span></span></div>
-          <div class="body placeholder"></div>
+          <div class="body with-image"><img src="/products/email/1.jpg" alt="Email Assistant — screenshot" loading="lazy"></div>
         </div>
       </button>
       <button class="bento-card" data-area="deadline">
@@ -1108,7 +1109,7 @@ const description = 'Buduje AI agentów dla polskich biur rachunkowych: OCR fakt
         </div>
         <div class="bento-screenshot">
           <div class="titlebar"><span></span><span></span><span></span></div>
-          <div class="body placeholder"></div>
+          <div class="body with-image"><img src="/products/deadline/1.jpg" alt="Deadline Agent — screenshot" loading="lazy"></div>
         </div>
       </button>
       <button class="bento-card" data-area="reporting">
@@ -1126,7 +1127,7 @@ const description = 'Buduje AI agentów dla polskich biur rachunkowych: OCR fakt
         </div>
         <div class="bento-screenshot">
           <div class="titlebar"><span></span><span></span><span></span></div>
-          <div class="body placeholder"></div>
+          <div class="body with-image"><img src="/products/reports/1.jpg" alt="Reporting Agent — screenshot" loading="lazy"></div>
         </div>
       </button>
     </div>
