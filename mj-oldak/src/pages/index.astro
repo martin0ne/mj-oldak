@@ -1425,8 +1425,10 @@ function apply(i) {
   hero.style.backgroundImage = `url('${p.src}${VER}')`;
   hero.dataset.photo = p.name;
   hero.classList.toggle('low-res', !!p.lowRes);
-  document.documentElement.style.setProperty('--accent', p.accent);
-  document.documentElement.style.setProperty('--dark', p.dark);
+  // Brand colors LOCKED do sea-blue + sand (wartime brand consistency).
+  // Photo rotuje wizualnie ale --accent + --dark zostają z :root.
+  // (Removed: documentElement.style.setProperty('--accent', p.accent);
+  //           documentElement.style.setProperty('--dark', p.dark);)
   // Subtle photo behind the "Pomagamy" section uses a different image — rotate it too
   const helpPhoto = document.getElementById('helpPhoto');
   if (helpPhoto) {
