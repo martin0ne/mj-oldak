@@ -501,6 +501,8 @@ const description = 'Buduje AI agentów dla polskich biur rachunkowych: OCR fakt
     grid-template-rows: auto auto;
     gap: 24px;
     text-align: left;
+    max-height: 85vh;
+    overflow-y: auto;
   }
   .bento-card.expanded > div:first-child {
     min-width: 0;
@@ -513,7 +515,7 @@ const description = 'Buduje AI agentów dla polskich biur rachunkowych: OCR fakt
   }
   .bento-card.expanded .bento-screenshot .body.with-image {
     aspect-ratio: 16 / 9;
-    max-height: 60vh;
+    max-height: 40vh;
   }
   .bento-card.expanded .bento-screenshot .body.placeholder {
     min-height: 140px;
@@ -634,7 +636,7 @@ const description = 'Buduje AI agentów dla polskich biur rachunkowych: OCR fakt
 
   /* Screenshot mockup — fake browser frame inline */
   .bento-screenshot {
-    margin-top: 14px; flex: 1; min-height: 0;
+    margin-top: 14px; flex: 0 0 auto; max-height: 140px; min-height: 0;
     background: rgba(0,0,0,0.22); border-radius: 12px;
     border: 1px solid rgba(255,255,255,0.08);
     overflow: hidden; position: relative;
@@ -673,8 +675,7 @@ const description = 'Buduje AI agentów dla polskich biur rachunkowych: OCR fakt
   .bento-card.expanded .bento-screenshot .body.placeholder::before {
     font-size: 13px; letter-spacing: 0.15em; opacity: 0.5;
   }
-  .bento-card[data-area="ocr"] .bento-screenshot { min-height: 200px; }
-  .bento-card[data-area="reporting"] .bento-screenshot { min-height: 180px; }
+  /* per-area min-heights removed — uniform 140px max keeps collapsed cards compact */
 
   /* ── Live OCR demo widget (inside bento card OCR) ── */
   .ocr-demo {
@@ -1525,7 +1526,11 @@ const PRODUCTS_LEGACY = [
         document.querySelectorAll('#productsBento .bento-card').forEach(c => c.classList.remove('expanded'));
         if (wasExpanded) {
           bento.removeAttribute('data-expand');
-          setTimeout(() => document.getElementById('products').scrollIntoView({behavior: 'smooth', block: 'start'}), 50);
+          setTimeout(() => {
+            const productsEl = document.getElementById('products');
+            const y = productsEl.getBoundingClientRect().top + window.pageYOffset - 80;
+            window.scrollTo({top: y, behavior: 'smooth'});
+          }, 200);
         } else {
           card.classList.add('expanded');
           bento.setAttribute('data-expand', area);
@@ -1635,25 +1640,45 @@ document.querySelectorAll('.magnet').forEach(btn => {
   });
 });
 
-// ─── Process — interactive station picker ───
-document.querySelectorAll('#processStations .station').forEach(btn => {
-  btn.addEventListener('click', () => {
-    const step = parseInt(btn.dataset.step);
-    document.querySelectorAll('#processStations .station').forEach((el, i) => {
-      el.classList.toggle('active', i === step);
-    });
-    const fill = document.getElementById('processFill');
-    if (fill) {
-      // 0 → 12.5%, 1 → 37.5%, 2 → 62.5%, 3 → 87.5% (center of each station)
-      const pct = 12.5 + step * 25;
-      fill.style.width = pct + '%';
-    }
-  });
-});
-// init progress fill at default active (step 2 = pilot)
+// ─── Process — auto-rotate stations co 5s + click pauses auto ───
 {
+  const stationBtns = document.querySelectorAll('#processStations .station');
   const fill = document.getElementById('processFill');
-  if (fill) fill.style.width = (12.5 + 2 * 25) + '%';
+  let processIdx = 0;
+  let processTimer = null;
+
+  function setStation(i) {
+    processIdx = i;
+    stationBtns.forEach((el, j) => el.classList.toggle('active', j === i));
+    if (fill) fill.style.width = (12.5 + i * 25) + '%';
+  }
+  function rotateProcess() { setStation((processIdx + 1) % stationBtns.length); }
+  function startAutoRotate() {
+    if (processTimer || !stationBtns.length) return;
+    processTimer = setInterval(rotateProcess, 5000);
+  }
+  function stopAutoRotate() {
+    if (processTimer) { clearInterval(processTimer); processTimer = null; }
+  }
+
+  stationBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      stopAutoRotate();
+      setStation(parseInt(btn.dataset.step));
+    });
+  });
+
+  // Pause auto-rotate when Process section is off-screen (saves rAF/timer cost)
+  const processSection = document.getElementById('process');
+  if (processSection && stationBtns.length) {
+    setStation(0);
+    new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) startAutoRotate();
+        else stopAutoRotate();
+      });
+    }, { threshold: 0.3 }).observe(processSection);
+  }
 }
 
 // ─── D) Hero parallax ───
