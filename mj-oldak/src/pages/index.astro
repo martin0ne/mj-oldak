@@ -3,7 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 const title = 'MJ.OLDAK — Agenci AI dla biur rachunkowych w Polsce | OCR faktur, KSeF, automatyzacja';
 const description = 'Buduje AI agentów dla polskich biur rachunkowych: OCR faktur w 8 sekund, klasyfikacja maili klientów, kalendarz podatkowy 2026 (VAT, JPK, KSeF), raporty miesięczne PDF. Pilot za darmo. Stack: Claude API + Azure Document Intelligence + Astro.';
 ---
-<BaseLayout title={title} description={description} ogImage="/photos/hero-5048.jpg" includeOrganizationSchema={true}>
+<BaseLayout title={title} description={description} ogImage="/social/og-image.jpg" includeOrganizationSchema={true}>
 <style is:global>
 
   :root {
@@ -13,6 +13,14 @@ const description = 'Buduje AI agentów dla polskich biur rachunkowych: OCR fakt
     --dark: #0D1B32;
     --sunset: #C87E3B;
     --transition-dur: 1.5s;
+
+    /* Cloud Design tokens (sekcje 02 + 03 editorial v1) */
+    --font-display: 'Manrope', system-ui, sans-serif;
+    --font-italic: 'Fraunces', Georgia, serif;
+    --font-body: 'Inter', system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+    --cd-nav-reserve: 88px;
+    --cd-section-h: calc(100vh - var(--cd-nav-reserve));
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; /* smooth tylko dla nav clicks, brak snap */ }
@@ -424,6 +432,7 @@ const description = 'Buduje AI agentów dla polskich biur rachunkowych: OCR fakt
     font-variation-settings: "opsz" 144, "SOFT" 100;
     text-transform: lowercase; letter-spacing: -0.015em;
   }
+  h2.section-title em .proper { text-transform: none; }
   .lede {
     font-family: 'Inter'; font-size: 19px; line-height: 1.5; font-weight: 400;
     max-width: 720px; margin-bottom: 28px; opacity: 0.9;
@@ -490,12 +499,71 @@ const description = 'Buduje AI agentów dla polskich biur rachunkowych: OCR fakt
   .products-bento[data-expand="deadline"] { grid-template-columns: 2.5fr 1fr; grid-template-rows: 1fr 2.3fr; }
   .products-bento[data-expand="reporting"]{ grid-template-columns: 1fr 2.5fr; grid-template-rows: 1fr 2.3fr; }
   .bento-card { transition: border-color var(--transition-dur) ease, transform 0.4s cubic-bezier(.4,1.2,.5,1), box-shadow var(--transition-dur) ease, opacity 0.4s; }
-  .products-bento[data-expand] .bento-card:not(.expanded) { opacity: 0.78; }
+  .products-bento[data-expand] .bento-card:not(.expanded) { opacity: 1; }
   .bento-card.expanded {
     border-color: var(--accent);
     box-shadow: 0 24px 64px color-mix(in srgb, var(--accent) 35%, transparent);
     background: rgba(13, 27, 50, 0.95) !important;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    gap: 24px;
+    text-align: left;
+    max-height: 85vh;
+    overflow-y: auto;
   }
+  .bento-card.expanded > div:first-child {
+    min-width: 0;
+  }
+  .bento-card.expanded .bento-screenshot {
+    margin-top: 0;
+    width: 100%;
+    height: auto;
+    min-height: 0;
+  }
+  .bento-card.expanded .bento-screenshot .body.with-image {
+    aspect-ratio: 16 / 9;
+    max-height: 40vh;
+  }
+  .bento-card.expanded .bento-screenshot .body.placeholder {
+    min-height: 140px;
+    max-height: 200px;
+  }
+  .products-bento[data-expand] { height: auto; min-height: 56vh; }
+  .bento-card.expanded { scroll-margin-top: 120px; }
+  .bento-screenshot .body.with-image { padding: 0; }
+  .bento-screenshot .body.with-image img { width: 100%; height: 100%; object-fit: cover; object-position: left center; display: block; }
+  .bento-card.expanded .bento-screenshot .body.with-image img { cursor: zoom-in; }
+
+  /* ── Product screenshot lightbox ── */
+  .product-lightbox {
+    position: fixed; inset: 0; z-index: 10000;
+    background: rgba(13, 27, 50, 0.92);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    display: flex; align-items: center; justify-content: center;
+    padding: 5vh 5vw;
+    cursor: zoom-out;
+    animation: lightboxFade 0.2s ease;
+  }
+  @keyframes lightboxFade { from { opacity: 0; } to { opacity: 1; } }
+  .product-lightbox img {
+    max-width: 100%; max-height: 100%;
+    border-radius: 12px;
+    box-shadow: 0 24px 64px rgba(0,0,0,0.5);
+    cursor: default;
+  }
+  .product-lightbox .lightbox-close {
+    position: absolute; top: 24px; right: 24px;
+    width: 48px; height: 48px;
+    border-radius: 50%;
+    border: 1px solid color-mix(in srgb, var(--primary) 30%, transparent);
+    background: rgba(13,27,50,0.6); color: var(--primary);
+    font-size: 24px; cursor: pointer; line-height: 1;
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.2s, border-color 0.2s;
+  }
+  .product-lightbox .lightbox-close:hover { background: var(--accent); border-color: var(--accent); }
   .bento-card .b-extra { display: none; margin-top: 14px; padding-top: 14px; border-top: 1px solid color-mix(in srgb, var(--primary) 14%, transparent); }
   .bento-card.expanded .b-extra { display: block; }
   .bento-card .b-extra h5 {
@@ -506,8 +574,8 @@ const description = 'Buduje AI agentów dla polskich biur rachunkowych: OCR fakt
     list-style: none; display: grid; grid-template-columns: 1fr; gap: 8px;
     font-family: 'Inter'; font-size: 14px;
   }
-  .bento-card .b-extra ul li { padding: 4px 0; opacity: 0.88; display: grid; grid-template-columns: auto 1fr; gap: 10px; }
-  .bento-card .b-extra ul li::before { content: '▸'; color: var(--accent); font-family: 'JetBrains Mono'; }
+  .bento-card .b-extra ul li { padding: 4px 0; opacity: 0.88; display: flex; align-items: baseline; gap: 10px; }
+  .bento-card .b-extra ul li::before { content: '▸'; color: var(--accent); font-family: 'JetBrains Mono'; flex-shrink: 0; }
   .bento-card .b-extra ul li strong { color: var(--accent); font-weight: 700; }
   .bento-card .b-extra .b-extra-desc {
     font-family: 'Inter'; font-size: 14px; line-height: 1.5;
@@ -535,7 +603,7 @@ const description = 'Buduje AI agentów dla polskich biur rachunkowych: OCR fakt
     transition: border-color var(--transition-dur) ease, transform 0.4s cubic-bezier(.4,1.4,.5,1), box-shadow var(--transition-dur) ease;
     cursor: pointer;
     display: flex; flex-direction: column; justify-content: space-between;
-    color: inherit;
+    color: var(--primary);
   }
   .bento-card:hover {
     border-color: var(--accent);
@@ -576,7 +644,7 @@ const description = 'Buduje AI agentów dla polskich biur rachunkowych: OCR fakt
 
   /* Screenshot mockup — fake browser frame inline */
   .bento-screenshot {
-    margin-top: 14px; flex: 1; min-height: 0;
+    margin-top: 14px; flex: 0 0 auto; max-height: 140px; min-height: 0;
     background: rgba(0,0,0,0.22); border-radius: 12px;
     border: 1px solid rgba(255,255,255,0.08);
     overflow: hidden; position: relative;
@@ -606,14 +674,16 @@ const description = 'Buduje AI agentów dla polskich biur rachunkowych: OCR fakt
     font-size: 10px;
   }
   .bento-screenshot .body.placeholder::before {
-    content: 'Live u Ciebie podczas pilotu';
+    content: 'Screenshot wkrótce \00B7 UI w przebudowie';
     position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%);
     font-family: 'JetBrains Mono'; font-size: 9px; letter-spacing: 0.18em;
     text-transform: uppercase; opacity: 0.4;
     text-align: center; white-space: nowrap;
   }
-  .bento-card[data-area="ocr"] .bento-screenshot { min-height: 200px; }
-  .bento-card[data-area="reporting"] .bento-screenshot { min-height: 180px; }
+  .bento-card.expanded .bento-screenshot .body.placeholder::before {
+    font-size: 13px; letter-spacing: 0.15em; opacity: 0.5;
+  }
+  /* per-area min-heights removed — uniform 140px max keeps collapsed cards compact */
 
   /* ── Live OCR demo widget (inside bento card OCR) ── */
   .ocr-demo {
@@ -938,6 +1008,339 @@ const description = 'Buduje AI agentów dla polskich biur rachunkowych: OCR fakt
   .cfh-status.error { color: #E89A7F; }
   .pilot-form button[disabled] { opacity: 0.5; cursor: not-allowed; }
 
+  /* ============================================================
+     CLOUD DESIGN v1 — sekcje 02 (#help) + 03 (#products)
+     Scoped do .cd-section, .cd-* classes — zero kolizji z global.
+     Override: section.story styles (min-height 100vh, padding from container)
+     są wycinane przez .cd-section który ma własne layout.
+     ============================================================ */
+
+  .cd-section {
+    background: var(--bg);
+    color: var(--dark);
+    min-height: 0;
+    height: var(--cd-section-h);
+    min-height: 720px;
+    padding: 48px 72px 40px;
+    position: relative;
+    overflow: hidden;
+    box-sizing: border-box;
+  }
+  .cd-section::after {
+    content: attr(id);
+    position: absolute;
+    top: 48px; right: 72px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    color: rgba(13,27,50,0.3);
+    text-transform: uppercase;
+    pointer-events: none;
+  }
+  #help.cd-section::after { content: "MJ.OLDAK / 02"; }
+  #products.cd-section::after { content: "MJ.OLDAK / 03"; }
+
+  /* shared typography */
+  .cd-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 12px; font-weight: 500;
+    letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--accent);
+    display: inline-flex; align-items: center; gap: 10px;
+    margin: 0;
+  }
+  .cd-eyebrow::before {
+    content: ""; width: 24px; height: 1px; background: var(--accent);
+  }
+  .cd-display-h2 {
+    font-family: var(--font-display);
+    font-weight: 800; text-transform: uppercase;
+    letter-spacing: -0.025em; line-height: 0.95;
+    color: var(--dark);
+    font-size: clamp(48px, 5.2vw, 76px);
+    margin: 0;
+  }
+  .cd-display-h2 em {
+    font-family: var(--font-italic);
+    font-style: italic; font-weight: 400;
+    text-transform: lowercase; letter-spacing: -0.015em;
+    color: var(--accent);
+    display: inline-block;
+  }
+  .cd-display-h2 em .proper { text-transform: none; }
+  .cd-lede {
+    font-family: var(--font-body);
+    font-size: 15px; line-height: 1.55;
+    color: rgba(13,27,50,0.78);
+    max-width: 56ch;
+    margin: 0;
+  }
+  .cd-lede strong { color: var(--dark); font-weight: 600; }
+
+  /* ── #help layout ── */
+  #help.cd-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto 1fr auto;
+    column-gap: 64px;
+    row-gap: 28px;
+  }
+  .cd-help-head {
+    grid-column: 1 / -1;
+    display: flex; flex-direction: column; gap: 18px;
+  }
+  .cd-help-head .cd-display-h2 { max-width: 16ch; }
+  .cd-help-left {
+    display: flex; flex-direction: column; gap: 24px; min-width: 0;
+  }
+  .cd-help-right {
+    display: flex; flex-direction: column; gap: 20px; min-width: 0;
+    justify-content: flex-start;
+  }
+  .cd-points {
+    list-style: none; padding: 16px 0 0;
+    display: flex; flex-direction: column; gap: 12px;
+    border-top: 1px solid rgba(13,27,50,0.12);
+  }
+  .cd-points li {
+    display: grid; grid-template-columns: 44px 1fr;
+    gap: 14px; align-items: baseline;
+    padding-bottom: 12px; border-bottom: 1px solid rgba(13,27,50,0.08);
+  }
+  .cd-points li:last-child { border-bottom: none; padding-bottom: 0; }
+  .cd-num {
+    font-family: var(--font-mono);
+    font-size: 12px; font-weight: 500; letter-spacing: 0.15em;
+    color: var(--accent);
+  }
+  .cd-txt {
+    font-family: var(--font-body);
+    font-size: 14px; line-height: 1.5; color: var(--dark);
+  }
+
+  /* mockup widget */
+  .cd-mockup {
+    background: linear-gradient(135deg, var(--dark) 0%, #142745 100%);
+    border-radius: 14px; padding: 22px 24px;
+    color: var(--primary);
+    box-shadow: 0 20px 40px -20px rgba(13,27,50,0.35),
+                inset 0 1px 0 rgba(255,255,255,0.04);
+    position: relative; overflow: hidden;
+  }
+  .cd-mockup::before {
+    content: "OCR · LIVE";
+    position: absolute; top: 14px; right: 18px;
+    font-family: var(--font-mono);
+    font-size: 9px; letter-spacing: 0.25em;
+    color: rgba(202,194,174,0.4);
+  }
+  .cd-mockup-flow {
+    display: grid; grid-template-columns: auto auto 1fr;
+    align-items: center; gap: 18px; margin-top: 14px;
+  }
+  .cd-doc-icon {
+    width: 52px; height: 64px;
+    border: 1.5px solid rgba(202,194,174,0.4);
+    border-radius: 4px; position: relative; flex-shrink: 0;
+  }
+  .cd-doc-icon::before {
+    content: ""; position: absolute; top: 0; right: 0;
+    width: 14px; height: 14px; background: var(--dark);
+    border-left: 1.5px solid rgba(202,194,174,0.4);
+    border-bottom: 1.5px solid rgba(202,194,174,0.4);
+  }
+  .cd-doc-icon::after {
+    content: "PDF"; position: absolute; bottom: 8px; left: 0; right: 0;
+    text-align: center;
+    font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.15em;
+    color: rgba(202,194,174,0.6);
+  }
+  .cd-doc-lines {
+    position: absolute; top: 18px; left: 6px; right: 6px;
+    display: flex; flex-direction: column; gap: 3px;
+  }
+  .cd-doc-lines span {
+    height: 2px; background: rgba(202,194,174,0.25); border-radius: 1px;
+  }
+  .cd-doc-lines span:nth-child(1) { width: 70%; }
+  .cd-doc-lines span:nth-child(2) { width: 100%; }
+  .cd-doc-lines span:nth-child(3) { width: 55%; }
+  .cd-arrow {
+    display: flex; flex-direction: column; align-items: center; gap: 4px;
+  }
+  .cd-arrow-line {
+    width: 48px; height: 1px; background: var(--accent); position: relative;
+  }
+  .cd-arrow-line::after {
+    content: ""; position: absolute; right: -1px; top: -3px;
+    width: 7px; height: 7px;
+    border-top: 1px solid var(--accent); border-right: 1px solid var(--accent);
+    transform: rotate(45deg);
+  }
+  .cd-arrow-label {
+    font-family: var(--font-mono); font-size: 11px; font-weight: 500;
+    color: var(--accent); letter-spacing: 0.1em;
+  }
+  .cd-fields {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 8px 14px;
+  }
+  .cd-field { display: flex; flex-direction: column; gap: 2px; }
+  .cd-field-label {
+    font-family: var(--font-mono); font-size: 9px;
+    letter-spacing: 0.2em; color: rgba(202,194,174,0.55);
+    text-transform: uppercase;
+  }
+  .cd-field-value {
+    font-family: var(--font-mono); font-size: 13px; font-weight: 500;
+    color: var(--primary); letter-spacing: 0.02em;
+  }
+
+  /* metrics */
+  .cd-metrics {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    border-top: 1px solid rgba(13,27,50,0.12);
+    border-bottom: 1px solid rgba(13,27,50,0.12);
+    padding: 16px 0;
+  }
+  .cd-metric {
+    display: flex; flex-direction: column; gap: 4px;
+    padding: 0 14px; border-right: 1px solid rgba(13,27,50,0.08);
+  }
+  .cd-metric:first-child { padding-left: 0; }
+  .cd-metric:last-child { border-right: none; padding-right: 0; }
+  .cd-metric-value {
+    font-family: var(--font-display); font-size: 28px; font-weight: 800;
+    letter-spacing: -0.02em; color: var(--dark); line-height: 1;
+  }
+  .cd-metric-value .cd-unit { color: var(--accent); font-size: 18px; }
+  .cd-metric-label {
+    font-family: var(--font-mono); font-size: 10px;
+    letter-spacing: 0.18em; color: rgba(13,27,50,0.55);
+    text-transform: uppercase; margin-top: 2px;
+  }
+
+  /* ── #products layout ── */
+  #products.cd-section {
+    background: linear-gradient(180deg, var(--bg) 0%, #DDD2C0 100%);
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    row-gap: 28px;
+  }
+  .cd-products-head {
+    display: grid; grid-template-columns: 1.4fr 1fr;
+    column-gap: 64px; align-items: end;
+  }
+  .cd-products-head .cd-eyebrow { margin-bottom: 18px; display: inline-flex; }
+  .cd-products-head .cd-display-h2 { margin-top: 18px; max-width: 14ch; }
+  .cd-products-head .cd-lede { padding-bottom: 6px; max-width: 48ch; }
+
+  .cd-cards {
+    display: grid; grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr; gap: 18px; min-height: 0;
+  }
+  .cd-card {
+    background: linear-gradient(140deg, var(--dark) 0%, #163052 50%, #1f4673 100%);
+    border-radius: 16px; padding: 26px 28px;
+    color: var(--primary);
+    display: flex; flex-direction: column; justify-content: space-between;
+    position: relative; overflow: hidden;
+    box-shadow: 0 20px 40px -24px rgba(13,27,50,0.4),
+                inset 0 1px 0 rgba(255,255,255,0.05);
+    min-height: 0;
+  }
+  .cd-card::before {
+    content: ""; position: absolute; top: 0; left: 0;
+    width: 56px; height: 2px; background: var(--accent);
+  }
+  .cd-card-flagship::before { background: var(--accent); }
+  .cd-card-pilot::before { background: var(--sunset); }
+  .cd-card-meta {
+    display: flex; justify-content: space-between;
+    align-items: flex-start; gap: 16px;
+  }
+  .cd-card-label {
+    font-family: var(--font-mono); font-size: 11px; font-weight: 500;
+    letter-spacing: 0.22em; color: rgba(202,194,174,0.55);
+    text-transform: uppercase;
+  }
+  .cd-card-badge {
+    font-family: var(--font-mono); font-size: 10px; font-weight: 500;
+    letter-spacing: 0.18em; padding: 5px 10px;
+    border-radius: 100px; text-transform: uppercase; white-space: nowrap;
+  }
+  .cd-badge-live { background: var(--accent); color: var(--dark); }
+  .cd-badge-beta {
+    background: rgba(79,142,186,0.18); color: var(--accent);
+    border: 1px solid rgba(79,142,186,0.4);
+  }
+  .cd-badge-pilot {
+    background: rgba(200,126,59,0.15); color: var(--sunset);
+    border: 1px solid rgba(200,126,59,0.4);
+  }
+  .cd-card-body {
+    display: flex; flex-direction: column; gap: 12px; margin-top: 20px;
+  }
+  .cd-card-name {
+    font-family: var(--font-display);
+    font-size: 30px; font-weight: 800;
+    letter-spacing: -0.02em; line-height: 1;
+    color: #fff; text-transform: none;
+    margin: 0;
+  }
+  .cd-card-desc {
+    font-family: var(--font-body); font-size: 13.5px; line-height: 1.5;
+    color: rgba(202,194,174,0.78); max-width: 38ch;
+    margin: 0;
+  }
+
+  /* footer CTAs */
+  .cd-products-foot {
+    display: flex; justify-content: flex-end; align-items: center; gap: 24px;
+    padding-top: 8px; border-top: 1px solid rgba(13,27,50,0.12);
+  }
+  .cd-ctas { display: flex; gap: 12px; }
+  .cd-btn {
+    font-family: var(--font-mono); font-size: 12px; font-weight: 500;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    padding: 13px 22px; border-radius: 100px;
+    text-decoration: none;
+    transition: transform 0.2s ease, background 0.2s ease;
+    display: inline-flex; align-items: center; gap: 8px;
+    cursor: pointer; border: none;
+  }
+  .cd-btn-secondary {
+    background: transparent; color: var(--dark);
+    border: 1px solid rgba(13,27,50,0.4);
+  }
+  .cd-btn-secondary:hover {
+    background: rgba(13,27,50,0.05); border-color: var(--dark);
+  }
+  .cd-btn-primary { background: var(--accent); color: var(--dark); }
+  .cd-btn-primary:hover { background: #5fa0cc; transform: translateY(-1px); }
+
+  /* Vertical-center content w sekcjach 04/06/07 (anchor click landing) */
+  section.story#process,
+  section.story#articles {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .contact#contact {
+    justify-content: center;
+  }
+
+  /* responsive fallback */
+  @media (max-width: 1024px) {
+    .cd-section { height: auto; min-height: 100vh; padding: 40px 32px; }
+    #help.cd-section { grid-template-columns: 1fr; }
+    .cd-help-head .cd-display-h2,
+    .cd-products-head .cd-display-h2 { font-size: clamp(36px, 8vw, 56px); }
+    .cd-products-head { grid-template-columns: 1fr; gap: 20px; align-items: start; }
+    .cd-cards { grid-template-columns: 1fr; grid-template-rows: auto; }
+    .cd-products-foot { flex-direction: column; align-items: stretch; }
+    .cd-ctas { flex-direction: column; }
+  }
+
 </style>
 
 
@@ -953,15 +1356,11 @@ const description = 'Buduje AI agentów dla polskich biur rachunkowych: OCR fakt
     <a href="#articles" class="link" data-spy="articles">Artykuły</a>
     <a href="#contact" class="link" data-spy="contact">Kontakt</a>
   </div>
-  <button class="mode-toggle" id="modeToggle" title="Toggle Photo / Shader background" aria-label="Przełącz tło między zdjęciami a animowanym shaderem">
-    <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12 Q 12 4, 21 12 T 3 12"/></svg>
-    <span id="modeLabel">SHADER</span>
-  </button>
   <a href="#contact" class="cta-nav magnet">Rozpocznij</a>
 </nav>
 
 <!-- 01 HERO -->
-<section class="hero" id="hero" data-photo="IMG_0798" data-shader="coastal" style="background-image: url('/photos/hero-0798.jpg?v=4')">
+<section class="hero" id="hero" data-photo="IMG_0798" data-shader="coastal">
   <iframe class="shader-bg" data-shader-src="/shaders/coastal.html" loading="lazy" title="Hero shader background"></iframe>
   <div><span class="label"><span class="dot"></span>SYSTEM ONLINE</span></div>
   <div>
@@ -975,161 +1374,141 @@ const description = 'Buduje AI agentów dla polskich biur rachunkowych: OCR fakt
   <div class="scroll-hint">scroll ↓ poznaj drogę</div>
 </section>
 
-<!-- 02 POMAGAMY -->
-<section class="story light" id="help" data-photo="IMG_5236" data-shader="sand">
-  <iframe class="shader-bg" data-shader-src="/shaders/sand.html" loading="lazy" title="Sand drift shader"></iframe>
-  <div class="container">
-    <div class="eyebrow">02 — pomagamy</div>
-    <h2 class="section-title">Biura rachunkowe<br><em>tracą czas</em> na powtórki.</h2>
-    <p class="lede">Twoi pracownicy spędzają <strong>4-8 godzin dziennie</strong> na ręcznym wprowadzaniu faktur, klasyfikacji maili klientów, pilnowaniu deadline'ów <strong>VAT, ZUS, JPK_V7, KSeF</strong>. Polskie biura rachunkowe tracą tygodniowo <strong>25-40 godzin</strong> na powtarzalnej pracy. Agenci AI MJ.OLDAK redukują to do minut — dane z faktur za 8 sekund, automatyczne szkice maili w stylu Twojego biura, kalendarz podatkowy 2026 zsynchronizowany per klient.</p>
+<!-- 02 POMAGAMY (Cloud Design v1 — editorial 2-col, fit-viewport) -->
+<section id="help" class="cd-section" data-photo="IMG_5236" aria-labelledby="help-title">
+  <header class="cd-help-head">
+    <span class="cd-eyebrow">02 — Pomagamy</span>
+    <h2 class="cd-display-h2" id="help-title">
+      Biura rachunkowe <em>tracą czas</em> na powtórki.
+    </h2>
+  </header>
 
-    <div class="help-grid">
-      <div class="help-photo help-mock" id="helpPhoto">
-        <div class="bento-screenshot help-screenshot">
-          <div class="titlebar"><span></span><span></span><span></span></div>
-          <div class="body">
-            <div class="ocr-demo">
-              <div class="ocr-doc">
-                <div class="ocr-doc-line"></div>
-                <div class="ocr-doc-line"></div>
-                <div class="ocr-doc-line"></div>
-                <div class="ocr-doc-line"></div>
-                <div class="ocr-doc-line"></div>
-              </div>
-              <div class="ocr-arrow">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>
-                <span class="arrow-label">8s</span>
-              </div>
-              <div class="ocr-fields">
-                <div class="row"><span class="key">NIP</span><span class="val">542-12-12-456</span></div>
-                <div class="row"><span class="key">Data</span><span class="val">07.05.2026</span></div>
-                <div class="row"><span class="key">Netto</span><span class="val">2 450,00 zł</span></div>
-                <div class="row"><span class="key">VAT 23%</span><span class="val">563,50 zł</span></div>
-              </div>
-            </div>
-          </div>
+  <div class="cd-help-left">
+    <p class="cd-lede">
+      Księgowa traci <strong>4–8 godzin dziennie</strong> na ręcznym wprowadzaniu faktur,
+      odpisywaniu na powtarzające się maile i pilnowaniu deadlinów <strong>VAT, ZUS, JPK_V7</strong>.
+      To <strong>25–40 godzin tygodniowo</strong> powtarzalnej pracy, którą agenci AI
+      redukują do minut — zostawiając zespołowi to, co wymaga księgowej głowy.
+    </p>
+
+    <ol class="cd-points" aria-label="Cztery obszary automatyzacji">
+      <li>
+        <span class="cd-num">01</span>
+        <span class="cd-txt">OCR faktur PDF/zdjęcie → dane strukturalne za 8 sekund. Zero ręcznego przepisywania.</span>
+      </li>
+      <li>
+        <span class="cd-num">02</span>
+        <span class="cd-txt">Klasyfikacja maili klientów + szkice odpowiedzi. Skrzynka pod kontrolą.</span>
+      </li>
+      <li>
+        <span class="cd-num">03</span>
+        <span class="cd-txt">Deadline tracker ZUS, VAT, JPK, <span class="proper">KSeF</span> — przypomnienie zanim klient zadzwoni.</span>
+      </li>
+      <li>
+        <span class="cd-num">04</span>
+        <span class="cd-txt">Raporty klientowskie z danych księgowych — gotowe do wysłania.</span>
+      </li>
+    </ol>
+  </div>
+
+  <div class="cd-help-right">
+    <div class="cd-mockup" role="img" aria-label="Mockup: faktura PDF zamieniana w dane strukturalne w 8 sekund">
+      <div class="cd-mockup-flow">
+        <div class="cd-doc-icon" aria-hidden="true">
+          <div class="cd-doc-lines"><span></span><span></span><span></span></div>
+        </div>
+        <div class="cd-arrow" aria-hidden="true">
+          <span class="cd-arrow-label">8s</span>
+          <div class="cd-arrow-line"></div>
+        </div>
+        <div class="cd-fields">
+          <div class="cd-field"><span class="cd-field-label">NIP</span><span class="cd-field-value">542-12-12-456</span></div>
+          <div class="cd-field"><span class="cd-field-label">Data</span><span class="cd-field-value">07.05.2026</span></div>
+          <div class="cd-field"><span class="cd-field-label">Netto</span><span class="cd-field-value">2 450,00 zł</span></div>
+          <div class="cd-field"><span class="cd-field-label">VAT 23%</span><span class="cd-field-value">563,50 zł</span></div>
         </div>
       </div>
-      <ul class="pain-list">
-        <li><span class="ic">01</span><span><strong>OCR faktur PDF/zdjęcie</strong> → dane strukturalne za 8 sekund. Zero ręcznego przepisywania.</span></li>
-        <li><span class="ic">02</span><span><strong>Klasyfikacja maili klientów</strong> + szkice odpowiedzi. Skrzynka pod kontrolą.</span></li>
-        <li><span class="ic">03</span><span><strong>Deadline tracker</strong> ZUS, VAT, JPK, KSeF — przypomnienie zanim klient zadzwoni.</span></li>
-        <li><span class="ic">04</span><span><strong>Raporty klientowskie</strong> z danych księgowych — gotowe do wysłania.</span></li>
-      </ul>
     </div>
 
-    <div class="metrics-row" id="metricsRow">
-      <div class="metric"><div class="num" data-target="60">0<span class="unit">h/mc</span></div><div class="label">oszczędzony czas</div></div>
-      <div class="metric"><div class="num" data-target="8">0<span class="unit">s</span></div><div class="label">na fakturę</div></div>
-      <div class="metric"><div class="num" data-target="4">0<span class="unit">prod.</span></div><div class="label">w stack'u</div></div>
-      <div class="metric"><div class="num" data-target="4">0<span class="unit">tyg.</span></div><div class="label">pilot za darmo</div></div>
+    <div class="cd-metrics" role="list" aria-label="Kluczowe metryki">
+      <div class="cd-metric" role="listitem"><span class="cd-metric-value">60<span class="cd-unit">h/mc</span></span><span class="cd-metric-label">Oszczędzony czas</span></div>
+      <div class="cd-metric" role="listitem"><span class="cd-metric-value">8<span class="cd-unit">s</span></span><span class="cd-metric-label">Na fakturę</span></div>
+      <div class="cd-metric" role="listitem"><span class="cd-metric-value">4<span class="cd-unit">prod.</span></span><span class="cd-metric-label">W stack'u</span></div>
+      <div class="cd-metric" role="listitem"><span class="cd-metric-value">4<span class="cd-unit">tyg.</span></span><span class="cd-metric-label">Pilot za darmo</span></div>
     </div>
   </div>
 </section>
 
-<!-- 03 PRODUKTY -->
-<section class="story light" id="products" data-photo="IMG_5048" data-shader="coastal">
-  <iframe class="shader-bg" data-shader-src="/shaders/coastal.html" loading="lazy" title="Coastal currents shader"></iframe>
-  <div class="container">
-    <div class="eyebrow">03 — co budujemy</div>
-    <h2 class="section-title">Cztery produkty,<br><em>jeden stack.</em></h2>
-    <p class="lede" style="opacity:0.78">Każdy działa osobno. Razem stanowią kompletny operacyjny stack dla biura — od dokumentu klienta do raportu.</p>
-
-    <div class="products-bento" id="productsBento">
-      <button class="bento-card" data-area="ocr">
-        <div>
-          <div class="b-num">PRODUCT · 01 · FLAGSHIP</div>
-          <div class="b-name">OCR Invoice Reader</div>
-          <span class="b-badge">Live u klienta</span>
-          <p class="b-desc">Faktura PDF/zdjęcie → dane strukturalne za 8s. JSON do Comarch / Optima / iFirma.</p>
-          <div class="b-extra">
-            <h5>Co to za program</h5>
-            <p class="b-extra-desc">Odczytuje faktury PDF, JPG, skany. Zamiast 5 minut ręcznego przepisywania w Comarch / Optima — 8 sekund + JSON gotowy do importu.</p>
-            <h5 style="margin-top:14px">Jak pomaga w życiu</h5>
-            <ul><li>Oszczędzasz <strong>40h miesięcznie</strong> na ręcznym przepisywaniu</li><li>Auto-walidacja NIP + kwoty VAT — eliminujesz literówki w księgowości</li><li>Bez kopiuj-wklej — JSON od razu do Comarch / Optima / iFirma</li><li>Twoja księgowa skupia się na klientach, NIE na klawiaturze</li></ul>
-          </div>
-        </div>
-        <div class="bento-screenshot">
-          <div class="titlebar"><span></span><span></span><span></span></div>
-          <div class="body">
-            <div class="ocr-demo">
-              <div class="ocr-doc">
-                <div class="ocr-doc-line"></div>
-                <div class="ocr-doc-line"></div>
-                <div class="ocr-doc-line"></div>
-                <div class="ocr-doc-line"></div>
-                <div class="ocr-doc-line"></div>
-              </div>
-              <div class="ocr-arrow">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>
-                <span class="arrow-label">8s</span>
-              </div>
-              <div class="ocr-fields">
-                <div class="row"><span class="key">NIP</span><span class="val">542-12-12-456</span></div>
-                <div class="row"><span class="key">Data</span><span class="val">07.05.2026</span></div>
-                <div class="row"><span class="key">Netto</span><span class="val">2 450,00 zł</span></div>
-                <div class="row"><span class="key">VAT 23%</span><span class="val">563,50 zł</span></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </button>
-      <button class="bento-card" data-area="email">
-        <div>
-          <div class="b-num">PRODUCT · 02 · FLAGSHIP</div>
-          <div class="b-name">Email Assistant</div>
-          <span class="b-badge">Beta</span>
-          <p class="b-desc">Klasyfikacja maili klientów + automatyczne szkice + Gmail/Calendar.</p>
-          <div class="b-extra">
-            <h5>Co to za program</h5>
-            <p class="b-extra-desc">Twoja skrzynka mailowa pod kontrolą — AI sortuje maile (klient / US / ZUS / spam), pisze szkice odpowiedzi w Twoim tonie, synchronizuje z Gmail i kalendarzem.</p>
-            <h5 style="margin-top:14px">Jak pomaga w życiu</h5>
-            <ul><li><strong>4h dziennie na obsługę maili → 1h</strong> (3h zaoszczędzone na klienta lub odpoczynek)</li><li>Mail od US / ZUS / klienta segregowany automatycznie — żaden nie czeka 3 dni</li><li>Szkice odpowiedzi gotowe — klikasz „wyślij" zamiast pisać od zera</li><li>Klient czuje że szybko reagujesz — buduje zaufanie</li></ul>
-          </div>
-        </div>
-        <div class="bento-screenshot">
-          <div class="titlebar"><span></span><span></span><span></span></div>
-          <div class="body placeholder"></div>
-        </div>
-      </button>
-      <button class="bento-card" data-area="deadline">
-        <div>
-          <div class="b-num">PRODUCT · 03</div>
-          <div class="b-name">Deadline Agent</div>
-          <span class="b-badge">Pilot</span>
-          <p class="b-desc">VAT, JPK, KSeF — przypomnienia per klient.</p>
-          <div class="b-extra">
-            <h5>Co to za program</h5>
-            <p class="b-extra-desc">Kalendarz podatkowy 2026 zsynchronizowany per klient. VAT, JPK_V7, KSeF, ZUS, CIT — przypomnienie zanim klient zadzwoni z pretensją.</p>
-            <h5 style="margin-top:14px">Jak pomaga w życiu</h5>
-            <ul><li><strong>Zero przegapionych deadline'ów</strong> = zero kar US dla Twoich klientów</li><li>Klient widzi że nad nim panujesz — łatwiej Cię polecać innym</li><li>SMS / email 7 dni przed terminem — Ty wiesz pierwszy, klient drugi</li><li>Spokojna głowa: nawet jeśli zapomnisz, system pamięta</li></ul>
-          </div>
-        </div>
-        <div class="bento-screenshot">
-          <div class="titlebar"><span></span><span></span><span></span></div>
-          <div class="body placeholder"></div>
-        </div>
-      </button>
-      <button class="bento-card" data-area="reporting">
-        <div>
-          <div class="b-num">PRODUCT · 04</div>
-          <div class="b-name">Reporting Agent</div>
-          <span class="b-badge">Pilot</span>
-          <p class="b-desc">Raporty klientowskie auto-PDF + email. Bez Excela.</p>
-          <div class="b-extra">
-            <h5>Co to za program</h5>
-            <p class="b-extra-desc">Generuje miesięczne raporty PDF z danych księgowych. Bez Excela, bez kopiuj-wklej, bez wieczornej pracy w piątek. Email do klienta automatycznie.</p>
-            <h5 style="margin-top:14px">Jak pomaga w życiu</h5>
-            <ul><li><strong>Raport dla klienta w 2 minuty</strong> zamiast 2 godziny szukania w Excelu</li><li>Profesjonalny format Twojego biura — klient czuje że płaci za „value-added service"</li><li>Email automatycznie 5. dnia miesiąca — klient widzi punktualność</li><li>Łatwiej wytłumaczyć cennik — „tu masz raport, oto wartość"</li></ul>
-          </div>
-        </div>
-        <div class="bento-screenshot">
-          <div class="titlebar"><span></span><span></span><span></span></div>
-          <div class="body placeholder"></div>
-        </div>
-      </button>
+<!-- 03 PRODUKTY (Cloud Design v1 — 2x2 cards grid, fit-viewport) -->
+<section id="products" class="cd-section" data-photo="IMG_5048" aria-labelledby="products-title">
+  <header class="cd-products-head">
+    <div>
+      <span class="cd-eyebrow">03 — Co budujemy</span>
+      <h2 class="cd-display-h2" id="products-title">
+        Cztery moduły. <em>Jedno biuro spokojne przed <span class="proper">KSeF</span> 2027.</em>
+      </h2>
     </div>
+    <p class="cd-lede">
+      Dla biur rachunkowych <strong>5–15 osób</strong>. Każdy z 4 produktów rozwiązuje
+      konkretny pain — faktury, maile, deadliny, raporty. Razem zwracają
+      <strong>40–60h miesięcznie</strong> i dają audit trail wymagany od
+      <strong>01.01.2027</strong>. Pilot za darmo, 4 tygodnie.
+    </p>
+  </header>
+
+  <div class="cd-cards" role="list">
+    <article class="cd-card cd-card-flagship" role="listitem">
+      <div class="cd-card-meta">
+        <span class="cd-card-label">Product · 01 · Flagship</span>
+        <span class="cd-card-badge cd-badge-live">Live u klienta</span>
+      </div>
+      <div class="cd-card-body">
+        <h3 class="cd-card-name">OCR Invoice Reader</h3>
+        <p class="cd-card-desc">Faktura PDF/zdjęcie → dane strukturalne za 8s. JSON do Comarch / Optima / iFirma.</p>
+      </div>
+    </article>
+
+    <article class="cd-card cd-card-flagship" role="listitem">
+      <div class="cd-card-meta">
+        <span class="cd-card-label">Product · 02 · Flagship</span>
+        <span class="cd-card-badge cd-badge-beta">Beta</span>
+      </div>
+      <div class="cd-card-body">
+        <h3 class="cd-card-name">Email Assistant</h3>
+        <p class="cd-card-desc">Klasyfikacja maili klientów + automatyczne szkice + Gmail/Calendar.</p>
+      </div>
+    </article>
+
+    <article class="cd-card cd-card-pilot" role="listitem">
+      <div class="cd-card-meta">
+        <span class="cd-card-label">Product · 03</span>
+        <span class="cd-card-badge cd-badge-pilot">Pilot</span>
+      </div>
+      <div class="cd-card-body">
+        <h3 class="cd-card-name">Deadline Agent</h3>
+        <p class="cd-card-desc">VAT, JPK, <span style="white-space: nowrap" class="proper-inline">KSeF</span> — przypomnienia per klient.</p>
+      </div>
+    </article>
+
+    <article class="cd-card cd-card-pilot" role="listitem">
+      <div class="cd-card-meta">
+        <span class="cd-card-label">Product · 04</span>
+        <span class="cd-card-badge cd-badge-pilot">Pilot</span>
+      </div>
+      <div class="cd-card-body">
+        <h3 class="cd-card-name">Reporting Agent</h3>
+        <p class="cd-card-desc">Raporty klientowskie auto-PDF + email. Bez Excela.</p>
+      </div>
+    </article>
   </div>
+
+  <footer class="cd-products-foot">
+    <div class="cd-ctas">
+      <a href="https://notebooklm.google.com/notebook/d0e23199-daa3-4586-9bf5-183afffe77f8" target="_blank" rel="noopener" class="cd-btn cd-btn-secondary">Zobacz live demo notebooka →</a>
+      <a href="/#contact" class="cd-btn cd-btn-primary">Umów 20-min Mom Test call →</a>
+    </div>
+  </footer>
+
 </section>
 
 <!-- 04 PROCES -->
@@ -1365,21 +1744,25 @@ let photos = [], idx = 0, timer = null, progressTimer = null, paused = false;
 async function loadPhotos() {
   const r = await fetch('/photos.json' + VER);
   photos = await r.json();
-  // console.log('photos.json loaded:', photos.length);
   photos.forEach(p => { const im = new Image(); im.src = p.src + VER; });
-  apply(0);
+  // Daily Hero photo rotation — different baseline image each calendar day
+  const today = new Date();
+  const dayOfYear = Math.floor((today - new Date(today.getFullYear(), 0, 0)) / 86400000);
+  apply(dayOfYear % photos.length);
   start();
 }
 
 function apply(i) {
   idx = i;
   const p = photos[idx];
-  // console.log('apply →', p.name, p.accent);
   const hero = document.getElementById('hero');
   hero.style.backgroundImage = `url('${p.src}${VER}')`;
+  hero.dataset.photo = p.name;
   hero.classList.toggle('low-res', !!p.lowRes);
-  document.documentElement.style.setProperty('--accent', p.accent);
-  document.documentElement.style.setProperty('--dark', p.dark);
+  // Brand colors LOCKED do sea-blue + sand (wartime brand consistency).
+  // Photo rotuje wizualnie ale --accent + --dark zostają z :root.
+  // (Removed: documentElement.style.setProperty('--accent', p.accent);
+  //           documentElement.style.setProperty('--dark', p.dark);)
   // Subtle photo behind the "Pomagamy" section uses a different image — rotate it too
   const helpPhoto = document.getElementById('helpPhoto');
   if (helpPhoto) {
@@ -1435,30 +1818,11 @@ document.querySelectorAll('section.story, .contact, .pilot-section').forEach(sec
 // ─── Photo / Shader mode toggle (Hero only — sections always have ambient shader) ───
 const STORAGE_KEY = 'mjoldak-bg-mode';
 
-// Load ALL shader iframes immediately (sections need them as ambient bg, hero lazy)
-document.querySelectorAll('iframe.shader-bg[data-shader-src]').forEach(f => {
-  // Skip hero iframe — load only when shader-mode active to save resources
-  const isHero = f.closest('.hero') !== null;
-  if (!isHero && !f.src) f.src = f.dataset.shaderSrc;
-});
+// Shader iframes load ONLY on shader-mode opt-in (6 iframes × rAF loop = lag).
+// Default mode: sections rely on CSS scrim/vignette as ambient fallback.
 
-function setMode(mode) {
-  document.body.classList.toggle('shader-mode', mode === 'shader');
-  document.getElementById('modeLabel').textContent = mode === 'shader' ? 'PHOTO' : 'SHADER';
-  localStorage.setItem(STORAGE_KEY, mode);
-  // Lazy-load hero shader only when entering shader mode
-  if (mode === 'shader') {
-    document.querySelectorAll('.hero iframe.shader-bg[data-shader-src]').forEach(f => {
-      if (!f.src) f.src = f.dataset.shaderSrc;
-    });
-  }
-}
-const initialMode = localStorage.getItem(STORAGE_KEY) || 'photo';
-setMode(initialMode);
-document.getElementById('modeToggle').addEventListener('click', () => {
-  const current = document.body.classList.contains('shader-mode') ? 'shader' : 'photo';
-  setMode(current === 'shader' ? 'photo' : 'shader');
-});
+// SHADER toggle removed — useless dla biur rachunkowych audience.
+// Shader iframes stay in HTML (CSS scrim/vignette fallback in place) but never load src.
 
 // ── Products inverse-reader (PRESERVED for backlog reference) ──
 const PRODUCTS_LEGACY = [
@@ -1498,9 +1862,15 @@ const PRODUCTS_LEGACY = [
         document.querySelectorAll('#productsBento .bento-card').forEach(c => c.classList.remove('expanded'));
         if (wasExpanded) {
           bento.removeAttribute('data-expand');
+          setTimeout(() => {
+            const productsEl = document.getElementById('products');
+            const y = productsEl.getBoundingClientRect().top + window.pageYOffset - 80;
+            window.scrollTo({top: y, behavior: 'smooth'});
+          }, 200);
         } else {
           card.classList.add('expanded');
           bento.setAttribute('data-expand', area);
+          setTimeout(() => card.scrollIntoView({behavior: 'smooth', block: 'start'}), 50);
         }
       });
     });
@@ -1511,8 +1881,52 @@ const PRODUCTS_LEGACY = [
         bento.removeAttribute('data-expand');
       }
     });
+    // Screenshot lightbox — click image in expanded card to zoom (NOT collapse parent)
+    document.querySelectorAll('#productsBento .bento-screenshot .body.with-image img').forEach(img => {
+      img.addEventListener('click', (e) => {
+        if (!img.closest('.bento-card.expanded')) return;
+        e.stopPropagation();
+        openProductLightbox(img.src, img.alt);
+      });
+    });
   }
 }
+
+function openProductLightbox(src, alt) {
+  const overlay = document.createElement('div');
+  overlay.className = 'product-lightbox';
+  overlay.innerHTML = `<button class="lightbox-close" aria-label="Zamknij">×</button><img src="${src}" alt="${alt || ''}">`;
+  document.body.appendChild(overlay);
+  document.body.style.overflow = 'hidden';
+  const close = () => {
+    overlay.remove();
+    document.body.style.overflow = '';
+    document.removeEventListener('keydown', onEsc);
+  };
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay || e.target.classList.contains('lightbox-close')) close();
+  });
+  const onEsc = (e) => { if (e.key === 'Escape') close(); };
+  document.addEventListener('keydown', onEsc);
+}
+
+// ─── Nav anchor smooth-scroll z block: 'center' ───
+// Override default browser scroll-to-top — anchor click landuje user
+// na MIDDLE viewport, NIE na top sekcji (Marcin: „chcę żeby było wyśrodkowane").
+// Krótsze sekcje: idealnie centered. Dłuższe niż 100vh: scroll-to-start fallback.
+document.querySelectorAll('.nav a.link[href^="#"], a[href^="#"][data-spy]').forEach(link => {
+  link.addEventListener('click', (e) => {
+    const targetId = link.getAttribute('href').slice(1);
+    const target = document.getElementById(targetId);
+    if (!target) return;
+    e.preventDefault();
+    // #articles ma >100vh content (3 cards + button + newsletter) — block 'end'
+    // pokazuje bottom (cards+button+newsletter visible, headline na top cropped).
+    // Inne sekcje używają 'center' (default fit).
+    const blockMode = targetId === 'articles' ? 'end' : 'center';
+    target.scrollIntoView({ behavior: 'smooth', block: blockMode });
+  });
+});
 
 // ─── A) Scroll progress bar + scroll-spy ───
 const sections = document.querySelectorAll('section[id]');
@@ -1528,12 +1942,8 @@ const spyObserver = new IntersectionObserver(entries => {
     if (e.isIntersecting) {
       const id = e.target.id;
       navLinks.forEach(a => a.classList.toggle('active', a.dataset.spy === id));
-      // E) section-triggered photo + theme
-      const photoName = e.target.dataset.photo;
-      if (photoName && photos.length) {
-        const i = photos.findIndex(p => p.name === photoName);
-        if (i >= 0 && i !== idx) apply(i);
-      }
+      // Section-triggered photo change REMOVED — Hero photo zostaje daily, stała przez sesję.
+      // Marcin: „przewijam i widzę kolejne zdjęcie wjeżdża, przewijam do góry trzecie zdjęcie = zbukowane".
     }
   });
 }, { threshold: 0.45 });
@@ -1580,25 +1990,45 @@ document.querySelectorAll('.magnet').forEach(btn => {
   });
 });
 
-// ─── Process — interactive station picker ───
-document.querySelectorAll('#processStations .station').forEach(btn => {
-  btn.addEventListener('click', () => {
-    const step = parseInt(btn.dataset.step);
-    document.querySelectorAll('#processStations .station').forEach((el, i) => {
-      el.classList.toggle('active', i === step);
-    });
-    const fill = document.getElementById('processFill');
-    if (fill) {
-      // 0 → 12.5%, 1 → 37.5%, 2 → 62.5%, 3 → 87.5% (center of each station)
-      const pct = 12.5 + step * 25;
-      fill.style.width = pct + '%';
-    }
-  });
-});
-// init progress fill at default active (step 2 = pilot)
+// ─── Process — auto-rotate stations co 5s + click pauses auto ───
 {
+  const stationBtns = document.querySelectorAll('#processStations .station');
   const fill = document.getElementById('processFill');
-  if (fill) fill.style.width = (12.5 + 2 * 25) + '%';
+  let processIdx = 0;
+  let processTimer = null;
+
+  function setStation(i) {
+    processIdx = i;
+    stationBtns.forEach((el, j) => el.classList.toggle('active', j === i));
+    if (fill) fill.style.width = (12.5 + i * 25) + '%';
+  }
+  function rotateProcess() { setStation((processIdx + 1) % stationBtns.length); }
+  function startAutoRotate() {
+    if (processTimer || !stationBtns.length) return;
+    processTimer = setInterval(rotateProcess, 5000);
+  }
+  function stopAutoRotate() {
+    if (processTimer) { clearInterval(processTimer); processTimer = null; }
+  }
+
+  stationBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      stopAutoRotate();
+      setStation(parseInt(btn.dataset.step));
+    });
+  });
+
+  // Pause auto-rotate when Process section is off-screen (saves rAF/timer cost)
+  const processSection = document.getElementById('process');
+  if (processSection && stationBtns.length) {
+    setStation(0);
+    new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) startAutoRotate();
+        else stopAutoRotate();
+      });
+    }, { threshold: 0.3 }).observe(processSection);
+  }
 }
 
 // ─── D) Hero parallax ───
