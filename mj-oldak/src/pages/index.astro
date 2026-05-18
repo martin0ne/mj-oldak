@@ -516,6 +516,37 @@ const description = 'Buduje AI agentów dla polskich biur rachunkowych: OCR fakt
   .products-bento[data-expand] { height: auto; min-height: 56vh; }
   .bento-screenshot .body.with-image { padding: 0; }
   .bento-screenshot .body.with-image img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .bento-card.expanded .bento-screenshot .body.with-image img { cursor: zoom-in; }
+
+  /* ── Product screenshot lightbox ── */
+  .product-lightbox {
+    position: fixed; inset: 0; z-index: 10000;
+    background: rgba(13, 27, 50, 0.92);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    display: flex; align-items: center; justify-content: center;
+    padding: 5vh 5vw;
+    cursor: zoom-out;
+    animation: lightboxFade 0.2s ease;
+  }
+  @keyframes lightboxFade { from { opacity: 0; } to { opacity: 1; } }
+  .product-lightbox img {
+    max-width: 100%; max-height: 100%;
+    border-radius: 12px;
+    box-shadow: 0 24px 64px rgba(0,0,0,0.5);
+    cursor: default;
+  }
+  .product-lightbox .lightbox-close {
+    position: absolute; top: 24px; right: 24px;
+    width: 48px; height: 48px;
+    border-radius: 50%;
+    border: 1px solid color-mix(in srgb, var(--primary) 30%, transparent);
+    background: rgba(13,27,50,0.6); color: var(--primary);
+    font-size: 24px; cursor: pointer; line-height: 1;
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.2s, border-color 0.2s;
+  }
+  .product-lightbox .lightbox-close:hover { background: var(--accent); border-color: var(--accent); }
   .bento-card .b-extra { display: none; margin-top: 14px; padding-top: 14px; border-top: 1px solid color-mix(in srgb, var(--primary) 14%, transparent); }
   .bento-card.expanded .b-extra { display: block; }
   .bento-card .b-extra h5 {
@@ -526,8 +557,8 @@ const description = 'Buduje AI agentów dla polskich biur rachunkowych: OCR fakt
     list-style: none; display: grid; grid-template-columns: 1fr; gap: 8px;
     font-family: 'Inter'; font-size: 14px;
   }
-  .bento-card .b-extra ul li { padding: 4px 0; opacity: 0.88; display: grid; grid-template-columns: auto 1fr; gap: 10px; }
-  .bento-card .b-extra ul li::before { content: '▸'; color: var(--accent); font-family: 'JetBrains Mono'; }
+  .bento-card .b-extra ul li { padding: 4px 0; opacity: 0.88; display: flex; align-items: baseline; gap: 10px; }
+  .bento-card .b-extra ul li::before { content: '▸'; color: var(--accent); font-family: 'JetBrains Mono'; flex-shrink: 0; }
   .bento-card .b-extra ul li strong { color: var(--accent); font-weight: 700; }
   .bento-card .b-extra .b-extra-desc {
     font-family: 'Inter'; font-size: 14px; line-height: 1.5;
@@ -1372,9 +1403,11 @@ let photos = [], idx = 0, timer = null, progressTimer = null, paused = false;
 async function loadPhotos() {
   const r = await fetch('/photos.json' + VER);
   photos = await r.json();
-  // console.log('photos.json loaded:', photos.length);
   photos.forEach(p => { const im = new Image(); im.src = p.src + VER; });
-  apply(0);
+  // Daily Hero photo rotation — different baseline image each calendar day
+  const today = new Date();
+  const dayOfYear = Math.floor((today - new Date(today.getFullYear(), 0, 0)) / 86400000);
+  apply(dayOfYear % photos.length);
   start();
 }
 
@@ -1513,7 +1546,33 @@ const PRODUCTS_LEGACY = [
         bento.removeAttribute('data-expand');
       }
     });
+    // Screenshot lightbox — click image in expanded card to zoom (NOT collapse parent)
+    document.querySelectorAll('#productsBento .bento-screenshot .body.with-image img').forEach(img => {
+      img.addEventListener('click', (e) => {
+        if (!img.closest('.bento-card.expanded')) return;
+        e.stopPropagation();
+        openProductLightbox(img.src, img.alt);
+      });
+    });
   }
+}
+
+function openProductLightbox(src, alt) {
+  const overlay = document.createElement('div');
+  overlay.className = 'product-lightbox';
+  overlay.innerHTML = `<button class="lightbox-close" aria-label="Zamknij">×</button><img src="${src}" alt="${alt || ''}">`;
+  document.body.appendChild(overlay);
+  document.body.style.overflow = 'hidden';
+  const close = () => {
+    overlay.remove();
+    document.body.style.overflow = '';
+    document.removeEventListener('keydown', onEsc);
+  };
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay || e.target.classList.contains('lightbox-close')) close();
+  });
+  const onEsc = (e) => { if (e.key === 'Escape') close(); };
+  document.addEventListener('keydown', onEsc);
 }
 
 // ─── A) Scroll progress bar + scroll-spy ───
