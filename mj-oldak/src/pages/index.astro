@@ -1318,6 +1318,17 @@ const description = 'Buduje AI agentów dla polskich biur rachunkowych: OCR fakt
   .cd-btn-primary { background: var(--accent); color: var(--dark); }
   .cd-btn-primary:hover { background: #5fa0cc; transform: translateY(-1px); }
 
+  /* Vertical-center content w sekcjach 04/06/07 (anchor click landing) */
+  section.story#process,
+  section.story#articles {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .contact#contact {
+    justify-content: center;
+  }
+
   /* responsive fallback */
   @media (max-width: 1024px) {
     .cd-section { height: auto; min-height: 100vh; padding: 40px 32px; }
