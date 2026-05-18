@@ -1910,6 +1910,20 @@ function openProductLightbox(src, alt) {
   document.addEventListener('keydown', onEsc);
 }
 
+// ─── Nav anchor smooth-scroll z block: 'center' ───
+// Override default browser scroll-to-top — anchor click landuje user
+// na MIDDLE viewport, NIE na top sekcji (Marcin: „chcę żeby było wyśrodkowane").
+// Krótsze sekcje: idealnie centered. Dłuższe niż 100vh: scroll-to-start fallback.
+document.querySelectorAll('.nav a.link[href^="#"], a[href^="#"][data-spy]').forEach(link => {
+  link.addEventListener('click', (e) => {
+    const targetId = link.getAttribute('href').slice(1);
+    const target = document.getElementById(targetId);
+    if (!target) return;
+    e.preventDefault();
+    target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  });
+});
+
 // ─── A) Scroll progress bar + scroll-spy ───
 const sections = document.querySelectorAll('section[id]');
 const navLinks = document.querySelectorAll('.nav a.link');
