@@ -13,6 +13,14 @@ const description = 'Buduje AI agentów dla polskich biur rachunkowych: OCR fakt
     --dark: #0D1B32;
     --sunset: #C87E3B;
     --transition-dur: 1.5s;
+
+    /* Cloud Design tokens (sekcje 02 + 03 editorial v1) */
+    --font-display: 'Manrope', system-ui, sans-serif;
+    --font-italic: 'Fraunces', Georgia, serif;
+    --font-body: 'Inter', system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+    --cd-nav-reserve: 88px;
+    --cd-section-h: calc(100vh - var(--cd-nav-reserve));
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; /* smooth tylko dla nav clicks, brak snap */ }
@@ -1000,6 +1008,328 @@ const description = 'Buduje AI agentów dla polskich biur rachunkowych: OCR fakt
   .cfh-status.error { color: #E89A7F; }
   .pilot-form button[disabled] { opacity: 0.5; cursor: not-allowed; }
 
+  /* ============================================================
+     CLOUD DESIGN v1 — sekcje 02 (#help) + 03 (#products)
+     Scoped do .cd-section, .cd-* classes — zero kolizji z global.
+     Override: section.story styles (min-height 100vh, padding from container)
+     są wycinane przez .cd-section który ma własne layout.
+     ============================================================ */
+
+  .cd-section {
+    background: var(--bg);
+    color: var(--dark);
+    min-height: 0;
+    height: var(--cd-section-h);
+    min-height: 720px;
+    padding: 48px 72px 40px;
+    position: relative;
+    overflow: hidden;
+    box-sizing: border-box;
+  }
+  .cd-section::after {
+    content: attr(id);
+    position: absolute;
+    top: 48px; right: 72px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    color: rgba(13,27,50,0.3);
+    text-transform: uppercase;
+    pointer-events: none;
+  }
+  #help.cd-section::after { content: "MJ.OLDAK / 02"; }
+  #products.cd-section::after { content: "MJ.OLDAK / 03"; }
+
+  /* shared typography */
+  .cd-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 12px; font-weight: 500;
+    letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--accent);
+    display: inline-flex; align-items: center; gap: 10px;
+    margin: 0;
+  }
+  .cd-eyebrow::before {
+    content: ""; width: 24px; height: 1px; background: var(--accent);
+  }
+  .cd-display-h2 {
+    font-family: var(--font-display);
+    font-weight: 800; text-transform: uppercase;
+    letter-spacing: -0.025em; line-height: 0.95;
+    color: var(--dark);
+    font-size: clamp(48px, 5.2vw, 76px);
+    margin: 0;
+  }
+  .cd-display-h2 em {
+    font-family: var(--font-italic);
+    font-style: italic; font-weight: 400;
+    text-transform: lowercase; letter-spacing: -0.015em;
+    color: var(--accent);
+    display: inline-block;
+  }
+  .cd-display-h2 em .proper { text-transform: none; }
+  .cd-lede {
+    font-family: var(--font-body);
+    font-size: 15px; line-height: 1.55;
+    color: rgba(13,27,50,0.78);
+    max-width: 56ch;
+    margin: 0;
+  }
+  .cd-lede strong { color: var(--dark); font-weight: 600; }
+
+  /* ── #help layout ── */
+  #help.cd-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto 1fr auto;
+    column-gap: 64px;
+    row-gap: 28px;
+  }
+  .cd-help-head {
+    grid-column: 1 / -1;
+    display: flex; flex-direction: column; gap: 18px;
+  }
+  .cd-help-head .cd-display-h2 { max-width: 16ch; }
+  .cd-help-left {
+    display: flex; flex-direction: column; gap: 24px; min-width: 0;
+  }
+  .cd-help-right {
+    display: flex; flex-direction: column; gap: 20px; min-width: 0;
+    justify-content: flex-start;
+  }
+  .cd-points {
+    list-style: none; padding: 16px 0 0;
+    display: flex; flex-direction: column; gap: 12px;
+    border-top: 1px solid rgba(13,27,50,0.12);
+  }
+  .cd-points li {
+    display: grid; grid-template-columns: 44px 1fr;
+    gap: 14px; align-items: baseline;
+    padding-bottom: 12px; border-bottom: 1px solid rgba(13,27,50,0.08);
+  }
+  .cd-points li:last-child { border-bottom: none; padding-bottom: 0; }
+  .cd-num {
+    font-family: var(--font-mono);
+    font-size: 12px; font-weight: 500; letter-spacing: 0.15em;
+    color: var(--accent);
+  }
+  .cd-txt {
+    font-family: var(--font-body);
+    font-size: 14px; line-height: 1.5; color: var(--dark);
+  }
+
+  /* mockup widget */
+  .cd-mockup {
+    background: linear-gradient(135deg, var(--dark) 0%, #142745 100%);
+    border-radius: 14px; padding: 22px 24px;
+    color: var(--primary);
+    box-shadow: 0 20px 40px -20px rgba(13,27,50,0.35),
+                inset 0 1px 0 rgba(255,255,255,0.04);
+    position: relative; overflow: hidden;
+  }
+  .cd-mockup::before {
+    content: "OCR · LIVE";
+    position: absolute; top: 14px; right: 18px;
+    font-family: var(--font-mono);
+    font-size: 9px; letter-spacing: 0.25em;
+    color: rgba(202,194,174,0.4);
+  }
+  .cd-mockup-flow {
+    display: grid; grid-template-columns: auto auto 1fr;
+    align-items: center; gap: 18px; margin-top: 14px;
+  }
+  .cd-doc-icon {
+    width: 52px; height: 64px;
+    border: 1.5px solid rgba(202,194,174,0.4);
+    border-radius: 4px; position: relative; flex-shrink: 0;
+  }
+  .cd-doc-icon::before {
+    content: ""; position: absolute; top: 0; right: 0;
+    width: 14px; height: 14px; background: var(--dark);
+    border-left: 1.5px solid rgba(202,194,174,0.4);
+    border-bottom: 1.5px solid rgba(202,194,174,0.4);
+  }
+  .cd-doc-icon::after {
+    content: "PDF"; position: absolute; bottom: 8px; left: 0; right: 0;
+    text-align: center;
+    font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.15em;
+    color: rgba(202,194,174,0.6);
+  }
+  .cd-doc-lines {
+    position: absolute; top: 18px; left: 6px; right: 6px;
+    display: flex; flex-direction: column; gap: 3px;
+  }
+  .cd-doc-lines span {
+    height: 2px; background: rgba(202,194,174,0.25); border-radius: 1px;
+  }
+  .cd-doc-lines span:nth-child(1) { width: 70%; }
+  .cd-doc-lines span:nth-child(2) { width: 100%; }
+  .cd-doc-lines span:nth-child(3) { width: 55%; }
+  .cd-arrow {
+    display: flex; flex-direction: column; align-items: center; gap: 4px;
+  }
+  .cd-arrow-line {
+    width: 48px; height: 1px; background: var(--accent); position: relative;
+  }
+  .cd-arrow-line::after {
+    content: ""; position: absolute; right: -1px; top: -3px;
+    width: 7px; height: 7px;
+    border-top: 1px solid var(--accent); border-right: 1px solid var(--accent);
+    transform: rotate(45deg);
+  }
+  .cd-arrow-label {
+    font-family: var(--font-mono); font-size: 11px; font-weight: 500;
+    color: var(--accent); letter-spacing: 0.1em;
+  }
+  .cd-fields {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 8px 14px;
+  }
+  .cd-field { display: flex; flex-direction: column; gap: 2px; }
+  .cd-field-label {
+    font-family: var(--font-mono); font-size: 9px;
+    letter-spacing: 0.2em; color: rgba(202,194,174,0.55);
+    text-transform: uppercase;
+  }
+  .cd-field-value {
+    font-family: var(--font-mono); font-size: 13px; font-weight: 500;
+    color: var(--primary); letter-spacing: 0.02em;
+  }
+
+  /* metrics */
+  .cd-metrics {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    border-top: 1px solid rgba(13,27,50,0.12);
+    border-bottom: 1px solid rgba(13,27,50,0.12);
+    padding: 16px 0;
+  }
+  .cd-metric {
+    display: flex; flex-direction: column; gap: 4px;
+    padding: 0 14px; border-right: 1px solid rgba(13,27,50,0.08);
+  }
+  .cd-metric:first-child { padding-left: 0; }
+  .cd-metric:last-child { border-right: none; padding-right: 0; }
+  .cd-metric-value {
+    font-family: var(--font-display); font-size: 28px; font-weight: 800;
+    letter-spacing: -0.02em; color: var(--dark); line-height: 1;
+  }
+  .cd-metric-value .cd-unit { color: var(--accent); font-size: 18px; }
+  .cd-metric-label {
+    font-family: var(--font-mono); font-size: 10px;
+    letter-spacing: 0.18em; color: rgba(13,27,50,0.55);
+    text-transform: uppercase; margin-top: 2px;
+  }
+
+  /* ── #products layout ── */
+  #products.cd-section {
+    background: linear-gradient(180deg, var(--bg) 0%, #DDD2C0 100%);
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    row-gap: 28px;
+  }
+  .cd-products-head {
+    display: grid; grid-template-columns: 1.4fr 1fr;
+    column-gap: 64px; align-items: end;
+  }
+  .cd-products-head .cd-eyebrow { margin-bottom: 18px; display: inline-flex; }
+  .cd-products-head .cd-display-h2 { margin-top: 18px; max-width: 14ch; }
+  .cd-products-head .cd-lede { padding-bottom: 6px; max-width: 48ch; }
+
+  .cd-cards {
+    display: grid; grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr; gap: 18px; min-height: 0;
+  }
+  .cd-card {
+    background: linear-gradient(140deg, var(--dark) 0%, #163052 50%, #1f4673 100%);
+    border-radius: 16px; padding: 26px 28px;
+    color: var(--primary);
+    display: flex; flex-direction: column; justify-content: space-between;
+    position: relative; overflow: hidden;
+    box-shadow: 0 20px 40px -24px rgba(13,27,50,0.4),
+                inset 0 1px 0 rgba(255,255,255,0.05);
+    min-height: 0;
+  }
+  .cd-card::before {
+    content: ""; position: absolute; top: 0; left: 0;
+    width: 56px; height: 2px; background: var(--accent);
+  }
+  .cd-card-flagship::before { background: var(--accent); }
+  .cd-card-pilot::before { background: var(--sunset); }
+  .cd-card-meta {
+    display: flex; justify-content: space-between;
+    align-items: flex-start; gap: 16px;
+  }
+  .cd-card-label {
+    font-family: var(--font-mono); font-size: 11px; font-weight: 500;
+    letter-spacing: 0.22em; color: rgba(202,194,174,0.55);
+    text-transform: uppercase;
+  }
+  .cd-card-badge {
+    font-family: var(--font-mono); font-size: 10px; font-weight: 500;
+    letter-spacing: 0.18em; padding: 5px 10px;
+    border-radius: 100px; text-transform: uppercase; white-space: nowrap;
+  }
+  .cd-badge-live { background: var(--accent); color: var(--dark); }
+  .cd-badge-beta {
+    background: rgba(79,142,186,0.18); color: var(--accent);
+    border: 1px solid rgba(79,142,186,0.4);
+  }
+  .cd-badge-pilot {
+    background: rgba(200,126,59,0.15); color: var(--sunset);
+    border: 1px solid rgba(200,126,59,0.4);
+  }
+  .cd-card-body {
+    display: flex; flex-direction: column; gap: 12px; margin-top: 20px;
+  }
+  .cd-card-name {
+    font-family: var(--font-display);
+    font-size: 30px; font-weight: 800;
+    letter-spacing: -0.02em; line-height: 1;
+    color: #fff; text-transform: none;
+    margin: 0;
+  }
+  .cd-card-desc {
+    font-family: var(--font-body); font-size: 13.5px; line-height: 1.5;
+    color: rgba(202,194,174,0.78); max-width: 38ch;
+    margin: 0;
+  }
+
+  /* footer CTAs */
+  .cd-products-foot {
+    display: flex; justify-content: flex-end; align-items: center; gap: 24px;
+    padding-top: 8px; border-top: 1px solid rgba(13,27,50,0.12);
+  }
+  .cd-ctas { display: flex; gap: 12px; }
+  .cd-btn {
+    font-family: var(--font-mono); font-size: 12px; font-weight: 500;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    padding: 13px 22px; border-radius: 100px;
+    text-decoration: none;
+    transition: transform 0.2s ease, background 0.2s ease;
+    display: inline-flex; align-items: center; gap: 8px;
+    cursor: pointer; border: none;
+  }
+  .cd-btn-secondary {
+    background: transparent; color: var(--dark);
+    border: 1px solid rgba(13,27,50,0.4);
+  }
+  .cd-btn-secondary:hover {
+    background: rgba(13,27,50,0.05); border-color: var(--dark);
+  }
+  .cd-btn-primary { background: var(--accent); color: var(--dark); }
+  .cd-btn-primary:hover { background: #5fa0cc; transform: translateY(-1px); }
+
+  /* responsive fallback */
+  @media (max-width: 1024px) {
+    .cd-section { height: auto; min-height: 100vh; padding: 40px 32px; }
+    #help.cd-section { grid-template-columns: 1fr; }
+    .cd-help-head .cd-display-h2,
+    .cd-products-head .cd-display-h2 { font-size: clamp(36px, 8vw, 56px); }
+    .cd-products-head { grid-template-columns: 1fr; gap: 20px; align-items: start; }
+    .cd-cards { grid-template-columns: 1fr; grid-template-rows: auto; }
+    .cd-products-foot { flex-direction: column; align-items: stretch; }
+    .cd-ctas { flex-direction: column; }
+  }
+
 </style>
 
 
@@ -1033,148 +1363,141 @@ const description = 'Buduje AI agentów dla polskich biur rachunkowych: OCR fakt
   <div class="scroll-hint">scroll ↓ poznaj drogę</div>
 </section>
 
-<!-- 02 POMAGAMY -->
-<section class="story light" id="help" data-photo="IMG_5236" data-shader="sand">
-  <iframe class="shader-bg" data-shader-src="/shaders/sand.html" loading="lazy" title="Sand drift shader"></iframe>
-  <div class="container">
-    <div class="eyebrow">02 — pomagamy</div>
-    <h2 class="section-title">Biura rachunkowe<br><em>tracą czas</em> na powtórki.</h2>
-    <p class="lede">Twoi pracownicy spędzają <strong>4-8 godzin dziennie</strong> na ręcznym wprowadzaniu faktur, klasyfikacji maili klientów, pilnowaniu deadline'ów <strong>VAT, ZUS, JPK_V7, KSeF</strong>. Polskie biura rachunkowe tracą tygodniowo <strong>25-40 godzin</strong> na powtarzalnej pracy. Agenci AI MJ.OLDAK redukują to do minut — dane z faktur za 8 sekund, automatyczne szkice maili w stylu Twojego biura, kalendarz podatkowy 2026 zsynchronizowany per klient.</p>
+<!-- 02 POMAGAMY (Cloud Design v1 — editorial 2-col, fit-viewport) -->
+<section id="help" class="cd-section" data-photo="IMG_5236" aria-labelledby="help-title">
+  <header class="cd-help-head">
+    <span class="cd-eyebrow">02 — Pomagamy</span>
+    <h2 class="cd-display-h2" id="help-title">
+      Biura rachunkowe <em>tracą czas</em> na powtórki.
+    </h2>
+  </header>
 
-    <div class="help-grid">
-      <div class="help-photo help-mock" id="helpPhoto">
-        <div class="bento-screenshot help-screenshot">
-          <div class="titlebar"><span></span><span></span><span></span></div>
-          <div class="body">
-            <div class="ocr-demo">
-              <div class="ocr-doc">
-                <div class="ocr-doc-line"></div>
-                <div class="ocr-doc-line"></div>
-                <div class="ocr-doc-line"></div>
-                <div class="ocr-doc-line"></div>
-                <div class="ocr-doc-line"></div>
-              </div>
-              <div class="ocr-arrow">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>
-                <span class="arrow-label">8s</span>
-              </div>
-              <div class="ocr-fields">
-                <div class="row"><span class="key">NIP</span><span class="val">542-12-12-456</span></div>
-                <div class="row"><span class="key">Data</span><span class="val">07.05.2026</span></div>
-                <div class="row"><span class="key">Netto</span><span class="val">2 450,00 zł</span></div>
-                <div class="row"><span class="key">VAT 23%</span><span class="val">563,50 zł</span></div>
-              </div>
-            </div>
-          </div>
+  <div class="cd-help-left">
+    <p class="cd-lede">
+      Księgowa traci <strong>4–8 godzin dziennie</strong> na ręcznym wprowadzaniu faktur,
+      odpisywaniu na powtarzające się maile i pilnowaniu deadlinów <strong>VAT, ZUS, JPK_V7</strong>.
+      To <strong>25–40 godzin tygodniowo</strong> powtarzalnej pracy, którą agenci AI
+      redukują do minut — zostawiając zespołowi to, co wymaga księgowej głowy.
+    </p>
+
+    <ol class="cd-points" aria-label="Cztery obszary automatyzacji">
+      <li>
+        <span class="cd-num">01</span>
+        <span class="cd-txt">OCR faktur PDF/zdjęcie → dane strukturalne za 8 sekund. Zero ręcznego przepisywania.</span>
+      </li>
+      <li>
+        <span class="cd-num">02</span>
+        <span class="cd-txt">Klasyfikacja maili klientów + szkice odpowiedzi. Skrzynka pod kontrolą.</span>
+      </li>
+      <li>
+        <span class="cd-num">03</span>
+        <span class="cd-txt">Deadline tracker ZUS, VAT, JPK, <span class="proper">KSeF</span> — przypomnienie zanim klient zadzwoni.</span>
+      </li>
+      <li>
+        <span class="cd-num">04</span>
+        <span class="cd-txt">Raporty klientowskie z danych księgowych — gotowe do wysłania.</span>
+      </li>
+    </ol>
+  </div>
+
+  <div class="cd-help-right">
+    <div class="cd-mockup" role="img" aria-label="Mockup: faktura PDF zamieniana w dane strukturalne w 8 sekund">
+      <div class="cd-mockup-flow">
+        <div class="cd-doc-icon" aria-hidden="true">
+          <div class="cd-doc-lines"><span></span><span></span><span></span></div>
+        </div>
+        <div class="cd-arrow" aria-hidden="true">
+          <span class="cd-arrow-label">8s</span>
+          <div class="cd-arrow-line"></div>
+        </div>
+        <div class="cd-fields">
+          <div class="cd-field"><span class="cd-field-label">NIP</span><span class="cd-field-value">542-12-12-456</span></div>
+          <div class="cd-field"><span class="cd-field-label">Data</span><span class="cd-field-value">07.05.2026</span></div>
+          <div class="cd-field"><span class="cd-field-label">Netto</span><span class="cd-field-value">2 450,00 zł</span></div>
+          <div class="cd-field"><span class="cd-field-label">VAT 23%</span><span class="cd-field-value">563,50 zł</span></div>
         </div>
       </div>
-      <ul class="pain-list">
-        <li><span class="ic">01</span><span><strong>OCR faktur PDF/zdjęcie</strong> → dane strukturalne za 8 sekund. Zero ręcznego przepisywania.</span></li>
-        <li><span class="ic">02</span><span><strong>Klasyfikacja maili klientów</strong> + szkice odpowiedzi. Skrzynka pod kontrolą.</span></li>
-        <li><span class="ic">03</span><span><strong>Deadline tracker</strong> ZUS, VAT, JPK, KSeF — przypomnienie zanim klient zadzwoni.</span></li>
-        <li><span class="ic">04</span><span><strong>Raporty klientowskie</strong> z danych księgowych — gotowe do wysłania.</span></li>
-      </ul>
     </div>
 
-    <div class="metrics-row" id="metricsRow">
-      <div class="metric"><div class="num" data-target="60">0<span class="unit">h/mc</span></div><div class="label">oszczędzony czas</div></div>
-      <div class="metric"><div class="num" data-target="8">0<span class="unit">s</span></div><div class="label">na fakturę</div></div>
-      <div class="metric"><div class="num" data-target="4">0<span class="unit">prod.</span></div><div class="label">w stack'u</div></div>
-      <div class="metric"><div class="num" data-target="4">0<span class="unit">tyg.</span></div><div class="label">pilot za darmo</div></div>
+    <div class="cd-metrics" role="list" aria-label="Kluczowe metryki">
+      <div class="cd-metric" role="listitem"><span class="cd-metric-value">60<span class="cd-unit">h/mc</span></span><span class="cd-metric-label">Oszczędzony czas</span></div>
+      <div class="cd-metric" role="listitem"><span class="cd-metric-value">8<span class="cd-unit">s</span></span><span class="cd-metric-label">Na fakturę</span></div>
+      <div class="cd-metric" role="listitem"><span class="cd-metric-value">4<span class="cd-unit">prod.</span></span><span class="cd-metric-label">W stack'u</span></div>
+      <div class="cd-metric" role="listitem"><span class="cd-metric-value">4<span class="cd-unit">tyg.</span></span><span class="cd-metric-label">Pilot za darmo</span></div>
     </div>
   </div>
 </section>
 
-<!-- 03 PRODUKTY -->
-<section class="story light" id="products" data-photo="IMG_5048" data-shader="coastal">
-  <iframe class="shader-bg" data-shader-src="/shaders/coastal.html" loading="lazy" title="Coastal currents shader"></iframe>
-  <div class="container">
-    <div class="eyebrow">03 — co budujemy</div>
-    <h2 class="section-title">Cztery moduły.<br><em>Jedno biuro spokojne przed <span class="proper">KSeF</span> 2027.</em></h2>
-    <p class="lede" style="opacity:0.78">Dla biur rachunkowych <strong>5-15 osób</strong>. Każdy z 4 produktów rozwiązuje konkretny pain — faktury, maile, deadliny, raporty. Razem zwracają <strong>40-60h miesięcznie</strong> i dają audit trail wymagany od <strong>01.01.2027</strong>. Pilot za darmo, 4 tygodnie.</p>
-
-    <div class="products-bento" id="productsBento">
-      <button class="bento-card" data-area="ocr">
-        <div>
-          <div class="b-num">PRODUCT · 01 · FLAGSHIP</div>
-          <div class="b-name">OCR Invoice Reader</div>
-          <span class="b-badge">Live u klienta</span>
-          <p class="b-desc">Faktura PDF/zdjęcie → dane strukturalne za 8s. JSON do Comarch / Optima / iFirma.</p>
-          <div class="b-extra">
-            <h5>Co to za program</h5>
-            <p class="b-extra-desc">Odczytuje faktury PDF, JPG, skany. Zamiast 5 minut ręcznego przepisywania w Comarch / Optima — 8 sekund + JSON gotowy do importu.</p>
-            <h5 style="margin-top:14px">Jak pomaga w życiu</h5>
-            <ul><li>Oszczędzasz <strong>40h miesięcznie</strong> na ręcznym przepisywaniu</li><li>Auto-walidacja NIP + kwoty VAT — eliminujesz literówki w księgowości</li><li>Bez kopiuj-wklej — JSON od razu do Comarch / Optima / iFirma</li><li>Twoja księgowa skupia się na klientach, NIE na klawiaturze</li></ul>
-          </div>
-        </div>
-        <div class="bento-screenshot">
-          <div class="titlebar"><span></span><span></span><span></span></div>
-          <div class="body with-image">
-            <img src="/products/ocr/1.jpg" alt="OCR Invoice Reader — screenshot" loading="lazy">
-          </div>
-        </div>
-      </button>
-      <button class="bento-card" data-area="email">
-        <div>
-          <div class="b-num">PRODUCT · 02 · FLAGSHIP</div>
-          <div class="b-name">Email Assistant</div>
-          <span class="b-badge">Beta</span>
-          <p class="b-desc">Klasyfikacja maili klientów + automatyczne szkice + Gmail/Calendar.</p>
-          <div class="b-extra">
-            <h5>Co to za program</h5>
-            <p class="b-extra-desc">Twoja skrzynka mailowa pod kontrolą — AI sortuje maile (klient / US / ZUS / spam), pisze szkice odpowiedzi w Twoim tonie, synchronizuje z Gmail i kalendarzem.</p>
-            <h5 style="margin-top:14px">Jak pomaga w życiu</h5>
-            <ul><li><strong>4h dziennie na obsługę maili → 1h</strong> (3h zaoszczędzone na klienta lub odpoczynek)</li><li>Mail od US / ZUS / klienta segregowany automatycznie — żaden nie czeka 3 dni</li><li>Szkice odpowiedzi gotowe — klikasz „wyślij" zamiast pisać od zera</li><li>Klient czuje że szybko reagujesz — buduje zaufanie</li></ul>
-          </div>
-        </div>
-        <div class="bento-screenshot">
-          <div class="titlebar"><span></span><span></span><span></span></div>
-          <div class="body with-image"><img src="/products/email/1.jpg" alt="Email Assistant — screenshot" loading="lazy"></div>
-        </div>
-      </button>
-      <button class="bento-card" data-area="deadline">
-        <div>
-          <div class="b-num">PRODUCT · 03</div>
-          <div class="b-name">Deadline Agent</div>
-          <span class="b-badge">Pilot</span>
-          <p class="b-desc">VAT, JPK, KSeF — przypomnienia per klient.</p>
-          <div class="b-extra">
-            <h5>Co to za program</h5>
-            <p class="b-extra-desc">Kalendarz podatkowy 2026 zsynchronizowany per klient. VAT, JPK_V7, KSeF, ZUS, CIT — przypomnienie zanim klient zadzwoni z pretensją.</p>
-            <h5 style="margin-top:14px">Jak pomaga w życiu</h5>
-            <ul><li><strong>Zero przegapionych deadline'ów</strong> = zero kar US dla Twoich klientów</li><li>Klient widzi że nad nim panujesz — łatwiej Cię polecać innym</li><li>SMS / email 7 dni przed terminem — Ty wiesz pierwszy, klient drugi</li><li>Spokojna głowa: nawet jeśli zapomnisz, system pamięta</li></ul>
-          </div>
-        </div>
-        <div class="bento-screenshot">
-          <div class="titlebar"><span></span><span></span><span></span></div>
-          <div class="body placeholder"></div>
-        </div>
-      </button>
-      <button class="bento-card" data-area="reporting">
-        <div>
-          <div class="b-num">PRODUCT · 04</div>
-          <div class="b-name">Reporting Agent</div>
-          <span class="b-badge">Pilot</span>
-          <p class="b-desc">Raporty klientowskie auto-PDF + email. Bez Excela.</p>
-          <div class="b-extra">
-            <h5>Co to za program</h5>
-            <p class="b-extra-desc">Generuje miesięczne raporty PDF z danych księgowych. Bez Excela, bez kopiuj-wklej, bez wieczornej pracy w piątek. Email do klienta automatycznie.</p>
-            <h5 style="margin-top:14px">Jak pomaga w życiu</h5>
-            <ul><li><strong>Raport dla klienta w 2 minuty</strong> zamiast 2 godziny szukania w Excelu</li><li>Profesjonalny format Twojego biura — klient czuje że płaci za „value-added service"</li><li>Email automatycznie 5. dnia miesiąca — klient widzi punktualność</li><li>Łatwiej wytłumaczyć cennik — „tu masz raport, oto wartość"</li></ul>
-          </div>
-        </div>
-        <div class="bento-screenshot">
-          <div class="titlebar"><span></span><span></span><span></span></div>
-          <div class="body placeholder"></div>
-        </div>
-      </button>
+<!-- 03 PRODUKTY (Cloud Design v1 — 2x2 cards grid, fit-viewport) -->
+<section id="products" class="cd-section" data-photo="IMG_5048" aria-labelledby="products-title">
+  <header class="cd-products-head">
+    <div>
+      <span class="cd-eyebrow">03 — Co budujemy</span>
+      <h2 class="cd-display-h2" id="products-title">
+        Cztery moduły. <em>Jedno biuro spokojne przed <span class="proper">KSeF</span> 2027.</em>
+      </h2>
     </div>
+    <p class="cd-lede">
+      Dla biur rachunkowych <strong>5–15 osób</strong>. Każdy z 4 produktów rozwiązuje
+      konkretny pain — faktury, maile, deadliny, raporty. Razem zwracają
+      <strong>40–60h miesięcznie</strong> i dają audit trail wymagany od
+      <strong>01.01.2027</strong>. Pilot za darmo, 4 tygodnie.
+    </p>
+  </header>
 
-    <div class="products-footer" style="margin-top:48px; display:flex; flex-wrap:wrap; gap:14px; align-items:center; justify-content:center;">
-      <a href="https://notebooklm.google.com/notebook/d0e23199-daa3-4586-9bf5-183afffe77f8" target="_blank" rel="noopener" style="padding:14px 24px; border:1px solid color-mix(in srgb, var(--dark) 28%, transparent); border-radius:32px; font-family:'JetBrains Mono'; font-size:13px; letter-spacing:0.02em; color:var(--dark); transition:background 0.25s, border-color 0.25s;">Zobacz live demo notebooka →</a>
-      <a href="/#kontakt" style="padding:14px 24px; background:var(--accent); color:var(--primary); border-radius:32px; font-family:'JetBrains Mono'; font-size:13px; font-weight:600; letter-spacing:0.02em; transition:transform 0.25s;">Umów 20-min Mom Test call →</a>
-    </div>
+  <div class="cd-cards" role="list">
+    <article class="cd-card cd-card-flagship" role="listitem">
+      <div class="cd-card-meta">
+        <span class="cd-card-label">Product · 01 · Flagship</span>
+        <span class="cd-card-badge cd-badge-live">Live u klienta</span>
+      </div>
+      <div class="cd-card-body">
+        <h3 class="cd-card-name">OCR Invoice Reader</h3>
+        <p class="cd-card-desc">Faktura PDF/zdjęcie → dane strukturalne za 8s. JSON do Comarch / Optima / iFirma.</p>
+      </div>
+    </article>
+
+    <article class="cd-card cd-card-flagship" role="listitem">
+      <div class="cd-card-meta">
+        <span class="cd-card-label">Product · 02 · Flagship</span>
+        <span class="cd-card-badge cd-badge-beta">Beta</span>
+      </div>
+      <div class="cd-card-body">
+        <h3 class="cd-card-name">Email Assistant</h3>
+        <p class="cd-card-desc">Klasyfikacja maili klientów + automatyczne szkice + Gmail/Calendar.</p>
+      </div>
+    </article>
+
+    <article class="cd-card cd-card-pilot" role="listitem">
+      <div class="cd-card-meta">
+        <span class="cd-card-label">Product · 03</span>
+        <span class="cd-card-badge cd-badge-pilot">Pilot</span>
+      </div>
+      <div class="cd-card-body">
+        <h3 class="cd-card-name">Deadline Agent</h3>
+        <p class="cd-card-desc">VAT, JPK, <span style="white-space: nowrap" class="proper-inline">KSeF</span> — przypomnienia per klient.</p>
+      </div>
+    </article>
+
+    <article class="cd-card cd-card-pilot" role="listitem">
+      <div class="cd-card-meta">
+        <span class="cd-card-label">Product · 04</span>
+        <span class="cd-card-badge cd-badge-pilot">Pilot</span>
+      </div>
+      <div class="cd-card-body">
+        <h3 class="cd-card-name">Reporting Agent</h3>
+        <p class="cd-card-desc">Raporty klientowskie auto-PDF + email. Bez Excela.</p>
+      </div>
+    </article>
   </div>
+
+  <footer class="cd-products-foot">
+    <div class="cd-ctas">
+      <a href="https://notebooklm.google.com/notebook/d0e23199-daa3-4586-9bf5-183afffe77f8" target="_blank" rel="noopener" class="cd-btn cd-btn-secondary">Zobacz live demo notebooka →</a>
+      <a href="/#contact" class="cd-btn cd-btn-primary">Umów 20-min Mom Test call →</a>
+    </div>
+  </footer>
+
 </section>
 
 <!-- 04 PROCES -->
