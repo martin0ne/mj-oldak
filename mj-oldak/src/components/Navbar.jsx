@@ -39,11 +39,11 @@ export default function Navbar() {
     }, []);
 
     const navLinks = [
-        { href: '/#uslugi', label: 'USŁUGI' },
-        { href: '/#produkty', label: 'PRODUKTY' },
-        { href: '/artykuly/', label: 'ARTYKUŁY' },
-        { href: '/#proces', label: 'PROCES' },
-        { href: '/#kontakt', label: 'KONTAKT' },
+        { href: '/#help', label: 'Pomagamy' },
+        { href: '/#products', label: 'Produkty' },
+        { href: '/#process', label: 'Proces' },
+        { href: '/artykuly/', label: 'Artykuły' },
+        { href: '/#contact', label: 'Kontakt' },
     ];
 
     return (
