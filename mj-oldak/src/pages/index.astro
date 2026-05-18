@@ -1019,7 +1019,7 @@ const description = 'Buduje AI agentów dla polskich biur rachunkowych: OCR fakt
 </nav>
 
 <!-- 01 HERO -->
-<section class="hero" id="hero" data-photo="IMG_0798" data-shader="coastal" style="background-image: url('/photos/hero-0798.jpg?v=4')">
+<section class="hero" id="hero" data-photo="IMG_0798" data-shader="coastal">
   <iframe class="shader-bg" data-shader-src="/shaders/coastal.html" loading="lazy" title="Hero shader background"></iframe>
   <div><span class="label"><span class="dot"></span>SYSTEM ONLINE</span></div>
   <div>
@@ -1590,12 +1590,8 @@ const spyObserver = new IntersectionObserver(entries => {
     if (e.isIntersecting) {
       const id = e.target.id;
       navLinks.forEach(a => a.classList.toggle('active', a.dataset.spy === id));
-      // E) section-triggered photo + theme
-      const photoName = e.target.dataset.photo;
-      if (photoName && photos.length) {
-        const i = photos.findIndex(p => p.name === photoName);
-        if (i >= 0 && i !== idx) apply(i);
-      }
+      // Section-triggered photo change REMOVED — Hero photo zostaje daily, stała przez sesję.
+      // Marcin: „przewijam i widzę kolejne zdjęcie wjeżdża, przewijam do góry trzecie zdjęcie = zbukowane".
     }
   });
 }, { threshold: 0.45 });
