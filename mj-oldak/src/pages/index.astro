@@ -658,11 +658,14 @@ const description = 'Buduje AI agentów dla polskich biur rachunkowych: OCR fakt
     font-size: 10px;
   }
   .bento-screenshot .body.placeholder::before {
-    content: 'Live u Ciebie podczas pilotu';
+    content: 'Screenshot wkrótce \00B7 UI w przebudowie';
     position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%);
     font-family: 'JetBrains Mono'; font-size: 9px; letter-spacing: 0.18em;
     text-transform: uppercase; opacity: 0.4;
     text-align: center; white-space: nowrap;
+  }
+  .bento-card.expanded .bento-screenshot .body.placeholder::before {
+    font-size: 13px; letter-spacing: 0.15em; opacity: 0.5;
   }
   .bento-card[data-area="ocr"] .bento-screenshot { min-height: 200px; }
   .bento-card[data-area="reporting"] .bento-screenshot { min-height: 180px; }
@@ -1137,7 +1140,7 @@ const description = 'Buduje AI agentów dla polskich biur rachunkowych: OCR fakt
         </div>
         <div class="bento-screenshot">
           <div class="titlebar"><span></span><span></span><span></span></div>
-          <div class="body with-image"><img src="/products/deadline/1.jpg" alt="Deadline Agent — screenshot" loading="lazy"></div>
+          <div class="body placeholder"></div>
         </div>
       </button>
       <button class="bento-card" data-area="reporting">
@@ -1155,7 +1158,7 @@ const description = 'Buduje AI agentów dla polskich biur rachunkowych: OCR fakt
         </div>
         <div class="bento-screenshot">
           <div class="titlebar"><span></span><span></span><span></span></div>
-          <div class="body with-image"><img src="/products/reports/1.jpg" alt="Reporting Agent — screenshot" loading="lazy"></div>
+          <div class="body placeholder"></div>
         </div>
       </button>
     </div>
