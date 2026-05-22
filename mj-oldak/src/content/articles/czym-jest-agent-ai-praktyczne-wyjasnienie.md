@@ -118,17 +118,17 @@ Jeśli któryś ❌ — zostań przy ludziach lub rozważ prostszą automatyzacj
 
 ## Ile to kosztuje
 
-Konkretne cyfry z mojej oferty (kwiecień 2026):
+Na tym etapie wdrażam pierwsze pilotaże za darmo — w zamian za case study i feedback od realnego biura. Cennik ustalam po pierwszym pilocie, wspólnie z klientem, na podstawie realnej wartości jaką system dostarcza Twojemu biuru.
 
-| Pakiet | Koszt jednorazowy | Koszt miesięczny | Co obejmuje |
-|--------|-------------------|------------------|-------------|
-| Audyt AI | 3 500 zł | — | Analiza procesów + 1 prosta automatyzacja w 2 tygodnie |
-| Agent Starter | 8 000 zł | 1 200 zł | 1 agent (OCR / Email / Deadline) + 1 integracja |
-| Automation Pro | 18 000 zł | 2 500 zł | 2-3 agenty, pełna automatyzacja, dedykowane SLA |
+Co dostajesz w pilocie:
 
-Koszt LLM API (Claude/GPT) — średnio 50-200 zł miesięcznie dla biura rachunkowego z ~10 klientami. Dochodzi do "kosztu miesięcznego".
+- Analiza procesów + 1-2 agenty wdrożone w 2-4 tygodnie
+- Integracja z Twoim systemem (CSV / Optima / wFirma / Symfonia)
+- Audit log + RODO compliance + ownership kodu
 
-Czas wdrożenia: 2-4 tygodnie od audytu do działającego systemu.
+Koszt LLM API (Claude/GPT) — średnio 50-200 zł miesięcznie dla biura rachunkowego z ~10 klientami. To jedyny operacyjny koszt po Twojej stronie podczas pilotu.
+
+Czas wdrożenia: 2-4 tygodnie od pierwszej rozmowy do działającego systemu.
 
 ## Następne kroki
 

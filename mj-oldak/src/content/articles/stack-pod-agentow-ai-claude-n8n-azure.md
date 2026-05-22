@@ -175,7 +175,7 @@ Dla biura rachunkowego z 10 klientami i ~1000 faktur/miesiąc + obsługą maili:
 | Backup (Backblaze B2, 100GB) | 5 zł |
 | **Razem** | **~235-340 zł** |
 
-Plus jednorazowe koszty wdrożenia (mój czas, 2-4 tygodnie): 8 000 — 18 000 zł zależnie od pakietu.
+Plus jednorazowe koszty wdrożenia (mój czas, 2-4 tygodnie). W tej chwili pierwsze pilotaże robię za darmo — wycena indywidualnie po pierwszym pilocie, wspólnie z klientem.
 
 ## Czego nie używam (i dlaczego)
 

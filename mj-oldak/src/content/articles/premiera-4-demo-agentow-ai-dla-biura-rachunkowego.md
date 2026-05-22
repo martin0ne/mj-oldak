@@ -137,11 +137,11 @@ Policzmy konkretnie na Twoim biurze. Weź kartkę.
 
 2 × 18 × 60 zł = 2160 zł/tydzień. × 4 tygodnie = **8640 zł miesięcznie**.
 
-Pakiet Starter MJ.OLDAK: 8 000 zł wdrożenia (raz) + 1 200 zł/mc (Claude API + n8n hosting + utrzymanie). Pakiet Pro (2-3 agenty): 18 000 zł + 2 500 zł/mc.
+W tej chwili wdrażam pierwsze pilotaże za darmo — w zamian za case study i feedback. Cennik ustalam po pierwszym pilocie, wspólnie z klientem, na podstawie realnej wartości jaką system dostarcza Twojemu biuru.
 
-Nawet przy konserwatywnym założeniu (AI bierze 50% tej pracy, nie 80%) — ROI na samym module faktur to **pierwsze 2-3 miesiące**. Reszta to czysty zysk czasu i jakości.
+Jeśli kalkulacja powyżej (8640 zł/mc czasu pracy) zgadza się z Twoim biurem — to mocny sygnał, że pilot ma sens.
 
-Jeśli to wciąż za drogo, mam [Audyt AI za 3 500 zł](/cennik) — dostajesz analizę procesów + jedną działającą automatyzację w 2 tygodnie, bez zobowiązania do reszty.
+Najprostszy pierwszy krok: [napisz na biuro@mjoldak.pl](/#kontakt). Pokażę 30-min demo na Twoich realnych fakturach, bez zobowiązania.
 
 ### "Nie umiem IT, boję się że mi się zepsuje"
 

@@ -305,15 +305,15 @@ Jeśli vendor naruszy SLA, dostajesz zwrot części opłat. Standard:
 
 ## Ile to kosztuje u mnie
 
-Konkrety z mojej oferty (maj 2026), żeby dać Ci benchmark rynku:
+Na tym etapie wdrażam pierwsze pilotaże za darmo — w zamian za case study i feedback. Cennik ustalam po pierwszym pilocie, wspólnie z klientem, na podstawie realnej wartości jaką system dostarcza Twojej firmie.
 
-| Pakiet | Koszt wdrożenia | Utrzymanie miesięczne | Obejmuje |
-|--------|-----------------|----------------------|----------|
-| Audyt AI | 3 500 zł | — | Analiza procesów + 1 prosta automatyzacja w 2 tygodnie |
-| Agent Starter | 8 000 zł | 1 200 zł | 1 agent + 1 integracja |
-| Automation Pro | 18 000 zł | 2 500 zł | 2-3 agenty, pełna automatyzacja, dedykowane SLA |
+Co dostajesz w pilocie:
 
-Do tego koszt LLM API (Claude/GPT) — średnio 50-200 zł/mies dla biura rachunkowego z ~10 klientami. Bez ukrytych opłat, bez egress, bez "fair use". Stawka godzinowa za custom development: 350-500 zł/h, przewidywalnie.
+- Analiza procesów + 1-2 agenty wdrożone w 2-4 tygodnie
+- Integracja z Twoim systemem (CSV / Optima / wFirma / Symfonia)
+- Audit log + RODO compliance + ownership kodu
+
+Do tego koszt LLM API (Claude/GPT) — średnio 50-200 zł/mies dla biura rachunkowego z ~10 klientami. To jedyny operacyjny koszt po Twojej stronie podczas pilotu. Bez ukrytych opłat, bez egress, bez "fair use".
 
 ## Najczęściej zadawane pytania
 
@@ -347,7 +347,7 @@ Jeśli doczytałeś do końca — jesteś w 5% właścicieli MŚP, którzy podch
 
 Masz dwie ścieżki:
 
-1. **Audyt AI u mnie**. 3 500 zł, 2 tygodnie, konkretny raport z mapą procesów + rekomendacja wdrożenia (lub rekomendacja żeby NIE wdrażać — czasem to jest właściwa odpowiedź). [Napisz na biuro@mjoldak.pl](/#kontakt).
+1. **Pilot u mnie**. 2-4 tygodnie, konkretny raport z mapą procesów + 1-2 agenty wdrożone u Ciebie + rekomendacja dalszej drogi (lub rekomendacja żeby NIE wdrażać — czasem to jest właściwa odpowiedź). Na tym etapie pierwsze pilotaże robię za darmo. [Napisz na biuro@mjoldak.pl](/#kontakt).
 
 2. **Samoocena najpierw**. Przejdź przez 5 pytań tego artykułu z kartką i długopisem. Jeśli na 4 z 5 masz konkretne odpowiedzi — jesteś gotowy na rozmowę z vendorem.
 

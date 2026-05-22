@@ -216,7 +216,7 @@ Paradoksalnie — spada. Ceny Claude, GPT i Gemini w ostatnich 18 miesiącach sp
 
 ### Ile kosztuje wdrożenie u mnie w firmie?
 
-Jednorazowy koszt zależy od liczby integracji. Typowy pakiet dla biura rachunkowego (OCR + walidacja + wpis do Optima lub wFirmy + dashboard) to **8 000 — 18 000 zł**. Miesięczne utrzymanie: **150 — 300 zł**. Zwrot typowo w 3-6 miesięcy, jeśli firma ma powyżej 500 dokumentów miesięcznie.
+Na tym etapie wdrażam pierwsze pilotaże za darmo — w zamian za case study i feedback. Cennik ustalam po pierwszym pilocie, wspólnie z klientem, na podstawie realnej wartości jaką system dostarcza Twojemu biuru. Miesięczny koszt operacyjny (LLM API + utrzymanie) zwykle mieści się w **150 — 300 zł**. Zwrot typowo w 3-6 miesięcy, jeśli firma ma powyżej 500 dokumentów miesięcznie.
 
 ### A jak mam mniej niż 500 dokumentów miesięcznie?
 

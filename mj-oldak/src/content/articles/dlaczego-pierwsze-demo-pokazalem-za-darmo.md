@@ -92,7 +92,7 @@ Równocześnie Sharp Europe w grudniu 2025 podał, że 72,4% polskich MŚP dekla
 W tym krajobrazie próba sprzedania agenta AI z cennika wygląda mniej więcej tak:
 
 - Klient: "Ile to kosztuje?"
-- Ty: "18 000 zł wdrożenia, 2 500 zł miesięcznie."
+- Ty: "Wdrożenie jednorazowe plus subskrypcja miesięczna."
 - Klient: "A co to właściwie robi?"
 
 Kolejność jest odwrotna. Najpierw trzeba pokazać, **co to robi z ich danymi**. Cennik pojawia się dopiero jako odpowiedź na pytanie "jak to kupić". A nie trafia w pustkę.
@@ -155,7 +155,7 @@ Różnica jest w tym, kto nosi ciężar. Podczas demo ja siedzę na rozmowie, ja
 
 **Zasada 1:** Bezpłatne demo robię tylko wtedy, kiedy widzę prawdopodobny case study, logo lub płatny kontrakt w ciągu 60 dni. Reszta to hobby, nie biznes.
 
-**Zasada 2:** Każde demo zaczynam od jednego zdania: "Normalnie audyt AI to 3500 zł. Pokazuję za darmo, bo zależy mi na pierwszych case studies z branży". To [anchor](https://cxl.com/blog/cialdians-principles-persuasion/), który ustawia percepcję wartości — bez niego klient może uznać, że darmowe = tanie = nie warto.
+**Zasada 2:** Każde demo zaczynam od jednego zdania: "Audyt procesów u podobnych biur jest pełnopłatną usługą. Dla pierwszych pilotów robię to za darmo, bo zależy mi na case studies z branży". To [anchor](https://cxl.com/blog/cialdians-principles-persuasion/), który ustawia percepcję wartości — bez niego klient może uznać, że darmowe = tanie = nie warto.
 
 **Zasada 3:** Pilnuję, żeby klient miał skin in the game nawet przy darmowym demo: udostępnia mi 10 realnych faktur (nie mock-dane), wyznacza osobę kontaktową, rezerwuje 90 minut. Jak tego nie robi — nie jest kupującym, tylko ciekawskim.
 
