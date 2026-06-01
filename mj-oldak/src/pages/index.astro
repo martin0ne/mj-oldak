@@ -334,6 +334,12 @@ const description = 'Buduje AI agentów dla polskich biur rachunkowych: OCR fakt
       color-mix(in srgb, var(--primary) 50%, transparent) 3px);
     opacity: 0.35;
   }
+  /* iOS Safari: background-attachment:fixed renderuje tło względem całego
+     dokumentu → ekstremalne powiększenie + pikseloza na mobile. Parallax
+     tylko na desktopie; na mobile scroll = tło ostre, względem ekranu. */
+  @media (max-width: 768px) {
+    .hero { background-attachment: scroll; background-position: center center; }
+  }
   .hero > * { position: relative; z-index: 2; }
   .hero .label {
     font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.3em;
