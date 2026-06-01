@@ -10,7 +10,7 @@ cover: "/articles/covers/ai-act-2026-biuro-rachunkowe-compliance.jpg"
 coverAlt: "AI Act 2026 - compliance dla polskich biur rachunkowych"
 readingTime: 10
 featured: false
-draft: false
+draft: true
 metaTitle: "AI Act 2026 — co biuro rachunkowe musi wiedzieć"
 metaDescription: "AI Act dla biur rachunkowych: klasyfikacja ryzyka, 18 punktów compliance, obowiązki przy Claude/GPT API, KRiBSI, kary. Krytyczny termin: 2 sierpnia 2026."
 keywords: ["AI Act 2026", "AI Act biuro rachunkowe", "AI Act Polska compliance", "KRiBSI", "AI compliance MŚP", "AI Act deployer", "AI Literacy"]
