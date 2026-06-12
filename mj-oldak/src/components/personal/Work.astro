@@ -1,0 +1,119 @@
+---
+// Sekcja Work — portfolio-dowód: 4 interaktywne dema + live Sales demo + n8n pipeline.
+// Każdy produkt = mikro-case (problem → rozwiązanie → efekt) + demo do pobawienia się.
+import OcrDemo from '../demos/OcrDemo.jsx';
+import EmailDemo from '../demos/EmailDemo.jsx';
+import DeadlineDemo from '../demos/DeadlineDemo.jsx';
+import ReportingDemo from '../demos/ReportingDemo.jsx';
+
+const cases = [
+  {
+    id: 'ocr',
+    problem: 'Accounting teams retype invoice data by hand — minutes per document, errors included.',
+    solution: 'PDF or photo in → structured data out (Azure Document Intelligence + Claude API).',
+    effect: 'An invoice processed in seconds, ready for the ledger.',
+  },
+  {
+    id: 'email',
+    problem: 'Client emails bury accountants — urgent tax-office letters mixed with spam.',
+    solution: 'Classification into 5 categories + a drafted reply for each; a human approves before anything is sent.',
+    effect: 'Inbox triage on autopilot, replies in minutes.',
+  },
+  {
+    id: 'deadline',
+    problem: 'The Polish tax calendar (JPK, KSeF, ZUS, CIT, PIT) is a minefield of per-client deadlines.',
+    solution: 'A deadline agent that computes real dates per taxpayer profile — weekend shifts included.',
+    effect: 'Nothing slips. Every client, every month.',
+  },
+  {
+    id: 'reporting',
+    problem: 'Monthly client reports mean hours of repetitive copy-paste work.',
+    solution: 'Ledger exports in → branded PDF report out, with KPIs and a written summary.',
+    effect: 'Minutes per client instead of hours.',
+  },
+];
+const caseFor = (id) => cases.find((c) => c.id === id);
+---
+<section id="work" class="bg-background text-dark px-8 md:px-16 py-24 md:py-32">
+  <div class="max-w-5xl mx-auto">
+    <p class="font-mono text-xs uppercase tracking-[0.3em] opacity-60 mb-6">
+      <span class="text-accent">—</span> 02 · Work
+    </p>
+
+    <h2 class="font-sans font-bold text-4xl md:text-6xl tracking-[-0.03em] uppercase leading-[0.95] mb-8">
+      Don't read it — <span class="text-accent">try it</span>.
+    </h2>
+
+    <p class="font-serif italic text-2xl md:text-3xl leading-snug max-w-3xl mb-6 opacity-90">
+      Four AI products I built for small businesses, as interactive demos.
+    </p>
+    <p class="font-sans text-base max-w-3xl mb-14 opacity-75 leading-relaxed">
+      Everything below runs in your browser on sample data — no sign-ups, no tracking.
+      The production versions run on FastAPI + Claude API and are deployment-ready for Polish accounting offices.
+    </p>
+
+    <!-- Highlight: live demo + n8n pipeline -->
+    <div class="grid md:grid-cols-2 gap-5 mb-14">
+      <a
+        href="https://demo.mjoldak.pl"
+        target="_blank"
+        rel="noopener"
+        class="group rounded-3xl border border-dark/15 bg-dark text-primary p-7 hover:border-accent transition-colors no-underline block"
+      >
+        <div class="flex items-center gap-2 mb-3">
+          <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
+          <span class="font-mono text-[10px] uppercase tracking-[0.2em] text-green-400">Live · production</span>
+        </div>
+        <h3 class="font-sans font-bold text-xl mb-2 tracking-tight">Sales Agent B2B — live demo</h3>
+        <p class="font-sans text-sm opacity-75 leading-relaxed mb-4">
+          A real, deployed app: form → GenAI lead classification (HOT/WARM/COLD with reasoning) → database with row-level security. GDPR Art. 22 compliant.
+        </p>
+        <span class="font-mono text-xs text-accent group-hover:underline">Open demo.mjoldak.pl ↗</span>
+      </a>
+
+      <div class="rounded-3xl border border-dark/15 bg-dark text-primary p-7">
+        <div class="flex items-center gap-2 mb-3">
+          <span class="w-2 h-2 rounded-full bg-accent animate-pulse"></span>
+          <span class="font-mono text-[10px] uppercase tracking-[0.2em] text-accent">Agentic infrastructure</span>
+        </div>
+        <h3 class="font-sans font-bold text-xl mb-2 tracking-tight">n8n pipeline as an MCP tool</h3>
+        <p class="font-sans text-sm opacity-75 leading-relaxed mb-4">
+          Production n8n workflow (Webhook → Gemini → Supabase EU Frankfurt), green end-to-end and exposed via the
+          Model Context Protocol — so AI agents can call it as a tool.
+        </p>
+        <div class="font-mono text-[10px] opacity-50 leading-relaxed">
+          Webhook → LLM → Parse → DB (EU) · instance-level MCP
+        </div>
+      </div>
+    </div>
+
+    <!-- 4 dema z mikro-case'ami -->
+    <div class="space-y-14">
+      {['ocr', 'email', 'deadline', 'reporting'].map((id) => {
+        const c = caseFor(id);
+        return (
+          <div>
+            <div class="grid sm:grid-cols-3 gap-4 mb-5 max-w-4xl">
+              <div>
+                <div class="font-mono text-[9px] uppercase tracking-[0.2em] text-sunset font-bold mb-1.5">Problem</div>
+                <p class="font-sans text-[13px] leading-relaxed opacity-75">{c.problem}</p>
+              </div>
+              <div>
+                <div class="font-mono text-[9px] uppercase tracking-[0.2em] text-accent font-bold mb-1.5">Solution</div>
+                <p class="font-sans text-[13px] leading-relaxed opacity-75">{c.solution}</p>
+              </div>
+              <div>
+                <div class="font-mono text-[9px] uppercase tracking-[0.2em] text-green-600 font-bold mb-1.5">Effect</div>
+                <p class="font-sans text-[13px] leading-relaxed opacity-75">{c.effect}</p>
+              </div>
+            </div>
+            {id === 'ocr' && <OcrDemo client:visible />}
+            {id === 'email' && <EmailDemo client:visible />}
+            {id === 'deadline' && <DeadlineDemo client:visible />}
+            {id === 'reporting' && <ReportingDemo client:visible />}
+          </div>
+        );
+      })}
+    </div>
+  </div>
+</section>
