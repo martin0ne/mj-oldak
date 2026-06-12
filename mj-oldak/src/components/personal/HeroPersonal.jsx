@@ -64,8 +64,8 @@ export default function HeroPersonal() {
                         <span className="relative z-10">See my work</span>
                         <span className="absolute inset-0 bg-dark transform scale-x-0 origin-left transition-transform duration-300 ease-out group-hover:scale-x-100 z-0"></span>
                     </a>
-                    <a href="/cv/Marcin-Oldak-CV-EN.pdf" target="_blank" rel="noopener" className="px-8 py-4 rounded-[2rem] border border-primary/30 text-primary font-sans font-bold text-lg hover:border-accent hover:text-accent transition-colors inline-block no-underline">
-                        Download CV
+                    <a href="#contact" className="px-8 py-4 rounded-[2rem] border border-primary/30 text-primary font-sans font-bold text-lg hover:border-accent hover:text-accent transition-colors inline-block no-underline">
+                        Get in touch
                     </a>
                 </div>
             </div>

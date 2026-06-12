@@ -21,12 +21,12 @@
 - Zero nowego backendu. Wszystko client-side na danych przykładowych.
 
 ## Struktura strony (single page, EN)
-1. **Hero** — „Marcin Ołdak — AI & Automation Consultant"; podtytuł „autonomous AI agents & n8n automation — from PoC to production"; MJ.OLDAK jako marka obok imienia; CTA: *See my work* / *Download CV* / *Contact*.
+1. **Hero** — „Marcin J. Ołdak — AI & Automation Consultant" (J. = spójność z LinkedIn, decyzja 12.06); podtytuł „autonomous AI agents & n8n automation — from PoC to production"; MJ.OLDAK jako marka obok imienia; CTA: *See my work* / *Get in touch*. **UPDATE 12.06: bez publicznego „Download CV"** — CV wysyłane na kontakt przez formularz (privacy + lead capture; decyzja Marcina). Źródło generycznego CV EN: vault `Rekrutacja/aplikacje/_strona/CV-strona-generic-EN.md`.
 2. **About** — AI od 2022, komercyjnie 2026 (MJ.OLDAK); LLM/n8n/agentic daily; grunt psychologia+prawo (discovery, ethical AI/RODO); UPS 3.7 r. w 100% EN. Hook: „I ship working things, not past tense."
 3. **Work / Portfolio** ⭐ — 4 produkty jako **interaktywne dema** (sekcja niżej) + **live Sales Agent demo** (demo.mjoldak.pl) + **n8n pipeline jako MCP tool** = flagowy dowód agentic. Każdy z mikro-case'em (problem → rozwiązanie → efekt).
 4. **Skills / Stack** — LLM (Claude/Gemini), n8n/orchestration, RAG, BA/discovery (BPMN, Given/When/Then), ethical AI/RODO, Python AI-assisted. Mapa na keywordy ogłoszeń.
 5. **Writing** — „I write about AI for business" → link do 18 artykułów (PL blog = dowód eksperckości).
-6. **Contact** — mail / LinkedIn / CV download / tel + formularz (reuse CF Functions). Bez „pilota za darmo".
+6. **Contact** — mail / LinkedIn / tel + formularz (reuse pipeline EmailJS+Sheets). Bez „pilota za darmo". Linia „CV on request — drop me a message" (CV idzie w odpowiedzi na kontakt, nie publiczny plik).
 
 ## 4 interaktywne dema — client-side, sample data (DoD)
 Wspólne: UI/labels **EN**; dane przykładowe **realistycznie PL** (faktury/maile polskiego rynku księgowego = pokazuje vertical); zero backendu; zero uploadu obcych danych (sample-only); „demo mode" oznaczone.

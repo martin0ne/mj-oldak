@@ -135,9 +135,9 @@
 
 **Files:** Create `Writing.astro`, `ContactPersonal.jsx`; add `public/cv/Marcin-Oldak-CV-EN.pdf`.
 
-- [ ] Krok 1: Skopiować CV EN (z aplikacji Ciklum) do `public/cv/Marcin-Oldak-CV-EN.pdf`.
+- [ ] ~~Krok 1: CV do public/~~ **ZMIANA 12.06: bez publicznego CV** — CV na kontakt (formularz); źródło w vault `aplikacje/_strona/`.
 - [ ] Krok 2: `Writing.astro` — „I write about AI for business" + link do /artykuly (PL blog jako dowód).
-- [ ] Krok 3: `ContactPersonal.jsx` — EN kontakt + formularz; reuse pipeline (EmailJS + Sheets webhook) z Footer.jsx; linki mail/LinkedIn/CV/tel; bez „pilota".
+- [ ] Krok 3: `ContactPersonal.jsx` — EN kontakt + formularz; reuse pipeline (EmailJS + Sheets webhook) z Footer.jsx; linki mail/LinkedIn/tel + linia „CV on request"; bez „pilota".
 - [ ] Krok 4: Wire do index. build PASS, preview. Commit: `feat(wizytowka): writing + contact + CV`.
 
 ---

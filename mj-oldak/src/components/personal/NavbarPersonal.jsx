@@ -60,20 +60,18 @@ export default function NavbarPersonal() {
                 </a>
 
                 {/* Desktop nav */}
-                <div className="hidden md:flex items-center space-x-8 font-sans font-medium text-sm">
+                <div className="hidden md:flex items-center space-x-8 font-sans font-semibold text-base">
                     {navLinks.map(link => (
-                        <a key={link.href} href={link.href} className="hover:-translate-y-[1px] transition-transform opacity-70 hover:opacity-100">{link.label}</a>
+                        <a key={link.href} href={link.href} className="hover:-translate-y-[1px] transition-transform opacity-75 hover:opacity-100">{link.label}</a>
                     ))}
                 </div>
 
                 <div className="flex items-center gap-3">
                     <a
-                        href="/cv/Marcin-Oldak-CV-EN.pdf"
-                        target="_blank"
-                        rel="noopener"
+                        href="#contact"
                         className="hidden sm:inline-block relative overflow-hidden group px-6 py-3 rounded-[2rem] bg-accent text-primary font-sans font-medium text-sm transition-transform duration-300 hover:scale-[1.03] ease-[cubic-bezier(0.25,0.46,0.45,0.94)] no-underline"
                     >
-                        <span className="relative z-10">Download CV</span>
+                        <span className="relative z-10">Get in touch</span>
                         <span className="absolute inset-0 bg-dark transform scale-x-0 origin-left transition-transform duration-300 ease-out group-hover:scale-x-100 z-0"></span>
                     </a>
 
@@ -99,25 +97,23 @@ export default function NavbarPersonal() {
                     mobileOpen ? 'max-h-72 opacity-100 mt-4' : 'max-h-0 opacity-0 mt-0'
                 }`}
             >
-                <div className="flex flex-col items-center gap-4 py-4 font-sans font-medium text-sm">
+                <div className="flex flex-col items-center gap-4 py-4 font-sans font-semibold text-base">
                     {navLinks.map(link => (
                         <a
                             key={link.href}
                             href={link.href}
-                            className="opacity-70 hover:opacity-100 transition-opacity"
+                            className="opacity-75 hover:opacity-100 transition-opacity"
                             onClick={() => setMobileOpen(false)}
                         >
                             {link.label}
                         </a>
                     ))}
                     <a
-                        href="/cv/Marcin-Oldak-CV-EN.pdf"
-                        target="_blank"
-                        rel="noopener"
+                        href="#contact"
                         className="sm:hidden mt-2 px-6 py-3 rounded-[2rem] bg-accent text-primary font-sans font-medium text-sm no-underline"
                         onClick={() => setMobileOpen(false)}
                     >
-                        Download CV
+                        Get in touch
                     </a>
                 </div>
             </div>
