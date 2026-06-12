@@ -4,6 +4,7 @@ import NavbarPersonal from '../components/personal/NavbarPersonal.jsx';
 import HeroPersonal from '../components/personal/HeroPersonal.jsx';
 import About from '../components/personal/About.astro';
 import Skills from '../components/personal/Skills.astro';
+import OcrDemo from '../components/demos/OcrDemo.jsx';
 
 const title = 'Marcin J. Ołdak — AI & Automation Consultant';
 const description = 'AI & automation consultant — autonomous AI agents, n8n workflow automation, LLM-backed apps from PoC to production. 4 production-ready products + live demos.';
@@ -12,7 +13,12 @@ const description = 'AI & automation consultant — autonomous AI agents, n8n wo
   <NavbarPersonal client:load />
   <HeroPersonal client:load />
   <About />
-  {/* Work (02) — Task 7, wchodzi między About a Skills */}
+  {/* Work (02) — Task 7; OCR demo tymczasowo tutaj do akceptacji wzorca */}
+  <section class="bg-background px-8 md:px-16 pb-24">
+    <div class="max-w-5xl mx-auto">
+      <OcrDemo client:visible />
+    </div>
+  </section>
   <Skills />
   {/* Writing / Contact — kolejne taski */}
 </BaseLayout>
