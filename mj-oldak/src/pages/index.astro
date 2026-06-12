@@ -1,10 +1,13 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-const title = 'Marcin Ołdak — AI & Automation Consultant';
-const description = 'AI & automation consultant — autonomous AI agents, n8n workflow automation, LLM-backed apps from PoC to production.';
+import NavbarPersonal from '../components/personal/NavbarPersonal.jsx';
+import HeroPersonal from '../components/personal/HeroPersonal.jsx';
+
+const title = 'Marcin J. Ołdak — AI & Automation Consultant';
+const description = 'AI & automation consultant — autonomous AI agents, n8n workflow automation, LLM-backed apps from PoC to production. 4 production-ready products + live demos.';
 ---
 <BaseLayout title={title} description={description} lang="en" includeOrganizationSchema={false}>
-  <main style="min-height:100dvh;display:flex;align-items:center;justify-content:center;font-family:monospace;">
-    <p>Wizytówka WIP — work in progress</p>
-  </main>
+  <NavbarPersonal client:load />
+  <HeroPersonal client:load />
+  {/* Sekcje About / Skills / Work / Writing / Contact — kolejne taski */}
 </BaseLayout>
