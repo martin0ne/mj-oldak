@@ -6,6 +6,8 @@ import About from '../components/personal/About.astro';
 import Skills from '../components/personal/Skills.astro';
 import OcrDemo from '../components/demos/OcrDemo.jsx';
 import EmailDemo from '../components/demos/EmailDemo.jsx';
+import DeadlineDemo from '../components/demos/DeadlineDemo.jsx';
+import ReportingDemo from '../components/demos/ReportingDemo.jsx';
 
 const title = 'Marcin J. Ołdak — AI & Automation Consultant';
 const description = 'AI & automation consultant — autonomous AI agents, n8n workflow automation, LLM-backed apps from PoC to production. 4 production-ready products + live demos.';
@@ -19,6 +21,8 @@ const description = 'AI & automation consultant — autonomous AI agents, n8n wo
     <div class="max-w-5xl mx-auto space-y-8">
       <OcrDemo client:visible />
       <EmailDemo client:visible />
+      <DeadlineDemo client:visible />
+      <ReportingDemo client:visible />
     </div>
   </section>
   <Skills />
