@@ -11,6 +11,7 @@ export interface Props {
   author?: string;
   tags?: string[];
   includeOrganizationSchema?: boolean;
+  lang?: string;
 }
 
 const {
@@ -23,6 +24,7 @@ const {
   author = 'Marcin Ołdak',
   tags = [],
   includeOrganizationSchema = false,
+  lang = 'pl',
 } = Astro.props;
 
 const siteURL = 'https://www.mjoldak.pl';
@@ -79,7 +81,7 @@ const websiteSchema = {
 };
 ---
 <!doctype html>
-<html lang="pl">
+<html lang={lang}>
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
