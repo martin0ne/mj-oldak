@@ -1,12 +1,18 @@
 ---
 // Sekcja Work — portfolio-dowód: 4 interaktywne dema + live Sales demo + n8n pipeline.
 // Każdy produkt = mikro-case (problem → rozwiązanie → efekt) + demo do pobawienia się.
+import AgentDemo from '../demos/AgentDemo.jsx';
 import OcrDemo from '../demos/OcrDemo.jsx';
 import EmailDemo from '../demos/EmailDemo.jsx';
-import DeadlineDemo from '../demos/DeadlineDemo.jsx';
 import ReportingDemo from '../demos/ReportingDemo.jsx';
 
 const cases = [
+  {
+    id: 'agent',
+    problem: "Single-task automations break the moment reality gets messy — and nobody sees why.",
+    solution: 'An autonomous agent that plans, calls tools, recovers from failures — and shows its reasoning at every step.',
+    effect: 'End-to-end process handled. Supervised, not hands-off: a human makes the final call.',
+  },
   {
     id: 'ocr',
     problem: 'Accounting teams retype invoice data by hand — minutes per document, errors included.',
@@ -18,12 +24,6 @@ const cases = [
     problem: 'Client emails bury accountants — urgent tax-office letters mixed with spam.',
     solution: 'Classification into 5 categories + a drafted reply for each; a human approves before anything is sent.',
     effect: 'Inbox triage on autopilot, replies in minutes.',
-  },
-  {
-    id: 'deadline',
-    problem: 'The Polish tax calendar (JPK, KSeF, ZUS, CIT, PIT) is a minefield of per-client deadlines.',
-    solution: 'A deadline agent that computes real dates per taxpayer profile — weekend shifts included.',
-    effect: 'Nothing slips. Every client, every month.',
   },
   {
     id: 'reporting',
@@ -87,9 +87,9 @@ const caseFor = (id) => cases.find((c) => c.id === id);
       </div>
     </div>
 
-    <!-- 4 dema z mikro-case'ami -->
+    <!-- Dema z mikro-case'ami (agent = flagowy otwieracz) -->
     <div class="space-y-14">
-      {['ocr', 'email', 'deadline', 'reporting'].map((id) => {
+      {['agent', 'ocr', 'email', 'reporting'].map((id) => {
         const c = caseFor(id);
         return (
           <div>
@@ -107,9 +107,9 @@ const caseFor = (id) => cases.find((c) => c.id === id);
                 <p class="font-sans text-[13px] leading-relaxed opacity-75">{c.effect}</p>
               </div>
             </div>
+            {id === 'agent' && <AgentDemo client:load />}
             {id === 'ocr' && <OcrDemo client:visible />}
             {id === 'email' && <EmailDemo client:visible />}
-            {id === 'deadline' && <DeadlineDemo client:visible />}
             {id === 'reporting' && <ReportingDemo client:visible />}
           </div>
         );
