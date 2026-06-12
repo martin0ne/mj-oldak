@@ -1,0 +1,67 @@
+---
+// Sekcja Skills — pogrupowany stack zmapowany na keywordy ogłoszeń AI (profil idealnego kandydata).
+const groups = [
+  {
+    num: '01',
+    title: 'Agentic AI & LLMs',
+    items: ['Claude (API + Claude Code) — daily', 'Gemini', 'autonomous agents', 'prompt engineering', 'multi-LLM routing, provider abstraction'],
+  },
+  {
+    num: '02',
+    title: 'Workflow orchestration',
+    items: ['n8n (workflow + MCP tool)', 'Make.com', 'Google Apps Script', 'REST APIs & webhooks', 'modern alternative to traditional RPA'],
+  },
+  {
+    num: '03',
+    title: 'RAG & knowledge bases',
+    items: ['RAG patterns in products', 'knowledge-base design', 'personal Zettelkasten — 270+ concepts', 'AI-ecosystem monitoring (26 sources)'],
+  },
+  {
+    num: '04',
+    title: 'Discovery & business analysis',
+    items: ['Mom Test discovery', 'BPMN 2.0 (AS-IS → TO-BE)', 'user stories, Given/When/Then', 'PRD, ROI modeling', 'compose-vs-build framework'],
+  },
+  {
+    num: '05',
+    title: 'Ethical AI & compliance',
+    items: ['GDPR Art. 22 / 28', 'human-in-the-loop by design', 'EU data residency', 'data privacy & security by default'],
+  },
+  {
+    num: '06',
+    title: 'Programming (AI-assisted)',
+    items: ['Python, FastAPI', 'SQL, Supabase/PostgreSQL (RLS)', 'Azure Document Intelligence', 'Astro, Cloudflare Pages'],
+  },
+];
+---
+<section id="skills" data-nav-theme="dark" class="bg-dark text-primary px-8 md:px-16 py-24 md:py-32">
+  <div class="max-w-6xl mx-auto">
+    <p class="font-mono text-xs uppercase tracking-[0.3em] opacity-60 mb-6">
+      <span class="text-accent">—</span> 03 · Skills
+    </p>
+
+    <h2 class="font-sans font-bold text-4xl md:text-6xl tracking-[-0.03em] uppercase leading-[0.95] mb-6">
+      Stack &amp; methods<span class="text-accent">.</span>
+    </h2>
+
+    <p class="font-serif italic text-2xl md:text-3xl leading-snug max-w-3xl mb-14 opacity-90">
+      Tools I work with every day — not a logo wall.
+    </p>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      {groups.map((g) => (
+        <div class="rounded-3xl border border-primary/15 bg-primary/[0.04] backdrop-blur-sm p-7 hover:border-accent/60 transition-colors duration-300">
+          <div class="font-mono text-[10px] tracking-[0.25em] text-accent mb-3">{g.num}</div>
+          <h3 class="font-sans font-bold text-xl mb-4 tracking-tight">{g.title}</h3>
+          <ul class="space-y-2">
+            {g.items.map((item) => (
+              <li class="font-sans text-sm leading-relaxed opacity-75 flex gap-2.5">
+                <span class="text-accent shrink-0">▸</span>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
