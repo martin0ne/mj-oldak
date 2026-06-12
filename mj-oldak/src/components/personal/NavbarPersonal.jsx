@@ -36,11 +36,11 @@ export default function NavbarPersonal() {
     }, []);
 
     const navLinks = [
-        { href: '#work', label: 'Work' },
-        { href: '#about', label: 'About' },
-        { href: '#skills', label: 'Skills' },
-        { href: '#writing', label: 'Writing' },
-        { href: '#contact', label: 'Contact' },
+        { href: '/#work', label: 'Work' },
+        { href: '/#about', label: 'About' },
+        { href: '/#skills', label: 'Skills' },
+        { href: '/#writing', label: 'Writing' },
+        { href: '/#contact', label: 'Contact' },
     ];
 
     return (
@@ -54,7 +54,7 @@ export default function NavbarPersonal() {
             }`}
         >
             <div className="flex items-center justify-between">
-                <a href="#top" className="flex items-baseline gap-2 no-underline">
+                <a href="/" className="flex items-baseline gap-2 no-underline">
                     <span className="font-sans font-bold text-xl tracking-tight">Marcin J. Ołdak</span>
                     <span className="hidden sm:inline font-mono text-[10px] uppercase tracking-[0.2em] opacity-50">MJ.OLDAK</span>
                 </a>
@@ -68,7 +68,7 @@ export default function NavbarPersonal() {
 
                 <div className="flex items-center gap-3">
                     <a
-                        href="#contact"
+                        href="/#contact"
                         className="hidden sm:inline-block relative overflow-hidden group px-6 py-3 rounded-[2rem] bg-accent text-primary font-sans font-medium text-sm transition-transform duration-300 hover:scale-[1.03] ease-[cubic-bezier(0.25,0.46,0.45,0.94)] no-underline"
                     >
                         <span className="relative z-10">Get in touch</span>
@@ -109,7 +109,7 @@ export default function NavbarPersonal() {
                         </a>
                     ))}
                     <a
-                        href="#contact"
+                        href="/#contact"
                         className="sm:hidden mt-2 px-6 py-3 rounded-[2rem] bg-accent text-primary font-sans font-medium text-sm no-underline"
                         onClick={() => setMobileOpen(false)}
                     >

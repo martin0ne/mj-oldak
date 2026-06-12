@@ -32,6 +32,7 @@ const articles = defineCollection({
     readingTime: z.number().int().positive().optional(),
     featured: z.boolean().default(false),
     draft: z.boolean().default(false),
+    lang: z.enum(['pl', 'en']).default('pl'),
     metaTitle: z.string().max(70).optional(),
     metaDescription: z.string().min(120).max(160).optional(),
     keywords: z.array(z.string()).max(10).optional(),
