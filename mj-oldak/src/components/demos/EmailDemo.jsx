@@ -57,7 +57,7 @@ export default function EmailDemo() {
             <div className="p-6">
                 <div className="grid md:grid-cols-[1fr_1.2fr] gap-6">
                     {/* Inbox */}
-                    <div>
+                    <div className="min-w-0">
                         <div className="font-mono text-[10px] uppercase tracking-[0.2em] opacity-50 mb-3">Inbox — click an email</div>
                         <div className="rounded-xl border border-primary/15 overflow-hidden divide-y divide-primary/10">
                             {emails.map((m) => (
@@ -84,7 +84,7 @@ export default function EmailDemo() {
                     </div>
 
                     {/* Klasyfikacja + szkic */}
-                    <div>
+                    <div className="min-w-0">
                         <div className="font-mono text-[10px] uppercase tracking-[0.2em] opacity-50 mb-3">Classification &amp; reply draft</div>
 
                         {!mail && (
@@ -109,13 +109,13 @@ export default function EmailDemo() {
                                         </span>
                                         <span className="font-mono text-[9px] opacity-40">confidence {mail.confidence}</span>
                                     </div>
-                                    <div className="font-mono text-[11px] opacity-70 whitespace-pre-line mt-3 max-h-28 overflow-y-auto">{mail.body}</div>
+                                    <div className="font-mono text-[11px] opacity-70 whitespace-pre-line break-words mt-3 max-h-28 overflow-y-auto">{mail.body}</div>
                                 </div>
 
                                 {mail.draft ? (
                                     <div className="rounded-xl border-l-2 border-accent border border-primary/15 bg-primary/[0.04] p-4" style={{ animation: 'emailRowIn 0.3s ease 0.15s both' }}>
                                         <div className="font-mono text-[9px] uppercase tracking-[0.15em] text-accent font-bold mb-2">Suggested reply — human approves before sending</div>
-                                        <div className="font-mono text-[11px] leading-relaxed opacity-85 whitespace-pre-line">{mail.draft}</div>
+                                        <div className="font-mono text-[11px] leading-relaxed opacity-85 whitespace-pre-line break-words">{mail.draft}</div>
                                     </div>
                                 ) : (
                                     <div className="rounded-xl border-l-2 border-gray-400 border border-primary/15 bg-primary/[0.04] p-4" style={{ animation: 'emailRowIn 0.3s ease 0.15s both' }}>

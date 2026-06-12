@@ -99,7 +99,7 @@ export default function OcrDemo() {
 
                 <div className="grid md:grid-cols-2 gap-6">
                     {/* Dokument (fake paper) */}
-                    <div className="relative">
+                    <div className="relative min-w-0">
                         <div className="font-mono text-[10px] uppercase tracking-[0.2em] opacity-50 mb-3">Document</div>
                         <div className="relative bg-[#f5f3ee] text-dark rounded-xl p-5 min-h-[260px] shadow-[0_8px_32px_rgba(0,0,0,0.35)] overflow-hidden">
                             <div className="font-sans font-bold text-sm tracking-wide mb-3">{invoice.doc.header}</div>
@@ -124,7 +124,7 @@ export default function OcrDemo() {
                     </div>
 
                     {/* Wyniki */}
-                    <div>
+                    <div className="min-w-0">
                         <div className="font-mono text-[10px] uppercase tracking-[0.2em] opacity-50 mb-3">
                             Extracted fields {phase === 'done' && revealed >= totalSteps && (
                                 <button onClick={() => setShowJson(!showJson)} className="ml-2 text-accent normal-case tracking-normal underline underline-offset-2">
