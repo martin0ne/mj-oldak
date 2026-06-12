@@ -89,7 +89,7 @@ export default function EmailDemo() {
 
                         {!mail && (
                             <div className="rounded-xl border border-dashed border-primary/20 min-h-[280px] flex items-center justify-center font-mono text-xs opacity-40 text-center px-6">
-                                Open any email — the assistant classifies it and drafts a reply in Polish, right in your browser.
+                                Open any email — the assistant classifies it and drafts a reply, right in your browser.
                             </div>
                         )}
 
@@ -114,7 +114,7 @@ export default function EmailDemo() {
 
                                 {mail.draft ? (
                                     <div className="rounded-xl border-l-2 border-accent border border-primary/15 bg-primary/[0.04] p-4" style={{ animation: 'emailRowIn 0.3s ease 0.15s both' }}>
-                                        <div className="font-mono text-[9px] uppercase tracking-[0.15em] text-accent font-bold mb-2">Suggested reply (PL) — human approves before sending</div>
+                                        <div className="font-mono text-[9px] uppercase tracking-[0.15em] text-accent font-bold mb-2">Suggested reply — human approves before sending</div>
                                         <div className="font-mono text-[11px] leading-relaxed opacity-85 whitespace-pre-line">{mail.draft}</div>
                                     </div>
                                 ) : (
@@ -129,8 +129,8 @@ export default function EmailDemo() {
                 </div>
 
                 <p className="mt-5 font-mono text-[10px] leading-relaxed opacity-40">
-                    Production version: IMAP/SMTP + Claude — classification into 5 categories + reply drafts in Polish,
-                    human-in-the-loop by design. This demo runs entirely in your browser on sample emails.
+                    Production version: IMAP/SMTP + Claude — classification into 5 categories + reply drafts written in Polish
+                    for the client, human-in-the-loop by design. This demo runs in your browser on sample emails (in English for readability).
                 </p>
             </div>
         </div>

@@ -189,7 +189,7 @@ export default function OcrDemo() {
                 {/* Stopka dema — co to dowodzi */}
                 <p className="mt-5 font-mono text-[10px] leading-relaxed opacity-40">
                     Production version: FastAPI + Azure Document Intelligence + Claude API — PDF/photo in, structured data out.
-                    This demo runs entirely in your browser on sample invoices.
+                    The scanned document is intentionally a Polish invoice — that's what the product reads. Demo runs entirely in your browser.
                 </p>
             </div>
         </div>

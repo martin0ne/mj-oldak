@@ -1,4 +1,6 @@
-// Sample data — Reporting Agent demo (fikcyjni klienci biura, raport miesięczny PL).
+// Sample data — Reporting Agent demo (fikcyjni klienci biura).
+// Treść EN (czytelna dla rekrutera); kwoty w zł = polski rynek. W produkcie raport dla
+// klienta biura jest PO POLSKU (branded PDF) — odnotowane w stopce dema.
 
 export const clients = [
   {
@@ -13,11 +15,11 @@ export const clients = [
         vatDue: '14 820 zł',
         zus: '21 360 zł',
         topCosts: [
-          { name: 'Materiały (płyta, okucia)', value: '96 200 zł' },
-          { name: 'Wynagrodzenia + ZUS', value: '78 400 zł' },
-          { name: 'Transport i logistyka', value: '18 700 zł' },
+          { name: 'Materials (boards, fittings)', value: '96 200 zł' },
+          { name: 'Salaries + social security (ZUS)', value: '78 400 zł' },
+          { name: 'Transport & logistics', value: '18 700 zł' },
         ],
-        summary: 'Przychód wyższy o 9% m/m przy stabilnych kosztach materiałów. Dochód netto rośnie trzeci miesiąc z rzędu. Uwaga: faktury kosztowe od 2 dostawców wpłynęły po terminie — ryzyko korekt JPK.',
+        summary: 'Revenue up 9% month-over-month with stable material costs. Net income grows for the third month in a row. Note: cost invoices from 2 suppliers arrived late — risk of JPK corrections.',
       },
       '2026-05': {
         revenue: '301 750 zł',
@@ -26,11 +28,11 @@ export const clients = [
         vatDue: '13 240 zł',
         zus: '21 360 zł',
         topCosts: [
-          { name: 'Materiały (płyta, okucia)', value: '108 900 zł' },
-          { name: 'Wynagrodzenia + ZUS', value: '79 100 zł' },
-          { name: 'Energia i media (hala)', value: '16 300 zł' },
+          { name: 'Materials (boards, fittings)', value: '108 900 zł' },
+          { name: 'Salaries + social security (ZUS)', value: '79 100 zł' },
+          { name: 'Energy & utilities (factory)', value: '16 300 zł' },
         ],
-        summary: 'Rekordowy przychód miesiąca, ale marża spadła o 3,1 p.p. — wzrost cen płyty meblowej. Rekomendacja: renegocjacja umowy z głównym dostawcą przed sezonem Q4.',
+        summary: 'Record monthly revenue, but margin dropped 3.1 pp — furniture board prices went up. Recommendation: renegotiate the main supplier contract before the Q4 season.',
       },
     },
   },
@@ -46,11 +48,11 @@ export const clients = [
         vatDue: '6 180 zł',
         zus: '12 840 zł',
         topCosts: [
-          { name: 'Paliwo', value: '61 400 zł' },
-          { name: 'Wynagrodzenia kierowców', value: '48 200 zł' },
-          { name: 'Leasing ciągników', value: '19 600 zł' },
+          { name: 'Fuel', value: '61 400 zł' },
+          { name: 'Driver salaries', value: '48 200 zł' },
+          { name: 'Truck leasing', value: '19 600 zł' },
         ],
-        summary: 'Niska marża (9,3%) typowa dla sezonu. Dwa pojazdy w serwisie obniżyły dostępność floty o 12 dni roboczych. VAT: nadwyżka naliczonego z faktur leasingowych częściowo skompensowana.',
+        summary: 'Low margin (9.3%) typical for the season. Two vehicles in service reduced fleet availability by 12 working days. VAT: input surplus from leasing invoices partially offset.',
       },
       '2026-05': {
         revenue: '171 900 zł',
@@ -59,11 +61,11 @@ export const clients = [
         vatDue: '8 460 zł',
         zus: '12 840 zł',
         topCosts: [
-          { name: 'Paliwo', value: '66 800 zł' },
-          { name: 'Wynagrodzenia kierowców', value: '49 750 zł' },
-          { name: 'Leasing ciągników', value: '19 600 zł' },
+          { name: 'Fuel', value: '66 800 zł' },
+          { name: 'Driver salaries', value: '49 750 zł' },
+          { name: 'Truck leasing', value: '19 600 zł' },
         ],
-        summary: 'Marża odbiła do 14,9% — pełna dostępność floty + 2 nowe stałe trasy. Rekomendacja: przegląd stawek za km na trasach DE (wzrost kosztów paliwa o 4% m/m).',
+        summary: 'Margin rebounded to 14.9% — full fleet availability + 2 new regular routes. Recommendation: review per-km rates on DE routes (fuel costs up 4% month-over-month).',
       },
     },
   },

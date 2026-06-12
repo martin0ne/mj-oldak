@@ -131,7 +131,7 @@ export default function ReportingDemo() {
                                 <div className="font-sans font-bold text-lg">{client.name}</div>
                                 <div className="font-mono text-[10px] uppercase tracking-[0.15em] opacity-50">{client.industry}</div>
                             </div>
-                            <div className="font-mono text-[11px] opacity-60">Raport miesięczny · {reportMonths.find((m) => m.id === month).label}</div>
+                            <div className="font-mono text-[11px] opacity-60">Monthly report · {reportMonths.find((m) => m.id === month).label}</div>
                         </div>
 
                         {/* KPI */}
@@ -146,7 +146,7 @@ export default function ReportingDemo() {
 
                         {/* Top koszty */}
                         <div className="px-6 py-4">
-                            <div className="font-mono text-[10px] uppercase tracking-[0.15em] opacity-50 mb-2">Największe koszty</div>
+                            <div className="font-mono text-[10px] uppercase tracking-[0.15em] opacity-50 mb-2">Top costs</div>
                             {report.topCosts.map((c, i) => (
                                 <div key={i} className="flex justify-between font-mono text-[12px] py-1.5 border-b border-dark/5 last:border-0">
                                     <span className="opacity-75">{c.name}</span>
@@ -157,15 +157,15 @@ export default function ReportingDemo() {
 
                         {/* Podsumowanie PL */}
                         <div className="px-6 pb-5">
-                            <div className="font-mono text-[10px] uppercase tracking-[0.15em] opacity-50 mb-2">Podsumowanie</div>
+                            <div className="font-mono text-[10px] uppercase tracking-[0.15em] opacity-50 mb-2">Summary</div>
                             <p className="font-sans text-[13px] leading-relaxed opacity-85">{report.summary}</p>
                         </div>
                     </div>
                 )}
 
                 <p className="mt-5 font-mono text-[10px] leading-relaxed opacity-40">
-                    Production version: FastAPI + openpyxl + fpdf2 — branded PDF reports per client, generated from
-                    the office's ledger exports. This demo runs entirely in your browser on sample data.
+                    Production version: FastAPI + openpyxl + fpdf2 — branded PDF reports per client (in Polish),
+                    generated from the office's ledger exports. This demo runs entirely in your browser on sample data.
                 </p>
             </div>
         </div>
