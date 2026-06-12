@@ -1,8 +1,27 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
+
+// Zdjęcia własne Marcina (public/photos — ten sam zestaw co stara strona; brand v2.1
+// sea/sunset wywodzi się z tych fotografii). Rotacja crossfade, ładowanie progresywne.
+const PHOTOS = [
+    '/photos/hero-5350.jpg',
+    '/photos/hero-5236.jpg',
+    '/photos/hero-0798.jpg',
+    '/photos/hero-5579.jpg',
+    '/photos/hero-5103.jpg',
+    '/photos/hero-7543.jpg',
+    '/photos/hero-5088.jpg',
+    '/photos/hero-5048.jpg',
+    '/photos/hero-5084.jpg',
+    '/photos/hero-6147.jpg',
+];
+const ROTATE_MS = 8000;
 
 export default function HeroPersonal() {
     const containerRef = useRef(null);
+    const [idx, setIdx] = useState(0);
+    // Renderujemy tylko zdjęcia już obejrzane — sieć ciągnie 1 plik na 8s, nie 4MB na starcie.
+    const [maxSeen, setMaxSeen] = useState(0);
 
     useEffect(() => {
         let ctx = gsap.context(() => {
@@ -19,22 +38,41 @@ export default function HeroPersonal() {
         return () => ctx.revert();
     }, []);
 
+    useEffect(() => {
+        // Preload następnego zdjęcia tuż przed rotacją — crossfade bez mignięcia.
+        const next = (idx + 1) % PHOTOS.length;
+        const img = new Image();
+        img.src = PHOTOS[next];
+        const t = setTimeout(() => {
+            setIdx(next);
+            setMaxSeen((m) => Math.max(m, next));
+        }, ROTATE_MS);
+        return () => clearTimeout(t);
+    }, [idx]);
+
     return (
         <section
             id="top"
             ref={containerRef}
             data-nav-theme="dark"
-            className="relative h-[100dvh] w-full flex flex-col justify-end p-8 md:p-16 overflow-hidden"
+            className="relative h-[100dvh] w-full flex flex-col justify-end p-8 md:p-16 overflow-hidden bg-dark"
         >
-            {/* Brutalist concrete background */}
-            <div
-                className="absolute inset-0 bg-cover bg-center z-0"
-                role="img"
-                aria-label="Hero background"
-                style={{
-                    backgroundImage: 'url("/hero-bg.jpg")',
-                }}
-            />
+            {/* Rotacja zdjęć własnych — crossfade */}
+            {PHOTOS.map((src, i) => (
+                i <= maxSeen && (
+                    <div
+                        key={src}
+                        className="absolute inset-0 bg-cover bg-center z-0 transition-opacity duration-[1500ms] ease-in-out"
+                        role={i === idx ? 'img' : undefined}
+                        aria-label={i === idx ? 'Hero background — own photography' : undefined}
+                        aria-hidden={i === idx ? undefined : true}
+                        style={{
+                            backgroundImage: `url("${src}")`,
+                            opacity: i === idx ? 1 : 0,
+                        }}
+                    />
+                )
+            ))}
             <div className="absolute inset-0 bg-gradient-to-t from-dark via-dark/85 to-dark/30 z-10" />
             {/* Bottom gradient bridge to light section */}
             <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-b from-transparent to-background z-20 pointer-events-none" />
