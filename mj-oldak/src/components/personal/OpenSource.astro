@@ -1,0 +1,86 @@
+---
+// Sekcja Open Source — klikalne karty do publicznych repozytoriów GitHub.
+// Dowód „kliknij → kod": każda karta linkuje do repo, plus link do profilu.
+// Styl naśladuje Skills (dark + karty), brand v2.1 sea-blue.
+const repos = [
+  {
+    name: 'agent-flow',
+    desc: 'Multi-step ReAct document agent with a human-approval gate and cited reports.',
+    href: 'https://github.com/martin0ne/agent-flow',
+    lang: 'Python',
+  },
+  {
+    name: 'claude-skills',
+    desc: 'Reusable Claude Code skills toolkit: RAG-with-provenance, repo publish audit, case-study & workshop builders.',
+    href: 'https://github.com/martin0ne/claude-skills',
+    lang: 'Claude Code',
+  },
+  {
+    name: 'analytics-stack-pl-banking',
+    desc: 'Reproducible, zero-cost analytics pipeline (DVC · pandera · DuckDB · Quarto) on AI adoption in Polish banking.',
+    href: 'https://github.com/martin0ne/analytics-stack-pl-banking',
+    lang: 'Python',
+  },
+  {
+    name: 'ai-ba-decision-frameworks',
+    desc: 'Decision frameworks for the AI Business Analyst role (CC BY 4.0).',
+    href: 'https://github.com/martin0ne/ai-ba-decision-frameworks',
+    lang: 'Frameworks',
+  },
+];
+const profileUrl = 'https://github.com/martin0ne';
+---
+<section id="open-source" data-nav-theme="dark" class="bg-dark text-primary px-8 md:px-16 py-24 md:py-32 border-t border-primary/10">
+  <div class="max-w-6xl mx-auto">
+    <p class="font-mono text-xs uppercase tracking-[0.3em] opacity-60 mb-6">
+      <span class="text-accent">—</span> 05 · Open Source
+    </p>
+
+    <h2 class="font-sans font-bold text-4xl md:text-6xl tracking-[-0.03em] uppercase leading-[0.95] mb-6">
+      Code in the open<span class="text-accent">.</span>
+    </h2>
+
+    <p class="font-serif italic text-2xl md:text-3xl leading-snug max-w-3xl mb-8 opacity-90">
+      Don't take my word for it — read the source.
+    </p>
+    <p class="font-sans text-base max-w-3xl mb-14 opacity-75 leading-relaxed">
+      A few public repositories — agents, reusable tooling and reproducible analytics.
+      Each card links straight to GitHub.
+    </p>
+
+    <div class="grid sm:grid-cols-2 gap-5">
+      {repos.map((r) => (
+        <a
+          href={r.href}
+          target="_blank"
+          rel="noopener"
+          class="group min-w-0 rounded-3xl border border-primary/15 bg-primary/[0.04] backdrop-blur-sm p-7 hover:border-accent/60 transition-colors duration-300 no-underline block"
+        >
+          <div class="flex items-center justify-between gap-3 mb-3">
+            <span class="font-mono text-[10px] uppercase tracking-[0.2em] text-accent">{r.lang}</span>
+            <svg class="w-5 h-5 opacity-50 group-hover:opacity-100 transition-opacity shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12 .5C5.37.5 0 5.87 0 12.5c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58 0-.29-.01-1.04-.02-2.05-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.21.09 1.84 1.24 1.84 1.24 1.07 1.84 2.81 1.31 3.5 1 .11-.78.42-1.31.76-1.61-2.67-.3-5.47-1.34-5.47-5.95 0-1.31.47-2.39 1.24-3.23-.12-.31-.54-1.53.12-3.18 0 0 1.01-.32 3.3 1.23.96-.27 1.98-.4 3-.41 1.02.01 2.04.14 3 .41 2.28-1.55 3.29-1.23 3.29-1.23.66 1.65.24 2.87.12 3.18.77.84 1.24 1.92 1.24 3.23 0 4.62-2.81 5.64-5.49 5.94.43.37.81 1.1.81 2.22 0 1.61-.01 2.9-.01 3.3 0 .32.21.7.82.58A12.01 12.01 0 0 0 24 12.5C24 5.87 18.63.5 12 .5z"/>
+            </svg>
+          </div>
+          <h3 class="font-sans font-bold text-xl mb-2 tracking-tight break-words">{r.name}</h3>
+          <p class="font-sans text-sm leading-relaxed opacity-75 break-words mb-4">{r.desc}</p>
+          <span class="font-mono text-xs text-accent group-hover:underline break-words">View on GitHub ↗</span>
+        </a>
+      ))}
+    </div>
+
+    <div class="mt-12">
+      <a
+        href={profileUrl}
+        target="_blank"
+        rel="noopener"
+        class="inline-flex items-center gap-3 px-8 py-4 rounded-[2rem] border border-primary/20 hover:border-accent text-primary font-sans font-bold text-base hover:bg-primary/[0.06] transition-colors no-underline"
+      >
+        <svg class="w-5 h-5 shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M12 .5C5.37.5 0 5.87 0 12.5c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58 0-.29-.01-1.04-.02-2.05-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.21.09 1.84 1.24 1.84 1.24 1.07 1.84 2.81 1.31 3.5 1 .11-.78.42-1.31.76-1.61-2.67-.3-5.47-1.34-5.47-5.95 0-1.31.47-2.39 1.24-3.23-.12-.31-.54-1.53.12-3.18 0 0 1.01-.32 3.3 1.23.96-.27 1.98-.4 3-.41 1.02.01 2.04.14 3 .41 2.28-1.55 3.29-1.23 3.29-1.23.66 1.65.24 2.87.12 3.18.77.84 1.24 1.92 1.24 3.23 0 4.62-2.81 5.64-5.49 5.94.43.37.81 1.1.81 2.22 0 1.61-.01 2.9-.01 3.3 0 .32.21.7.82.58A12.01 12.01 0 0 0 24 12.5C24 5.87 18.63.5 12 .5z"/>
+        </svg>
+        See all on GitHub →
+      </a>
+    </div>
+  </div>
+</section>
