@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import MiniSearch from 'minisearch';
 
-export default function ArticlesBrowser({ articles, allTags }) {
+export default function ArticlesBrowser({ articles, allTags, basePath = '/artykuly' }) {
     const [query, setQuery] = useState('');
     const [activeTag, setActiveTag] = useState(null);
 
@@ -101,7 +101,7 @@ export default function ArticlesBrowser({ articles, allTags }) {
                     {filtered.map((a) => (
                         <a
                             key={a.slug}
-                            href={`/artykuly/${a.slug}/`}
+                            href={`${basePath}/${a.slug}/`}
                             className="group block rounded-[2rem] bg-dark/[0.05] border border-dark/10 hover:border-accent/40 hover:bg-dark/[0.07] transition-all overflow-hidden no-underline"
                         >
                             {a.cover && (

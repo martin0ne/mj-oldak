@@ -3,17 +3,19 @@ import type { CollectionEntry } from 'astro:content';
 
 export interface Props {
   articles: CollectionEntry<'articles'>[];
+  lang?: 'pl' | 'en';
 }
 
-const { articles } = Astro.props;
-
-const fmtDate = (d: Date) => new Intl.DateTimeFormat('pl-PL', { day: 'numeric', month: 'short', year: 'numeric' }).format(d);
+const { articles, lang = 'pl' } = Astro.props;
+const isEn = lang === 'en';
+const basePath = isEn ? '/en/articles' : '/artykuly';
+const fmtDate = (d: Date) => new Intl.DateTimeFormat(isEn ? 'en-GB' : 'pl-PL', { day: 'numeric', month: 'short', year: 'numeric' }).format(d);
 ---
 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
   {articles.map((a) => {
-    const slug = a.id.replace(/\.md$/, '');
+    const slug = a.id.replace(/^en\//, '').replace(/\.md$/, '');
     return (
-      <a href={`/artykuly/${slug}/`} class="group block rounded-[2rem] bg-dark/[0.05] border border-dark/10 hover:border-accent/40 hover:bg-dark/[0.07] transition-all overflow-hidden no-underline">
+      <a href={`${basePath}/${slug}/`} class="group block rounded-[2rem] bg-dark/[0.05] border border-dark/10 hover:border-accent/40 hover:bg-dark/[0.07] transition-all overflow-hidden no-underline">
         {a.data.cover && (
           <div class="aspect-[16/9] overflow-hidden bg-dark/[0.05]">
             <img src={a.data.cover} alt={a.data.coverAlt ?? a.data.title} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
