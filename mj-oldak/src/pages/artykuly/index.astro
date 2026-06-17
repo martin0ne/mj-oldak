@@ -6,7 +6,7 @@ import FooterSlim from '../../components/personal/FooterSlim.astro';
 import ArticlesBrowser from '../../components/ArticlesBrowser.jsx';
 import { TAGS } from '../../content.config';
 
-const all = await getCollection('articles', ({ data }) => !data.draft && data.publishedAt <= new Date());
+const all = await getCollection('articles', ({ data }) => !data.draft && data.publishedAt <= new Date() && data.lang === 'pl');
 const articles = all
   .map((a) => ({
     slug: a.id.replace(/\.md$/, ''),

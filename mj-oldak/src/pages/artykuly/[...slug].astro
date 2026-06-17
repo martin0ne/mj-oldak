@@ -3,10 +3,12 @@ import { getCollection, render } from 'astro:content';
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
 
 export async function getStaticPaths() {
-  const articles = await getCollection('articles', ({ data }) => !data.draft && data.publishedAt <= new Date());
-  return articles.map((article) => {
+  const all = await getCollection('articles', ({ data }) => !data.draft && data.publishedAt <= new Date());
+  const pl = all.filter((a) => a.data.lang === 'pl');
+  const en = all.filter((a) => a.data.lang === 'en');
+  return pl.map((article) => {
     const slug = article.id.replace(/\.md$/, '');
-    const others = articles.filter((a) => a.id !== article.id);
+    const others = pl.filter((a) => a.id !== article.id);
 
     const scored = others
       .map((other) => {
@@ -19,16 +21,23 @@ export async function getStaticPaths() {
       .slice(0, 3)
       .map((s) => s.article);
 
+    const counterpart = article.data.translationKey
+      ? en.find((e) => e.data.translationKey === article.data.translationKey)
+      : null;
+    const translationUrl = counterpart
+      ? `/en/articles/${counterpart.id.replace(/^en\//, '').replace(/\.md$/, '')}/`
+      : null;
+
     return {
       params: { slug },
-      props: { article, related: scored },
+      props: { article, related: scored, translationUrl },
     };
   });
 }
 
-const { article, related } = Astro.props;
+const { article, related, translationUrl } = Astro.props;
 const { Content } = await render(article);
 ---
-<ArticleLayout article={article} related={related}>
+<ArticleLayout article={article} related={related} lang="pl" translationUrl={translationUrl}>
   <Content />
 </ArticleLayout>
