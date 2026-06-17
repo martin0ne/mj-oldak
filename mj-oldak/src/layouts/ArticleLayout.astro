@@ -74,13 +74,9 @@ const breadcrumbsLd = {
 >
   <script slot="head" type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
   <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbsLd)} />
-  {translationAbsolute && (
-    <>
-      <link slot="head" rel="alternate" hreflang="pl" href={isEn ? translationAbsolute : articleURL} />
-      <link slot="head" rel="alternate" hreflang="en" href={isEn ? articleURL : translationAbsolute} />
-      <link slot="head" rel="alternate" hreflang="x-default" href={isEn ? translationAbsolute : articleURL} />
-    </>
-  )}
+  {translationAbsolute && <link slot="head" rel="alternate" hreflang="pl" href={isEn ? translationAbsolute : articleURL} />}
+  {translationAbsolute && <link slot="head" rel="alternate" hreflang="en" href={isEn ? articleURL : translationAbsolute} />}
+  {translationAbsolute && <link slot="head" rel="alternate" hreflang="x-default" href={isEn ? translationAbsolute : articleURL} />}
 
   <NavbarPersonal client:load />
 
