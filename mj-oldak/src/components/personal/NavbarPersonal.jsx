@@ -40,8 +40,8 @@ export default function NavbarPersonal() {
         { href: '/#about', label: 'About' },
         { href: '/#skills', label: 'Skills' },
         { href: '/#open-source', label: 'Open Source' },
+        { href: '/#analytics', label: 'Analytics' },
         { href: '/#writing', label: 'Writing' },
-        { href: '/#contact', label: 'Contact' },
     ];
 
     return (

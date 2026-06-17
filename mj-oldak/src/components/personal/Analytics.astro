@@ -1,0 +1,99 @@
+---
+// Sekcja Data & Analytics — featured analytical deliverable.
+// Dowód „od publicznych danych do cytowanego raportu": reconciliation GUS x Eurostat,
+// wykresy + raport PDF + link do reprodukowalnego pipeline'u. Styl jak OpenSource/Skills.
+const stats = [
+  { big: '0.34', unit: 'pp', label: 'two official sources reconciled (GUS vs Eurostat)' },
+  { big: '26→31', unit: '', label: "Poland's rank among EU countries, 2021→2025" },
+  { big: '−11.6', unit: 'pp', label: 'and the gap to the EU keeps widening' },
+];
+const demonstrates = [
+  'SQL — JOIN · window functions · reconciliation',
+  'Reproducible pipeline (DVC) — one command rebuilds it',
+  'Data contracts (pandera) — fails loud on drift',
+  'Provenance — SHA-256 + dataset vintage on every source',
+  'Honest scoping — limits stated, not hidden',
+];
+const reportUrl = '/reports/ai_adoption_report.pdf';
+const repoUrl = 'https://github.com/martin0ne/analytics-stack-pl';
+---
+<section id="analytics" data-nav-theme="dark" class="bg-dark text-primary px-8 md:px-16 py-24 md:py-32 border-t border-primary/10">
+  <div class="max-w-6xl mx-auto">
+    <p class="font-mono text-xs uppercase tracking-[0.3em] opacity-60 mb-6">
+      <span class="text-accent">—</span> 06 · Data &amp; Analytics
+    </p>
+
+    <h2 class="font-sans font-bold text-4xl md:text-6xl tracking-[-0.03em] uppercase leading-[0.95] mb-6">
+      From data to evidence<span class="text-accent">.</span>
+    </h2>
+
+    <p class="font-serif italic text-2xl md:text-3xl leading-snug max-w-3xl mb-8 opacity-90">
+      Public data → an audited pipeline → a report that survives scrutiny.
+    </p>
+    <p class="font-sans text-base max-w-3xl mb-14 opacity-75 leading-relaxed">
+      Beyond shipping agents, I do the analyst's core job: find the right public data, reconcile the
+      same metric across independent official sources, benchmark and trend it — and make every figure
+      traceable and reproducible. Here is one finished piece, end to end.
+    </p>
+
+    <div class="rounded-3xl border border-primary/15 bg-primary/[0.04] backdrop-blur-sm p-7 md:p-10">
+      <div class="flex flex-wrap items-center gap-3 mb-4">
+        <span class="font-mono text-[10px] uppercase tracking-[0.2em] text-accent">SQL · DuckDB · DVC · pandera</span>
+        <span class="font-mono text-[10px] uppercase tracking-[0.2em] px-2.5 py-1 rounded-full border border-accent/40 text-accent">Reproducible</span>
+      </div>
+
+      <h3 class="font-sans font-bold text-2xl md:text-3xl tracking-tight mb-1">AI adoption in Polish enterprises</h3>
+      <p class="font-sans text-sm uppercase tracking-[0.15em] opacity-60 mb-5">A GUS × Eurostat reconciliation · 2021–2025</p>
+
+      <p class="font-sans text-base leading-relaxed opacity-85 max-w-3xl mb-8">
+        The same indicator — enterprises using any AI technology — reported by two statistical offices,
+        reconciled to within 0.3&nbsp;points; Poland is climbing fast off a low base, yet the gap to the EU
+        average is widening. Economy-wide data, with the financial-sector caveat stated upfront.
+      </p>
+
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-9 pb-9 border-b border-primary/10">
+        {stats.map((s) => (
+          <div>
+            <div class="font-sans font-bold text-4xl md:text-5xl tracking-tight">{s.big}<span class="text-2xl text-accent">{s.unit}</span></div>
+            <div class="font-mono text-[11px] uppercase tracking-[0.18em] opacity-60 mt-2 leading-snug">{s.label}</div>
+          </div>
+        ))}
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-5 mb-9">
+        <figure class="m-0">
+          <div class="rounded-2xl bg-[#f5f3ee] p-4 border border-primary/10">
+            <img src="/reports/ai_trajectory.png" alt="Poland vs EU27 AI adoption trajectory, 2021–2025" class="w-full block" loading="lazy" />
+          </div>
+          <figcaption class="font-mono text-[10px] uppercase tracking-[0.15em] opacity-50 mt-3">Fig. 1 · Poland vs EU27 trajectory</figcaption>
+        </figure>
+        <figure class="m-0">
+          <div class="rounded-2xl bg-[#f5f3ee] p-4 border border-primary/10">
+            <img src="/reports/ai_by_size.png" alt="AI adoption by firm size, 2025" class="w-full block" loading="lazy" />
+          </div>
+          <figcaption class="font-mono text-[10px] uppercase tracking-[0.15em] opacity-50 mt-3">Fig. 2 · Adoption by firm size (2025)</figcaption>
+        </figure>
+      </div>
+
+      <p class="font-mono text-[10px] uppercase tracking-[0.2em] opacity-50 mb-3">What it demonstrates</p>
+      <ul class="grid sm:grid-cols-2 gap-x-8 gap-y-2 mb-9">
+        {demonstrates.map((d) => (
+          <li class="font-sans text-sm leading-relaxed opacity-80 flex gap-2.5">
+            <span class="text-accent shrink-0">▸</span><span>{d}</span>
+          </li>
+        ))}
+      </ul>
+
+      <div class="flex flex-wrap gap-4">
+        <a href={reportUrl} target="_blank" rel="noopener"
+           class="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-[2rem] bg-accent text-dark font-sans font-bold text-base hover:opacity-90 transition-opacity no-underline">
+          Read the report (PDF) ↗
+        </a>
+        <a href={repoUrl} target="_blank" rel="noopener"
+           class="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-[2rem] border border-primary/20 hover:border-accent text-primary font-sans font-bold text-base hover:bg-primary/[0.06] transition-colors no-underline">
+          View the pipeline ↗
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
