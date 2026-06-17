@@ -12,6 +12,7 @@ export const TAGS = [
   'n8n-claude',
   'vat-pit',
   'tutorial',
+  'build',
 ] as const;
 
 export const CATEGORIES = ['edukacja', 'case-study', 'demo'] as const;
@@ -21,6 +22,7 @@ const articles = defineCollection({
   schema: z.object({
     title: z.string().min(10).max(120),
     slug: z.string().optional(),
+    translationKey: z.string().optional(),
     excerpt: z.string().min(40).max(280),
     publishedAt: z.coerce.date(),
     updatedAt: z.coerce.date().optional(),

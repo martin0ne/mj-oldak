@@ -5,6 +5,11 @@ import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
   site: 'https://mjoldak.com',
+  i18n: {
+    defaultLocale: 'pl',
+    locales: ['pl', 'en'],
+    routing: { prefixDefaultLocale: false },
+  },
   integrations: [
     react(),
     tailwind({ applyBaseStyles: false }),
