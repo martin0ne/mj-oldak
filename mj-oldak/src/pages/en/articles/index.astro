@@ -1,0 +1,64 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import NavbarPersonal from '../../../components/personal/NavbarPersonal.jsx';
+import FooterSlim from '../../../components/personal/FooterSlim.astro';
+import ArticlesBrowser from '../../../components/ArticlesBrowser.jsx';
+import { TAGS } from '../../../content.config';
+
+const all = await getCollection('articles', ({ data }) => !data.draft && data.publishedAt <= new Date() && data.lang === 'en');
+const articles = all
+  .map((a) => ({
+    slug: a.id.replace(/^en\//, '').replace(/\.md$/, ''),
+    title: a.data.title,
+    excerpt: a.data.excerpt,
+    publishedAt: a.data.publishedAt.toISOString(),
+    publishedDateLabel: new Intl.DateTimeFormat('en-GB', { day: 'numeric', month: 'long', year: 'numeric' }).format(a.data.publishedAt),
+    category: a.data.category,
+    tags: a.data.tags,
+    cover: a.data.cover ?? null,
+    coverAlt: a.data.coverAlt ?? a.data.title,
+    readingTime: a.data.readingTime ?? null,
+    featured: a.data.featured,
+    lang: a.data.lang,
+  }))
+  .sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime());
+---
+<BaseLayout
+  title="Articles — Marcin J. Ołdak"
+  description="Plain-language articles on AI agents, RAG, automation and data — by Marcin J. Ołdak. Build logs and concepts, written for builders and decision-makers alike."
+  lang="en"
+>
+  <NavbarPersonal client:load />
+
+  <section class="bg-background text-dark px-8 md:px-16 pt-36 md:pt-44 pb-12">
+    <div class="max-w-7xl mx-auto">
+      <p class="font-mono text-xs uppercase tracking-[0.3em] opacity-60 mb-6">
+        <span class="text-accent">—</span> Writing
+      </p>
+      <h1 class="font-sans font-bold text-4xl md:text-6xl tracking-[-0.03em] uppercase leading-[0.95] mb-6">
+        Articles<span class="text-accent">.</span>
+      </h1>
+      <p class="font-serif italic text-2xl md:text-3xl leading-snug max-w-3xl mb-4 opacity-90">
+        AI, explained in plain language.
+      </p>
+      <p class="font-sans text-base max-w-2xl opacity-75 leading-relaxed">
+        Build logs and concepts — how RAG, agents and automation actually work.
+        Short, honest, with the engineering underneath. Also available in Polish.
+      </p>
+    </div>
+  </section>
+
+  <section class="bg-background text-dark px-8 md:px-16 pb-32">
+    <div class="max-w-7xl mx-auto">
+      <ArticlesBrowser
+        client:load
+        articles={articles}
+        allTags={[...TAGS]}
+        basePath="/en/articles"
+      />
+    </div>
+  </section>
+
+  <FooterSlim />
+</BaseLayout>

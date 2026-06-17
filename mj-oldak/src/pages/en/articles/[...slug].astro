@@ -1,0 +1,43 @@
+---
+import { getCollection, render } from 'astro:content';
+import ArticleLayout from '../../../layouts/ArticleLayout.astro';
+
+export async function getStaticPaths() {
+  const all = await getCollection('articles', ({ data }) => !data.draft && data.publishedAt <= new Date());
+  const en = all.filter((a) => a.data.lang === 'en');
+  const pl = all.filter((a) => a.data.lang === 'pl');
+  return en.map((article) => {
+    const slug = article.id.replace(/^en\//, '').replace(/\.md$/, '');
+    const others = en.filter((a) => a.id !== article.id);
+
+    const scored = others
+      .map((other) => {
+        const sharedTags = other.data.tags.filter((t) => article.data.tags.includes(t)).length;
+        const sameCategory = other.data.category === article.data.category ? 1 : 0;
+        return { article: other, score: sharedTags * 2 + sameCategory };
+      })
+      .filter((s) => s.score > 0)
+      .sort((a, b) => b.score - a.score || new Date(b.article.data.publishedAt).getTime() - new Date(a.article.data.publishedAt).getTime())
+      .slice(0, 3)
+      .map((s) => s.article);
+
+    const counterpart = article.data.translationKey
+      ? pl.find((p) => p.data.translationKey === article.data.translationKey)
+      : null;
+    const translationUrl = counterpart
+      ? `/artykuly/${counterpart.id.replace(/\.md$/, '')}/`
+      : null;
+
+    return {
+      params: { slug },
+      props: { article, related: scored, translationUrl },
+    };
+  });
+}
+
+const { article, related, translationUrl } = Astro.props;
+const { Content } = await render(article);
+---
+<ArticleLayout article={article} related={related} lang="en" translationUrl={translationUrl}>
+  <Content />
+</ArticleLayout>
