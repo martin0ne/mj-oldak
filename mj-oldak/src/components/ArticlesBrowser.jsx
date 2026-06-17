@@ -1,9 +1,14 @@
 import { useEffect, useMemo, useState } from 'react';
 import MiniSearch from 'minisearch';
 
-export default function ArticlesBrowser({ articles, allTags, basePath = '/artykuly' }) {
+export default function ArticlesBrowser({ articles, allTags, basePath = '/artykuly', lang = 'pl' }) {
     const [query, setQuery] = useState('');
     const [activeTag, setActiveTag] = useState(null);
+
+    const isEn = lang === 'en';
+    const ui = isEn
+        ? { placeholder: 'Search articles...', searchAria: 'Search articles', all: 'All', empty: 'No results. Try other words or clear the filters.', clear: 'Clear filters', count: (n) => `${n} ${n === 1 ? 'article' : 'articles'}` }
+        : { placeholder: 'Szukaj artykułów...', searchAria: 'Wyszukaj artykuł', all: 'Wszystkie', empty: 'Brak wyników. Spróbuj innych słów lub wyczyść filtry.', clear: 'Wyczyść filtry', count: (n) => `${n} ${n === 1 ? 'artykuł' : n >= 2 && n <= 4 ? 'artykuły' : 'artykułów'}` };
 
     const search = useMemo(() => {
         const ms = new MiniSearch({
@@ -47,14 +52,14 @@ export default function ArticlesBrowser({ articles, allTags, basePath = '/artyku
                             type="search"
                             value={query}
                             onChange={(e) => setQuery(e.target.value)}
-                            placeholder="Szukaj artykułów..."
-                            aria-label="Wyszukaj artykuł"
+                            placeholder={ui.placeholder}
+                            aria-label={ui.searchAria}
                             className="w-full bg-dark/[0.04] border border-dark/15 rounded-[2rem] pl-12 pr-5 py-3.5 font-mono text-sm text-dark placeholder:text-dark/40 outline-none focus:border-accent/60 focus:bg-dark/[0.06] transition-all"
                         />
                         <svg className="absolute left-5 top-1/2 -translate-y-1/2 w-4 h-4 text-dark/40" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
                     </div>
                     <p className="font-mono text-[10px] uppercase tracking-widest text-dark/40 self-center">
-                        {filtered.length} {filtered.length === 1 ? 'artykuł' : filtered.length >= 2 && filtered.length <= 4 ? 'artykuły' : 'artykułów'}
+                        {ui.count(filtered.length)}
                     </p>
                 </div>
 
@@ -67,7 +72,7 @@ export default function ArticlesBrowser({ articles, allTags, basePath = '/artyku
                                 : 'bg-dark/[0.04] text-dark/70 border-dark/15 hover:border-accent/40 hover:text-dark'
                         }`}
                     >
-                        Wszystkie ({articles.length})
+                        {ui.all} ({articles.length})
                     </button>
                     {allTags.filter((t) => tagCounts[t]).map((tag) => (
                         <button
@@ -88,12 +93,12 @@ export default function ArticlesBrowser({ articles, allTags, basePath = '/artyku
             {/* Grid */}
             {filtered.length === 0 ? (
                 <div className="rounded-[2rem] bg-dark/[0.04] border border-dark/10 p-12 text-center">
-                    <p className="font-mono text-sm text-dark/60">Brak wyników. Spróbuj innych słów lub wyczyść filtry.</p>
+                    <p className="font-mono text-sm text-dark/60">{ui.empty}</p>
                     <button
                         onClick={() => { setQuery(''); setActiveTag(null); }}
                         className="mt-4 font-mono text-[10px] uppercase tracking-widest px-4 py-2 rounded-full bg-accent text-primary hover:scale-[1.03] transition"
                     >
-                        Wyczyść filtry
+                        {ui.clear}
                     </button>
                 </div>
             ) : (
