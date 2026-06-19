@@ -23,7 +23,7 @@ const t = isEn
 
 const publishedISO = publishedAt.toISOString();
 const updatedISO = updatedAt?.toISOString();
-const dateFormatted = new Intl.DateTimeFormat(isEn ? 'en-GB' : 'pl-PL', { day: 'numeric', month: 'long', year: 'numeric' }).format(publishedAt);
+const dateFormatted = new Intl.DateTimeFormat(isEn ? 'en-GB' : 'pl-PL', { month: 'long', year: 'numeric' }).format(publishedAt);
 
 const siteURL = 'https://mjoldak.com';
 const slugClean = article.id.replace(/^en\//, '').replace(/\.md$/, '');

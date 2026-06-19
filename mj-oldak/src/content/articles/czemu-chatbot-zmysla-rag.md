@@ -1,6 +1,8 @@
 ---
 title: "Czemu twój chatbot zmyśla (i co RAG ma z tym wspólnego)"
 slug: "czemu-chatbot-zmysla-rag"
+cover: "/articles/covers/czemu-chatbot-zmysla-rag.png"
+coverAlt: "Czemu twój chatbot zmyśla (i co RAG ma z tym wspólnego) — MJ.OLDAK"
 excerpt: "Chatbot nie kłamie — generuje najbardziej prawdopodobny tekst, a nie prawdę. Po ludzku o halucynacjach i o tym, jak RAG je ogranicza, doklejając źródła zanim model odpowie."
 publishedAt: 2026-06-17
 author: "Marcin Ołdak"
@@ -36,7 +38,7 @@ To po angielsku nazywa się **grounding** — "uziemienie" odpowiedzi w realnym 
 
 Analogia: to różnica między egzaminem **z pamięci** a egzaminem **z otwartą książką**. Z pamięci student powie cokolwiek, byle pewnie. Z otwartą książką ma przed sobą konkretny fragment i odpowiada z niego. RAG zamienia chatbota z pierwszego trybu w drugi.
 
-Ma to dwie konsekwencje, które robią różnicę w praktyce. Po pierwsze, model odpowiada na podstawie **twoich** dokumentów, a nie ogólnej wiedzy z internetu — więc może znać twoje procedury, których nigdzie indziej nie ma. Po drugie, skoro odpowiedź pochodzi z konkretnego fragmentu, da się **pokazać, z którego** — a to znaczy, że da się ją sprawdzić, zamiast brać na słowo.
+Ma to dwie konsekwencje, które robią różnicę w praktyce. Po pierwsze, model opiera odpowiedź przede wszystkim na **twoich** dokumentach, a nie na ogólnej wiedzy z internetu — więc może znać twoje procedury, których nigdzie indziej nie ma. Po drugie, skoro odpowiedź pochodzi z konkretnego fragmentu, da się **pokazać, z którego** — a to znaczy, że da się ją sprawdzić, zamiast brać na słowo.
 
 ## Czemu to nie magia
 

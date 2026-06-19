@@ -13,7 +13,7 @@ const articles = all
     title: a.data.title,
     excerpt: a.data.excerpt,
     publishedAt: a.data.publishedAt.toISOString(),
-    publishedDateLabel: new Intl.DateTimeFormat('en-GB', { day: 'numeric', month: 'long', year: 'numeric' }).format(a.data.publishedAt),
+    publishedDateLabel: new Intl.DateTimeFormat('en-GB', { month: 'long', year: 'numeric' }).format(a.data.publishedAt),
     category: a.data.category,
     tags: a.data.tags,
     cover: a.data.cover ?? null,

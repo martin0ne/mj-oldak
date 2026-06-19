@@ -1,6 +1,8 @@
 ---
 title: "Zbudowałem wyszukiwarkę po dokumentach, która nie zmyśla — oto jak"
 slug: "wyszukiwarka-dokumentow-ktora-nie-zmysla"
+cover: "/articles/covers/wyszukiwarka-dokumentow-ktora-nie-zmysla.png"
+coverAlt: "Zbudowałem wyszukiwarkę po dokumentach, która nie zmyśla — oto jak — MJ.OLDAK"
 excerpt: "RAG, który zamiast wymyślać odpowiedzi, pokazuje plik i linię, z której je wziął. Jak działa hybryda BM25 + embeddingi + RRF i dlaczego pojedyncza metoda zawodzi."
 publishedAt: 2026-06-17
 author: "Marcin Ołdak"
@@ -29,7 +31,7 @@ To różnica między "ufaj mi na słowo" a "sprawdź sobie sam". W biurze rachun
 Pod spodem siedzą dwa różne sposoby szukania, które zwykle stawia się przeciwko sobie. U mnie pracują razem.
 
 - **BM25** to wyszukiwanie **leksykalne** — po słowach. Świetne, gdy w pytaniu pada rzadki, konkretny token: numer artykułu, nazwa pola, symbol. Gubi się, gdy zapytasz o to samo innymi słowami.
-- **Embeddingi** to wyszukiwanie **semantyczne** — po znaczeniu. Lokalny model (`nomic-embed-text-v1.5`, 768 wymiarów, odpalany przez LM Studio) zamienia tekst na wektory, więc parafraza dalej trafia w sedno. Za to potrafi przeoczyć rzadkie, dosłowne słowo, którego "znaczeniowo" nie czuje.
+- **Embeddingi** to wyszukiwanie **semantyczne** — po znaczeniu. Lokalny model (`nomic-embed-text-v1.5`, odpalany przez LM Studio) zamienia tekst na **wektor 768 liczb — współrzędne jego znaczenia** (podobne znaczenie → podobne liczby, leżą blisko siebie), więc parafraza dalej trafia w sedno. Za to potrafi przeoczyć rzadkie, dosłowne słowo, którego "znaczeniowo" nie czuje.
 
 Każda metoda zwraca własny ranking. Łączę je przez **RRF (Reciprocal Rank Fusion)** — fuzję rang, która nie potrzebuje porównywalnych "wyników punktowych", tylko pozycji na obu listach. Fragment, który jest wysoko u jednej albo u drugiej metody, ląduje wysoko w finalnym wyniku.
 

@@ -1,6 +1,8 @@
 ---
 title: "Co dane mówią o adopcji AI: Polska vs UE — pojedynek dwóch urzędów w SQL"
 slug: "co-dane-mowia-o-adopcji-ai-polska-vs-ue"
+cover: "/articles/covers/co-dane-mowia-o-adopcji-ai-polska-vs-ue.png"
+coverAlt: "Co dane mówią o adopcji AI: Polska vs UE — pojedynek dwóch urzędów w SQL — MJ.OLDAK"
 excerpt: "Polska wdraża AI szybko, ale od tak niskiej bazy, że dystans do UE rośnie. Ręcznie pisany SQL uzgadnia ten sam wskaźnik między GUS a Eurostatem — JOIN, reconciliation, funkcje okna."
 publishedAt: 2026-06-17
 author: "Marcin Ołdak"
@@ -25,7 +27,7 @@ To reprodukowalny, lokalny (0-cost) pipeline analityczny na macOS. Flagowa anali
 - **GUS** — Tab.15 z publikacji "Wykorzystanie ICT w przedsiębiorstwach 2025",
 - **Eurostat** — zbiór `isoc_eb_ai` (wskaźnik `E_AI_TANY`).
 
-Po co dwa źródła? Bo gdy dwa niezależne urzędy mierzą to samo i wychodzi im prawie identycznie, liczbie można ufać. Dla firm 10+ w 2025: GUS raportuje 8,7%, Eurostat 8,36% — różnica 0,34 pp (4,1% względnie). To nie są nowe fakty — to **uczciwa synteza publicznych liczb**: uzgodnij, zbenchmarkuj, pokaż trend. Wartością nie jest "odkrycie", tylko audytowalny workflow: publiczne dane → policzalny pipeline → cytowany raport.
+Po co dwa źródła? Bo gdy dwa niezależne urzędy mierzą to samo i wychodzi im prawie identycznie, liczbie można ufać. Dla firm 10+ w 2025: GUS raportuje 8,7%, Eurostat 8,36% — różnica 0,34 pp (4,1% względnie). To nie są nowe fakty — to **uczciwa synteza publicznych liczb**: uzgodnij, zbenchmarkuj, pokaż trend. Wartością nie jest "odkrycie", tylko audytowalny workflow: publiczne dane → policzalny pipeline → cytowany raport. Dokładne wartości (np. 8,36%, 19,95%) to bezpośredni odczyt z Eurostat Data Browser (wskaźnik `E_AI_TANY`), nie zaokrąglenia z notek prasowych — te podają zwykle 8% / 20%.
 
 Czytelnik dostaje na końcu brandowany raport PDF/HTML (paleta mjoldak.pl) z dwoma wykresami, czterema tabelami wynikowymi SQL i zastrzeżeniem zakresu wypisanym na wierzchu. To case study pokazujące warsztat junior data/BA pod rolę w sektorze finansowym.
 

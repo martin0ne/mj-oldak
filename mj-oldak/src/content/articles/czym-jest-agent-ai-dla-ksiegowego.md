@@ -10,7 +10,7 @@ cover: "/articles/covers/czym-jest-agent-ai-dla-ksiegowego.jpg"
 coverAlt: "Agent AI dla biura rachunkowego - praktyczne wyjaśnienie"
 readingTime: 8
 featured: false
-draft: false
+draft: true
 metaTitle: "Czym jest agent AI? Praktyczne wyjaśnienie dla księgowego"
 metaDescription: "Agent AI vs chatbot vs RPA — różnice. 5 zastosowań w biurze rachunkowym: OCR faktur, email, deadliny, raporty, KSeF monitoring. Co potrafi, co nie potrafi."
 keywords: ["agent AI", "co to jest agent AI", "AI dla księgowości", "agent AI księgowość", "automatyzacja biuro rachunkowe", "ReAct agent", "Claude Agent SDK"]

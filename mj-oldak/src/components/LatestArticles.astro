@@ -6,7 +6,7 @@ const latest = all
   .sort((a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime())
   .slice(0, 3);
 
-const fmtDate = (d: Date) => new Intl.DateTimeFormat('pl-PL', { day: 'numeric', month: 'long', year: 'numeric' }).format(d);
+const fmtDate = (d: Date) => new Intl.DateTimeFormat('pl-PL', { month: 'long', year: 'numeric' }).format(d);
 ---
 {latest.length > 0 && (
   <section id="artykuly-latest" class="bg-background py-32 px-6 md:px-12 relative">

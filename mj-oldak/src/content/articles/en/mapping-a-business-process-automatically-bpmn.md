@@ -1,6 +1,8 @@
 ---
 title: "From a described process to a ready .bpmn file: a BA skill in Claude Code"
 slug: "mapping-a-business-process-automatically-bpmn"
+cover: "/articles/covers/mapping-a-business-process-automatically-bpmn.png"
+coverAlt: "From a described process to a ready .bpmn file: a BA skill in Claude Code — MJ.OLDAK"
 excerpt: "You describe a process in plain words and get an AS-IS/TO-BE model in ASCII, gateway rules, edge cases, and a real .bpmn file with auto-layout that opens straight in bpmn.io. No hand-clicking XML coordinates."
 publishedAt: 2026-06-17
 author: "Marcin Ołdak"
@@ -58,7 +60,7 @@ A second layer of discipline lives in the analysis, not the code. Every gateway 
 - rejection           → loop back
 - duplicate           → deduplication
 - timeout             → no response
-- compliance          → where a human MUST approve (GDPR art. 22)
+- compliance          → where a human should sign off (a compliance practice tied to GDPR art. 22)
 ```
 
 ## What you get

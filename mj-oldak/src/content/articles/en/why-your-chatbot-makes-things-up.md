@@ -1,6 +1,8 @@
 ---
 title: "Why your chatbot makes things up (and what RAG has to do with it)"
 slug: "why-your-chatbot-makes-things-up"
+cover: "/articles/covers/why-your-chatbot-makes-things-up.png"
+coverAlt: "Why your chatbot makes things up (and what RAG has to do with it) — MJ.OLDAK"
 excerpt: "A chatbot doesn't lie — it generates the most likely text, not the truth. Plain-language take on hallucinations and how RAG curbs them by attaching sources before the model answers."
 publishedAt: 2026-06-17
 author: "Marcin Ołdak"
@@ -36,7 +38,7 @@ That's called **grounding** — anchoring the answer in real text instead of in 
 
 An analogy: it's the difference between a **closed-book** exam and an **open-book** one. From memory, a student will say anything as long as it sounds confident. With the book open, they have a specific passage in front of them and answer from it. RAG flips a chatbot from the first mode into the second.
 
-This has two consequences that matter in practice. First, the model answers from **your** documents, not from general internet knowledge — so it can know your own procedures, the ones that exist nowhere else. Second, since the answer comes from a specific passage, you can **show which one** — which means you can check it instead of taking it on faith.
+This has two consequences that matter in practice. First, the model answers primarily from **your** documents, rather than from general internet knowledge — so it can know your own procedures, the ones that exist nowhere else. Second, since the answer comes from a specific passage, you can **show which one** — which means you can check it instead of taking it on faith.
 
 ## Why it isn't magic
 

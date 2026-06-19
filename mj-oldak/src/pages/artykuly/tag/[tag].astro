@@ -19,7 +19,7 @@ export async function getStaticPaths() {
 }
 
 const { tag, articles } = Astro.props;
-const fmtDate = (d: Date) => new Intl.DateTimeFormat('pl-PL', { day: 'numeric', month: 'long', year: 'numeric' }).format(d);
+const fmtDate = (d: Date) => new Intl.DateTimeFormat('pl-PL', { month: 'long', year: 'numeric' }).format(d);
 ---
 <BaseLayout
   title={`Artykuły · #${tag} — MJ.OLDAK`}

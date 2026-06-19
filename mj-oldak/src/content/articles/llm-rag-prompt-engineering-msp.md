@@ -10,7 +10,7 @@ cover: "/articles/covers/llm-rag-prompt-engineering-msp.jpg"
 coverAlt: "LLM, RAG, prompt engineering — minimum techniczne dla MŚP"
 readingTime: 9
 featured: false
-draft: false
+draft: true
 metaTitle: "LLM, RAG, prompt engineering — minimum dla MŚP 2026"
 metaDescription: "Co MŚP musi wiedzieć o AI w 2026: LLM (Claude, GPT, Gemini), RAG vs fine-tuning, lokalne modele open-source na Ollama/OVH, koszty API, 5 zasad promptu PL."
 keywords: ["LLM", "RAG", "prompt engineering", "Claude API", "GPT API", "Ollama", "AI dla MŚP", "koszty API 2026"]

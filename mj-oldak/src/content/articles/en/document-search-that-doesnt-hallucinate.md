@@ -1,6 +1,8 @@
 ---
 title: "I built a document search that doesn't hallucinate — here's how"
 slug: "document-search-that-doesnt-hallucinate"
+cover: "/articles/covers/document-search-that-doesnt-hallucinate.png"
+coverAlt: "I built a document search that doesn't hallucinate — here's how — MJ.OLDAK"
 excerpt: "A RAG that shows the file and line it pulled an answer from, instead of making things up. How the BM25 + embeddings + RRF hybrid works, and why a single method fails."
 publishedAt: 2026-06-17
 author: "Marcin Ołdak"
@@ -29,7 +31,7 @@ That's the difference between "trust me" and "check for yourself." In an account
 Underneath sit two different ways of searching that people usually pit against each other. Here they work together.
 
 - **BM25** is **lexical** search — by words. Excellent when the question contains a rare, specific token: an article number, a field name, a symbol. It struggles the moment you ask for the same thing in different words.
-- **Embeddings** are **semantic** search — by meaning. A local model (`nomic-embed-text-v1.5`, 768 dimensions, run through LM Studio) turns text into vectors, so a paraphrase still lands on the point. The trade-off: it can miss a rare, literal word it doesn't "feel" semantically.
+- **Embeddings** are **semantic** search — by meaning. A local model (`nomic-embed-text-v1.5`, run through LM Studio) turns text into a **vector of 768 numbers — coordinates of its meaning** (similar meaning → similar numbers, sitting close together), so a paraphrase still lands on the point. The trade-off: it can miss a rare, literal word it doesn't "feel" semantically.
 
 Each method returns its own ranking. I fuse them with **RRF (Reciprocal Rank Fusion)** — a rank fusion that doesn't need comparable "scores," only positions on each list. A passage ranked high by either method ends up high in the final result.
 

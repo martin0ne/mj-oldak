@@ -110,7 +110,7 @@ export default function ArticlesBrowser({ articles, allTags, basePath = '/artyku
                             className="group block rounded-[2rem] bg-dark/[0.05] border border-dark/10 hover:border-accent/40 hover:bg-dark/[0.07] transition-all overflow-hidden no-underline"
                         >
                             {a.cover && (
-                                <div className="aspect-[4/3] overflow-hidden bg-dark/[0.05]">
+                                <div className="aspect-[16/9] overflow-hidden bg-dark/[0.05]">
                                     <img src={a.cover} alt={a.coverAlt} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
                                 </div>
                             )}

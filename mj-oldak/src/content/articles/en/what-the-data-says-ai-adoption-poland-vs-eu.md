@@ -1,6 +1,8 @@
 ---
 title: "What the data says on AI adoption: Poland vs the EU — a two-office SQL duel"
 slug: "what-the-data-says-ai-adoption-poland-vs-eu"
+cover: "/articles/covers/what-the-data-says-ai-adoption-poland-vs-eu.png"
+coverAlt: "What the data says on AI adoption: Poland vs the EU — a two-office SQL duel — MJ.OLDAK"
 excerpt: "Poland adopts AI fast, but from such a low base that the gap to the EU is widening. Hand-written SQL reconciles the same metric across GUS and Eurostat — JOIN, reconciliation, window functions."
 publishedAt: 2026-06-17
 author: "Marcin Ołdak"
@@ -25,7 +27,7 @@ A reproducible, local (zero-cost) analytics pipeline on macOS. The flagship anal
 - **GUS** — Table 15 from "ICT usage in enterprises 2025" (Poland's statistics office),
 - **Eurostat** — the `isoc_eb_ai` dataset (indicator `E_AI_TANY`).
 
-Why two sources? Because when two independent offices measure the same thing and land almost on top of each other, you can trust the number. For firms with 10+ employees in 2025: GUS reports 8.7%, Eurostat 8.36% — a 0.34 pp difference (4.1% in relative terms). These aren't new facts — it's an **honest synthesis of public numbers**: reconcile, benchmark, show the trend. The value isn't a "discovery"; it's an auditable workflow: public data → a runnable pipeline → a cited report.
+Why two sources? Because when two independent offices measure the same thing and land almost on top of each other, you can trust the number. For firms with 10+ employees in 2025: GUS reports 8.7%, Eurostat 8.36% — a 0.34 pp difference (4.1% in relative terms). These aren't new facts — it's an **honest synthesis of public numbers**: reconcile, benchmark, show the trend. The value isn't a "discovery"; it's an auditable workflow: public data → a runnable pipeline → a cited report. The exact figures (e.g. 8.36%, 19.95%) are read directly from the Eurostat Data Browser (indicator `E_AI_TANY`), not the rounded 8% / 20% you'll see in press summaries.
 
 What the reader gets at the end is a branded PDF/HTML report (mjoldak.pl palette) with two charts, four SQL result tables, and the scope caveat spelled out up front. It's a case study of the junior data/BA craft, aimed at a role in the financial sector.
 

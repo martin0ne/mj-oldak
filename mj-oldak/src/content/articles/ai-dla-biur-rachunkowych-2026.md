@@ -9,8 +9,8 @@ tags: ["biuro-rachunkowe", "automatyzacja", "compliance"]
 cover: "/articles/covers/ai-dla-biur-rachunkowych-2026.jpg"
 coverAlt: "AI dla biur rachunkowych 2026 - przewodnik krok po kroku"
 readingTime: 14
-featured: true
-draft: false
+featured: false
+draft: true
 metaTitle: "AI dla biur rachunkowych 2026 — przewodnik krok po kroku"
 metaDescription: "Przewodnik AI dla polskich biur: stan rynku 2026, OCR / KSeF / email / raporty, ROI, 4-tygodniowy framework pilota, AI Act, pitfalls. Konkretne dane PL."
 keywords: ["AI biuro rachunkowe", "automatyzacja biuro rachunkowe", "AI dla księgowych Polska", "AI Act biuro rachunkowe", "KSeF AI", "OCR faktur AI", "agent AI księgowość 2026"]

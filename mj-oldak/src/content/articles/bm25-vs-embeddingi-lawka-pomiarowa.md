@@ -1,6 +1,8 @@
 ---
 title: "BM25 kontra embeddingi: mała ławka, która pokazuje, że semantyka bywa krucha"
 slug: "bm25-vs-embeddingi-lawka-pomiarowa"
+cover: "/articles/covers/bm25-vs-embeddingi-lawka-pomiarowa.png"
+coverAlt: "BM25 kontra embeddingi: mała ławka, która pokazuje, że semantyka bywa krucha — MJ.OLDAK"
 excerpt: "Embeddingi rozumieją znaczenie, więc zawsze wygrywają z wyszukiwaniem po słowach? Zbudowałem ławkę pomiarową, która pokazuje czarno na białym, że to nieprawda — i kiedy semantyka pada."
 publishedAt: 2026-06-17
 author: "Marcin Ołdak"
@@ -58,7 +60,7 @@ Realny przebieg (top-k=3, `nomic-embed-text-v1.5`) na 9 zapytaniach: **6 remisó
 
 To jest cała pointa tej ławki: embeddingi są mocne, ale **kruche i zależne od sformułowania**. Semantyka opłaca się tam, gdzie użytkownicy mówią różnym językiem — a nie tam, gdzie liczy się twardy, unikalny kod. Wniosek na produkcję jest więc nie "doklej embeddingi", tylko: **hybryda (słowa + znaczenie) + zestaw pytań testowych + pomiar na realnym korpusie**. Ławka uczy dokładnie tego osądu — kiedy semantyka jest warta zachodu, a kiedy BM25 wystarczy.
 
-Jest jeszcze sygnał skalowania zapisany wprost w kodzie: kosinus liczę brute-force po wszystkich wektorach, co przy setkach fragmentów jest banalnie szybkie. Realna baza wektorowa z indeksem ANN (FAISS / Chroma / sqlite-vec) opłaca się dopiero przy ~100k+ wektorów — i tu interfejs jest tak wydzielony, że podmiana składnicy nie rusza reszty. To rekomendacja projektowa, nie zmierzony benchmark.
+Jest jeszcze sygnał skalowania zapisany wprost w kodzie: kosinus liczę brute-force po wszystkich wektorach, co przy setkach fragmentów jest banalnie szybkie. Realna baza wektorowa z indeksem ANN (FAISS / Chroma / sqlite-vec) zaczyna się opłacać od kilkudziesięciu tysięcy wektorów w górę, a przy setkach tysięcy staje się praktycznie konieczna — i tu interfejs jest tak wydzielony, że podmiana składnicy nie rusza reszty. To rekomendacja projektowa, nie zmierzony benchmark.
 
 ## Dowód
 

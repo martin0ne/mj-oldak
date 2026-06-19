@@ -1,6 +1,8 @@
 ---
 title: "A document agent that decides what to search and read next (ReAct)"
 slug: "a-document-agent-that-plans-its-own-steps-react"
+cover: "/articles/covers/a-document-agent-that-plans-its-own-steps-react.png"
+coverAlt: "A document agent that decides what to search and read next (ReAct) — MJ.OLDAK"
 excerpt: "Plain RAG retrieves once and answers. agent-flow runs a think→tool→observe loop: it decides for itself what to search and read next, and every claim in the report carries a file:line citation. Plus a human-approval gate."
 publishedAt: 2026-06-17
 author: "Marcin Ołdak"
@@ -16,7 +18,9 @@ metaDescription: "agent-flow: a multi-step ReAct agent over a document folder. I
 keywords: ["AI agent", "ReAct", "agentic AI", "RAG", "BM25", "file:line citations", "human-in-the-loop", "document agent"]
 ---
 
-Plain RAG does one thing: it retrieves once and answers. An agentic workflow gives the model something more — it lets it **plan its own next steps**. `agent-flow` is the second thing: a ReAct loop (think→tool→observe) over a document folder, ending in a report where **every claim carries a file:line citation** — plus a gate where a human can sign off on every single tool call.
+Plain RAG, in its basic form, does one thing: it retrieves once and answers. An agentic workflow gives the model something more — it lets it **plan its own next steps**. `agent-flow` is the second thing: a ReAct loop (think→tool→observe) over a document folder, ending in a report where **every claim carries a file:line citation** — plus a gate where a human can sign off on every single tool call.
+
+In short, what it does: you ask "what's the approval path for an invoice above the threshold?" and the agent **searches the folder, reads the right files, and assembles a cited answer on its own** — instead of firing a single query. And yes, it runs on a real AI model (Claude by default).
 
 ## What it is
 
@@ -67,7 +71,7 @@ What this project demonstrates plainly is **agentic orchestration you can actual
 
 The most honest point: **the scope is deliberately narrow**. One agent, tools in sequence. **Multi-agent orchestration is intentionally out of scope** for this repo — and I wrote it that way. That's not a gap, it's a decision: a small, legible artifact instead of a framework nobody reviews.
 
-It's also **testable without API access**. The repo includes a deterministic mock LLM that replays a fixed ReAct sequence (`search_docs` → `read_file` → `finish`), so the whole loop runs in CI without a single model call. Five tests cover retrieval provenance, honesty on no matches, refusal to escape the corpus, an in-corpus read, and the full agent loop on the mock.
+It's also **testable without API access** — this is a **test-only mode, not how the agent normally runs** (in real use it calls a real model). The repo includes a deterministic mock LLM that replays a fixed ReAct sequence (`search_docs` → `read_file` → `finish`), so the whole loop runs in CI without a single model call. Five tests cover retrieval provenance, honesty on no matches, refusal to escape the corpus, an in-corpus read, and the full agent loop on the mock.
 
 ## The proof
 

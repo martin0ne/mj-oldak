@@ -47,7 +47,7 @@ const articles = selected.map((a) => ({
   title: a.data.title,
   excerpt: a.data.excerpt,
   category: a.data.category,
-  publishedDateLabel: new Intl.DateTimeFormat('pl-PL', { day: 'numeric', month: 'long', year: 'numeric' }).format(a.data.publishedAt),
+  publishedDateLabel: new Intl.DateTimeFormat('pl-PL', { month: 'long', year: 'numeric' }).format(a.data.publishedAt),
   cover: a.data.cover ?? null,
   coverAlt: a.data.coverAlt ?? a.data.title,
   readingTime: a.data.readingTime ?? null,

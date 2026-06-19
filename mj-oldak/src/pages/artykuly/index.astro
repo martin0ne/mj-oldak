@@ -13,7 +13,7 @@ const articles = all
     title: a.data.title,
     excerpt: a.data.excerpt,
     publishedAt: a.data.publishedAt.toISOString(),
-    publishedDateLabel: new Intl.DateTimeFormat('pl-PL', { day: 'numeric', month: 'long', year: 'numeric' }).format(a.data.publishedAt),
+    publishedDateLabel: new Intl.DateTimeFormat('pl-PL', { month: 'long', year: 'numeric' }).format(a.data.publishedAt),
     category: a.data.category,
     tags: a.data.tags,
     cover: a.data.cover ?? null,
@@ -42,8 +42,8 @@ const articles = all
         AI for business, in plain language.
       </p>
       <p class="font-sans text-base max-w-2xl opacity-75 leading-relaxed">
-        Written in Polish for Polish business owners — English pieces coming soon.
-        Case studies, costs, compliance and how AI agents actually work.
+        In Polish and English — case studies, RAG, data and automation, with the
+        engineering underneath. Each piece has an EN version (language toggle inside).
       </p>
     </div>
   </section>

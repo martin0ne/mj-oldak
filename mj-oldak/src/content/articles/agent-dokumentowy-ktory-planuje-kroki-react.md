@@ -1,6 +1,8 @@
 ---
 title: "Agent dokumentowy, który sam planuje, czego szukać i co czytać (ReAct)"
 slug: "agent-dokumentowy-ktory-planuje-kroki-react"
+cover: "/articles/covers/agent-dokumentowy-ktory-planuje-kroki-react.png"
+coverAlt: "Agent dokumentowy, który sam planuje, czego szukać i co czytać (ReAct) — MJ.OLDAK"
 excerpt: "Zwykły RAG szuka raz i odpowiada. agent-flow działa w pętli myśl→narzędzie→obserwacja: sam decyduje, czego szukać i co przeczytać dalej, a każde twierdzenie w raporcie ma cytat plik:linia. Plus bramka akceptacji dla człowieka."
 publishedAt: 2026-06-17
 author: "Marcin Ołdak"
@@ -16,7 +18,9 @@ metaDescription: "agent-flow: wieloetapowy agent ReAct nad folderem dokumentów.
 keywords: ["agent AI", "ReAct", "agentic AI", "RAG", "BM25", "cytaty plik:linia", "human-in-the-loop", "agent dokumentowy"]
 ---
 
-Zwykły RAG robi jedno: szuka raz i odpowiada. Agentowy workflow daje modelowi coś więcej — pozwala mu **samemu zaplanować kolejne kroki**. `agent-flow` jest tym drugim: pętla ReAct (myśl→narzędzie→obserwacja) nad folderem dokumentów, na końcu raport, w którym **każde twierdzenie ma cytat plik:linia** — plus bramka, na której człowiek może zatwierdzić każde wywołanie narzędzia.
+Zwykły RAG w podstawowej postaci robi jedno: szuka raz i odpowiada. Agentowy workflow daje modelowi coś więcej — pozwala mu **samemu zaplanować kolejne kroki**. `agent-flow` jest tym drugim: pętla ReAct (myśl→narzędzie→obserwacja) nad folderem dokumentów, na końcu raport, w którym **każde twierdzenie ma cytat plik:linia** — plus bramka, na której człowiek może zatwierdzić każde wywołanie narzędzia.
+
+Najkrócej, co on robi: pytasz „jaka jest ścieżka akceptacji faktury powyżej progu?", a agent **sam** przeszukuje folder, czyta właściwe pliki i składa odpowiedź z cytatami — zamiast strzelać z jednego zapytania. I tak, używa prawdziwego modelu AI (domyślnie Claude) — to nie jest „agent bez AI".
 
 ## O co chodzi
 
@@ -67,7 +71,7 @@ To, co ten projekt pokazuje wprost, to **agentowa orkiestracja, którą da się 
 
 Najuczciwsza rzecz: **zakres jest świadomie wąski**. Jeden agent, narzędzia po kolei. **Orkiestracja wielu agentów jest celowo poza zakresem** tego repo — i tak to opisałem. To nie brak, to decyzja: mały, czytelny artefakt zamiast frameworka, którego nikt nie przejrzy.
 
-Da się też **przetestować bez dostępu do API**. Repo ma deterministyczny mock LLM, który odtwarza ustaloną sekwencję ReAct (`search_docs` → `read_file` → `finish`), więc całą pętlę odpala się w CI bez ani jednego wywołania modelu. Pięć testów pilnuje: provenance wyszukiwania, uczciwości przy braku trafień, odmowy wyjścia poza korpus, odczytu w korpusie i pełnej pętli agenta na mocku.
+Da się też **przetestować bez dostępu do API** — to tryb **wyłącznie testowy, a nie sposób, w jaki agent normalnie działa** (w realnym użyciu woła prawdziwy model). Repo ma deterministyczny mock LLM, który odtwarza ustaloną sekwencję ReAct (`search_docs` → `read_file` → `finish`), więc całą pętlę odpala się w CI bez ani jednego wywołania modelu. Pięć testów pilnuje: provenance wyszukiwania, uczciwości przy braku trafień, odmowy wyjścia poza korpus, odczytu w korpusie i pełnej pętli agenta na mocku.
 
 ## Dowód
 

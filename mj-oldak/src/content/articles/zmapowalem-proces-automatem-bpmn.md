@@ -1,6 +1,8 @@
 ---
 title: "Od opisu procesu do gotowego pliku .bpmn — skill analityka w Claude Code"
 slug: "zmapowalem-proces-automatem-bpmn"
+cover: "/articles/covers/zmapowalem-proces-automatem-bpmn.png"
+coverAlt: "Od opisu procesu do gotowego pliku .bpmn — skill analityka w Claude Code — MJ.OLDAK"
 excerpt: "Opisujesz proces słowami, dostajesz model AS-IS/TO-BE jako ASCII, reguły bramek, edge case'y i realny plik .bpmn z auto-layoutem, który otwiera się wprost w bpmn.io. Bez klikania współrzędnych XML."
 publishedAt: 2026-06-17
 author: "Marcin Ołdak"
@@ -58,7 +60,7 @@ Druga warstwa dyscypliny siedzi w samej analizie, nie w kodzie. Każda bramka mu
 - odrzucenie          → pętla powrotna
 - duplikat            → deduplikacja
 - timeout             → brak odpowiedzi
-- compliance          → gdzie człowiek MUSI zatwierdzić (RODO art. 22)
+- compliance          → gdzie człowiek powinien zatwierdzać (praktyka compliance, RODO art. 22)
 ```
 
 ## Co z tego masz

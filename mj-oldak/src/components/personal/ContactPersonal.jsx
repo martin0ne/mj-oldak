@@ -86,7 +86,7 @@ export default function ContactPersonal() {
         <section id="contact" data-nav-theme="dark" className="bg-dark text-primary px-8 md:px-16 pt-24 md:pt-32 pb-12">
             <div className="max-w-5xl mx-auto">
                 <p className="font-mono text-xs uppercase tracking-[0.3em] opacity-60 mb-6">
-                    <span className="text-accent">—</span> 05 · Contact
+                    <span className="text-accent">—</span> 07 · Contact
                 </p>
 
                 <h2 className="font-sans font-bold text-4xl md:text-6xl tracking-[-0.03em] uppercase leading-[0.95] mb-8">

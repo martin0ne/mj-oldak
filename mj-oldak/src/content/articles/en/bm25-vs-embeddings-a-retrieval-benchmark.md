@@ -1,6 +1,8 @@
 ---
 title: "BM25 vs Embeddings: a tiny benchmark showing semantic search is brittle"
 slug: "bm25-vs-embeddings-a-retrieval-benchmark"
+cover: "/articles/covers/bm25-vs-embeddings-a-retrieval-benchmark.png"
+coverAlt: "BM25 vs Embeddings: a tiny benchmark showing semantic search is brittle — MJ.OLDAK"
 excerpt: "Embeddings understand meaning, so they always beat keyword search — right? I built a small benchmark that proves otherwise, and shows exactly when semantic search falls apart."
 publishedAt: 2026-06-17
 author: "Marcin Ołdak"
@@ -58,7 +60,7 @@ A real run (top-k=3, `nomic-embed-text-v1.5`) over the 9 queries: **6 ties, 1 BM
 
 That's the whole point of the bench: embeddings are powerful, but **brittle and phrasing-dependent**. Semantics pay off where users speak in varied language — not where a hard, unique code is what matters. So the production takeaway isn't "bolt on embeddings," it's: **a hybrid (words + meaning) + a set of test questions + measurement on a real corpus**. The bench trains exactly that judgment — when semantics are worth the trouble, and when BM25 is enough.
 
-There's also a scaling signal written straight into the code: I compute cosine brute-force across all vectors, which is trivially fast at a few hundred chunks. A real vector store with an ANN index (FAISS / Chroma / sqlite-vec) only pays off at roughly 100k+ vectors — and the interface is carved out cleanly enough that swapping the store doesn't touch the rest. That's a design recommendation, not a measured benchmark.
+There's also a scaling signal written straight into the code: I compute cosine brute-force across all vectors, which is trivially fast at a few hundred chunks. A real vector store with an ANN index (FAISS / Chroma / sqlite-vec) starts to pay off from tens of thousands of vectors upward, and becomes essential at hundreds of thousands — and the interface is carved out cleanly enough that swapping the store doesn't touch the rest. That's a design recommendation, not a measured benchmark.
 
 ## The proof
 
