@@ -16,11 +16,11 @@ const ACCOUNTING_PRODUCTS = [
         statusColor: '#22c55e',
         port: 8080,
         desc:
-            'Wrzuć PDF lub zdjęcie faktury — system wyciągnie sprzedawcę, NIP, kwoty netto/VAT/brutto, datę wystawienia, termin płatności i pozycje. Wynik gotowy do eksportu do Comarch / InsERT / wapro.',
+            'Wrzuć PDF lub zdjęcie faktury — system wyciągnie sprzedawcę, NIP, kwoty netto/VAT/brutto, datę wystawienia, termin płatności i pozycje. Wynik do eksportu (JSON / Excel) pod import w systemach księgowych.',
         bullets: [
             'PDF, JPG, PNG, HEIC — bez ograniczeń formatu',
             'Wykrywa polskie znaki w nazwach kontrahentów',
-            'Eksport CSV / JSON / XML zgodny z systemami księgowymi',
+            'Eksport JSON i Excel (.xlsx) — pod import w systemach księgowych',
             'Historia wszystkich uploadów + edycja wyników',
         ],
         screenshots: ['/products/ocr/1.jpg', '/products/ocr/2.jpg', '/products/ocr/3.jpg', '/products/ocr/4.jpg'],
@@ -51,7 +51,7 @@ const ACCOUNTING_PRODUCTS = [
         desc:
             'System sam klasyfikuje przychodzące maile (PILNE / NORMALNE / SPAM) i pisze drafty odpowiedzi w stylu Twojego biura. Ty tylko akceptujesz lub edytujesz przed wysyłką — bez ręcznego sortowania.',
         bullets: [
-            'Pełna automatyzacja: AI klasyfikuje → pisze draft → Ty akceptujesz',
+            'Potok z człowiekiem w pętli: AI klasyfikuje → pisze draft → Ty akceptujesz i wysyłasz',
             'Konfigurowalne kategorie (PILNE / NORMALNE / SPAM lub własne)',
             'Draft po polsku w tonie biura (formalny / ciepły)',
             'Batch processing dla starszych maili z inboxu',
@@ -82,7 +82,7 @@ Biuro Rachunkowe Nowak`,
         statusColor: '#22c55e',
         port: 8082,
         desc:
-            'Importujesz CSV z klientami (NIP, forma prawna, typy rozliczeń). System wie że Anna Nowak (JDG, VAT-7K) ma deadline 25 kwietnia i wysyła Ci/jej draft przypomnienia 7 dni wcześniej.',
+            'Importujesz CSV z klientami (NIP, forma prawna, typy rozliczeń). System wie że Anna Nowak (JDG, VAT-7K) ma deadline 25 kwietnia, oznacza zbliżające się terminy i przygotowuje draft przypomnienia — wysyłasz jednym kliknięciem.',
         bullets: [
             'VAT-7, VAT-7K, CIT-8, PIT-36/37, ZUS, JPK_VAT — wszystko',
             'Tryby wysyłki: tekst / SMTP / Gmail OAuth',
@@ -112,12 +112,12 @@ Biuro Rachunkowe Nowak`,
         statusColor: '#22c55e',
         port: 8083,
         desc:
-            'Wgrasz CSV z przychodami/kosztami → 2 minuty i masz PDF z polskimi znakami, podsumowaniem, wykresami i tabelą szczegółową. Branding biura, gotowe do wysłania klientowi.',
+            'Wgrasz CSV z przychodami/kosztami → masz PDF z polskimi znakami, podsumowaniem kluczowych wskaźników i tabelą szczegółową, gotowy do wysłania klientowi.',
         bullets: [
             'PDF z polskimi znakami (DejaVu Sans embedded)',
-            'Wykresy słupkowe (przychody vs koszty miesiąc po miesiącu)',
+            'Kluczowe wskaźniki: przychody, koszty, bilans VAT, liczba dokumentów',
             'Tabela VAT-7 / matematyka się zgadza',
-            'Integracja z OCR Invoice Reader (one-click flow)',
+            'Zgodny z wyjściem OCR Invoice Reader (kompatybilność formatu)',
         ],
         screenshots: ['/products/reports/1.jpg', '/products/reports/2.jpg', '/products/reports/3.jpg', '/products/reports/4.jpg'],
         output: `RAPORT MIESIĘCZNY — Marzec 2026
