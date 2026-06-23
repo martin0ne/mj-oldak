@@ -1,0 +1,28 @@
+# === MJ.OLDAK website — root .gitignore (leak-guard + junk) ===
+# Cel: żeby `git add -A` NIGDY nie wrzucił prywatnego configu agentów AI
+# ani śmieci macOS/iCloud na PUBLICZNE repo github.com/martin0ne/mj-oldak.
+
+# macOS / iCloud junk
+.DS_Store
+**/.DS_Store
+* 2.*
+*\ 2/
+
+# Prywatny config agentów AI (wewnętrzne konwencje dev — nie na public)
+.claude/
+.cursor/
+GEMINI.md
+**/CLAUDE.md
+**/AGENTS.md
+**/GEMINI.md
+**/.cursorrules
+
+# Lokalny sandbox Astro (NIE deployuje się — kopiuj do mj-oldak/ ręcznie)
+mj-oldak-astro/
+
+# Artefakty po renamach / backupach (nie wrzucać do public/)
+*.legacy-operating-manual
+*.legacy-backup-*
+*.canva-broken-*
+*.bak
+*.orig
