@@ -11,7 +11,6 @@ const PHOTOS = [
     '/photos/hero-5103.jpg',
     '/photos/hero-7543.jpg',
     '/photos/hero-5088.jpg',
-    '/photos/hero-5048.jpg',
     '/photos/hero-5084.jpg',
     '/photos/hero-6147.jpg',
 ];
