@@ -36,9 +36,7 @@ const ACCOUNTING_PRODUCTS = [
   "pozycje": [
     { "nazwa": "Płyta OSB 12mm", "ilosc": 20, "jm": "szt", "netto": 150.00 }
   ]
-}`,
-        manual: '/manuals/01-ocr-invoice-reader.pdf',
-    },
+}`,    },
     {
         id: 'email',
         n: '02',
@@ -69,9 +67,7 @@ z 14.04.2026. Brakujące dane (kwoty z dwóch faktur)
 prześlę najpóźniej do piątku 18.04.
 
 Z poważaniem,
-Biuro Rachunkowe Nowak`,
-        manual: '/manuals/02-email-assistant.pdf',
-    },
+Biuro Rachunkowe Nowak`,    },
     {
         id: 'deadline',
         n: '03',
@@ -99,9 +95,7 @@ Biuro Rachunkowe Nowak`,
   → Draft gotowy. Czeka na akceptację.
 
 [2026-04-30 | T-12] Marek Zięba JDG (PIT-36, ZUS-JDG)
-  → Klient nieaktywny od 90 dni. Sprawdź status.`,
-        manual: '/manuals/03-deadline-agent.pdf',
-    },
+  → Klient nieaktywny od 90 dni. Sprawdź status.`,    },
     {
         id: 'reports',
         n: '04',
@@ -132,9 +126,7 @@ VAT NALICZONY: 6 651,60 zł
 DO ZAPŁATY:    4 353,90 zł
 
 Plik: raport_03_2026_firma_a.pdf (412 KB)
-Wygenerowano: 02.04.2026 09:14`,
-        manual: '/manuals/04-reporting-agent.pdf',
-    },
+Wygenerowano: 02.04.2026 09:14`,    },
 ];
 
 const INDUSTRIES = [
@@ -322,7 +314,7 @@ function IndustryTeaser({ industry }) {
 }
 
 function ProductCard({ product, expanded, onToggle, onLightbox }) {
-    const { n, name, Icon, tagline, status, statusColor, port, desc, bullets, screenshots, output, manual } = product;
+    const { n, name, Icon, tagline, status, statusColor, port, desc, bullets, screenshots, output } = product;
     const [tab, setTab] = useState('co-robi');
     const panelRef = useRef(null);
 
@@ -486,13 +478,6 @@ function ProductCard({ product, expanded, onToggle, onLightbox }) {
                         >
                             Live demo · wkrótce
                         </button>
-                        <a
-                            href={manual}
-                            download
-                            className="px-5 py-2.5 rounded-[2rem] border border-dark/20 text-dark font-sans font-bold text-sm hover:bg-dark/[0.05] hover:-translate-y-[1px] transition no-underline"
-                        >
-                            Pobierz manual PDF
-                        </a>
                         <a
                             href="/#kontakt"
                             className="px-5 py-2.5 rounded-[2rem] bg-accent text-primary font-sans font-bold text-sm hover:scale-[1.03] transition no-underline"
