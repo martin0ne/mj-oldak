@@ -3,32 +3,40 @@ import gsap from 'gsap';
 
 // Zdjęcia własne Marcina (public/photos — ten sam zestaw co stara strona; brand v2.1
 // sea/sunset wywodzi się z tych fotografii). Rotacja crossfade, ładowanie progresywne.
-const PHOTOS = [
-    '/photos/hero-5350.jpg',
-    '/photos/hero-5236.jpg',
-    '/photos/hero-0798.jpg',
-    '/photos/hero-5579.jpg',
-    '/photos/hero-5103.jpg',
-    '/photos/hero-7543.jpg',
-    '/photos/hero-5088.jpg',
-    '/photos/hero-5084.jpg',
-    '/photos/hero-6147.jpg',
-];
-// Per-photo accent — wprost z global.css (--photo-*): kolor panelu rotuje ZE zdjęciem
-// (brand v2.1: "Sea Blue — DYNAMIC: rotates per photo"). Brak mapowania → sea-blue.
 const SEA = '#4F8EBA';
 const SUNSET = '#C87E3B';
-const PHOTO_ACCENTS = [
-    '#B07A4E', // 5350 sunset boardwalk (rozjaśniony dla vibrancy)
-    '#C49478', // 5236 mountain road, golden hour
-    '#A8754F', // 0798 brick facade, warm earth
-    '#A6754F', // 5579 Warszawa pano
-    SEA,       // 5103 (brak w palecie) → sea-blue
-    '#C2762F', // 7543 evening city, deep dusk
-    '#8FA0B8', // 5088 sea + mountains → chłodny
-    SEA,       // 5084 (brak) → sea-blue
-    '#BF9A45', // 6147 yellow flowers, summer
+// Per-photo accent — kolor panelu rotuje ZE zdjęciem (brand v2.1: "DYNAMIC: rotates per photo").
+// Coastal = oryginalne kadry; ART = obrazy Marcina + osobiste fotki (akcent z dominującego koloru).
+const COASTAL = [
+    ['/photos/hero-5350.jpg', '#B07A4E'],
+    ['/photos/hero-5236.jpg', '#C49478'],
+    ['/photos/hero-0798.jpg', '#A8754F'],
+    ['/photos/hero-5579.jpg', '#A6754F'],
+    ['/photos/hero-7543.jpg', '#C2762F'],
+    ['/photos/hero-5088.jpg', '#8FA0B8'],
+    ['/photos/hero-6147.jpg', '#BF9A45'],
 ];
+const ART = [
+    ['/photos/art-01.jpg', '#4C4C99'],
+    ['/photos/art-02.jpg', '#99724C'],
+    ['/photos/art-03.jpg', '#4C6899'],
+    ['/photos/art-04.jpg', '#B28459'],
+    ['/photos/art-05.jpg', '#994C99'],
+    ['/photos/art-06.jpg', '#A586D6'],
+    ['/photos/art-07.jpg', '#A1A150'],
+    ['/photos/art-08.jpg', '#BC5468'],
+    ['/photos/art-09.jpg', '#3B92AD'],
+    ['/photos/art-10.jpg', '#996D4C'],
+    ['/photos/art-11.jpg', '#4C9993'],
+];
+// Mix — przeplatamy coastal i artystyczne, żeby różnorodność była od początku rotacji.
+const MIX = [];
+for (let i = 0; i < Math.max(COASTAL.length, ART.length); i++) {
+    if (i < COASTAL.length) MIX.push(COASTAL[i]);
+    if (i < ART.length) MIX.push(ART[i]);
+}
+const PHOTOS = MIX.map((x) => x[0]);
+const PHOTO_ACCENTS = MIX.map((x) => x[1]);
 // Układ tła zmienia się z każdym zdjęciem — panel "żyje", to nie generyczny slideshow.
 const BLOB_LAYOUTS = [
     { b1: { top: '-20%', left: '-15%' }, b2: { bottom: '-25%', right: '-12%' } },
