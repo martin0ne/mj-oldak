@@ -2,7 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import NavbarPersonal from '../components/personal/NavbarPersonal.jsx';
 import HeroPersonal from '../components/personal/HeroPersonal.jsx';
-import About from '../components/personal/About.astro';
+import AboutSection from '../components/personal/AboutSection.jsx';
 import Work from '../components/personal/Work.astro';
 import Skills from '../components/personal/Skills.astro';
 import OpenSource from '../components/personal/OpenSource.astro';
@@ -16,7 +16,7 @@ const description = 'AI automation builder / AI business analyst — autonomous 
 <BaseLayout title={title} description={description} lang="en" includeOrganizationSchema={false}>
   <NavbarPersonal client:load />
   <HeroPersonal client:load />
-  <About />
+  <AboutSection client:visible />
   <Work />
   <Skills />
   <OpenSource />
