@@ -1,10 +1,11 @@
 ---
 // Sekcja Writing — artykuły dwujęzyczne (PL + EN) jako dowód eksperckości.
 ---
-<section id="writing" class="bg-background text-dark px-8 md:px-16 py-24 md:py-32 border-t border-dark/10">
-  <div class="max-w-5xl mx-auto">
+<section id="writing" class="relative overflow-hidden bg-background dark:bg-[var(--c-page)] text-dark dark:text-[var(--c-ink)] px-8 md:px-16 py-24 md:py-32 border-t border-dark/10 dark:border-[var(--c-line)] transition-colors duration-500">
+  <div class="pointer-events-none absolute -top-[10%] -left-[8%] w-[58%] h-[78%] rounded-full blur-[130px] opacity-[0.14] dark:opacity-[0.48]" style="background: radial-gradient(circle, #B07A4E 0%, transparent 70%)"></div>
+  <div class="max-w-5xl mx-auto relative z-10">
     <p class="font-mono text-xs uppercase tracking-[0.3em] opacity-60 mb-6">
-      <span class="text-accent">—</span> 06 · Writing
+      <span class="text-[#B07A4E]">—</span> 06 · Writing
     </p>
 
     <h2 class="font-sans font-bold text-4xl md:text-6xl tracking-[-0.03em] uppercase leading-[0.95] mb-8">
@@ -20,7 +21,9 @@
       <div class="flex flex-col gap-3">
         <a
           href="/artykuly/"
-          class="inline-block text-center px-8 py-4 rounded-[2rem] bg-dark text-primary font-sans font-bold text-base hover:bg-accent transition-colors no-underline"
+          data-art-pl="/artykuly/"
+          data-art-en="/en/articles/"
+          class="inline-block text-center px-8 py-4 rounded-[2rem] bg-dark dark:bg-accent text-primary dark:text-dark font-sans font-bold text-base hover:bg-accent dark:hover:bg-primary hover:scale-[1.02] transition-all duration-300 no-underline"
         >
           Browse articles →
         </a>

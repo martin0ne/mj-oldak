@@ -2,10 +2,10 @@
 // Treść EN (czytelna dla rekrutera); polskość = nazwy własne (JPK, US, VAT, zł).
 // W produkcie szkice odpowiedzi są PO POLSKU — odnotowane w stopce dema.
 
+// 4 realne kategorie produktu (PILNE / NORMALNE / SPOTKANIE / SPAM).
 export const categories = {
-  invoice: { label: 'Invoice', color: 'accent' },
   urgent: { label: 'Urgent', color: 'sunset' },
-  question: { label: 'Question', color: 'green' },
+  normal: { label: 'Normal', color: 'green' },
   meeting: { label: 'Meeting', color: 'violet' },
   spam: { label: 'Spam', color: 'gray' },
 };
@@ -18,7 +18,7 @@ export const emails = [
     subject: 'Correction invoice for May — request',
     snippet: 'Hello, could you issue a correction to invoice FV 2026/05/118…',
     body: 'Hello,\n\ncould you issue a correction to invoice FV 2026/05/118? The customer returned part of the goods (2 of 5 pallets) and we need the amount corrected.\n\nBest regards,\nKatarzyna Nowicka',
-    category: 'invoice',
+    category: 'normal',
     confidence: '97.4%',
     draft: 'Hello Ms. Nowicka,\n\nthank you for the message. I will prepare a correction invoice for FV 2026/05/118 — please just send the return document (delivery note or protocol) for the 2 pallets, so the correction is properly reflected in the VAT register.\n\nI will issue the correction the same day I receive the document.\n\nKind regards,',
   },
@@ -40,7 +40,7 @@ export const emails = [
     subject: 'Question about the VAT exemption limit in 2026',
     snippet: 'Hello, I am approaching 200k PLN of revenue and wondering what happens…',
     body: 'Hello,\n\nI am approaching 200,000 zł of revenue this year and wondering what happens when I cross the limit. Do I have to register for VAT immediately? How does it work in practice?\n\nBest,\nMichał Adamski',
-    category: 'question',
+    category: 'normal',
     confidence: '95.8%',
     draft: 'Hello Mr. Adamski,\n\ngood that you are asking ahead of time. In short: once you exceed 200,000 zł, VAT registration (form VAT-R) is mandatory BEFORE the transaction that crosses the limit — and that transaction is already taxable.\n\nI suggest a short call this week: we will project your revenue and check whether voluntary registration earlier could actually work in your favour (input VAT deductions). Does Thursday 10:00 work?\n\nKind regards,',
   },

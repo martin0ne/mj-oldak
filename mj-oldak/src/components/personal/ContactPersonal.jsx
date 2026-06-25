@@ -53,9 +53,17 @@ export default function ContactPersonal() {
     };
 
     const handleSubmit = async (e) => {
+        // Najpierw natywna walidacja HTML5 (type=email wymusza poprawny format, required pilnuje pól) —
+        // jeśli formularz niepoprawny, przeglądarka pokaże komunikat i nie wyślemy.
+        const form = e.currentTarget;
+        if (form && typeof form.checkValidity === 'function' && !form.checkValidity()) {
+            form.reportValidity?.();
+            return;
+        }
         e.preventDefault();
         const t = { name: formData.name.trim(), email: formData.email.trim(), message: formData.message.trim() };
-        if (!t.name || !t.email || !t.message || !consent) return;
+        const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(t.email);
+        if (!t.name || !emailOk || !t.message || !consent) return;
 
         try {
             const lead = { ...t, timestamp: new Date().toISOString() };
@@ -83,8 +91,9 @@ export default function ContactPersonal() {
     };
 
     return (
-        <section id="contact" data-nav-theme="dark" className="bg-dark text-primary px-8 md:px-16 pt-24 md:pt-32 pb-12">
-            <div className="max-w-5xl mx-auto">
+        <section id="contact" data-nav-theme="dark" className="relative overflow-hidden bg-dark text-primary px-8 md:px-16 pt-24 md:pt-32 pb-12">
+            <div className="pointer-events-none absolute -top-[10%] -right-[8%] w-[55%] h-[75%] rounded-full blur-[130px] opacity-[0.38]" style={{ background: 'radial-gradient(circle, #4F8EBA 0%, transparent 70%)' }} aria-hidden="true"></div>
+            <div className="relative z-10 max-w-5xl mx-auto">
                 <p className="font-mono text-xs uppercase tracking-[0.3em] opacity-60 mb-6">
                     <span className="text-accent">—</span> 07 · Contact
                 </p>

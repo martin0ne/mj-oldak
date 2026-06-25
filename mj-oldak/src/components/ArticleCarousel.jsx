@@ -28,7 +28,7 @@ export default function ArticleCarousel({ articles, heading, subheading, section
 
   return (
     <section
-      className="relative py-24 md:py-32 px-6 md:px-12 bg-background overflow-hidden"
+      className="relative py-24 md:py-32 px-6 md:px-12 bg-background dark:bg-[var(--c-page)] transition-colors duration-500 overflow-hidden"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
       aria-roledescription="carousel"
@@ -40,22 +40,22 @@ export default function ArticleCarousel({ articles, heading, subheading, section
             {sectionLabel && (
               <div className="flex items-center gap-2 mb-4">
                 <span className="w-2 h-2 rounded-full bg-accent animate-pulse"></span>
-                <span className="font-sans font-medium text-xs uppercase tracking-[0.2em] text-dark/50">{sectionLabel}</span>
+                <span className="font-sans font-medium text-xs uppercase tracking-[0.2em] text-dark/50 dark:text-[var(--c-ink-dim)]">{sectionLabel}</span>
               </div>
             )}
             {heading && (
-              <h2 className="font-sans font-bold text-4xl md:text-6xl uppercase tracking-tight text-dark leading-[0.95] mb-3">
+              <h2 className="font-sans font-bold text-4xl md:text-6xl uppercase tracking-tight text-dark dark:text-[var(--c-ink)] leading-[0.95] mb-3">
                 {heading}
               </h2>
             )}
             {subheading && (
-              <p className="font-mono text-base text-dark/60 max-w-2xl leading-relaxed">{subheading}</p>
+              <p className="font-mono text-base text-dark/60 dark:text-[var(--c-ink-dim)] max-w-2xl leading-relaxed">{subheading}</p>
             )}
           </div>
         )}
 
         <div
-          className="relative rounded-[2rem] md:rounded-[3rem] overflow-hidden border border-dark/10 bg-dark/[0.05]"
+          className="relative rounded-[2rem] md:rounded-[3rem] overflow-hidden border border-dark/10 dark:border-[var(--c-line)] bg-dark/[0.05] dark:bg-[var(--c-surface)]"
           onTouchStart={onTouchStart}
           onTouchEnd={onTouchEnd}
         >
@@ -83,21 +83,21 @@ export default function ArticleCarousel({ articles, heading, subheading, section
                     </div>
                   )}
                   <div className={`p-8 md:p-12 flex flex-col justify-center ${a.cover ? 'lg:col-span-2' : 'lg:col-span-5'}`}>
-                    <div className="flex items-center gap-2 mb-5 font-sans font-medium text-xs uppercase tracking-[0.15em] text-dark/50">
+                    <div className="flex items-center gap-2 mb-5 font-sans font-medium text-xs uppercase tracking-[0.15em] text-dark/50 dark:text-[var(--c-ink-dim)]">
                       <span className="font-bold text-accent">{a.category}</span>
-                      <span className="text-dark/30">·</span>
+                      <span className="text-dark/30 dark:text-[var(--c-ink-dim)]">·</span>
                       <span>{a.publishedDateLabel}</span>
                       {a.readingTime && (
                         <>
-                          <span className="text-dark/30">·</span>
+                          <span className="text-dark/30 dark:text-[var(--c-ink-dim)]">·</span>
                           <span>{a.readingTime} min czytania</span>
                         </>
                       )}
                     </div>
-                    <h3 className="font-sans font-bold text-2xl md:text-3xl uppercase tracking-tight text-dark mb-4 group-hover:text-accent transition leading-tight">
+                    <h3 className="font-sans font-bold text-2xl md:text-3xl uppercase tracking-tight text-dark dark:text-[var(--c-ink)] mb-4 group-hover:text-accent transition leading-tight">
                       {a.title}
                     </h3>
-                    <p className="font-mono text-sm text-dark/70 leading-relaxed mb-6 line-clamp-4">
+                    <p className="font-mono text-sm text-dark/70 dark:text-[var(--c-ink)] leading-relaxed mb-6 line-clamp-4">
                       {a.excerpt}
                     </p>
                     <span className="inline-flex items-center gap-2 font-sans font-medium text-xs uppercase tracking-[0.15em] text-accent">
@@ -141,7 +141,7 @@ export default function ArticleCarousel({ articles, heading, subheading, section
                 key={a.slug}
                 type="button"
                 onClick={() => setIndex(i)}
-                className={`h-1.5 rounded-full transition-all ${i === index ? 'w-10 bg-accent' : 'w-6 bg-dark/20 hover:bg-dark/40'}`}
+                className={`h-1.5 rounded-full transition-all ${i === index ? 'w-10 bg-accent' : 'w-6 bg-dark/20 dark:bg-[var(--c-line)] hover:bg-dark/40 dark:hover:bg-[var(--c-ink-dim)]'}`}
                 aria-label={`Przejdź do slajdu ${i + 1}`}
                 aria-current={i === index ? 'true' : 'false'}
               />

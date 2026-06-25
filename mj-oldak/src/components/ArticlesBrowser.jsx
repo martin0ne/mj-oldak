@@ -54,11 +54,11 @@ export default function ArticlesBrowser({ articles, allTags, basePath = '/artyku
                             onChange={(e) => setQuery(e.target.value)}
                             placeholder={ui.placeholder}
                             aria-label={ui.searchAria}
-                            className="w-full bg-dark/[0.04] border border-dark/15 rounded-[2rem] pl-12 pr-5 py-3.5 font-mono text-sm text-dark placeholder:text-dark/40 outline-none focus:border-accent/60 focus:bg-dark/[0.06] transition-all"
+                            className="w-full bg-dark/[0.04] dark:bg-[var(--c-surface)] border border-dark/15 dark:border-[var(--c-line)] rounded-[2rem] pl-12 pr-5 py-3.5 font-mono text-sm text-dark dark:text-[var(--c-ink)] placeholder:text-dark/40 dark:placeholder:text-[var(--c-ink-dim)] outline-none focus:border-accent/60 focus:bg-dark/[0.06] transition-all"
                         />
-                        <svg className="absolute left-5 top-1/2 -translate-y-1/2 w-4 h-4 text-dark/40" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                        <svg className="absolute left-5 top-1/2 -translate-y-1/2 w-4 h-4 text-dark/40 dark:text-[var(--c-ink-dim)]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
                     </div>
-                    <p className="font-mono text-[10px] uppercase tracking-widest text-dark/40 self-center">
+                    <p className="font-mono text-[10px] uppercase tracking-widest text-dark/40 dark:text-[var(--c-ink-dim)] self-center">
                         {ui.count(filtered.length)}
                     </p>
                 </div>
@@ -69,7 +69,7 @@ export default function ArticlesBrowser({ articles, allTags, basePath = '/artyku
                         className={`font-mono text-[10px] uppercase tracking-widest px-3 py-1.5 rounded-full border transition ${
                             activeTag === null
                                 ? 'bg-accent text-primary border-accent'
-                                : 'bg-dark/[0.04] text-dark/70 border-dark/15 hover:border-accent/40 hover:text-dark'
+                                : 'bg-dark/[0.04] dark:bg-[var(--c-surface)] text-dark/70 dark:text-[var(--c-ink)] border-dark/15 dark:border-[var(--c-line)] hover:border-accent/40 hover:text-dark dark:hover:text-[var(--c-ink)]'
                         }`}
                     >
                         {ui.all} ({articles.length})
@@ -81,7 +81,7 @@ export default function ArticlesBrowser({ articles, allTags, basePath = '/artyku
                             className={`font-mono text-[10px] uppercase tracking-widest px-3 py-1.5 rounded-full border transition ${
                                 activeTag === tag
                                     ? 'bg-accent text-primary border-accent'
-                                    : 'bg-dark/[0.04] text-dark/70 border-dark/15 hover:border-accent/40 hover:text-dark'
+                                    : 'bg-dark/[0.04] dark:bg-[var(--c-surface)] text-dark/70 dark:text-[var(--c-ink)] border-dark/15 dark:border-[var(--c-line)] hover:border-accent/40 hover:text-dark dark:hover:text-[var(--c-ink)]'
                             }`}
                         >
                             #{tag} ({tagCounts[tag]})
@@ -92,8 +92,8 @@ export default function ArticlesBrowser({ articles, allTags, basePath = '/artyku
 
             {/* Grid */}
             {filtered.length === 0 ? (
-                <div className="rounded-[2rem] bg-dark/[0.04] border border-dark/10 p-12 text-center">
-                    <p className="font-mono text-sm text-dark/60">{ui.empty}</p>
+                <div className="rounded-[2rem] bg-dark/[0.04] dark:bg-[var(--c-surface)] border border-dark/10 dark:border-[var(--c-line)] p-12 text-center">
+                    <p className="font-mono text-sm text-dark/60 dark:text-[var(--c-ink-dim)]">{ui.empty}</p>
                     <button
                         onClick={() => { setQuery(''); setActiveTag(null); }}
                         className="mt-4 font-mono text-[10px] uppercase tracking-widest px-4 py-2 rounded-full bg-accent text-primary hover:scale-[1.03] transition"
@@ -107,29 +107,29 @@ export default function ArticlesBrowser({ articles, allTags, basePath = '/artyku
                         <a
                             key={a.slug}
                             href={`${basePath}/${a.slug}/`}
-                            className="group block rounded-[2rem] bg-dark/[0.05] border border-dark/10 hover:border-accent/40 hover:bg-dark/[0.07] transition-all overflow-hidden no-underline"
+                            className="group block rounded-[2rem] bg-dark/[0.05] dark:bg-[var(--c-surface)] border border-dark/10 dark:border-[var(--c-line)] hover:border-accent/40 hover:bg-dark/[0.07] transition-all overflow-hidden no-underline"
                         >
                             {a.cover && (
-                                <div className="aspect-[16/9] overflow-hidden bg-dark/[0.05]">
+                                <div className="aspect-[16/9] overflow-hidden bg-dark/[0.05] dark:bg-[var(--c-surface)]">
                                     <img src={a.cover} alt={a.coverAlt} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
                                 </div>
                             )}
                             <div className="p-6">
-                                <div className="flex items-center gap-2 mb-3 font-sans font-medium text-xs uppercase tracking-[0.15em] text-dark/50">
+                                <div className="flex items-center gap-2 mb-3 font-sans font-medium text-xs uppercase tracking-[0.15em] text-dark/50 dark:text-[var(--c-ink-dim)]">
                                     <span className="font-bold text-accent">{a.category}</span>
-                                    <span className="text-dark/30">·</span>
+                                    <span className="text-dark/30 dark:text-[var(--c-ink-dim)]">·</span>
                                     <span>{a.publishedDateLabel}</span>
-                                    {a.readingTime && <><span className="text-dark/30">·</span><span>{a.readingTime} min</span></>}
+                                    {a.readingTime && <><span className="text-dark/30 dark:text-[var(--c-ink-dim)]">·</span><span>{a.readingTime} min</span></>}
                                 </div>
-                                <h3 className="font-sans font-bold text-lg uppercase tracking-tight text-dark mb-2 group-hover:text-accent transition leading-tight">
+                                <h3 className="font-sans font-bold text-lg uppercase tracking-tight text-dark dark:text-[var(--c-ink)] mb-2 group-hover:text-accent transition leading-tight">
                                     {a.title}
                                 </h3>
-                                <p className="font-mono text-xs text-dark/60 leading-relaxed mb-4 line-clamp-3">
+                                <p className="font-mono text-xs text-dark/60 dark:text-[var(--c-ink-dim)] leading-relaxed mb-4 line-clamp-3">
                                     {a.excerpt}
                                 </p>
                                 <div className="flex flex-wrap gap-1.5">
                                     {a.tags.slice(0, 3).map((tag) => (
-                                        <span key={tag} className="font-sans font-medium text-[10px] uppercase tracking-[0.15em] px-2 py-1 rounded-full bg-dark/[0.06] text-dark/60">#{tag}</span>
+                                        <span key={tag} className="font-sans font-medium text-[10px] uppercase tracking-[0.15em] px-2 py-1 rounded-full bg-dark/[0.06] dark:bg-[var(--c-surface)] text-dark/60 dark:text-[var(--c-ink-dim)]">#{tag}</span>
                                     ))}
                                 </div>
                             </div>

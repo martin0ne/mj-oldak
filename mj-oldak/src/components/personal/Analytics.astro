@@ -17,8 +17,9 @@ const demonstrates = [
 const reportUrl = '/reports/ai_adoption_report.pdf';
 const repoUrl = 'https://github.com/martin0ne/analytics-stack-pl';
 ---
-<section id="analytics" data-nav-theme="dark" class="bg-dark text-primary px-8 md:px-16 py-24 md:py-32 border-t border-primary/10">
-  <div class="max-w-6xl mx-auto">
+<section id="analytics" data-nav-theme="dark" class="relative overflow-hidden bg-dark text-primary px-8 md:px-16 py-24 md:py-32 border-t border-primary/10">
+  <div class="pointer-events-none absolute top-[20%] -right-[10%] w-[55%] h-[70%] rounded-full blur-[130px] opacity-[0.38]" style="background: radial-gradient(circle, #4F8EBA 0%, transparent 70%)"></div>
+  <div class="relative z-10 max-w-6xl mx-auto">
     <p class="font-mono text-xs uppercase tracking-[0.3em] opacity-60 mb-6">
       <span class="text-accent">—</span> 05 · Data &amp; Analytics
     </p>
@@ -62,13 +63,13 @@ const repoUrl = 'https://github.com/martin0ne/analytics-stack-pl';
 
       <div class="grid md:grid-cols-2 gap-5 mb-9">
         <figure class="m-0">
-          <div class="rounded-2xl bg-[#f5f3ee] p-4 border border-primary/10">
+          <div class="rounded-2xl bg-[#f5f3ee] dark:bg-[var(--c-surface)] p-4 border border-primary/10">
             <img src="/reports/ai_trajectory.png" alt="Poland vs EU27 AI adoption trajectory, 2021–2025" class="w-full block" loading="lazy" />
           </div>
           <figcaption class="font-mono text-[10px] uppercase tracking-[0.15em] opacity-50 mt-3">Fig. 1 · Poland vs EU27 trajectory</figcaption>
         </figure>
         <figure class="m-0">
-          <div class="rounded-2xl bg-[#f5f3ee] p-4 border border-primary/10">
+          <div class="rounded-2xl bg-[#f5f3ee] dark:bg-[var(--c-surface)] p-4 border border-primary/10">
             <img src="/reports/ai_by_size.png" alt="AI adoption by firm size, 2025" class="w-full block" loading="lazy" />
           </div>
           <figcaption class="font-mono text-[10px] uppercase tracking-[0.15em] opacity-50 mt-3">Fig. 2 · Adoption by firm size (2025)</figcaption>
@@ -86,11 +87,11 @@ const repoUrl = 'https://github.com/martin0ne/analytics-stack-pl';
 
       <div class="flex flex-wrap gap-4">
         <a href={reportUrl} target="_blank" rel="noopener"
-           class="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-[2rem] bg-accent text-dark font-sans font-bold text-base hover:opacity-90 transition-opacity no-underline">
+           class="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-[2rem] bg-accent text-dark font-sans font-bold text-base hover:bg-dark hover:text-accent dark:hover:bg-primary dark:hover:text-dark hover:scale-[1.03] transition-all duration-300 no-underline">
           Read the report (PDF) ↗
         </a>
         <a href={repoUrl} target="_blank" rel="noopener"
-           class="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-[2rem] border border-primary/20 hover:border-accent text-primary font-sans font-bold text-base hover:bg-primary/[0.06] transition-colors no-underline">
+           class="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-[2rem] border border-primary/20 hover:border-accent text-primary hover:text-dark font-sans font-bold text-base hover:bg-accent hover:scale-[1.03] transition-all duration-300 no-underline">
           View the pipeline ↗
         </a>
       </div>

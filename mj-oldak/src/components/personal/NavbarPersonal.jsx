@@ -51,7 +51,7 @@ export default function NavbarPersonal() {
             className={`navbar-enter fixed top-6 left-1/2 -translate-x-1/2 z-50 px-6 py-4 rounded-[3rem] w-[92%] max-w-5xl transition-colors duration-500 ${
                 isDark
                     ? 'bg-dark/60 backdrop-blur-xl border border-primary/10 text-primary'
-                    : 'bg-background/70 backdrop-blur-xl border border-dark/10 text-dark'
+                    : 'bg-background/70 dark:bg-[var(--c-surface)] backdrop-blur-xl border border-dark/10 dark:border-[var(--c-line)] text-dark dark:text-[var(--c-ink)]'
             }`}
         >
             <div className="flex items-center justify-between">
@@ -73,7 +73,7 @@ export default function NavbarPersonal() {
                         className={`hidden sm:inline-flex items-center gap-2 px-5 py-3 rounded-[2rem] border font-sans font-medium text-sm transition-colors duration-300 no-underline ${
                             isDark
                                 ? 'border-primary/30 text-primary hover:border-accent hover:text-accent'
-                                : 'border-dark/20 text-dark hover:border-accent hover:text-accent'
+                                : 'border-dark/20 dark:border-[var(--c-line)] text-dark dark:text-[var(--c-ink)] hover:border-accent hover:text-accent'
                         }`}
                     >
                         <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.37.5 0 5.87 0 12.5c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58 0-.29-.01-1.04-.02-2.05-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.21.09 1.84 1.24 1.84 1.24 1.07 1.84 2.81 1.31 3.5 1 .11-.78.42-1.31.76-1.61-2.67-.3-5.47-1.34-5.47-5.95 0-1.31.47-2.39 1.24-3.23-.12-.31-.54-1.53.12-3.18 0 0 1.01-.32 3.3 1.23.96-.27 1.98-.4 3-.41 1.02.01 2.04.14 3 .41 2.28-1.55 3.29-1.23 3.29-1.23.66 1.65.24 2.87.12 3.18.77.84 1.24 1.92 1.24 3.23 0 4.62-2.81 5.64-5.49 5.94.43.37.81 1.1.81 2.22 0 1.61-.01 2.9-.01 3.3 0 .32.21.7.82.58A12.01 12.01 0 0 0 24 12.5C24 5.87 18.63.5 12 .5z"/></svg>
@@ -81,10 +81,9 @@ export default function NavbarPersonal() {
                     </a>
                     <a
                         href="/#contact"
-                        className="hidden sm:inline-block relative overflow-hidden group px-6 py-3 rounded-[2rem] bg-accent text-primary font-sans font-medium text-sm transition-transform duration-300 hover:scale-[1.03] ease-[cubic-bezier(0.25,0.46,0.45,0.94)] no-underline"
+                        className="hidden sm:inline-block px-6 py-3 rounded-[2rem] bg-accent text-primary font-sans font-medium text-sm transition-[transform,filter] duration-300 hover:scale-[1.03] hover:brightness-110 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] no-underline"
                     >
-                        <span className="relative z-10">Get in touch</span>
-                        <span className="absolute inset-0 bg-dark transform scale-x-0 origin-left transition-transform duration-300 ease-out group-hover:scale-x-100 z-0"></span>
+                        Get in touch
                     </a>
 
                     {/* Mobile hamburger */}
@@ -95,9 +94,9 @@ export default function NavbarPersonal() {
                         aria-expanded={mobileOpen}
                         aria-controls="mobile-menu-personal"
                     >
-                        <span className={`block w-5 h-[2px] rounded-full transition-all duration-300 ${isDark ? 'bg-primary' : 'bg-dark'} ${mobileOpen ? 'rotate-45 translate-y-[7px]' : ''}`} />
-                        <span className={`block w-5 h-[2px] rounded-full transition-all duration-300 ${isDark ? 'bg-primary' : 'bg-dark'} ${mobileOpen ? 'opacity-0' : ''}`} />
-                        <span className={`block w-5 h-[2px] rounded-full transition-all duration-300 ${isDark ? 'bg-primary' : 'bg-dark'} ${mobileOpen ? '-rotate-45 -translate-y-[7px]' : ''}`} />
+                        <span className={`block w-5 h-[2px] rounded-full transition-all duration-300 ${isDark ? 'bg-primary' : 'bg-dark dark:bg-[var(--c-ink)]'} ${mobileOpen ? 'rotate-45 translate-y-[7px]' : ''}`} />
+                        <span className={`block w-5 h-[2px] rounded-full transition-all duration-300 ${isDark ? 'bg-primary' : 'bg-dark dark:bg-[var(--c-ink)]'} ${mobileOpen ? 'opacity-0' : ''}`} />
+                        <span className={`block w-5 h-[2px] rounded-full transition-all duration-300 ${isDark ? 'bg-primary' : 'bg-dark dark:bg-[var(--c-ink)]'} ${mobileOpen ? '-rotate-45 -translate-y-[7px]' : ''}`} />
                     </button>
                 </div>
             </div>

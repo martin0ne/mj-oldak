@@ -69,6 +69,32 @@
   }
 }
 
+/* === DARK / LIGHT THEME TOKENS (24.06) ===
+   Semantyczne zmienne — komponenty używają dark:bg-[var(--c-page)] itd.
+   Cała paleta dark tweakowalna z TEGO jednego miejsca. Sekcje zawsze-ciemne
+   (Hero, dema = bg-dark/text-primary) NIE używają tych zmiennych i zostają ciemne w obu trybach. */
+:root {
+  --c-page:      #E4DBCD;            /* tło strony (= background) */
+  --c-ink:       #0D1B32;            /* główny tekst (= dark) */
+  --c-surface:   #F1ECE2;            /* jasna karta/panel na stronie */
+  --c-surface-2: #CAC2AE;            /* mocniejsza powierzchnia (= primary) */
+  --c-line:      rgba(13,27,50,0.10);/* hairline na jasnym */
+  --c-ink-dim:   rgba(13,27,50,0.55);/* przygaszony tekst (meta, podpisy) */
+}
+.dark {
+  --c-page:      #0A1626;            /* głęboki navy (ciemniejszy niż Hero #0D1B32) */
+  --c-ink:       #E6DFD2;            /* ciepły jasny tekst */
+  --c-surface:   #13243D;            /* karta na ciemnym */
+  --c-surface-2: #1A2F4D;            /* mocniejsza powierzchnia ciemna */
+  --c-line:      rgba(202,194,174,0.14);
+  --c-ink-dim:   rgba(230,223,210,0.55);
+}
+.dark html, html.dark { background-color: #0A1626; }
+.dark ::selection { background: rgba(79,142,186,0.35); }
+@media (prefers-reduced-motion: reduce) {
+  * { scroll-behavior: auto !important; }
+}
+
 /* Navbar entrance — CSS-only żeby uniknąć flash (React → useEffect → GSAP) */
 @keyframes navEnter {
   from {

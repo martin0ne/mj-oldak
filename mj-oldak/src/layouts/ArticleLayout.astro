@@ -84,12 +84,12 @@ const breadcrumbsLd = {
     {/* Hero */}
     <header class="max-w-4xl mx-auto px-6 md:px-12 mb-12">
       <div class="flex items-center justify-between gap-4 mb-8">
-        <a href={`${basePath}/`} class="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-widest text-dark/60 hover:text-accent transition no-underline">
+        <a href={`${basePath}/`} class="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-widest text-dark/60 dark:text-[var(--c-ink-dim)] hover:text-accent transition no-underline">
           <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
           {t.back}
         </a>
         {translationUrl && (
-          <a href={translationUrl} hreflang={t.otherHreflang} class="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-widest text-dark/60 hover:text-accent transition no-underline border border-dark/15 rounded-full px-3 py-1.5">
+          <a href={translationUrl} data-translate hreflang={t.otherHreflang} class="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-widest text-dark/60 dark:text-[var(--c-ink-dim)] hover:text-accent transition no-underline border border-dark/15 dark:border-[var(--c-line)] rounded-full px-3 py-1.5">
             {t.other}
             <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
           </a>
@@ -97,16 +97,16 @@ const breadcrumbsLd = {
       </div>
       <div class="flex items-center gap-3 mb-6">
         <span class="font-mono text-[10px] uppercase tracking-widest px-3 py-1 rounded-full bg-accent/10 text-accent border border-accent/20">{category}</span>
-        <span class="font-mono text-[10px] uppercase tracking-widest text-dark/40">{dateFormatted}</span>
-        {readingTime && <span class="font-mono text-[10px] uppercase tracking-widest text-dark/40">· {readingTime} {t.reading}</span>}
+        <span class="font-mono text-[10px] uppercase tracking-widest text-dark/40 dark:text-[var(--c-ink-dim)]">{dateFormatted}</span>
+        {readingTime && <span class="font-mono text-[10px] uppercase tracking-widest text-dark/40 dark:text-[var(--c-ink-dim)]">· {readingTime} {t.reading}</span>}
       </div>
-      <h1 class="font-sans font-bold text-4xl md:text-6xl uppercase tracking-tight text-dark mb-6 leading-tight">
+      <h1 class="font-sans font-bold text-4xl md:text-6xl uppercase tracking-tight text-dark dark:text-[var(--c-ink)] mb-6 leading-tight">
         {title}
       </h1>
-      <p class="font-mono text-base md:text-lg text-dark/70 leading-relaxed max-w-3xl">
+      <p class="font-mono text-base md:text-lg text-dark/70 dark:text-[var(--c-ink)] leading-relaxed max-w-3xl">
         {excerpt}
       </p>
-      <div class="mt-6 flex items-center gap-3 text-sm font-mono text-dark/50">
+      <div class="mt-6 flex items-center gap-3 text-sm font-mono text-dark/50 dark:text-[var(--c-ink-dim)]">
         <span class="w-2 h-2 rounded-full bg-accent animate-pulse"></span>
         <span>{author}</span>
       </div>
@@ -114,7 +114,7 @@ const breadcrumbsLd = {
 
     {cover && (
       <div class="max-w-5xl mx-auto px-6 md:px-12 mb-12">
-        <img src={cover} alt={coverAlt ?? title} class="w-full h-auto rounded-[2rem] border border-dark/10 shadow-lg" loading="eager" />
+        <img src={cover} alt={coverAlt ?? title} class="w-full h-auto rounded-[2rem] border border-dark/10 dark:border-[var(--c-line)] shadow-lg" loading="eager" />
       </div>
     )}
 
@@ -124,11 +124,11 @@ const breadcrumbsLd = {
     </div>
 
     {/* Tags */}
-    <div class="max-w-3xl mx-auto px-6 md:px-12 mt-12 pt-8 border-t border-dark/10">
-      <p class="font-mono text-[10px] uppercase tracking-widest text-dark/40 mb-4">{t.tagsLabel}</p>
+    <div class="max-w-3xl mx-auto px-6 md:px-12 mt-12 pt-8 border-t border-dark/10 dark:border-[var(--c-line)]">
+      <p class="font-mono text-[10px] uppercase tracking-widest text-dark/40 dark:text-[var(--c-ink-dim)] mb-4">{t.tagsLabel}</p>
       <div class="flex flex-wrap gap-2">
         {tags.map((tag) => (
-          <a href={isEn ? `${basePath}/` : `/artykuly/tag/${tag}/`} class="font-mono text-xs uppercase tracking-widest px-3 py-1.5 rounded-full bg-dark/[0.05] hover:bg-accent hover:text-primary border border-dark/10 text-dark/70 transition no-underline">
+          <a href={isEn ? `${basePath}/` : `/artykuly/tag/${tag}/`} class="font-mono text-xs uppercase tracking-widest px-3 py-1.5 rounded-full bg-dark/[0.05] dark:bg-[var(--c-surface)] hover:bg-accent hover:text-primary border border-dark/10 dark:border-[var(--c-line)] text-dark/70 dark:text-[var(--c-ink)] transition no-underline">
             #{tag}
           </a>
         ))}
@@ -137,8 +137,8 @@ const breadcrumbsLd = {
 
     {/* Related */}
     {related.length > 0 && (
-      <div class="max-w-5xl mx-auto px-6 md:px-12 mt-20 pt-12 border-t border-dark/10">
-        <h2 class="font-sans font-bold text-2xl md:text-3xl uppercase tracking-tight text-dark mb-8">
+      <div class="max-w-5xl mx-auto px-6 md:px-12 mt-20 pt-12 border-t border-dark/10 dark:border-[var(--c-line)]">
+        <h2 class="font-sans font-bold text-2xl md:text-3xl uppercase tracking-tight text-dark dark:text-[var(--c-ink)] mb-8">
           {t.related} <span class="font-serif italic font-normal text-accent">{t.relatedItalic}</span>
         </h2>
         <RelatedArticles articles={related} lang={lang} />
@@ -251,4 +251,24 @@ const breadcrumbsLd = {
     border-top: 1px solid rgba(17,17,17,0.1);
     margin: 3rem 0;
   }
+
+  /* === DARK MODE — czytelna proza artykułu na ciemnym tle === */
+  .dark .article-prose { color: var(--c-ink); }
+  .dark .article-prose h2,
+  .dark .article-prose h3,
+  .dark .article-prose h4 { color: var(--c-ink); }
+  .dark .article-prose strong { color: var(--c-ink); }
+  .dark .article-prose blockquote {
+    background: rgba(255,255,255,0.05);
+    color: var(--c-ink);
+  }
+  .dark .article-prose code {
+    background: rgba(255,255,255,0.10);
+    color: var(--c-ink);
+  }
+  .dark .article-prose th { background: rgba(255,255,255,0.06); }
+  .dark .article-prose td { border-bottom-color: rgba(255,255,255,0.08); }
+  .dark .article-prose hr { border-top-color: rgba(255,255,255,0.10); }
+  .dark .article-prose a:hover { background: rgba(79,142,186,0.18); }
+  .dark .article-prose img { border-color: rgba(255,255,255,0.10); }
 </style>

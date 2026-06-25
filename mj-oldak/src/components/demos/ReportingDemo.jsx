@@ -164,7 +164,7 @@ export default function ReportingDemo() {
                 )}
 
                 <p className="mt-5 font-mono text-[10px] leading-relaxed opacity-40">
-                    Production version: FastAPI + openpyxl + fpdf2 — branded PDF reports per client (in Polish),
+                    The product itself: FastAPI + openpyxl + fpdf2 — branded PDF reports per client (in Polish),
                     generated from the office's ledger exports. This demo runs entirely in your browser on sample data.
                 </p>
             </div>

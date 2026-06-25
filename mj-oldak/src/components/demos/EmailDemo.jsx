@@ -15,6 +15,9 @@ const badgeClasses = {
 export default function EmailDemo() {
     const [selectedId, setSelectedId] = useState(null);
     const [phase, setPhase] = useState('idle'); // idle | classifying | done
+    const [editing, setEditing] = useState(false); // human edytuje szkic
+    const [draftText, setDraftText] = useState(''); // edytowalna treść szkicu
+    const [sent, setSent] = useState(false); // SYMULACJA wysyłki (nic realnie nie wychodzi)
     const timersRef = useRef([]);
 
     const mail = emails.find((m) => m.id === selectedId);
@@ -31,6 +34,10 @@ export default function EmailDemo() {
         clearTimers();
         setSelectedId(id);
         setPhase('classifying');
+        setEditing(false);
+        setSent(false);
+        const next = emails.find((m) => m.id === id);
+        setDraftText(next && next.draft ? next.draft : '');
         timersRef.current.push(setTimeout(() => setPhase('done'), 900));
     };
 
@@ -64,8 +71,10 @@ export default function EmailDemo() {
                                 <button
                                     key={m.id}
                                     onClick={() => openMail(m.id)}
-                                    className={`w-full text-left px-4 py-3 transition-colors ${
-                                        m.id === selectedId ? 'bg-accent/10' : 'hover:bg-primary/[0.05]'
+                                    className={`w-full text-left px-4 py-3 border-l-2 transition-colors ${
+                                        m.id === selectedId
+                                            ? 'bg-accent/20 border-l-accent'
+                                            : 'border-l-transparent hover:bg-accent/[0.08] hover:border-l-accent/50'
                                     }`}
                                 >
                                     <div className="flex items-baseline justify-between gap-2">
@@ -115,7 +124,42 @@ export default function EmailDemo() {
                                 {mail.draft ? (
                                     <div className="rounded-xl border-l-2 border-accent border border-primary/15 bg-primary/[0.04] p-4" style={{ animation: 'emailRowIn 0.3s ease 0.15s both' }}>
                                         <div className="font-mono text-[9px] uppercase tracking-[0.15em] text-accent font-bold mb-2">Suggested reply — human approves before sending</div>
-                                        <div className="font-mono text-[11px] leading-relaxed opacity-85 whitespace-pre-line break-words">{mail.draft}</div>
+
+                                        {editing ? (
+                                            <textarea
+                                                value={draftText}
+                                                onChange={(e) => setDraftText(e.target.value)}
+                                                rows={6}
+                                                className="w-full rounded-lg bg-black/30 border border-accent/40 focus:border-accent focus:outline-none p-3 font-mono text-[11px] leading-relaxed text-primary/90 resize-y"
+                                            />
+                                        ) : (
+                                            <div className="font-mono text-[11px] leading-relaxed opacity-85 whitespace-pre-line break-words">{draftText}</div>
+                                        )}
+
+                                        {/* Human-in-the-loop: użytkownik decyduje, edytuje, „wysyła" */}
+                                        <div className="flex items-center gap-2 mt-3">
+                                            {sent ? (
+                                                <span className="font-mono text-[10px] uppercase tracking-[0.12em] text-green-400 border border-green-400/50 bg-green-400/10 rounded-full px-3 py-1.5">
+                                                    Sent ✓
+                                                </span>
+                                            ) : (
+                                                <>
+                                                    <button
+                                                        onClick={() => setEditing((v) => !v)}
+                                                        className="font-mono text-[10px] uppercase tracking-[0.12em] text-primary/80 border border-primary/30 hover:border-primary/60 hover:text-primary rounded-full px-3 py-1.5 transition-colors"
+                                                    >
+                                                        {editing ? 'Done editing' : 'Edit'}
+                                                    </button>
+                                                    <button
+                                                        onClick={() => { setEditing(false); setSent(true); }}
+                                                        className="font-mono text-[10px] uppercase tracking-[0.12em] text-primary border border-accent/50 bg-accent/15 hover:bg-accent/25 rounded-full px-3 py-1.5 transition-colors"
+                                                    >
+                                                        Send
+                                                    </button>
+                                                </>
+                                            )}
+                                        </div>
+                                        <div className="font-mono text-[9px] opacity-30 mt-2">Simulated — nothing is actually sent from this demo.</div>
                                     </div>
                                 ) : (
                                     <div className="rounded-xl border-l-2 border-gray-400 border border-primary/15 bg-primary/[0.04] p-4" style={{ animation: 'emailRowIn 0.3s ease 0.15s both' }}>
@@ -129,7 +173,7 @@ export default function EmailDemo() {
                 </div>
 
                 <p className="mt-5 font-mono text-[10px] leading-relaxed opacity-40">
-                    Production version: IMAP/SMTP + Claude — classification into 5 categories + reply drafts written in Polish
+                    The product itself: IMAP/SMTP + Claude — classification into 4 categories + reply drafts written in Polish
                     for the client, human-in-the-loop by design. This demo runs in your browser on sample emails (in English for readability).
                 </p>
             </div>

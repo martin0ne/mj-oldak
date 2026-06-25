@@ -15,22 +15,22 @@ const fmtDate = (d: Date) => new Intl.DateTimeFormat(isEn ? 'en-GB' : 'pl-PL', {
   {articles.map((a) => {
     const slug = a.id.replace(/^en\//, '').replace(/\.md$/, '');
     return (
-      <a href={`${basePath}/${slug}/`} class="group block rounded-[2rem] bg-dark/[0.05] border border-dark/10 hover:border-accent/40 hover:bg-dark/[0.07] transition-all overflow-hidden no-underline">
+      <a href={`${basePath}/${slug}/`} class="group block rounded-[2rem] bg-dark/[0.05] dark:bg-[var(--c-surface)] border border-dark/10 dark:border-[var(--c-line)] hover:border-accent/40 hover:bg-dark/[0.07] transition-all overflow-hidden no-underline">
         {a.data.cover && (
-          <div class="aspect-[16/9] overflow-hidden bg-dark/[0.05]">
+          <div class="aspect-[16/9] overflow-hidden bg-dark/[0.05] dark:bg-[var(--c-surface)]">
             <img src={a.data.cover} alt={a.data.coverAlt ?? a.data.title} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
           </div>
         )}
         <div class="p-6">
-          <div class="flex items-center gap-2 mb-3 font-mono text-[10px] uppercase tracking-widest text-dark/40">
+          <div class="flex items-center gap-2 mb-3 font-mono text-[10px] uppercase tracking-widest text-dark/40 dark:text-[var(--c-ink-dim)]">
             <span>{a.data.category}</span>
             <span>·</span>
             <span>{fmtDate(a.data.publishedAt)}</span>
           </div>
-          <h3 class="font-sans font-bold text-lg uppercase tracking-tight text-dark mb-2 group-hover:text-accent transition leading-tight">
+          <h3 class="font-sans font-bold text-lg uppercase tracking-tight text-dark dark:text-[var(--c-ink)] mb-2 group-hover:text-accent transition leading-tight">
             {a.data.title}
           </h3>
-          <p class="font-mono text-xs text-dark/60 leading-relaxed line-clamp-3">
+          <p class="font-mono text-xs text-dark/60 dark:text-[var(--c-ink-dim)] leading-relaxed line-clamp-3">
             {a.data.excerpt}
           </p>
         </div>

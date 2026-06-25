@@ -72,26 +72,28 @@ export default function OcrDemo() {
             </div>
 
             <div className="p-6">
-                {/* Wybór faktury + akcja */}
-                <div className="flex flex-wrap items-center gap-2 mb-6">
-                    {invoices.map((inv) => (
-                        <button
-                            key={inv.id}
-                            onClick={() => selectInvoice(inv.id)}
-                            className={`px-4 py-2 rounded-full font-mono text-xs transition-colors border ${
-                                inv.id === selectedId
-                                    ? 'bg-accent/20 border-accent text-primary'
-                                    : 'border-primary/20 text-primary/60 hover:border-primary/50 hover:text-primary'
-                            }`}
-                        >
-                            {inv.label}
-                            <span className="hidden sm:inline opacity-50"> · {inv.kind}</span>
-                        </button>
-                    ))}
+                {/* Wybór faktury + akcja — przycisk top-right na równi z tabami, faktury zawijają niżej */}
+                <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-6">
+                    <div className="flex flex-wrap items-center gap-2">
+                        {invoices.map((inv) => (
+                            <button
+                                key={inv.id}
+                                onClick={() => selectInvoice(inv.id)}
+                                className={`px-4 py-2 rounded-full font-mono text-xs transition-colors border ${
+                                    inv.id === selectedId
+                                        ? 'bg-accent/20 border-accent text-primary'
+                                        : 'border-primary/20 text-primary/60 hover:border-primary/50 hover:text-primary'
+                                }`}
+                            >
+                                {inv.label}
+                                <span className="hidden sm:inline opacity-50"> · {inv.kind}</span>
+                            </button>
+                        ))}
+                    </div>
                     <button
                         onClick={process}
                         disabled={phase === 'processing'}
-                        className="ml-auto px-6 py-2.5 rounded-full bg-accent text-primary font-sans font-bold text-sm hover:scale-[1.03] transition-transform disabled:opacity-50 disabled:hover:scale-100"
+                        className="shrink-0 self-start min-w-[150px] text-center whitespace-nowrap px-6 py-2.5 rounded-full bg-accent text-primary font-sans font-bold text-sm hover:scale-[1.03] transition-transform disabled:opacity-50 disabled:hover:scale-100"
                     >
                         {phase === 'processing' ? 'Processing…' : phase === 'done' ? 'Process again' : 'Process invoice'}
                     </button>
@@ -188,7 +190,7 @@ export default function OcrDemo() {
 
                 {/* Stopka dema — co to dowodzi */}
                 <p className="mt-5 font-mono text-[10px] leading-relaxed opacity-40">
-                    Production version: FastAPI + Azure Document Intelligence + Claude API — PDF/photo in, structured data out.
+                    The product itself: FastAPI + Azure Document Intelligence + Claude API — PDF/photo in, structured data out.
                     The scanned document is intentionally a Polish invoice — that's what the product reads. Demo runs entirely in your browser.
                 </p>
             </div>

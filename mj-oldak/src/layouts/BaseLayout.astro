@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import AccessibilityControls from '../components/personal/AccessibilityControls.jsx';
 
 export interface Props {
   title?: string;
@@ -85,6 +86,20 @@ const websiteSchema = {
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Zero-flash: ustaw zapisany motyw + rozmiar tekstu przed renderem (A−/A+ i dark/light). -->
+  <script is:inline>
+    (function () {
+      try {
+        var m = [100, 110, 120, 130];
+        var i = parseInt(localStorage.getItem('mjo-text-scale') || '0', 10);
+        if (!isNaN(i) && m[i]) document.documentElement.style.fontSize = m[i] + '%';
+        var t = localStorage.getItem('mjo-theme');
+        if (t === 'dark' || (!t && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+          document.documentElement.classList.add('dark');
+        }
+      } catch (e) {}
+    })();
+  </script>
   <meta name="description" content={description} />
   <meta name="author" content={author} />
   <meta name="theme-color" content="#0D1B32" />
@@ -123,7 +138,8 @@ const websiteSchema = {
 
   <slot name="head" />
 </head>
-<body class="bg-background text-dark font-sans m-0 p-0 overflow-x-hidden min-h-[100dvh] flex flex-col">
+<body class="bg-background dark:bg-[var(--c-page)] text-dark dark:text-[var(--c-ink)] font-sans m-0 p-0 overflow-x-hidden min-h-[100dvh] flex flex-col transition-colors duration-500">
   <slot />
+  <AccessibilityControls client:load />
 </body>
 </html>

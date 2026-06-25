@@ -1,13 +1,16 @@
 ---
 // Sekcja About — personal-brand EN. Czysty Tailwind (bez zależności od CSS dla-biur).
+import FlipStat from './FlipStat.jsx';
 ---
-<section id="about" class="bg-background text-dark px-8 md:px-16 py-24 md:py-32">
-  <div class="max-w-5xl mx-auto">
-    <p class="font-mono text-xs uppercase tracking-[0.3em] opacity-60 mb-6">
+<section id="about" class="relative overflow-hidden bg-background dark:bg-[var(--c-page)] text-dark dark:text-[var(--c-ink)] px-8 md:px-16 py-16 md:py-24 transition-colors duration-500">
+  <!-- Akcent sekcji: sea-blue glow (ożywia tło, rozróżnia od sąsiednich sekcji) -->
+  <div class="pointer-events-none absolute -top-[12%] -right-[8%] w-[58%] h-[80%] rounded-full blur-[120px] opacity-[0.14] dark:opacity-50" style="background: radial-gradient(circle, #4F8EBA 0%, transparent 70%)"></div>
+  <div class="max-w-5xl mx-auto relative z-10">
+    <p class="font-mono text-xs uppercase tracking-[0.3em] opacity-60 mb-3">
       <span class="text-accent">—</span> 01 · About
     </p>
 
-    <h2 class="font-sans font-bold text-4xl md:text-6xl tracking-[-0.03em] uppercase leading-[0.95] mb-8">
+    <h2 class="font-sans font-bold text-4xl md:text-6xl tracking-[-0.03em] uppercase leading-[0.95] mb-6">
       I ship working things<span class="text-accent">.</span>
     </h2>
 
@@ -20,12 +23,13 @@
         <p>
           I've been exploring AI since 2022 and turned it into my profession in 2026 with
           <strong>MJ.OLDAK</strong> — my AI consulting practice. Out of dozens of experimental
-          agents, I built <strong>4 working products</strong> for small businesses (pilot-ready,
-          pre-deployment): invoice OCR, an email assistant, a tax-deadline agent and a report generator.
+          agents, I built <strong>5 working products</strong> for small businesses (pilot-ready,
+          pre-deployment): invoice OCR, an email assistant, a tax-deadline agent, a report generator
+          and a B2B sales agent.
         </p>
         <p>
           My daily toolkit is <strong>LLMs in practice</strong> — Claude (API + Claude Code),
-          Gemini — and <strong>n8n workflow orchestration</strong>, including a production
+          Gemini — and <strong>n8n workflow orchestration</strong>, including a working
           pipeline exposed as an MCP tool for AI agents.
         </p>
         <p>
@@ -45,22 +49,18 @@
           a 100% English-speaking, heavily regulated environment where I automate repetitive
           work bottom-up.
         </p>
+        <p>
+          Everything I build is <strong>model-agnostic</strong> (swap between 4 LLM providers,
+          zero lock-in), human-in-the-loop by design, with a RODO audit trail and Polish
+          regulatory context (KSeF / JPK) baked in.
+        </p>
       </div>
     </div>
 
-    <div class="grid grid-cols-2 md:grid-cols-3 gap-6 mt-16 pt-8 border-t border-dark/10">
-      <div>
-        <div class="font-sans font-bold text-4xl md:text-5xl tracking-tight">4<span class="text-accent">+</span></div>
-        <div class="font-mono text-[11px] uppercase tracking-[0.2em] opacity-60 mt-2">working AI products (pilot-ready)</div>
-      </div>
-      <div>
-        <div class="font-sans font-bold text-4xl md:text-5xl tracking-tight">2022</div>
-        <div class="font-mono text-[11px] uppercase tracking-[0.2em] opacity-60 mt-2">working with AI since</div>
-      </div>
-      <div>
-        <div class="font-sans font-bold text-4xl md:text-5xl tracking-tight">3.7<span class="text-2xl opacity-50">y</span></div>
-        <div class="font-mono text-[11px] uppercase tracking-[0.2em] opacity-60 mt-2">English-only corporate env</div>
-      </div>
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-6 mt-16 pt-8 border-t border-dark/10 dark:border-[var(--c-line)]">
+      <FlipStat client:load value="5" suffix="+" suffixClass="text-accent" label="working AI products (pilot-ready)" />
+      <FlipStat client:load value="2022" label="working with AI since" />
+      <FlipStat client:load value="3.7" suffix="y" suffixClass="text-2xl opacity-50" label="English-only corporate env" />
     </div>
   </div>
 </section>

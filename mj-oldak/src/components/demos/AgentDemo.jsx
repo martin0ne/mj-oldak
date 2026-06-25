@@ -104,7 +104,7 @@ export default function AgentDemo() {
                     <span className="font-sans font-bold text-lg tracking-tight">Agent Mission Control</span>
                 </div>
                 <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-accent border border-accent/40 bg-accent/10 rounded-full px-3 py-1">
-                    Watch an AI agent work
+                    Scripted simulation · watch an AI agent work
                 </span>
             </div>
 
@@ -181,7 +181,7 @@ export default function AgentDemo() {
 
                     {/* Terminal */}
                     <div className="min-w-0">
-                        <div className="font-mono text-[10px] uppercase tracking-[0.2em] opacity-50 mb-3">Agent log — live</div>
+                        <div className="font-mono text-[10px] uppercase tracking-[0.2em] opacity-50 mb-3">Agent log — scripted run</div>
                         <div
                             ref={termRef}
                             className="rounded-xl border border-primary/15 bg-black/40 p-4 h-[300px] md:h-[340px] overflow-y-auto font-mono text-[11px] leading-relaxed"
@@ -204,7 +204,7 @@ export default function AgentDemo() {
                 </div>
 
                 <p className="mt-5 font-mono text-[10px] leading-relaxed opacity-40">
-                    Scripted simulation mirroring my production architecture (n8n Webhook → LLM extraction → validation →
+                    Scripted simulation mirroring my real pipeline architecture (n8n Webhook → LLM extraction → validation →
                     Supabase EU → human approval) — including how agents should fail and recover. No external calls; runs entirely in your browser.
                 </p>
             </div>
