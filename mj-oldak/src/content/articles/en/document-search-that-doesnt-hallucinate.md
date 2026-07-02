@@ -16,6 +16,17 @@ translationKey: "docs-qa-rag"
 metaTitle: "A document search that doesn't hallucinate — RAG"
 metaDescription: "How I built a RAG with file:line citations: BM25 + embeddings + RRF hybrid, citations validated in code. The honest 9/9 result and why a single method fails."
 keywords: ["RAG", "BM25", "embeddings", "RRF", "semantic search", "AI hallucination", "knowledge assistant"]
+faq:
+  - q: "What is a RAG with file:line citations?"
+    a: "It's a document search that answers questions asked in plain language and shows the exact file and lines the answer came from — instead of asking you to trust it on its word."
+  - q: "How is BM25 different from embeddings?"
+    a: "BM25 is lexical search, by words — excellent when the question contains a rare, specific token like an article number or a symbol, but it struggles the moment you ask for the same thing in different words. Embeddings are semantic search, by meaning — a paraphrase still lands on the point, but they can miss a rare, literal word. That's why I combine both."
+  - q: "What is RRF (Reciprocal Rank Fusion)?"
+    a: "It's a rank fusion that combines the BM25 and embeddings rankings without needing comparable scores — only the position on each list matters. A passage ranked high by either method ends up high in the final result."
+  - q: "How do I know the system isn't making up citations?"
+    a: "The citation is validated in code, not promised by the model. The program checks programmatically whether the cited file and lines actually exist and contain what's being cited. There's also an extractive mode that returns verbatim passages without generating any prose."
+  - q: "Does the hybrid always beat a single method?"
+    a: "No — and that's not the claim. The claim is robustness. On the test set the whole thing landed 9 out of 9 queries in the top-k: BM25 alone missed a paraphrase, embeddings alone missed a rare token, and it was RRF that kept both cases in the top-k — it only took one of the two engines to catch the passage."
 ---
 
 Ask an ordinary chatbot about your own documents and it will often answer with total confidence — and say something that isn't actually in them. I built the opposite: you ask a question in plain language, you get an answer, and you get **the exact file and line that answer came from**.

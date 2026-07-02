@@ -16,6 +16,19 @@ translationKey: "bm25-vs-embeddings"
 metaTitle: "BM25 vs embeddingi — ławka pomiarowa retrievalu RAG"
 metaDescription: "Zbudowałem ławkę BM25 vs embeddingi na jednym korpusie. Wynik: semantyka bywa krucha — na rzadkim kodzie spudłowała całkowicie. Produkcja = hybryda + pomiar."
 keywords: ["BM25", "embeddingi", "RAG", "wyszukiwanie semantyczne", "retrieval", "nomic-embed", "ławka pomiarowa", "hybryda retrievalu"]
+faq:
+  - q: "Czym jest ławka pomiarowa BM25 vs embeddingi?"
+    a: "To ławka porównawcza, nie produkt — stawia BM25 (wyszukiwanie po słowach) przeciw embeddingom (wyszukiwanie po znaczeniu) na jednym wspólnym korpusie i 9 pytaniach testowych, a dla każdego pytania wystawia werdykt: kto trafił lepiej, czy remis. Kod jest publiczny na licencji MIT, napisany w czystym Pythonie bez zależności."
+  - q: "Czym różni się BM25 od embeddingów?"
+    a: "BM25 to wyszukiwanie leksykalne, po słowach — świetne na rzadki, konkretny token: kod, symbol, nazwę pola. Embeddingi to wyszukiwanie semantyczne, po znaczeniu — tekst jest zamieniany na wektory, więc parafraza dalej trafia w sedno."
+  - q: "Czy embeddingi zawsze wygrywają z wyszukiwaniem po słowach?"
+    a: "Nie — to mit. Na zapytaniu o rzadki kod WIS embeddingi nie wciągnęły właściwego dokumentu nawet do top-3, a BM25 dał go na 1. miejscu: rzadki token o wysokim IDF tonie w gęstym klastrze dokumentów o stawkach, bo embeddingi rozkładają podobieństwo po całym klastrze i gubią cel."
+  - q: "Kiedy embeddingi wygrywają z BM25?"
+    a: "Przy parafrazach, które nie dzielą słów kluczowych z dokumentem. W ławce pytanie „pismo zmieniające wartość transakcji gdy klient oddał produkt” nie miało wspólnych słów z dokumentem o fakturze korygującej — BM25 nie trafił wcale, a embeddingi złapały sens i dały dokument w top-3."
+  - q: "Jakie wyniki dała ławka BM25 vs embeddingi?"
+    a: "Na 9 zapytaniach (top-k=3, lokalny model nomic-embed-text-v1.5) wyszło: 6 remisów, 1 wygrana BM25 i 2 wygrane embeddingów. Najczęściej obie metody radzą sobie tak samo — ciekawie robi się dopiero na skrajach."
+  - q: "Czego użyć w produkcyjnym RAG — BM25 czy embeddingów?"
+    a: "Hybrydy: łącz słowa i znaczenie, dołóż zestaw pytań testowych i mierz na realnym korpusie. Embeddingi są mocne, ale kruche i zależne od sformułowania — opłacają się tam, gdzie użytkownicy mówią różnym językiem, a nie tam, gdzie liczy się twardy, unikalny kod."
 ---
 
 Powszechny mit brzmi: "embeddingi rozumieją znaczenie, więc zawsze biją wyszukiwanie po słowach". Zbudowałem małą ławkę pomiarową, która stawia BM25 (słowa) przeciw embeddingom (znaczenie) na jednym korpusie — i na zapytaniu o rzadki kod **WIS** embeddingi spudłowały całkowicie, podczas gdy BM25 trafił od razu w punkt.

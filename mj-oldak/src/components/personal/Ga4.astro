@@ -1,0 +1,22 @@
+---
+// GA4 loader — ładuje gtag TYLKO gdy:
+//  (1) build produkcyjny (import.meta.env.PROD) — zero szumu z astro dev / preview lokalny,
+//  (2) realny Measurement ID jest ustawiony (nie placeholder).
+// Dopóki GA4_ID = 'G-XXXXXXXXXX', komponent renderuje PUSTKĘ → bezpieczny do commita/deployu
+// bez aktywnego trackingu. RODO: brak PII, anonymize_ip jawnie.
+// MARCIN: podmień 'G-XXXXXXXXXX' na realny ID (GA4 → Admin → Data Streams → Web → Measurement ID).
+const GA4_ID = 'G-XXXXXXXXXX'; // <-- PLACEHOLDER do wpięcia
+const enabled = import.meta.env.PROD && GA4_ID.startsWith('G-') && GA4_ID.length > 4 && GA4_ID !== 'G-XXXXXXXXXX';
+---
+{enabled && (
+  <>
+    <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${GA4_ID}`}></script>
+    <script is:inline define:vars={{ GA4_ID }}>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){ dataLayer.push(arguments); }
+      window.gtag = gtag;
+      gtag('js', new Date());
+      gtag('config', GA4_ID, { anonymize_ip: true });
+    </script>
+  </>
+)}

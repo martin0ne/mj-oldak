@@ -39,6 +39,8 @@ const articles = defineCollection({
     metaDescription: z.string().min(120).max(160).optional(),
     keywords: z.array(z.string()).max(10).optional(),
     linkedinUrl: z.string().url().optional(),
+    // Opcjonalna sekcja FAQ → renderowana jako widoczne nagłówki-pytania + FAQPage JSON-LD (AEO).
+    faq: z.array(z.object({ q: z.string(), a: z.string() })).max(8).optional(),
   }),
 });
 

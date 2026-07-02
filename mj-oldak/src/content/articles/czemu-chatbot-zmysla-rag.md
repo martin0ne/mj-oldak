@@ -16,6 +16,17 @@ translationKey: "chatbot-hallucination-rag"
 metaTitle: "Czemu chatbot zmyśla — halucynacje i RAG po ludzku"
 metaDescription: "Dlaczego chatboty AI zmyślają i czym jest halucynacja — bez żargonu. Jak RAG ogranicza zmyślanie, doklejając źródła zanim model odpowie. Z realnego buildu."
 keywords: ["halucynacje AI", "czemu chatbot zmyśla", "RAG", "co to jest RAG", "chatbot AI", "grounding"]
+faq:
+  - q: "Czym jest halucynacja AI?"
+    a: "To odpowiedź, która brzmi pewnie, ale jest nieprawdziwa. Model językowy nie sprawdza faktów — przewiduje najbardziej prawdopodobne następne słowo, więc czasem generuje tekst statystycznie pasujący, ale niezgodny z prawdą."
+  - q: "Dlaczego chatbot zmyśla, skoro brzmi tak pewnie?"
+    a: "Bo pewność modelu nie mówi nic o trafności. Prawidłowa i zmyślona data brzmią identycznie — model wybiera tę, która pasuje do zdania, nie tę prawdziwą. Dlatego nie da się poznać po tonie, czy odpowiedź jest prawdziwa."
+  - q: "Czym jest RAG i jak ogranicza zmyślanie?"
+    a: "RAG (retrieval-augmented generation) najpierw znajduje odpowiednie fragmenty twoich dokumentów i dokleja je do pytania, a potem każe modelowi odpowiedzieć tylko na ich podstawie. To zamienia egzamin z pamięci w egzamin z otwartą książką — z możliwością pokazania źródła."
+  - q: "Czy RAG całkowicie eliminuje halucynacje?"
+    a: "Nie — przesuwa problem, nie kasuje go. Jakość odpowiedzi jest tak dobra, jak jakość znalezionych fragmentów. Jeśli system doklei zły fragment, model dalej zmyśli. Dlatego kluczowy jest retrieval: jak szukasz w dokumentach."
+  - q: "Po czym poznać, że odpowiedź AI jest zmyślona?"
+    a: "Po tonie nie poznasz — dlatego warto używać systemu, który pokazuje źródło (plik i linię), z którego wziął odpowiedź. Wtedy zamiast ufać na słowo, możesz kliknąć i sprawdzić."
 ---
 
 Każdy, kto chwilę pobawił się chatbotem, widział to samo: pewna siebie, gładka odpowiedź — i kompletna bzdura. Wymyślony przepis, nieistniejący artykuł ustawy, książka, której nikt nie napisał. To nie jest błąd, który "naprawią w następnej wersji". To wynika z tego, **jak ten model w ogóle działa** — i właśnie dlatego da się to ograniczyć.

@@ -16,6 +16,19 @@ translationKey: "agent-flow-react"
 metaTitle: "A ReAct document agent that plans its own steps"
 metaDescription: "agent-flow: a multi-step ReAct agent over a document folder. It plans its own search/read steps, cites file:line, and ships a human-approval gate. MIT code."
 keywords: ["AI agent", "ReAct", "agentic AI", "RAG", "BM25", "file:line citations", "human-in-the-loop", "document agent"]
+faq:
+  - q: "What is a ReAct document agent?"
+    a: "It is an agent that gets a question and a folder of documents but does not answer right away — it runs a think→tool→observe loop: it thinks, picks a tool, looks at the result, and repeats until it decides it has enough to write a report. It decides for itself what to search and what to read next, and in the final report every claim carries a file:line citation."
+  - q: "How is a ReAct agent different from plain RAG?"
+    a: "Plain RAG, in its basic form, retrieves once and answers. A ReAct agent plans its own next steps — it decides for itself what to search and what to read next, rather than running down a fixed pipeline and firing a single query."
+  - q: "How does the document agent keep itself from making things up?"
+    a: "Grounding is a rule enforced by the prompt: every claim must be cited as (file:start-end), the agent must say plainly when the corpus lacks the answer, and the report ends with a Sources section. Search results come back as chunks tagged file:start-end, and every such citation lands in a citations set — that is the foundation of grounding."
+  - q: "What is the human-in-the-loop approval gate for?"
+    a: "The gate (--approve) stops the agent before every tool call — the reviewer can approve, quit, or reject with feedback, and that feedback flows back to the agent as an observation, steering its next step. It is the “AI proposes, a human signs off” pattern the author uses in production accounting tools."
+  - q: "Do you need an agent framework to build an AI agent?"
+    a: "No — agent-flow is one Python file (agent.py, 225 lines) plus a retrieval module (retrieval.py, 115 lines), pure standard library, no agent framework. The LLM backend is swappable: the agent shells out to any CLI you set with the AGENTFLOW_LLM_CMD env var (default claude -p)."
+  - q: "Can you test the agent without API access to a model?"
+    a: "Yes — the repo includes a deterministic mock LLM that replays a fixed ReAct sequence, so the whole loop runs in CI without a single model call, and five tests cover, among other things, the full agent loop on the mock. This is a test-only mode: in real use the agent calls a real model (Claude by default)."
 ---
 
 Plain RAG, in its basic form, does one thing: it retrieves once and answers. An agentic workflow gives the model something more — it lets it **plan its own next steps**. `agent-flow` is the second thing: a ReAct loop (think→tool→observe) over a document folder, ending in a report where **every claim carries a file:line citation** — plus a gate where a human can sign off on every single tool call.

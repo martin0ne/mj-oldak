@@ -16,6 +16,17 @@ translationKey: "docs-qa-rag"
 metaTitle: "Wyszukiwarka po dokumentach, która nie zmyśla — RAG"
 metaDescription: "Jak zbudowałem RAG z cytatami plik:linia: hybryda BM25 + embeddingi + RRF, walidacja cytatów w kodzie. Uczciwy wynik 9/9 i dlaczego pojedyncza metoda zawodzi."
 keywords: ["RAG", "BM25", "embeddingi", "RRF", "wyszukiwanie semantyczne", "halucynacje AI", "asystent wiedzy"]
+faq:
+  - q: "Czym jest RAG z cytatami plik:linia?"
+    a: "To wyszukiwarka po dokumentach, która na pytanie zadane naturalnym językiem odpowiada i pokazuje dokładnie ten plik i te linie, z których wzięła odpowiedź — zamiast prosić, żebyś ufał jej na słowo."
+  - q: "Czym różni się BM25 od embeddingów?"
+    a: "BM25 szuka leksykalnie, po słowach — świetne dla rzadkich tokenów jak numer artykułu czy symbol, gubi się przy parafrazie. Embeddingi szukają semantycznie, po znaczeniu — łapią parafrazę, ale potrafią przeoczyć dosłowne, rzadkie słowo. Dlatego łączę oba."
+  - q: "Czym jest RRF (Reciprocal Rank Fusion)?"
+    a: "To fuzja rang, która łączy rankingi BM25 i embeddingów bez potrzeby porównywalnych wyników punktowych — liczy się tylko pozycja na obu listach. Fragment wysoko u którejkolwiek metody ląduje wysoko w finalnym wyniku."
+  - q: "Skąd pewność, że system nie zmyśla cytatów?"
+    a: "Cytat jest walidowany w kodzie, nie obiecany przez model. Program sprawdza programatycznie, czy wskazany plik i linie faktycznie istnieją i zawierają to, na co się powołuje. Jest też tryb ekstraktywny, który zwraca dosłowne fragmenty bez generowania prozy."
+  - q: "Czy hybryda zawsze wygrywa z pojedynczą metodą?"
+    a: "Nie — i nie o to chodzi. Chodzi o odporność. Na teście całość trafiła 9/9, bo gdy BM25 zgubiło parafrazę, a embeddingi rzadki token, RRF trzymał oba przypadki w top-k. Wystarczyło, że jeden z dwóch silników złapał fragment."
 ---
 
 Zwykły chatbot zapytany o twoje dokumenty często wygląda na pewnego siebie i mówi coś, czego w dokumentach nie ma. Zbudowałem coś odwrotnego: zadajesz pytanie po polsku, dostajesz odpowiedź — i **dokładnie ten plik i tę linię, z której odpowiedź pochodzi**.

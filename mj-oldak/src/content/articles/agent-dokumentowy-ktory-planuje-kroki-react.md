@@ -16,6 +16,19 @@ translationKey: "agent-flow-react"
 metaTitle: "Agent dokumentowy ReAct, który sam planuje kroki"
 metaDescription: "agent-flow: wieloetapowy agent ReAct nad folderem dokumentów. Sam planuje wyszukiwanie i czytanie, cytuje plik:linia, ma bramkę akceptacji dla człowieka."
 keywords: ["agent AI", "ReAct", "agentic AI", "RAG", "BM25", "cytaty plik:linia", "human-in-the-loop", "agent dokumentowy"]
+faq:
+  - q: "Czym jest agent dokumentowy ReAct?"
+    a: "To agent, który dostaje pytanie i folder dokumentów, ale nie odpowiada od razu — działa w pętli myśl→narzędzie→obserwacja: zastanawia się, wybiera narzędzie, patrzy na wynik i powtarza, aż uzna, że ma dość na raport. Sam decyduje, czego szukać i co przeczytać dalej, a w raporcie końcowym każde twierdzenie ma cytat plik:linia."
+  - q: "Czym agent ReAct różni się od zwykłego RAG?"
+    a: "Zwykły RAG w podstawowej postaci szuka raz i odpowiada. Agent ReAct sam planuje kolejne kroki — decyduje, czego szukać i co przeczytać dalej, zamiast jechać po sztywnym pipelinie i strzelać z jednego zapytania."
+  - q: "Jak agent dokumentowy pilnuje, żeby nie zmyślać?"
+    a: "Grounding jest regułą wymuszoną w prompcie: każde twierdzenie musi mieć cytat w formie (plik:start-end), agent ma wprost powiedzieć, gdy korpus nie zawiera odpowiedzi, a raport kończy się sekcją Sources. Fragmenty z wyszukiwania są otagowane jako plik:start-end i lądują w zbiorze cytowań — to fundament uziemienia."
+  - q: "Do czego służy bramka akceptacji (human-in-the-loop) w agencie?"
+    a: "Bramka (--approve) zatrzymuje agenta przed każdym wywołaniem narzędzia — recenzent może zatwierdzić, wyjść albo odrzucić z komentarzem, a komentarz wraca do agenta jako obserwacja i steruje jego następnym krokiem. To wzorzec „AI proponuje, człowiek podpisuje”, którego autor używa w produkcyjnych narzędziach do księgowości."
+  - q: "Czy do zbudowania agenta AI potrzebny jest framework agentowy?"
+    a: "Nie — agent-flow to jeden plik Pythona (agent.py, 225 linii) plus moduł wyszukiwania (retrieval.py, 115 linii), czysta biblioteka standardowa, zero frameworka agentowego. Backend LLM jest wymienny: agent woła dowolne CLI ustawione zmienną AGENTFLOW_LLM_CMD (domyślnie claude -p)."
+  - q: "Czy da się przetestować agenta bez dostępu do API modelu?"
+    a: "Tak — repo ma deterministyczny mock LLM, który odtwarza ustaloną sekwencję ReAct, więc całą pętlę odpala się w CI bez ani jednego wywołania modelu, a pięć testów pilnuje m.in. pełnej pętli agenta na mocku. To tryb wyłącznie testowy: w realnym użyciu agent woła prawdziwy model (domyślnie Claude)."
 ---
 
 Zwykły RAG w podstawowej postaci robi jedno: szuka raz i odpowiada. Agentowy workflow daje modelowi coś więcej — pozwala mu **samemu zaplanować kolejne kroki**. `agent-flow` jest tym drugim: pętla ReAct (myśl→narzędzie→obserwacja) nad folderem dokumentów, na końcu raport, w którym **każde twierdzenie ma cytat plik:linia** — plus bramka, na której człowiek może zatwierdzić każde wywołanie narzędzia.

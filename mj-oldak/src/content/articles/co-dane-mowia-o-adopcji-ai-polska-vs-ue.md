@@ -16,6 +16,19 @@ translationKey: "sql-ai-adoption"
 metaTitle: "Adopcja AI Polska vs UE — analiza w SQL (GUS × Eurostat)"
 metaDescription: "Reprodukowalny pipeline SQL uzgadnia odsetek firm z AI między GUS a Eurostatem. Polska rośnie szybko, ale dystans do UE27 rośnie: −4,79 → −11,59 pp."
 keywords: ["adopcja AI", "GUS", "Eurostat", "SQL", "DuckDB", "analiza danych", "Polska vs UE", "junior data analyst"]
+faq:
+  - q: "Ile firm w Polsce używa AI?"
+    a: "Według Eurostatu 8,36% firm zatrudniających 10+ osób używa co najmniej jednej technologii AI (2025); GUS podaje 8,7%. To wzrost z 2,86% w 2021 roku — szybki, ale od bardzo niskiej bazy."
+  - q: "Czy Polska nadrabia dystans do UE w adopcji AI?"
+    a: "Nie — mimo szybkiego wzrostu luka do średniej UE27 rośnie: z −4,79 pp (2021) do −11,59 pp (2025). Polska rośnie od niskiej bazy, a średnia UE — z 7,65% do 19,95% — ucieka szybciej."
+  - q: "Jak Polska wypada na tle innych krajów UE w adopcji AI?"
+    a: "Polska spadła z 26. miejsca (2021) na 31. (2024 i 2025) na 33 kraje i jest poniżej średniej UE27 w każdej klasie wielkości firm. Największa luka dotyczy firm średnich: 14,77% vs 30,36% (−15,59 pp)."
+  - q: "Skąd pochodzą dane o adopcji AI w Polsce i czy można im ufać?"
+    a: "Z dwóch niezależnych urzędów: GUS (Tab.15 z publikacji „Wykorzystanie ICT w przedsiębiorstwach 2025”) i Eurostatu (zbiór isoc_eb_ai, wskaźnik E_AI_TANY). Gdy dwa urzędy mierzą to samo i wychodzi im prawie identycznie — 8,7% vs 8,36%, różnica 0,34 pp — liczbie można ufać."
+  - q: "Czy te dane mówią coś o AI w polskich bankach?"
+    a: "Nie — oba źródła mierzą gospodarkę z wyłączeniem sektora finansowego (NACE sekcja K), a publiczny zbiór o adopcji AI specyficznie w polskich bankach nie istnieje (stan na połowę 2026). Z tych liczb nie wolno więc wyciągać żadnej liczby o bankach."
+  - q: "Czy tę analizę da się odtworzyć samemu?"
+    a: "Tak — kod jest publiczny na licencji MIT (github.com/martin0ne/analytics-stack-pl), a cały raport odbudowuje się jedną komendą: uv run dvc repro analyze_ai. Testy pilnują kontraktów danych i niezmienników SQL, a każdy zbiór ma plik provenance ze źródłem i sumą SHA-256."
 ---
 
 Intuicja mówi: "Polska szybko nadrabia w AI". I to prawda — odsetek firm 10+ używających AI wzrósł z 2,86% (2021) do 8,36% (2025). Twist: ten sam ręcznie napisany SQL pokazuje, że **dystans do średniej UE27 nie maleje, lecz rośnie** — z −4,79 do −11,59 pp. Rośniemy, ale od tak niskiej bazy, że średnia UE ucieka szybciej.

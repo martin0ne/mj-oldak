@@ -4,7 +4,7 @@ import tailwind from '@astrojs/tailwind';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  site: 'https://mjoldak.com',
+  site: 'https://www.mjoldak.pl',
   i18n: {
     defaultLocale: 'pl',
     locales: ['pl', 'en'],

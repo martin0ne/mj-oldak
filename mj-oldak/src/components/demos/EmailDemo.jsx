@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { emails, categories } from '../../data/demos/email.js';
+import { track } from '../../lib/track.js';
 
 // Email Assistant — interaktywne demo client-side (sample data, zero backendu).
 // Wzorzec jak OcrDemo: dark glass card · fazy · sequential reveal · badge sample-data.
@@ -36,6 +37,7 @@ export default function EmailDemo() {
         setPhase('classifying');
         setEditing(false);
         setSent(false);
+        track('demo_run', { demo: 'email', item: id });
         const next = emails.find((m) => m.id === id);
         setDraftText(next && next.draft ? next.draft : '');
         timersRef.current.push(setTimeout(() => setPhase('done'), 900));

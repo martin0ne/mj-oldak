@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { invoices, fieldOrder } from '../../data/demos/ocr.js';
+import { track } from '../../lib/track.js';
 
 // OCR Invoice Reader — interaktywne demo client-side (sample data, zero backendu).
 // WZORZEC dla pozostałych dem: dark glass card · faza idle/processing/done ·
@@ -35,6 +36,7 @@ export default function OcrDemo() {
         setPhase('processing');
         setRevealed(0);
         setShowJson(false);
+        track('demo_run', { demo: 'ocr', item: selectedId });
         timersRef.current.push(
             setTimeout(() => {
                 setPhase('done');

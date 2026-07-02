@@ -16,6 +16,19 @@ translationKey: "process-mapper-bpmn"
 metaTitle: "A BA skill in Claude Code: described process → .bpmn file"
 metaDescription: "How I built a business-analyst skill that turns a described process into an AS-IS/TO-BE model, gateway rules, edge cases, and a ready .bpmn file for bpmn.io."
 keywords: ["business analyst", "BPMN", "process mapping", "Claude Code", "bpmn.io", "AS-IS TO-BE", "BA skill", "automation"]
+faq:
+  - q: "What is process-mapper — a BA skill in Claude Code?"
+    a: "It is a Claude Code skill that turns a process described in words into a full set of business-analyst (BA) artifacts: an AS-IS and TO-BE model in ASCII, rules for every gateway, edge cases, actors with swimlanes, and a ready .bpmn file with auto-layout that opens straight in bpmn.io. The core is generated every time as text — no hand-clicking XML coordinates."
+  - q: "How do you generate a .bpmn file automatically, without hand-writing XML?"
+    a: "In this skill a script, build_bpmn.py, does it: you feed it a simple JSON spec with two keys — elements and flows — and it assembles valid BPMN 2.0 XML with auto-layout. A longest-path ranking algorithm computes each node's column and emits the entire visual layer (BPMNShape and BPMNEdge) that bpmn.io needs to draw anything at all."
+  - q: "Why do the process diagrams come out as ASCII instead of mermaid?"
+    a: "The reason is practical: rendered diagrams don't load in my environment — they show up blank. ASCII always loads, and .bpmn is the hard, editable artifact."
+  - q: "Does this kind of automation replace learning BPMN modelling?"
+    a: "No — it's an accelerator for bigger processes, not a replacement for learning. Lanes and pools are deliberately not generated; I draw them in by hand in bpmn.io, because that's a BA exercise too — the script only takes over what a machine does better: correct coordinates and waypoints."
+  - q: "How do you make sure the process model doesn't stop at the happy path?"
+    a: "Every gateway must have at least two named exit paths — a gateway without labels I treat as an error, because it signals a process that hasn't been thought through. On top of that, for every TO-BE I walk a fixed edge-case checklist: error and retry, missing data, low confidence with human correction (human-in-the-loop), rejection, duplicate, timeout, and compliance (GDPR art. 22)."
+  - q: "Does the generated .bpmn file really open in bpmn.io?"
+    a: "On a sample spec (7 elements and 7 flows) the generator produced well-formed BPMN 2.0 XML — confirmed with a parser — with the BPMNShape and BPMNEdge visual layer, meaning a file ready to open in bpmn.io. An honest caveat: I didn't open it visually, so this is a valid, openable artifact, not a claim of a perfect layout."
 ---
 
 Understanding a larger, unfamiliar process usually means hours of clicking inside a modelling tool — or hand-writing BPMN XML with correct coordinates, which is error-prone and gets rewritten from scratch every single time. I built a skill that cuts that short: you describe the process in words, and you get an AS-IS/TO-BE model in ASCII, the rules for every gateway, the edge cases — and a **real `.bpmn` file with auto-layout that opens straight in bpmn.io**.

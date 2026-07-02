@@ -16,6 +16,19 @@ translationKey: "process-mapper-bpmn"
 metaTitle: "Skill BA w Claude Code: opis procesu → plik .bpmn"
 metaDescription: "Jak zbudowałem skill analityka biznesowego: opis procesu zamienia w model AS-IS/TO-BE, reguły bramek, edge case'y i gotowy plik .bpmn do bpmn.io."
 keywords: ["analityk biznesowy", "BPMN", "mapowanie procesów", "Claude Code", "bpmn.io", "AS-IS TO-BE", "BA", "automatyzacja"]
+faq:
+  - q: "Czym jest process-mapper — skill analityka w Claude Code?"
+    a: "To skill, który zamienia opisany słowami proces biznesowy na komplet artefaktów analityka (BA): model AS-IS i TO-BE jako ASCII, reguły każdej bramki, edge case'y, aktorów ze swimlanes oraz gotowy plik .bpmn z auto-layoutem, który otwierasz wprost w bpmn.io. Rdzeń generuje się zawsze jako tekst, bez klikania współrzędnych w XML."
+  - q: "Jak wygenerować plik .bpmn automatycznie, bez ręcznego pisania XML?"
+    a: "W tym skillu robi to skrypt build_bpmn.py: karmisz go prostym specem JSON z dwoma kluczami — elements i flows — a on składa poprawny BPMN 2.0 XML z auto-layoutem. Algorytm rangowania longest-path wylicza kolumnę każdego węzła i generuje całą warstwę graficzną (BPMNShape i BPMNEdge), której bpmn.io potrzebuje, żeby cokolwiek narysować."
+  - q: "Dlaczego diagramy procesów lecą jako ASCII, a nie mermaid?"
+    a: "Powód jest praktyczny: renderowane diagramy nie ładują się w moim środowisku — pokazują się jako puste. ASCII ładuje się zawsze, a .bpmn to twardy, edytowalny artefakt."
+  - q: "Czy taki automat zastępuje naukę modelowania BPMN?"
+    a: "Nie — to akcelerator do większych procesów, nie zamiennik nauki. Lanes i pools celowo nie są generowane, dorysowuję je ręcznie w bpmn.io, bo to też ćwiczenie BA; skrypt przejmuje tylko to, co maszyna robi lepiej — poprawne współrzędne i waypointy."
+  - q: "Skąd pewność, że model procesu nie kończy się na happy path?"
+    a: "Każda bramka musi mieć co najmniej dwie nazwane ścieżki wyjścia — gateway bez etykiet traktuję jako błąd, bo to znak, że proces nie jest domyślany do końca. Do tego przy TO-BE przechodzę stałą checklistę edge case'ów: błąd i retry, brak danych, niska pewność z korektą człowieka (human-in-the-loop), odrzucenie, duplikat, timeout oraz compliance (RODO art. 22)."
+  - q: "Czy wygenerowany plik .bpmn naprawdę otwiera się w bpmn.io?"
+    a: "Na przykładowym specu (7 elementów i 7 przepływów) generator wyprodukował poprawnie sformułowany BPMN 2.0 XML — potwierdzone parserem — z warstwą graficzną BPMNShape i BPMNEdge, czyli plik gotowy do otwarcia w bpmn.io. Uczciwa uwaga: nie otwierałem go wizualnie, więc mowa o poprawnym, otwieralnym artefakcie, a nie o gwarancji idealnego layoutu."
 ---
 
 Zrozumienie większego, nieznanego procesu to zwykle godziny klikania w narzędziu modelującym — albo ręczne pisanie BPMN XML z poprawnymi współrzędnymi, co jest podatne na błędy i przepisuje się od zera za każdym razem. Zbudowałem skill, który to skraca: opisujesz proces słowami, a dostajesz model AS-IS/TO-BE jako ASCII, reguły każdej bramki, edge case'y — i **realny plik `.bpmn` z auto-layoutem, który otwierasz wprost w bpmn.io**.

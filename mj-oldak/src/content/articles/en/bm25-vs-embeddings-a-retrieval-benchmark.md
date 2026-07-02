@@ -16,6 +16,19 @@ translationKey: "bm25-vs-embeddings"
 metaTitle: "BM25 vs embeddings — a retrieval benchmark for RAG"
 metaDescription: "I built a BM25 vs embeddings benchmark on one corpus. The result: semantic search is brittle — it missed a rare code. Production = hybrid + measurement."
 keywords: ["BM25", "embeddings", "RAG", "semantic search", "retrieval", "nomic-embed", "retrieval benchmark", "hybrid retrieval"]
+faq:
+  - q: "What is the BM25 vs embeddings benchmark?"
+    a: "It's a comparison bench, not a product — it pits BM25 (lexical search, by words) against embeddings (semantic search, by meaning) on one shared corpus and 9 test questions, and for each question returns a verdict: who scored better, or a tie. The code is public and MIT-licensed, written in plain Python with zero dependencies."
+  - q: "What is the difference between BM25 and embeddings?"
+    a: "BM25 is lexical search, by words — great for a rare, specific token: a code, a symbol, a field name. Embeddings are semantic search, by meaning — text becomes vectors, so a paraphrase still lands on target."
+  - q: "Do embeddings always beat keyword search?"
+    a: "No — that's a myth. On a query about the rare WIS tax code, embeddings didn't pull the right document even into the top 3, while BM25 ranked it first: a rare, high-IDF token drowns in a dense cluster of documents about tax rates, because embeddings spread similarity across the whole cluster and lose the target."
+  - q: "When do embeddings win over BM25?"
+    a: "On paraphrases that share no keywords with the document. In the bench, a query about a document changing the value of a transaction after the customer returned a product had no words in common with the document about correction invoices — BM25 missed entirely, while embeddings caught the intent and surfaced the document in the top 3."
+  - q: "What results did the BM25 vs embeddings benchmark produce?"
+    a: "Across 9 queries (top-k=3, local nomic-embed-text-v1.5 model) the score was 6 ties, 1 BM25 win and 2 embedding wins. Most of the time the two methods perform the same — it's the edges that get interesting."
+  - q: "Should you use BM25 or embeddings in production RAG?"
+    a: "A hybrid: combine words and meaning, add a set of test questions, and measure on a real corpus. Embeddings are powerful but brittle and phrasing-dependent — they pay off where users speak in varied language, not where a hard, unique code is what matters."
 ---
 
 The common myth goes: "embeddings understand meaning, so they always beat keyword search." I built a small benchmark that pits BM25 (words) against embeddings (meaning) on one shared corpus — and on a query about a rare tax code, the embeddings missed completely while BM25 nailed it on the first try.

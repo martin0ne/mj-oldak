@@ -16,6 +16,17 @@ translationKey: "chatbot-hallucination-rag"
 metaTitle: "Why your chatbot makes things up — hallucinations & RAG"
 metaDescription: "Why AI chatbots make things up and what a hallucination is — no jargon. How RAG curbs it by attaching sources before the model answers. From a real build."
 keywords: ["AI hallucination", "why chatbots make things up", "RAG", "what is RAG", "AI chatbot", "grounding"]
+faq:
+  - q: "What is an AI hallucination?"
+    a: "It is an answer that sounds confident but is false. A language model does not check facts — it predicts the most likely next word, so it sometimes generates text that statistically fits but happens to be untrue."
+  - q: "Why does a chatbot make things up if it sounds so confident?"
+    a: "Because the model's confidence says nothing about its accuracy. A correct date and a made-up date sound identical — the model picks whichever fits the rest of the sentence, not the true one. That is why you cannot tell from the tone whether an answer is true."
+  - q: "What is RAG and how does it curb hallucinations?"
+    a: "RAG (retrieval-augmented generation) first finds the relevant passages in your documents and attaches them to the question, then tells the model to answer only based on what it was given. It flips a closed-book exam into an open-book one — with the ability to show which passage the answer came from."
+  - q: "Does RAG completely eliminate hallucinations?"
+    a: "No — RAG shifts the problem, it does not erase it. The answer is exactly as good as the passages the system found; if it hands the model the wrong passage, the model will still make things up. That is why retrieval — how you actually search the documents — carries the whole weight."
+  - q: "How can you tell that an AI answer is made up?"
+    a: "You cannot tell from the tone — a made-up answer looks exactly as confident as a real one. That is why it helps to use a system that points to the exact file and line of the source, so you can check the answer instead of taking it on faith."
 ---
 
 Anyone who has spent five minutes with a chatbot has seen the same thing: a confident, fluent answer — and complete nonsense. An invented procedure, a law section that doesn't exist, a book nobody ever wrote. This isn't a bug they'll "fix in the next version." It comes straight from **how the model actually works** — which is exactly why it can be curbed.

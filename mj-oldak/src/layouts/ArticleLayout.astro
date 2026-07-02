@@ -13,7 +13,7 @@ export interface Props {
 }
 
 const { article, related = [], lang = 'pl', translationUrl = null } = Astro.props;
-const { title, excerpt, publishedAt, updatedAt, author, category, tags, cover, coverAlt, readingTime, metaTitle, metaDescription, keywords } = article.data;
+const { title, excerpt, publishedAt, updatedAt, author, category, tags, cover, coverAlt, readingTime, metaTitle, metaDescription, keywords, faq } = article.data;
 
 const isEn = lang === 'en';
 const basePath = isEn ? '/en/articles' : '/artykuly';
@@ -25,7 +25,7 @@ const publishedISO = publishedAt.toISOString();
 const updatedISO = updatedAt?.toISOString();
 const dateFormatted = new Intl.DateTimeFormat(isEn ? 'en-GB' : 'pl-PL', { month: 'long', year: 'numeric' }).format(publishedAt);
 
-const siteURL = 'https://mjoldak.com';
+const siteURL = 'https://www.mjoldak.pl';
 const slugClean = article.id.replace(/^en\//, '').replace(/\.md$/, '');
 const articleURL = `${siteURL}${basePath}/${slugClean}/`;
 const translationAbsolute = translationUrl ? `${siteURL}${translationUrl}` : null;
@@ -39,7 +39,15 @@ const jsonLd = {
   image: ogImageURL,
   datePublished: publishedISO,
   dateModified: updatedISO ?? publishedISO,
-  author: { '@type': 'Person', name: author, url: 'https://mjoldak.com/' },
+  author: {
+    '@type': 'Person',
+    name: author,
+    url: `${siteURL}/`,
+    sameAs: [
+      'https://www.linkedin.com/in/marcin-oldak',
+      'https://github.com/martin0ne',
+    ],
+  },
   publisher: {
     '@type': 'Organization',
     name: 'MJ.OLDAK',
@@ -60,6 +68,16 @@ const breadcrumbsLd = {
     { '@type': 'ListItem', position: 3, name: title, item: articleURL },
   ],
 };
+
+const faqLd = faq && faq.length ? {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faq.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+} : null;
 ---
 <BaseLayout
   title={metaTitle ?? `${title} — MJ.OLDAK`}
@@ -77,6 +95,7 @@ const breadcrumbsLd = {
   {translationAbsolute && <link slot="head" rel="alternate" hreflang="pl" href={isEn ? translationAbsolute : articleURL} />}
   {translationAbsolute && <link slot="head" rel="alternate" hreflang="en" href={isEn ? articleURL : translationAbsolute} />}
   {translationAbsolute && <link slot="head" rel="alternate" hreflang="x-default" href={isEn ? translationAbsolute : articleURL} />}
+  {faqLd && <script slot="head" type="application/ld+json" set:html={JSON.stringify(faqLd)} />}
 
   <NavbarPersonal client:load />
 
@@ -122,6 +141,19 @@ const breadcrumbsLd = {
     <div class="max-w-3xl mx-auto px-6 md:px-12 article-prose">
       <slot />
     </div>
+
+    {/* FAQ — widoczne nagłówki-pytania + FAQPage JSON-LD (AEO) */}
+    {faq && faq.length > 0 && (
+      <div class="max-w-3xl mx-auto px-6 md:px-12 mt-16 article-prose">
+        <h2>{isEn ? 'FAQ' : 'Najczęstsze pytania'}</h2>
+        {faq.map((f) => (
+          <>
+            <h3>{f.q}</h3>
+            <p>{f.a}</p>
+          </>
+        ))}
+      </div>
+    )}
 
     {/* Tags */}
     <div class="max-w-3xl mx-auto px-6 md:px-12 mt-12 pt-8 border-t border-dark/10 dark:border-[var(--c-line)]">

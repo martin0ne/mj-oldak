@@ -16,6 +16,19 @@ translationKey: "sql-ai-adoption"
 metaTitle: "AI adoption Poland vs EU — a SQL analysis (GUS × Eurostat)"
 metaDescription: "A reproducible SQL pipeline reconciles AI adoption across GUS and Eurostat. Poland grows fast, but the gap to the EU27 widens: −4.79 → −11.59 pp."
 keywords: ["AI adoption", "GUS", "Eurostat", "SQL", "DuckDB", "data analysis", "Poland vs EU", "junior data analyst"]
+faq:
+  - q: "How many companies in Poland use AI?"
+    a: "According to Eurostat, 8.36% of firms with 10+ employees use at least one AI technology (2025); GUS reports 8.7%. That's up from 2.86% in 2021 — fast growth, but from a very low base."
+  - q: "Is Poland closing the AI adoption gap with the EU?"
+    a: "No — despite fast growth, the gap to the EU27 average is not closing but widening: from −4.79 pp (2021) to −11.59 pp (2025). Poland grows from a low base while the EU27 average — up from 7.65% to 19.95% — pulls away faster."
+  - q: "How does Poland compare with other EU countries on AI adoption?"
+    a: "Poland slipped from 26th (2021) to 31st (2024 and 2025) out of 33 countries and sits below the EU27 average in every size class. The largest gap is among medium firms: 14.77% vs 30.36% (−15.59 pp)."
+  - q: "Where does the data on AI adoption in Poland come from, and can you trust it?"
+    a: "From two independent statistics offices: GUS (Table 15 from the ICT usage in enterprises 2025 publication) and Eurostat (the isoc_eb_ai dataset, indicator E_AI_TANY). When two independent offices measure the same thing and land almost on top of each other — 8.7% vs 8.36%, a 0.34 pp difference — you can trust the number."
+  - q: "Does this data say anything about AI in Polish banks?"
+    a: "No — both sources measure the whole economy excluding the financial sector (NACE section K), and a public dataset on AI adoption specific to Polish banks does not exist (as of mid-2026). So you cannot pull any figure about AI in banks out of these numbers."
+  - q: "Can I reproduce this analysis myself?"
+    a: "Yes — the code is public under the MIT license (github.com/martin0ne/analytics-stack-pl), and the whole report rebuilds with one command: uv run dvc repro analyze_ai. Tests guard the data contracts and SQL invariants, and every dataset ships a provenance file with source and SHA-256."
 ---
 
 The intuition says Poland is catching up fast on AI. And it's true — the share of firms with 10+ employees using AI rose from 2.86% (2021) to 8.36% (2025). The twist: the same hand-written SQL shows that **the gap to the EU27 average is not closing — it's widening**, from −4.79 to −11.59 pp. We're growing, but from such a low base that the EU average is pulling away faster.

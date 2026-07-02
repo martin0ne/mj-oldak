@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { scenarios } from '../../data/demos/agent.js';
+import { track } from '../../lib/track.js';
 
 // Agent Mission Control — flagowe demo "wow": oglądasz autonomicznego agenta przy pracy.
 // Plan → kroki pipeline'u na żywo → terminal ReAct (THOUGHT/ACTION/OBSERVATION) →
@@ -49,6 +50,7 @@ export default function AgentDemo() {
         setPhase('running');
         setLines([{ prefix: 'GOAL', text: scenario.goal }]);
         setStepStates(scenario.steps.map(() => 'pending'));
+        track('demo_run', { demo: 'agent', scenario: scenarioId });
 
         let t = 600;
         scenario.steps.forEach((step, si) => {
