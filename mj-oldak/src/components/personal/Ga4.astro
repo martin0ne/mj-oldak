@@ -4,8 +4,8 @@
 //  (2) realny Measurement ID jest ustawiony (nie placeholder).
 // Dopóki GA4_ID = 'G-XXXXXXXXXX', komponent renderuje PUSTKĘ → bezpieczny do commita/deployu
 // bez aktywnego trackingu. RODO: brak PII, anonymize_ip jawnie.
-// MARCIN: podmień 'G-XXXXXXXXXX' na realny ID (GA4 → Admin → Data Streams → Web → Measurement ID).
-const GA4_ID = 'G-XXXXXXXXXX'; // <-- PLACEHOLDER do wpięcia
+// Measurement ID: property "mjoldak.pl", stream "mjoldak.pl www" (utworzone 02.07.2026).
+const GA4_ID = 'G-VRBCTJ6RNB';
 const enabled = import.meta.env.PROD && GA4_ID.startsWith('G-') && GA4_ID.length > 4 && GA4_ID !== 'G-XXXXXXXXXX';
 ---
 {enabled && (
