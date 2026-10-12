@@ -1,19 +1,9 @@
-/* === SELF-HOSTED BRAND FONTS (v2.1, 8.05.2026) === */
-/* Self-hosted from /public/fonts/ — gwarantuje load (NIE Google Fonts CDN) */
-@font-face {
-  font-family: 'Manrope';
-  src: url('/fonts/Manrope.ttf') format('truetype');
-  font-weight: 200 800;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Inter';
-  src: url('/fonts/Inter.ttf') format('truetype');
-  font-weight: 100 900;
-  font-style: normal;
-  font-display: swap;
-}
+/* === BRAND FONTS v3 (12.10.2026) === */
+/* Newsreader (serif — H1/H2), Geist (sans — body/UI), Geist Mono (kickery/meta). */
+/* Self-hosted, subsety latin + latin-ext (polski ogon) — NIE Google Fonts CDN. */
+@import './brand-fonts.css';
+
+/* Zachowane na margines dla starych stron serwisu (nie używane w nowym języku). */
 @font-face {
   font-family: 'Fraunces';
   src: url('/fonts/Fraunces.ttf') format('truetype');
@@ -26,13 +16,6 @@
   src: url('/fonts/Fraunces-Italic.ttf') format('truetype');
   font-weight: 100 900;
   font-style: italic;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'JetBrains Mono';
-  src: url('/fonts/JetBrainsMono.ttf') format('truetype');
-  font-weight: 100 800;
-  font-style: normal;
   font-display: swap;
 }
 
@@ -54,18 +37,21 @@
   html {
     scroll-behavior: smooth;
     scroll-padding-top: 100px;
-    background-color: #F5F3EE;
+    background-color: #FBFBFA;
     overscroll-behavior-y: none;
   }
   body {
     @apply bg-background text-dark font-sans m-0 p-0 overflow-x-hidden;
-    font-family: 'AtSymbolFix', 'Space Grotesk', system-ui, sans-serif;
+    font-family: 'Geist', system-ui, -apple-system, 'Helvetica Neue', sans-serif;
   }
   .font-mono {
-    font-family: 'AtSymbolFix', 'Space Mono', monospace !important;
+    font-family: 'Geist Mono', ui-monospace, 'SF Mono', monospace !important;
   }
   .font-sans {
-    font-family: 'AtSymbolFix', 'Space Grotesk', system-ui, sans-serif !important;
+    font-family: 'Geist', system-ui, -apple-system, 'Helvetica Neue', sans-serif !important;
+  }
+  .font-serif {
+    font-family: 'Newsreader', Georgia, 'Times New Roman', serif !important;
   }
 }
 
@@ -74,12 +60,13 @@
    Cała paleta dark tweakowalna z TEGO jednego miejsca. Sekcje zawsze-ciemne
    (Hero, dema = bg-dark/text-primary) NIE używają tych zmiennych i zostają ciemne w obu trybach. */
 :root {
-  --c-page:      #E4DBCD;            /* tło strony (= background) */
-  --c-ink:       #0D1B32;            /* główny tekst (= dark) */
-  --c-surface:   #F1ECE2;            /* jasna karta/panel na stronie */
-  --c-surface-2: #CAC2AE;            /* mocniejsza powierzchnia (= primary) */
-  --c-line:      rgba(13,27,50,0.10);/* hairline na jasnym */
-  --c-ink-dim:   rgba(13,27,50,0.55);/* przygaszony tekst (meta, podpisy) */
+  /* v3 editorial (12.10.2026) — ciepła biel, hairline, bez piasku */
+  --c-page:      #FBFBFA;            /* tło strony (= background) */
+  --c-ink:       #2F3437;            /* główny tekst (nigdy czysta czerń) */
+  --c-surface:   #FFFFFF;            /* karta/panel */
+  --c-surface-2: #F1F1EF;            /* mocniejsza powierzchnia */
+  --c-line:      rgba(17,17,17,0.12);/* hairline */
+  --c-ink-dim:   rgba(47,52,55,0.60);/* przygaszony tekst (meta, podpisy) */
 }
 .dark {
   --c-page:      #0A1626;            /* głęboki navy (ciemniejszy niż Hero #0D1B32) */
