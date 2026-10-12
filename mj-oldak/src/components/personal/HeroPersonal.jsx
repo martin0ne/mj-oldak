@@ -17,9 +17,9 @@ const ROTATE_MS = 9000;
 
 // Status realizacji — liczbę produktów i repo potwierdza strona (zero zmyśleń).
 const STATUS = [
-    { n: '01', head: 'Tools', body: '5 small AI products + 6 public repos — built for myself first, demos below' },
-    { n: '02', head: 'Growing now', body: 'book in editing · learning-AI blog (PL) · course for people 40+ · four trays of microgreens' },
-    { n: '03', head: 'Next', body: 'second book · a small community of people learning AI without the hype' },
+    { n: '01', head: 'Książka', body: '„Kraj bez języka" — tom o wolności i współpracy, po polsku; EN później' },
+    { n: '02', head: 'Badania', body: 'raporty z danymi i źródłami: energia, kalendarze, scraping — wszystko jawne' },
+    { n: '03', head: 'Narzędzia', body: 'mikro-aplikacje AI dla profesjonalistów, OSS skille, demo poniżej' },
 ];
 
 export default function HeroPersonal() {
@@ -87,21 +87,22 @@ export default function HeroPersonal() {
 
                 <div className="w-full max-w-2xl py-6 md:py-0">
                     <p className="hero-reveal font-mono text-[11px] uppercase tracking-[0.3em] text-primary/60 mb-7">
-                        ( one-person studio · in progress )
+                        ( jednoosobowe studio · książka + research + narzędzia )
                     </p>
 
                     {/* Statement: serif × pogrubiony grotesk × kursywa w jednym zdaniu */}
                     <h1 className="hero-reveal text-primary leading-[0.95] mb-6">
-                        <span className="font-serif text-[clamp(34px,5.4vw,64px)] font-normal">A writer, a grower, </span>
-                        <span className="font-sans text-[clamp(34px,5.4vw,64px)] font-bold tracking-[-0.03em]">a builder</span>
+                        <span className="font-serif text-[clamp(34px,5.4vw,64px)] font-normal">Książki, badania, </span>
+                        <span className="font-sans text-[clamp(34px,5.4vw,64px)] font-bold tracking-[-0.03em]">narzędzia</span>
                         <span className="font-serif text-[clamp(34px,5.4vw,64px)] font-normal"> — </span>
-                        <span className="font-serif italic text-[clamp(34px,5.4vw,64px)]">AI is the factory.</span>
+                        <span className="font-serif italic text-[clamp(34px,5.4vw,64px)]">bez korpo.</span>
                     </h1>
 
                     <p className="hero-reveal text-primary/70 text-base max-w-xl mb-9 leading-relaxed">
-                        Marcin J. Ołdak writes books, grows food in a flat and builds small
-                        tools — then writes it all up in plain language, for people who want
-                        to understand, not to be sold to.
+                        Marcin J. Ołdak pisze książkę o wolności, zbiera research —
+                        książki, dane, scrape internetu — i buduje narzędzia AI
+                        dla profesjonalistów, nie dla firm. Wszystko, co wiem,
+                        zostaje opublikowane.
                     </p>
 
                     {/* Status 01/02/03 — co jest, co powstaje, co dalej */}
@@ -123,13 +124,13 @@ export default function HeroPersonal() {
                             href="/artykuly/"
                             className="px-6 py-3 rounded-[6px] bg-[#FBFBFA] text-[#111111] text-sm font-medium hover:bg-white transition-colors duration-200 no-underline"
                         >
-                            Read the blog
+                            Czytaj blog
                         </a>
                         <a
                             href="#work"
                             className="px-6 py-3 rounded-[6px] border border-primary/35 text-primary text-sm font-medium hover:border-primary transition-colors duration-200 no-underline"
                         >
-                            See the tools
+                            Współpraca
                         </a>
                     </div>
                 </div>

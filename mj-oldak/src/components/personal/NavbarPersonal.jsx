@@ -38,13 +38,12 @@ export default function NavbarPersonal() {
     }, []);
 
     const navLinks = [
-        { href: '/#work', label: 'Tools' },
-        { href: '/#about', label: 'About' },
-        { href: '/#skills', label: 'Skills' },
-        { href: '/#analytics', label: 'Analytics' },
-        { href: '/#writing', label: 'Writing' },
-        { href: '/#community', label: 'Community' },
+        { href: '/#work', label: 'Narzędzia' },
+        { href: '/#writing', label: 'Badania' },
+        { href: '/#thinktank', label: 'Think-tank' },
         { href: '/artykuly/', label: 'Blog' },
+        { href: '/#about', label: 'O mnie' },
+        { href: '/en/articles/', label: 'EN' },
     ];
 
     const dark = isDark;
@@ -86,7 +85,7 @@ export default function NavbarPersonal() {
                                 : 'bg-[#111111] text-[#FBFBFA] hover:bg-[#333333] dark:bg-[#FBFBFA] dark:text-[#111111]'
                         }`}
                     >
-                        Get in touch
+                        Współpraca
                     </a>
                 </div>
 
@@ -127,7 +126,7 @@ export default function NavbarPersonal() {
                         className="mt-1 px-4 py-2 rounded-[6px] bg-[#111111] text-[#FBFBFA] no-underline"
                         onClick={() => setMobileOpen(false)}
                     >
-                        Get in touch
+                        Współpraca
                     </a>
                 </div>
             </div>
