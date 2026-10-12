@@ -96,49 +96,51 @@ export default function AboutSection() {
         {/* ---------- PROFESSIONAL ---------- */}
         {tab === 'pro' && (
           <div className="max-w-5xl">
-            <h2 className="font-sans font-bold text-4xl md:text-6xl tracking-[-0.03em] uppercase leading-[0.95] mb-6">
-              I ship working things<span className="text-accent">.</span>
+            <h2 className="font-serif text-4xl md:text-5xl leading-[1.05] tracking-[-0.01em] mb-6">
+              I make the computer do <em className="italic">the boring parts</em><span className="text-accent">.</span>
             </h2>
             <p className="font-serif italic text-2xl md:text-3xl leading-snug max-w-3xl mb-10 opacity-90">
-              Not slides, not past tense — live demos you can try on this page.
+              No pitch, no buzzwords — just what I actually do, and what it's for.
             </p>
             <div className="grid md:grid-cols-2 gap-10 md:gap-16">
               <div className="space-y-5 font-sans text-base leading-relaxed opacity-85">
                 <p>
-                  I've been exploring AI since 2022 and turned it into my profession in 2026 with{' '}
-                  <strong>MJ.OLDAK</strong> — my AI consulting practice. Out of dozens of experimental agents, I built{' '}
-                  <strong>5 working products</strong> for small businesses (pilot-ready, pre-deployment): invoice OCR, an
-                  email assistant, a tax-deadline agent, a report generator and a B2B sales agent.
+                  I've been poking at AI since 2022; since 2026 it's what I do for a living — as one person,{' '}
+                  <strong>MJ.OLDAK</strong>. Five of my experiments turned into things people can really use:{' '}
+                  invoice OCR, an email helper, a tax-deadline reminder, a report generator and a B2B outreach helper.
+                  You can try them further down this page.
                 </p>
                 <p>
-                  My daily toolkit is <strong>LLMs in practice</strong> — Claude (API + Claude Code), Gemini — and{' '}
-                  <strong>n8n workflow orchestration</strong>, including a working pipeline exposed as an MCP tool for AI agents.
+                  Day to day that means <strong>LLMs</strong> (Claude, Gemini) and <strong>n8n</strong> to wire them
+                  together — plus a pipeline my agents can call directly. If a free tool does the job, I'll use that
+                  instead and tell you so.
                 </p>
                 <p>
-                  Lately I've gone deeper on the <strong>data side</strong> — SQL, reproducible analytics pipelines and
-                  source-cited reporting on public datasets (see the analysis below).
+                  Lately I've gone deeper on the <strong>data side</strong> — SQL and reports where every number comes
+                  with a named source and a date (see the analysis below).
                 </p>
               </div>
               <div className="space-y-5 font-sans text-base leading-relaxed opacity-85">
                 <p>
-                  My background is unusual on purpose: <strong>business psychology</strong> sharpens discovery and designing
-                  around the user's mental model; <strong>law</strong> makes GDPR, human-in-the-loop and ethical AI second
-                  nature — designed in from day one, not bolted on.
+                  My background is deliberately odd: <strong>business psychology</strong> taught me to start from the
+                  person, not the process; <strong>law</strong> made GDPR and human oversight second nature — built in
+                  from day one, not bolted on later.
                 </p>
                 <p>
-                  Since 2022 I've also worked inside a <strong>large international corporation</strong> — a 100%
-                  English-speaking, heavily regulated environment where I automate repetitive work bottom-up.
+                  I spent a few years inside a <strong>big corporation</strong> automating the repetitive stuff nobody
+                  should be doing by hand. I liked the work, not the ladder — I'd rather sit across from a small team
+                  where people say what they mean, face to face.
                 </p>
                 <p>
-                  Everything I build is <strong>model-agnostic</strong> (swap between 4 LLM providers, zero lock-in),
-                  human-in-the-loop by design, with a RODO audit trail and Polish regulatory context (KSeF / JPK) baked in.
+                  Everything I build is <strong>model-agnostic</strong> (no lock-in), keeps a human in the loop, and
+                  speaks Polish regulatory reality (KSeF / JPK). If AI isn't the right answer for you, I'll say that too.
                 </p>
               </div>
             </div>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-6 mt-16 pt-8 border-t border-dark/10 dark:border-[var(--c-line)]">
               <FlipStat value="5" suffix="+" suffixClass="text-accent" label="working AI products (pilot-ready)" />
               <FlipStat value="2022" label="working with AI since" />
-              <FlipStat value="3.7" suffix="y" suffixClass="text-2xl opacity-50" label="English-only corporate env" />
+              <FlipStat value="1" label="person you talk to — no account managers, no sales" />
             </div>
           </div>
         )}
