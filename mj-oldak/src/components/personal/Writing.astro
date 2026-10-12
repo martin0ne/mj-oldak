@@ -1,33 +1,65 @@
 ---
-// Sekcja Writing — artykuły dwujęzyczne (PL + EN) jako dowód eksperckości.
+// Writing — v3 (12.10.2026): prace własne jako lista, nie kartony.
+// Blog (wiadomości) · książki · automatyzacje · open source — wiersze z linia włosowa.
+const works = [
+  {
+    label: 'Blog',
+    title: 'Learning AI, how to search, how to think critically',
+    meta: 'weekly · Polish',
+    href: '/artykuly/',
+    note: 'Three recurring columns: where to look for information, how to look for it, and how to check it — GUS, NIK, Eurostat, and the 3-check (source / number / logic).',
+  },
+  {
+    label: 'Book',
+    title: 'Świat, który zwolni — tom I',
+    meta: 'in editing',
+    href: '/#contact',
+    note: '20 chapters written, editorial pass in progress. Second volume (European culture) drafted this month.',
+  },
+  {
+    label: 'Automations',
+    title: 'Agents, n8n pipelines, RAG — written up as I build',
+    meta: 'articles + demos',
+    href: '/#work',
+    note: 'Long-form breakdowns of the products above: how a document agent plans its steps, why your chatbot makes things up, what the data says about AI adoption.',
+  },
+  {
+    label: 'Open source',
+    title: '6 public repositories',
+    meta: 'github.com/martin0ne',
+    href: 'https://github.com/martin0ne',
+    note: 'Tools other people can actually run — reused, forked and criticised in the open.',
+  },
+];
 ---
 <section id="writing" class="relative overflow-hidden bg-background dark:bg-[var(--c-page)] text-dark dark:text-[var(--c-ink)] px-8 md:px-16 py-24 md:py-32 border-t border-dark/10 dark:border-[var(--c-line)] transition-colors duration-500">
   <div class="max-w-5xl mx-auto relative z-10">
-    <p class="font-mono text-xs uppercase tracking-[0.3em] opacity-60 mb-6">
-      <span class="text-[#B07A4E]">—</span> 06 · Writing
+    <p class="font-mono text-xs uppercase tracking-[0.24em] opacity-50 mb-6">
+      <span class="text-[#B07A4E]">—</span> 06 · Writing &amp; work in progress
     </p>
 
-    <h2 class="font-sans font-bold text-4xl md:text-6xl tracking-[-0.03em] uppercase leading-[0.95] mb-8">
-      I write about AI<br />for business<span class="text-accent">.</span>
+    <h2 class="font-serif text-4xl md:text-5xl leading-[1.02] tracking-[-0.01em] mb-5">
+      What I write, <em class="italic">and what is still being written</em>.
     </h2>
+    <p class="font-sans text-base leading-relaxed opacity-70 max-w-2xl mb-12">
+      Own work first: a blog, books, automation write-ups and open source — the log of a one-person
+      studio, updated as things ship.
+    </p>
 
-    <div class="grid md:grid-cols-[1.4fr_1fr] gap-10 items-start">
-      <p class="font-sans text-base leading-relaxed opacity-80 max-w-xl">
-        Plain-language articles in Polish and English on AI agents, automation, RAG and data —
-        from how a document agent plans its own steps to what the data says about AI adoption in
-        Poland vs the EU. Written for business owners and recruiters, not just engineers.
-      </p>
-      <div class="flex flex-col gap-3">
+    <div class="border-t border-dark/12 dark:border-[var(--c-line)]">
+      {works.map((w) => (
         <a
-          href="/artykuly/"
-          data-art-pl="/artykuly/"
-          data-art-en="/en/articles/"
-          class="inline-block text-center px-8 py-4 rounded-[2rem] bg-dark dark:bg-accent text-primary dark:text-dark font-sans font-bold text-base hover:bg-accent dark:hover:bg-primary hover:scale-[1.02] transition-all duration-300 no-underline"
+          href={w.href}
+          class="group grid grid-cols-1 sm:grid-cols-[120px_1fr] gap-1 sm:gap-6 py-5 border-b border-dark/12 dark:border-[var(--c-line)] no-underline transition-colors duration-200 hover:bg-dark/[0.02] dark:hover:bg-white/[0.03]"
         >
-          Browse articles →
+          <span class="font-mono text-[10px] uppercase tracking-[0.18em] opacity-55 pt-1.5">{w.label}</span>
+          <span>
+            <span class="font-serif text-xl leading-snug block group-hover:underline decoration-1 underline-offset-4">{w.title}</span>
+            <span class="font-mono text-[10px] uppercase tracking-[0.16em] opacity-50 block mt-1">{w.meta}</span>
+            <span class="font-sans text-sm leading-relaxed opacity-75 block mt-2 max-w-2xl">{w.note}</span>
+          </span>
         </a>
-        <span class="font-mono text-[10px] text-center opacity-50 uppercase tracking-[0.15em]">Polish &amp; English</span>
-      </div>
+      ))}
     </div>
   </div>
 </section>

@@ -43,6 +43,7 @@ export default function NavbarPersonal() {
         { href: '/#skills', label: 'Skills' },
         { href: '/#analytics', label: 'Analytics' },
         { href: '/#writing', label: 'Writing' },
+        { href: '/#community', label: 'Community' },
         { href: '/artykuly/', label: 'Blog' },
     ];
 

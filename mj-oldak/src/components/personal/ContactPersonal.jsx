@@ -94,18 +94,19 @@ export default function ContactPersonal() {
         <section id="contact" data-nav-theme="dark" className="relative overflow-hidden bg-dark text-primary px-8 md:px-16 pt-24 md:pt-32 pb-12">
             <div className="relative z-10 max-w-5xl mx-auto">
                 <p className="font-mono text-xs uppercase tracking-[0.3em] opacity-60 mb-6">
-                    <span className="text-accent">—</span> 07 · Contact
+                    <span className="text-accent">—</span> 08 · Collaborate
                 </p>
 
-                <h2 className="font-sans font-bold text-4xl md:text-6xl tracking-[-0.03em] uppercase leading-[0.95] mb-8">
-                    Let's talk<span className="text-accent">.</span>
+                <h2 className="font-serif text-4xl md:text-5xl leading-[1.02] tracking-[-0.01em] mb-8">
+                    Let's build something <em className="italic">together</em><span className="text-accent">.</span>
                 </h2>
 
                 <div className="grid md:grid-cols-2 gap-12 items-start">
                     <div>
                         <p className="font-sans text-base leading-relaxed opacity-80 mb-8 max-w-md">
-                            Hiring for an AI / automation role, or just want to see these systems up close?
-                            Drop me a message — I reply within 24h.
+                            Hiring for an AI / automation role, building something of your own, or just
+                            curious about the experiments above? I'm looking for professionals and
+                            enthusiasts to work with — drop me a message, I reply within 24h.
                         </p>
                         <ul className="space-y-4 font-mono text-sm">
                             <li className="flex items-center gap-3">
