@@ -9,7 +9,7 @@ readingTime: 9
 featured: false
 draft: true
 metaTitle: "Solar EU punk — domowa rynna słoneczna: dane, koszty, prawo (2026)"
-metaDescription: "Analiza domowej rynny parabolicznej dla Polski: DNI z PVGIS, geometria 1,5 m², ceny BOM z 12.10.2026, prawo (art. 29 PB, wyrób budowlany), punkt zderzenia z pompą ciepła."
+metaDescription: "Analiza domowej rynny parabolicznej: DNI z PVGIS, geometria 1,5 m², ceny BOM 12.10.2026, prawo (art. 29 PB) i punkt zderzenia z pompą ciepła."
 keywords: ["solar termalny dom", "rynna paraboliczna", "kolektor słoneczny DIY", "solar punk", "magazyn ciepła"]
 faq:
   - q: "Ile słońca jest w Polsce na rynnę paraboliczną?"
