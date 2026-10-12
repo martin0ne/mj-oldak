@@ -13,6 +13,8 @@ export const TAGS = [
   'vat-pit',
   'tutorial',
   'build',
+  'analiza',
+  'solar',
 ] as const;
 
 export const CATEGORIES = ['edukacja', 'case-study', 'demo'] as const;
