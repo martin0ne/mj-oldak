@@ -38,7 +38,7 @@ export default function NavbarPersonal() {
     }, []);
 
     const navLinks = [
-        { href: '/#work', label: 'Work' },
+        { href: '/#work', label: 'Tools' },
         { href: '/#about', label: 'About' },
         { href: '/#skills', label: 'Skills' },
         { href: '/#analytics', label: 'Analytics' },
