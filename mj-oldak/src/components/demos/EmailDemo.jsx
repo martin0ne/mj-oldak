@@ -44,7 +44,7 @@ export default function EmailDemo() {
     };
 
     return (
-        <div className="rounded-3xl border border-primary/15 bg-dark text-primary overflow-hidden">
+        <div className="rounded-lg border border-primary/15 bg-dark text-primary overflow-hidden">
             <style>{`
                 @keyframes emailRowIn {
                     from { opacity: 0; transform: translateY(6px); }
@@ -55,10 +55,10 @@ export default function EmailDemo() {
             {/* Pasek tytułowy */}
             <div className="flex flex-wrap items-center justify-between gap-3 px-6 py-4 border-b border-primary/10 bg-primary/[0.03]">
                 <div className="flex items-center gap-3">
-                    <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
+                    <span className="w-2 h-2 rounded-md bg-accent" />
                     <span className="font-sans font-bold text-lg tracking-tight">Email Assistant</span>
                 </div>
-                <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-accent border border-accent/40 bg-accent/10 rounded-full px-3 py-1">
+                <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-accent border border-accent/40 bg-accent/10 rounded-md px-3 py-1">
                     Interactive demo · sample data
                 </span>
             </div>
@@ -82,7 +82,7 @@ export default function EmailDemo() {
                                     <div className="flex items-baseline justify-between gap-2">
                                         <span className="font-sans font-semibold text-[13px] truncate">{m.sender}</span>
                                         {m.id === selectedId && phase === 'done' && cat && (
-                                            <span className={`shrink-0 font-mono text-[9px] uppercase tracking-[0.12em] border rounded-full px-2 py-0.5 ${badgeClasses[cat.color]}`}>
+                                            <span className={`shrink-0 font-mono text-[9px] uppercase tracking-[0.12em] border rounded-md px-2 py-0.5 ${badgeClasses[cat.color]}`}>
                                                 {cat.label}
                                             </span>
                                         )}
@@ -106,7 +106,7 @@ export default function EmailDemo() {
 
                         {mail && phase === 'classifying' && (
                             <div className="rounded-xl border border-primary/15 bg-primary/[0.04] min-h-[280px] flex flex-col items-center justify-center gap-3">
-                                <div className="w-6 h-6 rounded-full border-2 border-accent border-t-transparent animate-spin" />
+                                <div className="w-6 h-6 rounded-md border-2 border-accent border-t-transparent animate-spin" />
                                 <span className="font-mono text-xs opacity-60">Classifying…</span>
                             </div>
                         )}
@@ -115,7 +115,7 @@ export default function EmailDemo() {
                             <div className="space-y-3">
                                 <div className="rounded-xl border border-primary/15 bg-primary/[0.04] p-4" style={{ animation: 'emailRowIn 0.3s ease both' }}>
                                     <div className="flex items-center justify-between gap-3 flex-wrap">
-                                        <span className={`font-mono text-[10px] uppercase tracking-[0.15em] border rounded-full px-3 py-1 ${badgeClasses[cat.color]}`}>
+                                        <span className={`font-mono text-[10px] uppercase tracking-[0.15em] border rounded-md px-3 py-1 ${badgeClasses[cat.color]}`}>
                                             {cat.label}
                                         </span>
                                         <span className="font-mono text-[9px] opacity-40">confidence {mail.confidence}</span>
@@ -141,20 +141,20 @@ export default function EmailDemo() {
                                         {/* Human-in-the-loop: użytkownik decyduje, edytuje, „wysyła" */}
                                         <div className="flex items-center gap-2 mt-3">
                                             {sent ? (
-                                                <span className="font-mono text-[10px] uppercase tracking-[0.12em] text-green-400 border border-green-400/50 bg-green-400/10 rounded-full px-3 py-1.5">
+                                                <span className="font-mono text-[10px] uppercase tracking-[0.12em] text-green-400 border border-green-400/50 bg-green-400/10 rounded-md px-3 py-1.5">
                                                     Sent ✓
                                                 </span>
                                             ) : (
                                                 <>
                                                     <button
                                                         onClick={() => setEditing((v) => !v)}
-                                                        className="font-mono text-[10px] uppercase tracking-[0.12em] text-primary/80 border border-primary/30 hover:border-primary/60 hover:text-primary rounded-full px-3 py-1.5 transition-colors"
+                                                        className="font-mono text-[10px] uppercase tracking-[0.12em] text-primary/80 border border-primary/30 hover:border-primary/60 hover:text-primary rounded-md px-3 py-1.5 transition-colors"
                                                     >
                                                         {editing ? 'Done editing' : 'Edit'}
                                                     </button>
                                                     <button
                                                         onClick={() => { setEditing(false); setSent(true); }}
-                                                        className="font-mono text-[10px] uppercase tracking-[0.12em] text-primary border border-accent/50 bg-accent/15 hover:bg-accent/25 rounded-full px-3 py-1.5 transition-colors"
+                                                        className="font-mono text-[10px] uppercase tracking-[0.12em] text-primary border border-accent/50 bg-accent/15 hover:bg-accent/25 rounded-md px-3 py-1.5 transition-colors"
                                                     >
                                                         Send
                                                     </button>

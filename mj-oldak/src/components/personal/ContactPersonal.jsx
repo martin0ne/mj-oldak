@@ -92,7 +92,6 @@ export default function ContactPersonal() {
 
     return (
         <section id="contact" data-nav-theme="dark" className="relative overflow-hidden bg-dark text-primary px-8 md:px-16 pt-24 md:pt-32 pb-12">
-            <div className="pointer-events-none absolute -top-[10%] -right-[8%] w-[55%] h-[75%] rounded-full blur-[130px] opacity-[0.38]" style={{ background: 'radial-gradient(circle, #4F8EBA 0%, transparent 70%)' }} aria-hidden="true"></div>
             <div className="relative z-10 max-w-5xl mx-auto">
                 <p className="font-mono text-xs uppercase tracking-[0.3em] opacity-60 mb-6">
                     <span className="text-accent">—</span> 07 · Contact

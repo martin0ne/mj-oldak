@@ -93,19 +93,19 @@ export default function AgentDemo() {
 
     const statusIcon = (s) =>
         s === 'done' ? <span className="text-green-400">✓</span>
-        : s === 'running' ? <span className="inline-block w-3 h-3 rounded-full border-2 border-accent border-t-transparent animate-spin" />
+        : s === 'running' ? <span className="inline-block w-3 h-3 rounded-md border-2 border-accent border-t-transparent animate-spin" />
         : s === 'failed' ? <span className="text-red-400">✗</span>
         : <span className="opacity-30">○</span>;
 
     return (
-        <div className="rounded-3xl border border-accent/40 bg-dark text-primary overflow-hidden shadow-[0_0_60px_-15px_rgba(79,142,186,0.45)]">
+        <div className="rounded-lg border border-accent/40 bg-dark text-primary overflow-hidden">
             {/* Pasek tytułowy */}
             <div className="flex flex-wrap items-center justify-between gap-3 px-6 py-4 border-b border-primary/10 bg-accent/[0.06]">
                 <div className="flex items-center gap-3">
-                    <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
+                    <span className="w-2 h-2 rounded-md bg-accent" />
                     <span className="font-sans font-bold text-lg tracking-tight">Agent Mission Control</span>
                 </div>
-                <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-accent border border-accent/40 bg-accent/10 rounded-full px-3 py-1">
+                <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-accent border border-accent/40 bg-accent/10 rounded-md px-3 py-1">
                     Scripted simulation · watch an AI agent work
                 </span>
             </div>
@@ -117,7 +117,7 @@ export default function AgentDemo() {
                         <button
                             key={s.id}
                             onClick={() => pickScenario(s.id)}
-                            className={`px-4 py-2 rounded-full font-mono text-[11px] transition-colors border ${
+                            className={`px-4 py-2 rounded-md font-mono text-[11px] transition-colors border ${
                                 s.id === scenarioId
                                     ? 'bg-accent/20 border-accent text-primary'
                                     : 'border-primary/20 text-primary/60 hover:border-primary/50 hover:text-primary'
@@ -129,7 +129,7 @@ export default function AgentDemo() {
                     <button
                         onClick={run}
                         disabled={phase === 'running'}
-                        className="ml-auto px-7 py-2.5 rounded-full bg-accent text-primary font-sans font-bold text-sm hover:scale-[1.03] transition-transform disabled:opacity-50 disabled:hover:scale-100"
+                        className="ml-auto px-7 py-2.5 rounded-md bg-accent text-primary font-sans font-bold text-sm hover:scale-[1.03] transition-transform disabled:opacity-50 disabled:hover:scale-100"
                     >
                         {phase === 'idle' ? '▶ Run agent' : phase === 'running' ? 'Agent working…' : '▶ Run again'}
                     </button>
@@ -157,7 +157,7 @@ export default function AgentDemo() {
                             {/* Bramka human approval jako ostatni "krok" */}
                             <div className={`flex items-center gap-3 px-4 py-3 transition-colors ${phase === 'approval' ? 'bg-sunset/15' : ''}`}>
                                 <span className="w-4 shrink-0 text-center font-mono text-sm">
-                                    {phase === 'done' ? <span className="text-green-400">✓</span> : phase === 'approval' ? <span className="text-sunset animate-pulse">⏸</span> : <span className="opacity-30">○</span>}
+                                    {phase === 'done' ? <span className="text-green-400">✓</span> : phase === 'approval' ? <span className="text-sunset">⏸</span> : <span className="opacity-30">○</span>}
                                 </span>
                                 <div className="min-w-0">
                                     <div className="font-sans font-semibold text-sm leading-tight">Human approval</div>
@@ -166,7 +166,7 @@ export default function AgentDemo() {
                                 {phase === 'approval' && (
                                     <button
                                         onClick={approve}
-                                        className="ml-auto shrink-0 px-4 py-1.5 rounded-full bg-sunset text-dark font-sans font-bold text-xs hover:scale-[1.05] transition-transform animate-pulse"
+                                        className="ml-auto shrink-0 px-4 py-1.5 rounded-md bg-sunset text-dark font-sans font-bold text-xs hover:scale-[1.05] transition-transform"
                                     >
                                         Approve
                                     </button>
@@ -200,7 +200,7 @@ export default function AgentDemo() {
                                     <span className="opacity-85">{l.text}</span>
                                 </div>
                             ))}
-                            {phase === 'running' && <span className="inline-block w-2 h-4 bg-accent/80 animate-pulse align-middle" />}
+                            {phase === 'running' && <span className="inline-block w-2 h-4 bg-accent/80 align-middle" />}
                         </div>
                     </div>
                 </div>

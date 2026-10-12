@@ -1,6 +1,8 @@
 ---
-// Sekcja Work — portfolio-dowód: 4 interaktywne dema + live Sales demo + n8n pipeline.
-// Każdy produkt = mikro-case (problem → rozwiązanie → efekt) + demo do pobawienia się.
+// Sekcja Work — v3 faza 2 (12.10.2026): anty-AI-slop.
+// Było: 3 równe karty P/S/E z rozstrzelonymi literami, rounded-3xl, glow, pulsujące kropki, pigułki.
+// Jest: wiersz PROBLEM/SOLUTION/EFFECT z linia włosowa (etykieta mono | tekst), radius 8px,
+//       flat, akcenty tylko semantycznie na etykietach. Dema bez glow i rounded-full.
 import AgentDemo from '../demos/AgentDemo.jsx';
 import OcrDemo from '../demos/OcrDemo.jsx';
 import EmailDemo from '../demos/EmailDemo.jsx';
@@ -33,84 +35,80 @@ const cases = [
   },
 ];
 const caseFor = (id) => cases.find((c) => c.id === id);
+const rows = (c) => [
+  { label: 'Problem', text: c.problem },
+  { label: 'Solution', text: c.solution },
+  { label: 'Effect', text: c.effect },
+];
 ---
 <section id="work" class="relative overflow-hidden bg-background dark:bg-[var(--c-page)] text-dark dark:text-[var(--c-ink)] px-8 md:px-16 py-24 md:py-32 transition-colors duration-500">
-  <!-- Akcent sekcji: sunset terracotta glow (drugi kolor palety, rozróżnia od About) -->
-  <div class="pointer-events-none absolute top-[10%] -left-[10%] w-[58%] h-[78%] rounded-full blur-[130px] opacity-[0.14] dark:opacity-[0.48]" style="background: radial-gradient(circle, #C87E3B 0%, transparent 70%)"></div>
   <div class="max-w-5xl mx-auto relative z-10">
-    <p class="font-mono text-xs uppercase tracking-[0.3em] opacity-60 mb-6">
+    <p class="font-mono text-xs uppercase tracking-[0.24em] opacity-50 mb-6">
       <span class="text-sunset">—</span> 02 · Work
     </p>
 
-    <h2 class="font-sans font-bold text-4xl md:text-6xl tracking-[-0.03em] uppercase leading-[0.95] mb-8">
-      Don't read it — <span class="text-accent">try it</span>.
+    <h2 class="font-serif text-4xl md:text-5xl leading-[1.02] tracking-[-0.01em] mb-8">
+      Don't read it — <em class="italic">try it</em>.
     </h2>
 
-    <p class="font-serif italic text-2xl md:text-3xl leading-snug max-w-3xl mb-6 opacity-90">
+    <p class="font-serif italic text-xl md:text-2xl leading-snug max-w-3xl mb-6 opacity-90">
       Five AI products I built for small businesses (OCR, email assistant, tax-deadline agent, report generator + a B2B Sales Agent), as interactive demos.
     </p>
-    <p class="font-sans text-base max-w-3xl mb-14 opacity-75 leading-relaxed">
+    <p class="font-sans text-base max-w-3xl mb-14 opacity-70 leading-relaxed">
       Everything below runs in your browser on sample data — no sign-ups, no tracking.
       The full versions run on FastAPI + Claude API and are pilot-ready for Polish accounting offices.
     </p>
 
-    <!-- Highlight: live demo + n8n pipeline -->
-    <div class="grid md:grid-cols-2 gap-5 mb-14">
+    <!-- Highlight: live demo + n8n pipeline — flat, bez glow -->
+    <div class="grid md:grid-cols-2 gap-4 mb-14">
       <a
         href="https://demo.mjoldak.pl"
         target="_blank"
         rel="noopener"
-        class="group rounded-3xl border border-dark/15 bg-dark text-primary p-7 hover:border-accent hover:scale-[1.02] hover:shadow-[0_14px_44px_-14px_rgba(79,142,186,0.55)] transition-all duration-300 no-underline block"
+        class="group rounded-lg border border-dark/15 bg-dark text-primary p-7 hover:border-accent transition-colors duration-200 no-underline block"
       >
         <div class="flex items-center gap-2 mb-3">
-          <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
-          <span class="font-mono text-[10px] uppercase tracking-[0.2em] text-green-400">Live demo</span>
+          <span class="w-1.5 h-1.5 bg-green-400"></span>
+          <span class="font-mono text-[10px] uppercase tracking-[0.18em] text-green-400">Live demo</span>
         </div>
-        <h3 class="font-sans font-bold text-xl mb-2 tracking-tight">Sales Agent B2B — live demo</h3>
-        <p class="font-sans text-sm opacity-85 leading-relaxed mb-5">
+        <h3 class="font-serif text-xl mb-2 leading-snug">Sales Agent B2B — live demo</h3>
+        <p class="font-sans text-sm opacity-80 leading-relaxed mb-5">
           A deployed demo: form → GenAI lead classification (HOT/WARM/COLD with reasoning) → EU-hosted database, with row-level access scoping and a human-in-the-loop decision log (GDPR Art. 22 by design).
         </p>
-        <span class="inline-flex items-center gap-1.5 font-mono text-xs font-bold uppercase tracking-[0.1em] text-dark bg-accent group-hover:bg-accent/90 rounded-full px-4 py-2 transition-colors">
-          Open demo.mjoldak.pl <span aria-hidden="true">↗</span>
+        <span class="font-mono text-xs uppercase tracking-[0.12em] text-accent group-hover:underline">
+          demo.mjoldak.pl ↗
         </span>
       </a>
-
-      <div class="rounded-3xl border border-dark/15 bg-dark text-primary p-7">
+      <div class="rounded-lg border border-dark/15 bg-dark text-primary p-7">
         <div class="flex items-center gap-2 mb-3">
-          <span class="w-2 h-2 rounded-full bg-accent"></span>
-          <span class="font-mono text-[10px] uppercase tracking-[0.2em] text-accent">Agentic infrastructure</span>
+          <span class="w-1.5 h-1.5 bg-accent"></span>
+          <span class="font-mono text-[10px] uppercase tracking-[0.18em] text-accent">Agentic infrastructure</span>
         </div>
-        <h3 class="font-sans font-bold text-xl mb-2 tracking-tight">n8n pipeline as an MCP tool</h3>
-        <p class="font-sans text-sm opacity-85 leading-relaxed mb-5">
+        <h3 class="font-serif text-xl mb-2 leading-snug">n8n pipeline as an MCP tool</h3>
+        <p class="font-sans text-sm opacity-80 leading-relaxed mb-5">
           A working n8n workflow (Webhook → Gemini → EU-hosted DB), green end-to-end and exposed via the
           Model Context Protocol — so AI agents can call it as a tool.
         </p>
-        <div class="font-mono text-[11px] tracking-wide text-accent bg-accent/10 border border-accent/25 rounded-lg px-3 py-2 leading-relaxed">
+        <p class="font-mono text-[11px] tracking-wide text-accent/90">
           Webhook → LLM → Parse → DB (EU) · instance-level MCP
-        </div>
+        </p>
       </div>
     </div>
 
-    <!-- Dema z mikro-case'ami (agent = flagowy otwieracz) -->
-    <div class="space-y-16">
+    <!-- Dema: każdy przypadek = wiersze Problem/Solution/Effect z linia włosowa -->
+    <div class="space-y-12">
       {['agent', 'ocr', 'email', 'reporting'].map((id) => {
         const c = caseFor(id);
         return (
-          <div class="rounded-3xl border border-dark/10 dark:border-[var(--c-line)] bg-dark/[0.015] p-5 md:p-7">
-            <div class="grid sm:grid-cols-3 gap-3 sm:gap-4 mb-7">
-              <div class="rounded-xl bg-dark/[0.03] dark:bg-[var(--c-surface)] border border-dark/10 dark:border-[var(--c-line)] border-l-2 border-l-sunset p-5">
-                <div class="flex justify-between font-mono text-sm md:text-base uppercase text-sunset font-bold mb-3" aria-label="Problem">{'PROBLEM'.split('').map((ch) => <span aria-hidden="true">{ch}</span>)}</div>
-                <p class="font-sans text-[14px] md:text-[15px] leading-relaxed text-justify text-dark/85 dark:text-[var(--c-ink)]">{c.problem}</p>
-              </div>
-              <div class="rounded-xl bg-dark/[0.03] dark:bg-[var(--c-surface)] border border-dark/10 dark:border-[var(--c-line)] border-l-2 border-l-accent p-5">
-                <div class="flex justify-between font-mono text-sm md:text-base uppercase text-accent font-bold mb-3" aria-label="Solution">{'SOLUTION'.split('').map((ch) => <span aria-hidden="true">{ch}</span>)}</div>
-                <p class="font-sans text-[14px] md:text-[15px] leading-relaxed text-justify text-dark/85 dark:text-[var(--c-ink)]">{c.solution}</p>
-              </div>
-              <div class="rounded-xl bg-dark/[0.03] dark:bg-[var(--c-surface)] border border-dark/10 dark:border-[var(--c-line)] border-l-2 border-l-green-600 p-5">
-                <div class="flex justify-between font-mono text-sm md:text-base uppercase text-green-600 font-bold mb-3" aria-label="Effect">{'EFFECT'.split('').map((ch) => <span aria-hidden="true">{ch}</span>)}</div>
-                <p class="font-sans text-[14px] md:text-[15px] leading-relaxed text-justify text-dark/85 dark:text-[var(--c-ink)]">{c.effect}</p>
-              </div>
-            </div>
+          <div class="rounded-lg border border-dark/10 dark:border-[var(--c-line)] bg-dark/[0.015] p-5 md:p-7">
+            <dl class="mb-7 border-t border-dark/10 dark:border-[var(--c-line)]">
+              {rows(c).map((r) => (
+                <div class="grid grid-cols-1 sm:grid-cols-[110px_1fr] gap-1 sm:gap-5 py-3.5 border-b border-dark/10 dark:border-[var(--c-line)]">
+                  <dt class="font-mono text-[10px] uppercase tracking-[0.18em] opacity-60 pt-1">{r.label}</dt>
+                  <dd class="font-sans text-[15px] leading-relaxed m-0 text-dark/85 dark:text-[var(--c-ink)]">{r.text}</dd>
+                </div>
+              ))}
+            </dl>
             {id === 'agent' && <AgentDemo client:load />}
             {id === 'ocr' && <OcrDemo client:visible />}
             {id === 'email' && <EmailDemo client:visible />}

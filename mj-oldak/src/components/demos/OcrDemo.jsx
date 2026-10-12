@@ -48,7 +48,7 @@ export default function OcrDemo() {
     };
 
     return (
-        <div className="rounded-3xl border border-primary/15 bg-dark text-primary overflow-hidden">
+        <div className="rounded-lg border border-primary/15 bg-dark text-primary overflow-hidden">
             <style>{`
                 @keyframes ocrScan {
                     0% { top: 0; opacity: 0; }
@@ -65,10 +65,10 @@ export default function OcrDemo() {
             {/* Pasek tytułowy */}
             <div className="flex flex-wrap items-center justify-between gap-3 px-6 py-4 border-b border-primary/10 bg-primary/[0.03]">
                 <div className="flex items-center gap-3">
-                    <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
+                    <span className="w-2 h-2 rounded-md bg-accent" />
                     <span className="font-sans font-bold text-lg tracking-tight">OCR Invoice Reader</span>
                 </div>
-                <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-accent border border-accent/40 bg-accent/10 rounded-full px-3 py-1">
+                <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-accent border border-accent/40 bg-accent/10 rounded-md px-3 py-1">
                     Interactive demo · sample data
                 </span>
             </div>
@@ -81,7 +81,7 @@ export default function OcrDemo() {
                             <button
                                 key={inv.id}
                                 onClick={() => selectInvoice(inv.id)}
-                                className={`px-4 py-2 rounded-full font-mono text-xs transition-colors border ${
+                                className={`px-4 py-2 rounded-md font-mono text-xs transition-colors border ${
                                     inv.id === selectedId
                                         ? 'bg-accent/20 border-accent text-primary'
                                         : 'border-primary/20 text-primary/60 hover:border-primary/50 hover:text-primary'
@@ -95,7 +95,7 @@ export default function OcrDemo() {
                     <button
                         onClick={process}
                         disabled={phase === 'processing'}
-                        className="shrink-0 self-start min-w-[150px] text-center whitespace-nowrap px-6 py-2.5 rounded-full bg-accent text-primary font-sans font-bold text-sm hover:scale-[1.03] transition-transform disabled:opacity-50 disabled:hover:scale-100"
+                        className="shrink-0 self-start min-w-[150px] text-center whitespace-nowrap px-6 py-2.5 rounded-md bg-accent text-primary font-sans font-bold text-sm hover:scale-[1.03] transition-transform disabled:opacity-50 disabled:hover:scale-100"
                     >
                         {phase === 'processing' ? 'Processing…' : phase === 'done' ? 'Process again' : 'Process invoice'}
                     </button>
@@ -120,7 +120,7 @@ export default function OcrDemo() {
                             {/* Linia skanu */}
                             {phase === 'processing' && (
                                 <div
-                                    className="absolute left-0 right-0 h-[2px] bg-accent shadow-[0_0_16px_2px_rgba(79,142,186,0.8)]"
+                                    className="absolute left-0 right-0 h-[2px] bg-accent"
                                     style={{ animation: 'ocrScan 1.5s linear forwards' }}
                                 />
                             )}
@@ -145,7 +145,7 @@ export default function OcrDemo() {
 
                         {phase === 'processing' && (
                             <div className="rounded-xl border border-primary/15 bg-primary/[0.04] min-h-[260px] flex flex-col items-center justify-center gap-3">
-                                <div className="w-6 h-6 rounded-full border-2 border-accent border-t-transparent animate-spin" />
+                                <div className="w-6 h-6 rounded-md border-2 border-accent border-t-transparent animate-spin" />
                                 <span className="font-mono text-xs opacity-60">Reading document…</span>
                             </div>
                         )}

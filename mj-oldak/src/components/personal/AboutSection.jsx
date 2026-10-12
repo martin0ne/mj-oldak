@@ -61,10 +61,6 @@ export default function AboutSection() {
       id="about"
       className="relative overflow-hidden bg-background dark:bg-[var(--c-page)] text-dark dark:text-[var(--c-ink)] px-8 md:px-16 py-16 md:py-24 transition-colors duration-500"
     >
-      <div
-        className="pointer-events-none absolute -top-[12%] -right-[8%] w-[58%] h-[80%] rounded-full blur-[120px] opacity-[0.14] dark:opacity-50"
-        style={{ background: 'radial-gradient(circle, #4F8EBA 0%, transparent 70%)' }}
-      ></div>
 
       <div className="max-w-6xl mx-auto relative z-10">
         {/* Toggle: What I do | Who I am — wskaźnik + prominent "more" cue (jak prototyp) */}
@@ -85,7 +81,7 @@ export default function AboutSection() {
             <button
               type="button"
               onClick={() => setTab('me')}
-              className="group flex items-center gap-2 text-accent animate-pulse hover:animate-none hover:opacity-70 transition-opacity"
+              className="group flex items-center gap-2 text-accent hover:animate-none hover:opacity-70 transition-opacity"
               aria-label="See who I am"
             >
               <svg width="56" height="28" viewBox="0 0 56 28" fill="none" aria-hidden="true">
