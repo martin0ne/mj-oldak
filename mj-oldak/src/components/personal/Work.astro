@@ -112,7 +112,7 @@ const rows = (c) => [
             </dl>
             {id === 'agent' && <AgentDemo client:load />}
             {id === 'ocr' && <OcrDemo client:visible />}
-            {id === 'email' && <EmailDemo client:visible />}
+            {id === 'email' && <EmailDemo client:visible ssr={false} />}
             {id === 'reporting' && <ReportingDemo client:visible />}
           </div>
         );

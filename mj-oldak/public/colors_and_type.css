@@ -50,11 +50,11 @@
   /* ──────────────────────────────────────────────
      CORE PALETTE — Coastal v2.1
      ────────────────────────────────────────────── */
-  --color-background: #E4DBCD;   /* Warm Sand — main page bg */
-  --color-primary:    #CAC2AE;   /* Warm Mid — surfaces, cards-on-light, "white" replacement */
-  --color-dark:       #0D1B32;   /* Sea Navy — hero, footer, base text on light */
-  --color-accent:     #4F8EBA;   /* Sea Blue — CTA, focus, hairlines (DYNAMIC: rotates per photo) */
-  --color-sunset:     #C87E3B;   /* Sunset Terracotta — secondary accent / premium hover */
+  --color-background: #ffffff;   /* Warm Sand — main page bg */
+  --color-primary:    #f2f2f1;   /* Warm Mid — surfaces, cards-on-light, "white" replacement */
+  --color-dark:       #0a0a0a;   /* Sea Navy — hero, footer, base text on light */
+  --color-accent:     #111111;   /* Sea Blue — CTA, focus, hairlines (DYNAMIC: rotates per photo) */
+  --color-sunset:     #6f6f6f;   /* Sunset Terracotta — secondary accent / premium hover */
 
   /* Foreground / background semantic aliases */
   --bg:        var(--color-background);
@@ -155,14 +155,14 @@
      SHADOWS / GLOW (no hard drop on dark)
      ────────────────────────────────────────────── */
   --glow-accent:  0 8px 32px color-mix(in srgb, var(--color-accent) 50%, transparent);
-  --glow-soft:    0 8px 40px rgba(79,142,186,0.10);
-  --glow-strong:  0 8px 40px rgba(79,142,186,0.18);
-  --shadow-card:  0 1px 0 rgba(13,27,50,0.04), 0 8px 24px rgba(13,27,50,0.06);
-  --shadow-lift:  0 12px 40px rgba(13,27,50,0.10);
+  --glow-soft:    0 8px 40px rgba(17,17,17,0.10);
+  --glow-strong:  0 8px 40px rgba(17,17,17,0.18);
+  --shadow-card:  0 1px 0 rgba(10,10,10,0.04), 0 8px 24px rgba(10,10,10,0.06);
+  --shadow-lift:  0 12px 40px rgba(10,10,10,0.10);
 
   /* Glassmorphism (pill navbar) */
-  --glass-dark:   rgba(13,27,50,0.72);
-  --glass-light:  rgba(228,219,205,0.70);
+  --glass-dark:   rgba(10,10,10,0.72);
+  --glass-light:  rgba(255,255,255,0.70);
   --glass-blur:   blur(16px) saturate(1.4);
 
   /* Motion */
@@ -314,7 +314,7 @@
   box-shadow: none;
 }
 .cta--ghost:hover {
-  background: rgba(13,27,50,0.05);
+  background: rgba(10,10,10,0.05);
   border-color: var(--color-dark);
   color: var(--color-dark);
 }
@@ -376,7 +376,7 @@
 .field {
   width: 100%;
   padding: 16px 20px;
-  background: rgba(13,27,50,0.04);
+  background: rgba(10,10,10,0.04);
   border: 1px solid var(--hairline);
   border-radius: var(--radius-md);
   font-family: var(--font-mono);
@@ -431,7 +431,7 @@
   background-image: repeating-linear-gradient(
     0deg,
     transparent 0 2px,
-    rgba(202,194,174,0.5) 2px 4px
+    rgba(242,242,241,0.5) 2px 4px
   );
   mix-blend-mode: multiply;
   opacity: 0.35;

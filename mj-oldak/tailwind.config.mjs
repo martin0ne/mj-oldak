@@ -9,10 +9,10 @@ export default {
       colors: {
         // Brand v2.1 — derived from Marcin's coastal/travel photos (sea-dominant)
         background: '#FBFBFA',  // editorial canvas (v3) — ciepła biel, nie piasek
-        primary: '#CAC2AE',     // warm mid surface
-        accent: '#4F8EBA',      // deep sea blue
-        dark: '#0D1B32',        // deep sea navy
-        sunset: '#C87E3B',      // optional secondary — sunset terracotta
+        primary: '#f2f2f1',     // warm mid surface
+        accent: '#111111',      // deep sea blue
+        dark: '#0a0a0a',        // deep sea navy
+        sunset: '#6f6f6f',      // optional secondary — sunset terracotta
       },
       fontFamily: {
         // Brand v3 (12.10.2026) — anty-AI-slop: Newsreader × Geist × Geist Mono (self-hosted)

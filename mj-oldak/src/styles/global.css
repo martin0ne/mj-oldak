@@ -69,15 +69,15 @@
   --c-ink-dim:   rgba(47,52,55,0.60);/* przygaszony tekst (meta, podpisy) */
 }
 .dark {
-  --c-page:      #0A1626;            /* głęboki navy (ciemniejszy niż Hero #0D1B32) */
+  --c-page:      #0A1626;            /* głęboki navy (ciemniejszy niż Hero #0a0a0a) */
   --c-ink:       #E6DFD2;            /* ciepły jasny tekst */
   --c-surface:   #13243D;            /* karta na ciemnym */
   --c-surface-2: #1A2F4D;            /* mocniejsza powierzchnia ciemna */
-  --c-line:      rgba(202,194,174,0.14);
+  --c-line:      rgba(242,242,241,0.14);
   --c-ink-dim:   rgba(230,223,210,0.55);
 }
 .dark html, html.dark { background-color: #0A1626; }
-.dark ::selection { background: rgba(79,142,186,0.35); }
+.dark ::selection { background: rgba(17,17,17,0.35); }
 @media (prefers-reduced-motion: reduce) {
   * { scroll-behavior: auto !important; }
 }
@@ -125,7 +125,7 @@ a:focus-visible,
 button:focus-visible,
 input:focus-visible,
 textarea:focus-visible {
-  outline: 2px solid #4F8EBA;
+  outline: 2px solid #111111;
   outline-offset: 2px;
 }
 
@@ -198,11 +198,11 @@ textarea:focus-visible {
   /* ──────────────────────────────────────────────
      CORE PALETTE — Coastal v2.1
      ────────────────────────────────────────────── */
-  --color-background: #E4DBCD;   /* Warm Sand — main page bg */
-  --color-primary:    #CAC2AE;   /* Warm Mid — surfaces, cards-on-light, "white" replacement */
-  --color-dark:       #0D1B32;   /* Sea Navy — hero, footer, base text on light */
-  --color-accent:     #4F8EBA;   /* Sea Blue — CTA, focus, hairlines (DYNAMIC: rotates per photo) */
-  --color-sunset:     #C87E3B;   /* Sunset Terracotta — secondary accent / premium hover */
+  --color-background: #FFFFFF;   /* Paper White — main page bg (tonacja czarno-biała) */
+  --color-primary:    #F2F2F1;   /* Light Grey — surfaces, cards-on-light */
+  --color-dark:       #0A0A0A;   /* Ink Black — hero, footer, base text on light */
+  --color-accent:     #111111;   /* Near Black — CTA, focus, hairlines */
+  --color-sunset:     #6F6F6F;   /* Neutral Grey — secondary accent (ex-terracotta) */
 
   /* Foreground / background semantic aliases */
   --bg:        var(--color-background);
@@ -302,15 +302,15 @@ textarea:focus-visible {
   /* ──────────────────────────────────────────────
      SHADOWS / GLOW (no hard drop on dark)
      ────────────────────────────────────────────── */
-  --glow-accent:  0 8px 32px color-mix(in srgb, var(--color-accent) 50%, transparent);
-  --glow-soft:    0 8px 40px rgba(79,142,186,0.10);
-  --glow-strong:  0 8px 40px rgba(79,142,186,0.18);
-  --shadow-card:  0 1px 0 rgba(13,27,50,0.04), 0 8px 24px rgba(13,27,50,0.06);
-  --shadow-lift:  0 12px 40px rgba(13,27,50,0.10);
+  --glow-accent:  0 8px 24px color-mix(in srgb, var(--color-dark) 12%, transparent);
+  --glow-soft:    0 8px 40px rgba(17,17,17,0.10);
+  --glow-strong:  0 8px 40px rgba(17,17,17,0.18);
+  --shadow-card:  0 1px 0 rgba(10,10,10,0.04), 0 8px 24px rgba(10,10,10,0.06);
+  --shadow-lift:  0 12px 40px rgba(10,10,10,0.10);
 
   /* Glassmorphism (pill navbar) */
-  --glass-dark:   rgba(13,27,50,0.72);
-  --glass-light:  rgba(228,219,205,0.70);
+  --glass-dark:   rgba(10,10,10,0.72);
+  --glass-light:  rgba(255,255,255,0.70);
   --glass-blur:   blur(16px) saturate(1.4);
 
   /* Motion */
@@ -462,7 +462,7 @@ textarea:focus-visible {
   box-shadow: none;
 }
 .cta--ghost:hover {
-  background: rgba(13,27,50,0.05);
+  background: rgba(10,10,10,0.05);
   border-color: var(--color-dark);
   color: var(--color-dark);
 }
@@ -524,7 +524,7 @@ textarea:focus-visible {
 .field {
   width: 100%;
   padding: 16px 20px;
-  background: rgba(13,27,50,0.04);
+  background: rgba(10,10,10,0.04);
   border: 1px solid var(--hairline);
   border-radius: var(--radius-md);
   font-family: var(--font-mono);
@@ -579,7 +579,7 @@ textarea:focus-visible {
   background-image: repeating-linear-gradient(
     0deg,
     transparent 0 2px,
-    rgba(202,194,174,0.5) 2px 4px
+    rgba(242,242,241,0.5) 2px 4px
   );
   mix-blend-mode: multiply;
   opacity: 0.35;

@@ -51,7 +51,7 @@ function frame(){
   mx += (tx - mx) * 0.06;
   my += (ty - my) * 0.06;
 
-  ctx.fillStyle = '#0D1B32';
+  ctx.fillStyle = '#0a0a0a';
   ctx.fillRect(0,0,W,H);
 
   // Liquid metal-ish stack of wide gradient bands warped toward cursor
@@ -84,19 +84,19 @@ function frame(){
     // alternating bands of sunset / dark / primary
     let col;
     const wave = Math.sin(k * 14 + t*0.6) * 0.5 + 0.5;
-    if (wave > 0.7) col = `rgba(200,126,59,${0.18 + wave*0.18})`;
-    else if (wave > 0.45) col = `rgba(13,27,50,${0.05})`;
-    else if (wave > 0.2) col = `rgba(202,194,174,${0.06 + wave*0.06})`;
-    else col = `rgba(79,142,186,${0.05 + (1-wave)*0.06})`;
+    if (wave > 0.7) col = `rgba(17,17,17,${0.18 + wave*0.18})`;
+    else if (wave > 0.45) col = `rgba(10,10,10,${0.05})`;
+    else if (wave > 0.2) col = `rgba(242,242,241,${0.06 + wave*0.06})`;
+    else col = `rgba(17,17,17,${0.05 + (1-wave)*0.06})`;
     ctx.fillStyle = col;
     ctx.fill();
   }
 
   // cursor flare
   const flare = ctx.createRadialGradient(mx*W, my*H, 0, mx*W, my*H, 320*DPR);
-  flare.addColorStop(0, 'rgba(200,126,59,0.32)');
-  flare.addColorStop(0.5, 'rgba(200,126,59,0.06)');
-  flare.addColorStop(1, 'rgba(200,126,59,0)');
+  flare.addColorStop(0, 'rgba(17,17,17,0.32)');
+  flare.addColorStop(0.5, 'rgba(17,17,17,0.06)');
+  flare.addColorStop(1, 'rgba(17,17,17,0)');
   ctx.fillStyle = flare;
   ctx.fillRect(0,0,W,H);
 
@@ -107,8 +107,8 @@ function frame(){
 
   // vignette
   const vg = ctx.createRadialGradient(W/2, H/2, Math.min(W,H)*0.35, W/2, H/2, Math.max(W,H)*0.65);
-  vg.addColorStop(0, 'rgba(13,27,50,0)');
-  vg.addColorStop(1, 'rgba(13,27,50,0.55)');
+  vg.addColorStop(0, 'rgba(10,10,10,0)');
+  vg.addColorStop(1, 'rgba(10,10,10,0.55)');
   ctx.fillStyle = vg;
   ctx.fillRect(0,0,W,H);
 

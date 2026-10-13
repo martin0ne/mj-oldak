@@ -157,7 +157,7 @@ export default function ContactPersonal() {
                         <label className="flex items-start gap-3 font-sans text-xs leading-relaxed text-primary/70 cursor-pointer">
                             <input
                                 type="checkbox" checked={consent} onChange={(e) => setConsent(e.target.checked)} required
-                                className="mt-0.5 w-4 h-4 shrink-0 accent-[#4F8EBA] cursor-pointer"
+                                className="mt-0.5 w-4 h-4 shrink-0 accent-[#111111] cursor-pointer"
                             />
                             <span>
                                 I consent to the processing of my personal data to handle this enquiry (GDPR Art. 6(1)(a)).{' '}

@@ -20,6 +20,8 @@ export default function EmailDemo() {
     const [draftText, setDraftText] = useState(''); // edytowalna treść szkicu
     const [sent, setSent] = useState(false); // SYMULACJA wysyłki (nic realnie nie wychodzi)
     const timersRef = useRef([]);
+    const [mounted, setMounted] = useState(false); // klient-only: demo nie wchodzi do statycznego HTML
+    useEffect(() => setMounted(true), []);
 
     const mail = emails.find((m) => m.id === selectedId);
     const cat = mail ? categories[mail.category] : null;
@@ -42,6 +44,8 @@ export default function EmailDemo() {
         setDraftText(next && next.draft ? next.draft : '');
         timersRef.current.push(setTimeout(() => setPhase('done'), 900));
     };
+
+    if (!mounted) return null; // SSR-off: żaden tekst dema w HTML przed hydracją
 
     return (
         <div className="rounded-lg border border-primary/15 bg-dark text-primary overflow-hidden">

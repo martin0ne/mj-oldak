@@ -60,7 +60,7 @@ function frame(){
   if (paused) return;
   t += 1;
 
-  ctx.fillStyle = '#0D1B32';
+  ctx.fillStyle = '#0a0a0a';
   ctx.fillRect(0,0,W,H);
 
   const cols = Math.ceil(W/S) + 1;
@@ -75,7 +75,7 @@ function frame(){
       // base dim dots
       let size = 1.0*DPR;
       let alpha = 0.18;
-      let col = '202,194,174';
+      let col = '242,242,241';
 
       // cursor cluster highlight (~140px)
       const R = 140*DPR;
@@ -83,7 +83,7 @@ function frame(){
         const k = 1 - d/R;
         size = 1*DPR + k*3.5*DPR;
         alpha = 0.18 + k*0.65;
-        if (k > 0.6) col = '79,142,186'; // accent for inner
+        if (k > 0.6) col = '17,17,17'; // accent for inner
       }
 
       // ripple influence
@@ -96,14 +96,14 @@ function frame(){
           const k = 1 - Math.abs(rd - ringR)/w;
           alpha = Math.max(alpha, 0.7 * k * (1 - ri.t));
           size = Math.max(size, 1*DPR + k*2.4*DPR*(1-ri.t));
-          col = '79,142,186';
+          col = '17,17,17';
         }
       }
 
       // gentle live flicker
       if ((cN*7 + r*13 + Math.floor(t*0.6)) % 199 === 0){
         alpha = Math.min(0.9, alpha + 0.4);
-        col = '200,126,59';
+        col = '17,17,17';
       }
 
       ctx.fillStyle = `rgba(${col},${alpha})`;
@@ -121,7 +121,7 @@ function frame(){
 
   // hairline crosshair on cursor
   if (mx > -1000){
-    ctx.strokeStyle = 'rgba(79,142,186,0.18)';
+    ctx.strokeStyle = 'rgba(17,17,17,0.18)';
     ctx.lineWidth = 0.6*DPR;
     ctx.beginPath();
     ctx.moveTo(0, my); ctx.lineTo(W, my);

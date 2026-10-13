@@ -7,11 +7,11 @@ const description = 'Buduje AI agentów dla polskich biur rachunkowych: OCR fakt
 <style is:global>
 
   :root {
-    --bg: #E4DBCD;
-    --primary: #CAC2AE;
-    --accent: #4F8EBA;
-    --dark: #0D1B32;
-    --sunset: #C87E3B;
+    --bg: #ffffff;
+    --primary: #f2f2f1;
+    --accent: #111111;
+    --dark: #0a0a0a;
+    --sunset: #6f6f6f;
     --transition-dur: 1.5s;
 
     /* Cloud Design tokens (sekcje 02 + 03 editorial v1) */
@@ -84,8 +84,8 @@ const description = 'Buduje AI agentów dla polskich biur rachunkowych: OCR fakt
       transparent 100%);
   }
   /* Text-shadow — minimalna 2-3px halo, bez bleached look */
-  section.story.dark, .pilot-section, .contact { text-shadow: 0 1px 3px rgba(13,27,50,0.5); }
-  section.story.light { text-shadow: 0 1px 2px rgba(228,219,205,0.45); }
+  section.story.dark, .pilot-section, .contact { text-shadow: 0 1px 3px rgba(10,10,10,0.5); }
+  section.story.light { text-shadow: 0 1px 2px rgba(255,255,255,0.45); }
   /* CTAs / buttons / badges — no shadow (have own bg) */
   .cta, .cta-nav, .b-badge, .station .num, .station .label, .station .desc, .ocr-fields .key, .ocr-fields .val { text-shadow: none; }
   /* H1/H2 boost weight + contrast w shader sections */
@@ -94,19 +94,19 @@ const description = 'Buduje AI agentów dla polskich biur rachunkowych: OCR fakt
   /* Eyebrow + lede readability boost na shader bg */
   section.story.dark .eyebrow, .pilot-section .eyebrow, .contact .eyebrow {
     opacity: 0.95 !important; color: var(--accent);
-    text-shadow: 0 1px 4px rgba(13,27,50,0.7);
+    text-shadow: 0 1px 4px rgba(10,10,10,0.7);
   }
   section.story.dark .lede, .pilot-section .lede, .contact .lede {
     opacity: 1 !important; color: #fff;
-    text-shadow: 0 1px 6px rgba(13,27,50,0.65);
+    text-shadow: 0 1px 6px rgba(10,10,10,0.65);
   }
   section.story.light .eyebrow {
     opacity: 0.95 !important; color: var(--accent);
-    text-shadow: 0 1px 3px rgba(228,219,205,0.6);
+    text-shadow: 0 1px 3px rgba(255,255,255,0.6);
   }
   section.story.light .lede {
     opacity: 1 !important; color: var(--dark);
-    text-shadow: 0 1px 4px rgba(228,219,205,0.55);
+    text-shadow: 0 1px 4px rgba(255,255,255,0.55);
   }
 
   /* === Cursor spotlight back, BEZ mix-blend-mode (gladkie radial overlay) === */
@@ -166,7 +166,7 @@ const description = 'Buduje AI agentów dla polskich biur rachunkowych: OCR fakt
     position: fixed; top: 18px; left: 50%; transform: translateX(-50%); z-index: 100;
     display: flex; align-items: center; gap: 8px;
     padding: 8px 8px 8px 24px;
-    background: rgba(13,27,50,0.72);
+    background: rgba(10,10,10,0.72);
     backdrop-filter: blur(10px) saturate(1.4);
     border: 1px solid rgba(255,255,255,0.10);
     border-radius: 999px;
@@ -509,7 +509,7 @@ const description = 'Buduje AI agentów dla polskich biur rachunkowych: OCR fakt
   .bento-card.expanded {
     border-color: var(--accent);
     box-shadow: 0 24px 64px color-mix(in srgb, var(--accent) 35%, transparent);
-    background: rgba(13, 27, 50, 0.95) !important;
+    background: rgba(10,10,10, 0.95) !important;
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: auto auto;
@@ -544,7 +544,7 @@ const description = 'Buduje AI agentów dla polskich biur rachunkowych: OCR fakt
   /* ── Product screenshot lightbox ── */
   .product-lightbox {
     position: fixed; inset: 0; z-index: 10000;
-    background: rgba(13, 27, 50, 0.92);
+    background: rgba(10,10,10, 0.92);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
     display: flex; align-items: center; justify-content: center;
@@ -564,7 +564,7 @@ const description = 'Buduje AI agentów dla polskich biur rachunkowych: OCR fakt
     width: 48px; height: 48px;
     border-radius: 50%;
     border: 1px solid color-mix(in srgb, var(--primary) 30%, transparent);
-    background: rgba(13,27,50,0.6); color: var(--primary);
+    background: rgba(10,10,10,0.6); color: var(--primary);
     font-size: 24px; cursor: pointer; line-height: 1;
     display: flex; align-items: center; justify-content: center;
     transition: background 0.2s, border-color 0.2s;
@@ -713,7 +713,7 @@ const description = 'Buduje AI agentów dla polskich biur rachunkowych: OCR fakt
   }
   .ocr-doc-line {
     height: 2px; border-radius: 1px;
-    background: rgba(13,27,50,0.35);
+    background: rgba(10,10,10,0.35);
   }
   .ocr-doc-line:nth-child(1) { width: 80%; }
   .ocr-doc-line:nth-child(2) { width: 60%; }
@@ -976,7 +976,7 @@ const description = 'Buduje AI agentów dla polskich biur rachunkowych: OCR fakt
   .nl-consent {
     display: flex; align-items: flex-start; gap: 8px; margin-top: 10px;
     font-family: 'Inter', sans-serif; font-size: 11px; line-height: 1.45;
-    color: rgba(13,27,50,0.62); cursor: pointer;
+    color: rgba(10,10,10,0.62); cursor: pointer;
   }
   .nl-consent input[type="checkbox"] {
     width: 14px; height: 14px; margin: 2px 0 0; flex-shrink: 0;
@@ -1039,7 +1039,7 @@ const description = 'Buduje AI agentów dla polskich biur rachunkowych: OCR fakt
     font-family: var(--font-mono);
     font-size: 10px;
     letter-spacing: 0.25em;
-    color: rgba(13,27,50,0.3);
+    color: rgba(10,10,10,0.3);
     text-transform: uppercase;
     pointer-events: none;
   }
@@ -1077,7 +1077,7 @@ const description = 'Buduje AI agentów dla polskich biur rachunkowych: OCR fakt
   .cd-lede {
     font-family: var(--font-body);
     font-size: 15px; line-height: 1.55;
-    color: rgba(13,27,50,0.78);
+    color: rgba(10,10,10,0.78);
     max-width: 56ch;
     margin: 0;
   }
@@ -1106,12 +1106,12 @@ const description = 'Buduje AI agentów dla polskich biur rachunkowych: OCR fakt
   .cd-points {
     list-style: none; padding: 16px 0 0;
     display: flex; flex-direction: column; gap: 12px;
-    border-top: 1px solid rgba(13,27,50,0.12);
+    border-top: 1px solid rgba(10,10,10,0.12);
   }
   .cd-points li {
     display: grid; grid-template-columns: 44px 1fr;
     gap: 14px; align-items: baseline;
-    padding-bottom: 12px; border-bottom: 1px solid rgba(13,27,50,0.08);
+    padding-bottom: 12px; border-bottom: 1px solid rgba(10,10,10,0.08);
   }
   .cd-points li:last-child { border-bottom: none; padding-bottom: 0; }
   .cd-num {
@@ -1129,7 +1129,7 @@ const description = 'Buduje AI agentów dla polskich biur rachunkowych: OCR fakt
     background: linear-gradient(135deg, var(--dark) 0%, #142745 100%);
     border-radius: 14px; padding: 22px 24px;
     color: var(--primary);
-    box-shadow: 0 20px 40px -20px rgba(13,27,50,0.35),
+    box-shadow: 0 20px 40px -20px rgba(10,10,10,0.35),
                 inset 0 1px 0 rgba(255,255,255,0.04);
     position: relative; overflow: hidden;
   }
@@ -1138,7 +1138,7 @@ const description = 'Buduje AI agentów dla polskich biur rachunkowych: OCR fakt
     position: absolute; top: 14px; right: 18px;
     font-family: var(--font-mono);
     font-size: 9px; letter-spacing: 0.25em;
-    color: rgba(202,194,174,0.4);
+    color: rgba(242,242,241,0.4);
   }
   .cd-mockup-flow {
     display: grid; grid-template-columns: auto auto 1fr;
@@ -1146,27 +1146,27 @@ const description = 'Buduje AI agentów dla polskich biur rachunkowych: OCR fakt
   }
   .cd-doc-icon {
     width: 52px; height: 64px;
-    border: 1.5px solid rgba(202,194,174,0.4);
+    border: 1.5px solid rgba(242,242,241,0.4);
     border-radius: 4px; position: relative; flex-shrink: 0;
   }
   .cd-doc-icon::before {
     content: ""; position: absolute; top: 0; right: 0;
     width: 14px; height: 14px; background: var(--dark);
-    border-left: 1.5px solid rgba(202,194,174,0.4);
-    border-bottom: 1.5px solid rgba(202,194,174,0.4);
+    border-left: 1.5px solid rgba(242,242,241,0.4);
+    border-bottom: 1.5px solid rgba(242,242,241,0.4);
   }
   .cd-doc-icon::after {
     content: "PDF"; position: absolute; bottom: 8px; left: 0; right: 0;
     text-align: center;
     font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.15em;
-    color: rgba(202,194,174,0.6);
+    color: rgba(242,242,241,0.6);
   }
   .cd-doc-lines {
     position: absolute; top: 18px; left: 6px; right: 6px;
     display: flex; flex-direction: column; gap: 3px;
   }
   .cd-doc-lines span {
-    height: 2px; background: rgba(202,194,174,0.25); border-radius: 1px;
+    height: 2px; background: rgba(242,242,241,0.25); border-radius: 1px;
   }
   .cd-doc-lines span:nth-child(1) { width: 70%; }
   .cd-doc-lines span:nth-child(2) { width: 100%; }
@@ -1193,7 +1193,7 @@ const description = 'Buduje AI agentów dla polskich biur rachunkowych: OCR fakt
   .cd-field { display: flex; flex-direction: column; gap: 2px; }
   .cd-field-label {
     font-family: var(--font-mono); font-size: 9px;
-    letter-spacing: 0.2em; color: rgba(202,194,174,0.55);
+    letter-spacing: 0.2em; color: rgba(242,242,241,0.55);
     text-transform: uppercase;
   }
   .cd-field-value {
@@ -1204,13 +1204,13 @@ const description = 'Buduje AI agentów dla polskich biur rachunkowych: OCR fakt
   /* metrics */
   .cd-metrics {
     display: grid; grid-template-columns: repeat(4, 1fr);
-    border-top: 1px solid rgba(13,27,50,0.12);
-    border-bottom: 1px solid rgba(13,27,50,0.12);
+    border-top: 1px solid rgba(10,10,10,0.12);
+    border-bottom: 1px solid rgba(10,10,10,0.12);
     padding: 16px 0;
   }
   .cd-metric {
     display: flex; flex-direction: column; gap: 4px;
-    padding: 0 14px; border-right: 1px solid rgba(13,27,50,0.08);
+    padding: 0 14px; border-right: 1px solid rgba(10,10,10,0.08);
   }
   .cd-metric:first-child { padding-left: 0; }
   .cd-metric:last-child { border-right: none; padding-right: 0; }
@@ -1221,7 +1221,7 @@ const description = 'Buduje AI agentów dla polskich biur rachunkowych: OCR fakt
   .cd-metric-value .cd-unit { color: var(--accent); font-size: 18px; }
   .cd-metric-label {
     font-family: var(--font-mono); font-size: 10px;
-    letter-spacing: 0.18em; color: rgba(13,27,50,0.55);
+    letter-spacing: 0.18em; color: rgba(10,10,10,0.55);
     text-transform: uppercase; margin-top: 2px;
   }
 
@@ -1250,7 +1250,7 @@ const description = 'Buduje AI agentów dla polskich biur rachunkowych: OCR fakt
     color: var(--primary);
     display: flex; flex-direction: column; justify-content: space-between;
     position: relative; overflow: hidden;
-    box-shadow: 0 20px 40px -24px rgba(13,27,50,0.4),
+    box-shadow: 0 20px 40px -24px rgba(10,10,10,0.4),
                 inset 0 1px 0 rgba(255,255,255,0.05);
     min-height: 0;
   }
@@ -1266,7 +1266,7 @@ const description = 'Buduje AI agentów dla polskich biur rachunkowych: OCR fakt
   }
   .cd-card-label {
     font-family: var(--font-mono); font-size: 11px; font-weight: 500;
-    letter-spacing: 0.22em; color: rgba(202,194,174,0.55);
+    letter-spacing: 0.22em; color: rgba(242,242,241,0.55);
     text-transform: uppercase;
   }
   .cd-card-badge {
@@ -1276,12 +1276,12 @@ const description = 'Buduje AI agentów dla polskich biur rachunkowych: OCR fakt
   }
   .cd-badge-live { background: var(--accent); color: var(--dark); }
   .cd-badge-beta {
-    background: rgba(79,142,186,0.18); color: var(--accent);
-    border: 1px solid rgba(79,142,186,0.4);
+    background: rgba(17,17,17,0.18); color: var(--accent);
+    border: 1px solid rgba(17,17,17,0.4);
   }
   .cd-badge-pilot {
-    background: rgba(200,126,59,0.15); color: var(--sunset);
-    border: 1px solid rgba(200,126,59,0.4);
+    background: rgba(17,17,17,0.15); color: var(--sunset);
+    border: 1px solid rgba(17,17,17,0.4);
   }
   .cd-card-body {
     display: flex; flex-direction: column; gap: 12px; margin-top: 20px;
@@ -1295,14 +1295,14 @@ const description = 'Buduje AI agentów dla polskich biur rachunkowych: OCR fakt
   }
   .cd-card-desc {
     font-family: var(--font-body); font-size: 13.5px; line-height: 1.5;
-    color: rgba(202,194,174,0.78); max-width: 38ch;
+    color: rgba(242,242,241,0.78); max-width: 38ch;
     margin: 0;
   }
 
   /* footer CTAs */
   .cd-products-foot {
     display: flex; justify-content: flex-end; align-items: center; gap: 24px;
-    padding-top: 8px; border-top: 1px solid rgba(13,27,50,0.12);
+    padding-top: 8px; border-top: 1px solid rgba(10,10,10,0.12);
   }
   .cd-ctas { display: flex; gap: 12px; }
   .cd-btn {
@@ -1316,10 +1316,10 @@ const description = 'Buduje AI agentów dla polskich biur rachunkowych: OCR fakt
   }
   .cd-btn-secondary {
     background: transparent; color: var(--dark);
-    border: 1px solid rgba(13,27,50,0.4);
+    border: 1px solid rgba(10,10,10,0.4);
   }
   .cd-btn-secondary:hover {
-    background: rgba(13,27,50,0.05); border-color: var(--dark);
+    background: rgba(10,10,10,0.05); border-color: var(--dark);
   }
   .cd-btn-primary { background: var(--accent); color: var(--dark); }
   .cd-btn-primary:hover { background: #5fa0cc; transform: translateY(-1px); }

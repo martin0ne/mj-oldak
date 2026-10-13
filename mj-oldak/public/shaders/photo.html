@@ -8,19 +8,19 @@
   *,*::before,*::after { box-sizing: border-box; }
   html, body { margin:0; height:100%; background:var(--color-dark); overflow:hidden; cursor:crosshair; }
   canvas { position:absolute; inset:0; width:100%; height:100%; display:block; }
-  .hud { position:absolute; left:28px; top:24px; z-index:2; font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.14em; color: rgba(228,219,205,0.7); }
-  .hud .dot { display:inline-block; width:6px; height:6px; border-radius:999px; background: var(--accent, #4F8EBA); margin-right:8px; vertical-align:middle; animation:pulse 1.6s ease-in-out infinite; }
+  .hud { position:absolute; left:28px; top:24px; z-index:2; font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.14em; color: rgba(255,255,255,0.7); }
+  .hud .dot { display:inline-block; width:6px; height:6px; border-radius:999px; background: var(--accent, #111111); margin-right:8px; vertical-align:middle; animation:pulse 1.6s ease-in-out infinite; }
   @keyframes pulse { 0%,100% { opacity:.4 } 50% { opacity:1 } }
-  .title { position:absolute; left:28px; bottom:32px; z-index:2; font-family:'Manrope',sans-serif; font-weight:800; letter-spacing:-0.02em; color:#E4DBCD; font-size:clamp(40px,5vw,72px); line-height:1; text-shadow: 0 2px 24px rgba(0,0,0,0.5); }
-  .title em { font-family:'Fraunces',serif; font-style:italic; font-weight:400; font-variation-settings:'opsz' 144,'SOFT' 100; color: var(--accent, #4F8EBA); }
-  .meta { position:absolute; right:28px; bottom:32px; z-index:2; font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.14em; color: rgba(228,219,205,0.7); text-align:right; line-height:1.6; text-shadow: 0 1px 12px rgba(0,0,0,0.5); }
+  .title { position:absolute; left:28px; bottom:32px; z-index:2; font-family:'Manrope',sans-serif; font-weight:800; letter-spacing:-0.02em; color:#ffffff; font-size:clamp(40px,5vw,72px); line-height:1; text-shadow: 0 2px 24px rgba(0,0,0,0.5); }
+  .title em { font-family:'Fraunces',serif; font-style:italic; font-weight:400; font-variation-settings:'opsz' 144,'SOFT' 100; color: var(--accent, #111111); }
+  .meta { position:absolute; right:28px; bottom:32px; z-index:2; font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.14em; color: rgba(255,255,255,0.7); text-align:right; line-height:1.6; text-shadow: 0 1px 12px rgba(0,0,0,0.5); }
   .switcher { position:absolute; right:28px; top:24px; z-index:3; display:flex; gap:6px; }
   .switcher button {
-    width:24px; height:24px; border-radius:999px; border:1.5px solid rgba(228,219,205,0.3);
+    width:24px; height:24px; border-radius:999px; border:1.5px solid rgba(255,255,255,0.3);
     background: transparent; cursor:pointer; padding:0;
     transition: border-color .2s, transform .2s;
   }
-  .switcher button.is-active { border-color: var(--accent, #4F8EBA); transform: scale(1.15); }
+  .switcher button.is-active { border-color: var(--accent, #111111); transform: scale(1.15); }
   .switcher button[data-id="0798"] { background: #846046; }
   .switcher button[data-id="5048"] { background: #66A8E1; }
   .switcher button[data-id="5088"] { background: #7D6250; }
@@ -42,7 +42,7 @@
 <div class="hud"><span class="dot"></span>SHADER · 05 / PHOTO GLOW · <span id="pid">PHOTO_5048</span></div>
 <div class="switcher" id="sw">
   <button data-id="0798" data-accent="#846046"></button>
-  <button data-id="5048" data-accent="#4F8EBA" class="is-active"></button>
+  <button data-id="5048" data-accent="#111111" class="is-active"></button>
   <button data-id="5088" data-accent="#7D6250"></button>
   <button data-id="5236" data-accent="#C49478"></button>
   <button data-id="5350" data-accent="#9A6D4A"></button>
@@ -64,7 +64,7 @@ let mx = -9999, my = -9999;
 addEventListener('mousemove', e => { mx = e.clientX*DPR; my = e.clientY*DPR; });
 addEventListener('mouseleave', () => { mx = -9999; my = -9999; });
 
-let img = null, accent = '#4F8EBA', currentId = '5048';
+let img = null, accent = '#111111', currentId = '5048';
 function load(id){
   currentId = id;
   document.getElementById('pid').textContent = `PHOTO_${id}`;
@@ -96,7 +96,7 @@ addEventListener('message', e => {
 });
 function frame(){
   if (paused) return;
-  ctx.fillStyle = '#0D1B32';
+  ctx.fillStyle = '#0a0a0a';
   ctx.fillRect(0,0,W,H);
 
   if (img){
@@ -109,7 +109,7 @@ function frame(){
     ctx.drawImage(img, dx, dy, dw, dh);
 
     // tonal overlay (slight desat / dark)
-    ctx.fillStyle = 'rgba(13,27,50,0.32)';
+    ctx.fillStyle = 'rgba(10,10,10,0.32)';
     ctx.fillRect(0,0,W,H);
 
     // cursor spotlight bloom
@@ -128,14 +128,14 @@ function frame(){
 
   // vignette
   const vg = ctx.createRadialGradient(W/2,H/2, Math.min(W,H)*0.35, W/2,H/2, Math.max(W,H)*0.7);
-  vg.addColorStop(0, 'rgba(13,27,50,0)');
-  vg.addColorStop(1, 'rgba(13,27,50,0.55)');
+  vg.addColorStop(0, 'rgba(10,10,10,0)');
+  vg.addColorStop(1, 'rgba(10,10,10,0.55)');
   ctx.fillStyle = vg;
   ctx.fillRect(0,0,W,H);
 
   // grain
   for (let i=0;i<140;i++){
-    ctx.fillStyle = `rgba(228,219,205,${Math.random()*0.04})`;
+    ctx.fillStyle = `rgba(255,255,255,${Math.random()*0.04})`;
     ctx.fillRect(Math.random()*W, Math.random()*H, 1, 1);
   }
 

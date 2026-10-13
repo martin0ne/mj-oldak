@@ -25,7 +25,7 @@ function PhotoStack({ photos, aspect, interval }) {
           <span
             key={k}
             className="h-1.5 w-1.5 rounded-full transition-all duration-300"
-            style={{ background: k === i ? '#4F8EBA' : 'rgba(255,255,255,0.5)', transform: k === i ? 'scale(1.4)' : 'scale(1)' }}
+            style={{ background: k === i ? '#111111' : 'rgba(255,255,255,0.5)', transform: k === i ? 'scale(1.4)' : 'scale(1)' }}
           />
         ))}
       </div>
