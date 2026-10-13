@@ -40,7 +40,7 @@ Zrozumienie większego, nieznanego procesu to zwykle godziny klikania w narzędz
 Rdzeń generuje się zawsze, jako tekst:
 
 - **AS-IS** — stan obecny, z bottleneckami i pętlami reworku.
-- **TO-BE** — stan docelowy, z jawnym podziałem: ⚙️ service task (automat/AI) kontra 👤 user task (człowiek).
+- **TO-BE** — stan docelowy, z jawnym podziałem: service task (automat/AI) kontra user task (człowiek).
 - **Reguły każdej bramki** — warunek i nazwana każda ścieżka wyjścia.
 - **Edge case'y** — co się psuje i jak proces to łapie.
 - **Aktorzy + swimlanes** — kto wykonuje który krok (lane na aktora/system).

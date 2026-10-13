@@ -40,7 +40,7 @@ Understanding a larger, unfamiliar process usually means hours of clicking insid
 The core is generated every time, as text:
 
 - **AS-IS** — the current state, with bottlenecks and rework loops.
-- **TO-BE** — the target state, with an explicit split: ⚙️ service task (automation/AI) versus 👤 user task (a human).
+- **TO-BE** — the target state, with an explicit split: service task (automation/AI) versus user task (a human).
 - **Rules for every gateway** — the condition, plus a label on each exit path.
 - **Edge cases** — what breaks, and how the process catches it.
 - **Actors + swimlanes** — who performs which step (one lane per actor/system).
