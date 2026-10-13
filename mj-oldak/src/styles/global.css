@@ -584,3 +584,7 @@ textarea:focus-visible {
   mix-blend-mode: multiply;
   opacity: 0.35;
 }
+
+
+/* ── Tonacja czarno-biała (redesign think-tank 13.10) ─────────────── */
+img[src*="/photos/"] { filter: grayscale(1) contrast(1.03); }
