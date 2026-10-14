@@ -14,37 +14,82 @@ const groups = [
   {
     num: '01',
     title: 'Agentic AI & LLMs',
-    items: ['Claude (API + Claude Code) — daily', 'Gemini', 'Hermes Agent — agenty, cron, delegacja', 'autonomous agents', 'MCP (Model Context Protocol)', 'prompt engineering', 'multi-LLM routing, provider abstraction'],
+    items: [
+      { t: 'Claude (API + Claude Code)', d: 'Mówisz, a on pisze kod i odpowiada na pytania. Pracuje ze mną codziennie, najczęściej ze wszystkich.' },
+      { t: 'Gemini', d: 'Drugi duży język — drugi wzrok. Przydatny, gdy trzeba spojrzeć na to samo z innej strony.' },
+      { t: 'Hermes Agent', d: 'Mój osobisty robot: sam wykonuje zlecone zadania, pilnuje terminów i woła mnie tylko wtedy, gdy naprawdę trzeba.' },
+      { t: 'Autonomous agents', d: 'Program, który nie czeka na każde polecenie — sam planuje, działa i poprawia swoje błędy.' },
+      { t: 'MCP (Model Context Protocol)', d: 'Wtyczka, która pozwala jednym programom wołać drugie, jak człowiek podaje koledze narzędzie.' },
+      { t: 'Prompt engineering', d: 'Sztuka mówienia do maszyny tak, żeby zrozumiała za pierwszym razem — jak do kucharza: precyzyjnie, a nie „zrób coś dobrego”.' },
+      { t: 'Multi-LLM routing', d: 'Centrala, która rozdziela pytania do właściwego modelu — jak przenośnia na dworcu: jedna kolejka, wiele pociągów.' },
+    ],
   },
   {
     num: '02',
     title: 'Workflow orchestration',
-    items: ['n8n (workflow + MCP tool)', 'Firecrawl — ekstrakcja treści z żywych stron webowych', 'Make.com', 'Google Apps Script', 'REST APIs & webhooks', 'Cloudflare Workers (cron, queues)', 'modern alternative to traditional RPA'],
+    items: [
+      { t: 'n8n', d: 'Kłębki przewodów w fabryce: jedno się wydarza, drugie dzieje się samo. Kiedyś robione ręcznie, teraz bez rąk.' },
+      { t: 'Firecrawl', d: 'Zdejmuje tekst ze stron internetowych tak jak kiedyś przepisywało się z księgi — żeby maszyna mogła to przeczytać.' },
+      { t: 'Make.com', d: 'Młodszy brat n8n — ta sama robota, w innej obudowie.' },
+      { t: 'Google Apps Script', d: 'Skrypty w arkuszach: automatyka tam, gdzie firma i tak już mieszka, czyli w tabeli.' },
+      { t: 'REST APIs & webhooks', d: 'Poczta między programami: jeden kiwa głową, drugi dostaje wiadomość i działa.' },
+      { t: 'Cloudflare Workers', d: 'Małe półautomaty rozstawione w internecie, które odpalają się o wyznaczonej godzinie, nawet gdy mój komputer śpi.' },
+      { t: 'Nowoczesna alternatywa dla RPA', d: 'Tańsza i mniej krucha metoda zastępowania nudnej roboty niż stare automaty do klikania w ekran.' },
+    ],
   },
   {
     num: '03',
     title: 'RAG & knowledge bases',
-    items: ['RAG patterns in products', 'knowledge-base design', 'personal Zettelkasten (vault)', 'AI-ecosystem monitoring (stały monitoring źródeł)'],
+    items: [
+      { t: 'RAG w produktach', d: 'Maszyna nie zgaduje — najpierw zagląda do Twoich papierów, potem odpowiada z powołaniem.' },
+      { t: 'Projektowanie bazy wiedzy', d: 'Układanie szuflad z wiedzą tak, żeby dało się w nich znaleźć, zanim cokolwiek zapytasz.' },
+      { t: 'Zettelkasten (vault)', d: 'Szuflada z karteczkami, tylko lepiej uporządkowana niż twoja szuflada — i nie gubi karteczek.' },
+      { t: 'Monitoring ekosystemu AI', d: 'Czytnik prasy branżowej: co dzień sprawdzam, czy w świecie AI nie wydarzyło się coś, co mnie dotyczy.' },
+    ],
   },
   {
     num: '04',
     title: 'Discovery & business analysis',
-    items: ['Mom Test discovery', 'BPMN 2.0 (AS-IS → TO-BE)', 'user stories, Given/When/Then', 'PRD, ROI modeling', 'compose-vs-build framework'],
+    items: [
+      { t: 'Mom Test discovery', d: 'Pytaj ludzi o ich życie, nie o to, czy kupią — bo kupią z grzeczności, a potem nie kupią.' },
+      { t: 'BPMN 2.0', d: 'Rysowanie procesu zanim się go zmieni — jak plan piętra przed remontem.' },
+      { t: 'User stories (Given/When/Then)', d: 'Opis wymagania tak prosty, że da się je sprawdzić: kiedy coś się dzieje, ma wyjść to, co uzgodniliśmy.' },
+      { t: 'PRD i liczenie ROI', d: 'Zanim cokolwiek zbuduję — liczę, czy ma sens i czy zwróci się szybciej, niż zdążę się znudzić.' },
+      { t: 'Compose przed build', d: 'Zanim coś zbuduję, szukam, czy gotowe nie leży na półce. Budować wolno tylko wtedy, gdy gotowe naprawdę nie pasuje.' },
+    ],
   },
   {
     num: '05',
     title: 'Ethical AI & compliance',
-    items: ['GDPR Art. 22 / 28', 'human-in-the-loop by design', 'EU data residency', 'data privacy & security by default'],
+    items: [
+      { t: 'RODO Art. 22 / 28', d: 'Prawo, że w ważnej sprawie nie decyduje za ciebie automat — i że dane są twoje, nie cudze.' },
+      { t: 'Człowiek w pętli', d: 'Maszyna proponuje, człowiek decyduje — od początku zaprojektowane, nie doklejone na końcu.' },
+      { t: 'Dane w UE', d: 'Twoje dane śpią w Europie, nie za oceanem — łatwiej je odzyskać i pilnować.' },
+      { t: 'Prywatność z fabryki', d: 'Zamknięte drzwi od początku, nie kłódka dokupiona później.' },
+    ],
   },
   {
     num: '06',
     title: 'Programming (AI-assisted)',
-    items: ['Python, FastAPI', 'SQL, Supabase/PostgreSQL (RLS)', 'Azure Document Intelligence', 'Astro, Cloudflare Pages + D1', 'Playwright — testy E2E'],
+    items: [
+      { t: 'Python i FastAPI', d: 'Język, w którym pisze się szybko, i serwer, który odpowiada, zanim zdążysz się zniecierpliwić.' },
+      { t: 'SQL, Supabase (RLS)', d: 'Tabela z prawami: każdy widzi tylko swoje wiersze, nawet jeśli ktoś się pomyli.' },
+      { t: 'Azure Document Intelligence', d: 'Czytnik faktur — z fotografii wyciąga liczby lepiej niż człowiek po ósmej godzinie pracy.' },
+      { t: 'Astro, Cloudflare Pages + D1', d: 'Silnik tej strony: szybki i statyczny, bez ciężkiego serwera — stoi na krawędzi internetu.' },
+      { t: 'Playwright', d: 'Robot, który klika w stronę dokładnie jak człowiek, żeby sprawdzić, czy nic nie pękło.' },
+    ],
   },
   {
     num: '07',
     title: 'Data analysis & pipelines',
-    items: ['SQL — JOIN, window functions, reconciliation', 'DuckDB, pandas', 'pandera data contracts', 'DVC — reproducible pipelines', 'data provenance (SHA-256)', 'public data: GUS · Eurostat · NBP · ECB'],
+    items: [
+      { t: 'SQL (JOIN, okna, uzgodnienia)', d: 'Łączenie tabel i liczenie po kolei — cyfry muszą się zgadzać do ostatniego grosza.' },
+      { t: 'DuckDB, pandas', d: 'Liczarka, która przełknie milion wierszy, zanim skończysz kawę.' },
+      { t: 'pandera (kontrakty danych)', d: 'Strażnik przy wejściu do tabeli: zły numer nie przechodzi dalej.' },
+      { t: 'DVC (odtwarzalne pipeline)', d: 'Pamięć robota: co zmieniło się kiedy i dlaczego — nic nie ginie bez śladu.' },
+      { t: 'Proweniencja danych (SHA-256)', d: 'Pieczęć na każdym pliku: jeśli ktoś coś podmieni, odcisk to pokaże.' },
+      { t: 'Dane publiczne (GUS · Eurostat · NBP · ECB)', d: 'Liczby z urzędów: wolne, oficjalne i z datą. Z nimi się nie dyskutuje — cytuje się je.' },
+    ],
   },
 ];
 
@@ -140,9 +185,19 @@ const groups = [
             <h4 class="font-sans font-bold text-base mb-3 tracking-tight">{g.title}</h4>
             <ul class="space-y-1.5">
               {g.items.map((item) => (
-                <li class="font-sans text-sm leading-relaxed opacity-75 flex gap-2.5">
-                  <span class="text-accent shrink-0">▸</span>
-                  <span>{item}</span>
+                <li class="font-sans text-sm leading-relaxed">
+                  <button
+                    type="button"
+                    class="js-card w-full text-left flex gap-2.5 items-baseline opacity-75 hover:opacity-100 hover:underline underline-offset-2 transition-opacity duration-200 bg-transparent border-0 p-0 cursor-pointer font-sans text-sm leading-relaxed"
+                    data-card
+                    data-rank={g.num}
+                    data-title={item.t}
+                    data-desc={item.d}
+                    title={item.d}
+                  >
+                    <span class="text-accent shrink-0">▸</span>
+                    <span>{item.t}</span>
+                  </button>
                 </li>
               ))}
             </ul>
@@ -151,4 +206,77 @@ const groups = [
       </div>
     </div>
   </div>
+
+  <!-- Karta do gry: klik w pozycję stacku pokazuje wyjaśnienie po ludzku -->
+  <div
+    id="stack-card-overlay"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="stack-card-title"
+    class="fixed inset-0 z-[60] p-6"
+    style="display:none"
+    tabindex="-1"
+  >
+    <div class="absolute inset-0 bg-black/45" data-card-close></div>
+    <div
+      class="stack-card relative mx-auto my-0 sm:my-auto w-full max-w-[300px] min-h-[420px] bg-[#fbfbfa] text-[#111111] border border-[#111111] rounded-[14px] p-6 flex flex-col"
+      data-card-close
+    >
+      <div class="flex items-start justify-between">
+        <span id="stack-card-rank" class="font-mono text-lg font-bold tracking-tight">01</span>
+        <span class="font-mono text-lg font-bold tracking-tight rotate-180" aria-hidden="true"><span id="stack-card-rank-mirror">01</span></span>
+      </div>
+      <div class="flex-1 flex flex-col justify-center text-center py-6">
+        <div class="w-10 h-px bg-[#111111] mx-auto mb-5 opacity-40"></div>
+        <h4 id="stack-card-title" class="font-serif text-2xl leading-snug mb-4">—</h4>
+        <p id="stack-card-body" class="font-sans text-[15px] leading-relaxed opacity-85">—</p>
+        <div class="w-10 h-px bg-[#111111] mx-auto mt-5 opacity-40"></div>
+      </div>
+      <p class="font-mono text-[10px] uppercase tracking-[0.18em] text-center opacity-50">kliknij, aby zamknąć</p>
+    </div>
+  </div>
 </section>
+
+<script>
+  const overlay = document.getElementById('stack-card-overlay');
+  const titleEl = document.getElementById('stack-card-title');
+  const bodyEl = document.getElementById('stack-card-body');
+  const rankEl = document.getElementById('stack-card-rank');
+  const rankMirror = document.getElementById('stack-card-rank-mirror');
+  let lastFocus = null;
+
+  function openCard(btn) {
+    lastFocus = btn;
+    rankEl.textContent = btn.dataset.rank || '';
+    rankMirror.textContent = btn.dataset.rank || '';
+    titleEl.textContent = btn.dataset.title || '';
+    bodyEl.textContent = btn.dataset.desc || '';
+    overlay.style.display = 'block';
+    overlay.focus();
+  }
+  function closeCard() {
+    overlay.style.display = 'none';
+    if (lastFocus) lastFocus.focus();
+  }
+
+  document.querySelectorAll('.js-card').forEach((btn) => {
+    btn.addEventListener('click', () => openCard(btn));
+  });
+  overlay.addEventListener('click', (e) => {
+    if (e.target.closest('[data-card-close]')) closeCard();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && overlay.style.display === 'block') closeCard();
+  });
+</script>
+
+<style>
+  .stack-card { animation: card-pop 0.18s ease-out; }
+  @keyframes card-pop {
+    from { opacity: 0; transform: translateY(6px) scale(0.98); }
+    to { opacity: 1; transform: none; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .stack-card { animation: none; }
+  }
+</style>
