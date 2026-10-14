@@ -119,7 +119,7 @@ export default function ContactPersonal() {
                             </li>
                             <li className="flex items-center gap-3">
                                 <span className="w-1.5 h-1.5 rounded-full bg-primary/30" />
-                                <span className="text-primary/60">Warszawa, PL · remote-ready (PL/EU)</span>
+                                <span className="text-primary/60">Warszawa, PL · otwarty na etat AI/analityka + zdalne PL/EU</span>
                             </li>
                         </ul>
                         <div className="mt-8 p-4 rounded-xl border border-accent/30 bg-accent/5">

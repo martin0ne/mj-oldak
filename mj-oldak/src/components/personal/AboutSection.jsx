@@ -105,10 +105,12 @@ export default function AboutSection() {
             <div className="grid md:grid-cols-2 gap-10 md:gap-16">
               <div className="space-y-5 font-sans text-base leading-relaxed opacity-85">
                 <p>
-                  Siedzę w AI od 2022; od 2026 to moja praca — na własny rachunek, jako jedna osoba,{' '}
-                  <strong>MJ.OLDAK</strong>. Pięć moich eksperymentów urosło do narzędzi, z których ludzie naprawdę
-                  korzystają: OCR faktur, pomocnik maili, przypomnienie o terminach podatkowych, generator raportów
-                  i outreach B2B. Wypróbujesz je niżej na tej stronie.
+                  Z AI siedzę od 2022, a od 2026 żyję z tego — jako jedna osoba, <strong>MJ.OLDAK</strong>.
+                  Dziś moja praca stoi na trzech nogach: <strong>piszę tom esejów</strong> (w redakcji),
+                  <strong>robię badania</strong> na danych publicznych (GUS × Eurostat — analiza niżej) i
+                  <strong>buduję narzędzia AI</strong>, z których korzystają ludzie, nie korporacje. Wcześniej
+                  wyrosło z tego pięć narzędzi — OCR faktur, pomocnik maili, przypomnienia podatkowe, raporty,
+                  outreach B2B; wypróbujesz je niżej.
                 </p>
                 <p>
                   Na co dzień to <strong>LLM-y</strong> (Claude, Gemini) i <strong>n8n</strong>, żeby to ze sobą
@@ -136,11 +138,16 @@ export default function AboutSection() {
                   i w polskiej regulacyjnej rzeczywistości (KSeF / JPK). Jeśli AI nie jest dla Ciebie dobrą odpowiedzią —
                   powiem to wprost.
                 </p>
+                <p>
+                  <strong>Szukam pracy:</strong> AI i analityka danych — Warszawa, zdalnie PL/EU. Licencjat
+                  (psychologia w biznesie) kończę w tym roku akademickim. Jeśli to Twoje pytanie — jesteś
+                  we właściwym miejscu, pisz przez formularz niżej.
+                </p>
               </div>
             </div>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-6 mt-16 pt-8 border-t border-dark/10 dark:border-[var(--c-line)]">
-              <FlipStat value="5" suffix="+" suffixClass="text-accent" label="produkty AI gotowe do pilotażu" />
-              <FlipStat value="2022" label="pracuję z AI od" />
+              <FlipStat value="2026" label="tom esejów w redakcji + obrona licencjatu" />
+              <FlipStat value="2022" label="z AI — od tego roku" />
               <FlipStat value="1" label="rozmawiasz ze mną — bez pośredników i handlowców" />
             </div>
           </div>
