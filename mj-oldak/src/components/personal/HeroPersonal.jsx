@@ -96,7 +96,7 @@ export default function HeroPersonal() {
                     </h1>
 
                     <p className="hero-reveal text-primary/70 text-base max-w-xl mb-9 leading-relaxed">
-                        Pisarz i analityk danych, który buduje narzędzia AI i szuka pracy — Warszawa, zdalnie PL/EU. W trakcie kończenia licencjatu. Na co dzień SQL, LLM-y i dane z jawnych źródeł. Poniżej znajdziesz moje repozytoria, blog i projekt badawczy GUS × Eurostat.
+                        Pisarz i analityk danych, który buduje narzędzia AI i szuka pracy — Warszawa, zdalnie PL/EU. W przygotowaniu: baza wiedzy o AI po ludzku. Na co dzień SQL, LLM-y i dane z jawnych źródeł. Poniżej znajdziesz moje repozytoria, blog i projekt badawczy GUS × Eurostat.
                     </p>
 
                     {/* Status 01/02/03 — co jest, co powstaje, co dalej */}
