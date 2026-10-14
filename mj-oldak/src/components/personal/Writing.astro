@@ -1,51 +1,47 @@
 ---
-// Writing — v3 (12.10.2026): prace własne jako lista, nie kartony.
-// Blog (wiadomości) · książki · automatyzacje · open source — wiersze z linia włosowa.
+// Writing — v4 (14.10.2026): trzy kategorie własnych prac + mostek do analityki.
+// Bez animacji, bez emoji, bez pigułek; treść czyta się od razu po załadowaniu HTML.
 const works = [
   {
     label: 'Blog',
-    title: 'Learning AI, how to search, how to think critically',
-    meta: 'weekly · Polish',
+    title: 'Gdzie szukać informacji, jak ją sprawdzać, myśleć krytycznie',
+    meta: 'żywy · tygodniowo · po polsku',
     href: '/artykuly/',
-    note: 'Three recurring columns: where to look for information, how to look for it, and how to check it — GUS, NIK, Eurostat, and the 3-check (source / number / logic).',
+    note: 'Kolumna o wyszukiwaniu źródeł, weryfikowaniu liczb i logice dowodów: GUS, NIK, Eurostat, metoda trzech pytań (źródło / liczba / sens).',
   },
   {
-    label: 'Book',
-    title: 'Świat, który zwolni — tom I',
-    meta: 'in editing',
-    href: '/#contact',
-    note: '20 chapters written, editorial pass in progress. Second volume (European culture) drafted this month.',
-  },
-  {
-    label: 'Automations',
-    title: 'Agents, n8n pipelines, RAG — written up as I build',
-    meta: 'articles + demos',
-    href: '/#work',
-    note: 'Long-form breakdowns of the products above: how a document agent plans its steps, why your chatbot makes things up, what the data says about AI adoption.',
+    label: 'Książka',
+    title: 'Tom esejów w redakcji',
+    meta: 'po akceptacji rozdziału · bez tytułu do potwierdzenia',
+    href: '#contact',
+    note: 'Ostatni rozdział zaakceptowany 13.10 — przygotowywany przez wydawnictwo; gdy tytuł zostanie zatwierdzony, wrócimy tutaj.',
   },
   {
     label: 'Open source',
-    title: '6 public repositories',
+    title: 'Narzędzia, które ludzie mogą uruchomić',
     meta: 'github.com/martin0ne',
     href: 'https://github.com/martin0ne',
-    note: 'Tools other people can actually run — reused, forked and criticised in the open.',
+    note: 'Sześć publicznych repozytoriów: narzędzia do użycia, a nie tylko demonstracji.',
   },
 ];
 ---
+
 <section id="writing" class="relative overflow-hidden bg-background dark:bg-[var(--c-page)] text-dark dark:text-[var(--c-ink)] px-8 md:px-16 py-24 md:py-32 border-t border-dark/10 dark:border-[var(--c-line)] transition-colors duration-500">
   <div class="max-w-5xl mx-auto relative z-10">
     <p class="font-mono text-xs uppercase tracking-[0.24em] opacity-50 mb-6">
-      <span class="text-[#B07A4E]">—</span> 06 · Książka i research
+      <span class="text-[#B07A4E]">—</span> 06 · Pisanie i badanie
     </p>
 
-    <h2 class="font-serif text-4xl md:text-5xl leading-[1.02] tracking-[-0.01em] mb-5">
-      Książka, blog i research — <em class="italic">to, co powstaje</em>.
+    <h2 class="font-serif text-4xl md:text-5xl leading-[1.02] max-md:leading-snug mb-5">
+      Co powstaje<span style="letter-spacing:-0.01em">.</span>
     </h2>
+
     <p class="font-sans text-base leading-relaxed opacity-70 max-w-2xl mb-12">
-      Own work first: a blog, books, automation write-ups and open source — the log of a one-person
-      studio, updated as things ship.
+      Własna praca: blog, książka i otwarte oprogramowanie — dziennik jednoosobowego studia,
+      aktualizowany na bieżąco.
     </p>
 
+    <!-- Lista prac -->
     <div class="border-t border-dark/12 dark:border-[var(--c-line)]">
       {works.map((w) => (
         <a
@@ -60,6 +56,20 @@ const works = [
           </span>
         </a>
       ))}
+    </div>
+
+    <!-- Mostek do analityki -->
+    <div class="mt-16 mb-8 p-7 border border-dark/10 dark:border-[var(--c-line)]">
+      <p class="font-sans text-base leading-relaxed mb-1">
+        Badanie opiera się na danych publicznych — GUS, Eurostat, NIK — i na odtwarzalnych pipeline&apos;ach.
+      </p>
+      <p class="font-sans text-base leading-relaxed opacity-70 mb-4">
+        Metody, kontrakty danych i proweniencja opisane krok po kroku w raporcie PDF.
+      </p>
+      <a href="#analytics"
+         class="inline-flex items-center gap-2 font-sans text-base text-dark dark:text-[var(--c-ink)] underline decoration-1 underline-offset-4 hover:text-[#B07A4E] dark:hover:text-accent transition-colors duration-200">
+        Pobaw się danymi sam &rarr;
+      </a>
     </div>
   </div>
 </section>

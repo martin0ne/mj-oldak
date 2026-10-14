@@ -1,0 +1,18 @@
+{
+  "description": "Adopcja AI wg wielkości firmy, 2025 (%). Źródła: GUS i Eurostat.",
+  "source_note": "GUS — Wykorzystanie ICT w przedsiębiorstwach 2025, Tab.15; Eurostat ISOC_EB_AI. Ekstrakcja z PDF · 2026-06-17",
+  "data": {
+    "size_classes": [
+      {"name": "Małe (10–49)", "label": "small"},
+      {"name": "Średnie (50–249)", "label": "medium"},
+      {"name": "Duże (250+)", "label": "large"},
+      {"name": "Wszystkie (10+, excl. NACE K)", "label": "total"}
+    ],
+    "rows": [
+      {"label": "small", "pl_gus": 6.1, "pl_eurostat": 5.79, "eu27": 17.0, "gap_pp": -11.21},
+      {"label": "medium", "pl_gus": 15.6, "pl_eurostat": 14.77, "eu27": 30.36, "gap_pp": -15.59},
+      {"label": "large", "pl_gus": 42.0, "pl_eurostat": 45.81, "eu27": 55.03, "gap_pp": -9.22},
+      {"label": "total", "pl_gus": 8.7, "pl_eurostat": 8.36, "eu27": 19.95, "gap_pp": -11.59}
+    ]
+  }
+}

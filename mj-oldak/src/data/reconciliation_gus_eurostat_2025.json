@@ -1,0 +1,11 @@
+{
+  "description": "Uzgodnienie GUS × Eurostat, 2025 — odchylenie między źródłami.",
+  "source_note": "GUS — Wykorzystanie ICT w przedsiębiorstwach 2025, Tab.15; Eurostat ISOC_EB_AI. Ekstrakcja z PDF · 2026-06-17",
+  "sources": ["GUS — Wykorzystanie ICT w przedsiębiorstwach 2025, Tab.15", "Eurostat — ISOC_EB_AI"],
+  "rows": [
+    {"size_class": "Total (10+, excl. NACE K)", "eurostat_code": "GE10", "gus_pct": 8.7, "eurostat_pct": 8.36, "delta_pp": 0.34, "delta_pct": 4.1},
+    {"size_class": "Small (10-49)", "eurostat_code": "10-49", "gus_pct": 6.1, "eurostat_pct": 5.79, "delta_pp": 0.31, "delta_pct": 5.4},
+    {"size_class": "Medium (50-249)", "eurostat_code": "50-249", "gus_pct": 15.6, "eurostat_pct": 14.77, "delta_pp": 0.83, "delta_pct": 5.6},
+    {"size_class": "Large (250+)", "eurostat_code": "GE250", "gus_pct": 42.0, "eurostat_pct": 45.81, "delta_pp": -3.81, "delta_pct": -8.3}
+  ]
+}

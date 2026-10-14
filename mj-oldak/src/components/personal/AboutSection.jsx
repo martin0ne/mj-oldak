@@ -52,7 +52,7 @@ export default function AboutSection() {
   const [tab, setTab] = useState('pro'); // 'pro' = professional, 'me' = personal
 
   const tabText = (active) =>
-    `relative z-10 font-mono text-xs uppercase tracking-[0.18em] px-6 py-2.5 rounded-full transition-colors duration-300 ${
+    `relative z-10 font-mono text-xs uppercase tracking-[0.18em] px-6 py-2.5 rounded-lg transition-colors duration-300 ${
       active ? 'text-background dark:text-[var(--c-page)]' : 'text-dark dark:text-[var(--c-ink)] hover:opacity-70'
     }`;
 
@@ -65,9 +65,9 @@ export default function AboutSection() {
       <div className="max-w-6xl mx-auto relative z-10">
         {/* Toggle: Co robię | Kim jestem — wskaźnik + prominent "more" cue */}
         <div className="flex items-center gap-4 flex-wrap mb-12">
-          <div className="relative grid grid-cols-2 w-fit p-1 rounded-full border border-dark/20 dark:border-[var(--c-ink)]/30 bg-dark/[0.04] dark:bg-white/[0.06]">
+          <div className="relative grid grid-cols-2 w-fit p-1 rounded-lg border border-dark/20 dark:border-[var(--c-ink)]/30 bg-dark/[0.04] dark:bg-white/[0.06]">
             <span
-              className="absolute inset-y-1 left-1 w-[calc(50%-0.25rem)] rounded-full bg-dark dark:bg-[var(--c-ink)] shadow-sm transition-transform duration-300 ease-out"
+              className="absolute inset-y-1 left-1 w-[calc(50%-0.25rem)] rounded-lg bg-dark dark:bg-[var(--c-ink)] shadow-sm transition-transform duration-300 ease-out"
               style={{ transform: tab === 'me' ? 'translateX(100%)' : 'translateX(0)' }}
             />
             <button type="button" onClick={() => setTab('pro')} className={tabText(tab === 'pro')} aria-pressed={tab === 'pro'}>
@@ -128,7 +128,7 @@ export default function AboutSection() {
             </div>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-6 mt-16 pt-8 border-t border-dark/10 dark:border-[var(--c-line)]">
               <FlipStat value="6" label="publicznych repozytoriów na GitHubie" />
-              <FlipStat value="0,34" suffix="pp" suffixClass="text-accent" label="GUS × Eurostat uzgodnione — raport niżej" />
+              <FlipStat value="5" suffix="+" suffixClass="text-accent" label="lat danych GUS × Eurostat — raport z PDF poniżej" />
               <FlipStat value="1" label="rozmawiasz ze mną — bez pośredników i handlowców" />
             </div>
           </div>

@@ -1,0 +1,11 @@
+{
+  "description": "Adopcja AI: Polska vs UE27, % przedsiębiorstw (excl. NACE K)",
+  "source_note": "GUS — Wykorzystanie ICT w przedsiębiorstwach 2025, Tab.15; Eurostat ISOC_EB_AI. Ekstrakcja z PDF · 2026-06-17",
+  "unit": "%",
+  "data": [
+    {"year": 2021, "poland_pct": 2.86, "eu27_pct": 7.65, "gap_pp": -4.79, "pl_rank": 26, "total_countries": 33},
+    {"year": 2023, "poland_pct": 3.67, "eu27_pct": 8.06, "gap_pp": -4.39, "pl_rank": 29, "total_countries": 32},
+    {"year": 2024, "poland_pct": 5.90, "eu27_pct": 13.48, "gap_pp": -7.58, "pl_rank": 31, "total_countries": 33},
+    {"year": 2025, "poland_pct": 8.36, "eu27_pct": 19.95, "gap_pp": -11.59, "pl_rank": 31, "total_countries": 33}
+  ]
+}

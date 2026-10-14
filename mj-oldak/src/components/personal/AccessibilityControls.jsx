@@ -92,7 +92,7 @@ export default function AccessibilityControls() {
 
     return (
         <div
-            className="fixed bottom-5 right-5 z-[60] flex items-center gap-1 rounded-full border border-dark/15 dark:border-[var(--c-line)] bg-background/90 dark:bg-[var(--c-surface)] backdrop-blur-md px-2 py-1.5 shadow-[0_8px_24px_rgba(10,10,10,0.18)]"
+            className="fixed bottom-5 right-5 z-[60] flex items-center gap-1 rounded-lg border border-dark/15 dark:border-[var(--c-line)] bg-background/90 dark:bg-[var(--c-surface)] px-2 py-1.5 shadow-[0_8px_24px_rgba(10,10,10,0.18)]"
             role="group"
             aria-label="Język, motyw i rozmiar tekstu"
         >

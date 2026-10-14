@@ -1,0 +1,187 @@
+---
+// Sekcja scalona: Narzędzia + Stack — jedna zwarta sekcja v1 (14.10.2026)
+// Mono kicker, krótki serif lead, karty live-demo,
+// tabela P/S/E skompaktowana do wierszy mono z linią włosową,
+// stack na końcu jako zwarty blok kolumnowy.
+import AgentDemo from '../demos/AgentDemo.jsx';
+import OcrDemo from '../demos/OcrDemo.jsx';
+import EmailDemo from '../demos/EmailDemo.jsx';
+import ReportingDemo from '../demos/ReportingDemo.jsx';
+
+const cases = [
+  {
+    id: 'agent',
+    problem: 'Automatyzacje jednego zadania sypią się, gdy rzeczywistość się komplikuje — i nikt nie widzi dlaczego.',
+    solution: 'Samodzielny agent, który planuje, wywołuje narzędzia, wraca po błędach — i pokazuje swoje rozumowanie na każdym kroku.',
+    effect: 'Proces od początku do końca, pod nadzorem: ostatnie słowo ma człowiek.',
+  },
+  {
+    id: 'ocr',
+    problem: 'Zespoły księgowe przepisują dane z faktur ręcznie — minuty na dokument, z pomyłkami.',
+    solution: 'PDF lub zdjęcie na wejściu → ustrukturyzowane dane (Azure Document Intelligence + Claude API).',
+    effect: 'Faktura przetworzona w kilka sekund, gotowa do księgi.',
+  },
+  {
+    id: 'email',
+    problem: 'Maile od klientów toną księgowych — pilne pisma z urzędu mieszają się ze spamem.',
+    solution: 'Klasyfikacja na 4 kategorie (pilne / zwykłe / spotkanie / spam) + szkic odpowiedzi do każdej; zatwierdza człowiek.',
+    effect: 'Skrzynka triażowana automatycznie, odpowiedzi w minutach.',
+  },
+  {
+    id: 'reporting',
+    problem: 'Miesięczne raporty klientów to godziny kopiuj-wklej.',
+    solution: 'Eksporty z księgi → raport PDF z KPiR-owymi KPI i pisemnym podsumowaniem.',
+    effect: 'Minuty zamiast godzin na klienta.',
+  },
+];
+
+const groups = [
+  {
+    num: '01',
+    title: 'Agentic AI & LLMs',
+    items: ['Claude (API + Claude Code) — daily', 'Gemini', 'Hermes Agent — agenty, cron, delegacja', 'autonomous agents', 'MCP (Model Context Protocol)', 'prompt engineering', 'multi-LLM routing, provider abstraction'],
+  },
+  {
+    num: '02',
+    title: 'Workflow orchestration',
+    items: ['n8n (workflow + MCP tool)', 'Firecrawl — ekstrakcja treści z żywych stron webowych', 'Make.com', 'Google Apps Script', 'REST APIs & webhooks', 'Cloudflare Workers (cron, queues)', 'modern alternative to traditional RPA'],
+  },
+  {
+    num: '03',
+    title: 'RAG & knowledge bases',
+    items: ['RAG patterns in products', 'knowledge-base design', 'personal Zettelkasten (vault)', 'AI-ecosystem monitoring (stały monitoring źródeł)'],
+  },
+  {
+    num: '04',
+    title: 'Discovery & business analysis',
+    items: ['Mom Test discovery', 'BPMN 2.0 (AS-IS → TO-BE)', 'user stories, Given/When/Then', 'PRD, ROI modeling', 'compose-vs-build framework'],
+  },
+  {
+    num: '05',
+    title: 'Ethical AI & compliance',
+    items: ['GDPR Art. 22 / 28', 'human-in-the-loop by design', 'EU data residency', 'data privacy & security by default'],
+  },
+  {
+    num: '06',
+    title: 'Programming (AI-assisted)',
+    items: ['Python, FastAPI', 'SQL, Supabase/PostgreSQL (RLS)', 'Azure Document Intelligence', 'Astro, Cloudflare Pages + D1', 'Playwright — testy E2E'],
+  },
+  {
+    num: '07',
+    title: 'Data analysis & pipelines',
+    items: ['SQL — JOIN, window functions, reconciliation', 'DuckDB, pandas', 'pandera data contracts', 'DVC — reproducible pipelines', 'data provenance (SHA-256)', 'public data: GUS · Eurostat · NBP · ECB'],
+  },
+];
+
+const caseFor = (id) => cases.find((c) => c.id === id);
+const rows = (c) => [
+  { label: 'Problem', text: c.problem },
+  { label: 'Rozwiązanie', text: c.solution },
+  { label: 'Efekt', text: c.effect },
+];
+---
+
+<section id="work" class="relative overflow-hidden bg-[#fafafa] dark:bg-[var(--c-page)] text-dark dark:text-[var(--c-ink)] px-8 md:px-16 py-24 md:py-32 transition-colors duration-500">
+  <div class="max-w-5xl mx-auto relative z-10">
+    <!-- Kicker -->
+    <p class="font-mono text-xs uppercase tracking-[0.24em] opacity-50 mb-6">
+      <span class="text-sunset">—</span> 02 · Narzędzia i Stack
+    </p>
+
+    <!-- Heading -->
+    <h2 class="font-serif text-4xl md:text-5xl leading-[1.02] tracking-[-0.01em] mb-6">
+      Narzędzia AI dla <em class="italic">ludzi</em>, nie dla firm.
+    </h2>
+
+    <!-- Lead -->
+    <p class="font-serif italic text-xl md:text-2xl leading-snug max-w-3xl mb-14 opacity-90">
+      Cztery dema + jedno wdrożenie na żywo: agent, OCR faktur, pomocnik maili, raporty KPiR — plus lead-classification B2B (live) i infrastruktura n8n.
+    </p>
+
+    <!-- Divider -->
+    <hr class="border-t border-dark/10 dark:border-[var(--c-line)] w-full mb-14" />
+
+    <!-- Live demo + n8n — karty highlight, bez glow -->
+    <div class="grid md:grid-cols-2 gap-4 mb-14">
+      <a
+        href="https://demo.mjoldak.pl"
+        target="_blank"
+        rel="noopener"
+        class="group rounded-lg border border-dark/15 bg-dark text-primary p-7 hover:border-accent transition-colors duration-200 no-underline block"
+      >
+        <div class="flex items-center gap-2 mb-3">
+          <span class="w-1.5 h-1.5 bg-green-400"></span>
+          <span class="font-mono text-[10px] uppercase tracking-[0.18em] text-green-400">Live demo</span>
+        </div>
+        <h3 class="font-serif text-xl mb-2 leading-snug">Sales Agent B2B — live demo</h3>
+        <p class="font-sans text-sm opacity-80 leading-relaxed mb-5">
+          Wdrożone demo: formularz → klasyfikacja leadów GenAI (HOT/WARM/COLD z uzasadnieniem) → baza danych w UE, z poziomowym ograniczeniem dostępu i rejestrem decyzji z człowiekiem w pętli (RODO art. 22 z założenia).
+        </p>
+        <span class="font-mono text-xs uppercase tracking-[0.12em] text-accent group-hover:underline">
+          demo.mjoldak.pl ↗
+        </span>
+      </a>
+      <div class="rounded-lg border border-dark/15 bg-dark text-primary p-7">
+        <div class="flex items-center gap-2 mb-3">
+          <span class="w-1.5 h-1.5 bg-accent"></span>
+          <span class="font-mono text-[10px] uppercase tracking-[0.18em] text-accent">Infrastruktura agentywna</span>
+        </div>
+        <h3 class="font-serif text-xl mb-2 leading-snug">Pipeline n8n jako narzędzie MCP</h3>
+        <p class="font-sans text-sm opacity-80 leading-relaxed mb-5">
+          Działający workflow n8n (Webhook → Gemini → baza w UE), zielony end-to-end i udostępniony przez
+          Model Context Protocol — więc agenci AI mogą go wywoływać jak narzędzie.
+        </p>
+        <p class="font-mono text-[11px] tracking-wide text-accent/90">
+          Webhook → LLM → Parse → DB (EU) · instance-level MCP
+        </p>
+      </div>
+    </div>
+
+    <!-- Dema: każdy przypadek = wiersze Problem/Rozwiązanie/Efekt z linią włosową -->
+    <div class="space-y-12">
+      {['agent', 'ocr', 'email', 'reporting'].map((id) => {
+        const c = caseFor(id);
+        return (
+          <div class="rounded-lg border border-dark/10 dark:border-[var(--c-line)] bg-dark/[0.015] p-5 md:p-7">
+            <dl class="border-t border-dark/10 dark:border-[var(--c-line)]">
+              {rows(c).map((r) => (
+                <div class="grid grid-cols-1 sm:grid-cols-[110px_1fr] gap-1 sm:gap-5 py-3.5 border-b border-dark/10 dark:border-[var(--c-line)]">
+                  <dt class="font-mono text-[10px] uppercase tracking-[0.18em] opacity-60 pt-1">{r.label}</dt>
+                  <dd class="font-sans text-[15px] leading-relaxed m-0 text-dark/85 dark:text-[var(--c-ink)]">{r.text}</dd>
+                </div>
+              ))}
+            </dl>
+            {id === 'agent' && <AgentDemo client:load />}
+            {id === 'ocr' && <OcrDemo client:visible />}
+            {id === 'email' && <EmailDemo client:visible ssr={false} />}
+            {id === 'reporting' && <ReportingDemo client:visible />}
+          </div>
+        );
+      })}
+    </div>
+
+    <!-- Divider -->
+    <hr class="border-t border-dark/10 dark:border-[var(--c-line)] w-full my-14" />
+
+    <!-- Stack: zwarty blok kolumnowy -->
+    <div>
+      <h3 class="font-mono text-xs uppercase tracking-[0.18em] opacity-50 mb-5">Stack</h3>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        {groups.map((g) => (
+          <div class="rounded-lg border border-dark/10 dark:border-[var(--c-line)] bg-dark/[0.015] p-5 hover:border-accent/40 transition-colors duration-300">
+            <div class="font-mono text-[10px] tracking-[0.2em] text-accent mb-2">{g.num}</div>
+            <h4 class="font-sans font-bold text-base mb-3 tracking-tight">{g.title}</h4>
+            <ul class="space-y-1.5">
+              {g.items.map((item) => (
+                <li class="font-sans text-sm leading-relaxed opacity-75 flex gap-2.5">
+                  <span class="text-accent shrink-0">▸</span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

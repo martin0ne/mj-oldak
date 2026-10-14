@@ -3,9 +3,9 @@
 // Dowód „od publicznych danych do cytowanego raportu": reconciliation GUS x Eurostat,
 // wykresy + raport PDF + link do reprodukowalnego pipeline'u. Styl jak OpenSource/Skills.
 const stats = [
-  { big: '0.34', unit: 'pp', label: 'dwa oficjalne źródła uzgodnione (GUS vs Eurostat)' },
   { big: '26→31', unit: '', label: "miejsce Polski w krajach UE, 2021→2025" },
-  { big: '−11.6', unit: 'pp', label: 'przepaść w adopcji AI — Polska vs średnia UE, 2021–2025' },
+  { big: '−11,6', unit: 'pp', label: 'przepaść w adopcji AI — Polska vs średnia UE, 2025' },
+  { big: '×3', unit: '', label: 'wzrost adopcji w Polsce 2021→2025 (2,86% → 8,36%)' },
 ];
 const demonstrates = [
   'SQL — JOIN · window functions · reconciliation',
@@ -17,6 +17,7 @@ const demonstrates = [
 const reportUrl = '/reports/ai_adoption_report.pdf';
 const repoUrl = 'https://github.com/martin0ne/analytics-stack-pl';
 ---
+
 <section id="analytics" data-nav-theme="dark" class="relative overflow-hidden bg-dark text-primary px-8 md:px-16 py-24 md:py-32 border-t border-primary/10">
   <div class="relative z-10 max-w-6xl mx-auto">
     <p class="font-mono text-xs uppercase tracking-[0.3em] opacity-60 mb-6">
@@ -47,9 +48,9 @@ const repoUrl = 'https://github.com/martin0ne/analytics-stack-pl';
 
       <p class="font-sans text-base leading-relaxed opacity-85 max-w-3xl mb-8">
         Ten sam wskaźnik — przedsiębiorstwa używające dowolnej technologii AI — raportowany przez dwa urzędy
-        statystyczne, uzgodniony do 0,3&nbsp;punktu; Polska szybko nadrabia z niskiego poziomu, ale przepaść
-        do średniej UE rośnie. Dane obejmujące całą gospodarkę, z zastrzeżeniem sektora finansowego
-        podanym wprost.
+        statystyczne. Polska szybko nadąża z niskiego poziomu, ale luka do średniej UE rośnie:
+        z −4,8 pp w 2021 do −11,6 pp w 2025. Adopcja zależy od wielkości firmy:
+        od 6,1% w małych po 42% w dużych.
       </p>
 
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-9 pb-9 border-b border-primary/10">
@@ -88,7 +89,7 @@ const repoUrl = 'https://github.com/martin0ne/analytics-stack-pl';
       <div class="flex flex-wrap gap-4">
         <a href={reportUrl} target="_blank" rel="noopener"
            class="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-[2rem] bg-accent text-dark font-sans font-bold text-base hover:bg-dark hover:text-accent dark:hover:bg-primary dark:hover:text-dark hover:scale-[1.03] transition-all duration-300 no-underline">
-          Czytaj raport (PDF) ↗
+          Pobierz raport (PDF) ↗
         </a>
         <a href={repoUrl} target="_blank" rel="noopener"
            class="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-[2rem] border border-primary/20 hover:border-accent text-primary hover:text-dark font-sans font-bold text-base hover:bg-accent hover:scale-[1.03] transition-all duration-300 no-underline">
@@ -98,3 +99,6 @@ const repoUrl = 'https://github.com/martin0ne/analytics-stack-pl';
     </div>
   </div>
 </section>
+
+<!-- Spacer between analytics card and explorer -->
+<div style="height: 2px; background: linear-gradient(to right, transparent, rgba(255,255,255,0.06), transparent);" role="separator"></div>

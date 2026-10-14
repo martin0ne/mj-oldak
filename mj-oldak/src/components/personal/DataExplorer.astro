@@ -1,0 +1,423 @@
+---
+// Interaktywna eksploracja danych adopcji AI w Polsce (2021–2025).
+// Vanilla JS + SVG, zero zależności npm. Treść widoczna bez JS (<noscript>).
+
+import yearlyData from '../../data/yearly_pl_vs_eu.json?raw';
+import bySizeData from '../../data/adoption_by_size_2025.json?raw';
+import reconciliationData from '../../data/reconciliation_gus_eurostat_2025.json?raw';
+
+const Y = JSON.parse(yearlyData);
+const S = JSON.parse(bySizeData);
+const R = JSON.parse(reconciliationData);
+---
+
+<section id="data-explorer" data-nav-theme="dark" class="relative overflow-hidden bg-dark text-primary px-8 md:px-16 py-24 border-t border-primary/10">
+  <div class="relative z-10 max-w-6xl mx-auto">
+
+    <p class="font-mono text-xs uppercase tracking-[0.3em] opacity-60 mb-6">
+      <span class="text-accent">—</span> 05a · Eksplorator danych
+    </p>
+
+    <h2 class="font-sans font-bold text-4xl md:text-5xl tracking-[-0.03em] uppercase leading-[0.95] mb-6">
+      Porównaj sam<span class="text-accent">.</span>
+    </h2>
+
+    <p class="font-serif italic text-2xl md:text-3xl leading-snug max-w-3xl mb-8 opacity-90">
+      Wybierz rok i wskaźnik — tabela i wykres pokażą co się zmienia.
+    </p>
+
+    <!-- Controls -->
+    <div class="flex flex-wrap items-end gap-5 mb-8 pb-6 border-b border-primary/10">
+      <div>
+        <label class="font-mono text-[10px] uppercase tracking-[0.2em] opacity-60 block mb-1.5" for="year-select">Rok</label>
+        <select id="year-select" class="bg-[#1a1a1a] border border-primary/20 rounded-lg px-3 py-2 font-sans text-sm text-primary focus:border-accent focus:outline-none min-w-[140px]">
+          {Y.data.map((y) => (
+            <option value={y.year} selected={y.year === 2025}>{y.year}</option>
+          ))}
+        </select>
+      </div>
+
+      <div>
+        <label class="font-mono text-[10px] uppercase tracking-[0.2em] opacity-60 block mb-1.5" for="view-select">Widok</label>
+        <select id="view-select" class="bg-[#1a1a1a] border border-primary/20 rounded-lg px-3 py-2 font-sans text-sm text-primary focus:border-accent focus:outline-none min-w-[160px]">
+          <option value="trajectory" selected>Trajektoria vs UE27</option>
+          <option value="by-size">Adopcja wg wielkości firmy (2025)</option>
+          <option value="reconciliation">Uzgodnienie GUS × Eurostat (2025)</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Chart area (SVG) -->
+    <div id="chart-container" class="rounded-2xl bg-primary/[0.04] border border-primary/10 p-6 mb-8 min-h-[260px]">
+      <!-- Initial SVG rendered by JS below; static fallback in noscript -->
+      <svg id="main-svg" viewBox="0 0 800 300" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Wykres adopcji AI">
+        <text x="400" y="150" text-anchor="middle" fill="#888" font-size="14" font-family="monospace">Wybierz widok, by zobaczyć wykres</text>
+      </svg>
+    </div>
+
+    <!-- Table area -->
+    <div class="overflow-x-auto mb-10">
+      <table id="data-table" class="w-full text-sm font-sans" role="table">
+        <thead>
+          <tr class="border-b border-primary/15">
+            <!-- Headers injected by JS; static fallback in noscript -->
+            <th class="text-left py-2 pr-4 font-mono text-[10px] uppercase tracking-[0.18em] opacity-60 whitespace-nowrap" scope="col">Pole</th>
+            <th class="text-right py-2 pr-4 font-mono text-[10px] uppercase tracking-[0.18em] opacity-60 whitespace-nowrap" scope="col" colspan="2">Liczby</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="py-2 opacity-50" colspan="3">— wybierz widok —</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Insight prompts -->
+    <div class="rounded-2xl bg-primary/[0.04] border border-primary/10 p-6 mb-8">
+      <p class="font-mono text-[10px] uppercase tracking-[0.2em] opacity-60 mb-3">Możliwe wnioski</p>
+      <ul class="space-y-3">
+        <li class="font-sans text-base leading-relaxed opacity-80 flex gap-2.5">
+          <span class="text-accent shrink-0">▸</span>
+          <span>Polaka adoption rośnie szybciej niż średnia UE — ale czy nadrobienie bazy wystarczy, gdy luka też się powiększa?</span>
+        </li>
+        <li class="font-sans text-base leading-relaxed opacity-80 flex gap-2.5">
+          <span class="text-accent shrink-0">▸</span>
+          <span>Wielkość firmy to najsilniejszy predyktor adopcji AI. Czy małe i średnie przedsiębiorstwa zostają w tyle strukturalnie?</span>
+        </li>
+        <li class="font-sans text-base leading-relaxed opacity-80 flex gap-2.5">
+          <span class="text-accent shrink-0">▸</span>
+          <span>Dwa urzędy statystyczne zgadzają się w obrębie ~0,3 pp — ale rozchodzą się przy dużych firmach. Gdzie leży prawda?</span>
+        </li>
+      </ul>
+    </div>
+
+    <!-- No-script fallback: always-visible table -->
+    <noscript>
+      <style>
+        .noscript-table-wrap { display: block !important; }
+      </style>
+      <div class="noscript-table-wrap overflow-x-auto">
+        <table class="w-full text-sm font-sans">
+          <thead>
+            <tr class="border-b border-primary/15">
+              <th class="text-left py-2 pr-4 font-mono text-[10px] uppercase tracking-[0.18em] opacity-60" scope="col">Rok</th>
+              <th class="text-right py-2 pr-4 font-mono text-[10px] uppercase tracking-[0.18em] opacity-60" scope="col">Polska %</th>
+              <th class="text-right py-2 pr-4 font-mono text-[10px] uppercase tracking-[0.18em] opacity-60" scope="col">UE27 %</th>
+              <th class="text-right py-2 pr-4 font-mono text-[10px] uppercase tracking-[0.18em] opacity-60" scope="col">Luka (pp)</th>
+              <th class="text-right py-2 pr-4 font-mono text-[10px] uppercase tracking-[0.18em] opacity-60" scope="col">Ranga PL</th>
+            </tr>
+          </thead>
+          <tbody>
+{Y.data.map((y) => (
+            <tr class="border-b border-primary/10">
+              <td class="py-2.5 pr-4">{y.year}</td>
+              <td class="py-2.5 pr-4 text-right">{y.poland_pct}%</td>
+              <td class="py-2.5 pr-4 text-right">{y.eu27_pct}%</td>
+              <td class="py-2.5 pr-4 text-right">{y.gap_pp}</td>
+              <td class="py-2.5 pr-4 text-right">{y.pl_rank}/{y.total_countries}</td>
+            </tr>
+          ))}
+          </tbody>
+        </table>
+      </div>
+
+      <div class="mt-8 rounded-2xl bg-primary/[0.04] border border-primary/10 p-6">
+        <figure class="m-0">
+          <div class="rounded-xl bg-[#f5f3ee] dark:bg-[var(--c-surface)] p-4 border border-primary/10">
+            <img src="/reports/ai_trajectory.png" alt="Trajektoria adopcji AI: Polska vs UE27, 2021–2025" class="w-full block" loading="lazy" />
+          </div>
+          <figcaption class="font-mono text-[10px] uppercase tracking-[0.15em] opacity-50 mt-3">Rys. 1 · Trajektoria PL vs UE27</figcaption>
+        </figure>
+      </div>
+
+      <div class="mt-8 rounded-2xl bg-primary/[0.04] border border-primary/10 p-6">
+        <figure class="m-0">
+          <div class="rounded-xl bg-[#f5f3ee] dark:bg-[var(--c-surface)] p-4 border border-primary/10">
+            <img src="/reports/ai_by_size.png" alt="Adopcja AI wg wielkości firmy, 2025" class="w-full block" loading="lazy" />
+          </div>
+          <figcaption class="font-mono text-[10px] uppercase tracking-[0.15em] opacity-50 mt-3">Rys. 2 · Adopcja wg wielkości firmy (2025)</figcaption>
+        </figure>
+      </div>
+
+      <div class="mt-8 rounded-2xl bg-primary/[0.04] border border-primary/10 p-6">
+        <p class="font-mono text-[10px] uppercase tracking-[0.2em] opacity-60 mb-3">Możliwe wnioski</p>
+        <ul class="space-y-3">
+          <li class="font-sans text-base leading-relaxed opacity-80 flex gap-2.5">
+            <span class="text-accent shrink-0">▸</span>
+            <span>Polaka adoption rośnie szybciej niż średnia UE — ale czy nadrobienie bazy wystarczy, gdy luka też się powiększa?</span>
+          </li>
+          <li class="font-sans text-base leading-relaxed opacity-80 flex gap-2.5">
+            <span class="text-accent shrink-0">▸</span>
+            <span>Wielkość firmy to najsilniejszy predyktor adopcji AI. Czy małe i średnie przedsiębiorstwa zostają w tyle strukturalnie?</span>
+          </li>
+          <li class="font-sans text-base leading-relaxed opacity-80 flex gap-2.5">
+            <span class="text-accent shrink-0">▸</span>
+            <span>Dwa urzędy statystyczne zgadzają się w obrębie ~0,3 pp — ale rozchodzą się przy dużych firmach. Gdzie leży prawda?</span>
+          </li>
+        </ul>
+      </div>
+    </noscript>
+
+  </div>
+</section>
+
+<script client:load>
+// ── helpers ──
+const svg = document.getElementById('main-svg');
+const tbody = document.querySelector('#data-table tbody');
+const thead = document.querySelector('#data-table thead tr');
+
+function clearTable() {
+  while (thead.childNodes.length > 1) thead.removeChild(thead.lastChild);
+  while (tbody.firstChild) tbody.removeChild(tbody.firstChild);
+}
+
+function addHeader(text, colSpan = undefined) {
+  const th = document.createElement('th');
+  th.className = 'text-right py-2 pr-4 font-mono text-[10px] uppercase tracking-[0.18em] opacity-60 whitespace-nowrap';
+  th.scope = 'col';
+  if (colSpan) th.colSpan = colSpan;
+  th.textContent = text;
+  thead.appendChild(th);
+}
+
+function addRow(cells) {
+  const tr = document.createElement('tr');
+  tr.className = 'border-b border-primary/10';
+  cells.forEach((c, i) => {
+    const td = document.createElement('td');
+    td.className = i === 0 ? 'py-2.5 pr-4' : 'py-2.5 pr-4 text-right';
+    td.textContent = c;
+    tr.appendChild(td);
+  });
+  tbody.appendChild(tr);
+}
+
+function drawLineChart(data, plKey, euKey, labelPl = 'Polska', labelEu = 'UE27') {
+  const W = 800, H = 300, pad = { l: 55, r: 25, t: 30, b: 50 };
+  const cw = W - pad.l - pad.r, ch = H - pad.t - pad.b;
+  const allVals = data.flatMap(d => [d[plKey], d[euKey]]);
+  const minV = Math.min(...allVals) * 0.85;
+  const maxV = Math.max(...allVals) * 1.1;
+  const range = maxV - minV || 1;
+
+  function xPos(i) { return pad.l + (i / (data.length - 1)) * cw; }
+  function yPos(v) { return pad.t + ch - ((v - minV) / range) * ch; }
+
+  // Build SVG string
+  let lines = '';
+
+  // Grid lines and Y labels
+  for (let i = 0; i <= 5; i++) {
+    const v = minV + (range * i) / 5;
+    const y = yPos(v);
+    lines += `<line x1="${pad.l}" y1="${y}" x2="${W - pad.r}" y2="${y}" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>`;
+    lines += `<text x="${pad.l - 8}" y="${y + 4}" text-anchor="end" fill="#888" font-size="11" font-family="monospace">${v.toFixed(1)}%</text>`;
+  }
+
+  // X labels
+  data.forEach((d, i) => {
+    const x = xPos(i);
+    lines += `<text x="${x}" y="${H - 10}" text-anchor="middle" fill="#888" font-size="12" font-family="monospace">${typeof d.year !== 'undefined' ? d.year : d.label || ''}</text>`;
+  });
+
+  // EU line
+  const euPoints = data.map((d, i) => `${xPos(i)},${yPos(d[euKey])}`).join(' ');
+  lines += `<polyline points="${euPoints}" fill="none" stroke="#555" stroke-width="2" stroke-dasharray="6,4"/>`;
+
+  // PL line (accent)
+  const plPoints = data.map((d, i) => `${xPos(i)},${yPos(d[plKey])}`).join(' ');
+  lines += `<polyline points="${plPoints}" fill="none" stroke="#e0e0d4" stroke-width="3"/>`;
+
+  // Dots on PL line
+  data.forEach((d, i) => {
+    const cx = xPos(i), cy = yPos(d[plKey]);
+    lines += `<circle cx="${cx}" cy="${cy}" r="4" fill="#e0e0d4" stroke="#1a1a1a" stroke-width="1.5"/>`;
+  });
+
+  // End labels
+  const lastIdx = data.length - 1;
+  const lastX = xPos(lastIdx);
+  lines += `<text x="${lastX + 8}" y="${yPos(data[lastIdx][plKey]) + 4}" fill="#e0e0d4" font-size="12" font-weight="bold" font-family="sans-serif">${data[lastIdx][plKey]}% PL</text>`;
+  lines += `<text x="${lastX + 8}" y="${yPos(data[lastIdx][euKey]) + 4}" fill="#888" font-size="12" font-family="sans-serif">${data[lastIdx][euKey]}% EU27</text>`;
+
+  // Legend
+  lines += `<rect x="${pad.l}" y="8" width="8" height="3" fill="#e0e0d4" rx="1"/>`;
+  lines += `<text x="${pad.l + 12}" y="13" fill="#e0e0d4" font-size="11" font-family="sans-serif">${labelPl}</text>`;
+  lines += `<rect x="${pad.l + 80}" y="8" width="8" height="3" fill="#555" rx="1"/>`;
+  lines += `<text x="${pad.l + 92}" y="13" fill="#888" font-size="11" font-family="sans-serif">${labelEu}</text>`;
+
+  svg.innerHTML = lines;
+}
+
+function drawBarChart(sizes, plKey, euKey, labelPl = 'Polska', labelEu = 'UE27') {
+  const W = 800, H = 300, pad = { l: 55, r: 25, t: 30, b: 60 };
+  const cw = W - pad.l - pad.r, ch = H - pad.t - pad.b;
+  const allVals = sizes.flatMap(s => [s[plKey], s[euKey]]);
+  const maxV = Math.max(...allVals) * 1.1;
+
+  const barGroupW = cw / sizes.length;
+  const barW = barGroupW * 0.32;
+
+  let bars = '';
+
+  // Y axis
+  for (let i = 0; i <= 4; i++) {
+    const v = (maxV * i) / 4;
+    const y = pad.t + ch - (v / maxV) * ch;
+    bars += `<line x1="${pad.l}" y1="${y}" x2="${W - pad.r}" y2="${y}" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>`;
+    bars += `<text x="${pad.l - 8}" y="${y + 4}" text-anchor="end" fill="#888" font-size="11" font-family="monospace">${v.toFixed(0)}%</text>`;
+  }
+
+  // Bars
+  sizes.forEach((s, i) => {
+    const groupX = pad.l + i * barGroupW + barGroupW / 2;
+
+    const h1 = (s[plKey] / maxV) * ch;
+    const y1 = pad.t + ch - h1;
+    bars += `<rect x="${groupX - barW - 1}" y="${y1}" width="${barW}" height="${h1}" fill="#e0e0d4" rx="2"/>`;
+
+    const h2 = (s[euKey] / maxV) * ch;
+    const y2 = pad.t + ch - h2;
+    bars += `<rect x="${groupX + 1}" y="${y2}" width="${barW}" height="${h2}" fill="#555" rx="2"/>`;
+
+    // Label
+    bars += `<text x="${groupX}" y="${H - 14}" text-anchor="middle" fill="#aaa" font-size="11" font-family="sans-serif">${s.label_text}</text>`;
+  });
+
+  // Legend
+  bars += `<rect x="${pad.l}" y="8" width="8" height="8" fill="#e0e0d4" rx="2"/>`;
+  bars += `<text x="${pad.l + 14}" y="16" fill="#e0e0d4" font-size="11" font-family="sans-serif">${labelPl}</text>`;
+  bars += `<rect x="${pad.l + 90}" y="8" width="8" height="8" fill="#555" rx="2"/>`;
+  bars += `<text x="${pad.l + 104}" y="16" fill="#888" font-size="11" font-family="sans-serif">${labelEu}</text>`;
+
+  svg.innerHTML = bars;
+}
+
+function drawReconciliation(rec) {
+  const W = 800, H = 300, pad = { l: 80, r: 25, t: 30, b: 50 };
+  const cw = W - pad.l - pad.r, ch = H - pad.t - pad.b;
+
+  const rows = rec.rows.filter(r => r.size_class && r.size_class !== 'Total');
+
+  // delta values for horizontal bars
+  const maxAbsDelta = Math.max(...rows.map(r => Math.abs(r.delta_pp)), 1);
+
+  let html = '';
+
+  // Y labels
+  rows.forEach((r, i) => {
+    const y = pad.t + (i / rows.length) * ch + (ch / rows.length) / 2;
+    html += `<text x="${pad.l - 8}" y="${y + 4}" text-anchor="end" fill="#aaa" font-size="11" font-family="sans-serif">${r.size_class.replace(/\([^)]*\)/, '').trim()}</text>`;
+
+    // Center line (zero delta)
+    const centerX = pad.l + cw / 2;
+
+    // Delta bar
+    const barLen = (Math.abs(r.delta_pp) / maxAbsDelta) * (cw / 2 - 10);
+    const barX = r.delta_pp >= 0 ? centerX : centerX - barLen;
+    const color = r.delta_pp >= 0 ? '#e0e0d4' : '#888';
+    html += `<rect x="${barX}" y="${y - 6}" width="${barLen}" height="12" fill="${color}" rx="2" opacity="0.7"/>`;
+
+    // Value label
+    html += `<text x="${barX + (r.delta_pp >= 0 ? barLen + 4 : -4)}" y="${y + 4}" text-anchor="${r.delta_pp >= 0 ? 'start' : 'end'}" fill="#888" font-size="10" font-family="monospace">${r.delta_pp > 0 ? '+' : ''}${r.delta_pp} pp</text>`;
+  });
+
+  // Zero line
+  html += `<line x1="${pad.l + cw / 2}" y1="${pad.t}" x2="${pad.l + cw / 2}" y2="${pad.t + ch}" stroke="rgba(255,255,255,0.15)" stroke-width="1" stroke-dasharray="3,3"/>`;
+  html += `<text x="${pad.l + cw / 2}" y="${H - 10}" text-anchor="middle" fill="#666" font-size="10" font-family="monospace">Środek (brak odchylenia)</text>`;
+
+  svg.innerHTML = html;
+}
+
+// ── render functions per view ──
+function renderTrajectory() {
+  clearTable();
+  addHeader('Wskaźnik');
+  addHeader('2021');
+  addHeader('2023');
+  addHeader('2024');
+  addHeader('2025');
+
+  Y.data.forEach(y => {
+    addRow([
+      'Adopcja PL %',
+      y.poland_pct + '%',
+      y.poland_pct + '%',
+      y.poland_pct + '%',
+      y.poland_pct + '%',
+    ]);
+  });
+  addRow(['EU27 %', '', '', '', '']);
+  Y.data.forEach(y => addRow(['', '', '', '', y.eu27_pct + '%']));
+  addRow(['Luka (pp)', '', '', '', '']);
+  Y.data.forEach(y => addRow(['', '', '', '', y.gap_pp]));
+
+  drawLineChart(Y.data, 'poland_pct', 'eu27_pct');
+}
+
+function renderBySize() {
+  clearTable();
+  addHeader('Kategoria');
+  addHeader('PL GUS %');
+  addHeader('PL EStat %');
+  addHeader('EU27 %');
+  addHeader('Luka (pp)');
+
+  S.data.rows.forEach(s => {
+    const cls = S.data.size_classes.find(c => c.label === s.label);
+    addRow([
+      cls ? cls.name : s.label,
+      s.pl_gus + '%',
+      s.pl_eurostat + '%',
+      s.eu27 + '%',
+      s.gap_pp,
+    ]);
+  });
+
+  drawBarChart(
+    S.data.rows.map(s => ({
+      ...s,
+      label_text: S.data.size_classes.find(c => c.label === s.label)?.name?.split(' ')[0] || s.label,
+    })),
+    'pl_eurostat', 'eu27'
+  );
+}
+
+function renderReconciliation() {
+  clearTable();
+  addHeader('Wielkość firmy');
+  addHeader('GUS %');
+  addHeader('Eurostat %');
+  addHeader('Δ (pp)');
+  addHeader('Δ (%)');
+
+  R.rows.forEach(r => {
+    addRow([
+      r.size_class,
+      r.gus_pct + '%',
+      r.eurostat_pct + '%',
+      (r.delta_pp > 0 ? '+' : '') + r.delta_pp,
+      (r.delta_pct > 0 ? '+' : '') + r.delta_pct + '%',
+    ]);
+  });
+
+  drawReconciliation(R);
+}
+
+// ── wire up selects ──
+document.getElementById('year-select').addEventListener('change', () => {
+  renderTrajectory();
+});
+
+document.getElementById('view-select').addEventListener('change', (e) => {
+  const view = e.target.value;
+  switch (view) {
+    case 'trajectory': renderTrajectory(); break;
+    case 'by-size': renderBySize(); break;
+    case 'reconciliation': renderReconciliation(); break;
+  }
+});
+
+// Initial load
+renderTrajectory();
+</script>
