@@ -3,36 +3,11 @@
 // Mono kicker, krótki serif lead, karty live-demo,
 // tabela P/S/E skompaktowana do wierszy mono z linią włosową,
 // stack na końcu jako zwarty blok kolumnowy.
-import AgentDemo from '../demos/AgentDemo.jsx';
-import OcrDemo from '../demos/OcrDemo.jsx';
-import EmailDemo from '../demos/EmailDemo.jsx';
-import ReportingDemo from '../demos/ReportingDemo.jsx';
-
-const cases = [
-  {
-    id: 'agent',
-    problem: 'Automatyzacje jednego zadania sypią się, gdy rzeczywistość się komplikuje — i nikt nie widzi dlaczego.',
-    solution: 'Samodzielny agent, który planuje, wywołuje narzędzia, wraca po błędach — i pokazuje swoje rozumowanie na każdym kroku.',
-    effect: 'Proces od początku do końca, pod nadzorem: ostatnie słowo ma człowiek.',
-  },
-  {
-    id: 'ocr',
-    problem: 'Zespoły księgowe przepisują dane z faktur ręcznie — minuty na dokument, z pomyłkami.',
-    solution: 'PDF lub zdjęcie na wejściu → ustrukturyzowane dane (Azure Document Intelligence + Claude API).',
-    effect: 'Faktura przetworzona w kilka sekund, gotowa do księgi.',
-  },
-  {
-    id: 'email',
-    problem: 'Maile od klientów toną księgowych — pilne pisma z urzędu mieszają się ze spamem.',
-    solution: 'Klasyfikacja na 4 kategorie (pilne / zwykłe / spotkanie / spam) + szkic odpowiedzi do każdej; zatwierdza człowiek.',
-    effect: 'Skrzynka triażowana automatycznie, odpowiedzi w minutach.',
-  },
-  {
-    id: 'reporting',
-    problem: 'Miesięczne raporty klientów to godziny kopiuj-wklej.',
-    solution: 'Eksporty z księgi → raport PDF z KPiR-owymi KPI i pisemnym podsumowaniem.',
-    effect: 'Minuty zamiast godzin na klienta.',
-  },
+const teasers = [
+  { id: 'agent', num: '01', title: 'Agent Mission Control', note: 'agent planuje, wywołuje narzędzia, wraca po błędach' },
+  { id: 'ocr', num: '02', title: 'OCR Invoice Reader', note: 'PDF lub zdjęcie → ustrukturyzowane dane faktury' },
+  { id: 'email', num: '03', title: 'Pomocnik maili', note: 'klasyfikacja 4 kategorii + szkice odpowiedzi' },
+  { id: 'reporting', num: '04', title: 'Reporting Agent', note: 'eksporty z księgi → raport PDF z KPiR' },
 ];
 
 const groups = [
@@ -73,12 +48,6 @@ const groups = [
   },
 ];
 
-const caseFor = (id) => cases.find((c) => c.id === id);
-const rows = (c) => [
-  { label: 'Problem', text: c.problem },
-  { label: 'Rozwiązanie', text: c.solution },
-  { label: 'Efekt', text: c.effect },
-];
 ---
 
 <section id="work" class="relative overflow-hidden bg-[#fafafa] dark:bg-[var(--c-page)] text-dark dark:text-[var(--c-ink)] px-8 md:px-16 py-24 md:py-32 transition-colors duration-500">
@@ -95,7 +64,8 @@ const rows = (c) => [
 
     <!-- Lead -->
     <p class="font-serif italic text-xl md:text-2xl leading-snug max-w-3xl mb-14 opacity-90">
-      Cztery dema + jedno wdrożenie na żywo: agent, OCR faktur, pomocnik maili, raporty KPiR — plus lead-classification B2B (live) i infrastruktura n8n.
+      Jedno wdrożenie na żywo i infrastruktura na wierzchu. Cztery dema — agent, OCR, mail, raporty —
+      mieszkają obok, na własnej podstronie, żeby nie zajmować miejsca tutaj.
     </p>
 
     <!-- Divider -->
@@ -137,27 +107,24 @@ const rows = (c) => [
       </div>
     </div>
 
-    <!-- Dema: każdy przypadek = wiersze Problem/Rozwiązanie/Efekt z linią włosową -->
-    <div class="space-y-12">
-      {['agent', 'ocr', 'email', 'reporting'].map((id) => {
-        const c = caseFor(id);
-        return (
-          <div class="rounded-lg border border-dark/10 dark:border-[var(--c-line)] bg-dark/[0.015] p-5 md:p-7">
-            <dl class="border-t border-dark/10 dark:border-[var(--c-line)]">
-              {rows(c).map((r) => (
-                <div class="grid grid-cols-1 sm:grid-cols-[110px_1fr] gap-1 sm:gap-5 py-3.5 border-b border-dark/10 dark:border-[var(--c-line)]">
-                  <dt class="font-mono text-[10px] uppercase tracking-[0.18em] opacity-60 pt-1">{r.label}</dt>
-                  <dd class="font-sans text-[15px] leading-relaxed m-0 text-dark/85 dark:text-[var(--c-ink)]">{r.text}</dd>
-                </div>
-              ))}
-            </dl>
-            {id === 'agent' && <AgentDemo client:load />}
-            {id === 'ocr' && <OcrDemo client:visible />}
-            {id === 'email' && <EmailDemo client:visible ssr={false} />}
-            {id === 'reporting' && <ReportingDemo client:visible />}
-          </div>
-        );
-      })}
+    <!-- Teaser dem: jedna linijka na demo, szczegóły na /demy/ -->
+    <div class="mb-14">
+      <h3 class="font-mono text-xs uppercase tracking-[0.18em] opacity-50 mb-5">Demy — szczegóły na podstronie</h3>
+      <div class="border-t border-dark/10 dark:border-[var(--c-line)]">
+        {teasers.map((d) => (
+          <a
+            href={`/demy/#${d.id}`}
+            class="grid grid-cols-[36px_1fr] sm:grid-cols-[36px_220px_1fr] gap-x-4 gap-y-1 items-baseline py-3.5 border-b border-dark/10 dark:border-[var(--c-line)] no-underline hover:bg-dark/[0.02] transition-colors duration-200 group"
+          >
+            <span class="font-mono text-[10px] tracking-[0.2em] opacity-50">{d.num}</span>
+            <span class="font-sans font-semibold text-[15px] text-dark dark:text-[var(--c-ink)] group-hover:underline">{d.title}</span>
+            <span class="font-sans text-sm opacity-65 col-span-2 sm:col-span-1">{d.note} →</span>
+          </a>
+        ))}
+      </div>
+      <p class="font-mono text-xs uppercase tracking-[0.12em] mt-5">
+        <a href="/demy/" class="text-accent hover:underline no-underline">Wszystkie dema (4) ↗</a>
+      </p>
     </div>
 
     <!-- Divider -->

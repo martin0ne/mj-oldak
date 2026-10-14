@@ -1,0 +1,100 @@
+---
+// Podstrona dem: cztery działające dema przeniesione z homepage (14.10.2026)
+// — sekcja #work na stronie głównej zostaje skrócona do teasera.
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import NavbarPersonal from '../../components/personal/NavbarPersonal.jsx';
+import FooterSlim from '../../components/personal/FooterSlim.astro';
+import AgentDemo from '../../components/demos/AgentDemo.jsx';
+import OcrDemo from '../../components/demos/OcrDemo.jsx';
+import EmailDemo from '../../components/demos/EmailDemo.jsx';
+import ReportingDemo from '../../components/demos/ReportingDemo.jsx';
+
+const cases = [
+  {
+    id: 'agent',
+    title: 'Agent Mission Control',
+    problem: 'Automatyzacje jednego zadania sypią się, gdy rzeczywistość się komplikuje — i nikt nie widzi dlaczego.',
+    solution: 'Samodzielny agent, który planuje, wywołuje narzędzia, wraca po błędach — i pokazuje swoje rozumowanie na każdym kroku.',
+    effect: 'Proces od początku do końca, pod nadzorem: ostatnie słowo ma człowiek.',
+  },
+  {
+    id: 'ocr',
+    title: 'OCR Invoice Reader',
+    problem: 'Zespoły księgowe przepisują dane z faktur ręcznie — minuty na dokument, z pomyłkami.',
+    solution: 'PDF lub zdjęcie na wejściu → ustrukturyzowane dane (Azure Document Intelligence + Claude API).',
+    effect: 'Faktura przetworzona w kilka sekund, gotowa do księgi.',
+  },
+  {
+    id: 'email',
+    title: 'Pomocnik maili',
+    problem: 'Maile od klientów toną księgowych — pilne pisma z urzędu mieszają się ze spamem.',
+    solution: 'Klasyfikacja na 4 kategorie (pilne / zwykłe / spotkanie / spam) + szkic odpowiedzi do każdej; zatwierdza człowiek.',
+    effect: 'Skrzynka triażowana automatycznie, odpowiedzi w minutach.',
+  },
+  {
+    id: 'reporting',
+    title: 'Reporting Agent',
+    problem: 'Miesięczne raporty klientów to godziny kopiuj-wklej.',
+    solution: 'Eksporty z księgi → raport PDF z KPiR-owymi KPI i pisemnym podsumowaniem.',
+    effect: 'Minuty zamiast godzin na klienta.',
+  },
+];
+
+const rows = (c) => [
+  { label: 'Problem', text: c.problem },
+  { label: 'Rozwiązanie', text: c.solution },
+  { label: 'Efekt', text: c.effect },
+];
+---
+
+<BaseLayout
+  title="Demy — agent, OCR, mail, raporty · MJ.OLDAK"
+  description="Cztery działające dema MJ.OLDAK: agent Mission Control, OCR faktur, pomocnik maili i raporty KPiR. Wszystko działa w przeglądarce, na przykładowych danych."
+  lang="pl"
+>
+  <NavbarPersonal client:load />
+
+  <main id="demy" class="bg-background dark:bg-[var(--c-page)] text-dark dark:text-[var(--c-ink)] transition-colors duration-500">
+    <section class="px-8 md:px-16 pt-28 md:pt-36 pb-16">
+      <div class="max-w-5xl mx-auto">
+        <p class="font-mono text-xs uppercase tracking-[0.24em] opacity-50 mb-6">
+          <span class="text-accent">—</span> Demy · 02a
+        </p>
+        <h1 class="font-serif text-4xl md:text-5xl leading-[1.02] tracking-[-0.01em] mb-6">
+          Cztery dema. Wszystkie działają <em class="italic">w przeglądarce</em><span class="text-accent">.</span>
+        </h1>
+        <p class="font-serif italic text-xl md:text-2xl leading-snug max-w-3xl opacity-90">
+          Bez rejestracji, bez śledzenia, na przykładowych danych — proof of skill, nie oferta sprzedaży.
+          Każde demo: problem, rozwiązanie, efekt i działający mechanizm.
+        </p>
+        <p class="font-sans text-base opacity-65 mt-6">
+          ← <a href="/#work" class="underline hover:opacity-100">Wróć do strony głównej (Narzędzia i Stack)</a>
+        </p>
+      </div>
+    </section>
+
+    <section class="px-8 md:px-16 pb-24 md:pb-32">
+      <div class="max-w-5xl mx-auto space-y-12">
+        {cases.map((c) => (
+          <div id={c.id} class="rounded-lg border border-dark/10 dark:border-[var(--c-line)] bg-dark/[0.015] p-5 md:p-7 scroll-mt-24">
+            <h2 class="font-serif text-2xl md:text-3xl leading-snug mb-5">{c.title}</h2>
+            <dl class="border-t border-dark/10 dark:border-[var(--c-line)]">
+              {rows(c).map((r) => (
+                <div class="grid grid-cols-1 sm:grid-cols-[110px_1fr] gap-1 sm:gap-5 py-3.5 border-b border-dark/10 dark:border-[var(--c-line)]">
+                  <dt class="font-mono text-[10px] uppercase tracking-[0.18em] opacity-60 pt-1">{r.label}</dt>
+                  <dd class="font-sans text-[15px] leading-relaxed m-0 text-dark/85 dark:text-[var(--c-ink)]">{r.text}</dd>
+                </div>
+              ))}
+            </dl>
+            {c.id === 'agent' && <AgentDemo client:load />}
+            {c.id === 'ocr' && <OcrDemo client:visible />}
+            {c.id === 'email' && <EmailDemo client:visible ssr={false} />}
+            {c.id === 'reporting' && <ReportingDemo client:visible />}
+          </div>
+        ))}
+      </div>
+    </section>
+  </main>
+
+  <FooterSlim />
+</BaseLayout>
