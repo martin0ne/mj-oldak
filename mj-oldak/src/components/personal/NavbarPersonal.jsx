@@ -85,7 +85,7 @@ export default function NavbarPersonal() {
                                 : 'bg-[#111111] text-[#FBFBFA] hover:bg-[#333333] dark:bg-[#FBFBFA] dark:text-[#111111]'
                         }`}
                     >
-                        Zatrudnij mnie
+                        Współpraca
                     </a>
                 </div>
 
@@ -126,7 +126,7 @@ export default function NavbarPersonal() {
                         className="mt-1 px-4 py-2 rounded-[6px] bg-[#111111] text-[#FBFBFA] no-underline"
                         onClick={() => setMobileOpen(false)}
                     >
-                        Zatrudnij mnie
+                        Współpraca
                     </a>
                 </div>
             </div>

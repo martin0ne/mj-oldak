@@ -104,7 +104,7 @@ export default function ContactPersonal() {
                 <div className="grid md:grid-cols-2 gap-12 items-start">
                     <div>
                         <p className="font-sans text-base leading-relaxed opacity-80 mb-8 max-w-md">
-                            Szukam pracy w AI lub analizie danych. Masz otwartą pozycję w Warszawie lub zdalnie (PL/EU)? Napisz — odpiszę w ciągu 24 h.
+                            Szukam projektów do współpracy — AI, analiza danych, automatyzacja. Masz projekt w Warszawie lub zdalnie (PL/EU)? Napisz — odpiszę w ciągu 24 h.
                         </p>
                         <ul className="space-y-4 font-mono text-sm">
                             <li className="flex items-center gap-3">
@@ -117,7 +117,7 @@ export default function ContactPersonal() {
                             </li>
                             <li className="flex items-center gap-3">
                                 <span className="w-1.5 h-1.5 rounded-full bg-primary/30" />
-                                <span className="text-primary/60">Warszawa, PL · otwarty na etat AI/analityka + zdalne PL/EU</span>
+                                <span className="text-primary/60">Warszawa, PL · otwarty na projekty AI/analityka + zdalne PL/EU</span>
                             </li>
                         </ul>
                         <div className="mt-8 p-4 rounded-xl border border-accent/30 bg-accent/5">

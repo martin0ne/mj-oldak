@@ -90,13 +90,13 @@ export default function HeroPersonal() {
                     </p>
 
                     <h1 className="hero-reveal text-primary leading-[0.95] mb-6">
-                        <span className="font-serif italic text-[clamp(34px,5.4vw,64px)] font-normal">Szukam pracy.</span>{' '}
+                        <span className="font-serif italic text-[clamp(34px,5.4vw,64px)] font-normal">Szukam projektów.</span>{' '}
                         <span className="font-sans text-[clamp(34px,5.4vw,64px)] font-bold tracking-[-0.03em]">Piszę,</span>
                         <span className="font-serif text-[clamp(34px,5.4vw,64px)] font-normal"> badam i buduję narzędzia.</span>
                     </h1>
 
                     <p className="hero-reveal text-primary/70 text-base max-w-xl mb-9 leading-relaxed">
-                        Pisarz i analityk danych, który buduje narzędzia AI i szuka pracy — Warszawa, zdalnie PL/EU. W przygotowaniu: baza wiedzy o AI po ludzku. Na co dzień SQL, LLM-y i dane z jawnych źródeł. Poniżej znajdziesz moje repozytoria, blog i projekt badawczy GUS × Eurostat.
+                        Pisarz i analityk danych, który buduje narzędzia AI i szuka projektów do współpracy — Warszawa, zdalnie PL/EU. W przygotowaniu: baza wiedzy o AI po ludzku. Na co dzień SQL, LLM-y i dane z jawnych źródeł. Poniżej znajdziesz moje repozytoria, blog i projekt badawczy GUS × Eurostat.
                     </p>
 
                     {/* Status 01/02/03 — co jest, co powstaje, co dalej */}
@@ -124,7 +124,7 @@ export default function HeroPersonal() {
                             href="#contact"
                             className="px-6 py-3 rounded-[6px] border border-primary/35 text-primary text-sm font-medium hover:border-primary transition-colors duration-200 no-underline"
                         >
-                            Zatrudnij mnie
+                            Współpraca
                         </a>
                     </div>
                 </div>
