@@ -63,7 +63,7 @@ export default function AboutSection() {
     >
 
       <div className="max-w-6xl mx-auto relative z-10">
-        {/* Toggle: Co robię | Kim jestem — wskaźnik + prominent "more" cue (jak prototyp) */}
+        {/* Toggle: Co robię | Kim jestem — wskaźnik + prominent "more" cue */}
         <div className="flex items-center gap-4 flex-wrap mb-12">
           <div className="relative grid grid-cols-2 w-fit p-1 rounded-full border border-dark/20 dark:border-[var(--c-ink)]/30 bg-dark/[0.04] dark:bg-white/[0.06]">
             <span
@@ -97,63 +97,44 @@ export default function AboutSection() {
         {tab === 'pro' && (
           <div className="max-w-5xl">
             <h2 className="font-serif text-4xl md:text-5xl leading-[1.05] tracking-[-0.01em] mb-6">
-              Każe komputerowi robić <em className="italic">nudne rzeczy</em><span className="text-accent">.</span>
+              Pisarz. Analityk danych. Builder narzędzi AI<span className="text-accent">.</span>
             </h2>
             <p className="font-serif italic text-2xl md:text-3xl leading-snug max-w-3xl mb-10 opacity-90">
-              Bez pitchu, bez buzzwordów — tylko to, co naprawdę robię i po co to jest.
+              To, co łączę — pisanie, analizę danych i kodowanie narzędzi — robię od 2022 roku.
             </p>
             <div className="grid md:grid-cols-2 gap-10 md:gap-16">
               <div className="space-y-5 font-sans text-base leading-relaxed opacity-85">
                 <p>
-                  Z AI siedzę od 2022, a od 2026 żyję z tego — jako jedna osoba, <strong>MJ.OLDAK</strong>.
-                  Dziś moja praca stoi na trzech nogach: <strong>piszę tom esejów</strong> (w redakcji),
-                  <strong>robię badania</strong> na danych publicznych (GUS × Eurostat — analiza niżej) i
-                  <strong>buduję narzędzia AI</strong>, z których korzystają ludzie, nie korporacje. Wcześniej
-                  wyrosło z tego pięć narzędzi — OCR faktur, pomocnik maili, przypomnienia podatkowe, raporty,
-                  outreach B2B; wypróbujesz je niżej.
+                  Piszę tom esejów (ostatni rozdział zaakceptowany, w redakcji), prowadzę badanie GUS × Eurostat i buduję narzędzia AI/data-engineering na GitHubie — <strong>6 publicznych repozytoriów</strong>. Używam SQL, LLM-ów i automatyzacji, żeby działały razem. Jeśli proste otwarte narzędzie ogarnie robotę — użyję go i powiem o tym.
                 </p>
                 <p>
-                  Na co dzień to <strong>LLM-y</strong> (Claude, Gemini) i <strong>n8n</strong>, żeby to ze sobą
-                  spiąć — plus pipeline, z którego korzystają moje agenty. Jeśli darmowe narzędzie ogarnie robotę,
-                  użyję go i powiem Ci o tym.
-                </p>
-                <p>
-                  Ostatnio idę głębiej w <strong>dane</strong> — SQL i raporty, w których każda liczba ma nazwane
-                  źródło i datę (patrz analiza niżej).
+                  Na co dzień SQL, LLM-y i automatyzacja. Pracuję z danymi publicznymi — każde źródło ma nazwę i datę. Buduję rozwiązania model-agnostic, z człowiekiem w pętli.
                 </p>
               </div>
               <div className="space-y-5 font-sans text-base leading-relaxed opacity-85">
                 <p>
-                  Moje tło jest celowo dziwne: <strong>psychologia w biznesie</strong> nauczyła mnie zaczynać od
-                  człowieka, nie od procesu; <strong>prawo</strong> zrobiło z RODO i ludzkiego nadzoru odruch —
-                  wbudowane od pierwszego dnia, nie doklejane na końcu.
+                  Tło jest nietypowe: <strong>psychologia w biznesie</strong> nauczyła mnie patrzeć na człowieka, nie proces. Edukacja prawna sprawiła, że RODO i nadzór ludzki są standardem, nie dodatkiem.
                 </p>
                 <p>
-                  Kilka lat spędziłem w <strong>wielkiej korporacji</strong>, automatyzując powtarzalną pracę, której
-                  nikt nie powinien robić ręcznie. Lubiłem pracę, nie drabinę w niej — wolę usiąść naprzeciw małego
-                  zespołu, w którym ludzie mówią wprost, twarzą w twarz.
+                  W poprzedniej pracy automatyzowałem powtarzalne zadania i odkryłem, że najlepsze narzędzia rozwiązują problem zanim ktoś zauważy, że istnieje.
                 </p>
                 <p>
-                  Wszystko, co buduję, jest <strong>model-agnostic</strong> (bez lock-inu), z człowiekiem w pętli
-                  i w polskiej regulacyjnej rzeczywistości (KSeF / JPK). Jeśli AI nie jest dla Ciebie dobrą odpowiedzią —
-                  powiem to wprost.
+                  Model-agnostic — bez lock-inu do jednego dostawcy. Z człowiekiem w pętli i z rozumieniem polskich realiów (<strong>RODO, KSeF, JPK</strong>).
                 </p>
                 <p>
-                  <strong>Szukam pracy:</strong> AI i analityka danych — Warszawa, zdalnie PL/EU. Licencjat
-                  (psychologia w biznesie) kończę w tym roku akademickim. Jeśli to Twoje pytanie — jesteś
-                  we właściwym miejscu, pisz przez formularz niżej.
+                  <strong>Szukam pracy:</strong> pozycja w AI lub analizie danych. Lokalizacja: Warszawa lub zdalnie (PL/EU). Kończę licencjat w tym roku akademickim. Masz otwartą pozycję? Napisz przez formularz kontaktowy na dole strony.
                 </p>
               </div>
             </div>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-6 mt-16 pt-8 border-t border-dark/10 dark:border-[var(--c-line)]">
-              <FlipStat value="2026" label="tom esejów w redakcji + obrona licencjatu" />
-              <FlipStat value="2022" label="z AI — od tego roku" />
+              <FlipStat value="6" label="publicznych repozytoriów na GitHubie" />
+              <FlipStat value="0,34" suffix="pp" suffixClass="text-accent" label="GUS × Eurostat uzgodnione — raport niżej" />
               <FlipStat value="1" label="rozmawiasz ze mną — bez pośredników i handlowców" />
             </div>
           </div>
         )}
 
-        {/* ---------- PERSONAL (eksperymentalny: bloki tematyczne, foto naprzemiennie) ---------- */}
+        {/* ---------- PERSONAL ---------- */}
         {tab === 'me' && (
           <div>
             <h2 className="font-serif italic text-3xl md:text-5xl leading-[1.12] mb-14 max-w-3xl">
@@ -169,14 +150,7 @@ export default function AboutSection() {
                 photos={['/photos/art-09.jpg', '/photos/hero-5236.jpg', '/photos/art-04.jpg', '/photos/hero-7543.jpg', '/photos/art-11.jpg']}
               >
                 <p>
-                  Jestem Marcin — a <strong>MJ.OLDAK to ja</strong>. To nie ćwiczenie z brandingu; to człowiek, który
-                  postanowił podpisać swoim nazwiskiem to, co robi.
-                </p>
-                <p>
-                  Jako dziecko byłem humanistą, który jednocześnie kochał elektronikę. Lata później przeczytałem, co <strong>Edwin Land</strong>{' '}
-                  — założyciel Polaroidu i jeden z bohaterów Steve'a Jobsa — mówił o ludziach stojących na skrzyżowaniu
-                  humanistyki i nauki, i wiedziałem, że właśnie tam chcę żyć. Jestem hybrydą: kocham technologię, kocham
-                  humanistykę i najlepiej myślę tam, gdzie się spotykają.
+                  Jestem Marcin. MJ.OLDAK to moje nazwisko — nie marka, nie studio, nie agencja. Łączę humanistykę z technologią: pisarz, analityk i builder narzędzi AI. Humanistyka uczy widzieć kontekst, technologia pozwala go zmieniać.
                 </p>
               </Block>
 
@@ -188,16 +162,10 @@ export default function AboutSection() {
                 photos={['/photos/hero-5350.jpg', '/photos/art-06.jpg', '/photos/hero-0798.jpg', '/photos/art-02.jpg', '/photos/hero-6147.jpg']}
               >
                 <p>
-                  Nie mam mitu o garażu — mam jeden prawdziwy moment. Pracując w brytyjskim cle i brokerage'u, po stronie
-                  finansów, przechodziło przeze mnie około 100 deklaracji dziennie, w środowisku kompletnie zamkniętym,
-                  bez uprawnień administracyjnych. Zamiast tyrać powtarzalną robotę, zacząłem ją rozbrajać — z własnej
-                  woli: makra w Excelu, pisane procedury — bo nie mogłem patrzeć, jak ludzie tracą godziny na coś, co
-                  maszyna robi szybciej i bez błędów. Nikt mnie o to nie prosił.{' '}
-                  <span className="text-accent">To był MJ.OLDAK, zanim miał nazwę.</span>
+                  Pracując wcześniej w brytyjskim cle, przechodziło przeze mnie około 100 deklaracji dziennie. Zamiast ciągnąć powtarzalną robotę, zacząłem ją rozwiązywać — z własnej inicjatywy. To był początek podejścia, które teraz nazywam MJ.OLDAK.
                 </p>
                 <p>
-                  Ciągnie mnie to, co trudne. Rozwiązywanie trudnych problemów to najstarszy silnik — aż po ewolucję:
-                  ci, którzy rozwiązują problemy, idą do przodu. Świat biznesu jest moim placem zabaw dokładnie z tego powodu.
+                  Ciągnie mnie to, co trudne. Rozwiązywanie trudnych problemów to najstarszy silnik — aż po ewolucję: ci, którzy rozwiązują problemy, idą do przodu. Świat biznesu jest moim placem zabaw dokładnie z tego powodu.
                 </p>
               </Block>
 
@@ -209,16 +177,7 @@ export default function AboutSection() {
                 photos={['/photos/art-01.jpg', '/photos/hero-5048.jpg', '/photos/art-03.jpg', '/photos/art-05.jpg']}
               >
                 <p>
-                  Mniej więcej trzecią część życia spędzamy w pracy, więc nie traktuję AI jako narzędzia do cięcia etatów —
-                  tylko do <strong>podnoszenia</strong> ludzi i firm. Zrobione dobrze obniża koszty i podnosi przychody, ale
-                  przede wszystkim oddaje godziny: mniej powtarzalnej roboty, którą lepiej robi komputer, więcej czasu na to,
-                  co dla każdego naprawdę liczy — zwykle on sam i jego rodzina.
-                </p>
-                <p>
-                  Celem nie jest oddanie maszynie swojego myślenia. Wręcz przeciwnie — AI zdejmuje z Ciebie rzemiosło,
-                  żebyś mógł być <strong>filozofem</strong>: tym, który rozumie, myśli krytycznie i ponosi odpowiedzialność.
-                  Część mojej pracy to wiedzieć, gdzie AI <span className="italic">nie pasuje</span> — więc nie sprzedam Ci
-                  AI tam, gdzie się nie opłaca.
+                  AI traktuję praktycznie: obniża koszty, oszczędza czas i oddaje godziny ludziom. AI nie zastępuje myślenia — usuwa powtarzalną robotę, żebyś mógł skupić się na decyzyjnym. Kiedy AI to zły wybór — powiem to wprost.
                 </p>
               </Block>
 
@@ -230,20 +189,7 @@ export default function AboutSection() {
                 photos={['/photos/art-07.jpg', '/photos/art-08.jpg', '/photos/hero-5579.jpg', '/photos/art-10.jpg', '/photos/hero-5088.jpg']}
               >
                 <p>
-                  Chcę, żeby to przetrwało dłużej niż freelancerski zleceniowy okres: firmę zaprojektowaną tak dobrze,
-                  że przetrwa swojego założyciela. I chcę budować ją z dobrymi ludźmi — takimi, którzy dzielą moje wartości,
-                  niekoniecznie mój światopogląd. Wszyscy widzimy świat inaczej — i o to chodzi: najlepsze pomysły rodzą się
-                  z tarcia różnych perspektyw.
-                </p>
-                <p className="opacity-85">
-                  Po godzinach rodzina na pierwszym miejscu. Czytam dużo — powieści Michela Houellebecqa i Aldousa
-                  Huxleya, biografie Waltera Isaacsona, Kobe Bryanta <span className="italic">Mamba Mentality</span> —
-                  i muzycznie mam równie szeroki gust: od Taco Hemingwaya, Quebonafide, Maty i Maryli Rodowicz po Drake'a
-                  i wielu innych. Robię poważne spaghetti i jeszcze poważniejsze BBQ, najlepiej myślę na długich spacerach
-                  w naturze i rzadko podróżuję bez aparatu — zdjęcia, które tu widzisz, to kilka klatek z moich wojaży.
-                  Tak naprawdę czerpię inspirację wszędzie — z życia, z natury, ze wszystkiego — bo lubię widzieć rzeczy
-                  <span className="italic"> holistycznie</span>: jako części czegoś większego, w czym wszyscy mieszkamy
-                  i co współdzielimy.
+                  Rodzina na pierwszym miejscu. Czytam powieści (Houellebecq, Huxley), biografie i książki o mindsetzie. Muzycznie szeroki gust: od Taco Hemingwaya po Marylę Rodowicz. Najlepiej myślę na długich spacerach w naturze. Robię poważne spaghetti i jeszcze poważniejsze BBQ.
                 </p>
               </Block>
             </div>

@@ -1,10 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 
-// v3 (12.10.2026) — anty-AI-slop + framing „nowoczesny startup w realizacji".
-// Usunięte: gradientowe bloby, pulsujące kropki, ticker-marquee, pigułkowe CTA.
-// Zostaje: własne zdjęcia (rotacja), statement serif × grotesk, mono metadane,
-// status 01/02/03 = co zbudowane / co w budowie / co dalej. Zero animacji ukrywających treść.
+// v4 (14.10.2026) — narracja 2026: pisarz + analityk + builder, SZUKA PRACY.
+// Usunięto: agencyjne „studio", angielskie CTA, tytuł książki (w redakcji).
+
 const PHOTOS = [
     '/photos/hero-5350.jpg',
     '/photos/art-01.jpg',
@@ -17,9 +16,9 @@ const ROTATE_MS = 9000;
 
 // Status realizacji — liczbę produktów i repo potwierdza strona (zero zmyśleń).
 const STATUS = [
-    { n: '01', head: 'Książka', body: '„Kraj bez języka" — tom o wolności i współpracy, po polsku; EN później' },
-    { n: '02', head: 'Badania', body: 'raporty z danymi i źródłami: energia, kalendarze, scraping — wszystko jawne' },
-    { n: '03', head: 'Narzędzia', body: 'mikro-aplikacje AI dla profesjonalistów, OSS skille, demo poniżej' },
+    { n: '01', head: 'Eseje', body: 'tom zaawansowany — ostatni rozdział zaakceptowany; w redakcji' },
+    { n: '02', head: 'Badania', body: 'raport GUS × Eurostat: dane energetyczne, energie odnawialne; pipeline i PDF poniżej' },
+    { n: '03', head: 'Narzędzia', body: 'projekty AI i data-engineering: OCR, mail, raporty; demo na GitHubie' },
 ];
 
 export default function HeroPersonal() {
@@ -87,22 +86,17 @@ export default function HeroPersonal() {
 
                 <div className="w-full max-w-2xl py-6 md:py-0">
                     <p className="hero-reveal font-mono text-[11px] uppercase tracking-[0.3em] text-primary/60 mb-7">
-                        ( jednoosobowe studio · książka + research + narzędzia )
+                        ( pisarz · analityk · builder narzędzi AI )
                     </p>
 
-                    {/* Statement: serif × pogrubiony grotesk × kursywa w jednym zdaniu */}
                     <h1 className="hero-reveal text-primary leading-[0.95] mb-6">
-                        <span className="font-serif text-[clamp(34px,5.4vw,64px)] font-normal">Książki, badania, </span>
-                        <span className="font-sans text-[clamp(34px,5.4vw,64px)] font-bold tracking-[-0.03em]">narzędzia</span>
-                        <span className="font-serif text-[clamp(34px,5.4vw,64px)] font-normal"> — </span>
-                        <span className="font-serif italic text-[clamp(34px,5.4vw,64px)]">bez korpo.</span>
+                        <span className="font-serif italic text-[clamp(34px,5.4vw,64px)] font-normal">Szukam pracy.</span>{' '}
+                        <span className="font-sans text-[clamp(34px,5.4vw,64px)] font-bold tracking-[-0.03em]">Piszę,</span>
+                        <span className="font-serif text-[clamp(34px,5.4vw,64px)] font-normal"> badam i buduję narzędzia.</span>
                     </h1>
 
                     <p className="hero-reveal text-primary/70 text-base max-w-xl mb-9 leading-relaxed">
-                        Marcin J. Ołdak pisze książkę o wolności, zbiera research —
-                        książki, dane, scrape internetu — i buduje narzędzia AI
-                        dla profesjonalistów, nie dla firm. Wszystko, co wiem,
-                        zostaje opublikowane.
+                        Pisarz i analityk danych, który buduje narzędzia AI i szuka pracy — Warszawa, zdalnie PL/EU. W trakcie kończenia licencjatu. Na co dzień SQL, LLM-y i dane z jawnych źródeł. Poniżej znajdziesz moje repozytoria, blog i projekt badawczy GUS × Eurostat.
                     </p>
 
                     {/* Status 01/02/03 — co jest, co powstaje, co dalej */}
@@ -124,13 +118,13 @@ export default function HeroPersonal() {
                             href="/artykuly/"
                             className="px-6 py-3 rounded-[6px] bg-[#FBFBFA] text-[#111111] text-sm font-medium hover:bg-white transition-colors duration-200 no-underline"
                         >
-                            Czytaj blog
+                            Przeczytaj artykuły
                         </a>
                         <a
-                            href="#work"
+                            href="#contact"
                             className="px-6 py-3 rounded-[6px] border border-primary/35 text-primary text-sm font-medium hover:border-primary transition-colors duration-200 no-underline"
                         >
-                            Współpraca
+                            Zatrudnij mnie
                         </a>
                     </div>
                 </div>

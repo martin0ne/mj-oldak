@@ -1,4 +1,4 @@
-// Contact — EN, personal-brand. Reuse pipeline EmailJS + Sheets webhook z Footer.jsx
+// Contact — polska, personal-brand. Reuse pipeline EmailJS + Sheets webhook z Footer.jsx
 // (te same endpointy, ta sama hybryda Promise.allSettled + localStorage backup + mailto fallback).
 import { useState } from 'react';
 import emailjs from '@emailjs/browser';
@@ -85,8 +85,8 @@ export default function ContactPersonal() {
     };
 
     const mailtoFallback = () => {
-        const subject = `Contact from mjoldak.pl — ${formData.name || 'message'}`;
-        const body = `${formData.message}\n\n---\nFrom: ${formData.name}\nEmail: ${formData.email}`;
+        const subject = `Kontakt z mjoldak.pl — ${formData.name || 'wiadomość'}`;
+        const body = `${formData.message}\n\n---\nOd: ${formData.name}\nE-mail: ${formData.email}`;
         return `mailto:biuro@mjoldak.pl?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     };
 
@@ -94,19 +94,17 @@ export default function ContactPersonal() {
         <section id="contact" data-nav-theme="dark" className="relative overflow-hidden bg-dark text-primary px-8 md:px-16 pt-24 md:pt-32 pb-12">
             <div className="relative z-10 max-w-5xl mx-auto">
                 <p className="font-mono text-xs uppercase tracking-[0.3em] opacity-60 mb-6">
-                    <span className="text-accent">—</span> 08 · Collaborate
+                    <span className="text-accent">—</span> 08 · Kontakt
                 </p>
 
                 <h2 className="font-serif text-4xl md:text-5xl leading-[1.02] tracking-[-0.01em] mb-8">
-                    Let's build something <em className="italic">together</em><span className="text-accent">.</span>
+                    Napisz do mnie<span className="text-accent">.</span>
                 </h2>
 
                 <div className="grid md:grid-cols-2 gap-12 items-start">
                     <div>
                         <p className="font-sans text-base leading-relaxed opacity-80 mb-8 max-w-md">
-                            Hiring for an AI / automation role, building something of your own, or just
-                            curious about the experiments above? I'm looking for professionals and
-                            enthusiasts to work with — drop me a message, I reply within 24h.
+                            Szukam pracy w AI lub analizie danych. Masz otwartą pozycję w Warszawie lub zdalnie (PL/EU)? Napisz — odpiszę w ciągu 24 h.
                         </p>
                         <ul className="space-y-4 font-mono text-sm">
                             <li className="flex items-center gap-3">
@@ -124,34 +122,34 @@ export default function ContactPersonal() {
                         </ul>
                         <div className="mt-8 p-4 rounded-xl border border-accent/30 bg-accent/5">
                             <p className="font-mono text-xs leading-relaxed text-primary/85">
-                                <span className="text-accent font-bold">CV on request</span> — send me a message and I'll reply with a current CV the same day.
+                                <span className="text-accent font-bold">CV na żądanie</span> — napisz, a wyślę aktualne CV tego samego dnia.
                             </p>
                         </div>
                     </div>
 
                     <form onSubmit={handleSubmit} className="flex flex-col gap-4">
                         <div>
-                            <label htmlFor="cp-name" className="font-mono text-xs text-primary/40 uppercase tracking-widest mb-2 block">Name</label>
+                            <label htmlFor="cp-name" className="font-mono text-xs text-primary/40 uppercase tracking-widest mb-2 block">Imię</label>
                             <input
                                 type="text" id="cp-name" name="name" required value={formData.name} onChange={handleChange}
                                 className="w-full bg-primary/[0.12] border border-primary/25 rounded-xl px-5 py-4 font-mono text-sm text-primary placeholder:text-primary/45 outline-none focus:border-accent/60 transition-all"
-                                placeholder="Jane Doe"
+                                placeholder="Jan Kowalski"
                             />
                         </div>
                         <div>
-                            <label htmlFor="cp-email" className="font-mono text-xs text-primary/40 uppercase tracking-widest mb-2 block">Email</label>
+                            <label htmlFor="cp-email" className="font-mono text-xs text-primary/40 uppercase tracking-widest mb-2 block">E-mail</label>
                             <input
                                 type="email" id="cp-email" name="email" required value={formData.email} onChange={handleChange}
                                 className="w-full bg-primary/[0.12] border border-primary/25 rounded-xl px-5 py-4 font-mono text-sm text-primary placeholder:text-primary/45 outline-none focus:border-accent/60 transition-all"
-                                placeholder="jane@company.com"
+                                placeholder="jan@firma.pl"
                             />
                         </div>
                         <div>
-                            <label htmlFor="cp-message" className="font-mono text-xs text-primary/40 uppercase tracking-widest mb-2 block">Message</label>
+                            <label htmlFor="cp-message" className="font-mono text-xs text-primary/40 uppercase tracking-widest mb-2 block">Wiadomość</label>
                             <textarea
                                 id="cp-message" name="message" required rows={4} value={formData.message} onChange={handleChange}
                                 className="w-full bg-primary/[0.12] border border-primary/25 rounded-xl px-5 py-4 font-mono text-sm text-primary placeholder:text-primary/45 outline-none focus:border-accent/60 transition-all resize-none"
-                                placeholder="Hi Marcin, ..."
+                                placeholder="Cześć Marcin, ..."
                             />
                         </div>
                         <label className="flex items-start gap-3 font-sans text-xs leading-relaxed text-primary/70 cursor-pointer">
@@ -169,19 +167,19 @@ export default function ContactPersonal() {
                             disabled={status === 'sending' || !consent}
                             className="px-8 py-4 rounded-[2rem] bg-accent text-primary font-sans font-bold text-sm hover:scale-[1.02] transition-transform disabled:opacity-50 disabled:hover:scale-100 self-start"
                         >
-                            {status === 'idle' && 'Send message'}
-                            {status === 'sending' && 'Sending…'}
-                            {status === 'sent' && 'Sent — thank you!'}
-                            {status === 'error' && 'Try again'}
+                            {status === 'idle' && 'Wyślij wiadomość'}
+                            {status === 'sending' && 'Wysyłam…'}
+                            {status === 'sent' && 'Wysłano — dziękuję!'}
+                            {status === 'error' && 'Spróbuj ponownie'}
                         </button>
 
                         {status === 'error' && (
                             <div className="p-4 rounded-xl bg-red-500/10 border border-red-500/30">
                                 <p className="font-mono text-xs text-primary/90 mb-3 leading-relaxed">
-                                    Automatic delivery failed. Send directly — your message above will be pre-filled:
+                                    Wysyłka nie powiodła się. Wyślij bezpośrednio — wiadomość będzie już uzupełniona:
                                 </p>
                                 <a href={mailtoFallback()} className="inline-block px-5 py-2.5 rounded-full bg-accent text-primary font-bold text-xs uppercase tracking-widest no-underline">
-                                    Email biuro@mjoldak.pl
+                                    E-mail biuro@mjoldak.pl
                                 </a>
                             </div>
                         )}
