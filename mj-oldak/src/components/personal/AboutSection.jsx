@@ -122,7 +122,7 @@ export default function AboutSection() {
                   Model-agnostic — bez lock-inu do jednego dostawcy. Z człowiekiem w pętli i z rozumieniem polskich realiów (<strong>RODO, KSeF, JPK</strong>).
                 </p>
                 <p>
-                  <strong>Szukam projektów do współpracy:</strong> AI, analiza danych, automatyzacja. Lokalizacja: Warszawa lub zdalnie (PL/EU). W przygotowaniu: baza wiedzy o AI — napisana dla człowieka, który z niej korzysta i chce rozumieć, jak działają narzędzia AI i samo AI. Masz projekt? Napisz przez formularz kontaktowy na dole strony.
+                  <strong>Współpraca — jedna z opcji:</strong> projekty w AI, analizie danych, automatyzacji. Działam niezależnie — Warszawa lub zdalnie (PL/EU). W przygotowaniu: baza wiedzy o AI — napisana dla człowieka, który z niej korzysta i chce rozumieć, jak działają narzędzia AI i samo AI. Masz projekt? Napisz przez formularz kontaktowy na dole strony.
                 </p>
               </div>
             </div>
