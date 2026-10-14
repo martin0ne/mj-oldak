@@ -55,7 +55,7 @@ export default function NavbarPersonal() {
             className={`navbar-enter fixed top-0 left-0 w-full z-50 border-b transition-colors duration-300 ${
                 dark
                     ? 'bg-dark/95 border-primary/15 text-primary'
-                    : 'bg-[var(--c-page)]/95 border-[var(--c-line)] text-dark dark:bg-[var(--c-page)]/95 dark:text-[var(--c-ink)]'
+                    : 'bg-background/95 border-[var(--c-line)] text-dark dark:bg-background/95 dark:text-[var(--c-ink)]'
             }`}
         >
             <div className="mx-auto max-w-6xl px-5 md:px-8 h-14 flex items-center justify-between">

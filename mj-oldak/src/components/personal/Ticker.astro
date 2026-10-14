@@ -11,6 +11,21 @@ const FEEDS = [
   { name: 'TechCrunch', url: 'https://techcrunch.com/feed/' },
 ];
 
+
+// Czyszczenie tytułów z CDATA i encji HTML (RSS je przynosi)
+const decodeEntities = (s: string): string =>
+  s
+    .replace(/&#x([0-9a-fA-F]+);/g, (_, h) => String.fromCodePoint(parseInt(h, 16)))
+    .replace(/&#(\d+);/g, (_, d) => String.fromCodePoint(parseInt(d, 10)))
+    .replace(/&amp;/g, '&')
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&quot;/g, '"')
+    .replace(/&apos;/g, "'")
+    .replace(/&nbsp;/g, ' ');
+const clean = (s: string): string =>
+  decodeEntities(String(s ?? '').replace(/<!\[CDATA\[([\s\S]*?)\]\]>/g, '$1')).trim();
+
 const parseFeed = async (feed: { name: string; url: string }): Promise<{
   title: string;
   link: string;
@@ -34,7 +49,7 @@ const parseFeed = async (feed: { name: string; url: string }): Promise<{
           (block.match(/<updated[^>]*>([\s\S]*?)<\/update>/m)?.[1] ??
           (block.match(/<published[^>]*>([\s\S]*?)<\/published>/m)?.[1] ?? ''))
             .trim();
-        return title ? { title, link, pubDate: dateStr, source: feed.name } : null;
+        return clean(title) ? { title: clean(title), link: clean(link), pubDate: dateStr, source: feed.name } : null;
       }).filter(Boolean);
     }
 
@@ -44,7 +59,7 @@ const parseFeed = async (feed: { name: string; url: string }): Promise<{
       const title = (block.match(/<title[^>]*>([\s\S]*?)<\/title>/m)?.[1] ?? '').trim();
       const link = (block.match(/<link[^>]*>([\s\S]*?)<\/link>/m)?.[1] ?? '#').trim();
       const dateStr = (block.match(/<pubDate[^>]*>([\s\S]*?)<\/pubDate>/m)?.[1] ?? '').trim();
-      return title ? { title, link, pubDate: dateStr, source: feed.name } : null;
+      return clean(title) ? { title: clean(title), link: clean(link), pubDate: dateStr, source: feed.name } : null;
     }).filter(Boolean);
   } catch {
     return [];
@@ -77,7 +92,7 @@ const tickerItems = allItems.slice(0, 8);
 
       {/* Marquee track — czysty CSS, zawartość powtórzona w HTML dla seamless pętli */}
       <div class="flex-1 overflow-hidden relative h-full flex items-center mask-shim">
-        <ol class="ticker-scroll inline-flex whitespace-nowrap animate-marquee hover:[animation-play-state:paused]">
+        <ol class="ticker-track inline-flex whitespace-nowrap" style="animation: mjo-marquee var(--marquee-speed, 45s) linear infinite;">
           {tickerItems.map((item) => (
             <li class="inline-flex items-center gap-2 pr-6 md:pr-8">
               <span class="w-[3px] h-[3px] rounded-full bg-white/60 dark:bg-current shrink-0"></span>
@@ -109,51 +124,19 @@ const tickerItems = allItems.slice(0, 8);
       </div>
     </nav>
 
-    <style>
-      {`
-        /* ===== MARQUEE — infinite scroll ===== */
-        @keyframes marquee {
-          0%   { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
-        }
-
-        .animate-marquee {
-          animation: marquee var(--marquee-speed, 45s) linear infinite;
-          /* duplikuj treść dla płynnego pętlowania: Astro renderuje tylko raz,
-             więc duplikujemy ręcznie w HTML-u (patrz niżej) */
-        }
-
-        /* Opóźniony start po załadowaniu strony */
-        .mask-shim {
-          mask-image: linear-gradient(to right, transparent, black 2%, black 98%, transparent);
-          -webkit-mask-image: linear-gradient(to right, transparent, black 2%, black 98%, transparent);
-        }
-
-        /* ===== REDUCED MOTION: statyczna lista ===== */
-        @media (prefers-reduced-motion: reduce) {
-          .animate-marquee {
-            animation: none;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem 1rem;
-            padding: 0.5rem 1rem;
-          }
-
-          .animate-marquee li {
-            white-space: normal;
-          }
-
-          /* ukryj etykiety i separator przy reduced motion */
-          .animate-marquee li:first-child::before {
-            display: none;
-          }
-        }
-
-        /* ===== Duplikacja treści marquee dla pętli ===== */
-        /* Kluczowe: CSS marquee wymaga podwojonego contentu — drugie klonowanie
-           następuje w HTML poniżej (klon <ol>). Astro-renderowane elementy
-           są kopiowane w templacie. */
-      `}
+    <style is:inline>
+      @keyframes mjo-marquee {
+        0%   { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
+      }
+      .ticker-track:hover { animation-play-state: paused; }
+      .mask-shim {
+        mask-image: linear-gradient(to right, transparent, black 2%, black 98%, transparent);
+        -webkit-mask-image: linear-gradient(to right, transparent, black 2%, black 98%, transparent);
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .ticker-track { animation: none !important; flex-wrap: wrap; white-space: normal; }
+      }
     </style>
   </>
 )}
