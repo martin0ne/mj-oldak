@@ -11,34 +11,34 @@ import ReportingDemo from '../demos/ReportingDemo.jsx';
 const cases = [
   {
     id: 'agent',
-    problem: "Single-task automations break the moment reality gets messy — and nobody sees why.",
-    solution: 'An autonomous agent that plans, calls tools, recovers from failures — and shows its reasoning at every step.',
-    effect: 'End-to-end process handled. Supervised, not hands-off: a human makes the final call.',
+    problem: 'Automatyzacje jednego zadania sypią się, gdy rzeczywistość się komplikuje — i nikt nie widzi dlaczego.',
+    solution: 'Samodzielny agent, który planuje, wywołuje narzędzia, wraca po błędach — i pokazuje swoje rozumowanie na każdym kroku.',
+    effect: 'Proces od początku do końca, pod nadzorem: ostatnie słowo ma człowiek.',
   },
   {
     id: 'ocr',
-    problem: 'Accounting teams retype invoice data by hand — minutes per document, errors included.',
-    solution: 'PDF or photo in → structured data out (Azure Document Intelligence + Claude API).',
-    effect: 'An invoice processed in seconds, ready for the ledger.',
+    problem: 'Zespoły księgowe przepisują dane z faktur ręcznie — minuty na dokument, z pomyłkami.',
+    solution: 'PDF lub zdjęcie na wejściu → ustrukturyzowane dane (Azure Document Intelligence + Claude API).',
+    effect: 'Faktura przetworzona w kilka sekund, gotowa do księgi.',
   },
   {
     id: 'email',
-    problem: 'Client emails bury accountants — urgent tax-office letters mixed with spam.',
-    solution: 'Classification into 4 categories (urgent / normal / meeting / spam) + a drafted reply for each; a human approves before anything is sent.',
-    effect: 'Inbox triage on autopilot, replies in minutes.',
+    problem: 'Maile od klientów toną księgowych — pilne pisma z urzędu mieszają się ze spamem.',
+    solution: 'Klasyfikacja na 4 kategorie (pilne / zwykłe / spotkanie / spam) + szkic odpowiedzi do każdej; zatwierdza człowiek.',
+    effect: 'Skrzynka triażowana automatycznie, odpowiedzi w minutach.',
   },
   {
     id: 'reporting',
-    problem: 'Monthly client reports mean hours of repetitive copy-paste work.',
-    solution: 'Ledger exports in → branded PDF report out, with KPIs and a written summary.',
-    effect: 'Minutes per client instead of hours.',
+    problem: 'Miesięczne raporty klientów to godziny kopiuj-wklej.',
+    solution: 'Eksporty z księgi → raport PDF z KPiR-owymi KPI i pisemnym podsumowaniem.',
+    effect: 'Minuty zamiast godzin na klienta.',
   },
 ];
 const caseFor = (id) => cases.find((c) => c.id === id);
 const rows = (c) => [
   { label: 'Problem', text: c.problem },
-  { label: 'Solution', text: c.solution },
-  { label: 'Effect', text: c.effect },
+  { label: 'Rozwiązanie', text: c.solution },
+  { label: 'Efekt', text: c.effect },
 ];
 ---
 <section id="work" class="relative overflow-hidden bg-background dark:bg-[var(--c-page)] text-dark dark:text-[var(--c-ink)] px-8 md:px-16 py-24 md:py-32 transition-colors duration-500">
@@ -74,7 +74,7 @@ const rows = (c) => [
         </div>
         <h3 class="font-serif text-xl mb-2 leading-snug">Sales Agent B2B — live demo</h3>
         <p class="font-sans text-sm opacity-80 leading-relaxed mb-5">
-          A deployed demo: form → GenAI lead classification (HOT/WARM/COLD with reasoning) → EU-hosted database, with row-level access scoping and a human-in-the-loop decision log (GDPR Art. 22 by design).
+          Wdrożone demo: formularz → klasyfikacja leadów GenAI (HOT/WARM/COLD z uzasadnieniem) → baza danych w UE, z poziomowym ograniczeniem dostępu i rejestrem decyzji z człowiekiem w pętli (RODO art. 22 z założenia).
         </p>
         <span class="font-mono text-xs uppercase tracking-[0.12em] text-accent group-hover:underline">
           demo.mjoldak.pl ↗
@@ -83,12 +83,12 @@ const rows = (c) => [
       <div class="rounded-lg border border-dark/15 bg-dark text-primary p-7">
         <div class="flex items-center gap-2 mb-3">
           <span class="w-1.5 h-1.5 bg-accent"></span>
-          <span class="font-mono text-[10px] uppercase tracking-[0.18em] text-accent">Agentic infrastructure</span>
+          <span class="font-mono text-[10px] uppercase tracking-[0.18em] text-accent">Infrastruktura agentywna</span>
         </div>
-        <h3 class="font-serif text-xl mb-2 leading-snug">n8n pipeline as an MCP tool</h3>
+        <h3 class="font-serif text-xl mb-2 leading-snug">Pipeline n8n jako narzędzie MCP</h3>
         <p class="font-sans text-sm opacity-80 leading-relaxed mb-5">
-          A working n8n workflow (Webhook → Gemini → EU-hosted DB), green end-to-end and exposed via the
-          Model Context Protocol — so AI agents can call it as a tool.
+          Działający workflow n8n (Webhook → Gemini → baza w UE), zielony end-to-end i udostępniony przez
+          Model Context Protocol — więc agenci AI mogą go wywoływać jak narzędzie.
         </p>
         <p class="font-mono text-[11px] tracking-wide text-accent/90">
           Webhook → LLM → Parse → DB (EU) · instance-level MCP

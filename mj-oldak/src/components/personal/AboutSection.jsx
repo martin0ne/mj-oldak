@@ -63,7 +63,7 @@ export default function AboutSection() {
     >
 
       <div className="max-w-6xl mx-auto relative z-10">
-        {/* Toggle: What I do | Who I am — wskaźnik + prominent "more" cue (jak prototyp) */}
+        {/* Toggle: Co robię | Kim jestem — wskaźnik + prominent "more" cue (jak prototyp) */}
         <div className="flex items-center gap-4 flex-wrap mb-12">
           <div className="relative grid grid-cols-2 w-fit p-1 rounded-full border border-dark/20 dark:border-[var(--c-ink)]/30 bg-dark/[0.04] dark:bg-white/[0.06]">
             <span
@@ -71,10 +71,10 @@ export default function AboutSection() {
               style={{ transform: tab === 'me' ? 'translateX(100%)' : 'translateX(0)' }}
             />
             <button type="button" onClick={() => setTab('pro')} className={tabText(tab === 'pro')} aria-pressed={tab === 'pro'}>
-              What I do
+              Co robię
             </button>
             <button type="button" onClick={() => setTab('me')} className={tabText(tab === 'me')} aria-pressed={tab === 'me'}>
-              Who I am
+              Kim jestem
             </button>
           </div>
           {tab === 'pro' && (
@@ -82,13 +82,13 @@ export default function AboutSection() {
               type="button"
               onClick={() => setTab('me')}
               className="group flex items-center gap-2 text-accent hover:animate-none hover:opacity-70 transition-opacity"
-              aria-label="See who I am"
+              aria-label="Zobacz kim jestem"
             >
               <svg width="56" height="28" viewBox="0 0 56 28" fill="none" aria-hidden="true">
                 <path d="M50 8 C 40 4, 22 12, 6 15" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />
                 <path d="M6 15 L 13 10 M6 15 L 13 20" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
-              <span className="font-serif italic text-lg md:text-xl leading-none">more — meet the human</span>
+              <span className="font-serif italic text-lg md:text-xl leading-none">więcej — poznaj człowieka</span>
             </button>
           )}
         </div>
@@ -97,50 +97,51 @@ export default function AboutSection() {
         {tab === 'pro' && (
           <div className="max-w-5xl">
             <h2 className="font-serif text-4xl md:text-5xl leading-[1.05] tracking-[-0.01em] mb-6">
-              I make the computer do <em className="italic">the boring parts</em><span className="text-accent">.</span>
+              Każe komputerowi robić <em className="italic">nudne rzeczy</em><span className="text-accent">.</span>
             </h2>
             <p className="font-serif italic text-2xl md:text-3xl leading-snug max-w-3xl mb-10 opacity-90">
-              No pitch, no buzzwords — just what I actually do, and what it's for.
+              Bez pitchu, bez buzzwordów — tylko to, co naprawdę robię i po co to jest.
             </p>
             <div className="grid md:grid-cols-2 gap-10 md:gap-16">
               <div className="space-y-5 font-sans text-base leading-relaxed opacity-85">
                 <p>
-                  I've been poking at AI since 2022; since 2026 it's what I do for a living — as one person,{' '}
-                  <strong>MJ.OLDAK</strong>. Five of my experiments turned into things people can really use:{' '}
-                  invoice OCR, an email helper, a tax-deadline reminder, a report generator and a B2B outreach helper.
-                  You can try them further down this page.
+                  Siedzę w AI od 2022; od 2026 to moja praca — na własny rachunek, jako jedna osoba,{' '}
+                  <strong>MJ.OLDAK</strong>. Pięć moich eksperymentów urosło do narzędzi, z których ludzie naprawdę
+                  korzystają: OCR faktur, pomocnik maili, przypomnienie o terminach podatkowych, generator raportów
+                  i outreach B2B. Wypróbujesz je niżej na tej stronie.
                 </p>
                 <p>
-                  Day to day that means <strong>LLMs</strong> (Claude, Gemini) and <strong>n8n</strong> to wire them
-                  together — plus a pipeline my agents can call directly. If a free tool does the job, I'll use that
-                  instead and tell you so.
+                  Na co dzień to <strong>LLM-y</strong> (Claude, Gemini) i <strong>n8n</strong>, żeby to ze sobą
+                  spiąć — plus pipeline, z którego korzystają moje agenty. Jeśli darmowe narzędzie ogarnie robotę,
+                  użyję go i powiem Ci o tym.
                 </p>
                 <p>
-                  Lately I've gone deeper on the <strong>data side</strong> — SQL and reports where every number comes
-                  with a named source and a date (see the analysis below).
+                  Ostatnio idę głębiej w <strong>dane</strong> — SQL i raporty, w których każda liczba ma nazwane
+                  źródło i datę (patrz analiza niżej).
                 </p>
               </div>
               <div className="space-y-5 font-sans text-base leading-relaxed opacity-85">
                 <p>
-                  My background is deliberately odd: <strong>business psychology</strong> taught me to start from the
-                  person, not the process; <strong>law</strong> made GDPR and human oversight second nature — built in
-                  from day one, not bolted on later.
+                  Moje tło jest celowo dziwne: <strong>psychologia w biznesie</strong> nauczyła mnie zaczynać od
+                  człowieka, nie od procesu; <strong>prawo</strong> zrobiło z RODO i ludzkiego nadzoru odruch —
+                  wbudowane od pierwszego dnia, nie doklejane na końcu.
                 </p>
                 <p>
-                  I spent a few years inside a <strong>big corporation</strong> automating the repetitive stuff nobody
-                  should be doing by hand. I liked the work, not the ladder — I'd rather sit across from a small team
-                  where people say what they mean, face to face.
+                  Kilka lat spędziłem w <strong>wielkiej korporacji</strong>, automatyzując powtarzalną pracę, której
+                  nikt nie powinien robić ręcznie. Lubiłem pracę, nie drabinę w niej — wolę usiąść naprzeciw małego
+                  zespołu, w którym ludzie mówią wprost, twarzą w twarz.
                 </p>
                 <p>
-                  Everything I build is <strong>model-agnostic</strong> (no lock-in), keeps a human in the loop, and
-                  speaks Polish regulatory reality (KSeF / JPK). If AI isn't the right answer for you, I'll say that too.
+                  Wszystko, co buduję, jest <strong>model-agnostic</strong> (bez lock-inu), z człowiekiem w pętli
+                  i w polskiej regulacyjnej rzeczywistości (KSeF / JPK). Jeśli AI nie jest dla Ciebie dobrą odpowiedzią —
+                  powiem to wprost.
                 </p>
               </div>
             </div>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-6 mt-16 pt-8 border-t border-dark/10 dark:border-[var(--c-line)]">
-              <FlipStat value="5" suffix="+" suffixClass="text-accent" label="working AI products (pilot-ready)" />
-              <FlipStat value="2022" label="working with AI since" />
-              <FlipStat value="1" label="person you talk to — no account managers, no sales" />
+              <FlipStat value="5" suffix="+" suffixClass="text-accent" label="produkty AI gotowe do pilotażu" />
+              <FlipStat value="2022" label="pracuję z AI od" />
+              <FlipStat value="1" label="rozmawiasz ze mną — bez pośredników i handlowców" />
             </div>
           </div>
         )}
@@ -149,96 +150,99 @@ export default function AboutSection() {
         {tab === 'me' && (
           <div>
             <h2 className="font-serif italic text-3xl md:text-5xl leading-[1.12] mb-14 max-w-3xl">
-              A human is a context machine. <span className="text-accent">AI is just the tool.</span>
+              Człowiek to maszyna kontekstu. <span className="text-accent">AI to tylko narzędzie.</span>
             </h2>
 
             <div className="space-y-16 lg:space-y-24">
               <Block
-                kicker="the hybrid"
+                kicker="hybryda"
                 side="right"
                 aspect="aspect-[4/5]"
                 interval={3500}
                 photos={['/photos/art-09.jpg', '/photos/hero-5236.jpg', '/photos/art-04.jpg', '/photos/hero-7543.jpg', '/photos/art-11.jpg']}
               >
                 <p>
-                  I'm Marcin — and <strong>MJ.OLDAK is me</strong>. The name isn't a branding exercise; it's a person who
-                  decided to put his own name on the work.
+                  Jestem Marcin — a <strong>MJ.OLDAK to ja</strong>. To nie ćwiczenie z brandingu; to człowiek, który
+                  postanowił podpisać swoim nazwiskiem to, co robi.
                 </p>
                 <p>
-                  As a kid I was a humanities person who also loved electronics. Years later I read what <strong>Edwin Land</strong>{' '}
-                  — Polaroid's founder, and one of Steve Jobs's heroes — said about people who stand at the intersection of the
-                  humanities and science, and I knew that's where I wanted to live. I'm a hybrid: I love technology, I love the
-                  humanities, and I think best where the two meet.
+                  Jako dziecko byłem humanistą, który jednocześnie kochał elektronikę. Lata później przeczytałem, co <strong>Edwin Land</strong>{' '}
+                  — założyciel Polaroidu i jeden z bohaterów Steve'a Jobsa — mówił o ludziach stojących na skrzyżowaniu
+                  humanistyki i nauki, i wiedziałem, że właśnie tam chcę żyć. Jestem hybrydą: kocham technologię, kocham
+                  humanistykę i najlepiej myślę tam, gdzie się spotykają.
                 </p>
               </Block>
 
               <Block
-                kicker="the origin"
+                kicker="punkt startu"
                 side="left"
                 aspect="aspect-[16/11]"
                 interval={4200}
                 photos={['/photos/hero-5350.jpg', '/photos/art-06.jpg', '/photos/hero-0798.jpg', '/photos/art-02.jpg', '/photos/hero-6147.jpg']}
               >
                 <p>
-                  I don't have a garage-founder myth — I'm 26, with one real moment instead. Working in UK customs and brokerage — the finance side — around 100
-                  declarations a day passed through me in a fully locked-down environment with zero admin rights. Instead of
-                  grinding the repetition, I started disarming it — Excel macro calculators, written SOPs — on my own initiative,
-                  because I couldn't watch people lose hours to work a machine does faster and without errors. Nobody asked me to.{' '}
-                  <span className="text-accent">That was MJ.OLDAK before it had a name.</span>
+                  Nie mam mitu o garażu — mam jeden prawdziwy moment. Pracując w brytyjskim cle i brokerage'u, po stronie
+                  finansów, przechodziło przeze mnie około 100 deklaracji dziennie, w środowisku kompletnie zamkniętym,
+                  bez uprawnień administracyjnych. Zamiast tyrać powtarzalną robotę, zacząłem ją rozbrajać — z własnej
+                  woli: makra w Excelu, pisane procedury — bo nie mogłem patrzeć, jak ludzie tracą godziny na coś, co
+                  maszyna robi szybciej i bez błędów. Nikt mnie o to nie prosił.{' '}
+                  <span className="text-accent">To był MJ.OLDAK, zanim miał nazwę.</span>
                 </p>
                 <p>
-                  I'm drawn to hard things. Solving hard problems is the oldest engine there is — all the way down to evolution,
-                  the ones who solve problems are the ones who move forward. The business world is my playground for exactly that.
+                  Ciągnie mnie to, co trudne. Rozwiązywanie trudnych problemów to najstarszy silnik — aż po ewolucję:
+                  ci, którzy rozwiązują problemy, idą do przodu. Świat biznesu jest moim placem zabaw dokładnie z tego powodu.
                 </p>
               </Block>
 
               <Block
-                kicker="how I see AI"
+                kicker="jak widzę AI"
                 side="right"
                 aspect="aspect-[4/5]"
                 interval={3800}
                 photos={['/photos/art-01.jpg', '/photos/hero-5048.jpg', '/photos/art-03.jpg', '/photos/art-05.jpg']}
               >
                 <p>
-                  We spend roughly a third of our lives at work, so I don't treat AI as a tool for cutting headcount — but for{' '}
-                  <strong>elevating</strong> people and companies. Done well it cuts cost and lifts revenue, but above all it gives
-                  hours back: less repetitive work a computer does better, more time for what actually matters to each person —
-                  usually themselves and their families.
+                  Mniej więcej trzecią część życia spędzamy w pracy, więc nie traktuję AI jako narzędzia do cięcia etatów —
+                  tylko do <strong>podnoszenia</strong> ludzi i firm. Zrobione dobrze obniża koszty i podnosi przychody, ale
+                  przede wszystkim oddaje godziny: mniej powtarzalnej roboty, którą lepiej robi komputer, więcej czasu na to,
+                  co dla każdego naprawdę liczy — zwykle on sam i jego rodzina.
                 </p>
                 <p>
-                  The goal isn't to hand the machine your thinking. The opposite — AI takes the craft off your plate so you can be
-                  the <strong>philosopher</strong>: the one who understands, thinks critically, and stays accountable. Part of my
-                  job is knowing where AI <span className="italic">doesn't</span> belong — so I won't sell you AI where it doesn't
-                  pay off.
+                  Celem nie jest oddanie maszynie swojego myślenia. Wręcz przeciwnie — AI zdejmuje z Ciebie rzemiosło,
+                  żebyś mógł być <strong>filozofem</strong>: tym, który rozumie, myśli krytycznie i ponosi odpowiedzialność.
+                  Część mojej pracy to wiedzieć, gdzie AI <span className="italic">nie pasuje</span> — więc nie sprzedam Ci
+                  AI tam, gdzie się nie opłaca.
                 </p>
               </Block>
 
               <Block
-                kicker="off the clock"
+                kicker="po godzinach"
                 side="left"
                 aspect="aspect-[16/11]"
                 interval={4600}
                 photos={['/photos/art-07.jpg', '/photos/art-08.jpg', '/photos/hero-5579.jpg', '/photos/art-10.jpg', '/photos/hero-5088.jpg']}
               >
                 <p>
-                  I want this to outlast a freelancer's gig: a company designed well enough to outlast its founder. And I want to
-                  build it with good teammates — people who share my values, not necessarily my worldview. We all see the world
-                  differently, and that's the point: the best ideas come from rubbing different perspectives together.
+                  Chcę, żeby to przetrwało dłużej niż freelancerski zleceniowy okres: firmę zaprojektowaną tak dobrze,
+                  że przetrwa swojego założyciela. I chcę budować ją z dobrymi ludźmi — takimi, którzy dzielą moje wartości,
+                  niekoniecznie mój światopogląd. Wszyscy widzimy świat inaczej — i o to chodzi: najlepsze pomysły rodzą się
+                  z tarcia różnych perspektyw.
                 </p>
                 <p className="opacity-85">
-                  Off the clock, family comes first. I read widely — novels by Michel Houellebecq and Aldous Huxley, Walter
-                  Isaacson's biographies, Kobe Bryant's <span className="italic">Mamba Mentality</span> — and my taste in music runs
-                  just as wide, from Taco Hemingway, Quebonafide, Mata and Maryla Rodowicz to Drake and many more. I cook a serious
-                  spaghetti and an even better BBQ, I do my best thinking on long walks in nature, and I rarely travel without a
-                  camera — the photographs you see here are a handful of frames from my journeys. Really, I take inspiration from
-                  everywhere — life, nature, all of it — because I like to see things <span className="italic">holistically</span>:
-                  as parts of something bigger that we all live in, and share.
+                  Po godzinach rodzina na pierwszym miejscu. Czytam dużo — powieści Michela Houellebecqa i Aldousa
+                  Huxleya, biografie Waltera Isaacsona, Kobe Bryanta <span className="italic">Mamba Mentality</span> —
+                  i muzycznie mam równie szeroki gust: od Taco Hemingwaya, Quebonafide, Maty i Maryli Rodowicz po Drake'a
+                  i wielu innych. Robię poważne spaghetti i jeszcze poważniejsze BBQ, najlepiej myślę na długich spacerach
+                  w naturze i rzadko podróżuję bez aparatu — zdjęcia, które tu widzisz, to kilka klatek z moich wojaży.
+                  Tak naprawdę czerpię inspirację wszędzie — z życia, z natury, ze wszystkiego — bo lubię widzieć rzeczy
+                  <span className="italic"> holistycznie</span>: jako części czegoś większego, w czym wszyscy mieszkamy
+                  i co współdzielimy.
                 </p>
               </Block>
             </div>
 
             <p className="font-mono text-[11px] uppercase tracking-[0.3em] opacity-40 mt-16">
-              — photographs: my own, from travels through life
+              — fotografie: moje, z podróży przez życie
             </p>
           </div>
         )}

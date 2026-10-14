@@ -3,16 +3,16 @@
 // Dowód „od publicznych danych do cytowanego raportu": reconciliation GUS x Eurostat,
 // wykresy + raport PDF + link do reprodukowalnego pipeline'u. Styl jak OpenSource/Skills.
 const stats = [
-  { big: '0.34', unit: 'pp', label: 'two official sources reconciled (GUS vs Eurostat)' },
-  { big: '26→31', unit: '', label: "Poland's rank among EU countries, 2021→2025" },
-  { big: '−11.6', unit: 'pp', label: 'and the gap to the EU keeps widening' },
+  { big: '0.34', unit: 'pp', label: 'dwa oficjalne źródła uzgodnione (GUS vs Eurostat)' },
+  { big: '26→31', unit: '', label: "miejsce Polski w krajach UE, 2021→2025" },
+  { big: '−11.6', unit: 'pp', label: 'a przepaść do UE wciąż rośnie' },
 ];
 const demonstrates = [
   'SQL — JOIN · window functions · reconciliation',
-  'Reproducible pipeline (DVC) — one command rebuilds it',
-  'Data contracts (pandera) — fails loud on drift',
-  'Provenance — SHA-256 + dataset vintage on every source',
-  'Honest scoping — limits stated, not hidden',
+  'Odtwarzalny pipeline (DVC) — jedno polecenie go odbudowuje',
+  'Kontrakty danych (pandera) — głośny błąd przy dryfcie',
+  'Proweniencja — SHA-256 i wersja zbioru przy każdym źródle',
+  'Jasno o ograniczeniach — limity podane wprost, nie ukryte',
 ];
 const reportUrl = '/reports/ai_adoption_report.pdf';
 const repoUrl = 'https://github.com/martin0ne/analytics-stack-pl';
@@ -20,35 +20,36 @@ const repoUrl = 'https://github.com/martin0ne/analytics-stack-pl';
 <section id="analytics" data-nav-theme="dark" class="relative overflow-hidden bg-dark text-primary px-8 md:px-16 py-24 md:py-32 border-t border-primary/10">
   <div class="relative z-10 max-w-6xl mx-auto">
     <p class="font-mono text-xs uppercase tracking-[0.3em] opacity-60 mb-6">
-      <span class="text-accent">—</span> 05 · Data &amp; Analytics
+      <span class="text-accent">—</span> 05 · Dane i analizy
     </p>
 
     <h2 class="font-sans font-bold text-4xl md:text-6xl tracking-[-0.03em] uppercase leading-[0.95] mb-6">
-      From data to evidence<span class="text-accent">.</span>
+      Od danych do dowodu<span class="text-accent">.</span>
     </h2>
 
     <p class="font-serif italic text-2xl md:text-3xl leading-snug max-w-3xl mb-8 opacity-90">
-      Public data → an audited pipeline → a report that survives scrutiny.
+      Dane publiczne → audytowany pipeline → raport, który wytrzymuje kontrolę.
     </p>
     <p class="font-sans text-base max-w-3xl mb-14 opacity-75 leading-relaxed">
-      Beyond shipping agents, I do the analyst's core job: find the right public data, reconcile the
-      same metric across independent official sources, benchmark and trend it — and make every figure
-      traceable and reproducible. Here is one finished piece, end to end.
+      Poza dostarczaniem agentów robię też robotę analityka: szukam właściwych danych publicznych,
+      uzgadniam ten sam wskaźnik między niezależnymi oficjalnymi źródłami, porównuję i podglądam trendy —
+      i sprawiam, że każda liczba jest tropialna i odtwarzalna. Oto jeden gotowy kawałek, od końca do końca.
     </p>
 
     <div class="rounded-3xl border border-primary/15 bg-primary/[0.04] backdrop-blur-sm p-7 md:p-10">
       <div class="flex flex-wrap items-center gap-3 mb-4">
         <span class="font-mono text-[10px] uppercase tracking-[0.2em] text-accent">SQL · DuckDB · DVC · pandera</span>
-        <span class="font-mono text-[10px] uppercase tracking-[0.2em] px-2.5 py-1 rounded-full border border-accent/40 text-accent">Reproducible</span>
+        <span class="font-mono text-[10px] uppercase tracking-[0.2em] px-2.5 py-1 rounded-full border border-accent/40 text-accent">Odtwarzalny</span>
       </div>
 
-      <h3 class="font-sans font-bold text-2xl md:text-3xl tracking-tight mb-1">AI adoption in Polish enterprises</h3>
-      <p class="font-sans text-sm uppercase tracking-[0.15em] opacity-60 mb-5">A GUS × Eurostat reconciliation · 2021–2025</p>
+      <h3 class="font-sans font-bold text-2xl md:text-3xl tracking-tight mb-1">Adopcja AI w polskich przedsiębiorstwach</h3>
+      <p class="font-sans text-sm uppercase tracking-[0.15em] opacity-60 mb-5">Uzgodnienie GUS × Eurostat · 2021–2025</p>
 
       <p class="font-sans text-base leading-relaxed opacity-85 max-w-3xl mb-8">
-        The same indicator — enterprises using any AI technology — reported by two statistical offices,
-        reconciled to within 0.3&nbsp;points; Poland is climbing fast off a low base, yet the gap to the EU
-        average is widening. Economy-wide data, with the financial-sector caveat stated upfront.
+        Ten sam wskaźnik — przedsiębiorstwa używające dowolnej technologii AI — raportowany przez dwa urzędy
+        statystyczne, uzgodniony do 0,3&nbsp;punktu; Polska szybko nadrabia z niskiego poziomu, ale przepaść
+        do średniej UE rośnie. Dane obejmujące całą gospodarkę, z zastrzeżeniem sektora finansowego
+        podanym wprost.
       </p>
 
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-9 pb-9 border-b border-primary/10">
@@ -63,19 +64,19 @@ const repoUrl = 'https://github.com/martin0ne/analytics-stack-pl';
       <div class="grid md:grid-cols-2 gap-5 mb-9">
         <figure class="m-0">
           <div class="rounded-2xl bg-[#f5f3ee] dark:bg-[var(--c-surface)] p-4 border border-primary/10">
-            <img src="/reports/ai_trajectory.png" alt="Poland vs EU27 AI adoption trajectory, 2021–2025" class="w-full block" loading="lazy" />
+            <img src="/reports/ai_trajectory.png" alt="Trajektoria adopcji AI: Polska vs UE27, 2021–2025" class="w-full block" loading="lazy" />
           </div>
-          <figcaption class="font-mono text-[10px] uppercase tracking-[0.15em] opacity-50 mt-3">Fig. 1 · Poland vs EU27 trajectory</figcaption>
+          <figcaption class="font-mono text-[10px] uppercase tracking-[0.15em] opacity-50 mt-3">Rys. 1 · Trajektoria PL vs UE27</figcaption>
         </figure>
         <figure class="m-0">
           <div class="rounded-2xl bg-[#f5f3ee] dark:bg-[var(--c-surface)] p-4 border border-primary/10">
-            <img src="/reports/ai_by_size.png" alt="AI adoption by firm size, 2025" class="w-full block" loading="lazy" />
+            <img src="/reports/ai_by_size.png" alt="Adopcja AI wg wielkości firmy, 2025" class="w-full block" loading="lazy" />
           </div>
-          <figcaption class="font-mono text-[10px] uppercase tracking-[0.15em] opacity-50 mt-3">Fig. 2 · Adoption by firm size (2025)</figcaption>
+          <figcaption class="font-mono text-[10px] uppercase tracking-[0.15em] opacity-50 mt-3">Rys. 2 · Adopcja wg wielkości firmy (2025)</figcaption>
         </figure>
       </div>
 
-      <p class="font-mono text-[10px] uppercase tracking-[0.2em] opacity-50 mb-3">What it demonstrates</p>
+      <p class="font-mono text-[10px] uppercase tracking-[0.2em] opacity-50 mb-3">Co to pokazuje</p>
       <ul class="grid sm:grid-cols-2 gap-x-8 gap-y-2 mb-9">
         {demonstrates.map((d) => (
           <li class="font-sans text-sm leading-relaxed opacity-80 flex gap-2.5">
@@ -87,11 +88,11 @@ const repoUrl = 'https://github.com/martin0ne/analytics-stack-pl';
       <div class="flex flex-wrap gap-4">
         <a href={reportUrl} target="_blank" rel="noopener"
            class="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-[2rem] bg-accent text-dark font-sans font-bold text-base hover:bg-dark hover:text-accent dark:hover:bg-primary dark:hover:text-dark hover:scale-[1.03] transition-all duration-300 no-underline">
-          Read the report (PDF) ↗
+          Czytaj raport (PDF) ↗
         </a>
         <a href={repoUrl} target="_blank" rel="noopener"
            class="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-[2rem] border border-primary/20 hover:border-accent text-primary hover:text-dark font-sans font-bold text-base hover:bg-accent hover:scale-[1.03] transition-all duration-300 no-underline">
-          View the pipeline ↗
+          Zobacz pipeline ↗
         </a>
       </div>
     </div>
