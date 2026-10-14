@@ -1,0 +1,75 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import NewsletterSignup from '../../components/NewsletterSignup.jsx';
+---
+
+<BaseLayout
+  title="Newsletter · MJ.OLDAK"
+  description="Newsletter MJ.OLDAK: notki o książce, badaniach i narzędziach AI. Zapis z potwierdzeniem (double opt-in), wypisanie jednym kliknięciem."
+>
+  <main class="confirmation">
+    <div class="card">
+      <div class="badge">Newsletter</div>
+      <h1>Listy <em>raz w miesiącu</em>.</h1>
+      <p class="lead">
+        Co robię, co piszę i co zbudowałem — jedna wiadomość miesięcznie, bez spamu
+        i bez przekazywania adresu dalej.
+      </p>
+      <div class="form-wrap">
+        <NewsletterSignup client:visible />
+      </div>
+      <p class="muted">
+        Zapis wymaga potwierdzenia w mailu (double opt-in). Wypisanie = jeden klik
+        w link w stopce dowolnej wiadomości. Szczegóły przetwarzania:
+        <a href="/polityka-prywatnosci">polityka prywatności</a>.
+      </p>
+      <div class="actions">
+        <a href="/" class="cta primary">Strona główna</a>
+        <a href="/artykuly/" class="cta secondary">Artykuły</a>
+      </div>
+    </div>
+  </main>
+</BaseLayout>
+
+<style>
+  .confirmation {
+    min-height: 70vh; display: flex; align-items: center; justify-content: center;
+    padding: 80px 24px; background: #ffffff;
+  }
+  .card {
+    max-width: 640px; width: 100%;
+    background: rgba(10,10,10, 0.04);
+    border: 1px solid rgba(10,10,10, 0.12);
+    border-radius: 24px; padding: 56px 48px; text-align: center;
+  }
+  .badge {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: rgba(10,10,10, 0.6);
+    background: rgba(10,10,10, 0.08);
+    padding: 6px 14px; border-radius: 999px; margin-bottom: 24px;
+  }
+  h1 {
+    font-family: 'Manrope', sans-serif; font-weight: 800;
+    font-size: 44px; line-height: 1.05; letter-spacing: -0.02em;
+    color: #0a0a0a; margin: 0 0 24px;
+  }
+  h1 em { font-family: 'Fraunces', serif; font-style: italic; font-weight: 400; color: rgba(10,10,10, 0.55); }
+  .lead { font-size: 18px; line-height: 1.55; color: #0a0a0a; margin: 0 0 24px; }
+  .form-wrap { text-align: left; margin: 0 0 20px; }
+  .muted { font-size: 14px; line-height: 1.6; color: rgba(10,10,10, 0.6); margin: 0 0 32px; }
+  .muted a { color: #111111; text-decoration: underline; }
+  .actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  .cta {
+    display: inline-block;
+    font-family: 'Manrope', sans-serif; font-weight: 700;
+    font-size: 14px; letter-spacing: 0.02em; text-transform: uppercase;
+    padding: 14px 28px; border-radius: 999px;
+    text-decoration: none; transition: transform 0.2s;
+  }
+  .cta.primary { background: #0a0a0a; color: #ffffff; }
+  .cta.secondary { background: transparent; color: #0a0a0a; border: 1px solid rgba(10,10,10, 0.3); }
+  .cta:hover { transform: translateY(-2px); }
+  @media (max-width: 600px) { .card { padding: 40px 24px; } h1 { font-size: 34px; } }
+</style>

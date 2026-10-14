@@ -119,7 +119,7 @@ export default function ContactPersonal() {
                             </li>
                             <li className="flex items-center gap-3">
                                 <span className="w-1.5 h-1.5 rounded-full bg-primary/30" />
-                                <span className="text-primary/60">Wrocław, Poland · remote-ready (PL/EU)</span>
+                                <span className="text-primary/60">Warszawa, PL · remote-ready (PL/EU)</span>
                             </li>
                         </ul>
                         <div className="mt-8 p-4 rounded-xl border border-accent/30 bg-accent/5">
@@ -160,8 +160,8 @@ export default function ContactPersonal() {
                                 className="mt-0.5 w-4 h-4 shrink-0 accent-[#111111] cursor-pointer"
                             />
                             <span>
-                                I consent to the processing of my personal data to handle this enquiry (GDPR Art. 6(1)(a)).{' '}
-                                <a href="/polityka-prywatnosci" className="underline underline-offset-2 hover:text-accent">Privacy policy (PL)</a>
+                                Wyrażam zgodę na przetwarzanie moich danych osobowych w celu odpowiedzi na to zapytanie (RODO art. 6 ust. 1 lit. a).{' '}
+                                <a href="/polityka-prywatnosci" className="underline underline-offset-2 hover:text-accent">Polityka prywatności</a>
                             </span>
                         </label>
                         <button
@@ -192,8 +192,7 @@ export default function ContactPersonal() {
                 <div className="mt-20 pt-8 border-t border-primary/10 flex flex-col sm:flex-row items-center justify-between gap-4 font-mono text-[11px] text-primary/40">
                     <span>© {new Date().getFullYear()} Marcin J. Ołdak · MJ.OLDAK</span>
                     <div className="flex gap-6">
-                        <a href="/dla-biur" className="hover:text-accent transition-colors">Dla biur rachunkowych (PL) →</a>
-                        <a href="/polityka-prywatnosci" className="hover:text-accent transition-colors">Privacy</a>
+                        <a href="/polityka-prywatnosci" className="hover:text-accent transition-colors">Polityka prywatności</a>
                     </div>
                 </div>
             </div>

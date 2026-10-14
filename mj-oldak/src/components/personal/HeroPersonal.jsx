@@ -82,7 +82,7 @@ export default function HeroPersonal() {
             <div className="relative z-30 order-2 md:order-1 flex flex-col justify-between p-6 md:p-12 lg:p-16 pt-24 md:pt-28">
                 {/* Metadane w rogu — wydanie, nie HUD */}
                 <div className="hero-reveal hidden md:flex justify-end font-mono text-[10px] uppercase tracking-[0.22em] text-primary/45">
-                    <span>Wrocław · PL — 2026</span>
+                    <span>Warszawa · PL — 2026</span>
                 </div>
 
                 <div className="w-full max-w-2xl py-6 md:py-0">
