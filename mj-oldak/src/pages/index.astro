@@ -4,8 +4,6 @@ import NavbarPersonal from '../components/personal/NavbarPersonal.jsx';
 import HeroPersonal from '../components/personal/HeroPersonal.jsx';
 import AboutSection from '../components/personal/AboutSection.jsx';
 import WorkAndStack from '../components/personal/WorkAndStack.astro';
-import OpenSource from '../components/personal/OpenSource.astro';
-import Analytics from '../components/personal/Analytics.astro';
 import Writing from '../components/personal/Writing.astro';
 import ContactPersonal from '../components/personal/ContactPersonal.jsx';
 
@@ -16,8 +14,6 @@ const description = 'Narzędzia AI, analizy danych ze źródłami i teksty. Blog
   <NavbarPersonal client:load />
   <HeroPersonal client:load />
   <WorkAndStack />
-  <OpenSource />
-  <Analytics />
   <Writing />
   <AboutSection client:visible />
   <ContactPersonal client:visible />

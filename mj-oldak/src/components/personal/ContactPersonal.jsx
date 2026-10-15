@@ -94,7 +94,7 @@ export default function ContactPersonal() {
         <section id="contact" data-nav-theme="dark" className="relative overflow-hidden bg-dark text-primary px-8 md:px-16 pt-24 md:pt-32 pb-12">
             <div className="relative z-10 max-w-5xl mx-auto">
                 <p className="font-mono text-xs uppercase tracking-[0.3em] opacity-60 mb-6">
-                    <span className="text-accent">—</span> 08 · Kontakt
+                    <span className="text-accent">—</span> 04 · Kontakt
                 </p>
 
                 <h2 className="font-serif text-4xl md:text-5xl leading-[1.02] tracking-[-0.01em] mb-8">

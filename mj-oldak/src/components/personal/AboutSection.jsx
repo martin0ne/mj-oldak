@@ -51,7 +51,7 @@ export default function AboutSection() {
     >
       <div className="max-w-6xl mx-auto relative z-10">
         <p className="font-mono text-[11px] uppercase tracking-[0.3em] opacity-50 mb-6">
-          <span className="text-sunset">—</span> 06 · O mnie
+          <span className="text-sunset">—</span> 03 · O mnie
         </p>
 
         <h2 className="font-serif text-4xl md:text-5xl leading-[1.05] tracking-[-0.01em] mb-8">
