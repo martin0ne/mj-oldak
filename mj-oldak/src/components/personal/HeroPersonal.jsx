@@ -120,12 +120,6 @@ export default function HeroPersonal() {
                         >
                             Przeczytaj artykuły
                         </a>
-                        <a
-                            href="#contact"
-                            className="px-6 py-3 rounded-[6px] border border-primary/35 text-primary text-sm font-medium hover:border-primary transition-colors duration-200 no-underline"
-                        >
-                            Współpraca
-                        </a>
                     </div>
                 </div>
 
