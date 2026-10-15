@@ -86,7 +86,7 @@ export default function HeroPersonal() {
 
                 <div className="w-full max-w-2xl py-6 md:py-0">
                     <p className="hero-reveal font-mono text-[11px] uppercase tracking-[0.3em] text-primary/60 mb-7">
-                        ( niezależnie · pisarz · analityk · builder narzędzi AI )
+        ( narzędzia · analizy · teksty )
                     </p>
 
                     <h1 className="hero-reveal text-primary leading-[0.95] mb-6">
@@ -96,7 +96,7 @@ export default function HeroPersonal() {
                     </h1>
 
                     <p className="hero-reveal text-primary/70 text-base max-w-xl mb-9 leading-relaxed">
-                        Pisarz i analityk danych, działający niezależnie — buduję narzędzia AI. Współpraca przy projektach: Warszawa lub zdalnie PL/EU. W przygotowaniu: baza wiedzy o AI po ludzku. Na co dzień SQL, LLM-y i dane z jawnych źródeł. Poniżej: repozytoria, blog i projekt badawczy GUS × Eurostat.
+                        Tworzę narzędzia AI, analizuję dane i piszę o tym, nad czym pracuję. Poniżej: trzy wyróżnione prace, teksty i analizy.
                     </p>
 
                     {/* Status 01/02/03 — co jest, co powstaje, co dalej */}

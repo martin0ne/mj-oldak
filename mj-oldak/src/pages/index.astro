@@ -6,29 +6,19 @@ import AboutSection from '../components/personal/AboutSection.jsx';
 import WorkAndStack from '../components/personal/WorkAndStack.astro';
 import OpenSource from '../components/personal/OpenSource.astro';
 import Analytics from '../components/personal/Analytics.astro';
-import DataExplorer from '../components/personal/DataExplorer.astro';
-import News from '../components/personal/News.astro';
-import Ticker from '../components/personal/Ticker.astro';
 import Writing from '../components/personal/Writing.astro';
-import Community from '../components/personal/Community.astro';
-import ThinkTank from '../components/personal/ThinkTank.astro';
 import ContactPersonal from '../components/personal/ContactPersonal.jsx';
 
-const title = 'Marcin J. Ołdak — książki, badania, narzędzia AI (MJ.OLDAK)';
-const description = 'Książka o wolności i współpracy, research z danymi i źródłami oraz narzędzia AI dla profesjonalistów — nie dla firm. Blog, think-tank green punk, otwarty kod.';
+const title = 'Marcin J. Ołdak — narzędzia, analizy i teksty (MJ.OLDAK)';
+const description = 'Narzędzia AI, analizy danych ze źródłami i teksty. Blog, otwarty kod.';
 ---
 <BaseLayout title={title} description={description} lang="pl" includeOrganizationSchema={true}>
   <NavbarPersonal client:load />
   <HeroPersonal client:load />
-  <AboutSection client:visible />
   <WorkAndStack />
   <OpenSource />
   <Analytics />
-  <DataExplorer />
-  <News />
   <Writing />
-  <Community />
-  <ThinkTank />
+  <AboutSection client:visible />
   <ContactPersonal client:visible />
-  <Ticker />
 </BaseLayout>

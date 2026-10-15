@@ -38,12 +38,10 @@ export default function NavbarPersonal() {
     }, []);
 
     const navLinks = [
-        { href: '/#work', label: 'Narzędzia' },
-        { href: '/#writing', label: 'Badania' },
-        { href: '/#thinktank', label: 'Think-tank' },
-        { href: '/artykuly/', label: 'Blog' },
+        { href: '/#work', label: 'Projekty' },
+        { href: '/artykuly/', label: 'Teksty' },
         { href: '/#about', label: 'O mnie' },
-        { href: '/en/articles/', label: 'EN' },
+        { href: '/#contact', label: 'Kontakt' },
     ];
 
     const dark = isDark;

@@ -97,7 +97,7 @@ export default function AboutSection() {
         {tab === 'pro' && (
           <div className="max-w-5xl">
             <h2 className="font-serif text-4xl md:text-5xl leading-[1.05] tracking-[-0.01em] mb-6">
-              Pisarz. Analityk danych. Builder narzędzi AI<span className="text-accent">.</span>
+              <h2>Jedna osoba do rozmowy.</h2>
             </h2>
             <p className="font-serif italic text-2xl md:text-3xl leading-snug max-w-3xl mb-10 opacity-90">
               To, co łączę — pisanie, analizę danych i kodowanie narzędzi — robię od 2022 roku.
@@ -138,7 +138,7 @@ export default function AboutSection() {
         {tab === 'me' && (
           <div>
             <h2 className="font-serif italic text-3xl md:text-5xl leading-[1.12] mb-14 max-w-3xl">
-              Człowiek to maszyna kontekstu. <span className="text-accent">AI to tylko narzędzie.</span>
+              Człowiek to maszyna kontekstu.
             </h2>
 
             <div className="space-y-16 lg:space-y-24">
