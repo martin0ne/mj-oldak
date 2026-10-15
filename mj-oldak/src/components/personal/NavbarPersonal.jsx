@@ -75,16 +75,6 @@ export default function NavbarPersonal() {
                             {link.label}
                         </a>
                     ))}
-                    <a
-                        href="/#contact"
-                        className={`no-underline text-sm font-medium px-4 py-2 rounded-[6px] transition-colors duration-200 ${
-                            dark
-                                ? 'bg-primary text-dark hover:bg-[#FBFBFA]'
-                                : 'bg-[#111111] text-[#FBFBFA] hover:bg-[#333333] dark:bg-[#FBFBFA] dark:text-[#111111]'
-                        }`}
-                    >
-                        Współpraca
-                    </a>
                 </div>
 
                 {/* Mobile hamburger — prostokątne linie, bez rounded-full */}
@@ -124,7 +114,6 @@ export default function NavbarPersonal() {
                         className="mt-1 px-4 py-2 rounded-[6px] bg-[#111111] text-[#FBFBFA] no-underline"
                         onClick={() => setMobileOpen(false)}
                     >
-                        Współpraca
                     </a>
                 </div>
             </div>
