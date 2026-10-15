@@ -1,0 +1,199 @@
+---
+// /pnews/ — warstwa newsów (spec: docs/PNEWS-WARSTWA.md, 14.10.2026)
+// Build-time RSS (zero runtime) ·4 soczewki · pasmo „Polska w tle".
+// MVP: bez polskiego akcentu w kaflach (kolumna pusta — wymaga przeglądu Marcina,
+// decyzja15.10: przegląd, nie badge „auto").
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Parser from 'rss-parser';
+
+const parser = new Parser({
+  timeout: 15000,
+  // Część źródeł (np. spidersweb.pl) odrzuca pustego User-Agent — curl w
+  // scripts/check-feeds.sh przeszedł, rss-parser bez nagłówka by nie przeszedł.
+  headers: {
+    'User-Agent':
+      'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120 Safari/537.36',
+    'Accept': 'application/rss+xml, application/atom+xml, application/xml;q=0.9, */*;q=0.8',
+  },
+});
+const BUILD_DATE = new Date().toISOString().slice(0, 10);
+
+type Lens = 'AI' | 'GEO' | 'EU' | 'WORLD';
+const FEEDS: { lens: Lens; name: string; url: string; pl: boolean }[] = [
+  // AI
+  { lens: 'AI', name: "Spider's Web", url: 'https://spidersweb.pl/feed/', pl: true },
+  { lens: 'AI', name: 'benchmark.pl', url: 'https://www.benchmark.pl/rss.xml', pl: true },
+  { lens: 'AI', name: 'TechCrunch AI', url: 'https://techcrunch.com/category/artificial-intelligence/feed/', pl: false },
+  { lens: 'AI', name: 'The Verge AI', url: 'https://www.theverge.com/rss/ai-artificial-intelligence/index.xml', pl: false },
+  { lens: 'AI', name: 'Wired AI', url: 'https://www.wired.com/feed/tag/ai/latest/rss', pl: false },
+  { lens: 'AI', name: 'Ars Technica', url: 'https://feeds.arstechnica.com/arstechnica/technology-lab', pl: false },
+  // GEO
+  { lens: 'GEO', name: 'Biznes Alert', url: 'https://biznesalert.pl/feed/', pl: true },
+  { lens: 'GEO', name: 'Money.pl', url: 'https://www.money.pl/rss/', pl: true },
+  { lens: 'GEO', name: 'CyberDefence24', url: 'https://cyberdefence24.pl/feed', pl: true },
+  { lens: 'GEO', name: 'Defence24', url: 'https://www.defence24.pl/feed', pl: true },
+  // EU
+  { lens: 'EU', name: 'Parlament Europejski', url: 'https://www.europarl.europa.eu/rss/doc/press-releases/pl.xml', pl: true },
+  { lens: 'EU', name: 'Euronews', url: 'https://www.euronews.com/rss', pl: false },
+  // WORLD
+  { lens: 'WORLD', name: 'BBC World', url: 'http://feeds.bbci.co.uk/news/world/rss.xml', pl: false },
+  { lens: 'WORLD', name: 'BBC Technology', url: 'http://feeds.bbci.co.uk/news/technology/rss.xml', pl: false },
+  { lens: 'WORLD', name: 'NPR World', url: 'https://feeds.npr.org/1001/rss.xml', pl: false },
+  // polska w tle (dla EU/WORLD)
+  { lens: 'WORLD', name: 'TVN24 Bis', url: 'https://tvn24.pl/najnowsze.xml', pl: true },
+  { lens: 'EU', name: 'Money.pl — świat', url: 'https://www.money.pl/rss/swiat/', pl: true },
+];
+
+// Równolegle (nie sekwencyjnie):17 feedów × timeout15 s = 3+ min przy fetchach
+// w pętli. Promise.all daje czas najwolniejszego, nie sumę.
+const raw: { lens: Lens; pl: boolean; source: string; title: string; link: string; date: string }[] = [];
+const fetched = await Promise.all(
+  FEEDS.map(async (f) => {
+    try {
+      const feed: any = await parser.parseURL(f.url);
+      return (feed.items || []).slice(0, 6).map((it: any) => ({
+        lens: f.lens, pl: f.pl, source: f.name,
+        title: it.title ? String(it.title).replace(/\s+/g, ' ').trim() : '',
+        link: it.link || '',
+        date: it.isoDate || it.pubDate || '',
+      })).filter((x: any) => x.title && x.link);
+    } catch {
+      // martwy feed przy buildzie: pomijamy (check-feeds.sh i tak go wychwytuje)
+      return [];
+    }
+  }),
+);
+for (const arr of fetched) raw.push(...arr);
+
+// dedup: identyczny lub prawie identyczny tytuł (≥80% wspólnego prefixu po normalizacji)
+const norm = (s: string) => s.toLowerCase().replace(/[^a-z0-9ąćęłńóśźż ]/g, '').slice(0, 60);
+const seen = new Set<string>();
+const items = raw.filter((it) => {
+  const k = norm(it.title);
+  if (!k || seen.has(k)) return false;
+  seen.add(k);
+  return true;
+}).sort((a, b) => (b.date > a.date ? 1 : -1));
+
+const LENSES: Lens[] = ['AI', 'GEO', 'EU', 'WORLD'];
+const byLens = (l: Lens) => items.filter((i) => i.lens === l);
+const polska = (l: Lens) => items.filter((i) => i.pl && i.lens === l).slice(0, 3);
+const fmt = (d: string) => (d ? d.slice(0, 10).replace(/-/g, '.') : '');
+---
+
+<BaseLayout
+  title="Pnews — polski akcent w newsach o AI, geopolityce, UE i świecie (MJ.OLDAK)"
+  description="Codzienny przegląd RSS w czterech soczewkach: AI, GEO, EU, WORLD — z polskim akcentem na pierwszym planie. Zbudowane z publicznych kanałów, źródło i data przy każdej pozycji."
+  lang="pl"
+>
+  <section id="pnews" class="px-8 md:px-16 py-24 md:py-28 bg-background text-dark">
+    <div class="max-w-5xl mx-auto">
+      <p class="font-mono text-[11px] uppercase tracking-[0.3em] opacity-50 mb-6">
+        — 01 · Pnews
+      </p>
+      <h1 class="font-serif text-4xl md:text-5xl leading-[1.05] tracking-[-0.01em] mb-4">
+        Pnews.
+      </h1>
+      <p class="font-sans text-base md:text-lg leading-relaxed opacity-80 max-w-3xl mb-3">
+        Polski akcent jest domyślny: co to znaczy dla nas, dopiero potem kontekst
+        unijny i światowy. Cztery soczewki, jedno źródło prawdy przy każdej pozycji.
+      </p>
+      <p class="font-mono text-[11px] uppercase tracking-[0.22em] opacity-45 mb-10">
+        ostatnia aktualizacja: {BUILD_DATE} · build-time RSS · {items.length} pozycji · {
+          new Set(FEEDS.map((f) => f.name)).size
+        } kanałów
+      </p>
+
+      <!-- Zakładki soczewek (filtr, nie osobna strona) -->
+      <div class="flex flex-wrap gap-3 mb-10" role="tablist" aria-label="Soczewki">
+        {LENSES.map((l, i) => (
+          <button
+            type="button"
+            role="tab"
+            data-lens={l}
+            aria-selected={i === 0 ? 'true' : 'false'}
+            class="lens-tab font-mono text-xs uppercase tracking-[0.16em] px-4 py-2 border border-dark/20 rounded-[6px] transition-colors duration-200"
+          >
+            {l}
+          </button>
+        ))}
+      </div>
+
+      {LENSES.map((l) => (
+        <div class="lens-panel" data-panel={l} hidden={l !== 'AI'}>
+          <!-- Pasmo „Polska w tle" -->
+          <div class="border border-dark/15 bg-white p-6 mb-8">
+            <p class="font-mono text-[11px] uppercase tracking-[0.24em] opacity-55 mb-4">
+              — Polska w tle · {l}
+            </p>
+            <ul class="space-y-4">
+              {polska(l).map((it) => (
+                <li class="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                  <a href={it.link} target="_blank" rel="noopener"
+                     class="font-serif text-lg leading-snug underline decoration-1 underline-offset-4 hover:opacity-70">
+                    {it.title}
+                  </a>
+                  <span class="font-mono text-[11px] uppercase tracking-[0.14em] opacity-55">
+                    {it.source} · {fmt(it.date)}
+                  </span>
+                </li>
+              ))}
+              {polska(l).length === 0 && (
+                <li class="font-sans text-sm opacity-60">Brak polskich pozycji w tym feedzie.</li>
+              )}
+            </ul>
+          </div>
+
+          <!-- Kafle -->
+          <div class="grid md:grid-cols-2 gap-4">
+            {byLens(l).map((it) => (
+              <article class="border border-dark/12 bg-white p-6 flex flex-col gap-3">
+                <span class="font-mono text-[10px] uppercase tracking-[0.18em] opacity-55 self-start border border-dark/20 px-2 py-1 rounded-[4px]">
+                  {it.lens}{it.pl ? ' · PL' : ''}
+                </span>
+                <h2 class="font-serif text-xl leading-snug">
+                  <a href={it.link} target="_blank" rel="noopener" class="hover:underline decoration-1 underline-offset-4">
+                    {it.title}
+                  </a>
+                </h2>
+                <p class="font-mono text-[11px] uppercase tracking-[0.14em] opacity-55 mt-auto">
+                  {it.source} · {fmt(it.date)}
+                </p>
+              </article>
+            ))}
+            {byLens(l).length === 0 && (
+              <p class="font-sans text-sm opacity-60 md:col-span-2">
+                Ten soczewka nie zwróciła pozycji przy tym buildzie — sprawdź feed w
+                <code class="font-mono">scripts/check-feeds.sh</code>.
+              </p>
+            )}
+          </div>
+        </div>
+      ))}
+
+      <p class="font-mono text-[11px] uppercase tracking-[0.14em] opacity-45 mt-12 max-w-3xl leading-relaxed">
+        źródła: publiczne kanały RSS (lista: scripts/check-feeds.sh) · tytuł + źródło +
+        data + link — bez pełnych tekstów · polski akcent: przegląd przed publikacją
+      </p>
+    </div>
+  </section>
+
+  <script>
+    const tabs = document.querySelectorAll<HTMLButtonElement>('.lens-tab');
+    const panels = document.querySelectorAll<HTMLElement>('.lens-panel');
+    tabs.forEach((tab) => {
+      tab.addEventListener('click', () => {
+        const lens = tab.dataset.lens;
+        tabs.forEach((t) => t.setAttribute('aria-selected', String(t === tab)));
+        panels.forEach((p) => { p.hidden = p.dataset.panel !== lens; });
+      });
+    });
+  </script>
+
+  <style>
+    .lens-tab { background: transparent; color: inherit; cursor: pointer; }
+    .lens-tab[aria-selected='true'] { background: #111111; color: #fbfbfa; border-color: #111111; }
+    .lens-tab:hover { border-color: #111111; }
+    .lens-tab:focus-visible { outline: 2px solid #111111; outline-offset: 2px; }
+  </style>
+</BaseLayout>
