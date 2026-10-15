@@ -588,3 +588,27 @@ textarea:focus-visible {
 
 /* ── Tonacja czarno-biała (redesign think-tank 13.10) ─────────────── */
 img[src*="/photos/"] { filter: grayscale(1) contrast(1.03); }
+
+/* ── Tekstura w literach (wzorzec Demacia Cup 2026, akceptacja Marcina 15.10)
+      Element z referencji „REPLAY": litera ma fakturę sitodruku, nie gładki fill.
+      Bezpieczeństwo: @supports = tekstura tylko tam, gdzie działa background-clip;
+      treść nigdy nie zależy od tekstury (fallback = normalne wypełnienie). ── */
+@supports (background-clip: text) or (-webkit-background-clip: text) {
+  .type-texture {
+    /* UWAGA (mój błąd 15.10): NIE currentColor — tu color jest ustawiony na
+       transparent, więc tło wzoru też by zniknęło („Piszę," zniknęło z H1).
+       Jawna szarość działa w obu trybach: na ciemnej literze = jaśniejsza
+       faktura, na jasnej = ciemniejsza. Faktura nigdy nie jest obcym kolorem. */
+    background-image: radial-gradient(
+      circle at center,
+      #6b6b6b 0.9px,
+      transparent 1.15px
+    );
+    background-size: 5px 5px;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    filter: none;
+  }
+}
+

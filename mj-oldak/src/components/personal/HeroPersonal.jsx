@@ -91,7 +91,7 @@ export default function HeroPersonal() {
 
                     <h1 className="hero-reveal text-primary leading-[0.95] mb-6">
                         <span className="font-serif italic text-[clamp(34px,5.4vw,64px)] font-normal">Działam niezależnie.</span>{' '}
-                        <span className="font-sans text-[clamp(34px,5.4vw,64px)] font-bold tracking-[-0.03em]">Piszę,</span>
+                        <span className="type-texture font-sans text-[clamp(34px,5.4vw,64px)] font-bold tracking-[-0.03em]">Piszę,</span>
                         <span className="font-serif text-[clamp(34px,5.4vw,64px)] font-normal"> badam i buduję narzędzia.</span>
                     </h1>
 
