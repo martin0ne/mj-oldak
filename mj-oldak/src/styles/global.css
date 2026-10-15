@@ -1,3 +1,23 @@
+/* === TAILWIND 4 (migracja 15.10.2026, Astro 7) === */
+/* @import musi być PRZED innymi regułami — @font-face poniżej złamałby regułę @import. */
+@import "tailwindcss";
+
+/* darkMode: 'class' ze starego tailwind.config.mjs — teraz CSS-first. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Temat z tailwind.config.mjs (kolory brand v2.1 + fonty brand v3). */
+@theme {
+  --color-background: #FBFBFA;
+  --color-primary: #f2f2f1;
+  --color-accent: #111111;
+  --color-dark: #0a0a0a;
+  --color-sunset: #6f6f6f;
+  --font-sans: "Geist", system-ui, -apple-system, sans-serif;
+  --font-display: "Geist", system-ui, sans-serif;
+  --font-serif: "Newsreader", Georgia, "Times New Roman", serif;
+  --font-mono: "Geist Mono", ui-monospace, "SF Mono", monospace;
+}
+
 /* === BRAND FONTS v3 (12.10.2026) === */
 /* Newsreader (serif — H1/H2), Geist (sans — body/UI), Geist Mono (kickery/meta). */
 /* Self-hosted, subsety latin + latin-ext (polski ogon) — NIE Google Fonts CDN. */
@@ -19,9 +39,6 @@
   font-display: swap;
 }
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 
 /* @-symbol fix: Space Mono renderuje '@' jako mało czytelny mały glyph.
    Override TYLKO znaku @ (U+0040) na wyraźniejszy font (Inter / system-ui).
