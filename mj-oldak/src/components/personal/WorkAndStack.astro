@@ -109,46 +109,77 @@ const groups = [
 
     <!-- Lead -->
     <p class="font-serif italic text-xl md:text-2xl leading-snug max-w-3xl mb-14 opacity-90">
-      Jedno wdrożenie na żywo i infrastruktura na wierzchu. Cztery dema — agent, OCR, mail, raporty —
-      mieszkają obok, na własnej podstronie, żeby nie zajmować miejsca tutaj.
+      Eseje w redakcji, dwie analizy zbudowane na danych i kodzie, a cztery dema —
+      agent, OCR, mail, raporty — mieszkają obok, na własnej podstronie.
     </p>
 
     <!-- Divider -->
     <hr class="border-t border-dark/10 dark:border-[var(--c-line)] w-full mb-14" />
 
-    <!-- Live demo + n8n — karty highlight, bez glow -->
-    <div class="grid md:grid-cols-2 gap-4 mb-14">
+    <!-- Wyróżnione: eseje + dwie analizy (decyzja Marcina15.10: „just eseje — nie książka") -->
+    <div class="grid md:grid-cols-3 gap-4 mb-8">
+      <div class="rounded-lg border border-dark/15 bg-dark text-primary p-7 flex flex-col">
+        <div class="flex items-center gap-2 mb-3">
+          <span class="w-1.5 h-1.5 bg-[#edf3ec]"></span>
+          <span class="font-mono text-[10px] uppercase tracking-[0.18em] text-[#9db8a0]">Tom esejów · w redakcji</span>
+        </div>
+        <h3 class="font-serif text-xl mb-3 leading-snug">Trzy pierwsze eseje</h3>
+        <ul class="font-sans text-sm opacity-85 leading-relaxed space-y-2 mb-5">
+          <li><span class="font-mono text-[11px] opacity-60">prolog</span> — Wstyd siedzi w kuchni</li>
+          <li><span class="font-mono text-[11px] opacity-60">01</span> — Kraj bez języka</li>
+          <li><span class="font-mono text-[11px] opacity-60">02</span> — Naród, który nie pamięta</li>
+        </ul>
+        <p class="font-sans text-sm opacity-65 leading-relaxed mt-auto">
+          O tym, skąd bierze się wstyd, którego nie ma w żadnej szkolnej wersji —
+          i czego nie da się przetłumaczyć w drugą stronę.
+        </p>
+      </div>
       <a
-        href="https://demo.mjoldak.pl"
-        target="_blank"
-        rel="noopener"
+        href="/artykuly/co-dane-mowia-o-adopcji-ai-polska-vs-ue/"
         class="group rounded-lg border border-dark/15 bg-dark text-primary p-7 hover:border-accent transition-colors duration-200 no-underline block"
       >
         <div class="flex items-center gap-2 mb-3">
-          <span class="w-1.5 h-1.5 bg-green-400"></span>
-          <span class="font-mono text-[10px] uppercase tracking-[0.18em] text-green-400">Live demo</span>
+          <span class="w-1.5 h-1.5 bg-[#e1f3fe]"></span>
+          <span class="font-mono text-[10px] uppercase tracking-[0.18em] text-[#8fb9d4]">Analiza danych · GUS × Eurostat</span>
         </div>
-        <h3 class="font-serif text-xl mb-2 leading-snug">Sales Agent B2B — live demo</h3>
+        <h3 class="font-serif text-xl mb-2 leading-snug">Adopcja AI: Polska vs UE</h3>
         <p class="font-sans text-sm opacity-80 leading-relaxed mb-5">
-          Wdrożone demo: formularz → klasyfikacja leadów GenAI (HOT/WARM/COLD z uzasadnieniem) → baza danych w UE, z poziomowym ograniczeniem dostępu i rejestrem decyzji z człowiekiem w pętli (RODO art. 22 z założenia).
+          Ręcznie pisany SQL uzgadnia ten sam wskaźnik między GUS a Eurostatem:
+          Polska wdraża szybko, ale od niskiej bazy, więc dystans do UE rośnie.
+          Z liczbami, źródłami i datami — plus raport do pobrania.
         </p>
         <span class="font-mono text-xs uppercase tracking-[0.12em] text-accent group-hover:underline">
-          demo.mjoldak.pl ↗
+          analiza + raport (PDF) ↗
         </span>
       </a>
-      <div class="rounded-lg border border-dark/15 bg-dark text-primary p-7">
+      <a
+        href="/artykuly/bm25-vs-embeddingi-lawka-pomiarowa/"
+        class="group rounded-lg border border-dark/15 bg-dark text-primary p-7 hover:border-accent transition-colors duration-200 no-underline block"
+      >
         <div class="flex items-center gap-2 mb-3">
-          <span class="w-1.5 h-1.5 bg-accent"></span>
-          <span class="font-mono text-[10px] uppercase tracking-[0.18em] text-accent">Infrastruktura agentywna</span>
+          <span class="w-1.5 h-1.5 bg-[#fdebec]"></span>
+          <span class="font-mono text-[10px] uppercase tracking-[0.18em] text-[#c98a88]">Eksperyment · ławka pomiarowa</span>
         </div>
-        <h3 class="font-serif text-xl mb-2 leading-snug">Pipeline n8n jako narzędzie MCP</h3>
+        <h3 class="font-serif text-xl mb-2 leading-snug">BM25 kontra embeddingi</h3>
         <p class="font-sans text-sm opacity-80 leading-relaxed mb-5">
-          Działający workflow n8n (Webhook → Gemini → baza w UE), zielony end-to-end i udostępniony przez
-          Model Context Protocol — więc agenci AI mogą go wywoływać jak narzędzie.
+          Czy semantyka zawsze wygrywa ze słowami? Zbudowana ławka pomiarowa
+          pokazuje czarno na białym, że nie — i w którym momencie wyszukiwanie
+          po znaczeniu pada.
         </p>
-        <p class="font-mono text-[11px] tracking-wide text-accent/90">
-          Webhook → LLM → Parse → DB (EU) · instance-level MCP
-        </p>
+        <span class="font-mono text-xs uppercase tracking-[0.12em] text-accent group-hover:underline">
+          czytaj analizę ↗
+        </span>
+      </a>
+    </div>
+
+    <!-- Na żywo: infrastruktura (komprakt zamiast kart) -->
+    <div class="mb-14 border border-dark/15 rounded-lg p-5 bg-white">
+      <p class="font-mono text-[10px] uppercase tracking-[0.18em] opacity-55 mb-3">Na żywo</p>
+      <div class="grid sm:grid-cols-2 gap-x-8 gap-y-2 font-sans text-sm">
+        <p><a href="https://demo.mjoldak.pl" target="_blank" rel="noopener" class="font-semibold underline decoration-1 underline-offset-4 hover:opacity-70">Sales Agent B2B</a> —
+          <span class="opacity-70">formularz → klasyfikacja leadów GenAI, baza w UE, człowiek w pętli</span></p>
+        <p><span class="font-semibold">Pipeline n8n (MCP)</span> —
+          <span class="opacity-70">Webhook → Gemini → baza w UE, wywoływalny przez agentów jak narzędzie</span></p>
       </div>
     </div>
 

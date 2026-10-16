@@ -1,0 +1,86 @@
+---
+// /en/ — English home (MVP,15.10.2026). Brakowało: /en/index.html nie istniał
+// (tylko /en/articles/) → link EN z nav prowadziłby w próżnię.
+// Reguła briefu: „wersja angielska osobno, ta sama struktura i znaczenie\" +
+// styl Marcin (15.10): „poetycko tam gdzie trzeba, naukowo by potwierdzić,
+// ironicznje/cynicznie jeśli trzeba, lecz otwarcie po ludzku\".
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import NavbarPersonal from '../../components/personal/NavbarPersonal.jsx';
+import FooterSlim from '../../components/personal/FooterSlim.astro';
+
+const sections = [
+  { n: '01', label: 'Work', title: 'Selected work', lead: 'One live deployment and four demos — agent, OCR, mail, reports. The rest lives on its own page, so it does not crowd this one.', href: '/en/#work', cta: 'All demos' },
+  { n: '02', label: 'Writing', title: 'Texts and analyses', lead: 'A blog about finding sources, checking numbers and testing arguments. A book of essays in editing. A report on AI adoption built from public data — every figure carries its source and date.', href: '/en/articles/', cta: 'Read the articles' },
+  { n: '03', label: 'About', title: 'One person to talk to', lead: 'I am Marcin. MJ.OLDAK is my name — not a brand, not a studio, not an agency. I write a book of essays, run a GUS × Eurostat study and build AI tools on GitHub — six public repositories. SQL, LLMs and automation, model-agnostic, human in the loop, grounded in Polish reality (GDPR, KSeF, JPK). Humanities taught me to see the technology lets me change what I see.', href: '/en/#about', cta: 'More' },
+  { n: '04', label: 'Contact', title: 'Write to me', lead: 'Want to talk about a project? Write.', href: '/en/#contact', cta: 'Get in touch' },
+];
+const title = 'Marcin J. Ołdak — tools, analyses and texts (MJ.OLDAK)';
+const description = 'AI tools, data analyses with sources, and writing. Blog, open source. Independent operator based in Warsaw, working PL/EU.';
+---
+
+<BaseLayout title={title} description={description} lang="en">
+  <NavbarPersonal client:load />
+
+  <section id="top" class="px-8 md:px-16 py-24 md:py-32 bg-background text-dark">
+    <div class="max-w-5xl mx-auto">
+      <p class="font-mono text-[11px] uppercase tracking-[0.3em] opacity-50 mb-7">
+        ( tools · analyses · texts )
+      </p>
+
+      <h1 class="font-serif text-[clamp(34px,5.4vw,64px)] leading-[0.95] mb-6">
+        <span class="italic">I work independently.</span>{' '}
+        <span class="font-sans font-bold tracking-[-0.03em]">I write,</span>{' '}
+        <span>research and build tools.</span>
+      </h1>
+
+      <p class="text-base md:text-lg leading-relaxed opacity-85 max-w-2xl mb-10">
+        I build AI tools, analyse data and write about what I am working on.
+        Below: four sections — selected work, texts and analyses, who I am, and
+        how to reach me.
+      </p>
+
+      <p class="font-mono text-[11px] uppercase tracking-[0.22em] opacity-45">
+        Warsaw · PL/EU · 2026
+      </p>
+    </div>
+  </section>
+
+  {sections.map((s) => (
+    <section id={s.label.toLowerCase().replace(' ', '')} class="px-8 md:px-16 py-16 md:py-24 border-t border-dark/10 bg-background text-dark transition-colors duration-500">
+      <div class="max-w-5xl mx-auto">
+        <p class="font-mono text-[11px] uppercase tracking-[0.3em] opacity-50 mb-5">
+          — {s.n} · {s.label}
+        </p>
+        <h2 class="font-serif text-3xl md:text-4xl leading-[1.05] tracking-[-0.01em] mb-4">
+          {s.title}
+        </h2>
+        <p class="text-base leading-relaxed opacity-85 max-w-2xl mb-6">
+          {s.lead}
+        </p>
+        <a href={s.href} class="font-mono text-xs uppercase tracking-[0.12em] underline decoration-1 underline-offset-4 hover:opacity-70">
+          {s.cta} →
+        </a>
+      </div>
+    </section>
+  ))}
+
+  <section id="contact" class="px-8 md:px-16 py-16 md:py-20 border-t border-dark/10 bg-dark text-primary">
+    <div class="max-w-5xl mx-auto">
+      <p class="font-mono text-[11px] uppercase tracking-[0.3em] opacity-55 mb-5">— 05 · Contact</p>
+      <h2 class="font-serif text-3xl md:text-4xl leading-[1.05] mb-4">Write to me.</h2>
+      <p class="text-base leading-relaxed opacity-85 max-w-2xl mb-6">
+        Want to talk about a project? Write.
+      </p>
+      <p class="font-mono text-sm">
+        <a href="mailto:biuro@mjoldak.pl" class="underline decoration-1 underline-offset-4 hover:opacity-70">biuro@mjoldak.pl</a>
+        {' · '}
+        <a href="https://linkedin.com/in/mjoldak" target="_blank" rel="noopener" class="underline decoration-1 underline-offset-4 hover:opacity-70">linkedin.com/in/mjoldak</a>
+      </p>
+      <p class="font-mono text-[11px] uppercase tracking-[0.18em] opacity-55 mt-8">
+        Polish version · <a href="/" class="underline decoration-1 underline-offset-4">mjoldak.pl</a>
+      </p>
+    </div>
+  </section>
+
+  <FooterSlim />
+</BaseLayout>
