@@ -5,6 +5,8 @@ publishedAt: 2026-10-12
 author: "Marcin Ołdak"
 category: "edukacja"
 tags: ["tutorial"]
+cover: "/articles/covers/sztuczna-inteligencja-od-zera-po-40.png"
+coverAlt: "Grafika: schody wiedzy z wznoszącą się krzywą — granat i błękit na kremie"
 readingTime: 9
 featured: false
 draft: false
