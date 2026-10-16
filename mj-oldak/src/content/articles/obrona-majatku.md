@@ -1,0 +1,55 @@
+---
+title: "Obrona majątku"
+slug: "obrona-majatku"
+excerpt: "Pierwszy udokumentowany insider trading w historii miał miejsce przy okazji ustawy Solona. Tysiąclecie obrony majątku: od594 p.n.e. do prawników na Kajmanach."
+publishedAt: 2026-10-16
+author: "Marcin Ołdak"
+category: "esej"
+tags: [esej]
+readingTime: 8
+featured: false
+draft: false
+lang: pl
+cover: "/articles/covers/obrona-majatku.png"
+coverAlt: "Grafika: pozioma linia majątku i atakujące strzałki — granat i błękit na kremie"
+---
+
+## 1.
+
+Za drzwiami sali posiedzeń na wyspie Salamis, w roku 594 przed naszą erą, czekali ludzie, którym mniej chodziło o reformę niż o jej datę. Solon miał tego dnia ogłosić kasację długów — i, jak podają źródła, kilku jego przyjaciół dowiedziało się o tym wcześniej. Zaciągnęli pożyczki i kupili ziemię tuż przed strząśnięciem ciężarów, które te pożyczki miało unieważnić. Kiedy oskarżenia doszły do Solona, ten sam umorzył własne zobowiązania, pięć talentów, może piętnaście. Jego przyjaciele swoich długów nigdy nie oddali — ale przecież nie było czego oddawać. Pierwszy udokumentowany insider trading w historii zachodniej cywilizacji miał miejsce przy okazji ustawy, która miała uczynić ludzi uczciwszymi.
+
+Greka, z której wyszło słowo „oligarchia", miała dwa składniki: oligos, nieliczni, i archein, rządzić. Szkoła uczy: rządy nielicznych. Arystoteles w trzeciej księdze „Polityki" poprawia ten słownik: oligarchia to rządy bogatych, a ich liczba jest przypadkowa. „Gdziekolwiek ludzie rządzą z racji bogactwa, czy jest ich niewielu, czy wielu, to jest oligarchia." Platon umieszcza oligarchię w cyklu degeneracji ustrojów, między timokracją a demokracją, i notuje mechanizm, który brzmi dzisiaj jak raport: nagromadzenie złota w skarbcach prywatnych niszczy wspólnotę. Obaj pisali w mieście, w którym dłużnik mógł być sprzedany za granicę jak przedmiot. Reforma Solona zakazała tego — to było jej osiągnięcie. Nie zniosła bogatych. Nikt ich nie zniosł nigdzie.
+
+## 2.
+
+We wrześniu 1002 roku cesarz Bazyli II Bułgarobójca znalazł sposób na bogaczy, który nie wymagał głów. Ustanowił podatek allelengyon: możni, którzy wykupili ziemię od zubożałych chłopów, mieli płacić ich zaległości podatkowe. Nie kara. Solidarność fiskalna wymuszona dekretem — bogaty odpowiada za sąsiada, bo to on zgarnął jego ziemię, kiedy były głód. Bazyli II płacił za utrzymanie armii pieniędzmi, które normalnie rozpłynęłyby się w majątkach dynatów, „możnych". Trwało to, dopóki trwał cesarz. Jego następca odwołał podatek, ziemia wróciła do skupowania, a Bizancjum wpisało do księgi doświadczeń uczciwą obserwację: prawo może spowolnić koncentrację majątku, ale nie umie jej przetrwać swojego autora.
+
+Wenecja poszła w drugą stronę. Zamiast walczyć z patrycjuszami, zamknęła się w nich. Ustawa z 28 lutego 1297 roku uczyniła członkostwo w Wielkiej Radzie dziedzicznym: kto zasiadał w ostatnich latach, zostaje; nowi tylko przez aprobatę dwunastu głosów. W 1315 roku spisano Złotą Księgę, rejestr rodzin uprawnionych — a ponieważ elity robią wszystko porządnie, Księga rejestrowała nie tylko narodziny, ale i śluby: dziecko z matki nieszlacheckiej nie wchodziło na listę. Ta zamrożona kasta rządziła republiką przez pięćset lat, do 1797. Nie trzeba było bronić majątku mieczem, gdy majątek broni się procedurą.
+
+## 3.
+
+W Rzeczypospolitej Obojga Narodów oligarchia dostała władzę tak bezpośrednio, że aż trudno o to uwierzyć: sprowadziła się do jednego słowa. Liberum veto, od 1652 roku — wystarczył jeden poseł, żeby zerwać sejm. W praktyce: Radziwiłłowie, Potoccy, Czartoryscy, rodziny kontrolujące około jednej trzeciej ziem Rzeczypospolitej (ordynacja nieświesko-klecka Radziwiłłów sama miała po scaleniu ok. 150 tysięcy hektarów), dysponowały prywatnymi wojskami i siecią klienteli z gołoty, szlachty bez ziemi, głosującej za chleb. Sejm zerwany za pieniądze magnata albo ambasadora; państwo paraliżowane systematycznie; w tabeli typologii Wintersa ten kraj jest podręcznikowym przykładem oligarchii rządzącej, która nie potrzebuje korporacji, bo sama jest konstytucją. Konstytucja 3 Maja 1791 roku — zniesienie veto, zakaz konfederacji, pozbawienie gołoty głosu, większość zamiast jednomyślności — była wprost ustawą o demontażu oligarchii. I była ostatnią ustawą tego państwa. Rozejm trwał rok.
+
+Nazywam te trzy ustroje państwami, ale to Winters nazwał je precyzyjnie: oligarchia walcząca, rządząca, sułtańska, obywatelska. Różnica nie leży w tym, czy bogaci rządzą — leżą w tym, jaką bronią bronią majątku. W Atenach broniły go osoby: bogaty miał ludzi. W Wenecji: procedura. W Rzeczypospolitej: głos w sejmie. Potem przyszła broń, której jeszcze nikt nie widział, bo wymyślono ją w Bangkoku i na Kajmanach.
+
+## 4.
+
+W sierpniu 1995 roku rosyjski bankier Władimir Potanin zaproponował rządowi układ: pożyczki dla państwa pod zastaw udziałów w przedsiębiorstwach. Jesienią przeprowadzono aukcje dwunastu przedsiębiorstw — Jukos, Sibnieft, Norylski Nikiel, Łukoil — wycenianych łącznie na 1,5–1,9 miliarda dolarów, przy pożyczkach ok. 800 milionów. Mija się z rachunkiem? Mijało celowo: zwycięzcy aukcji byli znani z góry, konkurencja ozdobna. Michaił Chodorkowski zapłacił 310 milionów dolarów za 78 procent Jukosu, który był wart około pięciu miliardów. Dyskonto 94 procent. W 2003 roku samolot Chodorkowskiego zatrzymano na lotnisku w Nowosybirsku; osądzono go na dziewięć lat; Jukos rozparcelowano. Dwaj oligarchowie, którzy kłócili się z Putinem przed nim, już wtedy wybrali emigrację. Wybór od tego roku wyglądał następująco: lojalność albo lotnisko.
+
+W tym samym czasie, na drugim końcu Eurazji, Korea Płd. budowała oligarchię inaczej: nie przeciwko państwu, tylko w środku niego. Park Chung-hee w latach 60. wybrał rodziny — Choi, Lee, Koo — i dał im tani kredyt, eksportowe kontrakty i ochronę przed konkurencją w zamian za wzrost. Dziś pięć czeboli (Samsung, Hyundai, SK, LG, Lotte) generuje przychody równe około 40 procentnom PKB tego kraju; 92 największe grupy — blisko 79 procent. To liczby przychodowe, więc ostrożny czytelnik je zawęża; ale aktywa top 5 wzrosły z 32 procent PKB w 2007 do 61 w 2022, i tej prawdy nie zawężysz. W Japonii ten sam model przeszedł metamorfozę: zaibatsu rozwiązała amerykańska okupacja w 1945, rodziny dostały za akcje dziesięcioletnie obligacje rządowe, hiperinflacja zdewaluowała je do zera — a po „reverse course" 1948 roku te same grupy wróciły jako keiretsu, bez nazwisk, z bankami w centrum. W Chinach wreszcie wybrano trzecią drogę: oligarchia bez własności na papierze. Panama Papers ujawniły krewnych elity partyjnej — w tym szwagra Xi Jinpinga, z „kilkuset milionami dolarów" wg Bloomberga — utrzymywanych przez offshore, ale zabezpieczonych lojalnością, nie prawem. Bo Xilai, sekretarz Chongqingu, skazany na dożywocie w 2013, pokazał granicę tego układu: w Chinach majątek nie broni się przed państwem. Państwo jest majątkiem.
+
+## 5.
+
+Wróćmy do Ameryki, z którą wideo od którego zaczynam miało największy problem, i spójrzmy na nią liczbami zamiast narracją. W 1894 Kongres uchwalił federalny podatek dochodowy: dwa procent od dochodów powyżej czterech tysięcy dolarów. W kwietniu 1895 Sąd Najwyższy orzekł pięć do czterech, że to podatek bezpośredni, a więc niekonstytucyjny. Pięciu ludzi unieważniło ustawę, za którą stały miliony. Potrzeba było osiemnastu lat i poprawki do Konstytucji — XVI, ratyfikowanej 3 lutego 1913 — żeby podatek wszedł. Od tego momentu wykres udziału top 0,1 procent w majątku USA spadał przez dekady: wojny, progresja, Nowy Ład, aż do 7 procent w 1978. Potem ustawa o obniżce podatków, deregulacja, financializacja — i wykres skręca w górę: 22 procent w 2012, poziom z 1929. W 1978 rodzina z top 0,01 była 220 razy bogatsza od przeciętnej; w 2012 — 1120 razy.
+
+W 2014 roku dwóch politologów, Gilens i Page, opublikowało analizę 1779 przypadków polityki amerykańskiej z lat 1981–2002. Konkluzja, w wersji ostatecznej: przy niskim poparciu elit ekonomicznych propozycja przechodzi w 18 procentach przypadków, przy wysokim — w 45. Krzywa dla przeciętnego obywatela jest płaska jak stół — autorzy piszą wprost, że szansa zmiany wynosi około 0,3 niezależnie od tego, czy popiera ją garstka, czy wielka większość. Krytycy, przede wszystkim Enns, dopisali zastrzeżenie: na większości spraw preferencje elit i większości się pokrywają, więc niezależny efekt mas jest zaniżony statystycznie; przechwycenie widać dopiero tam, gdzie się rozchodzą. Autorzy odpowiadają własnym wyliczeniem: gdy za zmianą była zwykła większość, zmiana wchodziła w 30 procentach przypadków; gdy za nią było osiemdziesiąt procent społeczeństwa — w 43. „Demokracja przez zbieg okoliczności" — tak to nazwali. To zastrzeżenie nie łagodzi wniosku, tylko go precyzuje: demokracja działa tam, gdzie bogaci nie mają zdania. Mają zdanie na temat podatków.
+
+## 6. (plateau)
+
+Szczypta estońskiego powietrza: Tallin, odległość z Warszawy samolotem 530 kilometrów. Wyspy Kajmany: 8,2 tysiąca mieszkańców, 100 tysięcy firm. Panama Papers, 2016: 11,5 miliona dokumentów, 214 tysięcy spółek, dwanaście głów państw. Pandora Papers, 2021: 11,9 miliona plików, 330 polityków, 35 przywódców. Andréj Babiš, premier Czech, 22 miliony dolarów w spółkach-wydmuszkach na zakup francuskiego zamku z dwoma basenami i kinem domowym — nie zgłoszone w deklaracji majątkowej. Tony Blair, 8,8 miliona funtów za dom w Londynie przez spółkę z Wysp Dziewiczych, oszczędność ponad 400 tysięcy na podatku. Zucman: osiem procent światowego majątku finansowego leży offshore — 7,6 biliona dolarów w 2013, około czternastu w 2021. Tax Justice Network, 2024: 492 miliardy dolarów utraconych podatków rocznie, z tego 347,6 od korporacji. Osiem krajów sprzeciwiających się konwencji podatkowej ONZ odpowiada za 43 procent tych strat. Nie są to kraje, o których myślisz, kiedy mówisz „korupcja".
+
+## 7.
+
+W kuchni, w domu pod Warszawą, mój ojciec od kilku lat kupuje złoto. Nie inwestuje w akcje, nie wierzy w nieruchomości, nie rozumie kryptowalut i nie próbuje. Kupuje złoto w monety, wzorcowe, dwie-trzy rocznie, chowa je do sejfu w piwnicy i mówi, że to na czarną godzinę. Przez lata myślałem, że to sentyment człowieka, który przeżył cztery zmiany waluty. Teraz myślę, że to po prostu wealth defense w wykonaniu jednego człowieka: bez prawników, bez spółek na Kajmanach, bez Gilens-Paga. Bazyli II byłby z niego zadowolony. Winters nazwałby go oligarchą nieudanym — ma motyw, nie ma skali.
+
+Ta książka, z której pochodzi ten rozdział, nie istnieje, więc nie zacytuję jej paginacji. Piszę o czwartym piętrze, jest listopad, na stole kwitarnia za prąd, 214 złotych i 38 groszy. Oligarchowie, o których tu napisałem, płacili za obronę swoich majątków więcej niż ta kwitarnia — z wyjątkiem tych, którzy zapłacili lotniskiem. Solon umorzył własne długi i wyjechał na dziesięć lat z Aten, żeby nikt nie musiał patrzeć, jak odchodzi. Herbata ostygła.
