@@ -40,6 +40,7 @@ export default function NavbarPersonal() {
     const navLinks = [
         { href: '/#work', label: 'Projekty' },
         { href: '/artykuly/', label: 'Teksty' },
+        { href: '/pnews/', label: 'News' },
         { href: '/#about', label: 'O mnie' },
         { href: '/#contact', label: 'Kontakt' },
     ];

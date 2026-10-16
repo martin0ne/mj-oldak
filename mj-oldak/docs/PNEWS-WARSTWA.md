@@ -49,7 +49,29 @@ redystrybucji). Odrzucić: źródła bez RSS = scrapowanie (ryzyko) → najpierw
 z „bramka ludzka przed kanonem") — czy badge „wygenerowane, do sprawdzenia" i publikacja
 od razu? Moja rekomendacja: **przegląd**, póki jest 1 strona do kliknięcia.
 
-## 5. Zakres na jutro (MVP, godziny nie dni)
+## 4b. ANTY-SLOP: projekt pnews (decyzja16.10 — „jak zaprojektować by nie było slopu")
+
+Zasada: **slop może wejść TYLKO jednym otworem — polski akcent (1–2 zdania, agent-draft).
+Reszta kafle to dane strukturalne, nie proza** — brak prozy = brak slopu z definicji.
+
+1. **Kafel = tytuł (cudzy) + źródło + data + link + badge soczewki.** ZERO własnych słów
+   poza akcentem. Tytuł cytujemy w całości jak agencja (news-agency style, §3) — nie
+   przerabiamy, nie „ubogacamy".
+2. **Pasmo „Polska w tle" = tylko źródła PL, bez komentarza** — lista, nie ocena.
+3. **Akcent przechodzi DWIE bramki po kolei, brak wyjątków:**
+   (a) `python3 scripts/writer-gate.py` na draqcie (exit1 = **nie publikujemy**);
+   (b) przegląd Marcina (decyzja15.10: przegląd, nie badge „auto").
+   Wygenerowane bez (a)+(b) = nie istnieje dla czytelnika — technicznie: `draft: true`,
+   wersja z akcentem nie wchodzi do buildu.
+4. **Kontrakt akcentu (nie „prompty się uczą", tylko forma zmusza):** max2 zdania,
+   **pierwsze zdanie = konsekwencja dla Polski z konkretem** (nazwa ustawy, kwota,
+   instytucja, termin), drugie — kontekst. Zakazane słowa (writer-gate i tak je łapie,
+   ale nie wchodźmy w to): „dynamiczny świat", „przełom", „rewolucja", „w dzisiejszych
+   czasach", „warto zauważyć". **Bez liczby/bez nazwy = nie ma drugiego zdania.**
+5. **Bez liczników „hot", bez animate-pulse, bez „TOP10 dnia"** — pnews pokazuje strumień
+   z datą, nie ranking (ranking = pokusa clickbaitu).
+6. **Metryka jakości tygodniowo:** ile akcentów przeszło gate za pierwszym razem
+   (jeśli <80% — prompt/formuła do zmiany, nie „jeszcze raz to samo").
 
 1. `/pnews/` jako podstrona Astro (zakładki AI/GEO/EU/WORLD, build-time RSS).
 2. 12–15 feedów **sprawdzonych żywo** (skrypt `scripts/check-feeds.sh`: curl → czy RSS,
