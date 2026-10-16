@@ -2,6 +2,7 @@ import { defineCollection, z } from 'astro:content';
 import { glob } from 'astro/loaders';
 
 export const TAGS = [
+  'esej',
   'automatyzacja',
   'biuro-rachunkowe',
   'ai-act',
@@ -17,7 +18,7 @@ export const TAGS = [
   'solar',
 ] as const;
 
-export const CATEGORIES = ['edukacja', 'case-study', 'demo'] as const;
+export const CATEGORIES = ['edukacja', 'case-study', 'demo', 'esej'] as const;
 
 const articles = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/articles' }),
