@@ -2,7 +2,7 @@
 title: "Data zero: skąd się wzięły dwa różne światy po obu stronach Atlantyku"
 slug: "data-zero"
 excerpt: "Ameryka nie zrozumie Europy, Europa nie zrozumie Ameryki, a młodzi Polacy nie rozumieją rodziców — dopóki nie znajdziesz daty, od której każdy z tych światów wystartował."
-publishedAt: 2026-09-03
+publishedAt: 2026-10-16
 author: "Marcin Ołdak"
 category: "esej"
 tags: [esej]
@@ -10,17 +10,6 @@ readingTime: 9
 featured: false
 draft: false
 lang: pl
----
-
----
-title: "Data zero: skąd się wzięły dwa różne światy po obu stronach Atlantyku"
-slug: "data-zero"
-excerpt: "Ameryka nie zrozumie Europy, Europa nie zrozumie Ameryki, a młodzi Polacy nie rozumieją rodziców — dopóki nie znajdziesz daty, od której każdy z tych światów wystartował."
-publishedAt: 2026-09-03
-author: "Marcin Ołdak"
-category: "edukacja"
-tags: [edukacja, kultura, historia, europa, usa, polska]
-draft: true
 ---
 
 
