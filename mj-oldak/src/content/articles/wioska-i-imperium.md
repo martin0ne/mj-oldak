@@ -6,6 +6,8 @@ publishedAt: 2026-10-16
 author: "Marcin Ołdak"
 category: "esej"
 tags: [esej]
+cover: "/articles/covers/wioska-i-imperium.png"
+coverAlt: "Grafika: wieś (domy) po lewej, imperium (wieżowce) po prawej — granatowy line-art na kremie"
 readingTime: 5
 featured: false
 draft: false

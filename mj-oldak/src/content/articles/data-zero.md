@@ -6,6 +6,8 @@ publishedAt: 2026-10-16
 author: "Marcin Ołdak"
 category: "esej"
 tags: [esej]
+cover: "/articles/covers/data-zero.png"
+coverAlt: "Grafika: punkt zerowy, od którego rozchodzą się dwie ścieżki — granat i błękit na kremie"
 readingTime: 9
 featured: false
 draft: false

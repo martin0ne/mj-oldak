@@ -6,6 +6,8 @@ publishedAt: 2026-10-16
 author: "Marcin Ołdak"
 category: "esej"
 tags: [esej]
+cover: "/articles/covers/oligarchia.png"
+coverAlt: "Grafika: szczyt piramidy z jednym punktem władzy — granatowy line-art na kremie"
 readingTime: 10
 featured: false
 draft: false
