@@ -4,33 +4,31 @@
 # Usage: bash scripts/check-feeds.sh
 set -uo pipefail
 
+# Decyzja16.10: ŹRÓDŁA AKREDYTOWANE/NIEZALEŻNE — Bloomberg (markets+technology),
+# Chris Norlund + Kuba Klawiter (własne kanały YT), Stratechery, ISW, BBC, Guardian,
+# NYT, PAP, PE, Defence24/CyberDefence24/BiznesAlert. BEZ portali agregujących
+# (spidersweb/benchmark/money/TVN24/bankier) — „to i tak slop" (Marcin,16.10).
 FEEDS=(
   # --- AI ---
-  "AI|spidersweb|https://spidersweb.pl/feed/"
-  "AI|benchmark|https://www.benchmark.pl/rss.xml"
-  "AI|techcrunch-ai|https://techcrunch.com/category/artificial-intelligence/feed/"
-  "AI|theverge-ai|https://www.theverge.com/rss/ai-artificial-intelligence/index.xml"
-  "AI|wired-ai|https://www.wired.com/feed/tag/ai/latest/rss"
+  "AI|bloomberg-tech|https://feeds.bloomberg.com/technology/news.rss"
   "AI|ars-tech|https://feeds.arstechnica.com/arstechnica/technology-lab"
-  "AI|venturebeat-ai|https://venturebeat.com/category/ai/feed/"
-  "AI|niebezpiecznik|https://niebezpiecznik.pl/feed/"
+  "AI|stratechery|https://stratechery.com/feed/"
+  "AI|klawiter-yt|https://www.youtube.com/feeds/videos.xml?channel_id=UCLr4hMhk_2KE0GUBSBrspGA"
   # --- GEO ---
-  "GEO|biznesalert|https://biznesalert.pl/feed/"
-  "GEO|money|https://www.money.pl/rss/"
-  "GEO|wnp|https://www.wnp.pl/rss/"
-  "GEO|cyberdefence24|https://cyberdefence24.pl/feed"
-  "GEO|defence24|https://www.defence24.pl/feed"
   "GEO|isw|https://www.understandingwar.org/rss.xml"
+  "GEO|defence24|https://www.defence24.pl/feed"
+  "GEO|cyberdefence24|https://cyberdefence24.pl/feed"
+  "GEO|biznesalert|https://biznesalert.pl/feed/"
   # --- EU ---
   "EU|europarl|https://www.europarl.europa.eu/rss/doc/press-releases/pl.xml"
   "EU|euronews|https://www.euronews.com/rss"
-  "EU|bankier|https://www.bankier.pl/rss"
   "EU|pap|https://www.pap.pl/biznes-i-finanse?output=rss"
   # --- WORLD ---
+  "WORLD|bloomberg-markets|https://feeds.bloomberg.com/markets/news.rss"
   "WORLD|bbc-world|http://feeds.bbci.co.uk/news/world/rss.xml"
-  "WORLD|bbc-tech|http://feeds.bbci.co.uk/news/technology/rss.xml"
+  "WORLD|guardian-world|https://www.theguardian.com/world/rss"
+  "WORLD|norlund-yt|https://www.youtube.com/feeds/videos.xml?channel_id=UCahJ9IsvXnaQiuNyWQSkrkw"
   "WORLD|nyt-world|https://rss.nytimes.com/services/xml/rss/nyt/World.xml"
-  "WORLD|npr-world|https://feeds.npr.org/1001/rss.xml"
 )
 
 printf "%-6s %-14s %6s  %s\n" "SOCZ" "ŹRÓDŁO" "POZ." "TYTUŁ KANAŁU"
