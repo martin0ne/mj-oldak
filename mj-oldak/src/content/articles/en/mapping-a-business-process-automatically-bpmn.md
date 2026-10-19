@@ -23,8 +23,8 @@ faq:
     a: "In this skill a script, build_bpmn.py, does it: you feed it a simple JSON spec with two keys — elements and flows — and it assembles valid BPMN 2.0 XML with auto-layout. A longest-path ranking algorithm computes each node's column and emits the entire visual layer (BPMNShape and BPMNEdge) that bpmn.io needs to draw anything at all."
   - q: "Why do the process diagrams come out as ASCII instead of mermaid?"
     a: "The reason is practical: rendered diagrams don't load in my environment — they show up blank. ASCII always loads, and .bpmn is the hard, editable artifact."
-  - q: "Does this kind of automation replace learning BPMN modelling?"
-    a: "No — it's an accelerator for bigger processes, not a replacement for learning. Lanes and pools are deliberately not generated; I draw them in by hand in bpmn.io, because that's a BA exercise too — the script only takes over what a machine does better: correct coordinates and waypoints."
+  - q: "Does this kind of automation replace the analyst?"
+    a: "No — it's an accelerator for bigger processes. Lanes and pools are deliberately not generated: they need insight into the organisation the script doesn't have. It only takes over what a machine does better — correct coordinates and waypoints."
   - q: "How do you make sure the process model doesn't stop at the happy path?"
     a: "Every gateway must have at least two named exit paths — a gateway without labels I treat as an error, because it signals a process that hasn't been thought through. On top of that, for every TO-BE I walk a fixed edge-case checklist: error and retry, missing data, low confidence with human correction (human-in-the-loop), rejection, duplicate, timeout, and compliance (GDPR art. 22)."
   - q: "Does the generated .bpmn file really open in bpmn.io?"
@@ -35,7 +35,7 @@ Understanding a larger, unfamiliar process usually means hours of clicking insid
 
 ## What it actually is
 
-`process-mapper` is a Claude Code skill that turns a described process into a full set of business-analyst (BA) artifacts. I frame it deliberately: it's an **accelerator for bigger processes, not a replacement** for learning to model by hand. Doing it manually in bpmn.io stays my BA learning path — the skill only scales the analysis itself.
+`process-mapper` is a Claude Code skill that turns a described process into a full set of business-analyst (BA) artifacts. I frame it deliberately: it's an **accelerator for bigger processes, not a replacement** for thinking about the process. Hand modelling in bpmn.io stays where organisational understanding is built — the skill only scales the analysis itself.
 
 The core is generated every time, as text:
 
@@ -45,7 +45,7 @@ The core is generated every time, as text:
 - **Edge cases** — what breaks, and how the process catches it.
 - **Actors + swimlanes** — who performs which step (one lane per actor/system).
 
-Everything comes out as **ASCII plus a `.bpmn` file — never mermaid or a rendered widget**, on purpose. The reason is practical: rendered diagrams don't load in my environment — they show up blank. ASCII always loads, and `.bpmn` is the hard, editable artifact. The whole thing points one way: learning and a portfolio aimed at a junior BA / AI BA role.
+Everything comes out as **ASCII plus a `.bpmn` file — never mermaid or a rendered widget**, on purpose. The reason is practical: rendered diagrams don't load in my environment — they show up blank. ASCII always loads, and `.bpmn` is the hard, editable artifact. The whole thing points one way: an artefact a client opens and checks — ASCII goes into the documentation, `.bpmn` passes review in bpmn.io.
 
 ## Under the hood
 
@@ -62,7 +62,7 @@ gateway  → exclusiveGateway
 
 The interesting part is the **auto-layout**, because that's what removes the manual coordinate math. A longest-path ranking algorithm (Kahn's topological order with longest-path propagation) computes each node's column as its distance from the start. Nodes that share a rank are spread vertically around a baseline, with fixed spacing: 160 px horizontally, 120 px vertically. From that it emits `BPMNShape` (with `dc:Bounds`) and `BPMNEdge` (with `di:waypoint`) — the entire visual layer bpmn.io needs to draw anything at all.
 
-Two design decisions are deliberate. First, **lanes and pools are not generated** — I draw them in by hand in bpmn.io, because that's a BA exercise too. Second, the script **validates its input**: a missing `elements` or `flows` key ends it with a hard error instead of spitting out garbage.
+Two design decisions are deliberate. First, **lanes and pools are not generated** — I draw them in by hand, because they need insight into the organisation: who actually decides, where the queue is, where the exceptions are. Second, the script **validates its input**: a missing `elements` or `flows` key ends it with a hard error instead of spitting out garbage.
 
 A second layer of discipline lives in the analysis, not the code. Every gateway must have **at least two named exit paths** — a gateway without labels I treat as an error, because it signals a process that hasn't been thought through. And there's a fixed edge-case checklist I walk for every TO-BE:
 

@@ -15,7 +15,7 @@ lang: "en"
 translationKey: "sql-ai-adoption"
 metaTitle: "AI adoption Poland vs EU — a SQL analysis (GUS × Eurostat)"
 metaDescription: "A reproducible SQL pipeline reconciles AI adoption across GUS and Eurostat. Poland grows fast, but the gap to the EU27 widens: −4.79 → −11.59 pp."
-keywords: ["AI adoption", "GUS", "Eurostat", "SQL", "DuckDB", "data analysis", "Poland vs EU", "junior data analyst"]
+keywords: ["AI adoption", "GUS", "Eurostat", "SQL", "DuckDB", "data analysis", "Poland vs EU", "reproducible SQL pipeline"]
 faq:
   - q: "How many companies in Poland use AI?"
     a: "According to Eurostat, 8.36% of firms with 10+ employees use at least one AI technology (2025); GUS reports 8.7%. That's up from 2.86% in 2021 — fast growth, but from a very low base."
@@ -42,7 +42,7 @@ A reproducible, local (zero-cost) analytics pipeline on macOS. The flagship anal
 
 Why two sources? Because when two independent offices measure the same thing and land almost on top of each other, you can trust the number. For firms with 10+ employees in 2025: GUS reports 8.7%, Eurostat 8.36% — a 0.34 pp difference (4.1% in relative terms). These aren't new facts — it's an **honest synthesis of public numbers**: reconcile, benchmark, show the trend. The value isn't a "discovery"; it's an auditable workflow: public data → a runnable pipeline → a cited report. The exact figures (e.g. 8.36%, 19.95%) are read directly from the Eurostat Data Browser (indicator `E_AI_TANY`), not the rounded 8% / 20% you'll see in press summaries.
 
-What the reader gets at the end is a branded PDF/HTML report (mjoldak.pl palette) with two charts, four SQL result tables, and the scope caveat spelled out up front. It's a case study of the junior data/BA craft, aimed at a role in the financial sector.
+What the reader gets at the end is a branded PDF/HTML report (mjoldak.pl palette) with two charts, four SQL result tables, and the scope caveat spelled out up front. It's a case study of analytical discipline a client can rerun with a single command — provenance and a SHA-256 checksum attached to every dataset.
 
 ## Under the hood — four SQL queries
 

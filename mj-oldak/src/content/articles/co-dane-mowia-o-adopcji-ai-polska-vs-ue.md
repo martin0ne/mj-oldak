@@ -15,7 +15,7 @@ lang: "pl"
 translationKey: "sql-ai-adoption"
 metaTitle: "Adopcja AI Polska vs UE — analiza w SQL (GUS × Eurostat)"
 metaDescription: "Reprodukowalny pipeline SQL uzgadnia odsetek firm z AI między GUS a Eurostatem. Polska rośnie szybko, ale dystans do UE27 rośnie: −4,79 → −11,59 pp."
-keywords: ["adopcja AI", "GUS", "Eurostat", "SQL", "DuckDB", "analiza danych", "Polska vs UE", "junior data analyst"]
+keywords: ["adopcja AI", "GUS", "Eurostat", "SQL", "DuckDB", "analiza danych", "Polska vs UE", "reprodukowalny pipeline SQL"]
 faq:
   - q: "Ile firm w Polsce używa AI?"
     a: "Według Eurostatu 8,36% firm zatrudniających 10+ osób używa co najmniej jednej technologii AI (2025); GUS podaje 8,7%. To wzrost z 2,86% w 2021 roku — szybki, ale od bardzo niskiej bazy."
