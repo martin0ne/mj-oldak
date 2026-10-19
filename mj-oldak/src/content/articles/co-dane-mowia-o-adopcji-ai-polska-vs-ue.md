@@ -42,7 +42,7 @@ To reprodukowalny, lokalny (0-cost) pipeline analityczny na macOS. Flagowa anali
 
 Po co dwa źródła? Bo gdy dwa niezależne urzędy mierzą to samo i wychodzi im prawie identycznie, liczbie można ufać. Dla firm 10+ w 2025: GUS raportuje 8,7%, Eurostat 8,36% — różnica 0,34 pp (4,1% względnie). To nie są nowe fakty — to **uczciwa synteza publicznych liczb**: uzgodnij, zbenchmarkuj, pokaż trend. Wartością nie jest "odkrycie", tylko audytowalny workflow: publiczne dane → policzalny pipeline → cytowany raport. Dokładne wartości (np. 8,36%, 19,95%) to bezpośredni odczyt z Eurostat Data Browser (wskaźnik `E_AI_TANY`), nie zaokrąglenia z notek prasowych — te podają zwykle 8% / 20%.
 
-Czytelnik dostaje na końcu brandowany raport PDF/HTML (paleta mjoldak.pl) z dwoma wykresami, czterema tabelami wynikowymi SQL i zastrzeżeniem zakresu wypisanym na wierzchu. To case study pokazujące warsztat junior data/BA pod rolę w sektorze finansowym.
+Czytelnik dostaje na końcu brandowany raport PDF/HTML (paleta mjoldak.pl) z dwoma wykresami, czterema tabelami wynikowymi SQL i zastrzeżeniem zakresu wypisanym na wierzchu. To case study pokazuje warsztat analityczny, który klient odtworzy jedną komendą — z provenance i sumami kontrolnymi przy każdym zbiorze.
 
 ## Pod maską — cztery zapytania SQL
 
@@ -81,7 +81,7 @@ Drugi sygnał dojrzałości to **dyscyplina zakresu**. Oba źródła mierzą ca�
 
 Stąd też świadome rozdzielenie dwóch poziomów wiarygodności: dane ilościowe (GUS/Eurostat) żyją osobno od jakościowej syntezy dowodów o AI w bankowości UE/PL (osobny raport, weryfikacja metodą SIFT) — żeby nie mieszać twardych liczb z przeglądem literatury.
 
-I rzecz o sposobie pracy: **AI-augmented, nie AI-substituted.** Kod powstawał z Claude Code i lokalnym LM Studio (endpoint zgodny z OpenAI), nigdy z płatnym, metrowanym kluczem API. Ale każdy wygenerowany SQL czy fragment pandas jest przepisany i zrozumiany ręcznie — bo na rozmowie rekrutacyjnej SQL musi być twój, nie modelu.
+I rzecz o sposobie pracy: **AI-augmented, nie AI-substituted.** Kod powstawał z Claude Code i lokalnym LM Studio (endpoint zgodny z OpenAI), nigdy z płatnym, metrowanym kluczem API. Ale każdy wygenerowany SQL czy fragment pandas jest przepisany i zrozumiany ręcznie — bo każdy wiersz SQL musi dać się obronić przed klientem i audytem — nie wystarczy, że napisał go model.
 
 ## Dowód
 

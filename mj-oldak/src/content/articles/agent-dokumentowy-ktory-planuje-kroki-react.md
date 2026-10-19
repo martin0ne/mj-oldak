@@ -80,7 +80,7 @@ I część, która z tego robi narzędzie do realnej pracy — **bramka akceptac
 
 ## Co z tego masz
 
-To, co ten projekt pokazuje wprost, to **agentowa orkiestracja, którą da się przeczytać**: planowanie kroków, dispatch narzędzi, reguły uziemienia i human-in-the-loop — wszystko w dwóch plikach standardowej biblioteki. Dla rekrutera pod „agentic AI" to widoczny dowód, że rozumiem, czym agent różni się od pojedynczego zapytania do modelu. Dla firmy — to wzorzec, w którym automat nie podejmuje decyzji za człowieka, tylko przygotowuje robotę do podpisu.
+To, co ten projekt pokazuje wprost, to **agentowa orkiestracja, którą da się przeczytać**: planowanie kroków, dispatch narzędzi, reguły uziemienia i human-in-the-loop — wszystko w dwóch plikach standardowej biblioteki. To dowód, że rozumiem różnicę między agentem a pojedynczym zapytaniem — i że potrafię ją pokazać w kodzie, nie w prezentacji. Dla firmy — to wzorzec, w którym automat nie podejmuje decyzji za człowieka, tylko przygotowuje robotę do podpisu.
 
 Najuczciwsza rzecz: **zakres jest świadomie wąski**. Jeden agent, narzędzia po kolei. **Orkiestracja wielu agentów jest celowo poza zakresem** tego repo — i tak to opisałem. To nie brak, to decyzja: mały, czytelny artefakt zamiast frameworka, którego nikt nie przejrzy.
 

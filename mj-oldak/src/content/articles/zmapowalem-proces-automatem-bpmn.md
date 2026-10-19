@@ -23,8 +23,8 @@ faq:
     a: "W tym skillu robi to skrypt build_bpmn.py: karmisz go prostym specem JSON z dwoma kluczami — elements i flows — a on składa poprawny BPMN 2.0 XML z auto-layoutem. Algorytm rangowania longest-path wylicza kolumnę każdego węzła i generuje całą warstwę graficzną (BPMNShape i BPMNEdge), której bpmn.io potrzebuje, żeby cokolwiek narysować."
   - q: "Dlaczego diagramy procesów lecą jako ASCII, a nie mermaid?"
     a: "Powód jest praktyczny: renderowane diagramy nie ładują się w moim środowisku — pokazują się jako puste. ASCII ładuje się zawsze, a .bpmn to twardy, edytowalny artefakt."
-  - q: "Czy taki automat zastępuje naukę modelowania BPMN?"
-    a: "Nie — to akcelerator do większych procesów, nie zamiennik nauki. Lanes i pools celowo nie są generowane, dorysowuję je ręcznie w bpmn.io, bo to też ćwiczenie BA; skrypt przejmuje tylko to, co maszyna robi lepiej — poprawne współrzędne i waypointy."
+  - q: "Czy taki automat zastępuje analityka?"
+    a: "Nie — to akcelerator do większych procesów. Lanes i pools celowo nie są generowane: wymagają wglądu w organizację, którego skrypt nie ma. Przejmuje tylko to, co maszyna robi lepiej — poprawne współrzędne i waypointy."
   - q: "Skąd pewność, że model procesu nie kończy się na happy path?"
     a: "Każda bramka musi mieć co najmniej dwie nazwane ścieżki wyjścia — gateway bez etykiet traktuję jako błąd, bo to znak, że proces nie jest domyślany do końca. Do tego przy TO-BE przechodzę stałą checklistę edge case'ów: błąd i retry, brak danych, niska pewność z korektą człowieka (human-in-the-loop), odrzucenie, duplikat, timeout oraz compliance (RODO art. 22)."
   - q: "Czy wygenerowany plik .bpmn naprawdę otwiera się w bpmn.io?"
@@ -35,7 +35,7 @@ Zrozumienie większego, nieznanego procesu to zwykle godziny klikania w narzędz
 
 ## O co chodzi
 
-`process-mapper` to skill w Claude Code, który zamienia opisany proces na komplet artefaktów analityka biznesowego (BA). Pozycjonuję go jasno: to **akcelerator do większych procesów, nie zamiennik** ręcznej nauki modelowania. Manualne dłubanie w bpmn.io zostaje moją ścieżką nauki BA — skill tylko skaluje samą analizę.
+`process-mapper` to skill w Claude Code, który zamienia opisany proces na komplet artefaktów analityka biznesowego (BA). Pozycjonuję go jasno: to **akcelerator do większych procesów, nie zamiennik** myślenia o procesie. Ręczne modelowanie w bpmn.io zostaje tam, gdzie powstaje rozumienie organizacji — skill skaluje samą analizę.
 
 Rdzeń generuje się zawsze, jako tekst:
 
@@ -45,7 +45,7 @@ Rdzeń generuje się zawsze, jako tekst:
 - **Edge case'y** — co się psuje i jak proces to łapie.
 - **Aktorzy + swimlanes** — kto wykonuje który krok (lane na aktora/system).
 
-Świadomie wszystko leci jako **ASCII plus plik `.bpmn`, nigdy jako mermaid ani renderowany widget**. Powód jest praktyczny: renderowane diagramy nie ładują się w moim środowisku — pokazują się jako puste. ASCII ładuje się zawsze, a `.bpmn` to twardy, edytowalny artefakt. Kierunek całości jest zawodowy: nauka i portfolio pod etat junior BA / AI BA.
+Świadomie wszystko leci jako **ASCII plus plik `.bpmn`, nigdy jako mermaid ani renderowany widget**. Powód jest praktyczny: renderowane diagramy nie ładują się w moim środowisku — pokazują się jako puste. ASCII ładuje się zawsze, a `.bpmn` to twardy, edytowalny artefakt. Kierunek całości: artefakt, który klient otworzy i sprawdzi — ASCII wchodzi do dokumentacji, `.bpmn` przechodzi review w bpmn.io.
 
 ## Pod maską
 
@@ -62,7 +62,7 @@ gateway  → exclusiveGateway
 
 Najciekawszy jest **auto-layout**, bo to on eliminuje ręczne liczenie współrzędnych. Algorytm rangowania longest-path (kolejność topologiczna Kahna z propagacją najdłuższej ścieżki) wylicza kolumnę każdego węzła jako odległość od startu. Węzły o tej samej randze rozkłada w pionie wokół linii bazowej, ze stałymi odstępami: 160 px w poziomie, 120 px w pionie. Na tej podstawie generuje `BPMNShape` (z `dc:Bounds`) i `BPMNEdge` (z `di:waypoint`) — czyli całą warstwę graficzną, której bpmn.io potrzebuje, żeby cokolwiek narysować.
 
-Dwie decyzje projektowe są celowe. Po pierwsze, **lanes i pools nie są generowane** — dorysowuję je ręcznie w bpmn.io, bo to też ćwiczenie BA. Po drugie, skrypt **waliduje wejście**: brak klucza `elements` lub `flows` kończy go twardym błędem, zamiast wypluć śmieci.
+Dwie decyzje projektowe są celowe. Po pierwsze, **lanes i pools nie są generowane** — dorysowuję je ręcznie, bo to one wymagają wglądu w organizację: kto realnie decyduje, gdzie kolejka, gdzie wyjątki. Po drugie, skrypt **waliduje wejście**: brak klucza `elements` lub `flows` kończy go twardym błędem, zamiast wypluć śmieci.
 
 Druga warstwa dyscypliny siedzi w samej analizie, nie w kodzie. Każda bramka musi mieć **co najmniej dwie nazwane ścieżki wyjścia** — gateway bez etykiet traktuję jako błąd, bo to znak, że proces nie jest domyślany do końca. I jest stała checklista edge case'ów przy TO-BE, którą przechodzę za każdym razem:
 
@@ -82,7 +82,7 @@ Najważniejsze, co ten skill pokazuje, to **dojrzałość BA, nie ładny obrazek
 
 Drugie — most do realnych narzędzi. Na żądanie skill dorzuca moduły opcjonalne: **UML jako ASCII** (sequence i/lub class), **user stories Jira-ready** w formacie „Jako [rola] chcę [cel] aby [wartość]" z kryteriami akceptacji „Given / When / Then", oraz **mapowanie pól API** (źródło → cel → reguła transformacji + obsługa braków). Stories są projektowane pod konektor Atlassian (gotowe do założenia jako issue), a wzór mapowania pól wprost odwołuje się do pipeline'u mojego produktu OCR (Azure DI → schema → eksport, np. NIP, data, kwota).
 
-Trzecie — to **deterministyczna automatyzacja tam, gdzie była żmudna ręczna robota** (generowanie XML), ale ze świadomym zachowaniem nauki manualnej. Skrypt robi to, co maszyna robi lepiej (poprawne współrzędne i waypointy), a ja zostaję przy tym, co buduje kompetencję (modelowanie, lanes). Efekt jest pokazywalny: komplet BRD + `.bpmn` + stories jednego produktu to „teczka BA" — materiał wprost na rozmowę rekrutacyjną.
+Trzecie — to **deterministyczna automatyzacja tam, gdzie była żmudna ręczna robota** (generowanie XML), ale ze świadomym zachowaniem nauki manualnej. Skrypt robi to, co maszyna robi lepiej (poprawne współrzędne i waypointy), a ja zostaję przy tym, co buduje kompetencję (modelowanie, lanes). Efekt jest weryfikowalny: komplet BRD + `.bpmn` + stories jednego produktu to pakiet, który klient otworzy, prześledzi i zaakceptuje — albo wskaże, gdzie proces się nie zgadza.
 
 ## Dowód
 

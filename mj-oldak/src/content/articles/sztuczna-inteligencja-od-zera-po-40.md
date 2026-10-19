@@ -113,10 +113,6 @@ Trzy sygnały, że jesteś na dobrej drodze:
 
 Reszta — prompty, workflowy, automatyzacje — przychodzi po tym fundamencie i jest tematem osobnych tekstów.
 
-## FAQ
-
-Część pytań, które dostaję najczęściej, znajdziesz na górze strony — wraz z odpowiedziami.
-
 ## Podsumowanie
 
 - Internet masz. Brakuje praktyki w jednym nowym narzędziu — to luka do zamknięcia, nie diagnoza.
