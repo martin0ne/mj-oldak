@@ -82,8 +82,7 @@ The most important thing this skill shows is **BA maturity, not a pretty picture
 
 Second, the bridge to real tools. On request the skill adds optional modules: **UML as ASCII** (sequence and/or class), **Jira-ready user stories** in the "As a [role] I want [goal] so that [value]" format with "Given / When / Then" acceptance criteria, and **API field mapping** (source → target → transformation rule + handling for missing values). The stories are designed for the Atlassian connector (ready to create as issues), and the field-mapping pattern points straight at my OCR product's pipeline (Azure DI → schema → export, e.g. tax ID, date, amount).
 
-Third, it's **deterministic automation where the work used to be tedious and manual** (generating XML), while consciously keeping the manual learning. The script does what a machine does better (correct coordinates and waypoints), and I keep what builds the skill (modelling, lanes). The result is showable: a BRD + `.bpmn` + stories for one product is a "BA folder" — material to bring straight into an interview.
-
+Third, it's **deterministic automation where the work used to be tedious and manual** (generating XML), while keeping the analyst where judgement is needed. The script does what a machine does better — correct coordinates and waypoints — and the result is verifiable: a complete BRD + `.bpmn` + stories is a package the client opens, traces, and signs off on — or points out where the process doesn't match.
 ## Proof
 
 No public repo yet — the skill lives locally as a Claude Code skill (`~/.claude/skills/process-mapper`), so the proof here is the technique and a working artifact, not a GitHub link.
