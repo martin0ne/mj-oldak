@@ -1,0 +1,42 @@
+---
+// /blog/ — teksty dla osób, które „nie czują\" AI (decyzja Marcina 19.10: „sekcja bloga dla normików").
+// Filtr: category=edukacja, draft=false. Bez tabel SQL, bez żargonu.
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('articles', (a) =>
+  a.data.category === 'edukacja' && !a.data.draft,
+)).sort((a, b) => (b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf()));
+
+const fmt = (d: Date) => d.toISOString().slice(0, 10).replace(/-/g, '.');
+---
+<BaseLayout
+  title="Blog — AI po ludzku, bez żargonu (MJ.OLDAK)"
+  description="Wyjaśnienia AI dla osób, które na co dzień nie programują: czemu chatbot zmyśla, jak zacząć po 40., trzy zakazy od pierwszego dnia. Bez hype'u, z liczbami i źródłami."
+  lang="pl"
+>
+  <section id="blog" class="px-8 md:px-16 py-24 md:py-28 bg-background text-dark">
+    <div class="max-w-4xl mx-auto">
+      <p class="font-mono text-[11px] uppercase tracking-[0.3em] opacity-50 mb-6">— Blog</p>
+      <h1 class="font-serif text-4xl md:text-5xl leading-[1.05] mb-4">AI po ludzku.</h1>
+      <p class="font-sans text-base md:text-lg leading-relaxed opacity-80 max-w-2xl mb-12">
+        Bez żargonu i bez „rewolucji". Co AI robi, czego nie robi i od czego zacząć —
+        tak, żeby dało się to sprawdzić w swoim życiu, nie na slajdzie.
+      </p>
+      <div class="space-y-8">
+        {posts.map((p) => (
+          <article class="border-b border-dark/10 pb-8">
+            <p class="font-mono text-[11px] uppercase tracking-[0.18em] opacity-50 mb-2">
+              {fmt(p.data.publishedAt)} · {p.data.readingTime ?? 5} min
+            </p>
+            <h2 class="font-serif text-2xl md:text-3xl leading-snug mb-3">
+              <a href={`/artykuly/${p.slug}/`} class="hover:underline decoration-1 underline-offset-4">{p.data.title}</a>
+            </h2>
+            <p class="font-sans text-base leading-relaxed opacity-75">{p.data.excerpt}</p>
+          </article>
+        ))}
+        {posts.length === 0 && <p class="font-sans text-sm opacity-60">Pierwsze teksty w drodze.</p>}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

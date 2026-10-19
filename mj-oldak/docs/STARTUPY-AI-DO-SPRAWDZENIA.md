@@ -22,23 +22,32 @@
 | 6 | **Synthesia** | Solutions Engineer - French Speaker (pre-sales, demo, techniczna realizacja wdrożeń dla francuskiego enterprise); Solutions Engineer - German Speaker (DACH region); Strategic Customer Success Manager - Italian Speaking (post-sales adoption, business outcomes); Revenue Enablement Manager, Onboarding (enablement sales/org) | https://jobs.ashbyhq.com/synthesia/ | "Hybrid (28)" + "Remote (16)" na stronie Ashby; lokalizacje: London, Paris, Berlin, Munich, Zurich, Europe; np. Solutions Engineer French: "Paris; London • Hybrid"; CSM Italian: "Europe • Remote" | Wielka Brytania / Londyn HQ (EU offices) |
 | 7 | **Camunda** | Senior Delivery Lead - DACH (dostarczanie wdrożeń enterprise, stakeholder management, translation between engineering i business, scope decomposition, change control, delivery execution; "Agentic orchestration platform" — koordynacja AI agents, people, systems); Customer Success roles dostępne | https://jobs.ashbyhq.com/camunda/ | "Fully remote and global" — rola: "Remote; Germany" | Niemcy / Berlin HQ |
 | 8 | **Rasa** | Rasa Heroes - Builder Cohort (DevRel, community education, training developers build conversational AI); Enterprise Account Executive (go-to-market, customer adoption focus) | https://rasa.com/careers | "Flexible schedules, remote opportunities" i "Remote-first" na stronie kariery; DevRel: "Worldwide"; EA: "Remote - USA" | Niemcy / Berlin HQ (całkowicie zdalny) |
-| 9 | **Fively** | Software Engineer (Node.js/React) — rola czysta engineering (brada ról edukacyjnych/adopcyjnych) → **NIE PEŁNE SPEŁNIENIE KRITERIÓW**; jednak firma ma adres Senatorska 2, Warszawa, 100+ in-house engineers, 85% senior engineers, office + remote hybrid — warto obserwować w przyszłości gdy pojawią się roles typowe AI adoption | https://fively.dev/careers/ | "Remote work" — wskazane w Benefits i na stronie kariery | Polska / Warszawa (zdalnie) |
-| 10 | **Boldare** | AI Product Development & Consulting (budowa AI-powered features/products od zera; Vibe Coding Sprint; Agentic AI Implementation); AI Workflow Automation for Software Teams (helping teams integrate AI tools) — usługi konsultingowe/wdrożeniowe, fit typu BA/Automation | https://www.boldare.com/services/ai-product-development/ (serwis produktowy) | brak bezpośredniej strony kariery — warto sprawdzić LinkedIn/Boldare careers | Polska / Poznań (zdalnie/hybrid) |
+| 9 | **fonio.ai** | Customer Success Manager - Polish Market (portfolio klientów SMB w pełnym lifecycleu, discovery conversations, usage analysis, upsell via AI automation); Account Manager Poland — team building, hiring/coaching AE/SDR team, market ownership for Poland — AI-native product (AI call assistant dla małych firm) + ogromne tempo wzrostu (11K customers, €20M funding, top 1% startup growth) | https://jobs.ashbyhq.com/Fonio/ | "Commerce works in-office, product remote" — role komercyjne/on-site w Warszawie/Wiedniu; CSM PL: "Warsaw; Vienna • On-site". Hybrid limited (product = remote, commerce = office) | Austria / Wiedeń HQ (z biurem w Warszawie) |
 
 ---
 
-## Uwagi i uwagi dot. kryteriów
+## Uwagi dot. matchów
 
-- **Najlepsze match-y (#1-4):** Wymieniają wyraźnie słowa `adoption`, `enablement`, `workshop`, `training`, `implementation` w nazwach ról + opisach. To jest dokładnie typ stanowisk którego szukasz — edukacja/adopcja ludzi + prowadzenie + wdrożenia projektowe.
-- **#5 (Shine):** Idealny profil "Head of AI Enablement" ale rola wymaga 8+ lat inżynierskiego doświadczenia + coding. Jeśli interesuje Cię też ścieżka hands-on technical — top match.
-- **#6 (Synthesia):** Rozległy portfolio ról pre-sales/post-sales w Europie. Nie ma roli "adoption specialist" ale Solutions Engineer + Customer Success robią podobną robotę: edukacja klienta, demo, wdrożenie.
-- **#7 (Camunda):** Senior Delivery Lead to rola projektowa/wdrożeniowa z dużym naciskiem na komunikację między technikami a biznesem. Bliskie Twojemu profilu BA -> wdrożenia.
-- **#8 (Rasa):** Mniejsza lista otwartych ról, ale DevRel/Builder Cohort to forma edukacji/budowania community. Warto sprawdzać regularly.
-- **#9-10:** Niska zgodność z kryteriami (mało/konkretnych ról adoption). Traktuj jako "watch list".
+- **#1 allclouds.pl:** Najidealniejszy match — "AI Adoption Specialist" to dokładnie Twoja rola: warsztady, adopcja, prompt engineering, konfiguracja systemów, szkolenia. Hybryda/remote. Siedziba Warszawa. AI sovereign ecosystem. Idealnie pasuje.
+- **#2 Addepto:** Doradcza/consultingowa rola (AI Strategic Consultant) z dużym naciskiem na strategię AI i wdrożenia u klientów enterprise. Remote full-time. Firmy skalowalne, recognized by Forbes jako top 10 AI consulting worldwide.
+- **#3 ElevenLabs:** "Adoption Strategist - Europe" — to jest dosłownie rola której szukasz: driving adoption, enabling users, measuring outcomes. Remote across Europe, HQ w Londynie ale zatrudniają przez całą Europę (PL desirable).
+- **#4 n8n:** "Deployment Strategist" + "Forward Deployed Engineer" — bardzo bliskie Twojemu profilowi BA/Automation/Adopttion. Remote Europa, siedziba Berlin. AI workflow orchestration platform, $5.2B valuation, 750+ osób.
+- **#5 Shine (Ageras):** "Head of AI Enablement" — idealny tytuł i zakres pracy ale rola wymaga 8+ lat coding/engineering doświadczenia + hands-on building. On-site Berlin. Warto sprawdzić czy profile się zgadza jeśli masz też silne kompetencje techniczne.
+- **#6 Synthesia:** Brak roli "adoption specialist" ale Solutions Engineer + CSM robią podobną robotę: pre-sales demo, technical implementation, post-sales adoption. Rozległe EU hiring. AI video generation — produkt czysto AI-native.
+- **#7 Camunda:** Senior Delivery Lead to rola projektowa/wdrożeniowa z komunikacją engineering↔business. Remote Germany, Berlin HQ. Agentic orchestration platform — tematycznie very close do AI adoption/automation.
+- **#8 Rasa:** Mniej ról niż w innych, ale DevRel/Builder Cohort = edukacja community + training dla developerów. AI agents platform. Berlin-based, fully remote.
+- **#9 fonio.ai:** AI-native startup (call assistant dla SMB) z wieloma rolami CS, rapid growth (11K customers), ale rola wyłącznie on-site (Warsawa/Wiedeń). Nie spełnia kryterium "hybrid/remote" ale warto rozważyć ze względu na AI-native nature i Polskę.
 
 ---
 
-## Źródła wyszukiwania (URL-i każdego znaleziska)
+## Watchlist / obserwuj regularnie
+
+- **Cognition** (Devin AI) — 200 osób, $48B valuation, AI coding agents. Ma rolę "Deployed Engineer Southern Europe" ale bardziej inżynierska. Zbyt duże jak na "startup" ale wartościowy target w przyszłości. https://cognition.com/careers
+- **Poland-specific job boards:** https://justjoin.it/, https://nofluffjobs.com/company/addepto-ygmaxtob — filtrować po AI keywords
+
+---
+
+## Źródła wyszukiwania (URL każdego znaleziska)
 
 1. allclouds.pl — własna strona kariery: https://www.allclouds.pl/en/kariera/
 2. Addepto — oficjalna strona kariery: https://addepto.com/career/
@@ -48,8 +57,7 @@
 6. Synthesia — Ashby board: https://jobs.ashbyhq.com/synthesia/
 7. Camunda — Ashby board: https://jobs.ashbyhq.com/camunda/
 8. Rasa — Ashby board + własna strona: https://rasa.com/careers
-9. Fively — własna strona kariery: https://fively.dev/careers/
-10. Boldare — strona usług AI: https://www.boldare.com/blog/top-7-ai-companies-startups-poland-2026/
+9. fonio.ai — Ashby board: https://jobs.ashbyhq.com/Fonio/
 
 ---
 
@@ -59,3 +67,4 @@
 - **The Hub:** https://thehub.io/ — 1333 open positions, filtrowalne po funkcjach
 - **Jobgether (remote jobs):** https://jobgether.com/remote-jobs/poland
 - **Just Join IT (polskie oferty tech):** https://justjoin.it/
+- **Himalayas (remote jobs EU):** https://himalayas.app/
