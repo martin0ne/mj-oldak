@@ -2,8 +2,8 @@
 // /pnews/ — warstwa newsów (spec: docs/PNEWS-WARSTWA.md, 14.10.2026)
 // Build-time RSS (zero runtime) ·4 soczewki.
 // Decyzja16.10: ŹRÓDŁA AKREDYTOWANE/NIEZALEŻNE — Bloomberg (markets + technology),
-// Chris Norlund, Kuba Klawiter (kanały YT = własne RSS), Stratechery, ISW, BBC,
-// Guardian, NYT, PAP, PE, Defence24/CyberDefence24/BiznesAlert. BEZ portali
+// Chris Norlund, Kuba Klawiter (kanały YT = własne RSS), The Economist, War on the Rocks, BBC,
+// Al Jazeera, NYT, PE, Defence24/CyberDefence24/BiznesAlert. BEZ portali
 // agregujących (spidersweb/benchmark/money/TVN24).
 // Pasmo „Polska w tle\" USUNIĘTE (16.10: „to i tak slop\") — bez własnych
 // komentarzy do czasu przeglądu Marcina (kolumna akcentu pusta, MVP).
@@ -25,21 +25,21 @@ const FEEDS: { lens: Lens; name: string; url: string; pl: boolean }[] = [
   // AI — poważne publikacje tech + niezależni analitycy
   { lens: 'AI', name: 'Bloomberg Technology', url: 'https://feeds.bloomberg.com/technology/news.rss', pl: false },
   { lens: 'AI', name: 'Ars Technica', url: 'https://feeds.arstechnica.com/arstechnica/technology-lab', pl: false },
-  { lens: 'AI', name: 'Stratechery', url: 'https://stratechery.com/feed/', pl: false },
+  { lens: 'AI', name: 'The Economist', url: 'https://www.economist.com/the-world-this-week/rss.xml', pl: false },
   { lens: 'AI', name: 'Kuba Klawiter', url: 'https://www.youtube.com/feeds/videos.xml?channel_id=UCLr4hMhk_2KE0GUBSBrspGA', pl: true },
   // GEO — think-tanki i specjalistyczne
-  { lens: 'GEO', name: 'ISW', url: 'https://www.understandingwar.org/rss.xml', pl: false },
+  { lens: 'GEO', name: 'War on the Rocks', url: 'https://warontherocks.com/feed/', pl: false },
   { lens: 'GEO', name: 'Defence24', url: 'https://www.defence24.pl/feed', pl: true },
   { lens: 'GEO', name: 'CyberDefence24', url: 'https://cyberdefence24.pl/feed', pl: true },
   { lens: 'GEO', name: 'Biznes Alert', url: 'https://biznesalert.pl/feed/', pl: true },
   // EU — instytucje i agencje
   { lens: 'EU', name: 'Parlament Europejski', url: 'https://www.europarl.europa.eu/rss/doc/press-releases/pl.xml', pl: true },
   { lens: 'EU', name: 'Euronews', url: 'https://www.euronews.com/rss', pl: false },
-  { lens: 'EU', name: 'PAP — biznes i finanse', url: 'https://www.pap.pl/biznes-i-finanse?output=rss', pl: true },
+  { lens: 'EU', name: 'The Diplomat', url: 'https://thediplomat.com/feed/', pl: false },
   // WORLD — agencje klasy A + niezależni
   { lens: 'WORLD', name: 'Bloomberg Markets', url: 'https://feeds.bloomberg.com/markets/news.rss', pl: false },
   { lens: 'WORLD', name: 'BBC World', url: 'http://feeds.bbci.co.uk/news/world/rss.xml', pl: false },
-  { lens: 'WORLD', name: 'The Guardian', url: 'https://www.theguardian.com/world/rss', pl: false },
+  { lens: 'WORLD', name: 'Al Jazeera', url: 'https://www.aljazeera.com/xml/rss/all.xml', pl: false },
   { lens: 'WORLD', name: 'Chris Norlund', url: 'https://www.youtube.com/feeds/videos.xml?channel_id=UCahJ9IsvXnaQiuNyWQSkrkw', pl: false },
   { lens: 'WORLD', name: 'NYT World', url: 'https://rss.nytimes.com/services/xml/rss/nyt/World.xml', pl: false },
 ];
@@ -81,7 +81,7 @@ const fmt = (d: string) => (d ? d.slice(0, 10).replace(/-/g, '.') : '');
 
 <BaseLayout
   title="Pnews — wiadomości o AI, geopolityce, UE i świecie (MJ.OLDAK)"
-  description="Cztery soczewki, samo źródło prawdy: tytuł + źródło + data + link. Kanały akredytowane i niezależne (Bloomberg, BBC, Guardian, ISW, Stratechery, Chris Norlund, Kuba Klawiter). Zero pełnych tekstów, zero własnych komentarzy."
+  description="Cztery soczewki, samo źródło prawdy: tytuł + źródło + data + link. Kanały akredytowane i niezależne (Bloomberg, BBC, The Economist, War on the Rocks, Al Jazeera, Chris Norlund, Kuba Klawiter). Zero pełnych tekstów, zero własnych komentarzy."
   lang="pl"
 >
   <section id="pnews" class="px-8 md:px-16 py-24 md:py-28 bg-background text-dark">

@@ -68,7 +68,7 @@ export default function AboutSection() {
             z człowiekiem w pętli i z rozumieniem polskich realiów (RODO, KSeF, JPK). Tło jest nietypowe:
             psychologia w biznesie nauczyła mnie patrzeć na człowieka, nie proces; edukacja prawna sprawiła,
             że nadzór ludzki jest standardem, nie dodatkiem.
-          </p>
+           Otwarty na rozmowy o AI i automatyzacji.</p>
           <p className="font-sans text-base md:text-lg leading-relaxed opacity-90">
             Współpraca to jedna z opcji — projekty w AI, analizie danych, automatyzacji. Działam niezależnie:
             Warszawa lub zdalnie (PL/EU).
