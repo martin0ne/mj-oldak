@@ -81,7 +81,7 @@ The second sign of maturity is **scope discipline.** Both sources measure the wh
 
 That's also why I keep two levels of confidence apart: the quantitative data (GUS/Eurostat) lives separately from a qualitative synthesis of evidence on AI in EU/PL banking (a separate report, verified with the SIFT method) — so hard numbers never get blended with a literature review.
 
-And a word on how the work happened: **AI-augmented, not AI-substituted.** The code was written with Claude Code and a local LM Studio (OpenAI-compatible endpoint), never a paid, metered API key. But every generated SQL statement or pandas snippet is rewritten and understood by hand — because in an interview, the SQL has to be yours, not the model's.
+And a word on how the work happened: **AI-augmented, not AI-substituted.** The code was written with Claude Code and a local LM Studio (OpenAI-compatible endpoint), never a paid, metered API key. Every SQL line has to stand up to a client and an audit — "the model wrote it" is not a defence.
 
 ## Proof
 

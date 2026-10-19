@@ -80,7 +80,7 @@ And the part that turns this into a tool for real work — the **approval gate**
 
 ## What you get out of it
 
-What this project demonstrates plainly is **agentic orchestration you can actually read**: step planning, tool dispatch, grounding rules, and human-in-the-loop — all in two standard-library files. For a recruiter scanning for "agentic AI," it's visible proof I understand how an agent differs from a single call to a model. For a business, it's a pattern where the automation doesn't make the decision for the human — it prepares the work for a signature.
+What this project demonstrates plainly is **agentic orchestration you can actually read**: step planning, tool dispatch, grounding rules, and human-in-the-loop — all in two standard-library files. The proof is direct: I know how an agent differs from a single call to a model — and I can show it in code, not slides. For a business, it's a pattern where the automation doesn't make the decision for the human — it prepares the work for a signature.
 
 The most honest point: **the scope is deliberately narrow**. One agent, tools in sequence. **Multi-agent orchestration is intentionally out of scope** for this repo — and I wrote it that way. That's not a gap, it's a decision: a small, legible artifact instead of a framework nobody reviews.
 
