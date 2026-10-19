@@ -157,7 +157,7 @@ export default function ContactPersonalEN() {
                             />
                             <span>
                                 I consent to processing my personal data for the purpose of responding to this inquiry (GDPR Art. 6(1)(a)).{' '}
-                                <a href="/polityka-prywatnosci" className="underline underline-offset-2 hover:text-accent">Privacy policy</a>
+                                <a href="/en/privacy-policy/" className="underline underline-offset-2 hover:text-accent">Privacy policy</a>
                             </span>
                         </label>
                         <button
@@ -188,7 +188,7 @@ export default function ContactPersonalEN() {
                 <div className="mt-20 pt-8 border-t border-primary/10 flex flex-col sm:flex-row items-center justify-between gap-4 font-mono text-[11px] text-primary/40">
                     <span>© {new Date().getFullYear()} Marcin J. Ołdak · MJ.OLDAK</span>
                     <div className="flex gap-6">
-                        <a href="/polityka-prywatnosci" className="hover:text-accent transition-colors">Privacy policy</a>
+                        <a href="/en/privacy-policy/" className="hover:text-accent transition-colors">Privacy policy</a>
                     </div>
                 </div>
             </div>

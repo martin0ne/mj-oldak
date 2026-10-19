@@ -1,0 +1,146 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const lastUpdated = '2026-10-19';
+const consentVersion = '2026-10-19-v1';
+---
+
+<BaseLayout
+  title="Privacy Policy · MJ.OLDAK"
+  description="MJ.OLDAK SYSTEMS privacy policy — who processes data, why, how long, and what rights you have."
+  lang="en"
+>
+  <main class="legal">
+    <article>
+      <header>
+        <p class="eyebrow">Privacy Policy</p>
+        <h1>How we process your data</h1>
+        <p class="meta">Last updated: {lastUpdated} · Consent version: {consentVersion}</p>
+      </header>
+
+      <section>
+        <h2>1. Data controller</h2>
+        <p>
+          The controller of your personal data is <strong>Marcin Ołdak</strong> (MJ.OLDAK). Contact regarding data protection: <a href="mailto:biuro@mjoldak.pl">biuro@mjoldak.pl</a>.
+        </p>
+        <p>Contact: <a href="mailto:biuro@mjoldak.pl">biuro@mjoldak.pl</a></p>
+      </section>
+
+      <section>
+        <h2>2. What data we collect and why</h2>
+        <h3>Newsletter</h3>
+        <ul>
+          <li><strong>Email address</strong> — to send the newsletter (no more than once per month).</li>
+          <li><strong>IP address, user-agent, form path, timestamp</strong> — to reliably document consent (GDPR Art. 7(1) — accountability principle).</li>
+          <li><strong>Versio of this privacy policy</strong> in effect at the moment consent was given.</li>
+        </ul>
+        <p>Legal basis: <strong>consent</strong> (GDPR Art. 6(1)(a)).</p>
+
+        <h3>Contact form / pilot projects</h3>
+        <ul>
+          <li>Name, email, phone (optional), problem description — to respond and possibly schedule a call.</li>
+        </ul>
+        <p>Legal basis: <strong>pre-contractual measures</strong> at the request of the individual (GDPR Art. 6(1)(b)) or <strong>legitimate interest</strong> (Art. 6(1)(f)) — responding to an inquiry.</p>
+      </section>
+
+      <section>
+        <h2>3. How long we retain data</h2>
+        <ul>
+          <li><strong>Newsletter:</strong> Until you withdraw consent (clicking the unsubscribe link in the footer of each message, or emailing <a href="mailto:biuro@mjoldak.pl">biuro@mjoldak.pl</a>). Consent log (IP + timestamp + user-agent) retained for 24 months after withdrawal, for evidentiary purposes.</li>
+          <li><strong>Contact form:</strong> For the period necessary to respond and any subsequent collaboration; no longer than 24 months from the last contact if no agreement was reached.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>4. Your rights</h2>
+        <p>You have the right to:</p>
+        <ul>
+          <li><strong>Access</strong> your data (learn what we hold, receive a copy)</li>
+          <li><strong>Rectification</strong> (if data is inaccurate or outdated)</li>
+          <li><strong>Erasure</strong> ("right to be forgotten") — when we no longer need the data</li>
+          <li><strong>Restriction of processing</strong> (e.g., during verification of a dispute)</li>
+          <li><strong>Data portability</strong> (receiving data in an electronic format)</li>
+          <li><strong>Withdraw consent</strong> at any time — without affecting the lawfulness of prior processing</li>
+          <li><strong>Lodge a complaint</strong> with a supervisory authority in your jurisdiction — if you believe processing violates GDPR</li>
+        </ul>
+        <p>To exercise any of these rights — write: <a href="mailto:biuro@mjoldak.pl">biuro@mjoldak.pl</a>. We will respond within 30 days.</p>
+      </section>
+
+      <section>
+        <h2>5. Who we share data with</h2>
+        <p>Newsletter subscribers' data is stored in <strong>Cloudflare D1</strong> (EU region, encryption at rest). Mail delivery via <strong>Resend</strong> (USA) — the email address is passed to the provider solely for message delivery. Resend is compliant with DPA and Standard Contractual Clauses (SCC).</p>
+        <p>We do not sell data. We do not pass it to marketing firms, data brokers, or other entities beyond providers essential to operating the newsletter.</p>
+      </section>
+
+      <section>
+        <h2>6. Cookies and analytics</h2>
+        <p>The site <strong>mjoldak.pl</strong> uses cookies for technical purposes (Cloudflare load balancing) and analytics.</p>
+        <p>For visit statistics we use <strong>Google Analytics 4</strong> (Google Ireland Limited). GA4 records anonymous traffic data (visited pages, entry source, general engagement) — IP addresses are anonymised. We do not collect identifying data (name, email, phone number) through GA4. Data may be processed on Google servers outside the EU on the basis of Standard Contractual Clauses (SCC). We do not use marketing cookies or third-party ad trackers.</p>
+      </section>
+
+      <section>
+        <h2>7. Changes to this policy</h2>
+        <p>Every change receives a new version (e.g. <code>2026-10-19-v2</code>). At the moment you give consent, we record the version you accepted — so it is clear exactly what you agreed to.</p>
+        <p>Active newsletter subscribers are notified of changes by email.</p>
+      </section>
+
+      <div style="margin-top: 48px; padding-top: 24px; border-top: 1px solid rgba(10,10,10,0.15); font-size: 14px; color: rgba(10,10,10,0.6); font-family: 'JetBrains Mono', monospace;">
+        <a href="/polityka-prywatnosci/" style="text-decoration: underline; color: #111;">Polish version · Polityka prywatności</a>
+      </div>
+    </article>
+  </main>
+</BaseLayout>
+
+<style>
+  .legal {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 80px 24px 120px;
+    font-family: 'Inter', system-ui, sans-serif;
+    color: #0a0a0a;
+    line-height: 1.7;
+    font-size: 17px;
+  }
+  .legal header { margin-bottom: 56px; padding-bottom: 32px; border-bottom: 1px solid rgba(10,10,10, 0.15); }
+  .legal .eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: #111111; margin: 0 0 16px;
+  }
+  .legal h1 {
+    font-family: 'Manrope', sans-serif; font-weight: 800;
+    font-size: 48px; line-height: 1.05; letter-spacing: -0.02em;
+    margin: 0 0 16px;
+  }
+  .legal .meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px; color: rgba(10,10,10, 0.6);
+    margin: 0;
+  }
+  .legal h2 {
+    font-family: 'Manrope', sans-serif; font-weight: 800;
+    font-size: 26px; letter-spacing: -0.01em;
+    margin: 48px 0 16px;
+  }
+  .legal h3 {
+    font-family: 'Manrope', sans-serif; font-weight: 700;
+    font-size: 19px; margin: 24px 0 12px;
+    color: rgba(10,10,10, 0.85);
+  }
+  .legal p { margin: 0 0 16px; }
+  .legal ul { margin: 0 0 20px; padding-left: 24px; }
+  .legal li { margin-bottom: 8px; }
+  .legal a { color: #111111; text-decoration: underline; text-underline-offset: 3px; }
+  .legal a:hover { color: #0a0a0a; }
+  .legal code {
+    font-family: 'JetBrains Mono', monospace;
+    background: rgba(10,10,10, 0.06); padding: 2px 6px; border-radius: 3px;
+    font-size: 14px;
+  }
+  .legal section { margin-bottom: 12px; }
+  @media (max-width: 600px) {
+    .legal { padding: 48px 20px 80px; font-size: 16px; }
+    .legal h1 { font-size: 36px; }
+    .legal h2 { font-size: 22px; }
+  }
+</style>

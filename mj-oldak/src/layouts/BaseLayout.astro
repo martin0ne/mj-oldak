@@ -32,6 +32,44 @@ const {
 const siteURL = 'https://www.mjoldak.pl';
 const canonicalURL = canonical ?? new URL(Astro.url.pathname, siteURL).toString();
 const ogImageURL = ogImage.startsWith('http') ? ogImage : `${siteURL}${ogImage}`;
+const ogLocale = lang === 'en' ? 'en_GB' : 'pl_PL';
+
+// Build path without language prefix for cross-reference
+const basePth = Astro.url.pathname.replace(/^\/en/, '') || '/';
+
+// Known cross-paths: [en_path_suffix] -> pl_path_suffix
+const CROSS_MAP = {
+  '/en/privacy-policy/': '/polityka-prywatnosci/',
+};
+
+// Cross-language links for hreflang
+let plHref = null;
+let enHref = null;
+if (lang === 'en') {
+  // English page: find Polish counterpart
+  const mapped = CROSS_MAP[Astro.url.pathname];
+  if (mapped) {
+    plHref = `${siteURL}${mapped}`;
+  } else {
+    // Auto-translate: strip /en prefix
+    const pth = Astro.url.pathname.replace(/^\/en/, '') || '/';
+    if (!Astro.url.pathname.endsWith('.xml')) {
+      plHref = `${siteURL}${pth}`;
+    }
+  }
+} else {
+  // Polish page: find English counterpart
+  const reverseMap = Object.fromEntries(
+    Object.entries(CROSS_MAP).map(([k, v]) => [v, k])
+  );
+  if (reverseMap[Astro.url.pathname]) {
+    enHref = `${siteURL}${reverseMap[Astro.url.pathname]}`;
+  } else if (basePth.startsWith('/articles/') || basePth.startsWith('/artykuly/')) {
+    enHref = `${siteURL}/en${basePth}`;
+  } else if (basePth === '/') {
+    enHref = `${siteURL}/en/`;
+  }
+}
 
 const organizationSchema = {
   '@context': 'https://schema.org',
@@ -109,7 +147,7 @@ const websiteSchema = {
   <meta property="og:description" content={description} />
   <meta property="og:url" content={canonicalURL} />
   <meta property="og:image" content={ogImageURL} />
-  <meta property="og:locale" content="pl_PL" />
+  <meta property="og:locale" content={ogLocale} />
   <meta property="og:site_name" content="MJ.OLDAK" />
   {publishedTime && <meta property="article:published_time" content={publishedTime} />}
   {ogType === 'article' && <meta property="article:author" content={author} />}
@@ -123,6 +161,9 @@ const websiteSchema = {
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="canonical" href={canonicalURL} />
   <link rel="sitemap" href="/sitemap-index.xml" />
+  {plHref && <link rel="alternate" hreflang="pl" href={plHref} />}
+  {enHref && <link rel="alternate" hreflang="en" href={enHref} />}
+  {lang && <link rel="alternate" hreflang={lang} href={canonicalURL} />}
   <!-- Self-hosted brand fonts (v2.1 8.05.2026, reflex #20 — NIE Google Fonts CDN). -->
   <!-- @font-face declared in src/styles/global.css; preload top-priority fonts here. -->
   <link rel="preload" as="font" type="font/ttf" crossorigin href="/fonts/Manrope.ttf" />
