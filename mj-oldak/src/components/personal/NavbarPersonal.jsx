@@ -2,14 +2,38 @@ import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-gsap.registerPlugin(ScrollTrigger);
-
 // v3 (12.10.2026) — belka z etykietami, nie pigułka z blur.
 // Hairline, sentence case, mono tylko na marce. Zero rounded-3rem / backdrop-blur.
 export default function NavbarPersonal() {
     const navRef = useRef(null);
     const [isDark, setIsDark] = useState(true);
     const [mobileOpen, setMobileOpen] = useState(false);
+    const [navLinks, setNavLinks] = useState([]);
+
+    // Detect current language from pathname (works on SSR + hydration).
+    // /en/* → English, / → Polish. No globals needed.
+    useEffect(() => {
+        const isEn = typeof location !== 'undefined' && location.pathname.startsWith('/en');
+        const lang = isEn ? 'en' : 'pl';
+        const prefix = isEn ? '/en' : '';
+
+        if (isEn) {
+            setNavLinks([
+                { href: `${prefix}/#work`,       label: 'Projects' },
+                { href: `${prefix}/articles/`,   label: 'Texts' },
+                { href: `${prefix}/#about`,      label: 'About' },
+                { href: `${prefix}/#contact`,    label: 'Contact' },
+            ]);
+        } else {
+            setNavLinks([
+                { href: `${prefix}/#work`,       label: 'Projekty' },
+                { href: `${prefix}/artykuly/`,   label: 'Teksty' },
+                { href: `${prefix}/pnews/`,      label: 'News' },
+                { href: `${prefix}/#about`,      label: 'O mnie' },
+                { href: `${prefix}/#contact`,    label: 'Kontakt' },
+            ]);
+        }
+    }, []);
 
     useEffect(() => {
         const darkSections = document.querySelectorAll('[data-nav-theme="dark"]');
@@ -36,14 +60,6 @@ export default function NavbarPersonal() {
         window.addEventListener('scroll', close, { passive: true });
         return () => window.removeEventListener('scroll', close);
     }, []);
-
-    const navLinks = [
-        { href: '/#work', label: 'Projekty' },
-        { href: '/artykuly/', label: 'Teksty' },
-        { href: '/pnews/', label: 'News' },
-        { href: '/#about', label: 'O mnie' },
-        { href: '/#contact', label: 'Kontakt' },
-    ];
 
     const dark = isDark;
 
@@ -111,7 +127,7 @@ export default function NavbarPersonal() {
                         </a>
                     ))}
                     <a
-                        href="/#contact"
+                        href="#contact"
                         className="mt-1 px-4 py-2 rounded-[6px] bg-[#111111] text-[#FBFBFA] no-underline"
                         onClick={() => setMobileOpen(false)}
                     >

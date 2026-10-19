@@ -1,0 +1,76 @@
+---
+// Writing EN v1 (19.10.2026). Translated from Writing.astro (PL)
+// No newsletter link (brief: „pnews zostaje PL").
+// No news links to non-existent EN pages.
+const works = [
+  {
+    label: 'Blog',
+    title: 'Where to find information, how to verify it, think critically',
+    meta: 'live · weekly · in English',
+    href: '/en/articles/',
+    note: 'A column on finding sources, checking numbers and evidence logic: GUS, NIK, Eurostat, the three-question method (source / figure / sense).',
+  },
+  {
+    label: 'Book',
+    title: 'Volume of essays in editing',
+    meta: 'per chapter approval · no confirmed title yet',
+    href: '#contact',
+    note: 'Final chapter accepted 13 Oct — being prepared by the publisher; when a title is confirmed, we will come back here.',
+  },
+  {
+    label: 'Analyses',
+    title: 'AI adoption in Polish enterprises',
+    meta: 'Eurostat × public data · report with PDF',
+    href: '/reports/ai_adoption_report.pdf',
+    note: 'Public data → audited pipeline → a report that withstands scrutiny. Every number carries its source and date.',
+  },
+];
+---
+
+<section id="writing" class="relative overflow-hidden bg-background dark:bg-[var(--c-page)] text-dark dark:text-[var(--c-ink)] px-8 md:px-16 py-24 md:py-32 border-t border-dark/10 dark:border-[var(--c-line)] transition-colors duration-500">
+  <div class="max-w-5xl mx-auto relative z-10">
+    <p class="font-mono text-xs uppercase tracking-[0.24em] opacity-50 mb-6">
+      <span class="text-accent">—</span> 02 · Texts and analyses
+    </p>
+
+    <h2 class="font-serif text-4xl md:text-5xl leading-[1.02] max-md:leading-snug mb-5">
+      Texts and analyses<span style="letter-spacing:-0.01em">.</span>
+    </h2>
+
+    <p class="font-sans text-base leading-relaxed opacity-70 max-w-2xl mb-12">
+      Own work: blog, book and open-source software — a one-person studio journal,
+      updated as things happen.
+    </p>
+
+    <!-- Lista prac -->
+    <div class="border-t border-dark/12 dark:border-[var(--c-line)]">
+      {works.map((w) => (
+        <a
+          href={w.href}
+          class="group grid grid-cols-1 sm:grid-cols-[120px_1fr] gap-1 sm:gap-6 py-5 border-b border-dark/12 dark:border-[var(--c-line)] no-underline transition-colors duration-200 hover:bg-dark/[0.02] dark:hover:bg-white/[0.03]"
+        >
+          <span class="font-mono text-[10px] uppercase tracking-[0.18em] opacity-55 pt-1.5">{w.label}</span>
+          <span>
+            <span class="font-serif text-xl leading-snug block group-hover:underline decoration-1 underline-offset-4">{w.title}</span>
+            <span class="font-mono text-[10px] uppercase tracking-[0.16em] opacity-50 block mt-1">{w.meta}</span>
+            <span class="font-sans text-sm leading-relaxed opacity-75 block mt-2 max-w-2xl">{w.note}</span>
+          </span>
+        </a>
+      ))}
+    </div>
+
+    <!-- Bridge to analytics -->
+    <div class="mt-16 mb-8 p-7 border border-dark/10 dark:border-[var(--c-line)]">
+      <p class="font-sans text-base leading-relaxed mb-1">
+        The research relies on public data — GUS, Eurostat, NIK — and on reproducible pipelines.
+      </p>
+      <p class="font-sans text-base leading-relaxed opacity-70 mb-4">
+        Methods, data contracts and provenance described step by step in the PDF report.
+      </p>
+      <a href="/reports/ai_adoption_report.pdf" target="_blank" rel="noopener"
+         class="inline-flex items-center gap-2 font-sans text-base text-dark dark:text-[var(--c-ink)] underline decoration-1 underline-offset-4 hover:text-[#B07A4E] dark:hover:text-accent transition-colors duration-200">
+        Play with the data yourself &rarr;
+      </a>
+    </div>
+  </div>
+</section>

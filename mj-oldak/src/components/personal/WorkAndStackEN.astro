@@ -1,0 +1,287 @@
+---
+// Work & Stack EN v1 (19.10.2026). Translated from WorkAndStack.astro (PL)
+// Demo links removed — /en/demy/ does not exist. Link only to verified EN pages.
+// Brief: „Tools, analyses and writing" = correct register; no slop words.
+const teasers = [
+  { id: 'agent',    num: '01', title: 'Agent Mission Control', note: 'Agent plans, calls tools, loops on errors' },
+  { id: 'ocr',      num: '02', title: 'OCR Invoice Reader',    note: 'PDF or photo → structured invoice data' },
+  { id: 'email',    num: '03', title: 'Email Assistant',       note: '4-category classification + response drafts' },
+  { id: 'reporting',num: '04', title: 'Reporting Agent',       note: 'Account ledger exports → PDF KPiR report' },
+];
+
+const groups = [
+  {
+    num: '01',
+    title: 'Agentic AI & LLMs',
+    items: [
+      { t: 'Claude (API + Claude Code)', d: 'You talk, it writes code and answers questions. Works with me every day, more than anything else.' },
+      { t: 'Gemini', d: 'The second large model — a second pair of eyes. Useful when you need to look at the same thing from another angle.' },
+      { t: 'Hermes Agent', d: 'My personal bot: carries out assigned tasks, watches deadlines, and calls me only when it really matters.' },
+      { t: 'Autonomous agents', d: 'A program that does not wait for every command — it plans its own actions and corrects its mistakes.' },
+      { t: 'MCP (Model Context Protocol)', d: 'A plugin that lets programs call each other, like one developer handing a tool to another.' },
+      { t: 'Prompt engineering', d: 'Speaking to a machine so it understands first time — like a cook: precise, not \'make something nice\'.' },
+      { t: 'Multi-LLM routing', d: 'A switchboard that sends questions to the right model — like a train station: one queue, many trains.' },
+    ],
+  },
+  {
+    num: '02',
+    title: 'Workflow orchestration',
+    items: [
+      { t: 'n8n', d: 'A ball of wires in a factory: one event triggers the next automatically. Done by hand before, now by machines.' },
+      { t: 'Firecrawl', d: 'Strips text from web pages the way someone once copied from a manuscript — so a machine can read it.' },
+      { t: 'Make.com', d: 'n8n\'s younger sibling — the same job, different casing.' },
+      { t: 'Google Apps Script', d: 'Scripts inside spreadsheets: automation where the business already lives.' },
+      { t: 'REST APIs & webhooks', d: 'Mail between programs: one nods, the other gets the message and acts.' },
+      { t: 'Cloudflare Workers', d: 'Small half-bots scattered across the internet that fire on schedule, even when my computer sleeps.' },
+      { t: 'Modern RPA alternative', d: 'Cheaper and less brittle than old click-bot automations.' },
+    ],
+  },
+  {
+    num: '03',
+    title: 'RAG & knowledge bases',
+    items: [
+      { t: 'RAG in products', d: 'The machine does not guess — it checks your papers first, then answers with references.' },
+      { t: 'Knowledge base design', d: 'Arranging drawers of knowledge so you find things before you even ask.' },
+      { t: 'Zettelkasten (vault)', d: 'A drawer of index cards, better organised — and it never loses a card.' },
+      { t: 'AI ecosystem monitoring', d: 'Industry news reader: every day I check whether something in AI world affects me.' },
+    ],
+  },
+  {
+    num: '04',
+    title: 'Discovery & business analysis',
+    items: [
+      { t: 'Mom Test discovery', d: 'Ask people about their lives, not whether they will buy — because they will say yes politely, then not buy.' },
+      { t: 'BPMN 2.0', d: 'Drawing a process before changing it — like a floor plan before renovation.' },
+      { t: 'User stories (Given/When/Then)', d: 'A requirement written simply enough to test: something happens, the result we agreed comes out.' },
+      { t: 'PRD & ROI calculation', d: 'Before I build anything — I calculate whether it makes sense and pays back faster than I lose interest.' },
+      { t: 'Compose before build', d: 'Before I build, I search for something ready-made. Building is allowed only when nothing fits.' },
+    ],
+  },
+  {
+    num: '05',
+    title: 'Ethical AI & compliance',
+    items: [
+      { t: 'GDPR Art. 22 / 28', d: 'The right that in important decisions a machine does not decide for you — and that your data is yours, not theirs.' },
+      { t: 'Human in the loop', d: 'The machine proposes, the human decides — designed from the start, not added on at the end.' },
+      { t: 'Data in the EU', d: 'Your data sleeps in Europe, not across the ocean — easier to recover and to guard.' },
+      { t: 'Privacy by design', d: 'Closed doors from the beginning, not a padlock bolted on later.' },
+    ],
+  },
+  {
+    num: '06',
+    title: 'Programming (AI-assisted)',
+    items: [
+      { t: 'Python & FastAPI', d: 'A language where you write fast, and a server that responds before you get impatient.' },
+      { t: 'SQL, Supabase (RLS)', d: 'A table with rights: everyone sees only their own rows, even if someone slips up.' },
+      { t: 'Azure Document Intelligence', d: 'An invoice reader that pulls numbers from a photograph better than a person after eight hours.' },
+      { t: 'Astro, Cloudflare Pages + D1', d: 'The engine behind this site: fast, static, no heavy server — parked on the edge of the internet.' },
+      { t: 'Playwright', d: 'A robot that clicks through a page exactly like a human, to make sure nothing broke.' },
+    ],
+  },
+  {
+    num: '07',
+    title: 'Data analysis & pipelines',
+    items: [
+      { t: 'SQL (JOIN, windows, reconciliation)', d: 'Joining tables and counting carefully — numbers must match down to the last cent.' },
+      { t: 'DuckDB, pandas', d: 'A counter that swallows a million rows before you finish coffee.' },
+      { t: 'pandera (data contracts)', d: 'A guard at the table entrance: wrong number does not pass further.' },
+      { t: 'DVC (reproducible pipeline)', d: 'The robot\'s memory: what changed when and why — nothing disappears untraceable.' },
+      { t: 'Data provenance (SHA-256)', d: 'A seal on every file: if someone swaps something, the hash shows it.' },
+      { t: 'Public data (GUS · Eurostat · NBP · ECB)', d: 'Numbers from government bodies: free, official, dated. You do not argue with them — you quote them.' },
+    ],
+  },
+];
+
+---
+
+<section id="work" class="relative overflow-hidden bg-[#fafafa] dark:bg-[var(--c-page)] text-dark dark:text-[var(--c-ink)] px-8 md:px-16 py-24 md:py-32 transition-colors duration-500">
+  <div class="max-w-5xl mx-auto relative z-10">
+    <!-- Kicker -->
+    <p class="font-mono text-xs uppercase tracking-[0.24em] opacity-50 mb-6">
+      <span class="text-sunset">—</span> 01 · Selected work
+    </p>
+
+    <!-- Heading -->
+    <h2 class="font-serif text-4xl md:text-5xl leading-[1.02] tracking-[-0.01em] mb-6">
+      Selected work.
+    </h2>
+
+    <!-- Lead -->
+    <p class="font-serif italic text-xl md:text-2xl leading-snug max-w-3xl mb-14 opacity-90">
+      Essays in editing, two analyses built on data and code, and four demos —
+      agent, OCR, mail, reports — linked below.
+    </p>
+
+    <!-- Divider -->
+    <hr class="border-t border-dark/10 dark:border-[var(--c-line)] w-full mb-14" />
+
+    <!-- Highlighted cards: analyses (essays card skipped — no EN articles yet) -->
+    <div class="grid md:grid-cols-2 gap-4 mb-8">
+      <a
+        href="/en/articles/what-the-data-says-ai-adoption-poland-vs-eu/"
+        class="group rounded-lg border border-dark/15 bg-dark text-primary p-7 hover:border-accent transition-colors duration-200 no-underline block"
+      >
+        <div class="flex items-center gap-2 mb-3">
+          <span class="w-1.5 h-1.5 bg-[#e1f3fe]"></span>
+          <span class="font-mono text-[10px] uppercase tracking-[0.18em] text-[#8fb9d4]">Data analysis · GUS × Eurostat</span>
+        </div>
+        <h3 class="font-serif text-xl mb-2 leading-snug">AI Adoption: Poland vs EU</h3>
+        <p class="font-sans text-sm opacity-80 leading-relaxed mb-5">
+          Hand-written SQL reconciles the same indicator between GUS and Eurostat:
+          Poland adopts fast, but from a low base, so the EU gap grows. With figures, sources, dates — plus a downloadable report.
+        </p>
+        <span class="font-mono text-xs uppercase tracking-[0.12em] text-accent group-hover:underline">
+          analysis + report (PDF) ↗
+        </span>
+      </a>
+      <a
+        href="/en/articles/bm25-vs-embeddings-a-retrieval-benchmark/"
+        class="group rounded-lg border border-dark/15 bg-dark text-primary p-7 hover:border-accent transition-colors duration-200 no-underline block"
+      >
+        <div class="flex items-center gap-2 mb-3">
+          <span class="w-1.5 h-1.5 bg-[#fdebec]"></span>
+          <span class="font-mono text-[10px] uppercase tracking-[0.18em] text-[#c98a88]">Experiment · benchmark</span>
+        </div>
+        <h3 class="font-serif text-xl mb-2 leading-snug">BM25 versus embeddings</h3>
+        <p class="font-sans text-sm opacity-80 leading-relaxed mb-5">
+          Does semantics always win over words? A purpose-built bench
+          shows plainly that it does not — and at which point search
+          by meaning breaks down.
+        </p>
+        <span class="font-mono text-xs uppercase tracking-[0.12em] text-accent group-hover:underline">
+          read the analysis ↗
+        </span>
+      </a>
+    </div>
+
+    <!-- Live: infrastructure -->
+    <div class="mb-14 border border-dark/15 rounded-lg p-5 bg-white">
+      <p class="font-mono text-[10px] uppercase tracking-[0.18em] opacity-55 mb-3">On the wire</p>
+      <div class="grid sm:grid-cols-2 gap-x-8 gap-y-2 font-sans text-sm">
+        <p><a href="https://demo.mjoldak.pl" target="_blank" rel="noopener" class="font-semibold underline decoration-1 underline-offset-4 hover:opacity-70">Sales Agent B2B</a> —
+          <span class="opacity-70">form → GenAI lead classification, EU-hosted database, human in the loop</span></p>
+        <p><span class="font-semibold">n8n Pipeline (MCP)</span> —
+          <span class="opacity-70">Webhook → Gemini → EU database, callable by agents as a tool</span></p>
+      </div>
+    </div>
+
+    <!-- Open source — 6 repos -->
+    <hr class="border-t border-dark/10 dark:border-[var(--c-line)] w-full mb-14" />
+    <h3 class="font-mono text-xs uppercase tracking-[0.18em] opacity-50 mb-5">Open source — 6 repos</h3>
+    <p class="font-sans text-base opacity-80 leading-relaxed mb-5 max-w-3xl">
+      Do not take my word for it — read the code: agents, reusable tools,
+      and reproducible analytics across six public repositories.
+    </p>
+    <a href="https://github.com/martin0ne" target="_blank" rel="noopener"
+       class="font-mono text-xs uppercase tracking-[0.12em] text-accent hover:underline no-underline">
+      github.com/martin0ne ↗
+    </a>
+
+    <!-- Divider -->
+    <hr class="border-t border-dark/10 dark:border-[var(--c-line)] w-full my-14" />
+
+    <!-- Stack: compact columnar blocks -->
+    <div>
+      <h3 class="font-mono text-xs uppercase tracking-[0.18em] opacity-50 mb-5">Stack</h3>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        {groups.map((g) => (
+          <div class="rounded-lg border border-dark/10 dark:border-[var(--c-line)] bg-dark/[0.015] p-5 hover:border-accent/40 transition-colors duration-300">
+            <div class="font-mono text-[10px] tracking-[0.2em] text-accent mb-2">{g.num}</div>
+            <h4 class="font-sans font-bold text-base mb-3 tracking-tight">{g.title}</h4>
+            <ul class="space-y-1.5">
+              {g.items.map((item) => (
+                <li class="font-sans text-sm leading-relaxed">
+                  <button
+                    type="button"
+                    class="js-card w-full text-left flex gap-2.5 items-baseline opacity-75 hover:opacity-100 hover:underline underline-offset-2 transition-opacity duration-200 bg-transparent border-0 p-0 cursor-pointer font-sans text-sm leading-relaxed"
+                    data-card
+                    data-rank={g.num}
+                    data-title={item.t}
+                    data-desc={item.d}
+                    title={item.d}
+                  >
+                    <span class="text-accent shrink-0">▸</span>
+                    <span>{item.t}</span>
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <!-- Play card overlay: click a stack item to see plain-language explanation -->
+  <div
+    id="stack-card-overlay"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="stack-card-title"
+    class="fixed inset-0 z-[60] p-6"
+    style="display:none"
+    tabindex="-1"
+  >
+    <div class="absolute inset-0 bg-black/45" data-card-close></div>
+    <div
+      class="stack-card relative mx-auto my-0 sm:my-auto w-full max-w-[300px] min-h-[420px] bg-[#fbfbfa] text-[#111111] border border-[#111111] rounded-[14px] p-6 flex flex-col"
+      data-card-close
+    >
+      <div class="flex items-start justify-between">
+        <span id="stack-card-rank" class="font-mono text-lg font-bold tracking-tight">01</span>
+        <span class="font-mono text-lg font-bold tracking-tight rotate-180" aria-hidden="true"><span id="stack-card-rank-mirror">01</span></span>
+      </div>
+      <div class="flex-1 flex flex-col justify-center text-center py-6">
+        <div class="w-10 h-px bg-[#111111] mx-auto mb-5 opacity-40"></div>
+        <h4 id="stack-card-title" class="font-serif text-2xl leading-snug mb-4">—</h4>
+        <p id="stack-card-body" class="font-sans text-[15px] leading-relaxed opacity-85">—</p>
+        <div class="w-10 h-px bg-[#111111] mx-auto mt-5 opacity-40"></div>
+      </div>
+      <p class="font-mono text-[10px] uppercase tracking-[0.18em] text-center opacity-50">click to close</p>
+    </div>
+  </div>
+</section>
+
+<script>
+  const overlay = document.getElementById('stack-card-overlay');
+  const titleEl = document.getElementById('stack-card-title');
+  const bodyEl = document.getElementById('stack-card-body');
+  const rankEl = document.getElementById('stack-card-rank');
+  const rankMirror = document.getElementById('stack-card-rank-mirror');
+  let lastFocus = null;
+
+  function openCard(btn) {
+    lastFocus = btn;
+    rankEl.textContent = btn.dataset.rank || '';
+    rankMirror.textContent = btn.dataset.rank || '';
+    titleEl.textContent = btn.dataset.title || '';
+    bodyEl.textContent = btn.dataset.desc || '';
+    overlay.style.display = 'block';
+    overlay.focus();
+  }
+  function closeCard() {
+    overlay.style.display = 'none';
+    if (lastFocus) lastFocus.focus();
+  }
+
+  document.querySelectorAll('.js-card').forEach((btn) => {
+    btn.addEventListener('click', () => openCard(btn));
+  });
+  overlay.addEventListener('click', (e) => {
+    if (e.target.closest('[data-card-close]')) closeCard();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && overlay.style.display === 'block') closeCard();
+  });
+</script>
+
+<style>
+  .stack-card { animation: card-pop 0.18s ease-out; }
+  @keyframes card-pop {
+    from { opacity: 0; transform: translateY(6px) scale(0.98); }
+    to { opacity: 1; transform: none; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .stack-card { animation: none; }
+  }
+</style>
