@@ -16,7 +16,7 @@ status: PROTOTYP v1 — treść 1:1 z CV-baza.md (honesty pass 15.10), bez nowyc
 - **Dowód zamiast deklaracji:** każdy claim w tym materiale linkuje do działającego artefaktu — 6 publicznych repo (github.com/martin0ne), 5 aplikacji FastAPI, live demo (demo.mjoldak.pl), portfolio (www.mjoldak.pl). Portfolio zastępuje lata stażu.
 - **Rdzeń techniczny:** warstwa LLM model-agnostic (4 wymienne providery za jednym interfejsem, zero vendor lock-in) + human-in-the-loop + audit log pod RODO — na polskim kontekście regulacyjnym (KSeF / JPK / PKE art. 398).
 - **Dojrzałość uczciwie:** cztery produkty pilot-ready/MVP, jeden w demo, pokrycie testowe 30 testów — celowo nie nazywam tego produkcyjnym.
-- **Tło zawodowe:** od 09.2022 Starszy administrator baz danych w dziale finansowym UK (odprawy celne), środowisko anglojęzyczne — automatyzuję procesy z własnej inicjatywy w zablokowanym środowisku korporacyjnym.
+- **Tło zawodowe:** 09.2022–08.2026 Starszy administrator baz danych w dziale finansowym UK (odprawy celne), środowisko anglojęzyczne — automatyzowałem procesy z własnej inicjatywy w zablokowanym środowisku korporacyjnym.
 
 ## Wybrane projekty — co kupujesz i gdzie dowód
 
@@ -39,7 +39,7 @@ status: PROTOTYP v1 — treść 1:1 z CV-baza.md (honesty pass 15.10), bez nowyc
 - Compliance w praktyce: RODO art. 22 i 28, PKE art. 398, dane w EU, wdrożenia on-premise Docker.
 - Własna rutyna monitoringu ekosystemu AI: 26 źródeł co 3 dni → decyzje TERAZ/LATER/SKIP; Zettelkasten 270+ konceptów.
 
-**UPS Global Business Solutions Polska — Administrator baz danych → Starszy administrator baz danych (dział finansowy UK — odprawy celne) | 09.2022 – obecnie, Wrocław**
+**UPS Global Business Solutions Polska — Administrator baz danych → Starszy administrator baz danych (dział finansowy UK — odprawy celne) | 09.2022 – 08.2026, Wrocław**
 - ~100 deklaracji celnych dziennie (import do UK); dokumentacja i komunikacja operacyjna po angielsku; progresja w ~2 lata.
 - Z własnej inicjatywy automatyzuję powtarzalne zadania w zablokowanym środowisku (zero praw administratora): kalkulatory makro MS Excel + instrukcje SOP.
 
@@ -57,4 +57,4 @@ status: PROTOTYP v1 — treść 1:1 z CV-baza.md (honesty pass 15.10), bez nowyc
 - Psychologia w biznesie — Uniwersytet DSW, Wrocław | 2023–2026 — studia I stopnia, w toku, bez dyplomu; praca empiryczna (JD-R, wywiady jakościowe, MAXQDA). Prawo — Uczelnia Łazarskiego 2020–2022. Informatyka — WWSI 2019–2020.
 - Polski — ojczysty; Angielski — B2 (3,7 roku codziennej pracy po angielsku w UPS GBS).
 
-*Źródło treści: CV-baza.md (honesty pass 15.10.2026) — zero claimów spoza bazy. Wariant EN i tailoring pod konkretną ofertę = osobna ścieżka.*
+*Źródło treści: CV-baza.md (korekta zatrudnienia UPS 20.10.2026) — zero claimów spoza bazy. Wariant EN i tailoring pod konkretną ofertę = osobna ścieżka.*
