@@ -213,7 +213,7 @@ footer.report {
   <p class="standfirst">raport oparty na źródłach z OSNOWA/prompts (2026-06–2026-07) + research trends (2026)</p>
 </header>
 <h2>TL;DR</h2>
-<p>Po pierwsze, priorytet w budowie osobistego stacka analitycznego powinien paść na <strong>SQL i warstwę domenową</strong> (Polska finansów), a nie na automatyzację pipeline'u — framework „compose over build" wygrywa pod względem nakładu utrzymania przy budżecie zero PLN. Po drugie, systemy scoringowe działają najlepiej, gdy zaczynają się od wag teoretycznie-zależnych równych sobie plus veto gates jako hard constraints POZA score'em, ewoluując ku modelom uczenia maszynowego dopiero po zbiorze oznaczonych etykiet — literatura o improper linear models (Dawes) potwierdza, że prostsze modele liniowe regularnie bije złożone przy małych próbach i niskiej jakości danych etykietujących. Po trzecie, istnieją dwie znaczące luki: brak odpalonego Deep Research na rynek PL (brak danych o liczebności ofert, pensjach, wymaganiach konkretnych firm) oraz brak rekomendacji scaffold-level (tylko prompt-y istnieją, bez wyniku DR). Obie luki oznaczają, że wszystkie twierdzenia rekrutacyjne pozostają hipotetyczne do momentu uruchomienia Deep Research.</p>
+<p>Po pierwsze, priorytet w budowie osobistego stacka analitycznego powinien paść na <strong>SQL i warstwę domenową</strong> (Polska finansów), a nie na automatyzację pipeline'u — framework „compose over build" wygrywa pod względem nakładu utrzymania przy budżecie zero PLN. Po drugie, systemy scoringowe działają najlepiej, gdy zaczynają się od wag teoretycznie-zależnych równych sobie plus veto gates jako hard constraints POZA score'em, ewoluując ku modelom uczenia maszynowego dopiero po zbiorze oznaczonych etykiet — literatura o improper linear models (Dawes) potwierdza, że prostsze modele liniowe regularnie bije złożone przy małych próbach i niskiej jakości danych etykietujących. Po trzecie, luki pierwotnego draftu domknięto researchem zastępczym 20.10.2026: rynek PL opisują publiczne raporty No Fluff Jobs, Just Join IT, Verita HR, Hays i KNF (Data &amp; BI = 12,4% ogłoszeń NFPJ; Data = 10,78% ofert JustJoin — lider rynku; widełki Data Analyst 7 900–18 000 zł UoP; Analityk Danych w pozostałych instytucjach finansowych 10/13/15 tys. zł; 81% firm finansowo-księgowych planuje rekrutować w 2026), a rekomendacje scaffold-level obejmują wszystkie 11 komponentów pipeline: 8 z nich w wariantzie COMPOSE, 3 w BUILD-CUSTOM (insight-synth, source-claim-validate, monitor w wariancie stdlib). Zostają dwie twarde luki rynkowe — liczba ofert DA/BA wyłącznie w sektorze finansów PL oraz success-rate juniorów — bo żadne dostępne źródło ich nie publikuje [research 20.10.2026].</p>
 <h2>1. Kontekst — czym jest stack i dlaczego pytać o „compose vs build"</h2>
 <p>Stack analityczny to zestaw reużywalnych narzędzi pokrywających fazę przepływu pracy od pozyskania surowych danych do finalnej publikacji wniosków. W wersji roboczej autor definiuje sześć komponentów: data-acquire → data-validate → data-wrangle → data-analyze → insight-synth → analytical-report. Później rozrastą się do jedenaściou warstw z dodaniem data-versioning, source-claim-validate, stat-validate, decision-report, i monitor-and-maintain [prompts/compose-vs-build, 2026-06-13].</p>
 <p>Trzy twarde ograniczenia stanowią filtry selekcji technologicznej:</p>
@@ -270,11 +270,56 @@ scoring-core/
 </code></pre>
 <p>Wagi i cutoff'y są versioned configuration data, nie code [prompts/scoring, 2026].</p>
 <h2>3. Luki i ryzyka</h2>
-<h3>3.1 Brak Deep Research na rynek PL (finanse)</h3>
-<p><strong>Brak danych.</strong> Plik „2026-06-13 — PerplexityDeepResearch — stack analityczny + luki roli (finanse).md" nie istnieje na dysku. Jest tylko jego <strong>prompt</strong> (4078 B) z czterema pytaniami badawczymi skierowanymi do Deep Research. Żadna liczba dotycząca rynku PL (liczebność ofert, widełki pensji, wymagania KNF/NBP, stopa zatrudniania junior BA) nie została zebrana.</p>
-<p>Wniosek operacyjny: sekcje dotyczące („co jest expected TODAY na rynku") pozostają hipotetyczne. Należy odpalić DR z treścią tego promptu przed finalizacją jakiejkolwiek tezy rekrutacyjnej.</p>
-<h3>3.2 Brak konkretnych rekomendacji technologicznych</h3>
-<p>Prompt compose-vs-build pyta o <strong>projekty scaffold-level</strong>, nie biblioteki. Odpowiedź z DR nie jest dostarczona na dysku — mamy tylko prompt. Stąd lista „top candidates" dla każdego z 11 komponentów jest pusta. To luka knowledgowa.</p>
+<h3>3.1 Rynek PL: dane po research zastępczym (20.10.2026)</h3>
+<p>Oryginalny prompt DR (2026-06-13) nie został odpalony. Poniższe dane pochodzą z publicznych raportów branżowych odczytanych 20.10.2026 — każda liczba ma źródło i rok; substytut promptu, nie jego realizacja.</p>
+<p><strong>Struktura popytu (2025–2026):</strong></p>
+<table><thead>
+<tr><th>Metryka</th><th>Wartość</th><th>Źródło</th></tr></thead><tbody>
+<tr><td>Data &amp; BI w ogłoszeniach NFPJ</td><td>12,4% — 2. kategoria po Backendzie (20,1%)</td><td>[NFPJ, 2025]</td></tr>
+<tr><td>Data na Just Join IT</td><td>10,78% wszystkich ofert — lider przed JavaScript (9,57%) i Javą (9,46%)</td><td>[JJIT, 2026]</td></tr>
+<tr><td>Python w ogłoszeniach NFPJ</td><td>wzrost o ~8 p.p. w ciągu 4,5 roku (napęd: AI i automatyzacja); SQL trzyma pozycję</td><td>[NFPJ, 2026]</td></tr>
+<tr><td>Najczęściej wymagane narzędzia DA (ogłoszenia globalne, analiza 1 000 ofert)</td><td>Excel 41,3% · Tableau 28,1% · Power BI 24,7%</td><td>[365 Data Science, 2025]</td></tr>
+</tbody></table>
+<p><strong>Wynagrodzenia (PLN/mies.):</strong></p>
+<table><thead>
+<tr><th>Stanowisko</th><th>Min / Opt / Max</th><th>Źródło</th></tr></thead><tbody>
+<tr><td>Data Analyst — UoP brutto (junior/mid/senior)</td><td>7 900 / 14 645 / 18 000</td><td>[Verita HR × JJIT, 2026]</td></tr>
+<tr><td>Data Analyst — B2B netto (junior/mid/senior)</td><td>10 080 / 19 320 / 22 260</td><td>[Verita HR × JJIT, 2026]</td></tr>
+<tr><td>Młodszy Analityk Finansowy</td><td>9 000 / 10 000 / 11 000</td><td>[Hays, 2026]</td></tr>
+<tr><td>Analityk Finansowy</td><td>12 000 / 14 000 / 15 000</td><td>[Hays, 2026]</td></tr>
+<tr><td>Starszy Analityk Finansowy</td><td>14 000 / 16 000 / 17 000</td><td>[Hays, 2026]</td></tr>
+<tr><td>Analityk Biznesowy</td><td>13 000 / 15 000 / 18 000</td><td>[Hays, 2026]</td></tr>
+<tr><td>Analityk Danych — pozostałe instytucje finansowe (leasing, consumer finance, fundusze, domy maklerskie)</td><td>10 000 / 13 000 / 15 000</td><td>[Hays, 2026]</td></tr>
+<tr><td>Data Scientist (sekcja danych)</td><td>20 000 / 24 000 / 27 000</td><td>[Hays, 2026]</td></tr>
+</tbody></table>
+<p><strong>Popyt i domena:</strong></p>
+<ul>
+<li>81% firm finansowo-księgowych planuje rekrutować w 2026, 44% spodziewa się trudności w rekrutacji, 59% specjalistów rozważa zmianę pracy [Hays, 2026].</li>
+<li>Wymagania domenowe w ogłoszeniach sektora: AML/CFT (ocena ryzyka, STIR), KYC, MiFID II (ochrona klienta, raportowanie transakcji), KSeF/CSRD/ESG, walidacja modeli ryzyka — zakres podmiotów nadzorowanych przez KNF [KNF, 2026; Hays, 2026].</li>
+</ul>
+<p><strong>Czego dalej nie ma (twarde luki):</strong></p>
+<ul>
+<li>Liczba ofert DA/BA wyłącznie w sektorze finansów PL — żaden raport tego nie publikuje; wymaga bezpośredniego scrapingu portali z filtrem branżowym [brak danych, stan na 20.10.2026].</li>
+<li>Success-rate juniorów (aplikacja → rozmowa → oferta) — nie publikuje go żadne ze sprawdzonych źródeł [brak danych, stan na 20.10.2026].</li>
+</ul>
+<h3>3.2 Rekomendacje scaffold-level — macierz 11 komponentów (20.10.2026)</h3>
+<p>Filtry selekcji (z §1): 0 PLN, Apple Silicon arm64, bez DevOps, glass-box — kompetencja zostaje u analityka [research 20.10.2026; repozytoria: Źródła 12–20].</p>
+<table><thead>
+<tr><th>#</th><th>Komponent</th><th>Kandydaci COMPOSE</th><th>Werdykt</th><th>BYPASS-RISK</th></tr></thead><tbody>
+<tr><td>1</td><td>data-acquire</td><td>requests, httpx, DuckDB</td><td>COMPOSE</td><td>niski</td></tr>
+<tr><td>2</td><td>data-validate</td><td>Great Expectations, pandera, pydantic</td><td>COMPOSE</td><td>średni — GX deklaratywnie w configu, wymaga zrozumienia dlaczego walidacja istnieje</td></tr>
+<tr><td>3</td><td>data-wrangle</td><td>pandas, polars, DuckDB</td><td>COMPOSE</td><td>niski — SQL/pandas to jest kompetencja</td></tr>
+<tr><td>4</td><td>data-analyze</td><td>scipy, statsmodels, plotly/matplotlib</td><td>COMPOSE</td><td>niski — glass-box</td></tr>
+<tr><td>5</td><td>insight-synth</td><td>brak dobrego OSS</td><td>BUILD-CUSTOM (szablon + człowiek)</td><td><strong>wysoki dla LLM na finalnym wniosku</strong> — synteza wniosków jest rdzeniem kompetencji</td></tr>
+<tr><td>6</td><td>analytical-report</td><td>Quarto, R Markdown, Jinja2</td><td>COMPOSE</td><td>niski — format, nie analityka</td></tr>
+<tr><td>7</td><td>data-versioning</td><td>DVC (LakeFS tylko z hostowaniem = DevOps)</td><td>COMPOSE</td><td>niski</td></tr>
+<tr><td>8</td><td>source-claim-validate</td><td>brak dedykowanego OSS</td><td>BUILD-CUSTOM (skrypt cross-reference API)</td><td>n/a — walidacja zostaje ręczna z mechaniką</td></tr>
+<tr><td>9</td><td>stat-validate</td><td>scipy.stats, diagnostyka statsmodels, pingouin</td><td>COMPOSE</td><td>niski — interpretacja ręczna</td></tr>
+<tr><td>10</td><td>decision-report</td><td>Quarto, docxtpl, Pandoc</td><td>COMPOSE</td><td>niski</td></tr>
+<tr><td>11</td><td>monitor-and-maintain</td><td>stdlib logging + smtplib; Prefect/Dagster = daemons</td><td>COMPOSE wariant zero-DevOps (stdlib)</td><td>niski; wariant z Prefect/Dagster łagodnie łamie filter DevOps</td></tr>
+</tbody></table>
+<p><strong>Rekomendowany scaffold A (zero-DevOps):</strong> struktura cookiecutter-data-science; acquire=requests/DuckDB → validate=pandera → wrangle=polars → analyze=scipy+statsmodels → synth=custom → report=Quarto → version=DVC → claim-validate=custom → stat=scipy → decision=Quarto → monitor=stdlib logging. Wszystko instalable przez pip/quarto CLI, arm64, 0 PLN. Wariant B (Prefect + Great Expectations) odłożony: wygodny, ale wymaga daemons [research 20.10.2026].</p>
+<p>Zostaje decyzja projektowa: source-claim-validate i insight-synth to pełny build własny — to nie luka narzędziowa, tylko konsekwencja literacy flag [research 20.10.2026].</p>
 <h3>3.3 Ryzyka metodologiczne istniejące niezależnie od DR</h3>
 <ul>
 <li><strong>Selection bias</strong>: etykiety są obserwowane tylko dla ofert na które Marcin odpowiedział — decydującym czynnikiem jest sam wynik skora. Tryb_missing-not-at-random klasyczny.</li>
@@ -291,8 +336,8 @@ scoring-core/
 <tr><td>Verdykt DR Output A: theory-driven weighted-sum + veto gates</td><td>Prompt output note</td><td>✅ Zapisany w pliku scoring</td></tr>
 <tr><td>Plan 5-etapowej implementacji</td><td>Prompt B output note</td><td>✅ Zapisany w pliku scoring</td></tr>
 <tr><td>Lista bibliotek Python dla each step</td><td>Prompt B output note</td><td>✅ Zapisany w pliku scoring</td></tr>
-<tr><td>Market data PL (oferty, pensje, wymagania)</td><td>BRak DR</td><td>❌ Tylko prompt, bez wyniku</td></tr>
-<tr><td>Specific scaffold recommendations</td><td>Brak DR</td><td>❌ Tylko prompt, bez wyniku</td></tr>
+<tr><td>Market data PL (oferty, pensje, wymagania)</td><td>Research zastępczy 20.10.2026 (NFPJ/JJIT/Verita/Hays/KNF)</td><td>✅ Domknięte; brak: liczby DA/BA w finansach + success-rate</td></tr>
+<tr><td>Specific scaffold recommendations</td><td>Research OSS 20.10.2026 (11 komponentów)</td><td>✅ Domknięte: 8 COMPOSE / 3 BUILD-CUSTOM</td></tr>
 <tr><td>Research trends 2026: AI agents, local models, inference efficiency</td><td>research-trends.pdf</td><td>✅ Used as supplementary context</td></tr>
 </tbody></table>
 <h2>5. Źródła</h2>
@@ -301,6 +346,22 @@ scoring-core/
 <li><code>2026-07-29 — Perplexity DeepResearch — scoring jako umiejętność (metodyka + implementacja)</code> — prompt z output summary DR + tuning notes, 2026-07-29. OSNOWA/wiedza/prompts/.</li>
 <li><code>What are the latest research trends in technology and computer science in 2026?</code> — survey of 2026 literature on AI agents, small/local/on-device LMs, inference efficiency, embodied AI, post-quantum crypto, privacy/security. Compiled ~2026-10-14. Downloads/.</li>
 <li><code>2026-06-13 — PerplexityDeepResearch — stack analityczny + luki roli (finanse)</code> — Plik promptu. <strong>Nieistniejący na dysku</strong> (No such file). Odniesienie do promptu z 4 pytaniami badawczymi — brak DR output.</li>
+<li><strong>No Fluff Jobs — IT Job Market in Poland 2025/2026</strong> (Data &amp; BI 12,4%) — nofluffjobs.com/en/insights/report-it-job-market-in-poland/. [2025]</li>
+<li><strong>No Fluff Jobs — IT Career in Poland 2026</strong> (Python +~8 p.p.) — nofluffjobs.com/en/insights/it-career-poland-2026/. [2026]</li>
+<li><strong>JustJoin IT — Ogłoszenia o pracę w liczbach</strong> (Data 10,78%) — justjoin.it/raport-wynagrodzen/ogloszenia-o-prace-w-liczbach. [2026]</li>
+<li><strong>Verita HR × JustJoin IT — Poland Salary Guide 2026</strong> (widełki Data Analyst) — veritahr.com/poland-salary-guide-2026-it-finance-engineering-pay-benchmarks/. [2026]</li>
+<li><strong>Hays Poland — Raport płacowy 2026</strong> (odczyt PDF 20.10.2026; mirror: praca.studentnews.pl/Hays-Poland_Raport-placowy-2026.pdf). [2026]</li>
+<li><strong>365 Data Science — Data Analyst Job Outlook</strong> (analiza ogłoszeń: Excel/Tableau/Power BI) — 365datascience.com/career-advice/data-analyst-job-outlook-2025/. [2025]</li>
+<li><strong>KNF — zakres nadzoru i wyszukiwarka podmiotów</strong> — knf.gov.pl. [2026]</li>
+<li><strong>Great Expectations</strong> — github.com/great-expectations/great_expectations. [2026]</li>
+<li><strong>pandera (MIT)</strong> — github.com/unionai-oss/pandera. [2026]</li>
+<li><strong>DuckDB (MIT)</strong> — github.com/duckdb/duckdb. [2026]</li>
+<li><strong>polars (MIT)</strong> — github.com/pola-rs/polars. [2026]</li>
+<li><strong>Quarto</strong> — github.com/quarto-dev/quarto-cli. [2026]</li>
+<li><strong>DVC</strong> — github.com/iterative/dvc. [2026]</li>
+<li><strong>Prefect (Apache-2.0)</strong> — github.com/PrefectHQ/prefect. [2026]</li>
+<li><strong>Dagster (Apache-2.0)</strong> — github.com/dagster-io/dagster. [2026]</li>
+<li><strong>cookiecutter-data-science</strong> — github.com/drivendataorg/cookiecutter-data-science. [2026]</li>
 </ol>
 <footer class="report"><span>mjoldak.pl</span><span>źródła — w tekście</span></footer>
 </body>
