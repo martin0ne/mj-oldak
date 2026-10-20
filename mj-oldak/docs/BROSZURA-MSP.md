@@ -2,7 +2,7 @@
 date: 2026-10-20
 type: brochure
 audience: MSP (małe i średnie przedsiębiorstwa, PL)
-status: DRAFT v3 — zespół B (krytyk+analizator+kreator) + diff-read rodzica; czeka veto: framework nauki, realność przykładów, H1, model rozliczeń
+status: DRAFT v4 — zespół B fala 1+2 + diff-read rodzica (fix cudzysłowu w tabeli, zdanie-sierota, restauracja ogonów)
 ---
 
 # Nie zastępuję ludzi. Wdrażam i uczę AI w Twojej firmie.
@@ -17,7 +17,7 @@ To nie jest problem ceny ani dostępu do narzędzi. Dane Eurostatu za 2025 rok p
 |---|---|---|
 | Firmy 10–49 osób używające AI | **5,8%** | 17,0% |
 | Firmy 50–249 osób używające AI | **14,8%** | 30,4% |
-| Bariery: „koszt wydaje się za wysoki" (10–49) | 1,8% | 4,0% |
+| Bariery: „koszt wydaje się za wysoki” (10–49) | 1,8% | 4,0% |
 | Firmy, które rozważały użycie AI (10–49) | **3,4%** | 10,2% |
 
 *Źródło: Eurostat, zbiór isoc_eb_ai, rok referencyjny 2025, pobrany 15.10.2026: https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/isoc_eb_ai*
@@ -32,7 +32,7 @@ Cel nie jest automatyzacja sama w sobie. Jest nim produktywność: mniej czasu n
 
 **1. Automatyzuję powtarzalną pracę.**
 
-Faktury: odczyt danych z PDF, przygotowanie wpisu do systemu, wyjątki lądują u Ciebie do zatwierdzenia. E-mail: szkic odpowiedzi na bazie szablonu, wysyłka po Twojej akceptacji. Arkusze: przenoszenie danych między plikami bez ręcznego przepisywania. Wdrażam wokół tego, co firma już robi — po polsku, z uwzględnieniem KSeF i JPK. Jeśli praca wymaga osądu — zostaje u ludzi.
+Przykład procesu faktur wygląda tak: odczyt danych z PDF, przygotowanie wpisu do systemu, wyjątki lądują u Ciebie do zatwierdzenia. Przykład e-maila: szkic odpowiedzi na bazie szablonu, wysyłka po Twojej akceptacji. Arkusze: przenoszenie danych między plikami bez ręcznego przepisywania. Wdrażam wokół tego, co firma już robi — po polsku, z uwzględnieniem KSeF i JPK. Jeśli praca wymaga osądu — zostaje u ludzi.
 
 **2. Nauka Twojego zespołu — na Waszych zadaniach.**
 
@@ -42,7 +42,7 @@ Nie sprzedaję kursu — każda firma ma innych ludzi i inne procesy, gotowy pak
 
 **3. Analizy wspierające decyzje.**
 
-Dane z GUS, Eurostatu, własnych źródeł — z podanym źródłem i rokiem. Cel: nie dashboard dla dashboardu, materiał do rozmowy z właścicielem i zespołem. Tekst, nie wykres.
+GUS, Eurostat, Twoje wewnętrzne dane — z podanym źródłem i rokiem. Przekuwam je w tekst, nie w kolejny panel do logowania — materiał do rozmowy z właścicielem i zespołem. Cel jeden: konkret, na którym da się oprzeć decyzję.
 
 ## Jak pracuję — cztery zasady
 
@@ -66,8 +66,8 @@ Dane z GUS, Eurostatu, własnych źródeł — z podanym źródłem i rokiem. Ce
 
 ## Jak zaczynamy
 
-Jeden proces, nie cała firma. Najpierw pomiar: ile czasu zajmuje dziś. Potem wdrożenie i nauka w małym zakresie i pomiar po zmianie. Decyzja o rozszerzeniu zapada na faktach — jeśli po pomiarze okaże się, że proces nie opłaca się automatyzować, powiem to wprost.
+Jeden proces, nie cała firma. Najpierw pomiar: ile czasu zajmuje dziś. Potem wdrożenie i nauka w małym zakresie i pomiar po zmianie. Decyzja o rozszerzeniu zapada na faktach — jeśli po pomiarze okaże się, że proces nie opłaca się automatyzować, powiem to wprost. A jeśli warto — zostajesz z zespołem, który umie robić to sam.
 
-**Pierwszy krok: 20 minut rozmowy.** Pokazujesz jeden powtarzalny proces, dostajesz ocenę: co wdrożyć, czego nauczyć zespół, a co zostawić ludziom — z szacunkiem nakładu i kolejności prac.
+**Pierwszy krok: 20 minut rozmowy.** Pokazujesz jeden powtarzalny proces, dostajesz ocenę: co wdrożyć, czego nauczyć zespół, a co zostawić ludziom — z szacunkiem nakładu i kolejności prac. Nawet jeśli odpowiedź brzmi: nie ruszaj tego teraz.
 
 Marcin Ołdak · MJ.OLDAK · mjoldak.pl
