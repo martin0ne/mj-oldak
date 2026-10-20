@@ -193,6 +193,10 @@ footer.report {{
 
 def build(md_path: pathlib.Path, kicker: str) -> tuple[pathlib.Path, pathlib.Path]:
     md = md_path.read_text(encoding="utf-8")
+    if md.startswith("---"):  # pomiń frontmatter YAML
+        fm_end = md.find("\n---", 3)
+        if fm_end != -1:
+            md = md[fm_end + 4:].lstrip("\n")
     m = re.match(r"# (.+)", md)
     title = m.group(1).strip() if m else md_path.stem
     sm = re.search(r"^\*(.+)\*$", md, re.M)
