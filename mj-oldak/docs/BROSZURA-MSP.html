@@ -171,11 +171,14 @@ h2 {
   break-after: avoid;
 }
 h3 { font-size: 10.5pt; font-weight: 600; color: var(--ink); margin: 5mm 0 1.5mm; break-after: avoid; }
-p { margin: 0 0 2.6mm; orphans: 3; widows: 3; }
+p { margin: 0 0 2.6mm; orphans: 3; widows: 3; text-align: justify; hyphens: auto; }
 strong { color: var(--ink); }
 em { color: var(--body); }
 ul, ol { margin: 0 0 3mm; padding-left: 5mm; }
-li { margin-bottom: 1.4mm; }
+li { margin-bottom: 1.4mm; text-align: justify; hyphens: auto; }
+.standfirst, blockquote { text-align: justify; hyphens: auto; }
+img { max-width: 100%; height: auto; }
+figure.fig { margin: 4mm 0; break-inside: avoid; }
 table { width: 100%; border-collapse: collapse; margin: 2mm 0 4mm; font-size: 9pt; break-inside: avoid; }
 th {
   font-family: 'Geist Mono', ui-monospace, monospace; font-size: 7.5pt;
@@ -222,6 +225,7 @@ footer.report {
 <tr><td>Firmy, które rozważały użycie AI (10–49)</td><td><strong>3,4%</strong></td><td>10,2%</td></tr>
 </tbody></table>
 <p><em>Źródło: Eurostat, zbiór isoc_eb_ai, rok referencyjny 2025, pobrany 15.10.2026: https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/isoc_eb_ai</em></p>
+<figure class="fig"><img src="../public/reports/figures/fig-i-adopcja-ai.png" alt="Ryc. I — Adopcja AI: Polska vs UE (2025)"></figure>
 <p>Największa luka nie jest tam, gdzie najłatwiej ją tłumaczyć brakiem pieniędzy — jest w średnich firmach (50–249 osób: −15,6 pkt proc. wobec UE), czyli u przedsiębiorców, którzy już mają budżet i zespół. Przyczyna nie jest w portfelu. Jest w tym, czy ktokolwiek w firmie zadał sobie pytanie: do czego to moglibyśmy użyć — i czy ktoś ten zespół tego nauczył. To jest kwestia wiedzy i decyzji, nie pieniędzy.</p>
 <h2>Co robię</h2>
 <p>Cel nie jest automatyzacja sama w sobie. Jest nim produktywność: mniej czasu na rzeczy powtarzalne, więcej na to, co wymaga Twojego osądu. Automatyzacja jest efektem ubocznym — przychodzi sama, gdy proces i narzędzia są już dobrze ułożone.</p>

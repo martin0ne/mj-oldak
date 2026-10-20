@@ -22,6 +22,8 @@ To nie jest problem ceny ani dostępu do narzędzi. Dane Eurostatu za 2025 rok p
 
 *Źródło: Eurostat, zbiór isoc_eb_ai, rok referencyjny 2025, pobrany 15.10.2026: https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/isoc_eb_ai*
 
+![Ryc. I — Adopcja AI: Polska vs UE (2025)](../public/reports/figures/fig-i-adopcja-ai.png)
+
 Największa luka nie jest tam, gdzie najłatwiej ją tłumaczyć brakiem pieniędzy — jest w średnich firmach (50–249 osób: −15,6 pkt proc. wobec UE), czyli u przedsiębiorców, którzy już mają budżet i zespół. Przyczyna nie jest w portfelu. Jest w tym, czy ktokolwiek w firmie zadał sobie pytanie: do czego to moglibyśmy użyć — i czy ktoś ten zespół tego nauczył. To jest kwestia wiedzy i decyzji, nie pieniędzy.
 
 ## Co robię

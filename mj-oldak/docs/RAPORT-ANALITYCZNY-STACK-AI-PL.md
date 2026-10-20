@@ -105,6 +105,8 @@ Oryginalny prompt DR (2026-06-13) nie został odpalony. Poniższe dane pochodzą
 | Analityk Danych — pozostałe instytucje finansowe (leasing, consumer finance, fundusze, domy maklerskie) | 10 000 / 13 000 / 15 000 | [Hays, 2026] |
 | Data Scientist (sekcja danych) | 20 000 / 24 000 / 27 000 | [Hays, 2026] |
 
+![Ryc. II — Widełki analityka w Polsce, 2026](../public/reports/figures/fig-ii-widelki.png)
+
 **Popyt i domena:**
 
 - 81% firm finansowo-księgowych planuje rekrutować w 2026, 44% spodziewa się trudności w rekrutacji, 59% specjalistów rozważa zmianę pracy [Hays, 2026].

@@ -99,6 +99,9 @@ def md_to_html(md: str) -> str:
             out.append(f"<blockquote>{inline(ln[2:])}</blockquote>")
         elif ln.strip() == "---":
             out.append("<hr>")
+        elif (m_img := re.match(r"^!\[([^\]]*)\]\(([^)]+)\)", ln)):
+            alt, src = m_img.groups()
+            out.append(f'<figure class="fig"><img src="{html.escape(src, quote=True)}" alt="{html.escape(alt, quote=True)}"></figure>')
         elif ln.strip():
             out.append(f"<p>{inline(ln)}</p>")
         i += 1
@@ -143,11 +146,14 @@ h2 {{
   break-after: avoid;
 }}
 h3 {{ font-size: 10.5pt; font-weight: 600; color: var(--ink); margin: 5mm 0 1.5mm; break-after: avoid; }}
-p {{ margin: 0 0 2.6mm; orphans: 3; widows: 3; }}
+p {{ margin: 0 0 2.6mm; orphans: 3; widows: 3; text-align: justify; hyphens: auto; }}
 strong {{ color: var(--ink); }}
 em {{ color: var(--body); }}
 ul, ol {{ margin: 0 0 3mm; padding-left: 5mm; }}
-li {{ margin-bottom: 1.4mm; }}
+li {{ margin-bottom: 1.4mm; text-align: justify; hyphens: auto; }}
+.standfirst, blockquote {{ text-align: justify; hyphens: auto; }}
+img {{ max-width: 100%; height: auto; }}
+figure.fig {{ margin: 4mm 0; break-inside: avoid; }}
 table {{ width: 100%; border-collapse: collapse; margin: 2mm 0 4mm; font-size: 9pt; break-inside: avoid; }}
 th {{
   font-family: 'Geist Mono', ui-monospace, monospace; font-size: 7.5pt;

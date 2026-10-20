@@ -171,11 +171,14 @@ h2 {
   break-after: avoid;
 }
 h3 { font-size: 10.5pt; font-weight: 600; color: var(--ink); margin: 5mm 0 1.5mm; break-after: avoid; }
-p { margin: 0 0 2.6mm; orphans: 3; widows: 3; }
+p { margin: 0 0 2.6mm; orphans: 3; widows: 3; text-align: justify; hyphens: auto; }
 strong { color: var(--ink); }
 em { color: var(--body); }
 ul, ol { margin: 0 0 3mm; padding-left: 5mm; }
-li { margin-bottom: 1.4mm; }
+li { margin-bottom: 1.4mm; text-align: justify; hyphens: auto; }
+.standfirst, blockquote { text-align: justify; hyphens: auto; }
+img { max-width: 100%; height: auto; }
+figure.fig { margin: 4mm 0; break-inside: avoid; }
 table { width: 100%; border-collapse: collapse; margin: 2mm 0 4mm; font-size: 9pt; break-inside: avoid; }
 th {
   font-family: 'Geist Mono', ui-monospace, monospace; font-size: 7.5pt;
@@ -292,6 +295,7 @@ scoring-core/
 <tr><td>Analityk Danych — pozostałe instytucje finansowe (leasing, consumer finance, fundusze, domy maklerskie)</td><td>10 000 / 13 000 / 15 000</td><td>[Hays, 2026]</td></tr>
 <tr><td>Data Scientist (sekcja danych)</td><td>20 000 / 24 000 / 27 000</td><td>[Hays, 2026]</td></tr>
 </tbody></table>
+<figure class="fig"><img src="../public/reports/figures/fig-ii-widelki.png" alt="Ryc. II — Widełki analityka w Polsce, 2026"></figure>
 <p><strong>Popyt i domena:</strong></p>
 <ul>
 <li>81% firm finansowo-księgowych planuje rekrutować w 2026, 44% spodziewa się trudności w rekrutacji, 59% specjalistów rozważa zmianę pracy [Hays, 2026].</li>
