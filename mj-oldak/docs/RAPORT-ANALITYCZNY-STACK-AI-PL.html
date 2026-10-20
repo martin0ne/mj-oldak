@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<title>Stack analityczny: compose vs build + scoring jako umiejętność</title>
+<style>
+@font-face {
+  font-family: 'Newsreader';
+  font-style: italic;
+  font-weight: 200 800;
+  font-display: swap;
+  src: url(../public/fonts/Newsreader-cY9CfjOCX1hbuyalUrK439vCgYhCBJWxZCPp.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+@font-face {
+  font-family: 'Newsreader';
+  font-style: italic;
+  font-weight: 200 800;
+  font-display: swap;
+  src: url(../public/fonts/Newsreader-cY9CfjOCX1hbuyalUrK439vCgIhCBJWxZCPp.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Newsreader';
+  font-style: italic;
+  font-weight: 200 800;
+  font-display: swap;
+  src: url(../public/fonts/Newsreader-cY9CfjOCX1hbuyalUrK439vCjohCBJWxZA.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Newsreader';
+  font-style: normal;
+  font-weight: 200 800;
+  font-display: swap;
+  src: url(../public/fonts/Newsreader-cY9AfjOCX1hbuyalUrK439HyjIJFJpeBZQ.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+@font-face {
+  font-family: 'Newsreader';
+  font-style: normal;
+  font-weight: 200 800;
+  font-display: swap;
+  src: url(../public/fonts/Newsreader-cY9AfjOCX1hbuyalUrK439DyjIJFJpeBZQ.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Newsreader';
+  font-style: normal;
+  font-weight: 200 800;
+  font-display: swap;
+  src: url(../public/fonts/Newsreader-cY9AfjOCX1hbuyalUrK4397yjIJFJpc.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Geist';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url(../public/fonts/Geist-gyByhwUxId8gMEwRGFWNOITddY4.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+@font-face {
+  font-family: 'Geist';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url(../public/fonts/Geist-gyByhwUxId8gMEwYGFWNOITddY4.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: 'Geist';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url(../public/fonts/Geist-gyByhwUxId8gMEwTGFWNOITddY4.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+@font-face {
+  font-family: 'Geist';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url(../public/fonts/Geist-gyByhwUxId8gMEwSGFWNOITddY4.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Geist';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url(../public/fonts/Geist-gyByhwUxId8gMEwcGFWNOITd.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url(../public/fonts/GeistMono-or3nQ6H-1_WfwkMZI_qYFrodmhHkjkotbA.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url(../public/fonts/GeistMono-or3nQ6H-1_WfwkMZI_qYFrMdmhHkjkotbA.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url(../public/fonts/GeistMono-or3nQ6H-1_WfwkMZI_qYFg08vz7MhEIVVeA.woff2) format('woff2');
+  unicode-range: U+2000-2001, U+2004-2008, U+200A, U+23B8-23BD, U+2500-259F;
+}
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url(../public/fonts/GeistMono-or3nQ6H-1_WfwkMZI_qYFrgdmhHkjkotbA.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url(../public/fonts/GeistMono-or3nQ6H-1_WfwkMZI_qYFrkdmhHkjkotbA.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url(../public/fonts/GeistMono-or3nQ6H-1_WfwkMZI_qYFrcdmhHkjko.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@page { size: A4; margin: 16mm 15mm 18mm; }
+:root { --ink: #111111; --body: #2f3437; --muted: #787774; --line: #eaeaea; }
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  font-family: 'Geist', system-ui, sans-serif;
+  font-size: 10.5pt; line-height: 1.55; color: var(--body);
+  background: #ffffff; -webkit-print-color-adjust: exact;
+}
+header.report { border-bottom: 2px solid var(--ink); padding-bottom: 10mm; margin-bottom: 8mm; }
+.kicker {
+  font-family: 'Geist Mono', ui-monospace, monospace; font-size: 8pt;
+  letter-spacing: .14em; text-transform: uppercase; color: var(--muted);
+  display: flex; justify-content: space-between; margin-bottom: 6mm;
+}
+h1 {
+  font-family: 'Newsreader', Georgia, serif; font-weight: 700;
+  font-size: 25pt; line-height: 1.12; color: var(--ink); margin: 0 0 5mm;
+  letter-spacing: -0.01em;
+}
+.standfirst {
+  font-family: 'Newsreader', Georgia, serif; font-style: italic;
+  font-size: 12pt; line-height: 1.45; color: var(--muted); margin: 0;
+}
+h2 {
+  font-family: 'Newsreader', Georgia, serif; font-weight: 700;
+  font-size: 15pt; color: var(--ink); margin: 8mm 0 2.5mm;
+  border-top: 1px solid var(--ink); padding-top: 3mm;
+  break-after: avoid;
+}
+h3 { font-size: 10.5pt; font-weight: 600; color: var(--ink); margin: 5mm 0 1.5mm; break-after: avoid; }
+p { margin: 0 0 2.6mm; orphans: 3; widows: 3; }
+strong { color: var(--ink); }
+em { color: var(--body); }
+ul, ol { margin: 0 0 3mm; padding-left: 5mm; }
+li { margin-bottom: 1.4mm; }
+table { width: 100%; border-collapse: collapse; margin: 2mm 0 4mm; font-size: 9pt; break-inside: avoid; }
+th {
+  font-family: 'Geist Mono', ui-monospace, monospace; font-size: 7.5pt;
+  text-transform: uppercase; letter-spacing: .08em; text-align: left;
+  color: var(--ink); border-bottom: 1px solid var(--ink);
+  padding: 2mm 2.5mm 1.6mm 0; vertical-align: bottom;
+}
+td { border-bottom: 1px solid var(--line); padding: 1.8mm 2.5mm 1.8mm 0; vertical-align: top; }
+td:last-child, th:last-child { padding-right: 0; }
+code {
+  font-family: 'Geist Mono', ui-monospace, monospace; font-size: 8.5pt;
+  background: #f4f4f3; padding: 0 0.3em; border-radius: 2px;
+}
+pre { background: #f4f4f3; padding: 3.5mm; border-radius: 4px; overflow-x: hidden;
+  font-size: 8.5pt; line-height: 1.45; break-inside: avoid; }
+pre code { background: none; padding: 0; font-size: 8.5pt; }
+blockquote {
+  margin: 3mm 0; padding: 0 0 0 4mm; border-left: 2px solid var(--ink);
+  font-family: 'Newsreader', Georgia, serif; font-style: italic; font-size: 11pt;
+}
+hr { border: none; border-top: 1px solid var(--line); margin: 6mm 0; }
+a { color: var(--ink); text-decoration: underline; text-underline-offset: 2px; }
+footer.report {
+  margin-top: 10mm; padding-top: 3mm; border-top: 1px solid var(--line);
+  font-family: 'Geist Mono', ui-monospace, monospace; font-size: 7.5pt;
+  letter-spacing: .1em; text-transform: uppercase; color: var(--muted);
+  display: flex; justify-content: space-between;
+}
+</style>
+</head>
+<body>
+<header class="report">
+  <div class="kicker"><span>Raport analityczny · stack AI / PL</span><span>MJ.OLDAK · 20.10.2026</span></div>
+  <h1>Stack analityczny: compose vs build + scoring jako umiejętność</h1>
+  <p class="standfirst">raport oparty na źródłach z OSNOWA/prompts (2026-06–2026-07) + research trends (2026)</p>
+</header>
+<h2>TL;DR</h2>
+<p>Po pierwsze, priorytet w budowie osobistego stacka analitycznego powinien paść na <strong>SQL i warstwę domenową</strong> (Polska finansów), a nie na automatyzację pipeline'u — framework „compose over build" wygrywa pod względem nakładu utrzymania przy budżecie zero PLN. Po drugie, systemy scoringowe działają najlepiej, gdy zaczynają się od wag teoretycznie-zależnych równych sobie plus veto gates jako hard constraints POZA score'em, ewoluując ku modelom uczenia maszynowego dopiero po zbiorze oznaczonych etykiet — literatura o improper linear models (Dawes) potwierdza, że prostsze modele liniowe regularnie bije złożone przy małych próbach i niskiej jakości danych etykietujących. Po trzecie, istnieją dwie znaczące luki: brak odpalonego Deep Research na rynek PL (brak danych o liczebności ofert, pensjach, wymaganiach konkretnych firm) oraz brak rekomendacji scaffold-level (tylko prompt-y istnieją, bez wyniku DR). Obie luki oznaczają, że wszystkie twierdzenia rekrutacyjne pozostają hipotetyczne do momentu uruchomienia Deep Research.</p>
+<h2>1. Kontekst — czym jest stack i dlaczego pytać o „compose vs build"</h2>
+<p>Stack analityczny to zestaw reużywalnych narzędzi pokrywających fazę przepływu pracy od pozyskania surowych danych do finalnej publikacji wniosków. W wersji roboczej autor definiuje sześć komponentów: data-acquire → data-validate → data-wrangle → data-analyze → insight-synth → analytical-report. Później rozrastą się do jedenaściou warstw z dodaniem data-versioning, source-claim-validate, stat-validate, decision-report, i monitor-and-maintain [prompts/compose-vs-build, 2026-06-13].</p>
+<p>Trzy twarde ograniczenia stanowią filtry selekcji technologicznej:</p>
+<ol>
+<li><strong>Budżet = EUR 0 / PLN 0</strong> — żadne płatne SaaS, subskrypcje, free-trap-y, ani managed backend. Użytkownik ma Claude Max plan i Perplexity — wszystko co zewnętrzne musi być lokalnie hostowalne.</li>
+<li><strong>Brak DevOps</strong> — zero serwerów VPS, zero daemons/cron-to-babysit, zero always-on schedulers. Coś potrzebuje administracji ≥ raz w miesiącu = auto-disqualified.</li>
+<li><strong>Apple Silicon arm64 native</strong> — żaden x86-only tool z Rossetą czy Linux-container-only option.</li>
+</ol>
+<p>Dodatkowy wymiar to <strong>literacy flag</strong>: narzędzie nie może zastępować kompetencji sprawdzanych na rozmowach rekrutacyjnych (SQL by ręki, Power BI/DAX, interpretacja testów statystycznych, pandas reasoning). Black-box tool, który robi EDA za Ciebie, jest dobrym demo ale złym nauczycielem. Glass-box transparency jest wymagane [prompts/compose-vs-build, 2026-06-13].</p>
+<h3>1.1 Cztery pytania badawcze pierwszego promptu</h3>
+<p>Prompt z 13 czerwca 2026 definiuje cztery kluczowe pytania dla Perplexity Deep Research:</p>
+<ol>
+<li><strong>Gaps in the plan/pipeline</strong>: czego brakuje? Co pominięto — wersjonowanie danych, walidacja statystyczna, ryzyko bias/cherry-picking, dokumentacja metodyki, etyka danych?</li>
+<li><strong>Role gap analysis (market)</strong>: jakie twarde skills są expected TODAY (2025–2026) od Data Analyst / BA w finansach PL/EU, których brakuje w profilu? Must-have vs nice-to-have w ofertach pracy.</li>
+<li><strong>Concrete tools to learn</strong>: SQL, Python data stack, wizualizacja/BI, statistyka/econometrii, bazy danych, cloud, domain/regulatory knowledge (KYC/AML, MiFID II, Basel, risk reporting) — priorytetyzowane po roturnie employability.</li>
+<li><strong>Data fact-checking</strong>: frameworki, metody i narzędzia do weryfikacji poprawności danych, oceny wiarygodności zrodel, wykrywania dezinformacji — zwłaszcza secondary data [prompts/compose-vs-build, 2026-06-13].</li>
+</ol>
+<h3>1.2 Dwa przebiegi Promptu Scoring</h3>
+<p>Prompt z 29 lipca został zaprojektowany na dwa przebiegi DR:</p>
+<ul>
+<li><strong>Prompt A (nauka)</strong>: taksonomia metod scoringowych, pełna metodyka budowy, cold-start, walidacja, czytanie wyniku, tryby awarii, aspekty prawne. Sekcje: taxonomy, full pipeline, cold-start, validation, reading scores, failure modes, when-score-is-wrong-tool, legal-ethical-for-persons, canonical-evidence-base.</li>
+<li><strong>Prompt B v2 (implementacja)</strong>: architektura referencyjna, biblioteki Python, LLM roles, hybrid designs, code-testing vs validity-validation, human-in-the-loop feedback, presentation layer, staged plan.</li>
+</ul>
+<p>Oba odpalone, wyniki zapisane w pliku jako output summaries z tuning notes [prompts/scoring, 2026-07-29].</p>
+<h2>2. Stack analityczny rekomendowany — wnioski z promptów</h2>
+<h3>2.1 Framework CLONE / COMPOSE / BUILD-CUSTOM</h3>
+<p>Prompt compose-vs-build wprowadza framework oceny każdej warstwy pipeline'u jako:</p>
+<ul>
+<li><strong>CLONE</strong> — adoptuj gotowy projekt/scaffold (np. cookiecutters, end-to-end templates). Niszczy ryzyko reinwentowania szkicu, ale wymaga ostrożności literacy flag: czy narzędzie zastępuje kompetencję, która powinna być Twoja.</li>
+<li><strong>COMPOSE</strong> — łącz kanoniczne biblioteki przez szablon glue (np. pandera + Great Expectations + statsmodels). Wymaga świadomości jakie łączenie się robi.</li>
+<li><strong>BUILD-CUSTOM</strong> — uzasadnione TYLKO dla różnicownika: (i) warstwa orkiestracji głosowej Claude'a jako cel dydaktyczny, (ii) warstwa domenowa PL-finance (NBP/GUS/GPW connectory, definicje KYC/AML/MiFID II/Basel). Każde BUILD-CUSTOM spoza tego zakresu musi wykazać brak OSS prior-art.</li>
+</ul>
+<p>Priorytet umiejętności (ustalony z góry w prompt): <strong>SQL = #1 must-have</strong>, potem Power BI/DAX, Excel, pandas, statystyki, domain knowledge bankowy. Każdy komponent stacka jest oznaczany <code>BYPASS-RISK</code> jeśli kradnie literaturę rekrutera [prompts/compose-vs-build, 2026].</p>
+<h3>2.2 Scoring — metodaologia potwierdzona z DR</h3>
+<p>Dokument scoring dostarcza solidny rdzeń metodologiczny z czterema zastrzeżeniami:</p>
+<table><thead>
+<tr><th>Aspekt</th><th>Ustalenie</th><th>Źródło</th></tr></thead><tbody>
+<tr><td>Model v1</td><td>theory-driven additive weighted-sum + veto gates POZA score'em</td><td>DR Output A, Dawes literature</td></tr>
+<tr><td>Wagi początkowe</td><td>równe/wariacje expert-elicited — equal weights beats complex (improper linear models)</td><td>Dawes; Siddiqi credit-scoring tradition</td></tr>
+<tr><td>Missing values</td><td>neutralny wkład + flaga, nigdy penalty — WOE-style</td><td>DR Output B</td></tr>
+<tr><td>Cold-start</td><td>Bayesian shrinkage dopiero gdy przybędzie etykiet</td><td>DR Output A + B</td></tr>
+<tr><td>Walidacja</td><td>Monte Carlo sensitivity over weight vectors + Spearman rank-stability</td><td>JRC composite-indicator methodology</td></tr>
+</tbody></table>
+<p>Krytyka DR: progi PSI 0.1/0.25 i IV 0.02/0.1/0.3 to konwencje branżowe bez mocnego uzasadnienia teoretycznego — muszą być flagowane jako <code>[industry convention]</code>, nie <code>[peer-reviewed]</code>. Goodhart's law transfer z credit-scoringu do scoringu ofert jest błędem domenowym (offer market nie ma agent-gaming). Reguła EPV≥10 uznana za uproszczoną przez van Smeden/riley (2019) [prompts/scoring, 2026].</p>
+<h3>2.3 Architektura referencyjna</h3>
+<p>Z promptu B wynika struktura modułowa:</p>
+<pre><code>
+scoring-core/
+├── config.yaml          # indicators, weights, thresholds, vetoes
+├── extractors/          # per-domain feature extraction
+├── scorer.py            # deterministic core (additive weighted sum)
+├── validators/          # MC sensitivity, rank stability
+└── explanations/        # per-item contribution breakdown
+</code></pre>
+<p>Wagi i cutoff'y są versioned configuration data, nie code [prompts/scoring, 2026].</p>
+<h2>3. Luki i ryzyka</h2>
+<h3>3.1 Brak Deep Research na rynek PL (finanse)</h3>
+<p><strong>Brak danych.</strong> Plik „2026-06-13 — PerplexityDeepResearch — stack analityczny + luki roli (finanse).md" nie istnieje na dysku. Jest tylko jego <strong>prompt</strong> (4078 B) z czterema pytaniami badawczymi skierowanymi do Deep Research. Żadna liczba dotycząca rynku PL (liczebność ofert, widełki pensji, wymagania KNF/NBP, stopa zatrudniania junior BA) nie została zebrana.</p>
+<p>Wniosek operacyjny: sekcje dotyczące („co jest expected TODAY na rynku") pozostają hipotetyczne. Należy odpalić DR z treścią tego promptu przed finalizacją jakiejkolwiek tezy rekrutacyjnej.</p>
+<h3>3.2 Brak konkretnych rekomendacji technologicznych</h3>
+<p>Prompt compose-vs-build pyta o <strong>projekty scaffold-level</strong>, nie biblioteki. Odpowiedź z DR nie jest dostarczona na dysku — mamy tylko prompt. Stąd lista „top candidates" dla każdego z 11 komponentów jest pusta. To luka knowledgowa.</p>
+<h3>3.3 Ryzyka metodologiczne istniejące niezależnie od DR</h3>
+<ul>
+<li><strong>Selection bias</strong>: etykiety są obserwowane tylko dla ofert na które Marcin odpowiedział — decydującym czynnikiem jest sam wynik skora. Tryb_missing-not-at-random klasyczny.</li>
+<li><strong>Overfitting na małej próbie</strong>: zalecane są equal weights + Bayesian shrinkage, ale kalibracja concentration parametru w dirichlet Monte Carlo wymaga testu empirycznego.</li>
+<li><strong>Kompetencyjne BYPASS</strong>: adopting black-box tool (np. auto-EDA, no-code dashboard) może dać demo, ale niszczy literacy potrzebne na rozmowach rekrutacyjnych.</li>
+</ul>
+<h2>4. Metodyka — co pochodzi z czego</h2>
+<table><thead>
+<tr><th>Element źródła</th><th>Typ</th><th>Status</th></tr></thead><tbody>
+<tr><td>Draft stacka 6-komponentowego</td><td>Prompt</td><td>✅ Istnieje, użyty jako ramy</td></tr>
+<tr><td>CLONE/COMPOSE/BUILD-CUSTOM framework</td><td>Prompt</td><td>✅ Istnieje, użyty jako ramy</td></tr>
+<tr><td>SQL priorytet #1</td><td>Prompt (postanowienie)</td><td>✅ Istnieje</td></tr>
+<tr><td>Taksonomia metod scoringowych</td><td>Prompt A</td><td>✅ Szczegółowy, gotowy do odpalenia</td></tr>
+<tr><td>Verdykt DR Output A: theory-driven weighted-sum + veto gates</td><td>Prompt output note</td><td>✅ Zapisany w pliku scoring</td></tr>
+<tr><td>Plan 5-etapowej implementacji</td><td>Prompt B output note</td><td>✅ Zapisany w pliku scoring</td></tr>
+<tr><td>Lista bibliotek Python dla each step</td><td>Prompt B output note</td><td>✅ Zapisany w pliku scoring</td></tr>
+<tr><td>Market data PL (oferty, pensje, wymagania)</td><td>BRak DR</td><td>❌ Tylko prompt, bez wyniku</td></tr>
+<tr><td>Specific scaffold recommendations</td><td>Brak DR</td><td>❌ Tylko prompt, bez wyniku</td></tr>
+<tr><td>Research trends 2026: AI agents, local models, inference efficiency</td><td>research-trends.pdf</td><td>✅ Used as supplementary context</td></tr>
+</tbody></table>
+<h2>5. Źródła</h2>
+<ol>
+<li><code>2026-06-13 — Perplexity DeepResearch — compose-vs-build stack v2 (prior-art scan)</code> — prompt do DR, 2026-06-13. OSNOWA/wiedza/prompts/.</li>
+<li><code>2026-07-29 — Perplexity DeepResearch — scoring jako umiejętność (metodyka + implementacja)</code> — prompt z output summary DR + tuning notes, 2026-07-29. OSNOWA/wiedza/prompts/.</li>
+<li><code>What are the latest research trends in technology and computer science in 2026?</code> — survey of 2026 literature on AI agents, small/local/on-device LMs, inference efficiency, embodied AI, post-quantum crypto, privacy/security. Compiled ~2026-10-14. Downloads/.</li>
+<li><code>2026-06-13 — PerplexityDeepResearch — stack analityczny + luki roli (finanse)</code> — Plik promptu. <strong>Nieistniejący na dysku</strong> (No such file). Odniesienie do promptu z 4 pytaniami badawczymi — brak DR output.</li>
+</ol>
+<footer class="report"><span>mjoldak.pl</span><span>źródła — w tekście</span></footer>
+</body>
+</html>

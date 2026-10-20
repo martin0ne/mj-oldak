@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<title>Granice AI w praktyce: prywatność, prawa i zgodność — przegląd literatury</title>
+<style>
+@font-face {
+  font-family: 'Newsreader';
+  font-style: italic;
+  font-weight: 200 800;
+  font-display: swap;
+  src: url(../public/fonts/Newsreader-cY9CfjOCX1hbuyalUrK439vCgYhCBJWxZCPp.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+@font-face {
+  font-family: 'Newsreader';
+  font-style: italic;
+  font-weight: 200 800;
+  font-display: swap;
+  src: url(../public/fonts/Newsreader-cY9CfjOCX1hbuyalUrK439vCgIhCBJWxZCPp.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Newsreader';
+  font-style: italic;
+  font-weight: 200 800;
+  font-display: swap;
+  src: url(../public/fonts/Newsreader-cY9CfjOCX1hbuyalUrK439vCjohCBJWxZA.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Newsreader';
+  font-style: normal;
+  font-weight: 200 800;
+  font-display: swap;
+  src: url(../public/fonts/Newsreader-cY9AfjOCX1hbuyalUrK439HyjIJFJpeBZQ.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+@font-face {
+  font-family: 'Newsreader';
+  font-style: normal;
+  font-weight: 200 800;
+  font-display: swap;
+  src: url(../public/fonts/Newsreader-cY9AfjOCX1hbuyalUrK439DyjIJFJpeBZQ.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Newsreader';
+  font-style: normal;
+  font-weight: 200 800;
+  font-display: swap;
+  src: url(../public/fonts/Newsreader-cY9AfjOCX1hbuyalUrK4397yjIJFJpc.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Geist';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url(../public/fonts/Geist-gyByhwUxId8gMEwRGFWNOITddY4.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+@font-face {
+  font-family: 'Geist';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url(../public/fonts/Geist-gyByhwUxId8gMEwYGFWNOITddY4.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: 'Geist';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url(../public/fonts/Geist-gyByhwUxId8gMEwTGFWNOITddY4.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+@font-face {
+  font-family: 'Geist';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url(../public/fonts/Geist-gyByhwUxId8gMEwSGFWNOITddY4.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Geist';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url(../public/fonts/Geist-gyByhwUxId8gMEwcGFWNOITd.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url(../public/fonts/GeistMono-or3nQ6H-1_WfwkMZI_qYFrodmhHkjkotbA.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url(../public/fonts/GeistMono-or3nQ6H-1_WfwkMZI_qYFrMdmhHkjkotbA.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url(../public/fonts/GeistMono-or3nQ6H-1_WfwkMZI_qYFg08vz7MhEIVVeA.woff2) format('woff2');
+  unicode-range: U+2000-2001, U+2004-2008, U+200A, U+23B8-23BD, U+2500-259F;
+}
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url(../public/fonts/GeistMono-or3nQ6H-1_WfwkMZI_qYFrgdmhHkjkotbA.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url(../public/fonts/GeistMono-or3nQ6H-1_WfwkMZI_qYFrkdmhHkjkotbA.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url(../public/fonts/GeistMono-or3nQ6H-1_WfwkMZI_qYFrcdmhHkjko.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@page { size: A4; margin: 16mm 15mm 18mm; }
+:root { --ink: #111111; --body: #2f3437; --muted: #787774; --line: #eaeaea; }
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  font-family: 'Geist', system-ui, sans-serif;
+  font-size: 10.5pt; line-height: 1.55; color: var(--body);
+  background: #ffffff; -webkit-print-color-adjust: exact;
+}
+header.report { border-bottom: 2px solid var(--ink); padding-bottom: 10mm; margin-bottom: 8mm; }
+.kicker {
+  font-family: 'Geist Mono', ui-monospace, monospace; font-size: 8pt;
+  letter-spacing: .14em; text-transform: uppercase; color: var(--muted);
+  display: flex; justify-content: space-between; margin-bottom: 6mm;
+}
+h1 {
+  font-family: 'Newsreader', Georgia, serif; font-weight: 700;
+  font-size: 25pt; line-height: 1.12; color: var(--ink); margin: 0 0 5mm;
+  letter-spacing: -0.01em;
+}
+.standfirst {
+  font-family: 'Newsreader', Georgia, serif; font-style: italic;
+  font-size: 12pt; line-height: 1.45; color: var(--muted); margin: 0;
+}
+h2 {
+  font-family: 'Newsreader', Georgia, serif; font-weight: 700;
+  font-size: 15pt; color: var(--ink); margin: 8mm 0 2.5mm;
+  border-top: 1px solid var(--ink); padding-top: 3mm;
+  break-after: avoid;
+}
+h3 { font-size: 10.5pt; font-weight: 600; color: var(--ink); margin: 5mm 0 1.5mm; break-after: avoid; }
+p { margin: 0 0 2.6mm; orphans: 3; widows: 3; }
+strong { color: var(--ink); }
+em { color: var(--body); }
+ul, ol { margin: 0 0 3mm; padding-left: 5mm; }
+li { margin-bottom: 1.4mm; }
+table { width: 100%; border-collapse: collapse; margin: 2mm 0 4mm; font-size: 9pt; break-inside: avoid; }
+th {
+  font-family: 'Geist Mono', ui-monospace, monospace; font-size: 7.5pt;
+  text-transform: uppercase; letter-spacing: .08em; text-align: left;
+  color: var(--ink); border-bottom: 1px solid var(--ink);
+  padding: 2mm 2.5mm 1.6mm 0; vertical-align: bottom;
+}
+td { border-bottom: 1px solid var(--line); padding: 1.8mm 2.5mm 1.8mm 0; vertical-align: top; }
+td:last-child, th:last-child { padding-right: 0; }
+code {
+  font-family: 'Geist Mono', ui-monospace, monospace; font-size: 8.5pt;
+  background: #f4f4f3; padding: 0 0.3em; border-radius: 2px;
+}
+pre { background: #f4f4f3; padding: 3.5mm; border-radius: 4px; overflow-x: hidden;
+  font-size: 8.5pt; line-height: 1.45; break-inside: avoid; }
+pre code { background: none; padding: 0; font-size: 8.5pt; }
+blockquote {
+  margin: 3mm 0; padding: 0 0 0 4mm; border-left: 2px solid var(--ink);
+  font-family: 'Newsreader', Georgia, serif; font-style: italic; font-size: 11pt;
+}
+hr { border: none; border-top: 1px solid var(--line); margin: 6mm 0; }
+a { color: var(--ink); text-decoration: underline; text-underline-offset: 2px; }
+footer.report {
+  margin-top: 10mm; padding-top: 3mm; border-top: 1px solid var(--line);
+  font-family: 'Geist Mono', ui-monospace, monospace; font-size: 7.5pt;
+  letter-spacing: .1em; text-transform: uppercase; color: var(--muted);
+  display: flex; justify-content: space-between;
+}
+</style>
+</head>
+<body>
+<header class="report">
+  <div class="kicker"><span>Raport naukowy · granice AI</span><span>MJ.OLDAK · 20.10.2026</span></div>
+  <h1>Granice AI w praktyce: prywatność, prawa i zgodność — przegląd literatury</h1>
+  <p class="standfirst">przegląd syntezy researchu granic AI dla studentów, pracowników i mikroprzedsiębiorców (PL/EU, 2024–2026)</p>
+</header>
+<h2>TL;DR</h2>
+<p>Przegląd podjętych źródeł wskazuje, że ramy prawne dotyczące AI są już operationalne: AI Act wszedł w życie 2024-08-02, stosuje się zasadniczo od 2026-08-02, a obowiązki transparentnościowe z art. 50 działają od tej daty [EU Reg 2024/1689]. RODO applies equally to AI prompts — wrzucanie danych osobowych do publicznego czatu jest przetwarzaniem danych osobowych i wymaga podstawy prawnej, minimalizacji, informacji osobom i umowy DPA [EDPB Opinion 28/2024]. Kwestia autorstwa utworow generowanych przez AI pozostaje niepewna w trybie interpretacyjnym; EUIPO (2025) wskazujesilna zasade ludzkiego wkładu twórczego [EUIPO Report, 2025]. Wykrywarki AI (np. Turnitin) przyznają się do high false-positive rate i nie są dopuszczalne jako jedyna podstawa negatywnej decyzji akademickiej [Turnitin Guides, 2024–2025]. Najbardziej udokumentowane sankcje za AI w 2024–2026 dotyczą prawników w USA za halucynowane cytatów w aktach sądowych; karane grzywnami do $2500 i zawieszeniami zawodowymi [Reuters, 2026].</p>
+<h2>Tezy</h2>
+<h3>Teza 1: AI Act — rozdział obowiązkow na role ma znaczenie operacyjne</h3>
+<p>Rozporządzenie UE 2024/1689 rozróżnia trzy role: dostawca (deweloper modelu/aplikacji), deployer (podmiot wdrażający system AI pod własną kontrolą) i użytkownik końcowy. Dla zwykłej osoby, studenta czy freelancera najistotniejsze są obowiązki transparentnościowe, nie techniczne [EC Digital Strategy, 2026]:</p>
+<ul>
+<li><strong>Chatbot disclosure</strong> (art. 50): osoba rozmawiająca z chatbotem musi wiedzieć, że kontaktuje się z AI, chyba że wynika to wyraźnie z kontekstu. Obowiązuje od 2026-08-02.</li>
+<li><strong>Deepfake disclosure</strong>: publikacja realistycznie wyglądającego deepfake'a wymaga wyraźnego ujawnienia sztucznie wygenerowanego charakteru. Dotyczy materialów o sprawach publicznych.</li>
+<li><strong>Oznaczenie maszynowe</strong>: obowiązek technicznego oznaczania syntetycznych wyników w formie czytelnej maszynowo dotyczy głównie dostawców narzędzi, nie osoby publikującej pojedynczy post. Przejściowy termin dla istniejących systemów: 2 grudnia 2026 r. [CSA Research Note, 2026-07-29]</li>
+</ul>
+<p>Harmonogram przyszłych obowiązków wysokiego ryzyka: wiele systemów z załącznika III (rekrutacja, edukacja, scoring kredytowy) zacznie obowiązywać od 2026-12-02, a systemy będące elementem regulowanych produktów — od 2026-08-02 [EC Regulatory Framework, 2026].</p>
+<h3>Teza 2: Wklejanie danych do publicznego AI = przetwarzanie danych osobowych — RODO nie robi wyjątku dla promptów</h3>
+<p>Europejska Rada Ochrony Danych w opinii 28/2024 potwierdziła, że modele AI nie działają poza ramami standardowych zasad RODO: legalność, rzetelność, przejrzystość, minimalizacja danych, ograniczenie celu i rozliczalność [EDPB Opinion 28/2024, 2024].</p>
+<p>W praktyce dzieli się dane na trzy kategorie:</p>
+<table><thead>
+<tr><th>Kategoria</th><th>Przykłady</th><th>Ryzyko</th></tr></thead><tbody>
+<tr><td>Zielona (bezpieczniejsze)</td><td>Własny szkic bez danych ID; zanonimizowany opis problemu; dane publiczne; syntetyczne/testowe</td><td>Niskie</td></tr>
+<tr><td>Żółta (tylko po sprawdzeniu)</td><td>Fragment umowy usunięty po stronie, tabela sprzedaży po agregacji</td><td>Średnie — wymagana analiza RODO</td></tr>
+<tr><td>Czerwona (nie wklejać)</td><td>Imiona+nazwiska+ocena/wynagrodzenie; PESEL/dokumenty; CV/platcy; dokumentacja medyczna; kod źródłowy/firmy poufne</td><td>Wysokie — naruszenie RODO/art. 33 jeśli wyciek</td></tr>
+</tbody></table>
+<p>„No training" opcja w planie Business/API nie znaczy „brak przetwarzania". Dane mogą być przechowywane przez okres retencji, przetwarzane dla bezpieczeństwa, przez podwykonawców lub w różnych regionach. Trzeba czytać warunki danego produktu [OpenAI Business Data, 2026; Anthropic Privacy, 2026].</p>
+<p>Kara włoskiego Garante wobec OpenAI (15 mln EUR, grudzień 2024) została uchylona przez sąd w Rzymie (marzec 2026) z powodów proceduralno-jurysdykcyjnych. Sprawa pokazuje, że generative AI nie działa poza RODO, ale nie należy jej przedstawiać jako obowiązującej, prawomocnej kary merytorycznej [Reuters, 2026-03-19].</p>
+<h3>Teza 3: Autorstwo AI — pole interpretacji, zasada „ludzki wkład twórczy" dominuje</h3>
+<p>Na poziomie UE nie powstało odrębne proste prawo autorskie „dla dzieł AI". Analizy EUIPO wskazują, że kluczowy pozostaje wymóg ludzkiej twórczości: wybór, układ, redakcja, argumentacja i oryginalne decyzje autora [EUIPO Study on GenAI and Copyright, 2025].</p>
+<p>Czysto automatyczny output może nie być utworem chronionym prawem autorskim. Szansa na ochronę rośnie, gdy człowiek dokonuje istotnych twórczych wyborów: opracowuje koncepcję, selekcjonuje, łączy elementy, redaguje, aranżuje i zmienia wynik [CMS Law EUIPO analysis, 2025].</p>
+<p>Dla polskiego pracownika: art. 12 ustawy o prawie autorskim i prawach pokrewnych — dzieło stworzone w ramach obowiązków zwykle służy pracodawcy po przyjęciu utworu. To nie oznacza, że pracodawca „posiada wszystko, co pracownik kiedykolwiek wygeneruje" — kluczowe: zakres obowiązków, umowa, NDA i czy wynik ma twórczy, ludzki charakter [Gofin/lexlege.art.12, 2025].</p>
+<h3>Teza 4: Detektory AI nie są wiarygodne jako jedyna podstawa oceny uczciwości akademickiej</h3>
+<p>Turnitin sam przyznaje, że jego wskaźnik wykrywania AI może się mylić i nie powinien być jedyną podstawą negatywnej decyzji wobec studenta. Wyniki od 1 do 19 procent są oznaczone gwiazdką, bez konkretnej wartości procentowej, ponieważ ryzyko fałszywych pozytywów jest duże [Turnitin AI Writing Detection Model, 2024–2025].</p>
+<p>Badania polsko-słoweńskie cytowane przez Uniwersytet Warszawski (2025) wykazały, że prowadzący za bardziej skuteczne niż programy detekcyjne uznawali rozmowę ze studentem, obserwację etapów pracy, zadania ustne i kontrolę procesu. Samo oprogramowanie AI-detection stosowała mniejszość badanych, a jego ograniczona skuteczność wyraźnie zaznaczona [UW Serwis Naukowy, 2025].</p>
+<h3>Teza 5: Najbardziej udokumentowane sankcje w 2024–2026 dotyczą prawników za halucynowane cytatów w dokumentach sądowych</h3>
+<table><thead>
+<tr><th>Przypadek</th><th>Rok</th><th>Sankcja</th><th>Lekcja</th></tr></thead><tbody>
+<tr><td>Piąty Okręg Apelacyjny (USA)</td><td>2026</td><td>$2500 grzywna za fikcyjnych cytatów</td><td>Sprawdz każde źródlo pierwotne [Reuters, 2026-02-18]</td></tr>
+<tr><td>Dziewiąty Okręg Apelacyjny (USA)</td><td>2026</td><td>$2500 każdy + 6 mies. zawieszenia</td><td>„To była literówka" nie zastępuje kontroli przed publikacją [Reuters, 2026-06-03]</td></tr>
+<tr><td>Wadsworth v. Walmart</td><td>2025</td><td>Sankcje za 8 fałszywych spraw</td><td>Nawet wewnętrzne/firmowe AI halucynuje [Layer 3 Labs, 2025]</td></tr>
+<tr><td>Coomer v. Lindell</td><td>2025</td><td>Sankcje za halucynowane orzeczenia</td><td>Presja czasu nie zwalnia z obowiązku weryfikacji [Layer 3 Labs, 2025]</td></tr>
+</tbody></table>
+<p>Nie znaleziono wiarygodnie udokumentowanych kar w Polsce w latach 2024–2026 dokładnie za „pracownik wkleił prompt do AI i wyciekły dane". To nie znaczy, że ryzyko nie istnieje — oznacza tylko, że w materiale analizowanym oddziela realne ryzyko operacyjne od nieudokumentowanych historii.</p>
+<h2>Czego NIE wiemy</h2>
+<p><strong>Luka 1: Brak polskich regulaminów AI na uczelniach.</strong> Nie istnieje jedno ogólnopolskie „wolno"/„zakaz AI na studiach". Rzadziej spotykane zasady różnią się między uczelniami, wydziałami i nawet poszczególnymi prowadzącymi [UW/DELAB raport, 2025; Politechnika Poznańska, 2025]. Nie znaleziono podstaw, aby twierdzić, że każda polska uczelnia wymaga identycznej deklaracji AI.</p>
+<p><strong>Luka 2: Skala incydentów w PL firmach.</strong> Brak publicznie dostępnych, opisowanych przypadków wycieku danych przez AI w polskich firmach (poza ewentualnymi doniesieniami medialnymi nie objętymi researchem). Firmy nie raportują takich incydentów ze względów reputacyjnych i prawnych.</p>
+<p><strong>Luka 3: Zgodnosc DPA z RODO w praktyce.</strong> Nie ma empirycznych danych, ile organizacji faktycznie wnioskuje sprawne DPA przy AI, ani ile z nich jest zgodnych z wymaganiami RODO w pełnym zakresie.</p>
+<p><strong>Luka 4: Efektywność detektorów na polskich tekstach.</strong> Turnitin jest testowany na angielskojęzycznych korpusach. Efektywność na corpusach polskich (specyfika językowa, styl akademicki) nie jest szeroko udokumentowana.</p>
+<p><strong>Luka 5: Konkretne konsekwencje prawne dla freelancerów/JDG.</strong> Ramy AI Act i RODO są jasne na poziomie zasady, ale mało precedensów na poziom konkretnego freelancera stosującego ChatGPT/Claude do codziennej pracy biznesowej (marketing, raporty, komunikacja z klientem).</p>
+<h2>Metodyka — SIFT</h2>
+<p>Proces syntezy zalożony na czterech krokach SIFT (Selected Information Framing &amp; Tying):</p>
+<ol>
+<li><strong>Selection</strong>: Zebrane zostały dwa pliki Deep Research z Downloads/: „Granice w praktyce_ prywatność.pdf" (1 029 421 B, 424 linie, źródła pierwotne: akty prawne EU, UODO, EROB, regulaminy uczelni, wyroki, raporty) oraz „What are the latest research trends in technology.pdf" (463 871 B, supplementary context). Dodatkowe fragmenty z promptów OSNOWA wykorzystano wyłącznie do kontekstu metodologicznego.</li>
+</ol>
+<ol>
+<li><strong>Interpretation</strong>: Treść Grandios przeanalizowano jako operationalny przewodnik prawny — nie kanon teoretyczny. Kluczowe rozróżnienie: prawo vs interpretacja vs praktyka rynkowa. Każdy claim jest linkowany do źródła z rokiem.</li>
+</ol>
+<ol>
+<li><strong>Framing</strong>: Raport ułożony w strukturze przeglądu literatury naukowej: tezy z cytowaniami → luka wiedzy → metodyka. Styl mjoldak.pl — bezpośredni, faktograficzny, zero hype frazesów.</li>
+</ol>
+<ol>
+<li><strong>Tying</strong>: Syntetyzowano z kontekstem broader tech trends (local AI, inference efficiency, privacy-preserving systems — z PDF trends, 2026), aby osadzić problemy prawne w szerszym kierunku rozwojowym technologii: prace nad small/local/on-device models i privacy-preserving ML directly address data minimization challenges at the infrastructure level [IEEE Survey, 2026; Frontiers Robot., 2026].</li>
+</ol>
+<h2>Źródła pełne</h2>
+<ol>
+<li><strong>EU Regulation 2024/1689 (AI Act)</strong> — CELEX:32024R1689. Wejście w życie 2024-08-02, stosowanie zasadnicze 2026-08-02. eur-lex.europa.eu. [2024]</li>
+<li><strong>EC Guidelines on AI transparency obligations</strong> — digital-strategy.ec.europa.eu. [2026]</li>
+<li><strong>CSA Research Note: EU AI Act Article 50 Transparency</strong> — cloudsecurityalliance.org. [2026-07-29]</li>
+<li><strong>EDPB Opinion 28/2024 — Data protection aspects related to AI</strong> — edpb.europa.eu. [2024]</li>
+<li><strong>OpenAI Business Data policies</strong> — openai.com/business-data/. [2026]</li>
+<li><strong>Anthropic Privacy &amp; Data Handling</strong> — privacy.claude.com. [2026]</li>
+<li><strong>Google Workspace Gemini &amp; AI policies</strong> — workspace.google.com/blog/intl/en_za/lp/solutions/ai/. [2024–2025]</li>
+<li><strong>UW DELAB — Generatywna AI na UW: dobre praktyki</strong> — bid.uw.edu.pl/generatywna-ai-na-uw-dobre-praktyki-raport-delab-uw/. [2025]</li>
+<li><strong>Politechnika Poznańska — procedura prac dyplomowych</strong> — creef.put.poznan.pl/procedura. [2025]</li>
+<li><strong>Turnitin AI Writing Detection — model i guidelines</strong> — guides.turnitin.com/hc/en-us/articles/28294949544717-AI-writing-detection-model. [2024–2025]</li>
+<li><strong>UW Serwis Naukowy — nauczyciele academicy vs ChatGPT</strong> — serwisnaukowy.uw.edu.pl/czy-da-sie-wykryc-prace-napisana-przez-ai-nauczyciele-akademicy-vs-chatgpt/. [2025]</li>
+<li><strong>EUIPO — GenAI from a copyright perspective</strong> — euipo.europa.eu/en/publications/genai-from-a-copyright-perspective-2025. [2025]</li>
+<li><strong>EUIPO — Generative AI and copyright (study)</strong> — euipo.europa.eu/en/news/euipo-releases-study-on-generative-artificial-intelligence-and-copyright. [2025]</li>
+<li><strong>CMS Law — EUIPO unpacks copyright risks</strong> — cms.law/en/fra/legal-updates/euipo-unpacks-copyright-risks-in-the-age-of-genai. [2025]</li>
+<li><strong>Polska ustawa o prawie autorskim — art. 12</strong> — przepisy.gofin.pl / lexlege.pb.pl. [2025]</li>
+<li><strong>Reuters — US appeals court sanctions lawyer for AI hallucinations ($2500)</strong> — reuters.com/legal/government/us-appeals-court-orders-lawyer-pay-2500-over-ai-hallucinations-brief. [2026-02-18]</li>
+<li><strong>Reuters — US appeals court sanctions lawyers over AI hallucinations (second case)</strong> — reuters.com/legal/litigation/us-appeals-court-sanctions-lawyers-over-ai-hallucinations-lack-candor-2026-06-03/. [2026-06-03]</li>
+<li><strong>Layer 3 Labs — Lawyers sanctioned for AI hallucinations</strong> — layer3labs.io/guides/lawyers-sanctioned-for-ai-hallucinations. [2025]</li>
+<li><strong>Reuters — Italian court scraps €15M OpenAI fine</strong> — reuters.com/technology/italian-court-scraps-15-million-euro-privacy-watchdog-fine-chatgpt-maker-open-ai-2026-03-19/. [2026-03-19]</li>
+<li><strong>Research Trends 2026 — technology &amp; CS survey</strong> — compiled ~2026-10-14. Source: downloads PDF. Topics: AI agents, small/local models, inference efficiency, embodied AI, post-quantum crypto, privacy-preserving systems.</li>
+<li><strong>IEEE Survey — Small language models 2026</strong> — ieeexplore.ieee.org/document/11434122/. [2026]</li>
+<li><strong>Frontiers in Robotics — generative robot learning 2026</strong> — frontiersin.org/articles/10.3389/frobt.2026.1905499/full. [2026]</li>
+</ol>
+<footer class="report"><span>mjoldak.pl</span><span>źródła — w tekście</span></footer>
+</body>
+</html>
