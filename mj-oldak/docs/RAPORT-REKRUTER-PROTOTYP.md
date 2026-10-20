@@ -54,7 +54,7 @@ status: PROTOTYP v1 — treść 1:1 z CV-baza.md (honesty pass 15.10), bez nowyc
 ## Certyfikat, wykształcenie, języki
 
 - „Wykorzystanie AI w rozwoju firmy" — program Umiejętności Jutra: AI (Google / SGH), 2026.
-- Psychologia w biznesie — Uniwersytet DSW, Wrocław | 2023–2026 — studia I stopnia, w toku, bez dyplomu; praca empiryczna (JD-R, wywiady jakościowe, MAXQDA). Prawo — Uczelnia Łazarskiego 2020–2022. Informatyka — WWSI 2019–2020.
+- Psychologia w biznesie — Uniwersytet DSW, Wrocław | 2023–2026 — studia I stopnia, w toku; praca empiryczna (JD-R, wywiady jakościowe, MAXQDA).
 - Polski — ojczysty; Angielski — B2 (3,7 roku codziennej pracy po angielsku w UPS GBS).
 
 *Źródło treści: CV-baza.md (korekta zatrudnienia UPS 20.10.2026) — zero claimów spoza bazy. Wariant EN i tailoring pod konkretną ofertę = osobna ścieżka.*
