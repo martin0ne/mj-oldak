@@ -2,12 +2,12 @@
 date: 2026-10-20
 type: brochure
 audience: MSP (małe i średnie przedsiębiorstwa, PL)
-status: DRAFT do weta Marcina
+status: DRAFT v2 — refrejm: implementacja + nauka; automatyzacja = efekt uboczny; zero kursu z pudełka
 ---
 
-# Nie zastępuję ludzi. Automatyzuję powtarzalną pracę.
+# Nie zastępuję ludzi. Wdrażam i uczę AI w Twojej firmie.
 
-*AI jako narzędzie w małej i średniej firmie — co warto zautomatyzować, a co zostawić ludziom.*
+*Każda firma ma innych ludzi, więc nie sprzedaję kursu ani gotowca — narzędzia powstają wokół Twojego procesu. Automatyzacja powtarzalnej pracy jest tu efektem ubocznym wyższej produktywności, nie celem samym w sobie.*
 
 ## Dlaczego większość firm jeszcze nie używa AI
 
@@ -22,21 +22,23 @@ To nie jest problem ceny ani dostępu do narzędzi. Dane Eurostatu za 2025 rok p
 
 *Źródło: Eurostat, zbiór isoc_eb_ai, rok referencyjny 2025, pobrany 15.10.2026.*
 
-Największa luka nie jest tam, gdzie najłatwiej ją tłumaczyć brakiem pieniędzy — jest w średnich firmach (50–249 osób: −15,6 pkt proc. wobec UE), czyli u przedsiębiorców, którzy już mają budżet i zespół. Przyczyna nie jest w portfelu. Jest w tym, czy ktokolwiek w firmie zadał sobie pytanie: do czego to moglibyśmy użyć. To jest kwestia wiedzy i decyzji, nie pieniędzy.
+Największa luka nie jest tam, gdzie najłatwiej ją tłumaczyć brakiem pieniędzy — jest w średnich firmach (50–249 osób: −15,6 pkt proc. wobec UE), czyli u przedsiębiorców, którzy już mają budżet i zespół. Przyczyna nie jest w portfelu. Jest w tym, czy ktokolwiek w firmie zadał sobie pytanie: do czego to moglibyśmy użyć — i czy ktoś ten zespół tego nauczył. To jest kwestia wiedzy i decyzji, nie pieniędzy.
 
 ## Co robię
 
-**1. Automatyzuję powtarzalną pracę.**
+Cel nie jest automatyzacja sama w sobie. Jest nim produktywność: mniej czasu na rzeczy powtarzalne, więcej na to, co wymaga Twojego osądu. Automatyzacja jest efektem ubocznym — przychodzi sama, gdy proces i narzędzia są już dobrze ułożone.
 
-Faktury i dokumenty: odczyt danych → przygotowanie wpisu → wyjątki lądują u Ciebie do zatwierdzenia. Maile i zestawienia: przygotowanie szkicu i danych, wysyłka po Twojej akceptacji. Przenoszenie danych między arkuszami i systemami: bez ręcznego przepisywania. Zasada jest prosta: jeśli praca jest przewidywalna i regułowa — nadaje się do automatyzacji. Jeśli wymaga osądu, relacji z klientem lub decyzji — zostaje u ludzi.
+**1. Implementacja narzędzi AI pod Twój proces.**
 
-**2. Buduję narzędzia dopasowane do procesu.**
+Dobór i wdrożenie wokół tego, co firma już robi — po polsku, z uwzględnieniem polskiej specyfiki (KSeF, JPK). Nie wdrażam gotowców z pudełka, których nikt po tygodniu nie otwiera. Człowiek jest w pętli od pierwszego dnia: AI przygotowuje, Ty zatwierdzasz — żadna wiadomość do klienta ani żaden dokument do urzędu nie wychodzi na zewnątrz bez Twojej zgody.
 
-Nie wdrażam gotowców „z pudełka", których nikt po tygodniu nie otwiera. Narzędzie powstaje wokół Twojego procesu, po polsku, z uwzględnieniem polskiej specyfiki (KSeF, JPK). Człowiek zawsze jest w pętli: AI przygotowuje, Ty zatwierdzasz. Żadna wiadomość do klienta ani żaden dokument do urzędu nie wychodzi na zewnątrz bez Twojej zgody — to wbudowane w sposób działania, nie opcja do dokupienia.
+**2. Nauka Twojego zespołu — na Waszych zadaniach, nie na cudzych przykładach.**
 
-**3. Dostarczam raporty, które prowadzą do decyzji.**
+Nie sprzedaję kursu, bo kurs jest ten sam dla wszystkich, a każda firma ma innych ludzi i inne procesy — gotowy pakiet i tak by się nie przydał. Uczę na realnych zadaniach Twojej firmy i na Waszych narzędziach, krok po kroku, w tempie zespołu. Po wdrożeniu zespół umie pracować sam — bez ciągłego wynajmowania mnie.
 
-Liczby z zamówionych źródeł (GUS, Eurostat, Twoje własne dane) z podanym źródłem i rokiem — nie „dashboard dla dashboardu". Wynik: wiadomo, co się opłaca, a co nie.
+**3. Raporty, które prowadzą do decyzji.**
+
+Liczby z zamówionych źródeł (GUS, Eurostat, Twoje własne dane) z podanym źródłem i rokiem — nie dashboard dla dashboardu. Wynik: wiadomo, co się opłaca, a co nie.
 
 ## Jak pracuję — cztery zasady
 
@@ -50,17 +52,18 @@ Liczby z zamówionych źródeł (GUS, Eurostat, Twoje własne dane) z podanym ź
 **Tak, jeśli:**
 - powtarzalna praca zabiera godziny co tydzień (wpisy, zestawienia, powtarzalna korespondencja);
 - firma rośnie ilością zadań, a nie ilością ludzi w zespole;
+- zespół chce sam umieć pracować z AI, a nie mieć to zlecone raz na zawsze;
 - już próbowałeś gotowych narzędzi i się nie przyjęły.
 
 **Nie, jeśli:**
+- szukasz gotowego kursu lub szkolenia grupowego — uczę indywidualnie na Twoich zadaniach; pakiet dla wszystkich nie powstanie, bo nie ma takiego, który pasuje do każdej firmy;
 - każda sprawa jest unikalna i wymaga ludzkiego osądu — to zostaje u ludzi;
-- szukasz rozwiązania „wszystko AI od jutra" bez pomiaru i etapów;
 - proces jest w pełni opanowany i nie ma czego poprawiać — nie ma czego sprzedać.
 
 ## Jak zaczynamy
 
-Jeden proces, nie cała firma. Najpierw pomiar: ile czasu zajmuje dziś. Potem automatyzacja w małym zakresie i pomiar po zmianie. Decyzja o rozszerzeniu zapada na faktach, nie na obietnicach — jeśli po pomiarie okaże się, że nie warto ruszać procesu, powiem to wprost.
+Jeden proces, nie cała firma. Najpierw pomiar: ile czasu zajmuje dziś. Potem wdrożenie i nauka w małym zakresie i pomiar po zmianie. Decyzja o rozszerzeniu zapada na faktach, nie na obietnicach — jeśli po pomiarze okaże się, że nie warto ruszać procesu, powiem to wprost. A jeśli warto — zostajesz z zespołem, który umie robić to sam.
 
-**Pierwszy krok: 20 minut rozmowy.** Pokazujesz jeden powtarzalny proces, dostajesz ocenę co się opłaca zautomatyzować, a co zostawić ludziom — z szacunkiem nakładu i kolejności prac. Nawet jeśli odpowiedź brzmi „nie ruszaj tego teraz".
+**Pierwszy krok: 20 minut rozmowy.** Pokazujesz jeden powtarzalny proces, dostajesz ocenę: co wdrożyć, czego nauczyć zespół, a co zostawić ludziom — z szacunkiem nakładu i kolejności prac. Nawet jeśli odpowiedź brzmi „nie ruszaj tego teraz".
 
 Marcin Ołdak · MJ.OLDAK · mjoldak.pl
