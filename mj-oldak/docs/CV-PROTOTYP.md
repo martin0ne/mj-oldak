@@ -72,7 +72,7 @@ github.com/martin0ne.
 
 ## Wykształcenie
 
-- Psychologia w biznesie — Uniwersytet DSW Ideis (dawny DSW), Wrocław | 2023–2026 · studia I stopnia, profil praktyczny — **w toku, bez dyplomu** *(patrz uwaga niżej)* — praca empiryczna: psychologia pracy, framework JD-R, wywiady jakościowe + analiza tematyczna (MAXQDA)
+- Psychologia w biznesie — Uniwersytet DSW Ideis (dawny DSW), Wrocław | 2023–2026 · studia I stopnia, profil praktyczny — **w toku, bez dyplomu** — praca empiryczna: psychologia pracy, framework JD-R, wywiady jakościowe + analiza tematyczna (MAXQDA)
 - Prawo — Uczelnia Łazarskiego, Warszawa | 2020–2022 (fundamenty kierunkowe)
 - Informatyka — Warszawska Wyższa Szkoła Informatyki | 2019–2020 (fundamenty kierunkowe)
 
