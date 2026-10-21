@@ -86,14 +86,14 @@
   --c-ink-dim:   rgba(47,52,55,0.60);/* przygaszony tekst (meta, podpisy) */
 }
 .dark {
-  --c-page:      #0A1626;            /* głęboki navy (ciemniejszy niż Hero #0a0a0a) */
-  --c-ink:       #E6DFD2;            /* ciepły jasny tekst */
-  --c-surface:   #13243D;            /* karta na ciemnym */
-  --c-surface-2: #1A2F4D;            /* mocniejsza powierzchnia ciemna */
+  --c-page:      #0B0B0B;            /* ciemne tło — wariant czarno-biały */
+  --c-ink:       #E8E8E6;            /* jasny tekst */
+  --c-surface:   #1A1A1A;            /* karta na ciemnym */
+  --c-surface-2: #232323;            /* mocniejsza powierzchnia ciemna */
   --c-line:      rgba(242,242,241,0.14);
-  --c-ink-dim:   rgba(230,223,210,0.55);
+  --c-ink-dim: rgba(232,232,230,0.55);
 }
-.dark html, html.dark { background-color: #0A1626; }
+.dark html, html.dark { background-color: #0B0B0B; }
 .dark ::selection { background: rgba(17,17,17,0.35); }
 @media (prefers-reduced-motion: reduce) {
   * { scroll-behavior: auto !important; }

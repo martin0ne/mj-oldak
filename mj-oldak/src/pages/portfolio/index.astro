@@ -4,6 +4,7 @@ import NavbarPersonal from '../../components/personal/NavbarPersonal.jsx';
 import FooterSlim from '../../components/personal/FooterSlim.astro';
 import { artifacts, caseStudies, baArtifacts } from '../../data/portfolio.js';
 import { caseStudies as caseDetails } from '../../data/case-studies.js';
+import ArtefactIcon from '../../components/personal/ArtefactIcon.astro';
 
 // Slugi podstron case studies — mapowanie po numerze (numeracja wspólna z kartami na /portfolio).
 const slugByNum = new Map(caseDetails.map((c) => [c.num, c.slug]));
@@ -91,10 +92,10 @@ const description = 'Portfolio projektów, dem i raportów Marcina Ołdaka. Kod 
       </p>
 
       <div class="flex flex-wrap gap-6 items-center">
-        <a href="/reports/raport-rekruter-prototyp.pdf" target="_blank" rel="noopener" class="inline-block font-mono text-sm uppercase tracking-[0.12em] text-accent hover:underline no-underline border-b border-accent/30 pb-0.5 hover:border-accent transition-colors">
+        <a href="/reports/raport-rekruter-prototyp.pdf" target="_blank" rel="noopener" class="inline-block font-mono text-sm uppercase tracking-[0.12em] text-primary hover:underline no-underline border-b border-primary/30 pb-0.5 hover:border-primary transition-colors">
           CV / one-pager ↓
         </a>
-        <a href="#case" class="inline-block font-mono text-sm uppercase tracking-[0.12em] text-accent hover:underline no-underline border-b border-accent/30 pb-0.5 hover:border-accent transition-colors">
+        <a href="#case" class="inline-block font-mono text-sm uppercase tracking-[0.12em] text-primary hover:underline no-underline border-b border-primary/30 pb-0.5 hover:border-primary transition-colors">
           Case studies ↓
         </a>
         <a href="#dla-kogo" class="inline-block font-mono text-sm uppercase tracking-[0.12em] opacity-60 hover:opacity-100 no-underline transition-opacity">
@@ -131,9 +132,16 @@ const description = 'Portfolio projektów, dem i raportów Marcina Ołdaka. Kod 
           <a
             href={a.url}
             {...(a.target ? { target: a.target, rel: a.rel } : {})}
-            class="group rounded-lg border border-dark/15 bg-white dark:bg-dark/[0.03] p-7 hover:border-accent/40 transition-colors duration-300 block no-underline"
+            class={`group rounded-lg border p-7 transition-colors duration-300 block no-underline h-full flex flex-col ${
+              a.num === '01'
+                ? 'border-dark/25 dark:border-[var(--c-line)] bg-white dark:bg-dark/[0.05] border-l-2 border-l-accent hover:border-accent/50'
+                : 'border-dark/15 bg-white dark:bg-dark/[0.03] hover:border-accent/40'
+            }`}
           >
             <span class="font-mono text-[10px] tracking-[0.2em] opacity-50 mb-4 block">{a.num}</span>
+            <span class="inline-flex items-center justify-center w-14 h-14 mb-5 border border-dark/20 dark:border-[var(--c-line)] text-dark/80 dark:text-[var(--c-ink-dim)] group-hover:text-accent transition-colors">
+              <ArtefactIcon name={a.icon} size={28} />
+            </span>
             <h3 class="font-serif text-lg leading-snug mb-3 group-hover:underline underline-offset-4 decoration-[0.5]">
               {a.title}
             </h3>
@@ -143,7 +151,7 @@ const description = 'Portfolio projektów, dem i raportów Marcina Ołdaka. Kod 
                 {a.metric}
               </p>
             )}
-            <span class="font-mono text-[10px] uppercase tracking-[0.12em] text-accent opacity-60 group-hover:opacity-100 transition-opacity">
+            <span class="font-mono text-[10px] uppercase tracking-[0.12em] text-accent opacity-60 group-hover:opacity-100 transition-opacity mt-auto pt-4">
               {a.source}
             </span>
           </a>
@@ -563,9 +571,17 @@ const description = 'Portfolio projektów, dem i raportów Marcina Ołdaka. Kod 
         Szukasz konkretnego rozwiązania?
       </h2>
 
-      <p class="font-sans text-lg leading-relaxed opacity-75 mb-10 max-w-2xl">
+      <p class="font-sans text-lg leading-relaxed opacity-75 mb-6 max-w-2xl">
         Pisz bezpośrednio. Odpowiadam osobiście, bez pośredników i agencjiowych marż.
+        Wrocław, praca zdalna (Polska / Europa), wariant hybrydowy możliwy. Angielski
+        operacyjny: 4 lata codziennej pracy w UPS GBS z brytyjskim zespołem i klientami.
       </p>
+
+      <div class="flex flex-wrap items-center gap-x-8 gap-y-3 mb-10 font-mono text-xs uppercase tracking-[0.12em] opacity-55">
+        <span>CV / one-pager ↓</span>
+        <span>9 publicznych repo</span>
+        <span>6 case studies z kodem</span>
+      </div>
 
       <div class="flex flex-wrap gap-6 items-center">
         <a href="mailto:biuro@mjoldak.pl" class="font-mono text-sm text-accent hover:underline no-underline border-b border-accent/30 pb-0.5">
@@ -581,6 +597,18 @@ const description = 'Portfolio projektów, dem i raportów Marcina Ołdaka. Kod 
     </div>
   </section>
 
+
+  <!-- Sticky CTA: rekrutacyjny punkt kontaktu (mobile) -->
+  <div class="sticky bottom-0 z-40 md:hidden border-t border-dark/10 dark:border-[var(--c-line)] bg-background/95 dark:bg-[var(--c-page)]/95 backdrop-blur-sm px-6 py-3">
+    <div class="flex items-center justify-between gap-4">
+      <a href="/reports/raport-rekruter-prototyp.pdf" target="_blank" rel="noopener" class="font-mono text-xs uppercase tracking-[0.12em] text-accent hover:underline no-underline">
+        CV / one-pager ↓
+      </a>
+      <a href="mailto:biuro@mjoldak.pl" class="font-mono text-xs uppercase tracking-[0.12em] px-4 py-2 bg-accent text-background hover:opacity-90 transition-opacity no-underline shrink-0">
+        Napisz
+      </a>
+    </div>
+  </div>
   <FooterSlim />
 </BaseLayout>
 

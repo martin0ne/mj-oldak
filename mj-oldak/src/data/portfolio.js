@@ -4,6 +4,7 @@ export const artifacts = [
   {
     num: '01',
     title: 'Agent Mission Control',
+    icon: 'agent',
     desc: 'Samodzielny agent planujący, wołający narzędzia i naprawiający błędy.',
     metric: '3 kroki do odpowiedzi z cytatem plik:linia · 5/5 testów bez klucza API',
     url: '/demy/#agent',
@@ -14,6 +15,7 @@ export const artifacts = [
   {
     num: '02',
     title: 'Pipeline n8n (produkcyjny)',
+    icon: 'flow',
     desc: 'Webhook → Gemini → Parse → Supabase EU. Zielony end-to-end, wystawiony jako tool MCP. Agent tam, gdzie decyzja jest rozkazywana; deterministyczny kod tam, gdzie reguła jest znana.',
     metric: 'Webhook → Gemini → Parse → Supabase EU · wystawiony jako MCP tool',
     url: '/demy/#agent',
@@ -24,6 +26,7 @@ export const artifacts = [
   {
     num: '03',
     title: 'OCR Invoice Reader',
+    icon: 'doc',
     desc: 'PDF lub zdjęcie faktury → ustrukturyzowane dane w JSON.',
     metric: '5–15 s na fakturę · do 20 stron w wielofakturowym PDF',
     url: '/demy/#ocr',
@@ -34,6 +37,7 @@ export const artifacts = [
   {
     num: '04',
     title: 'Email Classifier',
+    icon: 'mail',
     desc: 'Klasyfikacja maili na 4 kategorie + szkice odpowiedzi.',
     metric: '4 kategorie · człowiek zatwierdza, agent nie wysyła',
     url: '/demy/#email',
@@ -44,6 +48,7 @@ export const artifacts = [
   {
     num: '05',
     title: 'Reporting Agent',
+    icon: 'chart',
     desc: 'Eksporty z księgi → raport PDF z KPiR.',
     metric: 'CSV → brandowany PDF zamiast ręcznego zestawienia',
     url: '/demy/#reporting',
@@ -54,6 +59,7 @@ export const artifacts = [
   {
     num: '06',
     title: 'Raport GUS × Eurostat',
+    icon: 'data',
     desc: 'Adopcja AI: Polska vs UE — ręcznie pisany SQL uzgadnia źródła.',
     metric: '5,8 % vs 17,0 % (PL vs UE) — luka 11,2 pp',
     url: '/reports/ai_adoption_report.pdf',
@@ -64,6 +70,7 @@ export const artifacts = [
   {
     num: '07',
     title: '9 Public Repos',
+    icon: 'repo',
     desc: 'Każdy projekt ma kod publicznie — czytaj sam.',
     metric: '9 repo · 3 z 9 to strona, narzędzia i kurs',
     url: 'https://github.com/martin0ne',

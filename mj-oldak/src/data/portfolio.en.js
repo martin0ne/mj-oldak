@@ -10,6 +10,7 @@ export const artifactsEn = [
   {
     num: '01',
     title: 'Agent Mission Control',
+    icon: 'agent',
     desc: 'A standalone agent that plans, calls tools, and recovers from its own errors.',
     metric: '3 steps to an answer with a file:line citation · 5/5 tests without an API key',
     url: '/demy/#agent',
@@ -20,6 +21,7 @@ export const artifactsEn = [
   {
     num: '02',
     title: 'n8n Pipeline (in production)',
+    icon: 'flow',
     desc: 'Webhook → Gemini → Parse → Supabase EU. Green end-to-end and exposed as an MCP tool. An agent where the decision is delegated, deterministic code where the rule is known.',
     metric: 'Webhook → Gemini → Parse → Supabase EU · exposed as an MCP tool',
     url: 'https://github.com/martin0ne/ai-ba-decision-frameworks/blob/main/frameworks/when-to-use-n8n-vs-make-vs-zapier.md',
@@ -30,6 +32,7 @@ export const artifactsEn = [
   {
     num: '03',
     title: 'OCR Invoice Reader',
+    icon: 'doc',
     desc: 'PDF or a photo of an invoice → structured data in JSON.',
     metric: '5–15 s per invoice · multi-invoice PDF up to 20 pages',
     url: '/demy/#ocr',
@@ -40,6 +43,7 @@ export const artifactsEn = [
   {
     num: '04',
     title: 'Email Classifier',
+    icon: 'mail',
     desc: 'Email sorted into 4 categories, plus a drafted reply for each.',
     metric: '4 categories · a human approves, the agent never sends',
     url: '/demy/#email',
@@ -50,6 +54,7 @@ export const artifactsEn = [
   {
     num: '05',
     title: 'Reporting Agent',
+    icon: 'chart',
     desc: 'Ledger exports → PDF report with the VAT summary.',
     metric: 'CSV → branded PDF instead of manual compilation',
     url: '/demy/#reporting',
@@ -60,6 +65,7 @@ export const artifactsEn = [
   {
     num: '06',
     title: 'GUS × Eurostat Report',
+    icon: 'data',
     desc: 'AI adoption: Poland vs the EU — hand-written SQL reconciles both sources.',
     metric: '8.7 % (GUS) vs 8.36 % (Eurostat), firms with 10+ employees, 2025 · Poland 11.59 pp below the EU27',
     url: '/reports/ai_adoption_report.pdf',
@@ -70,6 +76,7 @@ export const artifactsEn = [
   {
     num: '07',
     title: '9 Public Repos',
+    icon: 'repo',
     desc: 'Every project ships public code — read it yourself.',
     metric: '9 repos · 3 of them are the site, the tools and the course',
     url: 'https://github.com/martin0ne',
