@@ -16,6 +16,7 @@ const stackGroups = [
   'Dokument AI & compliance (RODO, człowiek w pętli)',
   'Analiza danych publiczne (GUS, Eurostat, NBP)',
   'R&D i research (BM25 vs embedding, RAG benchmark)',
+  'Warsztaty AI i monitoring adopcji (60 min + follow-up)',
   'Tekst i eseja (redakcja, think-tank)',
 ];
 
@@ -24,7 +25,7 @@ const timeline = [
   {
     period: '2022–2026',
     role: 'UPS GBS · administrator baz danych, dział finansowy (UK)',
-    desc: 'Codzienna praca na danych i dokumentach w środowisku, gdzie automatyzacja była zablokowana — więc każdy skrót robiłem ręcznie i dokumentowałem. ~100 deklaracji celnych dziennie, komunikacja operacyjna po angielsku. Uczta w Excelu i SOP, nie w LLM — to ślad drogowy, nie doświadczenie w AI.',
+    desc: 'Codzienna praca na danych i dokumentach w środowisku, gdzie automatyzacja była zablokowana — więc każdy skrót robiłem ręcznie i dokumentowałem. ~100 deklaracji celnych dziennie, komunikacja operacyjna po angielsku z brytyjskim zespołem i klientami. Uczta w Excelu i SOP, nie w LLM — to ślad drogowy, nie doświadczenie w AI.',
   },
   {
     period: '2023–2026',
@@ -90,6 +91,9 @@ const description = 'Portfolio projektów, dem i raportów Marcina Ołdaka. Kod 
       </p>
 
       <div class="flex flex-wrap gap-6 items-center">
+        <a href="/reports/raport-rekruter-prototyp.pdf" target="_blank" rel="noopener" class="inline-block font-mono text-sm uppercase tracking-[0.12em] text-accent hover:underline no-underline border-b border-accent/30 pb-0.5 hover:border-accent transition-colors">
+          CV / one-pager ↓
+        </a>
         <a href="#case" class="inline-block font-mono text-sm uppercase tracking-[0.12em] text-accent hover:underline no-underline border-b border-accent/30 pb-0.5 hover:border-accent transition-colors">
           Case studies ↓
         </a>
@@ -110,9 +114,15 @@ const description = 'Portfolio projektów, dem i raportów Marcina Ołdaka. Kod 
         <span class="text-sunset">—</span> 01 · Artefakty
       </p>
 
-      <h2 class="font-serif text-3xl md:text-4xl leading-[1.02] tracking-[-0.01em] mb-14">
+      <h2 class="font-serif text-3xl md:text-4xl leading-[1.02] tracking-[-0.01em] mb-6">
         Wybrane prace.
       </h2>
+
+      <p class="font-sans text-lg leading-relaxed opacity-75 mb-14 max-w-2xl">
+        5 aplikacji FastAPI dla małych firm (4 dla biur rachunkowych + pilot Sales Agent B2B),
+        9 publicznych repozytoriów i 6 case studies poniżej. Cztery produkty na poziomie
+        pilot-ready/MVP, jeden w demo — celowo nie nazywam tego produkcyjnym.
+      </p>
 
       <hr class="border-t border-dark/10 dark:border-[var(--c-line)] w-full mb-14" />
 
@@ -516,6 +526,20 @@ const description = 'Portfolio projektów, dem i raportów Marcina Ołdaka. Kod 
               <td class="py-4 font-sans text-sm">Buduję workflow orchestration (n8n, Firecrawl, MCP)</td>
               <td class="py-4">
                 <a href="https://github.com/martin0ne/ai-ba-decision-frameworks" target="_blank" rel="noopener" class="font-mono text-xs text-accent hover:underline no-underline">framework n8n ↗</a>
+              </td>
+              <td class="py-4 font-mono text-xs opacity-60">live</td>
+            </tr>
+            <tr>
+              <td class="py-4 font-sans text-sm">Prowadzę warsztaty AI i mierzę adopcję po wdrożeniu</td>
+              <td class="py-4">
+                <a href="https://github.com/martin0ne/claude-skills/tree/main/skills/ai-workshop" target="_blank" rel="noopener" class="font-mono text-xs text-accent hover:underline no-underline">skill warsztatowy ↗</a>
+              </td>
+              <td class="py-4 font-mono text-xs opacity-60">live</td>
+            </tr>
+            <tr>
+              <td class="py-4 font-sans text-sm">Pracuję po angielsku — 4 lata w UPS GBS (UK)</td>
+              <td class="py-4">
+                <a href="https://github.com/martin0ne" target="_blank" rel="noopener" class="font-mono text-xs text-accent hover:underline no-underline">kod po angielsku ↗</a>
               </td>
               <td class="py-4 font-mono text-xs opacity-60">live</td>
             </tr>
