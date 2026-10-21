@@ -27,6 +27,7 @@ export default function NavbarPersonal() {
         } else {
             setNavLinks([
                 { href: `${prefix}/#work`,       label: 'Projekty' },
+                { href: `${prefix}/portfolio/`,  label: 'Portfolio' },
                 { href: `${prefix}/artykuly/`,   label: 'Teksty' },
                 { href: `${prefix}/pnews/`,      label: 'News' },
                 { href: `${prefix}/#about`,      label: 'O mnie' },

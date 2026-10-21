@@ -1,0 +1,482 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import NavbarPersonal from '../../components/personal/NavbarPersonal.jsx';
+import FooterSlim from '../../components/personal/FooterSlim.astro';
+import { artifacts, caseStudies } from '../../data/portfolio.js';
+
+// Stack kompetencji TOP-7 v1
+const stackGroups = [
+  'Agenci AI & LLMs (Claude, Gemini, Hermes)',
+  'Workflow orchestration (n8n, Firecrawl, MCP)',
+  'Python/FastAPI & data engineering',
+  'Dokument AI & compliance (RODO, człowiek w pętli)',
+  'Analiza danych publiczne (GUS, Eurostat, NBP)',
+  'R&D i research (BM25 vs embedding, RAG benchmark)',
+  'Tekst i eseja (redakcja, think-tank)',
+];
+
+// Timeline — obejście bariery stażu: dowód zamiast lat
+const timeline = [
+  {
+    period: '2022–2026',
+    role: 'UPS GBS · administrator baz danych, dział finansowy (UK)',
+    desc: 'Codzienna praca na danych i dokumentach w środowisku, gdzie automatyzacja była zablokowana — więc każdy skrót robiłem ręcznie i dokumentowałem. ~100 deklaracji celnych dziennie, komunikacja operacyjna po angielsku.',
+  },
+  {
+    period: '2023–2026',
+    role: 'Psychologia w biznesie · Uniwersytet DSW (w toku)',
+    desc: 'Analiza danych do decyzji biznesowych, zarządzanie zmianą i ryzykiem, psychologiczne mechanizmy w organizacji. To fundament mojego podejścia do wdrożeń: człowiek i proces najpierw, narzędzie potem.',
+  },
+  {
+    period: '2025–2026',
+    role: 'Budowanie równolegle do etatu',
+    desc: '9 publicznych repozytoriów na GitHubie — agent-flow, rag-lexical-vs-semantic, docs-qa, claude-skills. Kod publiczny, testy przechodzące bez klucza API, każde twierdzenie z linkiem do działającego artefaktu.',
+  },
+  {
+    period: '05.2026–teraz',
+    role: 'MJ.OLDAK · solo founder & AI consultant',
+    desc: '4 produkty AI dla biur księgowych (OCR faktur, asystent maili, agent terminów, generator raportów) + 6 case studies + 3 raporty analityczne. Od tego momentu AI jest moją pracą zawodową, nie hobby.',
+  },
+];
+
+// Dla kogo — dwa wejścia, jedna strona
+const audiences = [
+  {
+    who: 'Dla rekrutera',
+    lead: 'Szukasz dowodu, nie deklaracji. 60 sekund wystarczą.',
+    points: [
+      ['Agentic AI w czytelnym kodzie', 'agent-flow — ReAct w jednym pliku Pythona, ~340 linii, testy bez klucza API', 'https://github.com/martin0ne/agent-flow'],
+      ['RAG, który da się sprawdzić', 'rag-lexical-vs-semantic — BM25 vs embeddingi, pomiar na realnym korpusie', 'https://github.com/martin0ne/rag-lexical-vs-semantic'],
+      ['Adopcja AI policzona na danych', 'raport GUS × Eurostat — 5,8 % vs 17,0 %, luka 11,2 pp', '/reports/ai_adoption_report.pdf'],
+      ['Działające demo, nie slajd', 'Agent Mission Control — agent planuje, wywołuje narzędzia, wraca po błędzie', 'https://demo.mjoldak.pl'],
+    ],
+  },
+  {
+    who: 'Dla właściciela MŚP',
+    lead: 'Nie sprzedaję kursu. Najpierw wiem, czy warto — potem wdrażam jeden proces.',
+    points: [
+      ['Audyt procesu z werdyktem', 'który use case ma sens, a który tylko wygląda dobrze. Także werdykt „nie wdrażać".', ''],
+      ['Pilotaż jednego procesu', 'jeden wybrany proces zamiast wdrożenia „całej firmy". Często za darmo, jako referencja.', ''],
+      ['Dokumentacja i RODO', 'wizard wdrożeniowy, manual kliencki, retencja danych, audit log — spięte w pakiecie.', ''],
+      ['Koszt startu', 'na subskrypcji ~0 + Azure free tier → grosze; przy API ~6–8 gr/faktura.', ''],
+    ],
+  },
+];
+
+const title = 'Portfolio — co zbudowałem, co działa (MJ.OLDAK)';
+const description = 'Portfolio projektów, dem i raportów Marcina Ołdaka. Kod na GitHubie, dema na żywo, analizy w PDF.';
+---
+
+<BaseLayout title={title} description={description} lang="pl">
+  <NavbarPersonal client:load />
+
+  <!-- Block 01: Hero -->
+  <section id="top" data-nav-theme="dark" class="min-h-[100dvh] bg-dark text-primary flex items-center px-8 md:px-16">
+    <div class="max-w-5xl mx-auto py-24">
+      <p class="font-mono text-xs uppercase tracking-[0.24em] opacity-50 mb-8">
+        PORTFOLIO · DOWODY
+      </p>
+
+      <h1 class="font-serif text-4xl md:text-6xl leading-[1.02] tracking-[-0.01em] mb-8 text-white">
+        Marcin J. Ołdak — co zbudowałem, co działa.
+      </h1>
+
+      <p class="font-sans text-lg md:text-xl leading-relaxed max-w-2xl opacity-75 mb-12">
+        Działam jako solo-przedsiębiorca. Buduję agentów AI, analizy danych i teksty — wszystko na GitHubie, na live demo lub w PDF. Zero słów bez kodu.
+      </p>
+
+      <div class="flex flex-wrap gap-6 items-center">
+        <a href="#case" class="inline-block font-mono text-sm uppercase tracking-[0.12em] text-accent hover:underline no-underline border-b border-accent/30 pb-0.5 hover:border-accent transition-colors">
+          Case studies ↓
+        </a>
+        <a href="#dla-kogo" class="inline-block font-mono text-sm uppercase tracking-[0.12em] opacity-60 hover:opacity-100 no-underline transition-opacity">
+          Dla kogo to jest →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Divider -->
+  <hr class="border-t border-dark/10 dark:border-[var(--c-line)] w-full" />
+
+  <!-- Block 02: Artefakty publiczne — siatka kart -->
+  <section id="artefakty" data-nav-theme="light" class="min-h-screen px-8 md:px-16 py-24 bg-background dark:bg-[var(--c-page)] text-dark dark:text-[var(--c-ink)]">
+    <div class="max-w-5xl mx-auto">
+      <p class="font-mono text-xs uppercase tracking-[0.24em] opacity-50 mb-6">
+        <span class="text-sunset">—</span> 01 · Artefakty
+      </p>
+
+      <h2 class="font-serif text-3xl md:text-4xl leading-[1.02] tracking-[-0.01em] mb-14">
+        Wybrane prace.
+      </h2>
+
+      <hr class="border-t border-dark/10 dark:border-[var(--c-line)] w-full mb-14" />
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {artifacts.map((a) => (
+          <a
+            href={a.url}
+            {...(a.target ? { target: a.target, rel: a.rel } : {})}
+            class="group rounded-lg border border-dark/15 bg-white dark:bg-dark/[0.03] p-7 hover:border-accent/40 transition-colors duration-300 block no-underline"
+          >
+            <span class="font-mono text-[10px] tracking-[0.2em] opacity-50 mb-4 block">{a.num}</span>
+            <h3 class="font-serif text-lg leading-snug mb-3 group-hover:underline underline-offset-4 decoration-[0.5]">
+              {a.title}
+            </h3>
+            <p class="font-sans text-sm opacity-70 leading-relaxed mb-4">{a.desc}</p>
+            {a.metric && (
+              <p class="font-mono text-[11px] opacity-80 leading-relaxed mb-4 border-l-2 border-accent/40 pl-3">
+                {a.metric}
+              </p>
+            )}
+            <span class="font-mono text-[10px] uppercase tracking-[0.12em] text-accent opacity-60 group-hover:opacity-100 transition-opacity">
+              {a.source}
+            </span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Divider -->
+  <hr class="border-t border-dark/10 dark:border-[var(--c-line)] w-full" />
+
+  <!-- Block 03: Case studies — problem → rozwiązanie → efekt -->
+  <section id="case" data-nav-theme="light" class="px-8 md:px-16 py-24 bg-background dark:bg-[var(--c-page)] text-dark dark:text-[var(--c-ink)]">
+    <div class="max-w-5xl mx-auto">
+      <p class="font-mono text-xs uppercase tracking-[0.24em] opacity-50 mb-6">
+        <span class="text-sunset">—</span> 02 · Case studies
+      </p>
+
+      <h2 class="font-serif text-3xl md:text-4xl leading-[1.02] tracking-[-0.01em] mb-6">
+        Problem, rozwiązanie, efekt.
+      </h2>
+
+      <p class="font-sans text-lg leading-relaxed opacity-75 mb-14 max-w-2xl">
+        Sześć projektów opisanych w formacie, jakiego wymaga rozmowa rekrutacyjna: jaki ból, co zbudowałem, jaki efekt — z liczbą, nie z przymiotnikiem. Każdy status mówi wprost, co jest gotowe, a co jeszcze nie.
+      </p>
+
+      <hr class="border-t border-dark/10 dark:border-[var(--c-line)] w-full mb-14" />
+
+      <div class="space-y-8">
+        {caseStudies.map((c) => (
+          <article class="rounded-lg border border-dark/10 dark:border-[var(--c-line)] p-7 md:p-9">
+            <div class="grid grid-cols-[48px_1fr] gap-x-5 gap-y-3 mb-5 items-baseline">
+              <span class="font-mono text-[10px] tracking-[0.2em] opacity-50 pt-1">{c.num}</span>
+              <div>
+                <h3 class="font-serif text-xl leading-snug mb-2">{c.title}</h3>
+                <p class="font-sans text-sm opacity-70 leading-relaxed">{c.tagline}</p>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-[48px_1fr] gap-x-5 gap-y-3 mb-5">
+              <span />
+              <p class="font-sans text-sm leading-relaxed opacity-85">{c.desc}</p>
+            </div>
+
+            <div class="grid grid-cols-[48px_1fr] gap-x-5 gap-y-3 mb-5">
+              <span />
+              <p class="font-mono text-[12px] leading-relaxed border-l-2 border-accent/50 pl-3">
+                {c.metric}
+              </p>
+            </div>
+
+            <div class="grid grid-cols-[48px_1fr] gap-x-5 gap-y-3 mb-5">
+              <span />
+              <div class="flex flex-wrap gap-2">
+                {c.keywords.map((k) => (
+                  <span class="font-mono text-[10px] uppercase tracking-[0.1em] px-2 py-1 rounded border border-dark/15 dark:border-[var(--c-line)] opacity-70">
+                    {k}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            <div class="grid grid-cols-[48px_1fr] gap-x-5 gap-y-3 mb-5">
+              <span />
+              <p class="font-sans text-xs opacity-55 leading-relaxed">
+                {c.status}
+              </p>
+            </div>
+
+            <div class="grid grid-cols-[48px_1fr] gap-x-5 gap-y-3">
+              <span />
+              <a
+                href={c.link}
+                {...(c.link.startsWith('http') ? { target: '_blank', rel: 'noopener' } : {})}
+                class="inline-block font-mono text-xs uppercase tracking-[0.12em] text-accent hover:underline no-underline"
+              >
+                {c.linkLabel}
+              </a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Divider -->
+  <hr class="border-t border-dark/10 dark:border-[var(--c-line)] w-full" />
+
+  <!-- Block 04: Timeline — obejście bariery stażu -->
+  <section id="trajektoria" data-nav-theme="light" class="px-8 md:px-16 py-24 bg-background dark:bg-[var(--c-page)] text-dark dark:text-[var(--c-ink)]">
+    <div class="max-w-5xl mx-auto">
+      <p class="font-mono text-xs uppercase tracking-[0.24em] opacity-50 mb-6">
+        <span class="text-sunset">—</span> 03 · Trajektoria
+      </p>
+
+      <h2 class="font-serif text-3xl md:text-4xl leading-[1.02] tracking-[-0.01em] mb-6">
+        AI od 2022. Komercyjnie od 2026.
+      </h2>
+
+      <p class="font-sans text-lg leading-relaxed opacity-75 mb-14 max-w-2xl">
+        Nie mam trzech lat etatu w analityce AI. Mam cztery lata pracy z danymi i dokumentami, dwa lata budowania publicznie, i rok, w którym AI jest moją pracą zawodową. Poniżej pełny przebieg — bez pomijania etapu pracy przy etacie.
+      </p>
+
+      <hr class="border-t border-dark/10 dark:border-[var(--c-line)] w-full mb-14" />
+
+      <div class="space-y-0">
+        {timeline.map((t) => (
+          <div class="grid grid-cols-1 md:grid-cols-[160px_1fr] gap-x-10 gap-y-2 py-7 border-b border-dark/10 dark:border-[var(--c-line)]">
+            <div>
+              <span class="font-mono text-[11px] tracking-[0.16em] uppercase opacity-60">{t.period}</span>
+            </div>
+            <div>
+              <h3 class="font-serif text-lg leading-snug mb-2">{t.role}</h3>
+              <p class="font-sans text-sm leading-relaxed opacity-75 max-w-2xl">{t.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Divider -->
+  <hr class="border-t border-dark/10 dark:border-[var(--c-line)] w-full" />
+
+  <!-- Block 05: Dla kogo -->
+  <section id="dla-kogo" data-nav-theme="light" class="px-8 md:px-16 py-24 bg-background dark:bg-[var(--c-page)] text-dark dark:text-[var(--c-ink)]">
+    <div class="max-w-5xl mx-auto">
+      <p class="font-mono text-xs uppercase tracking-[0.24em] opacity-50 mb-6">
+        <span class="text-sunset">—</span> 04 · Dla kogo
+      </p>
+
+      <h2 class="font-serif text-3xl md:text-4xl leading-[1.02] tracking-[-0.01em] mb-14">
+        Dwa wejścia, jedna strona.
+      </h2>
+
+      <hr class="border-t border-dark/10 dark:border-[var(--c-line)] w-full mb-14" />
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        {audiences.map((a) => (
+          <div class="rounded-lg border border-dark/10 dark:border-[var(--c-line)] p-7 md:p-9">
+            <h3 class="font-serif text-2xl leading-snug mb-3">{a.who}</h3>
+            <p class="font-sans text-sm opacity-70 leading-relaxed mb-7">{a.lead}</p>
+
+            <div class="space-y-5">
+              {a.points.map(([title, desc, link]) => (
+                <div class="border-l-2 border-accent/30 pl-4">
+                  <h4 class="font-sans text-sm font-medium mb-1">{title}</h4>
+                  <p class="font-sans text-sm opacity-65 leading-relaxed mb-1">{desc}</p>
+                  {link && (
+                    <a
+                      href={link}
+                      {...(link.startsWith('http') ? { target: '_blank', rel: 'noopener' } : {})}
+                      class="font-mono text-[11px] uppercase tracking-[0.1em] text-accent hover:underline no-underline"
+                    >
+                      Zobacz ↗
+                    </a>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Divider -->
+  <hr class="border-t border-dark/10 dark:border-[var(--c-line)] w-full" />
+
+  <!-- Block 06: Stack kompetencji TOP-7 -->
+  <section id="stack" data-nav-theme="light" class="px-8 md:px-16 py-24 bg-background dark:bg-[var(--c-page)] text-dark dark:text-[var(--c-ink)]">
+    <div class="max-w-5xl mx-auto">
+      <p class="font-mono text-xs uppercase tracking-[0.24em] opacity-50 mb-6">
+        <span class="text-sunset">—</span> 05 · Stack
+      </p>
+
+      <h2 class="font-serif text-3xl md:text-4xl leading-[1.02] tracking-[-0.01em] mb-14">
+        Narzędzia i metody.
+      </h2>
+
+      <hr class="border-t border-dark/10 dark:border-[var(--c-line)] w-full mb-14" />
+
+      <div class="space-y-0">
+        {stackGroups.map((g, i) => (
+          <div class="grid grid-cols-[36px_1fr] gap-x-4 gap-y-1 items-baseline py-4 border-b border-dark/10 dark:border-[var(--c-line)] last:border-b-0">
+            <span class="font-mono text-[10px] tracking-[0.2em] opacity-50 self-start pt-0.5">{String(i + 1).padStart(2, '0')}</span>
+            <span class="font-sans text-base leading-relaxed">{g}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Divider -->
+  <hr class="border-t border-dark/10 dark:border-[var(--c-line)] w-full" />
+
+  <!-- Block 07: Raporty think-tank -->
+  <section id="raporty" data-nav-theme="light" class="px-8 md:px-16 py-24 bg-background dark:bg-[var(--c-page)] text-dark dark:text-[var(--c-ink)]">
+    <div class="max-w-5xl mx-auto">
+      <p class="font-mono text-xs uppercase tracking-[0.24em] opacity-50 mb-6">
+        <span class="text-sunset">—</span> 06 · Publikacje
+      </p>
+
+      <h2 class="font-serif text-3xl md:text-4xl leading-[1.02] tracking-[-0.01em] mb-14">
+        Raporty i analizy.
+      </h2>
+
+      <hr class="border-t border-dark/10 dark:border-[var(--c-line)] w-full mb-14" />
+
+      <div class="space-y-4">
+        <div class="flex items-center justify-between p-5 rounded-lg border border-dark/10 bg-dark/[0.015]">
+          <div>
+            <h3 class="font-serif text-base mb-1">Raport GUS × Eurostat: Adopcja AI w Polsce vs UE</h3>
+            <p class="font-sans text-sm opacity-60">Ręcznie pisany SQL uzgadnia wskaźnik między polskimi i unijnymi źródłami oficjalnymi.</p>
+          </div>
+          <a href="/reports/ai_adoption_report.pdf" class="shrink-0 font-mono text-xs uppercase tracking-[0.12em] text-accent hover:underline no-underline ml-4">
+            Pobierz PDF ↓
+          </a>
+        </div>
+
+        <div class="flex items-center justify-between p-5 rounded-lg border border-dark/10 bg-dark/[0.015]">
+          <div>
+            <h3 class="font-serif text-base mb-1">Raport analityczny: stack AI w Polsce</h3>
+            <p class="font-sans text-sm opacity-60">Jak wygląda rzeczywisty ekosystem AI dla MŚP po polskiej stronie.</p>
+          </div>
+          <a href="/reports/raport-analityczny-stack-ai-pl.pdf" class="shrink-0 font-mono text-xs uppercase tracking-[0.12em] text-accent hover:underline no-underline ml-4">
+            Pobierz PDF ↓
+          </a>
+        </div>
+
+        <div class="flex items-center justify-between p-5 rounded-lg border border-dark/10 bg-dark/[0.015]">
+          <div>
+            <h3 class="font-serif text-base mb-1">Broszura MSP: automatyzacja bez zastępowania ludzi</h3>
+            <p class="font-sans text-sm opacity-60">Konkretna lista narzędzi i procedur dla małych firm bez zmiany etatu.</p>
+          </div>
+          <a href="/reports/broszura-msp.pdf" class="shrink-0 font-mono text-xs uppercase tracking-[0.12em] text-accent hover:underline no-underline ml-4">
+            Pobierz PDF ↓
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Divider -->
+  <hr class="border-t border-dark/10 dark:border-[var(--c-line)] w-full" />
+
+  <!-- Block 08: Claim ↔ Code honesty table -->
+  <section id="claim-code" data-nav-theme="light" class="px-8 md:px-16 py-24 bg-background dark:bg-[var(--c-page)] text-dark dark:text-[var(--c-ink)]">
+    <div class="max-w-5xl mx-auto">
+      <p class="font-mono text-xs uppercase tracking-[0.24em] opacity-50 mb-6">
+        <span class="text-sunset">—</span> 07 · Uczciwość
+      </p>
+
+      <h2 class="font-serif text-3xl md:text-4xl leading-[1.02] tracking-[-0.01em] mb-14">
+        Co twierdzę — gdzie udowodnić.
+      </h2>
+
+      <hr class="border-t border-dark/10 dark:border-[var(--c-line)] w-full mb-14" />
+
+      <div class="overflow-x-auto">
+        <table class="w-full text-left">
+          <thead>
+            <tr class="border-b border-dark/15 dark:border-[var(--c-line)]">
+              <th class="py-3 pr-8 font-sans text-xs uppercase tracking-[0.18em] opacity-50 w-[40%]">Co twierdzę</th>
+              <th class="py-3 pr-8 font-sans text-xs uppercase tracking-[0.18em] opacity-50 w-[40%]">Gdzie udowodnić</th>
+              <th class="py-3 font-sans text-xs uppercase tracking-[0.18em] opacity-50 w-[20%]">Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b border-dark/10 dark:border-[var(--c-line)]">
+              <td class="py-4 font-sans text-sm">Piszę agenci AI</td>
+              <td class="py-4">
+                <a href="https://github.com/martin0ne" target="_blank" rel="noopener" class="font-mono text-xs text-accent hover:underline no-underline">github.com/martin0ne ↗</a>
+              </td>
+              <td class="py-4 font-mono text-xs opacity-60">live</td>
+            </tr>
+            <tr class="border-b border-dark/10 dark:border-[var(--c-line)]">
+              <td class="py-4 font-sans text-sm">Znam RAG / BM25 / embeddingi</td>
+              <td class="py-4">
+                <a href="https://github.com/martin0ne/rag-lexical-vs-semantic" target="_blank" rel="noopener" class="font-mono text-xs text-accent hover:underline no-underline">bm25-vs-embedding ↗</a>
+              </td>
+              <td class="py-4 font-mono text-xs opacity-60">live</td>
+            </tr>
+            <tr class="border-b border-dark/10 dark:border-[var(--c-line)]">
+              <td class="py-4 font-sans text-sm">Działam z danymi publicznymi (GUS, Eurostat, NBP)</td>
+              <td class="py-4">
+                <a href="/artykuly/co-dane-mowia-o-adopcji-ai-polska-vs-ue/" class="font-mono text-xs text-accent hover:underline no-underline">artykuł + raport PDF ↓</a>
+              </td>
+              <td class="py-4 font-mono text-xs opacity-60">live</td>
+            </tr>
+            <tr class="border-b border-dark/10 dark:border-[var(--c-line)]">
+              <td class="py-4 font-sans text-sm">Rozumiem RODO / compliance — człowiek w pętli</td>
+              <td class="py-4">
+                <a href="https://demo.mjoldak.pl" target="_blank" rel="noopener" class="font-mono text-xs text-accent hover:underline no-underline">demo.live ↗</a>
+              </td>
+              <td class="py-4 font-mono text-xs opacity-60">live</td>
+            </tr>
+            <tr>
+              <td class="py-4 font-sans text-sm">Buduję workflow orchestration (n8n, Firecrawl, MCP)</td>
+              <td class="py-4">
+                <a href="https://github.com/martin0ne" target="_blank" rel="noopener" class="font-mono text-xs text-accent hover:underline no-underline">kod open-source ↗</a>
+              </td>
+              <td class="py-4 font-mono text-xs opacity-60">live</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Divider -->
+  <hr class="border-t border-dark/10 dark:border-[var(--c-line)] w-full" />
+
+  <!-- Block 09: Kontakt / CTA końcowy -->
+  <section id="kontakt" data-nav-theme="light" class="px-8 md:px-16 py-24 bg-background dark:bg-[var(--c-page)] text-dark dark:text-[var(--c-ink)]">
+    <div class="max-w-5xl mx-auto">
+      <p class="font-mono text-xs uppercase tracking-[0.24em] opacity-50 mb-6">
+        <span class="text-sunset">—</span> 08 · Kontakt
+      </p>
+
+      <h2 class="font-serif text-3xl md:text-4xl leading-[1.02] tracking-[-0.01em] mb-10">
+        Szukasz konkretnego rozwiązania?
+      </h2>
+
+      <p class="font-sans text-lg leading-relaxed opacity-75 mb-10 max-w-2xl">
+        Pisz bezpośrednio. Odpowiadam osobiście, bez pośredników i agencjiowych marż.
+      </p>
+
+      <div class="flex flex-wrap gap-6 items-center">
+        <a href="mailto:biuro@mjoldak.pl" class="font-mono text-sm text-accent hover:underline no-underline border-b border-accent/30 pb-0.5">
+          biuro@mjoldak.pl
+        </a>
+        <a href="https://github.com/martin0ne" target="_blank" rel="noopener" class="font-mono text-sm text-accent hover:underline no-underline">
+          github.com/martin0ne ↗
+        </a>
+        <a href="/" class="font-mono text-xs uppercase tracking-[0.12em] opacity-50 hover:opacity-100 transition-opacity">
+          ← Wróć na stronę główną
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <FooterSlim />
+</BaseLayout>
+
+<style is:global>
+  #portfolio-top::before {
+    content: '';
+  }
+</style>
