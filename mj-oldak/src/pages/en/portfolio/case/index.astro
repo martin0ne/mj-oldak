@@ -1,0 +1,20 @@
+---
+// Route /en/portfolio/case/ without a slug — redirect to /en/portfolio/.
+// The build is static (output: 'static'), so there is no Location header;
+// the redirect is a meta refresh (the Astro convention for 3xx in SSG).
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="refresh" content="0;url=/en/portfolio/" />
+    <meta name="robots" content="noindex" />
+    <link rel="canonical" href="/en/portfolio/" />
+    <title>Redirect to portfolio — MJ.OLDAK</title>
+  </head>
+  <body>
+    <p>Redirect to <a href="/en/portfolio/">portfolio</a>.</p>
+  </body>
+</html>
