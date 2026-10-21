@@ -1,0 +1,20 @@
+---
+// Route /portfolio/case/ bez slugu — przekierowanie na /portfolio/.
+// Build jest statyczny (output: 'static'), więc nie ma nagłówka Location;
+// przekierowanie realizuje meta refresh (konwencja Astro dla 3xx w SSG).
+---
+
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="refresh" content="0;url=/portfolio/" />
+    <meta name="robots" content="noindex" />
+    <link rel="canonical" href="/portfolio/" />
+    <title>Przekierowanie do portfolio — MJ.OLDAK</title>
+  </head>
+  <body>
+    <p>Przekierowanie do <a href="/portfolio/">portfolio</a>.</p>
+  </body>
+</html>

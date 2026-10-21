@@ -40,6 +40,7 @@ const basePth = Astro.url.pathname.replace(/^\/en/, '') || '/';
 // Known cross-paths: [en_path_suffix] -> pl_path_suffix
 const CROSS_MAP = {
   '/en/privacy-policy/': '/polityka-prywatnosci/',
+  '/en/portfolio/': '/portfolio/',
 };
 
 // Cross-language links for hreflang
@@ -182,6 +183,6 @@ const websiteSchema = {
 </head>
 <body class="bg-background dark:bg-[var(--c-page)] text-dark dark:text-[var(--c-ink)] font-sans m-0 p-0 overflow-x-hidden min-h-[100dvh] flex flex-col transition-colors duration-500">
   <slot />
-  <AccessibilityControls client:load />
+  <AccessibilityControls client:load uiLang={lang} />
 </body>
 </html>

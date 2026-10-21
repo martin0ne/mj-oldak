@@ -1,0 +1,241 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import NavbarPersonal from '../../../components/personal/NavbarPersonal.jsx';
+import FooterSlim from '../../../components/personal/FooterSlim.astro';
+import { caseStudies } from '../../../data/case-studies.js';
+
+// Statyczne ścieżki: jeden route generuje 6 podstron case studies.
+// Nowy case = nowy wpis w src/data/case-studies.js — bez zmian w tym pliku.
+export function getStaticPaths() {
+  return caseStudies.map((c) => ({
+    params: { slug: c.slug },
+    props: { caseStudy: c },
+  }));
+}
+
+const { caseStudy: c } = Astro.props;
+
+// Poprzedni / następny case w kolejności numeracji na stronie /portfolio.
+const idx = caseStudies.findIndex((x) => x.slug === c.slug);
+const prev = idx > 0 ? caseStudies[idx - 1] : null;
+const next = idx < caseStudies.length - 1 ? caseStudies[idx + 1] : null;
+
+const title = `${c.title} — case study (MJ.OLDAK)`;
+const description = `${c.tagline}. ${c.metric}. Pełny case study: problem, rozwiązanie, stack, efekt i lekcje.`;
+
+const sections = [
+  { id: 'problem', label: 'Problem', body: c.problem },
+  { id: 'rozwiazanie', label: 'Rozwiązanie', list: c.solution },
+  { id: 'stack', label: 'Stack', list: c.stack },
+  { id: 'efekt', label: 'Efekt', body: c.effect },
+  { id: 'lekcje', label: 'Lekcje', list: c.lessons },
+];
+---
+
+<BaseLayout title={title} description={description} lang="pl" ogType="article" tags={c.keywords}>
+  <NavbarPersonal client:load />
+
+  <!-- Block 01: Nagłówek case'a -->
+  <section id="case-head" data-nav-theme="dark" class="bg-dark text-primary px-8 md:px-16 pt-32 md:pt-40 pb-20">
+    <div class="max-w-5xl mx-auto">
+      <div class="flex flex-wrap items-center gap-x-6 gap-y-2 mb-8">
+        <span class="font-mono text-xs uppercase tracking-[0.24em] opacity-50">
+          CASE {c.num}
+        </span>
+        <a href="/portfolio/#case" class="font-mono text-xs uppercase tracking-[0.12em] opacity-60 hover:opacity-100 no-underline transition-opacity">
+          ← Wszystkie artefakty
+        </a>
+      </div>
+
+      <h1 class="font-serif text-4xl md:text-6xl leading-[1.02] tracking-[-0.01em] mb-6 text-white">
+        {c.title}
+      </h1>
+
+      <p class="font-sans text-lg md:text-xl leading-relaxed max-w-2xl opacity-75 mb-10">
+        {c.tagline}
+      </p>
+
+      <hr class="border-t border-primary/15 w-full mb-10" />
+
+      <div class="grid grid-cols-1 md:grid-cols-[48px_1fr] gap-x-5 gap-y-4 mb-10">
+        <span class="font-mono text-[10px] tracking-[0.2em] opacity-50 pt-1.5">MET</span>
+        <p class="font-mono text-[12px] leading-relaxed border-l-2 border-accent/50 pl-3">
+          {c.metric}
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-[48px_1fr] gap-x-5 gap-y-4 mb-10">
+        <span class="font-mono text-[10px] tracking-[0.2em] opacity-50 pt-1.5">KW</span>
+        <div class="flex flex-wrap gap-2">
+          {c.keywords.map((k) => (
+            <span class="font-mono text-[10px] uppercase tracking-[0.1em] px-2 py-1 border border-primary/20 opacity-70">
+              {k}
+            </span>
+          ))}
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-[48px_1fr] gap-x-5 gap-y-4 mb-6">
+        <span class="font-mono text-[10px] tracking-[0.2em] opacity-50 pt-1.5">LINK</span>
+        <div class="flex flex-wrap gap-x-8 gap-y-3">
+          {c.links.map((l) => (
+            <a
+              href={l.url}
+              {...(l.external ? { target: '_blank', rel: 'noopener' } : {})}
+              class="inline-block font-mono text-xs uppercase tracking-[0.12em] text-accent hover:underline no-underline"
+            >
+              {l.label}
+            </a>
+          ))}
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-[48px_1fr] gap-x-5 gap-y-4">
+        <span class="font-mono text-[10px] tracking-[0.2em] opacity-50 pt-1.5">DATA</span>
+        <span class="font-mono text-[11px] opacity-55">
+          zbudowany {c.dates.built} · aktualizacja {c.dates.updated}
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <hr class="border-t border-dark/10 dark:border-[var(--c-line)] w-full" />
+
+  <!-- Block 02: Lead + treść w sekcjach -->
+  <section id="tresc" data-nav-theme="light" class="px-8 md:px-16 py-20 bg-background dark:bg-[var(--c-page)] text-dark dark:text-[var(--c-ink)]">
+    <div class="max-w-5xl mx-auto">
+      <p class="font-serif text-xl md:text-2xl leading-snug tracking-[-0.01em] max-w-3xl mb-16">
+        {c.lead}
+      </p>
+
+      {c.context && (
+        <div class="border-l-2 border-accent/30 pl-5 mb-16">
+          <p class="font-mono text-[10px] uppercase tracking-[0.2em] opacity-50 mb-2">Kontekst</p>
+          <p class="font-sans text-sm leading-relaxed opacity-75">{c.context}</p>
+        </div>
+      )}
+
+      {sections.map((s, i) => (
+        <div class="mb-16">
+          <div class="grid grid-cols-1 md:grid-cols-[48px_1fr] gap-x-5 gap-y-3 mb-5 items-baseline">
+            <span class="font-mono text-[10px] tracking-[0.2em] opacity-50 pt-1.5">
+              {String(i + 1).padStart(2, '0')}
+            </span>
+            <h2 id={s.id} class="font-serif text-2xl md:text-3xl leading-[1.02] tracking-[-0.01em]">
+              {s.label}
+            </h2>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-[48px_1fr] gap-x-5 gap-y-3">
+            <span />
+            {s.list ? (
+              <ul class="space-y-4">
+                {s.list.map((item) => (
+                  <li class="font-sans text-[15px] leading-relaxed opacity-85 flex gap-3">
+                    <span class="font-mono text-[10px] opacity-40 pt-1.5 shrink-0">—</span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p class="font-sans text-[15px] leading-relaxed opacity-85 max-w-2xl">{s.body}</p>
+            )}
+          </div>
+
+          <hr class="border-t border-dark/10 dark:border-[var(--c-line)] w-full mt-12" />
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <hr class="border-t border-dark/10 dark:border-[var(--c-line)] w-full" />
+
+  <!-- Block 03: Status — co gotowe / co jeszcze nie -->
+  <section id="status" data-nav-theme="light" class="px-8 md:px-16 py-20 bg-background dark:bg-[var(--c-page)] text-dark dark:text-[var(--c-ink)]">
+    <div class="max-w-5xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-[48px_1fr] gap-x-5 gap-y-5 items-baseline mb-12">
+        <span class="font-mono text-[10px] tracking-[0.2em] opacity-50 pt-1.5">ST</span>
+        <h2 class="font-serif text-2xl md:text-3xl leading-[1.02] tracking-[-0.01em]">
+          Status — co gotowe, co jeszcze nie
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="border border-dark/10 dark:border-[var(--c-line)] p-7">
+          <p class="font-mono text-[10px] uppercase tracking-[0.2em] opacity-50 mb-6">Gotowe</p>
+          <ul class="space-y-4">
+            {c.statusReady.map((item) => (
+              <li class="font-sans text-sm leading-relaxed opacity-85 flex gap-3">
+                <span class="font-mono text-[10px] opacity-40 pt-1.5 shrink-0">+</span>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div class="border border-dark/10 dark:border-[var(--c-line)] p-7">
+          <p class="font-mono text-[10px] uppercase tracking-[0.2em] opacity-50 mb-6">Jeszcze nie</p>
+          <ul class="space-y-4">
+            {c.statusTodo.map((item) => (
+              <li class="font-sans text-sm leading-relaxed opacity-85 flex gap-3">
+                <span class="font-mono text-[10px] opacity-40 pt-1.5 shrink-0">−</span>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="border-t border-dark/10 dark:border-[var(--c-line)] w-full" />
+
+  <!-- Block 04: Nawigacja między case'ami -->
+  <section id="nawigacja" data-nav-theme="light" class="px-8 md:px-16 py-16 bg-background dark:bg-[var(--c-page)] text-dark dark:text-[var(--c-ink)]">
+    <div class="max-w-5xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+          {prev ? (
+            <a href={`/portfolio/case/${prev.slug}/`} class="group block no-underline">
+              <span class="font-mono text-[10px] uppercase tracking-[0.2em] opacity-50 block mb-2">Poprzedni</span>
+              <span class="font-serif text-xl leading-snug group-hover:underline underline-offset-4 decoration-[0.5] block">
+                {prev.title}
+              </span>
+            </a>
+          ) : (
+            <span class="font-mono text-[10px] uppercase tracking-[0.2em] opacity-30">Poprzedni — brak</span>
+          )}
+        </div>
+
+        <div class="md:text-right">
+          {next ? (
+            <a href={`/portfolio/case/${next.slug}/`} class="group block no-underline">
+              <span class="font-mono text-[10px] uppercase tracking-[0.2em] opacity-50 block mb-2">Następny</span>
+              <span class="font-serif text-xl leading-snug group-hover:underline underline-offset-4 decoration-[0.5] block">
+                {next.title}
+              </span>
+            </a>
+          ) : (
+            <span class="font-mono text-[10px] uppercase tracking-[0.2em] opacity-30">Następny — brak</span>
+          )}
+        </div>
+      </div>
+
+      <hr class="border-t border-dark/10 dark:border-[var(--c-line)] w-full mt-12 mb-8" />
+
+      <div class="flex flex-wrap gap-x-8 gap-y-3">
+        <a href="/portfolio/#case" class="font-mono text-xs uppercase tracking-[0.12em] text-accent hover:underline no-underline">
+          ← Wszystkie artefakty
+        </a>
+        <a href="/portfolio/" class="font-mono text-xs uppercase tracking-[0.12em] opacity-50 hover:opacity-100 transition-opacity no-underline">
+          Portfolio
+        </a>
+        <a href={c.links[0].url} {...(c.links[0].external ? { target: '_blank', rel: 'noopener' } : {})} class="font-mono text-xs uppercase tracking-[0.12em] text-accent hover:underline no-underline">
+          {c.links[0].label}
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <FooterSlim />
+</BaseLayout>

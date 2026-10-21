@@ -23,6 +23,36 @@ function detectLang() {
     return nav.toLowerCase().startsWith('pl') ? 'pl' : 'en';
 }
 
+// Etykiety paska dostępności — EN na trasach /en/*, PL poza nimi.
+// (Trasa, nie preferencja z localStorage: strona EN musi mieć angielskie etykiety.)
+const A11Y_LABELS = {
+    pl: {
+        group: 'Język, motyw i rozmiar tekstu',
+        langGroup: 'Język artykułów',
+        light: 'Włącz tryb jasny',
+        dark: 'Włącz tryb ciemny',
+        lightTitle: 'Tryb jasny',
+        darkTitle: 'Tryb ciemny',
+        smaller: 'Zmniejsz tekst',
+        bigger: 'Powiększ tekst',
+    },
+    en: {
+        group: 'Language, theme and text size',
+        langGroup: 'Article language',
+        light: 'Switch to light mode',
+        dark: 'Switch to dark mode',
+        lightTitle: 'Light mode',
+        darkTitle: 'Dark mode',
+        smaller: 'Decrease text size',
+        bigger: 'Increase text size',
+    },
+};
+
+function isEnRoute() {
+    const p = (typeof window !== 'undefined' && window.location.pathname) || '';
+    return p.startsWith('/en');
+}
+
 // Ustawia docelowe linki „do artykułów" na całej stronie wg języka (data-art-pl / data-art-en).
 function applyArticleLinks(lang) {
     document.querySelectorAll('a[data-art-pl][data-art-en]').forEach((a) => {
@@ -30,12 +60,13 @@ function applyArticleLinks(lang) {
     });
 }
 
-export default function AccessibilityControls() {
+export default function AccessibilityControls({ uiLang = 'pl' }) {
     const [level, setLevel] = useState(0);
     const [dark, setDark] = useState(false);
     const [lang, setLang] = useState('en');
     const [onArticles, setOnArticles] = useState(false);
     const [ready, setReady] = useState(false);
+    const [labels, setLabels] = useState(A11Y_LABELS[uiLang] || A11Y_LABELS.pl);
 
     useEffect(() => {
         const saved = parseInt(localStorage.getItem(KEY_SCALE) || '0', 10);
@@ -46,6 +77,7 @@ export default function AccessibilityControls() {
         applyArticleLinks(l);
         const p = window.location.pathname;
         setOnArticles(p.startsWith('/artykuly') || p.startsWith('/en/articles'));
+        setLabels(A11Y_LABELS[isEnRoute() ? 'en' : 'pl']);
         setReady(true);
     }, []);
 
@@ -94,35 +126,35 @@ export default function AccessibilityControls() {
         <div
             className="fixed bottom-5 right-5 z-[60] flex items-center gap-1 rounded-lg border border-dark/15 dark:border-[var(--c-line)] bg-background/90 dark:bg-[var(--c-surface)] px-2 py-1.5 shadow-[0_8px_24px_rgba(10,10,10,0.18)]"
             role="group"
-            aria-label="Język, motyw i rozmiar tekstu"
+            aria-label={labels.group}
         >
             {/* Język artykułów — tylko na stronach artykułów (strona główna jest wyłącznie EN) */}
             {onArticles && (
                 <>
-                    <div className="flex items-center gap-0.5" role="group" aria-label="Język artykułów">
+                    <div className="flex items-center gap-0.5" role="group" aria-label={labels.langGroup}>
                         <button onClick={() => switchLang('pl')} aria-pressed={lang === 'pl'} className={langBtn(lang === 'pl')}>PL</button>
                         <button onClick={() => switchLang('en')} aria-pressed={lang === 'en'} className={langBtn(lang === 'en')}>EN</button>
                     </div>
-                    <span className="w-px h-5 bg-dark/15 dark:bg-[var(--c-line)] mx-0.5" aria-hidden="true" />
+                    <span className="w-px h-5 bg-dark/15 dark:border-[var(--c-line)] mx-0.5" aria-hidden="true" />
                 </>
             )}
 
             <button
                 onClick={toggleTheme}
-                aria-label={dark ? 'Włącz tryb jasny' : 'Włącz tryb ciemny'}
+                aria-label={dark ? labels.light : labels.dark}
                 aria-pressed={dark}
                 className={iconBtn}
-                title={dark ? 'Tryb jasny' : 'Tryb ciemny'}
+                title={dark ? labels.lightTitle : labels.darkTitle}
             >
                 {dark ? <Sun size={15} strokeWidth={2} /> : <Moon size={15} strokeWidth={2} />}
             </button>
 
-            <span className="w-px h-5 bg-dark/15 dark:bg-[var(--c-line)] mx-0.5" aria-hidden="true" />
+            <span className="w-px h-5 bg-dark/15 dark:border-[var(--c-line)] mx-0.5" aria-hidden="true" />
 
             <button
                 onClick={() => setLevel((l) => Math.max(0, l - 1))}
                 disabled={level === 0}
-                aria-label="Zmniejsz tekst"
+                aria-label={labels.smaller}
                 className={`${iconBtn} font-sans font-bold text-sm`}
             >
                 A<span className="text-[10px]">−</span>
@@ -133,7 +165,7 @@ export default function AccessibilityControls() {
             <button
                 onClick={() => setLevel((l) => Math.min(SCALES.length - 1, l + 1))}
                 disabled={level === SCALES.length - 1}
-                aria-label="Powiększ tekst"
+                aria-label={labels.bigger}
                 className={`${iconBtn} font-sans font-bold text-base`}
             >
                 A<span className="text-xs">+</span>

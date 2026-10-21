@@ -9,6 +9,7 @@ export default function NavbarPersonal() {
     const [isDark, setIsDark] = useState(true);
     const [mobileOpen, setMobileOpen] = useState(false);
     const [navLinks, setNavLinks] = useState([]);
+    const [isEnRoute, setIsEnRoute] = useState(false);
 
     // Detect current language from pathname (works on SSR + hydration).
     // /en/* → English, / → Polish. No globals needed.
@@ -16,10 +17,12 @@ export default function NavbarPersonal() {
         const isEn = typeof location !== 'undefined' && location.pathname.startsWith('/en');
         const lang = isEn ? 'en' : 'pl';
         const prefix = isEn ? '/en' : '';
+        setIsEnRoute(isEn);
 
         if (isEn) {
             setNavLinks([
                 { href: `${prefix}/#work`,       label: 'Projects' },
+                { href: `${prefix}/portfolio/`,  label: 'Portfolio' },
                 { href: `${prefix}/articles/`,   label: 'Texts' },
                 { href: `${prefix}/#about`,      label: 'About' },
                 { href: `${prefix}/#contact`,    label: 'Contact' },
@@ -75,7 +78,7 @@ export default function NavbarPersonal() {
             }`}
         >
             <div className="mx-auto max-w-6xl px-5 md:px-8 h-14 flex items-center justify-between">
-                <a href="/" className="flex items-baseline gap-2.5 no-underline">
+                <a href={isEnRoute ? '/en/' : '/'} className="flex items-baseline gap-2.5 no-underline">
                     <span className="font-serif text-lg leading-none">Marcin J. Ołdak</span>
                     <span className={`hidden sm:inline font-mono text-[10px] uppercase tracking-[0.18em] ${dark ? 'text-primary/50' : 'opacity-50 dark:opacity-60'}`}>
                         MJ.OLDAK
@@ -128,10 +131,11 @@ export default function NavbarPersonal() {
                         </a>
                     ))}
                     <a
-                        href="#contact"
+                        href={isEnRoute ? '/en/#contact' : '/#contact'}
                         className="mt-1 px-4 py-2 rounded-[6px] bg-[#111111] text-[#FBFBFA] no-underline"
                         onClick={() => setMobileOpen(false)}
                     >
+                        {isEnRoute ? 'Contact' : 'Kontakt'}
                     </a>
                 </div>
             </div>

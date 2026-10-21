@@ -2,7 +2,11 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import NavbarPersonal from '../../components/personal/NavbarPersonal.jsx';
 import FooterSlim from '../../components/personal/FooterSlim.astro';
-import { artifacts, caseStudies } from '../../data/portfolio.js';
+import { artifacts, caseStudies, baArtifacts } from '../../data/portfolio.js';
+import { caseStudies as caseDetails } from '../../data/case-studies.js';
+
+// Slugi podstron case studies — mapowanie po numerze (numeracja wspólna z kartami na /portfolio).
+const slugByNum = new Map(caseDetails.map((c) => [c.num, c.slug]));
 
 // Stack kompetencji TOP-7 v1
 const stackGroups = [
@@ -20,7 +24,7 @@ const timeline = [
   {
     period: '2022–2026',
     role: 'UPS GBS · administrator baz danych, dział finansowy (UK)',
-    desc: 'Codzienna praca na danych i dokumentach w środowisku, gdzie automatyzacja była zablokowana — więc każdy skrót robiłem ręcznie i dokumentowałem. ~100 deklaracji celnych dziennie, komunikacja operacyjna po angielsku.',
+    desc: 'Codzienna praca na danych i dokumentach w środowisku, gdzie automatyzacja była zablokowana — więc każdy skrót robiłem ręcznie i dokumentowałem. ~100 deklaracji celnych dziennie, komunikacja operacyjna po angielsku. Uczta w Excelu i SOP, nie w LLM — to ślad drogowy, nie doświadczenie w AI.',
   },
   {
     period: '2023–2026',
@@ -28,9 +32,9 @@ const timeline = [
     desc: 'Analiza danych do decyzji biznesowych, zarządzanie zmianą i ryzykiem, psychologiczne mechanizmy w organizacji. To fundament mojego podejścia do wdrożeń: człowiek i proces najpierw, narzędzie potem.',
   },
   {
-    period: '2025–2026',
+    period: '2026',
     role: 'Budowanie równolegle do etatu',
-    desc: '9 publicznych repozytoriów na GitHubie — agent-flow, rag-lexical-vs-semantic, docs-qa, claude-skills. Kod publiczny, testy przechodzące bez klucza API, każde twierdzenie z linkiem do działającego artefaktu.',
+    desc: '9 publicznych repozytoriów na GitHubie — najstarsze z 1 kwietnia 2026, sześć z dziewięciu powstało w czerwcu — agent-flow, rag-lexical-vs-semantic, docs-qa, claude-skills. Kod publiczny, testy przechodzące bez klucza API, każde twierdzenie z linkiem do działającego artefaktu.',
   },
   {
     period: '05.2026–teraz',
@@ -164,7 +168,14 @@ const description = 'Portfolio projektów, dem i raportów Marcina Ołdaka. Kod 
             <div class="grid grid-cols-[48px_1fr] gap-x-5 gap-y-3 mb-5 items-baseline">
               <span class="font-mono text-[10px] tracking-[0.2em] opacity-50 pt-1">{c.num}</span>
               <div>
-                <h3 class="font-serif text-xl leading-snug mb-2">{c.title}</h3>
+                <h3 class="font-serif text-xl leading-snug mb-2">
+                  <a
+                    href={`/portfolio/case/${slugByNum.get(c.num)}/`}
+                    class="hover:underline underline-offset-4 decoration-[0.5] no-underline"
+                  >
+                    {c.title}
+                  </a>
+                </h3>
                 <p class="font-sans text-sm opacity-70 leading-relaxed">{c.tagline}</p>
               </div>
             </div>
@@ -201,12 +212,76 @@ const description = 'Portfolio projektów, dem i raportów Marcina Ołdaka. Kod 
 
             <div class="grid grid-cols-[48px_1fr] gap-x-5 gap-y-3">
               <span />
+              <div class="flex flex-wrap gap-x-8 gap-y-3">
+                <a
+                  href={`/portfolio/case/${slugByNum.get(c.num)}/`}
+                  class="inline-block font-mono text-xs uppercase tracking-[0.12em] text-accent hover:underline no-underline"
+                >
+                  Pełny case study →
+                </a>
+                <a
+                  href={c.link}
+                  {...(c.link.startsWith('http') ? { target: '_blank', rel: 'noopener' } : {})}
+                  class="inline-block font-mono text-xs uppercase tracking-[0.12em] text-accent hover:underline no-underline"
+                >
+                  {c.linkLabel}
+                </a>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Divider -->
+  <hr class="border-t border-dark/10 dark:border-[var(--c-line)] w-full" />
+
+  <!-- Block 03b: Metodyka analityczna — translacja biznes <-> tech -->
+  <section id="metodyka" data-nav-theme="light" class="px-8 md:px-16 py-24 bg-background dark:bg-[var(--c-page)] text-dark dark:text-[var(--c-ink)]">
+    <div class="max-w-5xl mx-auto">
+      <p class="font-mono text-xs uppercase tracking-[0.24em] opacity-50 mb-6">
+        <span class="text-sunset">—</span> 03 · Metodyka
+      </p>
+
+      <h2 class="font-serif text-3xl md:text-4xl leading-[1.02] tracking-[-0.01em] mb-6">
+        Od opisu procesu do pliku, który da się otworzyć.
+      </h2>
+
+      <p class="font-sans text-lg leading-relaxed opacity-75 mb-14 max-w-2xl">
+        Kod jest efektem końcowym. Poniżej narzędzia, którymi zamieniam zdanie biznesowe w specyfikację: model procesu AS-IS/TO-BE, plik BPMN do bpmn.io, PRD z kryteriami akceptacji, user stories w formacie Given/When/Then i wyliczony próg zwrotu.
+      </p>
+
+      <hr class="border-t border-dark/10 dark:border-[var(--c-line)] w-full mb-14" />
+
+      <div class="space-y-8">
+        {baArtifacts.map((a) => (
+          <article class="rounded-lg border border-dark/10 dark:border-[var(--c-line)] p-7 md:p-9">
+            <div class="grid grid-cols-[48px_1fr] gap-x-5 gap-y-3 mb-5 items-baseline">
+              <span class="font-mono text-[10px] tracking-[0.2em] opacity-50 pt-1">{a.num}</span>
+              <div>
+                <h3 class="font-serif text-xl leading-snug mb-2">{a.title}</h3>
+                <p class="font-sans text-sm opacity-70 leading-relaxed">{a.tagline}</p>
+              </div>
+            </div>
+            <div class="grid grid-cols-[48px_1fr] gap-x-5 gap-y-3 mb-5">
+              <span />
+              <p class="font-sans text-sm leading-relaxed opacity-85">{a.desc}</p>
+            </div>
+            <div class="grid grid-cols-[48px_1fr] gap-x-5 gap-y-3 mb-5">
+              <span />
+              <p class="font-mono text-[12px] leading-relaxed border-l-2 border-accent/50 pl-3">
+                {a.metric}
+              </p>
+            </div>
+            <div class="grid grid-cols-[48px_1fr] gap-x-5 gap-y-3">
+              <span />
               <a
-                href={c.link}
-                {...(c.link.startsWith('http') ? { target: '_blank', rel: 'noopener' } : {})}
+                href={a.link}
+                {...(a.link.startsWith('http') ? { target: '_blank', rel: 'noopener' } : {})}
                 class="inline-block font-mono text-xs uppercase tracking-[0.12em] text-accent hover:underline no-underline"
               >
-                {c.linkLabel}
+                {a.linkLabel}
               </a>
             </div>
           </article>
@@ -218,7 +293,7 @@ const description = 'Portfolio projektów, dem i raportów Marcina Ołdaka. Kod 
   <!-- Divider -->
   <hr class="border-t border-dark/10 dark:border-[var(--c-line)] w-full" />
 
-  <!-- Block 04: Timeline — obejście bariery stażu -->
+  <!-- Block 05: Timeline — obejście bariery stażu -->
   <section id="trajektoria" data-nav-theme="light" class="px-8 md:px-16 py-24 bg-background dark:bg-[var(--c-page)] text-dark dark:text-[var(--c-ink)]">
     <div class="max-w-5xl mx-auto">
       <p class="font-mono text-xs uppercase tracking-[0.24em] opacity-50 mb-6">
@@ -226,11 +301,11 @@ const description = 'Portfolio projektów, dem i raportów Marcina Ołdaka. Kod 
       </p>
 
       <h2 class="font-serif text-3xl md:text-4xl leading-[1.02] tracking-[-0.01em] mb-6">
-        AI od 2022. Komercyjnie od 2026.
+        Automatyzacja od 2022. AI zawodowo od 2026.
       </h2>
 
       <p class="font-sans text-lg leading-relaxed opacity-75 mb-14 max-w-2xl">
-        Nie mam trzech lat etatu w analityce AI. Mam cztery lata pracy z danymi i dokumentami, dwa lata budowania publicznie, i rok, w którym AI jest moją pracą zawodową. Poniżej pełny przebieg — bez pomijania etapu pracy przy etacie.
+        Nie mam trzech lat etatu w analityce AI. Mam cztery lata pracy z danymi i dokumentami, sześć miesięcy budowania publicznie, i rok, w którym AI jest moją pracą zawodową. Poniżej pełny przebieg — bez pomijania etapu pracy przy etacie.
       </p>
 
       <hr class="border-t border-dark/10 dark:border-[var(--c-line)] w-full mb-14" />
@@ -362,6 +437,16 @@ const description = 'Portfolio projektów, dem i raportów Marcina Ołdaka. Kod 
 
         <div class="flex items-center justify-between p-5 rounded-lg border border-dark/10 bg-dark/[0.015]">
           <div>
+            <h3 class="font-serif text-base mb-1">Raport naukowy: granice AI i obowiązki prawne</h3>
+            <p class="font-sans text-sm opacity-60">AI Act, EDPB, wytyczne — gdzie kończy się dopuszczalne użycie modelu w firmie.</p>
+          </div>
+          <a href="/reports/raport-naukowy-granice-ai.pdf" class="shrink-0 font-mono text-xs uppercase tracking-[0.12em] text-accent hover:underline no-underline ml-4">
+            Pobierz PDF ↓
+          </a>
+        </div>
+
+        <div class="flex items-center justify-between p-5 rounded-lg border border-dark/10 bg-dark/[0.015]">
+          <div>
             <h3 class="font-serif text-base mb-1">Broszura MSP: automatyzacja bez zastępowania ludzi</h3>
             <p class="font-sans text-sm opacity-60">Konkretna lista narzędzi i procedur dla małych firm bez zmiany etatu.</p>
           </div>
@@ -423,14 +508,14 @@ const description = 'Portfolio projektów, dem i raportów Marcina Ołdaka. Kod 
             <tr class="border-b border-dark/10 dark:border-[var(--c-line)]">
               <td class="py-4 font-sans text-sm">Rozumiem RODO / compliance — człowiek w pętli</td>
               <td class="py-4">
-                <a href="https://demo.mjoldak.pl" target="_blank" rel="noopener" class="font-mono text-xs text-accent hover:underline no-underline">demo.live ↗</a>
+                <a href="/demy/#agent" class="font-mono text-xs text-accent hover:underline no-underline">demo agentowy ↗</a>
               </td>
               <td class="py-4 font-mono text-xs opacity-60">live</td>
             </tr>
             <tr>
               <td class="py-4 font-sans text-sm">Buduję workflow orchestration (n8n, Firecrawl, MCP)</td>
               <td class="py-4">
-                <a href="https://github.com/martin0ne" target="_blank" rel="noopener" class="font-mono text-xs text-accent hover:underline no-underline">kod open-source ↗</a>
+                <a href="/artykuly/stack-pod-agentow-ai-claude-n8n-azure/" class="font-mono text-xs text-accent hover:underline no-underline">stack n8n ↗</a>
               </td>
               <td class="py-4 font-mono text-xs opacity-60">live</td>
             </tr>
