@@ -124,7 +124,7 @@ export default function AccessibilityControls({ uiLang = 'pl' }) {
 
     return (
         <div
-            className="fixed bottom-24 right-4 md:bottom-5 md:right-5 z-[60] flex items-center gap-1 rounded-lg border border-dark/15 dark:border-[var(--c-line)] bg-background/90 dark:bg-[var(--c-surface)] px-2 py-1.5 shadow-[0_8px_24px_rgba(10,10,10,0.18)]"
+            className="fixed bottom-20 right-4 md:bottom-5 md:right-5 z-[60] flex items-center gap-1 rounded-lg border border-dark/15 dark:border-[var(--c-line)] bg-background/90 dark:bg-[var(--c-surface)] px-2 py-1.5 shadow-[0_8px_24px_rgba(10,10,10,0.18)]"
             role="group"
             aria-label={labels.group}
         >

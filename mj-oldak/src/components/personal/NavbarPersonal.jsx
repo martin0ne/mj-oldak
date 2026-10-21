@@ -2,6 +2,10 @@ import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
+// ScrollTrigger wymaga rejestracji w gsap — bez tego island się wywraca
+// (TypeError: ScrollTrigger.create is not a function) i nawigacja znika.
+gsap.registerPlugin(ScrollTrigger);
+
 // v3 (12.10.2026) — belka z etykietami, nie pigułka z blur.
 // Hairline, sentence case, mono tylko na marce. Zero rounded-3rem / backdrop-blur.
 export default function NavbarPersonal() {
@@ -71,7 +75,7 @@ export default function NavbarPersonal() {
         <nav
             ref={navRef}
             aria-label="Main menu"
-            className={`navbar-enter fixed top-0 left-0 w-full z-50 border-b transition-colors duration-300 ${
+            className={`navbar-enter-full fixed top-0 left-0 w-full z-50 border-b transition-colors duration-300 ${
                 dark
                     ? 'bg-dark/95 border-primary/15 text-primary'
                     : 'bg-background/95 border-[var(--c-line)] text-dark dark:bg-background/95 dark:text-[var(--c-ink)]'

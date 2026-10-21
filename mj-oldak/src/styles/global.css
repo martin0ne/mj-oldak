@@ -114,6 +114,14 @@
   animation: navEnter 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.15s backwards;
 }
 
+/* NavbarPersonal — pełnoszeroki (left-0 w-full), więc bez translate(-50%).
+   Wariant translate z @keyframes navEnter obcina ten navbar do połowy szerokości. */
+@keyframes navEnterFull {
+  from { transform: translate(0, -80px); opacity: 0; }
+  to { transform: translate(0, 0); opacity: 1; }
+}
+.navbar-enter-full { animation: navEnterFull 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.15s backwards; }
+
 /* Protocol step animations */
 @keyframes scan {
   0% { transform: translateY(0); }
@@ -215,7 +223,7 @@ textarea:focus-visible {
   /* ──────────────────────────────────────────────
      CORE PALETTE — Coastal v2.1
      ────────────────────────────────────────────── */
-  --color-background: #FFFFFF;   /* Paper White — main page bg (tonacja czarno-biała) */
+  --color-background: #FBFBFA;   /* Paper White — main page bg (tonacja czarno-biała) */
   --color-primary:    #F2F2F1;   /* Light Grey — surfaces, cards-on-light */
   --color-dark:       #0A0A0A;   /* Ink Black — hero, footer, base text on light */
   --color-accent:     #111111;   /* Near Black — CTA, focus, hairlines */
