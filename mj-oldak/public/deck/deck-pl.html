@@ -1,0 +1,93 @@
+<!doctype html><html lang="pl"><head><meta charset="utf-8">
+<title>Marcin J. Ołdak — prezentacja (deck)</title><style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,'Helvetica Neue',Arial,sans-serif;background:#111;color:#1a2130}
+.s{width:1200px;height:675px;background:#f1ede3;padding:64px;page-break-after:always;position:relative;overflow:hidden}
+.k{color:#7ab8d8;font-size:18px;letter-spacing:6px;font-weight:600;text-transform:uppercase;margin-bottom:28px}
+h1{font-size:76px;font-weight:800;line-height:1.02;letter-spacing:-1px;margin-bottom:24px}
+h2{font-size:52px;font-weight:800;line-height:1.05;margin-bottom:28px}
+p,li{font-size:26px;line-height:1.45}
+ul{margin:12px 0 0 28px}li{margin-bottom:10px}
+.n{position:absolute;right:48px;bottom:36px;font-size:16px;color:#1a2130;opacity:.45;font-family:ui-monospace,Menlo,monospace}
+.big{font-size:64px;font-weight:800;line-height:1.1;margin:10px 0 18px}
+.src{font-size:16px;opacity:.6;margin-top:24px;line-height:1.4}
+.two{display:flex;gap:56px}.two>div{flex:1}
+@media print{body{background:#fff}.s{page-break-after:always}}
+</style></head><body>
+
+<section class="s"><div class="k">MJ.OLDAK — narzędzia, analizy, teksty</div>
+<h1>Marcin J.<br>Ołdak.</h1><p>Tworzę narzędzia AI, analizuję dane i piszę o tym, nad czym pracuję.</p>
+<p class="src">Prezentacja · październik 2026 · mjoldak.pl</p><div class="n">01</div></section>
+
+<section class="s"><div class="k">Problem</div>
+<h2>Firmy toną w hype.<br>Liczb nie znają.</h2>
+<ul><li><b>37%</b> seniorów: technologia „za skomplikowana" (Digital Poland)</li>
+<li><b>48,3%</b> osób45-54 ma podstawowe umiejętności cyfrowe (GUS,2025)</li>
+<li>Rynek krzyczy „rewolucja" — zespoły nie wiedzą, od czego zacząć</li></ul>
+<p class="src">Źródła: Digital Poland Foundation; GUS, Badanie Społecznego Użytkowania ICT,2025.</p><div class="n">02</div></section>
+
+<section class="s"><div class="k">Co robię</div>
+<h2>Trzy rzeczy,<br>nie trzydzieści.</h2>
+<ul><li><b>Agenci i automatyzacja</b> — pętla ReAct nad dokumentami, n8n, integracje</li>
+<li><b>Analiza danych</b> — SQL, publiczne źródła, dashboardy, „detektyw liczb"</li>
+<li><b>Pisanie i uczenie</b> — artykuły ze źródłami, kurs, warsztaty dla zespołów</li></ul><div class="n">03</div></section>
+
+<section class="s"><div class="k">Dowód1 · analiza</div>
+<h2>Polska wdraża szybko.<br>Od zera.</h2>
+<div class="big">−4,79 pp → −11,59 pp</div>
+<p>Luka adopcji AI Polska vs UE27 <b>rośnie</b> (2021-2025), mimo wzrostu2,86% →8,36%.</p>
+<p class="src">GUS (Tab.15, „Wykorzystanie ICT",2025) × Eurostat (isoc_eb_ai, E_AI_TANY).
+SQL (DuckDB): JOIN, reconciliation, funkcje okna. Fact-check:16.06.2026. Kod: github.com/martin0ne/analytics-stack-pl (MIT).</p><div class="n">04</div></section>
+
+<section class="s"><div class="k">Dowód2 · kod</div>
+<h2>Open source,<br>nie slajdy.</h2>
+<ul><li><b>agent-flow</b> — agent ReAct,225 linii,5 testów, mock LLM w CI (MIT)</li>
+<li><b>docs-qa</b> — RAG z cytatami plik:linia,47 testów, walidacja w kodzie (MIT)</li>
+<li><b>rag-lexical-vs-semantic</b> — BM25 vs embeddingi,19 testów, hybryda (MIT)</li></ul>
+<p class="src">Każdy repo = licencja MIT + testy + README. „Klient odtworzy jedną komendą."</p><div class="n">05</div></section>
+
+<section class="s"><div class="k">Dowód3 · słowo</div>
+<h2>Każda liczba<br>ma źródło i rok.</h2>
+<ul><li><b>7 artykułów PL +6 EN</b> — redakcja19.10:0 fraz „marketingowego slopu"</li>
+<li>Metoda3-check: źródło / liczba / logika — opisana, praktykowana</li>
+<li>Nic „z pizdy": fact-check16.06.2026, provenance i sumy SHA-256 w danych</li></ul><div class="n">06</div></section>
+
+<section class="s"><div class="k">Uczę</div>
+<h2>Uczę tak,<br>jak sam się uczyłem.</h2>
+<ul><li><b>Kurs „AI bez strachu"</b> —7 dni ×15 min, czerwona lista3 zakazów,3-check</li>
+<li>Forma: folder + AI prowadzi (demo gotowe), korepetycje1:1 dla40+</li>
+<li>Cel: pierwsze realne zadanie w2 tygodnie — bez IT, bez strachu</li></ul><div class="n">07</div></section>
+
+<section class="s"><div class="k">Jak pracuję</div>
+<h2>AI pracuje.<br>Ja odpowiadam.</h2>
+<ul><li><b>AI-augmented, nie AI-substituted</b> — każdy wiersz SQL musi obronić się audytowi</li>
+<li>Bramka jakości: redakcja + automatyczny gate zanim cokolwiek wyjdzie</li>
+<li>Wolna ręka + transparentność: „czego tu nie ma" ważniejsze niż kolejny wykres</li></ul><div class="n">08</div></section>
+
+<section class="s"><div class="k">Wybór1 · współpraca</div>
+<h2>Audyt adopcji AI<br>dla Twojej firmy.</h2>
+<ul><li><b>2 godziny:</b> Twoje dane lub publiczne → SQL → „tu tracisz, tu zarabiasz, tu anomalia"</li>
+<li>Wynik: raport PDF z liczbami, źródłami i zastrzeżeniami (wzór: analiza GUS×Eurostat)</li>
+<li>Bez prezentacji „dla szuflady" — decyzja w30 sekund</li></ul><div class="n">09</div></section>
+
+<section class="s"><div class="k">Wybór2 · praca</div>
+<h2>Startup AI:<br>adoption, automation, dane.</h2>
+<ul><li>Szukam roli3: społeczne + edukacyjne + projektowe (adoption / enablement / analityka)</li>
+<li>Tryb: hybrydowo Warszawa / Polska / Europa ·13-16k B2B lub UoP</li>
+<li>Nie: deep-ML (PyTorch/MLOps), korpo-analiza „do szuflady"</li></ul><div class="n">10</div></section>
+
+<section class="s"><div class="k">Kontakt</div>
+<h1>Porozmawiajmy.</h1>
+<p><b>biuro@mjoldak.pl</b> · <b>+48453583635</b> · <b>mjoldak.pl</b></p>
+<p class="src">Otwarty na rozmowy o AI i automatyzacji. Kod: github.com/martin0ne · Czytaj: mjoldak.pl/artykuly · mjoldak.pl/blog</p><div class="n">11</div></section>
+
+<section class="s"><div class="k">Źródła (pełna lista)</div>
+<ul style="font-size:22px">
+<li>GUS, Wykorzystanie ICT w przedsiębiorstwach, Tab.15 (2025)</li>
+<li>Eurostat isoc_eb_ai, wskaźnik E_AI_TANY (2021-2025)</li>
+<li>Digital Poland Foundation (2025) · Digital Decade, KE (2030)</li>
+<li>NIK za GUS (2024) · fact-check: FACT_CHECK.md,16.06.2026</li>
+<li>Kod: github.com/martin0ne — agent-flow, docs-qa, rag-lexical-vs-semantic, analytics-stack-pl</li>
+</ul><p class="src">MJ.OLDAK · Warszawa · październik2026 · mjoldak.pl</p><div class="n">12</div></section>
+
+</body></html>
