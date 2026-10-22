@@ -92,6 +92,6 @@ Brak wymogów do dostrojenia (N=0). Zero FAIL.
 
 ## Uwagi techniczne
 
-- Budowa wymagała `git archive` do `/private/tmp/mj-build-clean/` — źródła w `/Users/marcinoldak/Documents/mj-oldak/mj-oldak/` były pod iCloud Drive sync (EDEADLK/EIO -11), uniemożliwiając bezpośredni `npm run build` w repo. Archiwum git bypassuje iCloud.
+- Budowa wymagała `git archive` do `/private/tmp/mj-build-clean/` — źródła w `/Users/marcinoldak/Projects/mj-oldak/mj-oldak/` były pod iCloud Drive sync (EDEADLK/EIO -11), uniemożliwiając bezpośredni `npm run build` w repo. Archiwum git bypassuje iCloud.
 - Patche źródłowe zatwierdzone w `src/pages/portfolio/index.astro` (brak git commit — rodzic commityje).
 - Serwer preview Marcina na port 8090 NIE restartowany (zgodnie z charterem).

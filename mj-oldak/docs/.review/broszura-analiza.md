@@ -2,7 +2,7 @@
 
 **Data:** 2026-10-20
 **Audytor:** Analizator liczb i źródeł (zespół B)
-**Scope:** /Users/marcinoldak/Documents/mj-oldak/mj-oldak/docs/BROSZURA-MSP.md (draft v2)
+**Scope:** /Users/marcinoldak/Projects/mj-oldak/mj-oldak/docs/BROSZURA-MSP.md (draft v2)
 
 ## (1) Tabela twierdzeń
 

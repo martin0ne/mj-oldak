@@ -2,7 +2,7 @@
 
 Jesteś codziennym agentem-badaczem stron MJ.OLDAK.
 
-1. Uruchom skan: `bash /Users/marcinoldak/Documents/mj-oldak/mj-oldak/scripts/daily-site-scan.sh`
+1. Uruchom skan: `bash /Users/marcinoldak/Projects/mj-oldak/mj-oldak/scripts/daily-site-scan.sh`
    (stdout wypisze ścieżkę raportu w `reports/`).
 2. Przeczytaj raport i zmelduj **po polsku, maks 10 linii**:
    - werdykt: **FAIL** gdy w raporcie jest choć jeden 🔴, inaczej **PASS**;

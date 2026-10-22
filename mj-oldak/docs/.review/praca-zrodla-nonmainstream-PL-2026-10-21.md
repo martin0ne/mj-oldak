@@ -168,4 +168,4 @@ Weryfikacja przebiegla automatycznie przez skrypt Python sprawdzajacy kazdy znak
   3. wynagrodzenie 10k+ brutto = wymaga weryfikacji konkretnych ofert (brak transparentnosci boardow)
 - FAIL: none (wszystkie URL-e w tabeli mają potwierdzony stan zywý)
 
-**Artefakt:** `/Users/marcinoldak/Documents/mj-oldak/mj-oldak/docs/.review/praca-zrodla-nonmainstream-PL-2026-10-21.md`
+**Artefakt:** `/Users/marcinoldak/Projects/mj-oldak/mj-oldak/docs/.review/praca-zrodla-nonmainstream-PL-2026-10-21.md`
