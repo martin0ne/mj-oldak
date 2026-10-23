@@ -16,6 +16,7 @@ export const TAGS = [
   'build',
   'analiza',
   'solar',
+  'technika',
 ] as const;
 
 export const CATEGORIES = ['edukacja', 'case-study', 'demo', 'esej'] as const;
