@@ -103,6 +103,24 @@ Dwa rzeczy, w tej kolejności:
 - **Narzędzie nr 5: e-Doręczenia.** Skala jest zmierzona (34 miliony pism, 2 miliony podmiotów, do 2029 cała gospodarka), harmonogram grup podmiotów idzie z ustawy; budowa dopiero po odczytaniu terminów z rejestru.
 - **Pomiar na realnych plikach.** Wszystkie testy szły na fixturach i syntetykach; Kasia słusznie zaznaczyła, że kilkusetwierszowy PDF od realnego klienta to inny test. Jeśli prowadzisz biuro albo firmę i chcesz z tym pomóc: przygotuj zanonimizowany plik JPK albo paczkę faktur, przepuść przez narzędzie i napisz, co zgrzyta. Każdy realny plik, który wróci z uwagami, trafia do testów przed kolejnym wydaniem.
 
+## Wsparcie (i pełna przejrzystość)
+
+Jeśli chcesz postawić Hermesa u siebie i wolisz, żeby ktoś go hostował, działał i aktualizował
+za Ciebie — istnieje usługa FlyHermes Pro: hosted Hermes Agent z dołączonymi kredytami AI,
+Bez serwera i kluczy API; 49 USD/mies. albo 39 USD/mies. rozliczane rocznie ([flyhermes.ai, cennik 2026](https://flyhermes.ai/?via=marcin)).
+Sam Hermes jest darmowy i open source — sam hostowanie kosztuje i wymaga ogarnięcia serwera,
+dlatego taka usługa ma sens dla kogoś, kto nie chce tego robić samemu.
+**Uczciwie: to link partnerski** — jeśli coś kupisz przez niego, dostaję prowizję
+(20% od płatności, [program afiliacyjny FlyHermes, 2026](https://flyhermes.ai/?via=marcin)).
+Nie zmienia to ceny, którą płacisz.
+
+To samo z [Nous Portal](https://portal.nousresearch.com/r/martin0ne) — subskrypcja z dostępem do modeli
+w jednym miejscu (link polecający: 15 USD kredytów dla Ciebie po pierwszej opłacie,
+10 USD dla mnie). Także w pełni oznaczone jako link polecający.
+
+Repozytoria czterech narzędzi są i pozostają neutralne — bez linków afiliacyjnych,
+bez trackingu. Reflinki żyją tylko tutaj, w artykułach.
+
 ## TL;DR
 
 - Cztery darmowe narzędzia (MIT, zero chmury): faktury PDF → rejestr, terminarz płatności, audyt JPK offline, kalibracja monitorów. Kod na GitHubie, łańcuch działa jako całość.
