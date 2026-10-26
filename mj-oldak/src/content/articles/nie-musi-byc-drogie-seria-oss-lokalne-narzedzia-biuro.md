@@ -3,6 +3,8 @@ title: "Nie musi być drogie, trudne ani niebezpieczne: cztery lokalne narzędzi
 slug: "nie-musi-byc-drogie-seria-oss-lokalne-narzedzia-biuro"
 excerpt: "Cztery darmowe narzędzia na licencji MIT: faktury PDF do rejestru, terminarz płatności, audyt JPK, kalibracja monitorów. Wszystko lokalnie, zero chmury. Zanim je pokazałem, przetestowały je persony — i jedno narzędzie złapały na kłamstwie."
 publishedAt: 2026-10-26
+cover: "/articles/covers/nie-musi-byc-drogie-seria-oss-lokalne-narzedzia-biuro.png"
+coverAlt: "Cztery karty narzędzi serii OSS z ocenami person i liczbą testów — MJ.OLDAK"
 author: "Marcin Ołdak"
 category: "edukacja"
 tags: ["build", "automatyzacja", "biuro-rachunkowe", "tutorial", "koszty"]

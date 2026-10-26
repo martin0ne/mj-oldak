@@ -3,6 +3,8 @@ title: "Dwa monitory, jeden kolor — bez kalibratora, z AI w telefonie"
 slug: "dwa-monitory-jeden-kolor-ai-w-telefonie"
 excerpt: "Dwa identyczne Delle różniły się o kilka procent jasności i punktu bieli. Kalibrator? 400–700 zł. Zamiast tego: telefon jako miernik, AI liczy deltę, skrypt podmienia gamma tables macOS. Cały zestaw na GitHubie."
 publishedAt: 2026-10-23
+cover: "/articles/covers/dwa-monitory-jeden-kolor-ai-w-telefonie.png"
+coverAlt: "Dwa panele PRZED i PO — wyrównanie jasności i temperatury dwóch monitorów bez kalibratora — MJ.OLDAK"
 author: "Marcin Ołdak"
 category: "edukacja"
 tags: ["technika", "tutorial", "build"]
