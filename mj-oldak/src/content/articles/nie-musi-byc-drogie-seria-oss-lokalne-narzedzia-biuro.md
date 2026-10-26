@@ -105,21 +105,29 @@ Dwa rzeczy, w tej kolejności:
 
 ## Wsparcie (i pełna przejrzystość)
 
-Jeśli chcesz postawić Hermesa u siebie i wolisz, żeby ktoś go hostował, działał i aktualizował
-za Ciebie — istnieje usługa FlyHermes Pro: hosted Hermes Agent z dołączonymi kredytami AI,
-Bez serwera i kluczy API; 49 USD/mies. albo 39 USD/mies. rozliczane rocznie ([flyhermes.ai, cennik 2026](https://flyhermes.ai/?via=marcin)).
-Sam Hermes jest darmowy i open source — sam hostowanie kosztuje i wymaga ogarnięcia serwera,
-dlatego taka usługa ma sens dla kogoś, kto nie chce tego robić samemu.
-**Uczciwie: to link partnerski** — jeśli coś kupisz przez niego, dostaję prowizję
-(20% od płatności, [program afiliacyjny FlyHermes, 2026](https://flyhermes.ai/?via=marcin)).
-Nie zmienia to ceny, którą płacisz.
+Cel tej serii jest jeden: **na końcu narzędzia są Twoje i Ty je obsługujesz.**
+Kod jest open source, dane zostają na Twoim dysku, nic nie znika, gdy autor przestanie pisać.
+Hermes Agent jest darmowy i open source — poniższe opcje to tylko różne miejsca, gdzie może
+żyć silnik. **Nie musisz mieć żadnej z tych subskrypcji.** Kupujesz tylko wtedy, gdy nie chcesz
+robić kroku samemu — i uczciwie wolisz zapłacić za wygodę.
 
-To samo z [Nous Portal](https://portal.nousresearch.com/r/martin0ne) — subskrypcja z dostępem do modeli
-w jednym miejscu (link polecający: 15 USD kredytów dla Ciebie po pierwszej opłacie,
-10 USD dla mnie). Także w pełni oznaczone jako link polecający.
+| Opcja | Cena | Kto to ogarnia | Dla kogo |
+|---|---|---|---|
+| **Własna maszyna** (Mac, stary laptop, Raspberry Pi) | 0 zł/mies. | Ty, wg darmowego przewodnika instalacji | ktoś, kto chce pełnej lokalności i nie boi się Terminala |
+| **VPS DIY** (np. Hostinger KVM 2: 8,99 USD/mies. na start, potem wyżej przy 24 mies. prepay — [porównanie flyhermes.ai, odczyt 12.10.2026](https://flyhermes.ai/?via=marcin)) | ~9–25 USD/mies. + rachunek za AI | Ty: instalacja, zabezpieczenia, aktualizacje | ktoś, kto chce mieć agenta zawsze online i umie serwery |
+| **Managed one-click** (Hostinger managed Hermes: 5,99 USD/mies. na start; kredyty AI osobno) | ~6–12 USD/mies. + AI | część robi hostingodawca | ktoś w środku: nie chce konfigurować od zera, ale chce tanio |
+| **Hosted z AI w cenie** (FlyHermes Pro: 49 USD/mies. albo 39 USD/mies. rozliczane rocznie, kredyty AI w cenie) | 39–49 USD/mies. | robili za Ciebie | ktoś, kto nie chce widzieć serwera w ogóle — Telegram/WhatsApp działa po minucie |
 
-Repozytoria czterech narzędzi są i pozostają neutralne — bez linków afiliacyjnych,
-bez trackingu. Reflinki żyją tylko tutaj, w artykułach.
+Jeśli wybierzesz FlyHermes Pro, **to link partnerski** — jeśli coś kupisz przez niego,
+dostaję prowizję (20% od płatności, [program afiliacyjny FlyHermes, 2026](https://flyhermes.ai/?via=marcin));
+nie zmienia to Twojej ceny. Przy Nous Portal analogicznie: [link polecający](https://portal.nousresearch.com/r/martin0ne),
+15 USD kredytów dla Ciebie, 10 USD dla mnie. Przy pozostałych opcjach nie mam
+linków partnerskich — celowo podaję je neutralnie, żeby mapa była uczciwa,
+a nie koszykiem afiliacyjnym.
+
+Jeszcze raz, bo to najważniejsze zdanie tej sekcji: **żadna z tych subskrypcji nie jest
+wymagana.** Stopień zero — narzędzia z tej serii na Twoim własnym komputerze, za 0 zł —
+działa bez żadnej z nich. Płacisz za wygodę miejsca, nie za narzędzie.
 
 ## TL;DR
 
