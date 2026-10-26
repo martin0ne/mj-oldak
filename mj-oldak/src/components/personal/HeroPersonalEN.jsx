@@ -95,7 +95,7 @@ export default function HeroPersonalEN() {
                     </h1>
 
                     <p className="hero-reveal text-primary/70 text-base max-w-xl mb-9 leading-relaxed">
-                        I build AI tools, analyse data and write about what I'm working on. Below: three highlighted items, six public repositories, one person to talk to.
+                        I build AI tools, analyse data and write about what I'm working on. Below: three highlighted items, ten public repositories, one person to talk to.
                     </p>
 
                     {/* Status 01/02/03 */}

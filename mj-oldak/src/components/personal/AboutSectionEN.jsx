@@ -60,7 +60,7 @@ export default function AboutSectionEN() {
           <p className="font-sans text-base md:text-lg leading-relaxed opacity-90 mb-8">
             I am Marcin. MJ.OLDAK is my name — not a brand, not a studio, not an agency. I write a book of essays
             (final chapter accepted, in editing), run a GUS × Eurostat study and build AI tools on GitHub —
-            <strong> six public repositories</strong>. I use SQL, LLMs and automation; if a simple open tool gets the job done, I will use it and tell you about it. I work with public data — every source has a name and date. Solutions are model-agnostic, human-in-the-loop, grounded in Polish reality (GDPR, KSeF, JPK). My background is unconventional: business psychology taught me to see the person, not the process; legal education makes human oversight a standard, not an add-on.
+            <strong> ten public repositories</strong>. I use SQL, LLMs and automation; if a simple open tool gets the job done, I will use it and tell you about it. I work with public data — every source has a name and date. Solutions are model-agnostic, human-in-the-loop, grounded in Polish reality (GDPR, KSeF, JPK). My background is unconventional: business psychology taught me to see the person, not the process; legal education makes human oversight a standard, not an add-on.
           </p>
           <p className="font-sans text-base md:text-lg leading-relaxed opacity-90">
             Collaboration is one option — projects in AI, data analysis, automation. I operate independently:

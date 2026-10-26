@@ -62,7 +62,7 @@ export default function AboutSection() {
           <p className="font-sans text-base md:text-lg leading-relaxed opacity-90 mb-8">
             Jestem Marcin. MJ.OLDAK to moje nazwisko — nie marka, nie studio, nie agencja. Piszę tom esejów
             (ostatni rozdział zaakceptowany, w redakcji), prowadzę badanie GUS × Eurostat i buduję narzędzia
-            AI na GitHubie — <strong>6 publicznych repozytoriów</strong>. Używam SQL, LLM-ów i automatyzacji,
+            AI na GitHubie — <strong>10 publicznych repozytoriów</strong>. Używam SQL, LLM-ów i automatyzacji,
             żeby działały razem; jeśli proste otwarte narzędzie ogarnie robotę, użyję go i powiem o tym.
             Pracuję z danymi publicznymi — każde źródło ma nazwę i datę. Buduję rozwiązania model-agnostic,
             z człowiekiem w pętli i z rozumieniem polskich realiów (RODO, KSeF, JPK). Tło jest nietypowe:
