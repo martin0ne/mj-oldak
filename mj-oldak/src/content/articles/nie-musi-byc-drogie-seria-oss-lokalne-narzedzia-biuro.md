@@ -106,6 +106,11 @@ Dwa rzeczy, w tej kolejności:
 ## Wsparcie (i pełna przejrzystość)
 
 Cel tej serii jest jeden: **na końcu narzędzia są Twoje i Ty je obsługujesz.**
+Żadna z wymienionych firm mnie nie sponsoruje i nikt za tę listę nie zapłacił —
+polecam je dlatego, że sprawdziłem je na własnej skórze albo sprawdziłem ich cenniki.
+Jeśli uznasz, że czegoś z tej listy potrzebujesz, możesz użyć mojego linku — wtedy
+dostaję prowizję i nie płacisz ani grosza więcej; jeśli wolisz, po prostu wklej
+adres ręcznie i ominiesz go.
 Kod jest open source, dane zostają na Twoim dysku, nic nie znika, gdy autor przestanie pisać.
 Hermes Agent jest darmowy i open source — poniższe opcje to tylko różne miejsca, gdzie może
 żyć silnik. **Nie musisz mieć żadnej z tych subskrypcji.** Kupujesz tylko wtedy, gdy nie chcesz
