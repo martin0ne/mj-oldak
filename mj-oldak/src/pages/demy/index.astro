@@ -28,7 +28,7 @@ const cases = [
     id: 'email',
     title: 'Pomocnik maili',
     problem: 'Maile od klientów toną księgowych — pilne pisma z urzędu mieszają się ze spamem.',
-    solution: 'Klasyfikacja na 4 kategorie (pilne / zwykłe / spotkanie / spam) + szkic odpowiedzi do każdej; zatwierdza człowiek.',
+    solution: 'Klasyfikacja na 4 kategorie (pilne / zwykłe / spotkanie / spam) + szkik odpowiedzi do każdej; zatwierdza człowiek.',
     effect: 'Skrzynka triażowana automatycznie, odpowiedzi w minutach.',
   },
   {
@@ -37,6 +37,13 @@ const cases = [
     problem: 'Miesięczne raporty klientów to godziny kopiuj-wklej.',
     solution: 'Eksporty z księgi → raport PDF z KPiR-owymi KPI i pisemnym podsumowaniem.',
     effect: 'Minuty zamiast godzin na klienta.',
+  },
+  {
+    id: 'krzyzowka',
+    title: 'Krzyżówka SZALEŃSTWO',
+    problem: 'Interaktywna krzyżówka z 10 haseł — litery na żółtym polu czytane pionowo tworzą słowo.',
+    solution: 'Rozwiązanie: SZALEŃSTWO (pionowo na żółtej kolumnie, ostatnia kolumna MARK_COL = 12).',
+    effect: 'Live na mjoldak.pl · 30 min pracy · materiał roboczy · dowód precyzji.',
   },
 ];
 
@@ -89,7 +96,8 @@ const rows = (c) => [
             {c.id === 'agent' && <AgentDemo client:load />}
             {c.id === 'ocr' && <OcrDemo client:visible />}
             {c.id === 'email' && <EmailDemo client:visible ssr={false} />}
-            {c.id === 'reporting' && <ReportingDemo client:visible />}
+            {p.c.id === 'reporting' && <ReportingDemo client:visible />}
+                      {c.id === 'krzyzowka' && <div class="rounded-lg border border-dark/10 dark:border-[var(--c-line)] bg-dark/[0.015] p-5 mt-8"><h3 class="font-serif text-xl mb-3">Krzyżówka SZALEŃSTWO</h3><p class="font-sans text-sm opacity-80">Interaktywna krzyżówka — rozwiązanie pionowo na żółtej kolumnie. <a href="/demy/krzyzowka-szalenstwo.html" class="underline text-accent hover:text-primary">Rozwiąż</a></div>}
           </div>
         ))}
       </div>

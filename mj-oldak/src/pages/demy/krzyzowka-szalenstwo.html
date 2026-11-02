@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KRZYRZWÓWKA — rozwiązanie: ?</title>
+  <style>
+    :root {
+      --paper: #fbfbfa; --ink: #1c1c1c; --muted: #6b6b6b;
+      --accent: #8a2f2f; --cell: #ffffff; --mark: #f3e6c8;
+    }
+    * { box-sizing: border-box; }
+    body {
+      background: var(--paper); color: var(--ink);
+      font-family: "Liberation Serif", Georgia, serif;
+      margin: 0; padding: 48px 24px; max-width: 1100px; margin-inline: auto;
+    }
+    h1 { font-size: 1.4rem; letter-spacing: 0.18em; margin: 0 0 4px; }
+    .kicker { font-family: "SF Mono", ui-monospace, monospace; font-size: 0.72rem;
+      letter-spacing: 0.22em; color: var(--muted); text-transform: uppercase; }
+    .lead { margin: 18px 0 30px; max-width: 620px; line-height: 1.55; }
+    .grid { display: grid; gap: 4px; overflow-x: auto; padding-bottom: 8px; }
+    .row { display: grid; grid-template-columns: 34px repeat(13, 34px); gap: 4px; }
+    .num { color: var(--muted); font-size: 0.75rem; text-align: right; padding-right: 8px;
+      line-height: 34px; }
+    .cell {
+      width: 34px; height: 34px; border: 1px solid #c9c4ba; background: var(--cell);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.05rem; text-transform: uppercase;
+    }
+    .cell.blank { border: none; background: transparent; }
+    .cell.mark { background: var(--mark); border-color: var(--accent); font-weight: 700; }
+    .clues { margin-top: 36px; display: grid; grid-template-columns: 1fr; gap: 10px; line-height: 1.45; }
+    .clue { display: grid; grid-template-columns: 34px 1fr; gap: 10px; }
+    .clue .n { color: var(--muted); font-size: 0.8rem; text-align: right; }
+    .foot { margin-top: 40px; display: flex; gap: 14px; align-items: center; }
+    button {
+      font-family: inherit; font-size: 0.85rem; padding: 8px 18px;
+      border: 1px solid var(--ink); background: transparent; cursor: pointer;
+    }
+    button:hover { background: var(--ink); color: var(--paper); }
+    .solution-note { font-size: 0.85rem; color: var(--muted); font-style: italic; }
+    @media print {
+      button, .foot { display: none; }
+      body { padding: 24px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="kicker">krzyżówka · tom „kraj bez języka“ · materiał roboczy</div>
+  <h1>KRZYRZWÓWKA</h1>
+  <p class="lead">Dziesięć haseł. Litery na żółtym polu, czytane od góry do dołu,
+  składają się w słowo, którego nie ma w słowniku — bo składamy je sami.</p>
+
+  <div class="grid" id="grid"></div>
+
+  <div class="clues" id="clues"></div>
+
+  <div class="foot">
+    <button onclick="showSolution()">Pokaż / ukryj rozwiązanie</button>
+    <span class="solution-note">Rozwiązanie czytane pionowo na żółtym polu.</span>
+  </button>
+
+  <script>
+    const SOLUTION = "SZALEŃSTWO";
+    const CLUES = [
+      { n: 1, text: "STATUS" },
+      { n: 2, text: "BUZZ" },
+      { n: 3, text: "WOJNA" },
+      { n: 4, text: "PROFIL" },
+      { n: 5, text: "URZĄDZENIE" },
+      { n: 6, text: "DZIEŃ" },
+      { n: 7, text: "KONSENSUS" },
+      { n: 8, text: "INTERNET" },
+      { n: 9, text: "RÓW" },
+      { n: 10, text: "SPOŁECZEŃSTWO" }
+    ];
+
+    const MARK_COL = 12; // ostatnia, żółta kolumna
+
+    // Build grid
+    const grid = document.getElementById("grid");
+    for (let i = 0; i < 10 * 13; i++) {
+      const cell = document.createElement("div");
+      cell.className = "cell" + (i % MARK_COL === MARK_COL - 1 ? " mark" : " blank");
+      cell.dataset.index = i;
+      cell.dataset.revealed = "false";
+      cell.addEventListener("click", () => toggleCell(i));
+      grid.appendChild(cell);
+    }
+
+    // Build clues
+    const clues = document.getElementById("clues");
+    CLUES.forEach((clue, idx) => {
+      const div = document.createElement("div");
+      div.className = "clue";
+      const n = document.createElement("span");
+      n.className = "n";
+      n.textContent = clue.n;
+      const text = document.createElement("span");
+      text.textContent = clue.text;
+      div.appendChild(n);
+      div.appendChild(text);
+      clues.appendChild(div);
+    });
+
+    function toggleCell(idx) {
+      const cell = grid.children[idx];
+      cell.dataset.revealed = cell.dataset.revealed === "true" ? "false" : "true";
+      cell.classList.toggle("revealed", cell.dataset.revealed === "true");
+      updateFooter();
+    }
+
+    function showSolution() {
+      const cells = grid.querySelectorAll(".cell");
+      cells.forEach((cell, i) => {
+        cell.textContent = SOLUTION[i % SOLUTION.length];
+        cell.dataset.revealed = "true";
+        cell.classList.add("revealed", "mark");
+      });
+      document.querySelector(".solution-note").textContent = "Rozwiązanie: SZALEŃSTWO (pionowo na żółtej kolumnie)";
+    }
+
+    function updateFooter() {
+      const revealed = Array.from(grid.querySelectorAll(".cell")).filter(c => c.dataset.revealed === "true").length;
+      document.querySelector(".foot").textContent = `Odkryto ${revealed}/10 haseł`;
+    }
+
+    // Initialize: last column (MARK_COL) shows SZAL... vertically
+    const initRevealed = SOLUTION.split('').map((c, i) => i * 13 + MARK_COL - 1);
+    initRevealed.forEach(idx => {
+      if (grid.children[idx]) {
+        grid.children[idx].dataset.revealed = "true";
+        grid.children[idx].classList.add("revealed", "mark");
+      }
+    });
+    updateFooter();
+  </script>
+</body>
+</html>
