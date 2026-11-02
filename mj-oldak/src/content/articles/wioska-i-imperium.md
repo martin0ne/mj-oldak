@@ -1,7 +1,7 @@
 ---
 title: "Wioska i Imperium"
 slug: "wioska-i-imperium"
-excerpt: "Lot z Warszawy do Now Jorku kosztował 1 320 złotych w jedną stronę, jeśli kupi się bilet w środę o 14:10. O tym, jak dwa kontynenty przestały się rozumieć — i czego nie da się przetłumaczyć w drugą stronę."
+excerpt: "Lot z Warszawy do Nowego Jorku kosztował 1 320 złotych w jedną stronę, jeśli kupi się bilet w środę o 14:10. O tym, jak dwa kontynenty przestały się rozumieć — i czego nie da się przetłumaczyć w drugą stronę."
 publishedAt: 2026-10-16
 author: "Marcin Ołdak"
 category: "esej"
@@ -19,7 +19,7 @@ lang: pl
 
 ## 1.
 
-W listopadzie 2024 roku lot z Warszawy do Now Jorku kosztował 1 320 złotych w jedną stronę, jeśli kupi się bilet w środę o 14:10. Nie na wszystkie dni; nie w każde lato. Ale to jest cena, po której młody człowiek z Europy Środkowej może spać trzy noce w hali odlotów, potem siedzieć osiem godzin nad oceanem i następnego ranka kupić kawę za pięć dolarów w dzielnicy, której nazwa brzmi jak zaproszenie do lepiej życia. W 1989 roku ta sama podróż wymagała wizy, za którą trzeba było jechać do Warszawy, stanąć w kolejce i powiedzieć urzędnikowi, dlaczego chce się zobaczyć Amerykę. Urzędnik nie miał obowiązku uzasadniać odmowy. Ludzie pisali listy motywacyjne do konsulatu. Czterdzieści lat wcześniej statek płynął tydzień, a ludzie płacili za podróż wszystkim, co mieli, bo po drugiej stronie był chleb, a po tej nie było nic.
+W listopadzie 2024 roku lot z Warszawy do Nowego Jorku kosztował 1 320 złotych w jedną stronę, jeśli kupi się bilet w środę o 14:10. Nie na wszystkie dni; nie w każde lato. Ale to jest cena, po której młody człowiek z Europy Środkowej może spać trzy noce w hali odlotów, potem siedzieć osiem godzin nad oceanem i następnego ranka kupić kawę za pięć dolarów w dzielnicy, której nazwa brzmi jak zaproszenie do lepszego życia. W 1989 roku ta sama podróż wymagała wizy, za którą trzeba było jechać do Warszawy, stanąć w kolejce i powiedzieć urzędnikowi, dlaczego chce się zobaczyć Amerykę. Urzędnik nie miał obowiązku uzasadniać odmowy. Ludzie pisali listy motywacyjne do konsulatu. Czterdzieści lat wcześniej statek płynął tydzień, a ludzie płacili za podróż wszystkim, co mieli, bo po drugiej stronie był chleb, a po tej nie było nic.
 
 W 1921 roku 75 procent obywateli Polski mieszkało na wsi. To jest liczba z pierwszego powszechnego spisu, odzyskane państwo, trzecie pokolenie po uwłaszczeniu. Zachodnia Europa industrializowała się od stu lat; Francis Fukuyama nie opublikował jeszcze niczego, a Berthold Brecht dopiero się urodził. Wioska pod Warszawą, z której pochodzi narrator, nie była wyjątkiem — była normą. A norma znika z historii tak samo jak każdy spokojny rok: po cichu, bez świadka.
 
