@@ -23,7 +23,7 @@ To jest esej o jednym pytaniu: **dlaczego ludzie żyjący obok siebie mają komp
 
 ## Część 1: Trauma zbudowała państwo opiekuńcze — i to nie z miłości
 
-Zacznijmy od zachodu Europy, bo stamtąd pochodzi najpopularniejsza wersja tej historii. Popularny na YouTube film „Why America is Anti-Socialist" (kanał edukacyjny, 2025) opowiada ją tak: Europę zniszczyła druga wojna światowa, elity w panice przed powrotem faszyzmu i komunizmu kupiły pokój socjalny obywatelom, Ameryka zapłaciła przez Plan Marshalla — i dlatego Europa ma darmową służbę zdrowia, a Ameryka nie.
+Zacznijmy od zachodu Europy, bo stamtąd pochodzi najpopularniejsza wersja tej historii. Popularny film „Why America is Anti-Socialist" (kanał edukacyjny, 2025) opowiada ją tak: Europę zniszczyła druga wojna światowa, elity w panice przed powrotem faszyzmu i komunizmu kupiły pokój socjalny obywatelom, Ameryka zapłaciła przez Plan Marshalla — i dlatego Europa ma darmową służbę zdrowia, a Ameryka nie.
 
 Teza jest w większości prawdziwa. Szczegóły, jak to zwykle w edutainmentie, nie do końca — wrócę do tego niżej, bo poprawki są pouczające.
 
@@ -81,10 +81,10 @@ Trzy wnioski z tego eseju, po jednym na pokolenie.
 
 **Dla Amerykanów i Europejczyków:** wasz spór o „socializm" to spór dwóch traum. Europa buduje państwo opiekuńcze, bo pamięta, co się dzieje, gdy społeczeństwo się rozpada. Ameryka się go boi, bo pamięta, co się dzieje, gdy rząd rośnie za daleko. Obie strony mają rację — z własnej daty zero.
 
-**Dla wszystkich:** historia, którą znasz z filmów na YouTube, jest zwykle tezą owiniętą w anegdotę — czasem z fałszywą datą, fałszywą kwotą i cytatem z niewłaściwego roku. To nie znaczy „nie oglądaj". To znaczy: sprawdź trzy liczby zanim zapamiętasz jedną. Różnica między edutainmentem a wiedzą to właśnie te trzy liczby.
+**Dla wszystkich:** historia, którą znasz z internetowych filmów historycznych, jest zwykle tezą owiniętą w anegdotę — czasem z fałszywą datą, fałszywą kwotą i cytatem z niewłaściwego roku. To nie znaczy „nie oglądaj". To znaczy: sprawdź trzy liczby zanim zapamiętasz jedną. Różnica między edutainmentem a wiedzą to właśnie te trzy liczby.
 
 Wideo, od którego ten esej się zaczął, kończy się zdaniem: „next time you're in Europe and you get a free medical operation, make sure to thank Hitler". Urocze, ale nieprawdziwe i niebezpiecznie proste. Ja bym sformułował to inaczej: następnym razem, gdy zobaczysz, że ktoś żyje w innym systemie niż ty — nie pytaj, czy on ma rację. Zapytaj, jaka była jego data zero.
 
 ---
 
-*Źródła: Tony Judt, „Postwar" (2005); Milton Friedman, „Capitalism and Freedom" (1962); raport Beveridge'a (1942); Marshall Foundation; history.state.gov; Britannica (Kongres Wiedeński); Eurostat (PPS, tec00114); Ministerstwo Finansów / SGH (przepływy PL–UE 2004–23); Brookings (M. Piatkowski o 2009); GUS 1921; Open Book Publishers (cohesion policy); pełna lista z weryfikacją: [FACT-CHECK wideo](link-do-pliku).*
+*Źródła: Tony Judt, „Postwar" (2005); Milton Friedman, „Capitalism and Freedom" (1962); raport Beveridge'a (1942); Marshall Foundation; history.state.gov; Britannica (Kongres Wiedeński); Eurostat (PPS, tec00114); Ministerstwo Finansów / SGH (przepływy PL–UE 2004–23); Brookings (M. Piatkowski o 2009); GUS 1921; Open Book Publishers (cohesion policy); pełna lista z weryfikacją: FACT-CHECK wideo — rejestr roboczy, niepublikowany.*

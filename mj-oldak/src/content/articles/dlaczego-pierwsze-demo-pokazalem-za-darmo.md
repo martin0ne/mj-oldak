@@ -133,7 +133,7 @@ Dlaczego? Bo free trial, w którym klient sam się uczy, **nie działa** dla age
 
 [Startup Strategies](https://startupstrategies.substack.com/p/pilots-should-they-be-free-or-paid) piszą to prosto: "Free pilots tend to result in less honest feedback". Klient, który nie zapłacił, ma psychologicznie niższy próg rezygnacji. Nie powie ci, co jest nie tak — po prostu przestanie odpowiadać na maile.
 
-Adam Robinson i [RB2B zrobili darmową wersję](https://www.youtube.com/watch?v=fdE2N2ckDSw), która w 6 tygodni przyniosła 1M ARR, ale to działało, bo: (a) produkt miał wbudowany efekt wirusowy, (b) każde demo było qualified leadem, (c) przejście do paid tier było technicznie jednym kliknięciem. Solo-founder budujący custom agentów dla biur rachunkowych nie ma żadnego z tych warunków.
+Adam Robinson i RB2B zrobili darmową wersję, która w 6 tygodni przyniosła 1M ARR, ale to działało, bo: (a) produkt miał wbudowany efekt wirusowy, (b) każde demo było qualified leadem, (c) przejście do paid tier było technicznie jednym kliknięciem. Solo-founder budujący custom agentów dla biur rachunkowych nie ma żadnego z tych warunków.
 
 Mój wniosek po dwunastu miesiącach: darmowe **live demo** działa świetnie. Darmowy **30-dniowy trial** — prawie nigdy.
 
