@@ -1,29 +1,58 @@
 ---
-title: "Wojny w kieszeni — 5 liczb"
-excerpt: "NASK 4h59 (2025) vs 5h36 (2022) — nie ma wzrostu. PISA −15 pkt, ETPC 20 000 EUR, unikanie wiadomości 61–63%, 45% oszustw. Liczby bez wzrostu — kotwice w tabeli zarysu lektury."
+title: "Wojny w kieszeni — pięć liczb"
+excerpt: "Pięć liczb z pięciu rejestrów. Żadna nie jest o technologii. Wszystkie są o tym, co dzieje się w jednym mieszkaniu: 4 h 59 min, 15 punktów, 20 000 euro, 61 procent, 45 procent."
 publishedAt: 2026-11-02
 author: "Marcin Ołdak"
 category: "edukacja"
 tags: ["esej", "analiza", "technika"]
-cover: "/articles/covers/wojny-w-kieszeni.jpg"
-coverAlt: "Cover artykułu: Wojny w kieszeni — 5 liczb"
-readingTime: 8
+cover: "/articles/covers/wojny-w-kieszeni.png"
+coverAlt: "Okładka: Wojny w kieszeni — pięć liczb. Kieszeń z pięcioma kreskami."
+readingTime: 4
 featured: true
 draft: false
-metaTitle: "Wojny w kieszeni — 5 liczb (NASK/PISA/Eurostat 2026)"
-metaDescription: "NASK 4h59 (2025) vs 5h36 (2022) — brak wzrostu. PISA −15 pkt, ETPC 20 000 EUR, unikanie wiadomości 61–63%, 45% oszustw. Liczby bez wzrostu — nie oszukiwa."
-keywords: ["NASK", "PISA", "Eurostat", "unikanie wiadomości", "oszustwa", "dane publiczne"]
+metaTitle: "Wojny w kieszeni — pięć liczb, pięć źródeł"
+metaDescription: "4 h 59 min ekranu (NASK 2025), 15 punktów mniej z matematyki (PISA 2022), 20 000 euro (ETPC 2025), 61 procent (Reuters 2025), 45 procent (KE 2025)."
+keywords: ["NASK", "PISA 2022", "ETPC", "Reuters Digital News Report", "oszustwa konsumenckie", "dane publiczne"]
 ---
-NASK 4 h 59 min (2025) vs 5 h 36 min (2022) — **nie ma wzrostu** czasu poświęcanego na pracę (samoburzenie wbudowane w dane).
 
-PISA −15 pkt — spadek wyników polskich uczniów w porównaniu do poprzednich badań, Trend nieodwracalny bez interwencji strukturalnej.
+Kieszeń służy do noszenia rzeczy, których nie będzie się potrzebować przez najbliższą godzinę. Telefon wszedł do niej w 2007 roku i od tamtej pory jest najczęściej dotykaną częścią odzieży. Kluczy już się w niej nie nosi.
 
-ETPC 20 000 EUR za zerwaną relację z dziećmi — kwota szacunkowa kosztów powiązanego z rozwodem lub utratą kontaktów, liczona na tle orzeczeń sądowych i przepisów rodzinnych.
+Poniżej pięć liczb. Każda pochodzi z innego rejestru, każda dotyczy zwykłego dnia. Ani jedna nie jest o technologii. Wszystkie są o tym samym: o kilku wojnach prowadzonych naraz w jednym mieszkaniu, z których żadna nie doczekała się nazwy w wiadomościach.
 
-Unikanie wiadomości 61–63% — badanie.showTimeout/.showDisinterest w skali masowym; ponad połowa respondentów nie otwiera wiadomości od nieznanego nadawcy, co ma bezpośrednie consequences na komunikację w firmach i urzędach.
+## 1. Cztery godziny pięćdziesiąt dziewięć minut
 
-45% oszustw — wskaźoszustwowy wynik badania LIKE-POL (2024), dotyczy oszustw na nawozy, sprzęt rolniczy i transakcje online; liczba ta stagnuje od trzech kolejnych lat badania.
+Tyle czasu przed ekranem dziennie podaje rejestr NASK „Nastolatki 3.1" za rok 2025. To nie jest liczba z sufitu — to godziny, w których człowiek w wieku szkolnym czyta, ogląda, porównuje się i jest porównywany. To czas, w którym jest jednocześnie wszędzie i nigdzie. W 2022 roku ten sam rejestr podawał 5 godzin 36 minut. Mniej więcej trzy lata wcześniej i trzydzieści siedem minut więcej. Nie ma wzrostu. Jest spadek, o którym w komentarzach nie było ani zdania, bo komentarze potrzebują wzrostu.
 
-**Kotwice w tabeli zarysu lektury** — liczby te zostały już raz uwzględnione w strukturze lektury kursowej, co pozwala na jednolite odwoływanie się do tych wskaźników bez konieczności przepisywania kontekstu.
+Ta liczba jest o tyle niewygodna, że unieważnia najprostszą opowieść. Jeśli ekran zjada dzieciom życie, powinien zjadać go coraz więcej — a rejestr pokazuje, że przestał. Wojna internetowa nie eskaluje. Ona stanęła w miejscu i rozgościła się.
 
-Liczby się nie oszukiwują — one są albo rosną, albo stoją w miejscu. W tym przypadku: stoją. To nie jest kwestia lepszej lub gorszej metody, tylko fakt: przez ostatnie lata nie zaobserwowano poprawy, a wręcz przeciwnie — wskaźniki te podlegają naturalnej zmienności w granicach wymienionych wartości.
+## 2. Piętnaście punktów
+
+Badanie PISA 2022, tom drugi, opisuje różnicę w matematyce między uczniami, którzy deklarują rozpraszanie uwagi przez urządzenia cyfrowe, a tymi, którzy go nie deklarują. Różnica wynosi około piętnastu punktów. Piętnaście punktów to nie katastrofa egzaminacyjna; to jedna odpowiedź w arkuszu, może dwie. Ale wynik nie jest podzielony na lekcje — jest sumą setek przerw, z których każda osobno wydaje się niewinna.
+
+Rodzic, który mówi „odłóż telefon i odrób zadanie", mówi zdanie prawdziwe i bezużyteczne. Dziecko odłoży telefon. Przerwę w czytaniu zadania odrobi dopiero wtedy, gdy ktoś usiądzie obok. Tego nie ma w żadnym rejestrze, bo rejestr mierzy punkty, nie obecność.
+
+## 3. Dwadzieścia tysięcy euro
+
+W 2025 roku Europejski Trybunał Praw Człowieka rozpatrywał sprawę A.W. przeciwko Polsce. Sprawa dotyczyła przewlekłości postępowań sądowych — tego, że sąd rozstrzygał sprawy zbyt długo, a w tym czasie relacja między rodzicem a dzieckiem przestała istnieć. Sąd orzekł zadośćuczynienie w wysokości dwudziestu tysięcy euro.
+
+To jest jedyna liczba w tym zestawieniu, która ma sygnaturę i datę wyroku. Trybunał wycenił zerwaną relację z dzieckiem na dwadzieścia tysięcy euro. Nie na całe życie, nie na sentyment — na kwotę, którą da się wpisać w budżet. Wojna prawna jest najdroższa, bo płaci się za nią latami, a wyrok przychodzi wtedy, gdy nie ma już czego naprawiać.
+
+## 4. Sześćdziesiąt jeden procent
+
+Raport Reuters Digital News Report 2025 podaje, że w Bułgarii i Chorwacji około 61–63 procent badanych aktywnie unika wiadomości. To znaczy: nie tylko nie czyta, ale świadomie omija. Nie jest to zmęczenie jednym tematem; to rezygnacja z całej kategorii, podobna do tej, z jaką ludzie przestają otwierać koperty z banku.
+
+Trzeba to powiedzieć dokładnie: to dane z dwóch krajów, nie z Polski. Ale mechanizm jest uniwersalny i nie wymaga tłumaczenia. Człowiek, który przestał czytać wiadomości, nie przestał być obywatelem. Po prostu postanowił, że cena uwagi jest wyższa niż cena niewiedzy. W tej wymianie nie ma nic nieracjonalnego.
+
+## 5. Czterdzieści pięć procent
+
+Z badania Komisji Europejskiej, opublikowanego w 2025 roku w ramach Consumer Scoreboard, wynika, że 45 procent konsumentów zetknęło się z oszustwem w ciągu ostatnich dwunastu miesięcy. Nie z próbą — z oszustwem, które do nich dotarło: telefon, mail, wiadomość, fałszywy sklep. Niemal co drugi dorosły.
+
+Oszustwo przestało być wydarzeniem. Stało się kategorią usług, z własną logistyką i ceną za sztukę. Kiedyś trzeba było znać ofiarę, żeby ją oszukać; teraz wystarczy wysłać komunikat do miliona osób i policzyć odsetek. Wojna komercyjna jest jedyną, w której stratę da się wpisać w koszty stałe.
+
+## Co łączy te liczby
+
+Cztery z pięciu nie rosną. Czas ekranu spadł, różnica w matematyce mieści się w granicach jednego zadania, unikanie wiadomości ustabilizowało się na poziomie, który trudno nazwać katastrofą, a czterdzieści pięć procent kontaktów z oszustwem to liczba, która nie jest już wyjątkiem. Rosną tylko koszty ponoszone przez państwo — bo za przewlekłość płaci budżet, a nie ten, kto ją spowodował.
+
+To jest cały mechanizm. Katastrofa nie musi się nasilać, żeby trwać. Wystarczy, że utrzyma się na poziomie, który przestaje dziwić. Wojna w kieszeni nie ma frontu, nie ma rozejmu i nie ma weteranów, bo nikt nie wraca z niej do domu — ona jest w domu.
+
+Pięć liczb. Żadna nie mówi, co zrobić. Wszystkie mówią, gdzie jesteśmy.

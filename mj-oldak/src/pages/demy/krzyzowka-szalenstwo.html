@@ -3,138 +3,254 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>KRZYRZWÓWKA — rozwiązanie: ?</title>
+  <title>Krzyżówka — SZALEŃSTWO</title>
+  <meta name="description" content="Krzyżówka z tomu „kraj bez języka”: dziesięć haseł, ostatnie litery czytane pionowo składają się w jedno słowo.">
+  <link rel="preload" as="font" type="font/ttf" crossorigin href="/fonts/Manrope.ttf">
   <style>
     :root {
-      --paper: #fbfbfa; --ink: #1c1c1c; --muted: #6b6b6b;
-      --accent: #8a2f2f; --cell: #ffffff; --mark: #f3e6c8;
+      --paper: #fbfbfa; --ink: #111111; --muted: #6b6b6b;
+      --line: #c9c4ba; --mark: #f3e6c8; --accent: #8a2f2f; --cell: 38px;
     }
     * { box-sizing: border-box; }
+    html, body { margin: 0; background: var(--paper); }
     body {
-      background: var(--paper); color: var(--ink);
-      font-family: "Liberation Serif", Georgia, serif;
-      margin: 0; padding: 48px 24px; max-width: 1100px; margin-inline: auto;
+      color: var(--ink);
+      font-family: "Manrope", -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+      padding: 40px 24px 96px;
+      -webkit-font-smoothing: antialiased;
     }
-    h1 { font-size: 1.4rem; letter-spacing: 0.18em; margin: 0 0 4px; }
-    .kicker { font-family: "SF Mono", ui-monospace, monospace; font-size: 0.72rem;
-      letter-spacing: 0.22em; color: var(--muted); text-transform: uppercase; }
-    .lead { margin: 18px 0 30px; max-width: 620px; line-height: 1.55; }
-    .grid { display: grid; gap: 4px; overflow-x: auto; padding-bottom: 8px; }
-    .row { display: grid; grid-template-columns: 34px repeat(13, 34px); gap: 4px; }
-    .num { color: var(--muted); font-size: 0.75rem; text-align: right; padding-right: 8px;
-      line-height: 34px; }
-    .cell {
-      width: 34px; height: 34px; border: 1px solid #c9c4ba; background: var(--cell);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.05rem; text-transform: uppercase;
+    .wrap { max-width: 980px; margin: 0 auto; }
+    .topbar {
+      display: flex; justify-content: space-between; align-items: baseline; gap: 16px;
+      margin-bottom: 48px; font-family: "SF Mono", ui-monospace, "JetBrains Mono", monospace;
+      font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: var(--muted);
     }
-    .cell.blank { border: none; background: transparent; }
-    .cell.mark { background: var(--mark); border-color: var(--accent); font-weight: 700; }
-    .clues { margin-top: 36px; display: grid; grid-template-columns: 1fr; gap: 10px; line-height: 1.45; }
-    .clue { display: grid; grid-template-columns: 34px 1fr; gap: 10px; }
-    .clue .n { color: var(--muted); font-size: 0.8rem; text-align: right; }
-    .foot { margin-top: 40px; display: flex; gap: 14px; align-items: center; }
-    button {
-      font-family: inherit; font-size: 0.85rem; padding: 8px 18px;
-      border: 1px solid var(--ink); background: transparent; cursor: pointer;
+    .topbar a { color: var(--muted); text-decoration: none; border-bottom: 1px solid var(--line); }
+    .topbar a:hover { color: var(--ink); border-color: var(--ink); }
+    .kicker {
+      font-family: "SF Mono", ui-monospace, "JetBrains Mono", monospace;
+      font-size: 10px; letter-spacing: .24em; text-transform: uppercase;
+      color: var(--muted); margin: 0 0 10px;
     }
+    h1 { font-size: clamp(30px, 5vw, 46px); line-height: 1.02; letter-spacing: -.02em;
+      margin: 0 0 18px; text-transform: uppercase; font-weight: 800; }
+    .lead { max-width: 580px; margin: 0 0 12px; font-family: Georgia, "Times New Roman", serif;
+      font-style: italic; font-size: 17px; line-height: 1.55; color: #333; }
+    .hint { font-family: "SF Mono", ui-monospace, "JetBrains Mono", monospace;
+      font-size: 11px; letter-spacing: .04em; color: var(--muted); margin: 0 0 40px; }
+    .board { overflow-x: auto; padding-bottom: 6px; }
+    .grid { display: grid; grid-template-columns: 26px repeat(14, var(--cell));
+      grid-template-rows: repeat(10, var(--cell)); gap: 4px;
+      width: max-content; margin-bottom: 8px; }
+    .num { display: flex; align-items: center; justify-content: flex-end; padding-right: 6px;
+      font-family: "SF Mono", ui-monospace, "JetBrains Mono", monospace;
+      font-size: 11px; color: var(--muted); height: var(--cell); }
+    .cell { width: var(--cell); height: var(--cell); display: flex; align-items: center;
+      justify-content: center; font-size: 19px; font-weight: 600; text-transform: uppercase;
+      border: 1px solid var(--line); background: #fff; color: transparent;
+      cursor: pointer; user-select: none; transition: background .15s, border-color .15s, color .15s; }
+    .cell.blank { border: none; background: transparent; cursor: default; }
+    .cell.live:hover { border-color: var(--ink); }
+    .cell.mark { background: var(--mark); border-color: var(--accent); }
+    .cell.revealed { color: var(--ink); }
+    .cell.mark.revealed { color: var(--accent); font-weight: 800; }
+    .column-label { margin: 6px 0 46px 34px; font-family: "SF Mono", ui-monospace, "JetBrains Mono", monospace;
+      font-size: 10px; letter-spacing: .18em; text-transform: uppercase; color: var(--muted);
+      display: flex; align-items: center; gap: 8px; }
+    .column-label .chev { color: var(--accent); font-size: 13px; }
+    .clues { display: grid; gap: 2px; max-width: 720px; border-top: 1px solid var(--line); }
+    .clue { display: grid; grid-template-columns: 32px 1fr; gap: 14px; padding: 11px 2px;
+      border-bottom: 1px solid var(--line); font-size: 15px; line-height: 1.45; }
+    .clue .n { font-family: "SF Mono", ui-monospace, "JetBrains Mono", monospace;
+      font-size: 11px; color: var(--muted); padding-top: 3px; }
+    .clue .len { color: var(--muted); font-size: 12px; }
+    .foot { margin-top: 36px; display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
+    button { font-family: inherit; font-size: 13px; font-weight: 600; padding: 11px 22px;
+      border: 1px solid var(--ink); background: transparent; color: var(--ink);
+      cursor: pointer; border-radius: 2px; transition: background .15s, color .15s; }
     button:hover { background: var(--ink); color: var(--paper); }
-    .solution-note { font-size: 0.85rem; color: var(--muted); font-style: italic; }
+    .status { font-family: "SF Mono", ui-monospace, "JetBrains Mono", monospace;
+      font-size: 11px; letter-spacing: .06em; color: var(--muted); }
+    .note { margin-top: 26px; padding-top: 18px; border-top: 1px solid var(--line);
+      font-family: Georgia, serif; font-style: italic; font-size: 15px; color: #333;
+      max-width: 640px; display: none; }
+    .note.on { display: block; }
+    @media (max-width: 620px) {
+      :root { --cell: 30px; }
+      .cell { font-size: 15px; }
+      .grid { grid-template-columns: 22px repeat(14, var(--cell)); gap: 3px; }
+      .column-label { margin-left: 28px; }
+    }
     @media print {
-      button, .foot { display: none; }
-      body { padding: 24px; }
+      .topbar, .foot, .hint, .column-label { display: none; }
+      body { padding: 0; }
+      .cell { color: var(--ink); }
+      .note { display: block; }
     }
   </style>
 </head>
 <body>
-  <div class="kicker">krzyżówka · tom „kraj bez języka“ · materiał roboczy</div>
-  <h1>KRZYRZWÓWKA</h1>
-  <p class="lead">Dziesięć haseł. Litery na żółtym polu, czytane od góry do dołu,
-  składają się w słowo, którego nie ma w słowniku — bo składamy je sami.</p>
+  <div class="wrap">
+    <div class="topbar">
+      <a href="/demy/">← Demy</a>
+      <span>mjoldak.pl</span>
+    </div>
 
-  <div class="grid" id="grid"></div>
+    <p class="kicker">krzyżówka · tom „kraj bez języka”</p>
+    <h1>Krzyżówka</h1>
+    <p class="lead">Dziesięć haseł, każde kończy się w tej samej kolumnie. Ostatnie litery,
+      czytane od góry do dołu, składają się w słowo, którego nikt tam nie wpisał.</p>
+    <p class="hint">Kliknij pole, żeby odsłonić literę — albo odsłoń wszystko.</p>
 
-  <div class="clues" id="clues"></div>
+    <div class="board">
+      <div class="grid" id="grid"></div>
+    </div>
+    <p class="column-label"><span class="chev">↓</span> tę kolumnę czytaj pionowo</p>
 
-  <div class="foot">
-    <button onclick="showSolution()">Pokaż / ukryj rozwiązanie</button>
-    <span class="solution-note">Rozwiązanie czytane pionowo na żółtym polu.</span>
-  </button>
+    <div class="clues" id="clues"></div>
 
-  <script>
-    const SOLUTION = "SZALEŃSTWO";
-    const CLUES = [
-      { n: 1, text: "STATUS" },
-      { n: 2, text: "BUZZ" },
-      { n: 3, text: "WOJNA" },
-      { n: 4, text: "PROFIL" },
-      { n: 5, text: "URZĄDZENIE" },
-      { n: 6, text: "DZIEŃ" },
-      { n: 7, text: "KONSENSUS" },
-      { n: 8, text: "INTERNET" },
-      { n: 9, text: "RÓW" },
-      { n: 10, text: "SPOŁECZEŃSTWO" }
-    ];
+    <div class="foot">
+      <button type="button" id="toggle">Pokaż rozwiązanie</button>
+      <span class="status" id="status">odkryte 0 / 10 haseł</span>
+    </div>
 
-    const MARK_COL = 12; // ostatnia, żółta kolumna
+    <p class="note" id="note">
+      Hasło: <strong>SZALEŃSTWO</strong>. Nie ma go w żadnym słowniku tej kolumny — jest tylko
+      w ostatnich literach tego, co robimy codziennie.
+    </p>
+  </div>
 
-    // Build grid
-    const grid = document.getElementById("grid");
-    for (let i = 0; i < 10 * 13; i++) {
-      const cell = document.createElement("div");
-      cell.className = "cell" + (i % MARK_COL === MARK_COL - 1 ? " mark" : " blank");
-      cell.dataset.index = i;
-      cell.dataset.revealed = "false";
-      cell.addEventListener("click", () => toggleCell(i));
-      grid.appendChild(cell);
-    }
+<script>
+(function () {
+  "use strict";
 
-    // Build clues
-    const clues = document.getElementById("clues");
-    CLUES.forEach((clue, idx) => {
-      const div = document.createElement("div");
-      div.className = "clue";
-      const n = document.createElement("span");
-      n.className = "n";
-      n.textContent = clue.n;
-      const text = document.createElement("span");
-      text.textContent = clue.text;
-      div.appendChild(n);
-      div.appendChild(text);
-      clues.appendChild(div);
-    });
+  var WORDS = [
+    "STATUS", "BUZZ", "WOJNA", "PROFIL", "URZĄDZENIE",
+    "DZIEŃ", "KONSENSUS", "INTERNET", "RÓW", "SPOŁECZEŃSTWO"
+  ];
 
-    function toggleCell(idx) {
-      const cell = grid.children[idx];
-      cell.dataset.revealed = cell.dataset.revealed === "true" ? "false" : "true";
-      cell.classList.toggle("revealed", cell.dataset.revealed === "true");
-      updateFooter();
-    }
+  var CLUES = [
+    "Stan, który się publikuje, żeby nie musieć go tłumaczyć.",
+    "Szum, który ma dowodzić, że coś się dzieje.",
+    "Stan, w którym wszystko jest czyjeś i nikt tego nie nazywa.",
+    "Zdjęcie z opisem; opis stał się ważniejszy od zdjęcia.",
+    "Rzecz, która wie o tobie więcej niż osoba obok.",
+    "Jednostka rozliczeniowa uwagi.",
+    "Zgoda, która nie wymaga obecności.",
+    "Miejsce, w którym nikt nie jest sam i nikt nie jest razem.",
+    "Linia między dwiema stronami; w praktyce jedna strona.",
+    "Zbiór osób, których nic nie łączy poza wypełnianym formularzem."
+  ];
 
-    function showSolution() {
-      const cells = grid.querySelectorAll(".cell");
-      cells.forEach((cell, i) => {
-        cell.textContent = SOLUTION[i % SOLUTION.length];
-        cell.dataset.revealed = "true";
-        cell.classList.add("revealed", "mark");
-      });
-      document.querySelector(".solution-note").textContent = "Rozwiązanie: SZALEŃSTWO (pionowo na żółtej kolumnie)";
-    }
+  var COLS = 0;
+  for (var i = 0; i < WORDS.length; i++) if (WORDS[i].length > COLS) COLS = WORDS[i].length;
+  var MARK = COLS - 1;
 
-    function updateFooter() {
-      const revealed = Array.from(grid.querySelectorAll(".cell")).filter(c => c.dataset.revealed === "true").length;
-      document.querySelector(".foot").textContent = `Odkryto ${revealed}/10 haseł`;
-    }
+  var gridEl = document.getElementById("grid");
+  var cluesEl = document.getElementById("clues");
+  var statusEl = document.getElementById("status");
+  var noteEl = document.getElementById("note");
+  var btn = document.getElementById("toggle");
 
-    // Initialize: last column (MARK_COL) shows SZAL... vertically
-    const initRevealed = SOLUTION.split('').map((c, i) => i * 13 + MARK_COL - 1);
-    initRevealed.forEach(idx => {
-      if (grid.children[idx]) {
-        grid.children[idx].dataset.revealed = "true";
-        grid.children[idx].classList.add("revealed", "mark");
+  var rowCells = [];
+
+  function makeCell(cls) {
+    var el = document.createElement("div");
+    el.className = cls;
+    return el;
+  }
+
+  for (var r = 0; r < WORDS.length; r++) {
+    var word = WORDS[r];
+    var start = COLS - word.length;
+
+    var numEl = makeCell("num");
+    numEl.textContent = String(r + 1);
+    numEl.style.gridRow = String(r + 1);
+    numEl.style.gridColumn = "1";
+    gridEl.appendChild(numEl);
+
+    rowCells[r] = [];
+    for (var c = 0; c < COLS; c++) {
+      var rowNo = String(r + 1);
+      var colNo = String(c + 2);   // kolumna 1 = numery
+      if (c < start) {
+        var blank = makeCell("cell blank");
+        blank.style.gridRow = rowNo;
+        blank.style.gridColumn = colNo;
+        gridEl.appendChild(blank);
+        rowCells[r][c] = null;
+        continue;
       }
-    });
-    updateFooter();
-  </script>
+      var letter = word.charAt(c - start);
+      var el = makeCell("cell live" + (c === MARK ? " mark" : ""));
+      el.textContent = letter;
+      el.style.gridRow = rowNo;
+      el.style.gridColumn = colNo;
+      el.setAttribute("role", "button");
+      el.setAttribute("tabindex", "0");
+      el.setAttribute("aria-label", "wiersz " + (r + 1) + ", kolumna " + (c + 1));
+      (function (node) {
+        function flip() { node.classList.toggle("revealed"); refresh(); }
+        node.addEventListener("click", flip);
+        node.addEventListener("keydown", function (e) {
+          if (e.key === "Enter" || e.key === " ") { e.preventDefault(); flip(); }
+        });
+      })(el);
+      gridEl.appendChild(el);
+      rowCells[r][c] = el;
+    }
+
+    var clueEl = makeCell("clue");
+    var nEl = document.createElement("span");
+    nEl.className = "n";
+    nEl.textContent = (r + 1) + ".";
+    var txtEl = document.createElement("span");
+    txtEl.textContent = CLUES[r] + " ";
+    var lenEl = document.createElement("span");
+    lenEl.className = "len";
+    lenEl.textContent = "(" + word.length + " liter)";
+    txtEl.appendChild(lenEl);
+    clueEl.appendChild(nEl);
+    clueEl.appendChild(txtEl);
+    cluesEl.appendChild(clueEl);
+  }
+
+  function rowDone(r) {
+    var seen = false;
+    for (var c = 0; c < COLS; c++) {
+      var el = rowCells[r][c];
+      if (!el) continue;
+      seen = true;
+      if (!el.classList.contains("revealed")) return false;
+    }
+    return seen;
+  }
+
+  function refresh() {
+    var n = 0;
+    for (var r = 0; r < WORDS.length; r++) if (rowDone(r)) n++;
+    statusEl.textContent = "odkryte " + n + " / " + WORDS.length + " haseł";
+  }
+
+  var allOn = false;
+  btn.addEventListener("click", function () {
+    allOn = !allOn;
+    for (var r = 0; r < WORDS.length; r++) {
+      for (var c = 0; c < COLS; c++) {
+        var el = rowCells[r][c];
+        if (!el) continue;
+        if (allOn) el.classList.add("revealed");
+        else el.classList.remove("revealed");
+      }
+    }
+    btn.textContent = allOn ? "Ukryj rozwiązanie" : "Pokaż rozwiązanie";
+    noteEl.classList.toggle("on", allOn);
+    refresh();
+  });
+
+  refresh();
+})();
+</script>
 </body>
 </html>
