@@ -89,6 +89,7 @@ const faqLd = faq && faq.length ? {
   author={author}
   tags={tags as unknown as string[]}
   lang={lang}
+  managedAlternates={true}
 >
   <script slot="head" type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
   <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbsLd)} />

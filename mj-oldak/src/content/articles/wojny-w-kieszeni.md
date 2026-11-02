@@ -1,5 +1,7 @@
 ---
 title: "Wojny w kieszeni — pięć liczb"
+slug: "wojny-w-kieszeni"
+translationKey: "wars-in-pocket"
 excerpt: "Pięć liczb z pięciu rejestrów. Żadna nie jest o technologii. Wszystkie są o tym, co dzieje się w jednym mieszkaniu: 4 h 59 min, 15 punktów, 20 000 euro, 61 procent, 45 procent."
 publishedAt: 2026-11-02
 author: "Marcin Ołdak"
