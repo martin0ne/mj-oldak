@@ -4,14 +4,14 @@ excerpt: "NASK 4h59 (2025) vs 5h36 (2022) — nie ma wzrostu. PISA −15 pkt, ET
 publishedAt: 2026-11-02
 author: "Marcin Ołdak"
 category: "edukacja"
-tags: ["AI", "NASK", "PISA", "dane", "statystyka"]
+tags: ["esej", "analiza", "technika"]
 cover: "/articles/covers/wojny-w-kieszeni.jpg"
 coverAlt: "Cover artykułu: Wojny w kieszeni — 5 liczb"
 readingTime: 8
 featured: true
 draft: false
 metaTitle: "Wojny w kieszeni — 5 liczb (NASK/PISA/Eurostat 2026)"
-metaDescription: "NASK 4h59 min (2025) vs 5h36 (2022) — brak wzrostu czasu pracy. PISA −15 pkt, ETPC 20 000 EUR za zerwaną relację z dziećmi, unikanie wiadomości 61–63%, 45% oszustw. Liczby bez wzrostu — analizą się nie oszukiwa."
+metaDescription: "NASK 4h59 (2025) vs 5h36 (2022) — brak wzrostu. PISA −15 pkt, ETPC 20 000 EUR, unikanie wiadomości 61–63%, 45% oszustw. Liczby bez wzrostu — nie oszukiwa."
 keywords: ["NASK", "PISA", "Eurostat", "unikanie wiadomości", "oszustwa", "dane publiczne"]
 ---
 NASK 4 h 59 min (2025) vs 5 h 36 min (2022) — **nie ma wzrostu** czasu poświęcanego na pracę (samoburzenie wbudowane w dane).
