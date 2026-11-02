@@ -303,4 +303,14 @@ const faqLd = faq && faq.length ? {
   .dark .article-prose hr { border-top-color: rgba(255,255,255,0.10); }
   .dark .article-prose a:hover { background: rgba(17,17,17,0.18); }
   .dark .article-prose img { border-color: rgba(255,255,255,0.10); }
+  /* 02.11 — czytelność linków/akcentów w dark (raport Marcina: tabelki nieczytelne) */
+  .dark .article-prose a {
+    color: var(--c-ink);
+    text-decoration-color: color-mix(in srgb, var(--c-ink) 55%, transparent);
+  }
+  .dark .article-prose a:hover { background: rgba(255,255,255,0.10); }
+  .dark .article-prose ul li::before { color: var(--c-ink); }
+  .dark .article-prose th { border-bottom-color: var(--c-ink); }
+  .dark .article-prose h2 { border-left-color: var(--c-ink); }
+  .dark .article-prose blockquote { border-left-color: var(--c-ink); }
 </style>
