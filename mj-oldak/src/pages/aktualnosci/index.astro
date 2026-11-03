@@ -1,0 +1,102 @@
+---
+// /aktualnosci/ — krótkie wpisy (notatki, publikacje, domknięcia).
+// Treść: src/content/notes/*.md (kolekcja `notes`). Jeden plik = jeden wpis.
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import NavbarPersonal from '../../components/personal/NavbarPersonal.jsx';
+import FooterSlim from '../../components/personal/FooterSlim.astro';
+
+const notes = (await getCollection('notes')).sort(
+  (a, b) => b.data.date.getTime() - a.data.date.getTime()
+);
+
+const KIND_LABEL = {
+  tekst: 'tekst',
+  projekt: 'projekt',
+  dom: 'dom',
+  audyt: 'audyt',
+};
+
+const rendered = await Promise.all(
+  notes.map(async (n) => ({ note: n, Content: (await render(n)).Content }))
+);
+
+const fmt = new Intl.DateTimeFormat('pl-PL', { day: '2-digit', month: 'long', year: 'numeric' });
+---
+
+<BaseLayout
+  title="Aktualności — notatki, publikacje, domknięcia · MJ.OLDAK"
+  description="Krótkie wpisy: co zostało opublikowane, co zostało domknięte, co stoi otwarte. Bez newslettera i bez konta."
+  lang="pl"
+>
+  <NavbarPersonal client:load />
+
+  <main class="bg-background dark:bg-[var(--c-page)] text-dark dark:text-[var(--c-ink)] transition-colors duration-500">
+    <section class="px-8 md:px-16 pt-28 md:pt-36 pb-10">
+      <div class="max-w-3xl mx-auto">
+        <p class="font-mono text-xs uppercase tracking-[0.24em] opacity-50 mb-6">
+          <span class="text-accent">—</span> Aktualności
+        </p>
+        <h1 class="font-serif text-4xl md:text-5xl leading-[1.02] tracking-[-0.01em] mb-6">
+          Co zostało zrobione<span class="text-accent">.</span>
+        </h1>
+        <p class="font-serif italic text-xl md:text-2xl leading-snug opacity-90">
+          Krótkie wpisy: publikacje, domknięcia, rzeczy, które stoją otwarte.
+          Bez konta, bez zapisu, bez newslettera.
+        </p>
+      </div>
+    </section>
+
+    <section class="px-8 md:px-16 pb-24 md:pb-32">
+      <div class="max-w-3xl mx-auto">
+        {rendered.length === 0 && (
+          <p class="font-sans text-base opacity-60">Brak wpisów.</p>
+        )}
+
+        <div class="border-t border-dark/12 dark:border-[var(--c-line)]">
+          {rendered.map(({ note, Content }) => (
+            <article class="grid grid-cols-1 sm:grid-cols-[130px_1fr] gap-1 sm:gap-6 py-7 border-b border-dark/12 dark:border-[var(--c-line)]">
+              <div class="pt-1">
+                <time datetime={note.data.date.toISOString()} class="font-mono text-[10px] uppercase tracking-[0.18em] opacity-55 block">
+                  {fmt.format(note.data.date)}
+                </time>
+                {note.data.kind && (
+                  <span class="font-mono text-[10px] uppercase tracking-[0.18em] opacity-40 block mt-1">
+                    {KIND_LABEL[note.data.kind]}
+                  </span>
+                )}
+              </div>
+              <div class="min-w-0">
+                <h2 class="font-serif text-xl md:text-2xl leading-snug mb-2">
+                  {note.data.link ? (
+                    <a href={note.data.link} class="underline decoration-1 underline-offset-4 hover:opacity-70 no-underline">
+                      {note.data.title}
+                    </a>
+                  ) : (
+                    note.data.title
+                  )}
+                </h2>
+                <div class="font-sans text-[15px] leading-relaxed opacity-80 [&>p]:mb-2 [&>p:last-child]:mb-0">
+                  <Content />
+                </div>
+                {note.data.link && (
+                  <a href={note.data.link} class="inline-block mt-3 font-mono text-[10px] uppercase tracking-[0.16em] text-accent no-underline hover:underline">
+                    {note.data.linkLabel ?? 'zobacz'} ↗
+                  </a>
+                )}
+              </div>
+            </article>
+          ))}
+        </div>
+
+        <p class="mt-10 font-mono text-[10px] uppercase tracking-[0.18em] opacity-45">
+          <a href="/aktualnosci/rss.xml" class="no-underline hover:underline">RSS</a>
+          <span class="opacity-50"> · </span>
+          <a href="/artykuly/" class="no-underline hover:underline">pełne teksty</a>
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <FooterSlim />
+</BaseLayout>

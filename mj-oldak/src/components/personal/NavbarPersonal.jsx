@@ -36,6 +36,7 @@ export default function NavbarPersonal() {
                 { href: `${prefix}/#work`,       label: 'Projekty' },
                 { href: `${prefix}/portfolio/`,  label: 'Portfolio' },
                 { href: `${prefix}/artykuly/`,   label: 'Teksty' },
+                { href: `${prefix}/aktualnosci/`, label: 'Aktualności' },
                 { href: `${prefix}/pnews/`,      label: 'News' },
                 { href: `${prefix}/#about`,      label: 'O mnie' },
                 { href: `${prefix}/#contact`,    label: 'Kontakt' },

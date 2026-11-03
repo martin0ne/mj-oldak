@@ -48,4 +48,15 @@ const articles = defineCollection({
   }),
 });
 
-export const collections = { articles };
+const notes = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/notes' }),
+  schema: z.object({
+    date: z.coerce.date(),
+    title: z.string().min(6).max(120),
+    link: z.string().optional(),
+    linkLabel: z.string().max(60).optional(),
+    kind: z.enum(['tekst', 'projekt', 'dom', 'audyt']).optional(),
+  }),
+});
+
+export const collections = { articles, notes };
