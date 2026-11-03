@@ -53,9 +53,11 @@ const notes = defineCollection({
   schema: z.object({
     date: z.coerce.date(),
     title: z.string().min(6).max(120),
+    // link = główne wejście (RSS, tytuł); links = dodatkowe warianty (np. wersja EN)
     link: z.string().optional(),
     linkLabel: z.string().max(60).optional(),
-    kind: z.enum(['tekst', 'projekt', 'dom', 'audyt']).optional(),
+    links: z.array(z.object({ href: z.string(), label: z.string().max(60) })).max(4).optional(),
+    kind: z.enum(['tekst', 'projekt', 'raport']).optional(),
   }),
 });
 

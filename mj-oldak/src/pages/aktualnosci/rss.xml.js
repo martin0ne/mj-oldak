@@ -8,10 +8,10 @@ export async function GET(context) {
 
   return rss({
     title: 'MJ.OLDAK — Aktualności',
-    description: 'Krótkie wpisy: publikacje, domknięcia, rzeczy otwarte.',
+    description: 'Nowe teksty i rzeczy do użycia — krótko, z linkiem.',
     site: context.site,
     items: notes.map((n) => ({
-      link: n.data.link ?? '/aktualnosci/',
+      link: n.data.link ?? n.data.links?.[0]?.href ?? '/aktualnosci/',
       title: n.data.title,
       description: n.body?.slice(0, 280) ?? '',
       pubDate: n.data.date,

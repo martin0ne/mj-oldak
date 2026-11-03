@@ -1,8 +1,11 @@
 ---
 date: 2026-11-02
-title: "Wojny w kieszeni — pięć liczb"
+title: "Nowy tekst: Wojny w kieszeni — pięć liczb"
 link: "/artykuly/wojny-w-kieszeni/"
-linkLabel: "czytaj tekst"
+linkLabel: "czytaj po polsku"
+links:
+  - href: "/en/articles/wars-in-your-pocket-five-numbers/"
+    label: "read in English"
 kind: "tekst"
 ---
-Pięć liczb z pięciu rejestrów: NASK, PISA, ETPC, Reuters, Komisja Europejska. Cztery z nich nie rosną — i to jest cała pointa. Wojna w kieszeni nie eskaluje, ona się rozgościła.
+Pięć liczb z pięciu rejestrów — NASK, PISA, Europejski Trybunał Praw Człowieka, Reuters i Komisja Europejska. Cztery z nich nie rosną. Wojna w kieszeni nie eskaluje; ona się rozgościła.
