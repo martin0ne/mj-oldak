@@ -19,6 +19,11 @@ const parser = new Parser({
   },
 });
 const BUILD_DATE = new Date().toISOString().slice(0, 10);
+const BUILD_DATE_PL = new Intl.DateTimeFormat('pl-PL', {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+}).format(new Date(BUILD_DATE));
 
 type Lens = 'AI' | 'GEO' | 'EU' | 'WORLD';
 const FEEDS: { lens: Lens; name: string; url: string; pl: boolean }[] = [
@@ -76,7 +81,11 @@ const items = raw.filter((it) => {
 
 const LENSES: Lens[] = ['AI', 'GEO', 'EU', 'WORLD'];
 const byLens = (l: Lens) => items.filter((i) => i.lens === l);
-const fmt = (d: string) => (d ? d.slice(0, 10).replace(/-/g, '.') : '');
+const fmt = (d: string) => {
+  if (!d) return '';
+  const [y, m, day] = d.slice(0, 10).split('-');
+  return `${Number(day)}.${Number(m)}.${y}`;
+};
 ---
 
 <BaseLayout
@@ -93,14 +102,14 @@ const fmt = (d: string) => (d ? d.slice(0, 10).replace(/-/g, '.') : '');
         Pnews.
       </h1>
       <p class="font-sans text-base md:text-lg leading-relaxed opacity-80 max-w-3xl mb-3">
-        Cztery soczewki, jedno źródło prawdy przy każdej pozycji: tytuł, źródło,
-        data, link. Bez pełnych tekstów i bez własnych komentarzy — komentarz
-        wchodzi dopiero po Twoim przeglądzie.
+        Cztery soczewki — AI, geopolityka, Unia i świat. Przy każdej pozycji to samo:
+        tytuł, źródło, data i link do oryginału. Bez przedruków i bez komentarza
+        redakcji; zdanie należy do źródła, nie do nas.
       </p>
       <p class="font-mono text-[11px] uppercase tracking-[0.22em] opacity-45 mb-10">
-        ostatnia aktualizacja: {BUILD_DATE} · build-time RSS · {items.length} pozycji · {
+        ostatnia aktualizacja: {BUILD_DATE_PL} · {items.length} pozycji z {
           new Set(FEEDS.map((f) => f.name)).size
-        } kanałów
+        } źródeł
       </p>
 
       <!-- Zakładki soczewek (filtr, nie osobna strona) -->
