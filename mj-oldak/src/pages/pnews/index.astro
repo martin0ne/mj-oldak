@@ -8,6 +8,8 @@
 // Pasmo „Polska w tle\" USUNIĘTE (16.10: „to i tak slop\") — bez własnych
 // komentarzy do czasu przeglądu Marcina (kolumna akcentu pusta, MVP).
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import NavbarPersonal from '../../components/personal/NavbarPersonal.jsx';
+import FooterSlim from '../../components/personal/FooterSlim.astro';
 import Parser from 'rss-parser';
 
 const parser = new Parser({
@@ -93,7 +95,9 @@ const fmt = (d: string) => {
   description="Cztery soczewki, samo źródło prawdy: tytuł + źródło + data + link. Kanały akredytowane i niezależne (Bloomberg, BBC, The Economist, War on the Rocks, Al Jazeera, Chris Norlund, Kuba Klawiter). Zero pełnych tekstów, zero własnych komentarzy."
   lang="pl"
 >
-  <section id="pnews" class="px-8 md:px-16 py-24 md:py-28 bg-background text-dark">
+  <NavbarPersonal client:load />
+
+  <section id="pnews" class="px-8 md:px-16 pt-32 md:pt-36 pb-24 md:pb-28 bg-background dark:bg-[var(--c-page)] text-dark dark:text-[var(--c-ink)] transition-colors duration-500">
     <div class="max-w-5xl mx-auto">
       <p class="font-mono text-[11px] uppercase tracking-[0.3em] opacity-50 mb-6">
         — 01 · Pnews
@@ -148,8 +152,8 @@ const fmt = (d: string) => {
             ))}
             {byLens(l).length === 0 && (
               <p class="font-sans text-sm opacity-60 md:col-span-2">
-                Ta soczewka nie zwróciła pozycji przy tym buildzie — sprawdź feed w
-                <code class="font-mono">scripts/check-feeds.sh</code>.
+                Ta soczewka nie ma dziś nowych pozycji. Wróć później —
+                zestawienie odświeża się przy każdej aktualizacji strony.
               </p>
             )}
           </div>
@@ -157,12 +161,13 @@ const fmt = (d: string) => {
       ))}
 
       <p class="font-mono text-[11px] uppercase tracking-[0.14em] opacity-45 mt-12 max-w-3xl leading-relaxed">
-        źródła: kanały akredytowane i niezależne RSS/YT (lista: scripts/check-feeds.sh) ·
-        tytuł + źródło + data + link — bez pełnych tekstów · bez akcentu do czasu
-        przeglądu redakcyjnego
+        źródła: kanały akredytowane i niezależne · tytuł, źródło, data i link do oryginału ·
+        bez przedruków i bez komentarza redakcji
       </p>
     </div>
   </section>
+
+  <FooterSlim />
 
   <script>
     const tabs = document.querySelectorAll<HTMLButtonElement>('.lens-tab');
