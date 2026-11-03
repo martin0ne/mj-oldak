@@ -1,12 +1,9 @@
 ---
 // /pnews/ — warstwa newsów (spec: docs/PNEWS-WARSTWA.md, 14.10.2026)
-// Build-time RSS (zero runtime) ·4 soczewki.
-// Decyzja16.10: ŹRÓDŁA AKREDYTOWANE/NIEZALEŻNE — Bloomberg (markets + technology),
-// Chris Norlund, Kuba Klawiter (kanały YT = własne RSS), The Economist, War on the Rocks, BBC,
-// Al Jazeera, NYT, PE, Defence24/CyberDefence24/BiznesAlert. BEZ portali
-// agregujących (spidersweb/benchmark/money/TVN24).
-// Pasmo „Polska w tle\" USUNIĘTE (16.10: „to i tak slop\") — bez własnych
-// komentarzy do czasu przeglądu Marcina (kolumna akcentu pusta, MVP).
+// Build-time RSS (zero runtime) · 4 soczewki · oś czasu · wyszukiwanie po stronie klienta.
+// ŹRÓDŁA AKREDYTOWANE/NIEZALEŻNE — Bloomberg (markets + technology), Chris Norlund,
+// Kuba Klawiter (kanały YT = własne RSS), The Economist, War on the Rocks, BBC, Al Jazeera,
+// NYT, PE, Defence24/CyberDefence24/BiznesAlert. BEZ portali agregujących.
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import NavbarPersonal from '../../components/personal/NavbarPersonal.jsx';
 import FooterSlim from '../../components/personal/FooterSlim.astro';
@@ -26,6 +23,8 @@ const BUILD_DATE_PL = new Intl.DateTimeFormat('pl-PL', {
   month: 'long',
   year: 'numeric',
 }).format(new Date(BUILD_DATE));
+
+const TZ = 'Europe/Warsaw';
 
 type Lens = 'AI' | 'GEO' | 'EU' | 'WORLD';
 const FEEDS: { lens: Lens; name: string; url: string; pl: boolean }[] = [
@@ -51,20 +50,20 @@ const FEEDS: { lens: Lens; name: string; url: string; pl: boolean }[] = [
   { lens: 'WORLD', name: 'NYT World', url: 'https://rss.nytimes.com/services/xml/rss/nyt/World.xml', pl: false },
 ];
 
-// Równolegle:16 feedów × timeout15 s — Promise.all daje czas najwolniejszego.
+// Równolegle: 16 feedów × timeout 15 s — Promise.all daje czas najwolniejszego.
 const raw: { lens: Lens; pl: boolean; source: string; title: string; link: string; date: string }[] = [];
 const fetched = await Promise.all(
   FEEDS.map(async (f) => {
     try {
       const feed: any = await parser.parseURL(f.url);
-      return (feed.items || []).slice(0, 6).map((it: any) => ({
+      return (feed.items || []).slice(0, 8).map((it: any) => ({
         lens: f.lens, pl: f.pl, source: f.name,
         title: it.title ? String(it.title).replace(/\s+/g, ' ').trim() : '',
         link: it.link || '',
         date: it.isoDate || it.pubDate || '',
       })).filter((x: any) => x.title && x.link);
     } catch {
-      // martwy feed przy buildzie: pomijamy (check-feeds.sh i tak go wychwytuje)
+      // martwy feed przy buildzie: pomijamy
       return [];
     }
   }),
@@ -74,31 +73,51 @@ for (const arr of fetched) raw.push(...arr);
 // dedup: identyczny tytuł po normalizacji
 const norm = (s: string) => s.toLowerCase().replace(/[^a-z0-9ąćęłńóśźż ]/g, '').slice(0, 60);
 const seen = new Set<string>();
-const items = raw.filter((it) => {
-  const k = norm(it.title);
-  if (!k || seen.has(k)) return false;
-  seen.add(k);
-  return true;
-}).sort((a, b) => (b.date > a.date ? 1 : -1));
+const items = raw
+  .filter((it) => {
+    const k = norm(it.title);
+    if (!k || seen.has(k)) return false;
+    seen.add(k);
+    return true;
+  })
+  .sort((a, b) => (b.date > a.date ? 1 : -1));
 
 const LENSES: Lens[] = ['AI', 'GEO', 'EU', 'WORLD'];
-const byLens = (l: Lens) => items.filter((i) => i.lens === l);
-const fmt = (d: string) => {
-  if (!d) return '';
-  const [y, m, day] = d.slice(0, 10).split('-');
-  return `${Number(day)}.${Number(m)}.${y}`;
-};
+
+// Grupowanie po dniu w czasie warszawskim — kolejność jak w items (malejąco).
+const dayKey = (d: string) =>
+  d
+    ? new Intl.DateTimeFormat('en-CA', { timeZone: TZ, year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date(d))
+    : 'bez-daty';
+const dayLabel = (d: string) =>
+  d
+    ? new Intl.DateTimeFormat('pl-PL', { timeZone: TZ, weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' }).format(new Date(d))
+    : 'bez daty';
+const timeLabel = (d: string) =>
+  d ? new Intl.DateTimeFormat('pl-PL', { timeZone: TZ, hour: '2-digit', minute: '2-digit' }).format(new Date(d)) : '—';
+
+type Group = { key: string; label: string; items: typeof items };
+const groups: Group[] = [];
+for (const it of items) {
+  const k = dayKey(it.date);
+  const last = groups[groups.length - 1];
+  if (last && last.key === k) last.items.push(it);
+  else groups.push({ key: k, label: dayLabel(it.date), items: [it] });
+}
+
+// klucz wyszukiwania: tytuł + źródło, bez wielkości liter (reszta normalizacji w JS)
+const searchKey = (it: { title: string; source: string }) => `${it.title} ${it.source}`;
 ---
 
 <BaseLayout
   title="Pnews — wiadomości o AI, geopolityce, UE i świecie (MJ.OLDAK)"
-  description="Cztery soczewki, samo źródło prawdy: tytuł + źródło + data + link. Kanały akredytowane i niezależne (Bloomberg, BBC, The Economist, War on the Rocks, Al Jazeera, Chris Norlund, Kuba Klawiter). Zero pełnych tekstów, zero własnych komentarzy."
+  description="Oś czasu z czterech soczewek: AI, geopolityka, Unia i świat. Przy każdej pozycji tytuł, źródło, data i link do oryginału."
   lang="pl"
 >
   <NavbarPersonal client:load />
 
   <section id="pnews" class="px-8 md:px-16 pt-32 md:pt-36 pb-24 md:pb-28 bg-background dark:bg-[var(--c-page)] text-dark dark:text-[var(--c-ink)] transition-colors duration-500">
-    <div class="max-w-5xl mx-auto">
+    <div class="max-w-4xl mx-auto">
       <p class="font-mono text-[11px] uppercase tracking-[0.3em] opacity-50 mb-6">
         — 01 · Pnews
       </p>
@@ -106,62 +125,80 @@ const fmt = (d: string) => {
         Pnews.
       </h1>
       <p class="font-sans text-base md:text-lg leading-relaxed opacity-80 max-w-3xl mb-3">
-        Cztery soczewki — AI, geopolityka, Unia i świat. Przy każdej pozycji to samo:
-        tytuł, źródło, data i link do oryginału. Bez przedruków i bez komentarza
-        redakcji; zdanie należy do źródła, nie do nas.
+        Cztery soczewki — AI, geopolityka, Unia i świat — ułożone w jedną osią czasu.
+        Przy każdej pozycji to samo: tytuł, źródło, godzina i link do oryginału.
+        Bez przedruków i bez komentarza redakcji; zdanie należy do źródła, nie do nas.
       </p>
-      <p class="font-mono text-[11px] uppercase tracking-[0.22em] opacity-45 mb-10">
+      <p class="font-mono text-[11px] uppercase tracking-[0.22em] opacity-45 mb-8">
         ostatnia aktualizacja: {BUILD_DATE_PL} · {items.length} pozycji z {
           new Set(FEEDS.map((f) => f.name)).size
         } źródeł
       </p>
 
-      <!-- Zakładki soczewek (filtr, nie osobna strona) -->
-      <div class="flex flex-wrap gap-3 mb-10" role="tablist" aria-label="Soczewki">
-        {LENSES.map((l, i) => (
-          <button
-            type="button"
-            role="tab"
-            data-lens={l}
-            aria-selected={i === 0 ? 'true' : 'false'}
-            class="lens-tab font-mono text-xs uppercase tracking-[0.16em] px-4 py-2 border border-dark/20 rounded-[6px] transition-colors duration-200"
-          >
-            {l}
-          </button>
+      <!-- Pasek narzędzi: wyszukiwanie + soczewki -->
+      <div class="sticky top-14 z-30 -mx-2 px-2 py-3 mb-8 bg-background/95 dark:bg-[var(--c-page)]/95 backdrop-blur border-b border-dark/12 dark:border-[var(--c-line)]">
+        <div class="flex flex-col md:flex-row md:items-center gap-3">
+          <div class="relative flex-1">
+            <label for="pnews-q" class="sr-only">Szukaj w tytułach i źródłach</label>
+            <input
+              id="pnews-q"
+              type="search"
+              autocomplete="off"
+              placeholder="Szukaj: tytuł albo źródło…"
+              class="pnews-input w-full font-mono text-[13px] tracking-[0.02em] px-3 py-2.5 border border-dark/20 dark:border-[var(--c-line)] rounded-[6px] bg-transparent"
+            />
+          </div>
+          <div class="flex flex-wrap gap-2" role="tablist" aria-label="Soczewki">
+            <button type="button" role="tab" data-lens="ALL" aria-selected="true" class="lens-tab font-mono text-[11px] uppercase tracking-[0.14em] px-3 py-2 border border-dark/20 dark:border-[var(--c-line)] rounded-[6px]">
+              wszystkie
+            </button>
+            {LENSES.map((l) => (
+              <button type="button" role="tab" data-lens={l} aria-selected="false" class="lens-tab font-mono text-[11px] uppercase tracking-[0.14em] px-3 py-2 border border-dark/20 dark:border-[var(--c-line)] rounded-[6px]">
+                {l}
+              </button>
+            ))}
+          </div>
+        </div>
+        <p class="font-mono text-[10px] uppercase tracking-[0.18em] opacity-45 mt-2.5">
+          <span id="pnews-count">{items.length}</span> pozycji
+          <span id="pnews-filtered" hidden> · filtr: <span id="pnews-shown">0</span></span>
+        </p>
+      </div>
+
+      <!-- Oś czasu -->
+      <div id="pnews-timeline" class="tl">
+        {groups.map((g) => (
+          <section class="tl-day" data-day>
+            <h2 class="tl-day-head font-mono text-[11px] uppercase tracking-[0.2em] opacity-55">
+              {g.label}
+            </h2>
+            <ol class="tl-list">
+              {g.items.map((it) => (
+                <li class="tl-item" data-lens={it.lens} data-search={searchKey(it)}>
+                  <time class="tl-time font-mono text-[11px] tabular-nums opacity-50" datetime={it.date}>
+                    {timeLabel(it.date)}
+                  </time>
+                  <div class="tl-body">
+                    <a href={it.link} target="_blank" rel="noopener" class="tl-title font-serif text-[19px] leading-snug no-underline hover:underline decoration-1 underline-offset-4">
+                      {it.title}
+                    </a>
+                    <span class="tl-source font-mono text-[10px] uppercase tracking-[0.16em] opacity-55">
+                      {it.source}{it.pl ? ' · PL' : ''}
+                    </span>
+                  </div>
+                </li>
+              ))}
+            </ol>
+          </section>
         ))}
       </div>
 
-      {LENSES.map((l) => (
-        <div class="lens-panel" data-panel={l} hidden={l !== 'AI'}>
-          <!-- Kafle -->
-          <div class="grid md:grid-cols-2 gap-4">
-            {byLens(l).map((it) => (
-              <article class="border border-dark/12 bg-white p-6 flex flex-col gap-3">
-                <span class="font-mono text-[10px] uppercase tracking-[0.18em] opacity-55 self-start border border-dark/20 px-2 py-1 rounded-[4px]">
-                  {it.lens}{it.pl ? ' · PL' : ''}
-                </span>
-                <h2 class="font-serif text-xl leading-snug">
-                  <a href={it.link} target="_blank" rel="noopener" class="hover:underline decoration-1 underline-offset-4">
-                    {it.title}
-                  </a>
-                </h2>
-                <p class="font-mono text-[11px] uppercase tracking-[0.14em] opacity-55 mt-auto">
-                  {it.source} · {fmt(it.date)}
-                </p>
-              </article>
-            ))}
-            {byLens(l).length === 0 && (
-              <p class="font-sans text-sm opacity-60 md:col-span-2">
-                Ta soczewka nie ma dziś nowych pozycji. Wróć później —
-                zestawienie odświeża się przy każdej aktualizacji strony.
-              </p>
-            )}
-          </div>
-        </div>
-      ))}
+      <p id="pnews-empty" class="font-sans text-sm opacity-60 py-10" hidden>
+        Nic nie pasuje do tego zapytania. Spróbuj krótszego hasła albo wybierz „wszystkie”.
+      </p>
 
       <p class="font-mono text-[11px] uppercase tracking-[0.14em] opacity-45 mt-12 max-w-3xl leading-relaxed">
-        źródła: kanały akredytowane i niezależne · tytuł, źródło, data i link do oryginału ·
+        źródła: kanały akredytowane i niezależne · tytuł, źródło, godzina i link do oryginału ·
         bez przedruków i bez komentarza redakcji
       </p>
     </div>
@@ -170,21 +207,119 @@ const fmt = (d: string) => {
   <FooterSlim />
 
   <script>
-    const tabs = document.querySelectorAll<HTMLButtonElement>('.lens-tab');
-    const panels = document.querySelectorAll<HTMLElement>('.lens-panel');
-    tabs.forEach((tab) => {
-      tab.addEventListener('click', () => {
-        const lens = tab.dataset.lens;
-        tabs.forEach((t) => t.setAttribute('aria-selected', String(t === tab)));
-        panels.forEach((p) => { p.hidden = p.dataset.panel !== lens; });
+    (() => {
+      const q = document.getElementById('pnews-q') as HTMLInputElement | null;
+      const tabs = Array.from(document.querySelectorAll<HTMLButtonElement>('.lens-tab'));
+      const dayBlocks = Array.from(document.querySelectorAll<HTMLElement>('[data-day]'));
+      const items = Array.from(document.querySelectorAll<HTMLElement>('.tl-item'));
+      const countOut = document.getElementById('pnews-count') as HTMLElement;
+      const filteredOut = document.getElementById('pnews-filtered') as HTMLElement;
+      const shownOut = document.getElementById('pnews-shown') as HTMLElement;
+      const empty = document.getElementById('pnews-empty') as HTMLElement;
+      if (!q || !items.length) return;
+
+      const total = items.length;
+      let lens = 'ALL';
+      let term = '';
+
+      // normalizacja: bez diakrytyków, bez wielkości liter
+      const fold = (s: string) =>
+        s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/ł/g, 'l').toLowerCase().trim();
+
+      // przygotuj znormalizowany klucz raz
+      items.forEach((el) => {
+        el.dataset.fold = fold(el.dataset.search || '');
       });
-    });
+
+      // dopasowanie po rdzeniu: „Ukraina” łapie „Ukrainie”, „Ukraine”, „Ukraińcy”
+      const matches = (hay: string, tokens: string[]) =>
+        tokens.every((tok) => {
+          if (hay.includes(tok)) return true;
+          if (tok.length < 4) return false;
+          const stem = tok.slice(0, Math.min(5, tok.length));
+          return hay.split(/[^a-z0-9]+/).some((w) => w.startsWith(stem));
+        });
+
+      const apply = () => {
+        const tokens = fold(term).split(/\s+/).filter(Boolean);
+        let shown = 0;
+
+        items.forEach((el) => {
+          const okLens = lens === 'ALL' || el.dataset.lens === lens;
+          const okTerm = tokens.length === 0 || matches(el.dataset.fold || '', tokens);
+          const visible = okLens && okTerm;
+          el.hidden = !visible;
+          if (visible) shown++;
+        });
+
+        // ukryj dni bez pozycji
+        dayBlocks.forEach((block) => {
+          const any = Array.from(block.querySelectorAll<HTMLElement>('.tl-item')).some((el) => !el.hidden);
+          block.hidden = !any;
+        });
+
+        if (countOut) countOut.textContent = String(total);
+        if (filteredOut && shownOut) {
+          const active = lens !== 'ALL' || tokens.length > 0;
+          filteredOut.hidden = !active;
+          shownOut.textContent = String(shown);
+        }
+        if (empty) empty.hidden = shown !== 0;
+      };
+
+      let t: number | undefined;
+      q.addEventListener('input', () => {
+        term = q.value;
+        window.clearTimeout(t);
+        t = window.setTimeout(apply, 90);
+      });
+
+      tabs.forEach((tab) => {
+        tab.addEventListener('click', () => {
+          lens = tab.dataset.lens || 'ALL';
+          tabs.forEach((x) => x.setAttribute('aria-selected', String(x === tab)));
+          apply();
+        });
+      });
+
+      apply();
+    })();
   </script>
 
   <style>
-    .lens-tab { background: transparent; color: inherit; cursor: pointer; }
+    .lens-tab { background: transparent; color: inherit; cursor: pointer; transition: background .15s, color .15s, border-color .15s; }
     .lens-tab[aria-selected='true'] { background: #111111; color: #fbfbfa; border-color: #111111; }
-    .lens-tab:hover { border-color: #111111; }
-    .lens-tab:focus-visible { outline: 2px solid #111111; outline-offset: 2px; }
+    :global(.dark) .lens-tab[aria-selected='true'] { background: #fbfbfa; color: #111111; border-color: #fbfbfa; }
+    .lens-tab:hover { border-color: currentColor; }
+    .lens-tab:focus-visible, .pnews-input:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
+    .pnews-input::placeholder { color: currentColor; opacity: .45; }
+    .pnews-input::-webkit-search-cancel-button { cursor: pointer; }
+
+    /* Oś czasu */
+    .tl { border-top: 1px solid rgba(17,17,17,.12); }
+    :global(.dark) .tl { border-top-color: var(--c-line); }
+    .tl-day { display: grid; grid-template-columns: 1fr; }
+    .tl-day-head { margin: 26px 0 10px; }
+    .tl-list { list-style: none; margin: 0; padding: 0 0 6px 0; border-left: 1px solid rgba(17,17,17,.14); }
+    :global(.dark) .tl-list { border-left-color: var(--c-line); }
+    .tl-item {
+      display: grid; grid-template-columns: 74px 1fr; gap: 14px;
+      padding: 12px 0 12px 18px; position: relative;
+    }
+    .tl-item + .tl-item { border-top: 1px dashed rgba(17,17,17,.10); }
+    :global(.dark) .tl-item + .tl-item { border-top-color: rgba(255,255,255,.08); }
+    .tl-item::before {
+      content: ''; position: absolute; left: -3.5px; top: 20px;
+      width: 6px; height: 6px; border-radius: 50%;
+      background: currentColor; opacity: .35;
+    }
+    .tl-time { padding-top: 3px; }
+    .tl-body { display: flex; flex-direction: column; gap: 5px; min-width: 0; }
+    .tl-item[hidden], .tl-day[hidden] { display: none; }
+
+    @media (max-width: 640px) {
+      .tl-item { grid-template-columns: 1fr; gap: 4px; padding-left: 14px; }
+      .tl-time { order: -1; }
+    }
   </style>
 </BaseLayout>
