@@ -1,5 +1,5 @@
 ---
-date: 2026-11-02
+date: 2026-11-02T12:00:00Z
 title: "Nowy tekst: Wojny w kieszeni — pięć liczb"
 link: "/artykuly/wojny-w-kieszeni/"
 linkLabel: "czytaj po polsku"

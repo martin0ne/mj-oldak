@@ -9,7 +9,8 @@ export async function GET(context) {
   return rss({
     title: 'MJ.OLDAK — Aktualności',
     description: 'Nowe teksty i rzeczy do użycia — krótko, z linkiem.',
-    site: context.site,
+    // kanał wskazuje sekcję — czytnik ma prowadzić do /aktualnosci/, nie na stronę główną
+    site: new URL('/aktualnosci/', context.site),
     items: notes.map((n) => ({
       link: n.data.link ?? n.data.links?.[0]?.href ?? '/aktualnosci/',
       title: n.data.title,
