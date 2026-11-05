@@ -141,7 +141,7 @@ Zdjęcia, które nie były robione do tego tekstu. Ułożone razem, mają wspól
 
 <figure>
   <img src="/articles/zimujacy/07-notatka.jpg" alt="Zrzut ekranu notatki z metadanymi artykułu" loading="lazy" />
-  <figcaption><span class="num">VII</span>Notatka z 3 września, w telefonie, z kursorem w środku zdania. Zdanie o dwóch światach po obu stronach Atlantyku było wtedy tylko wpisem w polu „excerpt".</figcaption>
+  <figcaption><span class="num">VII</span>Notatka z września, w telefonie, z kursorem w środku zdania. Zdanie o dwóch światach po obu stronach Atlantyku było wtedy tylko wpisem w polu „excerpt".</figcaption>
 </figure>
 
 <figure>
