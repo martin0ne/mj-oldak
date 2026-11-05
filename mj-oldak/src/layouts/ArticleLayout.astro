@@ -118,8 +118,8 @@ const faqLd = faq && faq.length ? {
       </div>
       <div class="flex items-center gap-3 mb-6">
         <span class="font-mono text-[10px] uppercase tracking-widest px-3 py-1 rounded-full bg-accent/10 text-accent border border-accent/20">{category}</span>
-        <span class="font-mono text-[10px] uppercase tracking-widest text-dark/40 dark:text-[var(--c-ink-dim)]">{dateFormatted}</span>
-        {readingTime && <span class="font-mono text-[10px] uppercase tracking-widest text-dark/40 dark:text-[var(--c-ink-dim)]">· {readingTime} {t.reading}</span>}
+        <span class="font-mono text-[10px] uppercase tracking-widest text-dark/60 dark:text-[var(--c-ink-dim)]">{dateFormatted}</span>
+        {readingTime && <span class="font-mono text-[10px] uppercase tracking-widest text-dark/60 dark:text-[var(--c-ink-dim)]">· {readingTime} {t.reading}</span>}
       </div>
       <h1 class="font-sans font-bold text-4xl md:text-6xl uppercase tracking-tight text-dark dark:text-[var(--c-ink)] mb-6 leading-tight">
         {title}
@@ -127,7 +127,7 @@ const faqLd = faq && faq.length ? {
       <p class="font-mono text-base md:text-lg text-dark/70 dark:text-[var(--c-ink)] leading-relaxed max-w-3xl">
         {excerpt}
       </p>
-      <div class="mt-6 flex items-center gap-3 text-sm font-mono text-dark/50 dark:text-[var(--c-ink-dim)]">
+      <div class="mt-6 flex items-center gap-3 text-sm font-mono text-dark/65 dark:text-[var(--c-ink-dim)]">
         <span class="w-2 h-2 rounded-full bg-accent animate-pulse"></span>
         <span>{author}</span>
       </div>
@@ -164,7 +164,7 @@ const faqLd = faq && faq.length ? {
 
     {/* Tags */}
     <div class="max-w-3xl mx-auto px-6 md:px-12 mt-12 pt-8 border-t border-dark/10 dark:border-[var(--c-line)]">
-      <p class="font-mono text-[10px] uppercase tracking-widest text-dark/40 dark:text-[var(--c-ink-dim)] mb-4">{t.tagsLabel}</p>
+      <p class="font-mono text-[10px] uppercase tracking-widest text-dark/60 dark:text-[var(--c-ink-dim)] mb-4">{t.tagsLabel}</p>
       <div class="flex flex-wrap gap-2">
         {tags.map((tag) => (
           <a href={isEn ? `${basePath}/` : `/artykuly/tag/${tag}/`} class="font-mono text-xs uppercase tracking-widest px-3 py-1.5 rounded-full bg-dark/[0.05] dark:bg-[var(--c-surface)] hover:bg-accent hover:text-primary border border-dark/10 dark:border-[var(--c-line)] text-dark/70 dark:text-[var(--c-ink)] transition no-underline">
@@ -329,6 +329,12 @@ const faqLd = faq && faq.length ? {
   .dark .article-prose hr { border-top-color: rgba(255,255,255,0.10); }
   .dark .article-prose a:hover { background: rgba(17,17,17,0.18); }
   .dark .article-prose img { border-color: rgba(255,255,255,0.10); }
+  /* podpisy pod zdjęciami (fotoesej) — bez tego czarny tekst na ciemnym tle */
+  .dark .article-prose figcaption {
+    color: rgba(232,232,230,0.62);
+    border-top-color: rgba(255,255,255,0.14);
+  }
+  .dark .article-prose figcaption .num { color: var(--c-ink); }
   /* 02.11 — czytelność linków/akcentów w dark (raport Marcina: tabelki nieczytelne) */
   .dark .article-prose a {
     color: var(--c-ink);

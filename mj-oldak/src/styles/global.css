@@ -95,6 +95,12 @@
 }
 .dark html, html.dark { background-color: #0B0B0B; }
 .dark ::selection { background: rgba(17,17,17,0.35); }
+
+/* Accent jako KOLOR TEKSTU (05.11.2026): #111 na #0B0B0B to kontrast 1:1.
+   Dotyczy badge'y kategorii (ESEJ/EDUKACJA), nagłówków „esencję." i 171 użyć text-accent.
+   Nie ruszamy --color-accent globalnie, bo tło przycisków (bg-accent) ma zostać ciemne w light. */
+.dark .text-accent,
+.bg-dark .text-accent { color: #E8E8E6; }
 @media (prefers-reduced-motion: reduce) {
   * { scroll-behavior: auto !important; }
 }

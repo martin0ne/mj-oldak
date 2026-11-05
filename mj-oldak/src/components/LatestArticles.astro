@@ -15,7 +15,7 @@ const fmtDate = (d: Date) => new Intl.DateTimeFormat('pl-PL', { month: 'long', y
         <div>
           <div class="flex items-center gap-2 mb-4">
             <span class="w-2 h-2 rounded-full bg-accent animate-pulse"></span>
-            <span class="font-mono text-[10px] uppercase tracking-widest text-dark/40 dark:text-[var(--c-ink-dim)]">[ 05 / ARTYKUŁY ]</span>
+            <span class="font-mono text-[10px] uppercase tracking-widest text-dark/60 dark:text-[var(--c-ink-dim)]">[ 05 / ARTYKUŁY ]</span>
           </div>
           <h2 class="font-sans font-bold text-5xl md:text-7xl uppercase tracking-tight text-dark dark:text-[var(--c-ink)] leading-none mb-4">
             Praktyczna <span class="font-serif italic font-normal text-accent">wiedza.</span>
@@ -41,7 +41,7 @@ const fmtDate = (d: Date) => new Intl.DateTimeFormat('pl-PL', { month: 'long', y
                 </div>
               )}
               <div class="p-6">
-                <div class="flex items-center gap-2 mb-3 font-mono text-[10px] uppercase tracking-widest text-dark/40 dark:text-[var(--c-ink-dim)]">
+                <div class="flex items-center gap-2 mb-3 font-mono text-[10px] uppercase tracking-widest text-dark/60 dark:text-[var(--c-ink-dim)]">
                   <span class="text-accent">{a.data.category}</span>
                   <span>·</span>
                   <span>{fmtDate(a.data.publishedAt)}</span>

@@ -54,11 +54,11 @@ export default function ArticlesBrowser({ articles, allTags, basePath = '/artyku
                             onChange={(e) => setQuery(e.target.value)}
                             placeholder={ui.placeholder}
                             aria-label={ui.searchAria}
-                            className="w-full bg-dark/[0.04] dark:bg-[var(--c-surface)] border border-dark/15 dark:border-[var(--c-line)] rounded-[2rem] pl-12 pr-5 py-3.5 font-mono text-sm text-dark dark:text-[var(--c-ink)] placeholder:text-dark/40 dark:placeholder:text-[var(--c-ink-dim)] outline-none focus:border-accent/60 focus:bg-dark/[0.06] transition-all"
+                            className="w-full bg-dark/[0.04] dark:bg-[var(--c-surface)] border border-dark/15 dark:border-[var(--c-line)] rounded-[2rem] pl-12 pr-5 py-3.5 font-mono text-sm text-dark dark:text-[var(--c-ink)] placeholder:text-dark/60 dark:placeholder:text-[var(--c-ink-dim)] outline-none focus:border-accent/60 focus:bg-dark/[0.06] transition-all"
                         />
-                        <svg className="absolute left-5 top-1/2 -translate-y-1/2 w-4 h-4 text-dark/40 dark:text-[var(--c-ink-dim)]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                        <svg className="absolute left-5 top-1/2 -translate-y-1/2 w-4 h-4 text-dark/60 dark:text-[var(--c-ink-dim)]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
                     </div>
-                    <p className="font-mono text-[10px] uppercase tracking-widest text-dark/40 dark:text-[var(--c-ink-dim)] self-center">
+                    <p className="font-mono text-[10px] uppercase tracking-widest text-dark/60 dark:text-[var(--c-ink-dim)] self-center">
                         {ui.count(filtered.length)}
                     </p>
                 </div>
@@ -115,7 +115,7 @@ export default function ArticlesBrowser({ articles, allTags, basePath = '/artyku
                                 </div>
                             )}
                             <div className="p-6">
-                                <div className="flex items-center gap-2 mb-3 font-sans font-medium text-xs uppercase tracking-[0.15em] text-dark/50 dark:text-[var(--c-ink-dim)]">
+                                <div className="flex items-center gap-2 mb-3 font-sans font-medium text-xs uppercase tracking-[0.15em] text-dark/65 dark:text-[var(--c-ink-dim)]">
                                     <span className="font-bold text-accent">{a.category}</span>
                                     <span className="text-dark/30 dark:text-[var(--c-ink-dim)]">·</span>
                                     <span>{a.publishedDateLabel}</span>

@@ -40,7 +40,7 @@ export default function ArticleCarousel({ articles, heading, subheading, section
             {sectionLabel && (
               <div className="flex items-center gap-2 mb-4">
                 <span className="w-2 h-2 rounded-full bg-accent animate-pulse"></span>
-                <span className="font-sans font-medium text-xs uppercase tracking-[0.2em] text-dark/50 dark:text-[var(--c-ink-dim)]">{sectionLabel}</span>
+                <span className="font-sans font-medium text-xs uppercase tracking-[0.2em] text-dark/65 dark:text-[var(--c-ink-dim)]">{sectionLabel}</span>
               </div>
             )}
             {heading && (
@@ -83,7 +83,7 @@ export default function ArticleCarousel({ articles, heading, subheading, section
                     </div>
                   )}
                   <div className={`p-8 md:p-12 flex flex-col justify-center ${a.cover ? 'lg:col-span-2' : 'lg:col-span-5'}`}>
-                    <div className="flex items-center gap-2 mb-5 font-sans font-medium text-xs uppercase tracking-[0.15em] text-dark/50 dark:text-[var(--c-ink-dim)]">
+                    <div className="flex items-center gap-2 mb-5 font-sans font-medium text-xs uppercase tracking-[0.15em] text-dark/65 dark:text-[var(--c-ink-dim)]">
                       <span className="font-bold text-accent">{a.category}</span>
                       <span className="text-dark/30 dark:text-[var(--c-ink-dim)]">·</span>
                       <span>{a.publishedDateLabel}</span>

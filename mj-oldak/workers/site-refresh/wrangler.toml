@@ -1,0 +1,12 @@
+name = "mj-oldak-site-refresh"
+main = "src/index.js"
+compatibility_date = "2025-01-01"
+
+# Codziennie 4:30 UTC (5:30/6:30 PL) — przebudowa strony, żeby /pnews/ miał świeży RSS.
+# Pnews jest build-time, więc bez nowego builda stoi na dacie ostatniego deployu.
+[triggers]
+crons = ["30 4 * * *"]
+
+[vars]
+# Deploy Hook z CF Pages → Settings → Builds & deployments → Deploy hooks → Add
+# (branch main). Sekret ustawia się przez: wrangler secret put DEPLOY_HOOK_URL
