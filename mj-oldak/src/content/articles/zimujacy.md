@@ -1,6 +1,7 @@
 ---
 title: "Zimujący: o pokoleniach, mediach i dobroci bez cennika"
 slug: "zimujacy"
+translationKey: "zimujacy"
 excerpt: "Bocian, który nie odleciał. Roślina przelana z troski. Czternaście kadrów, które układają się w jedno zdanie o pokoleniach, mediach i dobroci, która nie ma cennika."
 publishedAt: 2026-11-05
 author: "Marcin Ołdak"
