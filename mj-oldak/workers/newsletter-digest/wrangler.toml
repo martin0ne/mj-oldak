@@ -1,0 +1,24 @@
+name = "mj-oldak-newsletter-digest"
+main = "src/index.js"
+compatibility_date = "2025-01-01"
+
+# Ten sam cron co reszta rutyn: codziennie 6:00 UTC (7:00/8:00 czasu PL)
+[triggers]
+crons = ["0 6 * * *"]
+
+[[d1_databases]]
+binding = "DB"
+database_name = "mj-oldak-newsletter"
+database_id = "c1d7109b-bf50-4cf6-a129-dc99deeab471"
+
+[vars]
+SITE_URL = "https://www.mjoldak.pl"
+FROM_EMAIL = "noreply@mjoldak.pl"
+FROM_NAME = "MJ.OLDAK"
+MAX_LOOKBACK_DAYS = "30"
+MAX_PER_RUN = "200"
+
+# Sekrety (wrangler secret put ...):
+#   RESEND_API_KEY  — klucz Resend (ten sam co w Pages)
+#   TRIGGER_KEY     — dowolny ciąg, pozwala odpalić przebieg ręcznie:
+#                     https://<worker>.workers.dev/?key=...&dry=1

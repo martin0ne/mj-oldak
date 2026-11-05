@@ -3,6 +3,7 @@ import BaseLayout from './BaseLayout.astro';
 import NavbarPersonal from '../components/personal/NavbarPersonal.jsx';
 import FooterSlim from '../components/personal/FooterSlim.astro';
 import RelatedArticles from '../components/RelatedArticles.astro';
+import NewsletterSignup from '../components/NewsletterSignup.jsx';
 import type { CollectionEntry } from 'astro:content';
 
 export interface Props {
@@ -155,6 +156,11 @@ const faqLd = faq && faq.length ? {
         ))}
       </div>
     )}
+
+    {/* Newsletter — zapis po lekturze (jedno miejsce, ten sam komponent co na /newsletter/) */}
+    <div class="max-w-3xl mx-auto px-6 md:px-12 mt-16">
+      <NewsletterSignup variant="inline" lang={isEn ? 'en' : 'pl'} client:visible />
+    </div>
 
     {/* Tags */}
     <div class="max-w-3xl mx-auto px-6 md:px-12 mt-12 pt-8 border-t border-dark/10 dark:border-[var(--c-line)]">
