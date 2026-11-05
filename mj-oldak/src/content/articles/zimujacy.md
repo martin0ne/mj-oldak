@@ -6,8 +6,8 @@ publishedAt: 2026-11-05
 author: "Marcin Ołdak"
 category: "esej"
 tags: [esej]
-cover: "/articles/zimujacy/01-bocian.jpg"
-coverAlt: "Bocian stojący na wysięgniku latarni ulicznej na tle czystego nieba"
+cover: "/articles/covers/zimujacy.jpg"
+coverAlt: "Okładka: tytuł Zimujący na kremowym tle i bocian stojący na wysięgniku latarni na tle nieba"
 readingTime: 14
 featured: false
 draft: false
