@@ -15,13 +15,15 @@ Nvidia w jeden dzień traci 250 miliardów USD — nie przez bankructwo klienta,
 
 ## Akapit 1 — mechanizm: bańka finansuje się sama
 
-Bank Rozrachunków Międzynarodowych (BIS, Bulletin 137, 01.10.2026) policzył, że 55,2% wpływających inwestycji do firm AI (2021-2025) pochodziło od innych firm AI. 1 246 firm, gdzie uczestnik jest jednocześnie sprzedawcą i kupującym. 46,4% wartości umów AI-AI (ale tylko 16,1% liczby) ma też relację handlową — dostawca finansuje klienta. 73% circular z compute/infra; 64% supplier-finances-customer.
+Bank Rozrachunków Międzynarodowych (BIS, Bulletin 137, 1 października 2026) — najstarsza międzynarodowa organizacja finansowa świata, założona 17 maja 1930 (często nazywany też Bankiem Rozliczeń Międzynarodowych) — przejrzał 1 246 transakcji z lat 2021–2025 i znalazł coś, czego nie widać z zewnątrz: 55,2% pieniędzy, które wpłynęły do firm AI, przyszło od innych firm AI. Bańka finansuje się od środka.
 
-Nvidia jest w tym samym czasem: inwestuje → klienci budują → kupują jej chipy. To „central bank of AI" — w tym samym czasie bankuje i jest w tym samym czasie podmiotem ryzyka.
+I to nie są drobiazgi. Prawie połowa wartości największych umów między firmami AI idzie przez pętle, w których ten, kto finansuje, jest jednocześnie tym, kto sprzedaje: dostawca pożycza klientowi pieniądze, żeby klient kupił produkt dostawcy. Trzy czwarte takich pętli zaczyna się w warstwie obliczeń — czyli tam, gdzie siedzi Nvidia.
 
-Gwarancje: Broadcom oferuje Anthropic SPV dla Anthropic (26.10.2026), czerwiec $35 mld → caps razem ~$72 mld; Nvidia „up to $100 mld" dla OpenAI (22.09.2025, LOI, 10 GW); Alphabet $48 mld. Razem: ponad **200 miliardów USD** cudzego długu, za którymi stoją trzy firmy.
+Nvidia działa w tej pętli jak „centralny bank AI": inwestuje → klienci budują → klienci kupują jej chipy.
 
-Skala kwot: 200 miliardów USD, jeśli wydawać milion USD na sekundę, to **6 340 lat**.
+Skala gwarancji: Broadcom 63 miliardy USD struktury dla Anthropic (26 października 2026, z Bank of America, Blackstone, Citigroup i Morgan Stanley) plus 35 miliardów USD z czerwca. Nvidia zadeklarowała do 100 miliardów USD dla OpenAI. Alphabet gwarantuje najem 48 miliardów USD. Razem: ponad 200 miliardów USD cudzego długu, za którymi stoją trzy firmy.
+
+Jeśli wydawać milion USD na sekundę, 200 miliardów USD to 6 340 lat.
 
 ## Akapit 2 — geometria ryzyka: geografia przychodu
 
@@ -33,13 +35,17 @@ Geografia przychodu to ukryta korekta wyceny ryzyka: oficjalna mapa przychodu ni
 
 ## Akapit 3 — zabezpieczenie: dwa ryzyka, jedna firma
 
-CoreWeave: CDS 1 289 bp (05.11), 1 000 bp = 64% prawdopodobieństwa defaultu w 5 lat (z ~30% rok wcześniej). Yield 2032 bond >16% — 64% zamyka się w 5 lat. Skala: 64% zamyka się w 5 lat.
+Dnia 9 listopada rynek policzył dwie rzeczy naraz.
 
-Wipeout: 250 miliardów USD przy otwarciu (09.11), zamknięcie ~190 mld, Guardian ~330 mld na dołku. Skala: 250 miliardów USD = **7 925 lat**.
+Pierwsza: czy firmy zapłacą. CoreWeave — chmura, która zawdzięcza Nvidii finansowanie — pożyczyła pieniądze i wydała je na chipy Nvidii. Kto pożyczył jej pieniądze, może kupić ubezpieczenie na wypadek, że ich nie odda. Cena tego ubezpieczenia podrożała w dwa miesiące czterokrotnie. A cena nie jest opinią: przy dzisiejszym poziomie rynek mówi wprost — 64% szans, że CoreWeave nie spłaci w pięć lat. Rok temu mówił 30%.
 
-FBI: Trump potwierdził (09.11, White House). Board: niezależna komisja. Brak planu sukcesji. Pekin: oskarżenia „bezzasadne".
+Druga: polityczno-prawna. CEO pisze memo „byłem niewierny swojej żonie... głęboko żałuję" (8 listopada). Rada otwiera niezależne śledztwo ws. „działania zagranicznego wywiadu". Prezydent potwierdza, że FBI się tym zajmuje. Trzy komisje Izby wzywają Jensena Huanga na zamknięte posłuchanie 18 listopada. W jeden dzień z kapitalizacji znika do 250 miliardów USD.
 
-Skala potrzeb: centra danych wymagają **8,6 biliona USD** przychodu vs 3,6 bln prognozy AI revenue. Skala: 8,6 biliona USD = **272 620 lat**.
+Skala: 250 miliardów USD, przy wydawaniu miliona USD na sekundę, to 7 925 lat.
+
+Do tego brak planu sukcesji: „Nvidia nie ma oczywistego następcy Jensena Huanga — i to jest problem" (Axios, 9 listopada 2026). Około 60 bezpośrednich podwładnych, Huang odradza planowanie odejścia.
+
+A minimalna skala potrzeb? Centra danych wymagają 8,6 biliona USD przychodu, żeby pokryć koszt finansowania i nakłady — przy prognozie 3,6 biliona USD przychodu z AI. 8,6 biliona USD to 272 620 lat.
 
 ## Podsumowanie
 
@@ -101,13 +107,24 @@ Narzędzia zostają, religie upadają.
 | Trump informowany rok temu, nie podjął działań | VERIFIED | NYT 29.10.2026 |
 | 3 komisje Izby: zamknięte posłuchanie 18.11.2026 | VERIFIED | foreignaffairs.house.gov 05-06.11.2026 |
 
+## UJŚCIE (Marcin, 10.11)
+
+- **Esej na stronę:** `src/content/articles/banka-ktora-finansuje-sie-sama.md` — **draft: true** (push nie opublikuje; publikacja = usunięcie flagi + push). Twój głos: czerwień 10.11 10:00.
+- **DR master 3 (portfolio):** `Atomic/AI-wiki/projects/Agencja AI/DR-master-3-2026-11-10 — bańka AI cyrkularna pętla (portfolio).md` — run Perplexity Twój.
+- **Książka:** później wchłonięty przez rozdział (EVAL-DR2: metryki co do liczby). Łącznik do książki: FaceTatt bank-tez (techno-feudalizm).
+
 ## KOMENTARZ REDAKCJI (miejsca na głos Marcina)
 
-- [ ] Lead: „nie przez bankructwo klienta" — czy to jest Twój styl?
-- [ ] Akapit 1: „central bank of AI" — użyć wprost czy w cudzysłowie?
-- [ ] Akapit 2: „geografia przychodu to ukryta korekta wyceny ryzyka" — czy za krótko, czy za długo?
-- [ ] Akapit 3: „dwa ryzyka, jedna firma" — czy jest obraz?
-- [ ] Podsumowanie: Chuck Prince (2007) — czy to jest Twój styl?
-- [ ] Podsumowanie: „Narzędzia zostają, religie upadają" — czy to jest Twój closing?
-- [ ] Skala kwot (sekundy): 250 mld USD = 7 925 lat — czy to jest Twój styl?
-- [ ] ZAKOŃCZENIE: „Narzędzia zostają, religie upadają" — czy zostaje?
+- [x] Lead: „nie przez bankructwo klienta" — OK (Marcin 10.11: lead ok)
+- [x] Akapit 1: „centralny bank AI" — W CUDZYSŁOWIE (decyzja Marcina 10.11)
+- [x] Akapit 2: OK bez zmian (Marcin 10.11: ak 2 ok)
+- [x] Akapit 3: PRZEBUDOWANY — język prosty, bez upraszczania (CDS/pb/yield → „ubezpieczenie od niewypłacalności, które podrożało czterokrotnie; cena = głos rynku o bankructwie") (Marcin 10.11: „normalny czytelnik nie zrozumie tej części")
+- [x] Podsumowanie: Chuck Prince + Musk — OK („reszta ok")
+- [x] Skala kwot (sekundy) — OK
+- [x] Closing „Narzędzia zostają, religie upadają" — OK
+
+## FILOZOFIA TEKSTU (Marcin, 10.11 — obowiązuje cały artykuł, portfolio i książkę)
+
+> „Nie jest sztuką pisać o trudnych rzeczach trudno — szczytem wyrafinowania jest mówić o nich prosto, lecz nie upraszczając."
+
+Standard: język, który czyta każdy (żargon przełożony na obraz), treść bez utraty niuansów (różnice definicyjne, status weryfikacji zostają).
