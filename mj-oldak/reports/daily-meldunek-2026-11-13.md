@@ -1,0 +1,1 @@
+Site OK, 2026-11-13. ⚠️ praca na gałęzi nie jest na żywo — push czeka (5).
