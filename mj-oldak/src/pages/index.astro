@@ -3,20 +3,22 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import NavbarPersonal from '../components/personal/NavbarPersonal.jsx';
 import HeroPersonal from '../components/personal/HeroPersonal.jsx';
 import Services from '../components/personal/Services.astro';
+import Proof from '../components/personal/Proof.astro';
 import WorkAndStack from '../components/personal/WorkAndStack.astro';
 import Writing from '../components/personal/Writing.astro';
 import AboutSection from '../components/personal/AboutSection.jsx';
 import ContactPersonal from '../components/personal/ContactPersonal.jsx';
 
-// v3 (24.11.2026) — repozycjonowanie na konsultanta/trenera AI.
-// Kolejność: hero (oferta) → usługi → dowody (prace/stack) → pisarstwo (tor równoległy) → o mnie → kontakt.
+// v4 (24.11.2026) — repozycjonowanie na konsultanta/trenera AI + sekcja dowodów.
+// Kolejność: hero (oferta) → usługi → dowody → stack/projekty → pisarstwo → o mnie → kontakt.
 const title = 'Marcin J. Ołdak — konsultant AI, szkolenia i wdrożenia (MJ.OLDAK)';
-const description = 'Audyt AI, warsztaty dla zespołów i wdrożenia automatyzacji w małych firmach. Warszawa i zdalnie (PL/EU). Piszę też eseje i analizy danych.';
+const description = 'Audyt AI, warsztaty dla zespołów i wdrożenia automatyzacji w małych firmach. Warszawa i zdalnie (PL/EU). Publiczny kod i dema do sprawdzenia.';
 ---
 <BaseLayout title={title} description={description} lang="pl" includeOrganizationSchema={true}>
   <NavbarPersonal client:load />
   <HeroPersonal client:load />
   <Services />
+  <Proof />
   <WorkAndStack />
   <Writing />
   <AboutSection client:visible />

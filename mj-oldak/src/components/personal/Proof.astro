@@ -1,0 +1,123 @@
+---
+// Proof — v1 (24.11.2026). NOWA sekcja.
+// Cel: zamiast „zaufaj mi" — klikalne dowody. Klient sprawdza przed rozmową.
+// Zasada: każda liczba ma źródło na stronie. Zero deklaracji bez pokrycia.
+
+const proofs = [
+  {
+    num: '01',
+    kind: 'Kod publiczny',
+    title: '13 repozytoriów — czytaj, nie wierz',
+    body: 'Agenci, narzędzia wielokrotnego użytku i odtwarzalna analityka danych publicznych. Testy przechodzą bez klucza API.',
+    metric: 'github.com/martin0ne',
+    href: 'https://github.com/martin0ne',
+    external: true,
+  },
+  {
+    num: '02',
+    kind: 'Demo na żywo',
+    title: 'OCR faktur — PDF lub zdjęcie → JSON',
+    body: 'Realny odczyt faktury w przeglądarce. Azure Document Intelligence + Claude API, dane przetwarzane w UE.',
+    metric: '5–15 s na fakturę · do 20 stron',
+    href: '/demy/#ocr',
+    external: false,
+  },
+  {
+    num: '03',
+    kind: 'Demo na żywo',
+    title: 'Agent — planuje, woła narzędzia, wraca po błędach',
+    body: 'Widać rozumowanie na każdym kroku. Ostatnie słowo ma człowiek — agent nie wysyła nic bez zatwierdzenia.',
+    metric: '3 kroki do odpowiedzi z cytatem plik:linia',
+    href: '/demy/#agent',
+    external: false,
+  },
+  {
+    num: '04',
+    kind: 'Analiza danych',
+    title: 'Adopcja AI: Polska vs UE — ręczny SQL, raport PDF',
+    body: 'Ten sam wskaźnik uzgodniony między GUS a Eurostatem. Każda liczba z nazwą źródła i datą. Pipeline odtwarzalny.',
+    metric: 'GUS 2026 × Eurostat 2025 · raport do pobrania',
+    href: '/artykuly/co-dane-mowia-o-adopcji-ai-polska-vs-ue/',
+    external: false,
+  },
+  {
+    num: '05',
+    kind: 'Eksperyment',
+    title: 'BM25 kontra embeddingi — ławka pomiarowa',
+    body: 'Czy semantyka zawsze wygrywa ze słowami? Zbudowana ławka pokazuje, w którym momencie wyszukiwanie po znaczeniu pada.',
+    metric: 'odtwarzalny benchmark · kod publiczny',
+    href: '/artykuly/bm25-vs-embeddingi-lawka-pomiarowa/',
+    external: false,
+  },
+  {
+    num: '06',
+    kind: 'Portfolio',
+    title: 'Wszystkie projekty i case studies',
+    body: 'Pięć case studies z opisem problemu, rozwiązania i efektu. Plus stack kompetencji i timeline.',
+    metric: 'portfolio pełne',
+    href: '/portfolio/',
+    external: false,
+  },
+];
+---
+
+<section id="proof" class="relative overflow-hidden bg-dark text-primary px-8 md:px-16 py-24 md:py-32" data-nav-theme="dark">
+  <div class="max-w-5xl mx-auto relative z-10">
+    <p class="font-mono text-xs uppercase tracking-[0.24em] text-primary/50 mb-6">
+      <span class="text-accent">—</span> 02 · Dowody
+    </p>
+
+    <h2 class="font-serif text-4xl md:text-5xl leading-[1.02] tracking-[-0.01em] mb-6">
+      Nie wierz mi na słowo.
+    </h2>
+
+    <p class="font-serif italic text-xl md:text-2xl leading-snug max-w-3xl mb-4 text-primary/90">
+      W tej branży jest dużo ludzi, którzy „znają się na AI" i zero kodu do pokazania.
+    </p>
+
+    <p class="font-sans text-base leading-relaxed text-primary/65 max-w-2xl mb-14">
+      Kliknij i sprawdź sam, zanim wydasz złotówkę na rozmowę. Wszystko poniżej działa —
+      kod jest publiczny, dema odpalają się w przeglądarce, liczby mają źródło.
+    </p>
+
+    <div class="grid sm:grid-cols-2 gap-px bg-primary/15 border border-primary/15">
+      {proofs.map((p) => (
+        <a
+          href={p.href}
+          target={p.external ? '_blank' : undefined}
+          rel={p.external ? 'noopener' : undefined}
+          class="group bg-dark p-6 md:p-7 no-underline hover:bg-primary/[0.04] transition-colors duration-200 flex flex-col"
+        >
+          <div class="flex items-baseline gap-3 mb-3">
+            <span class="font-mono text-[11px] text-accent">{p.num}</span>
+            <span class="font-mono text-[10px] uppercase tracking-[0.18em] text-primary/50">{p.kind}</span>
+          </div>
+
+          <h3 class="font-serif text-lg md:text-xl leading-snug mb-2.5 text-primary group-hover:underline decoration-1 underline-offset-4">
+            {p.title}
+          </h3>
+
+          <p class="font-sans text-sm leading-relaxed text-primary/65 mb-4">
+            {p.body}
+          </p>
+
+          <span class="font-mono text-[10px] uppercase tracking-[0.14em] text-primary/45 mt-auto">
+            {p.metric} {p.external ? '↗' : '→'}
+          </span>
+        </a>
+      ))}
+    </div>
+
+    <p class="font-sans text-sm leading-relaxed text-primary/55 mt-10 max-w-2xl">
+      Jeśli po przejrzeniu tych dowodów nie widzisz sensu w rozmowie — nie umawiaj się.
+      Wolę stracić zapytanie niż klienta, który po trzech miesiącach napisze, że nic z tego nie wyszło.
+    </p>
+
+    <div class="mt-8">
+      <a href="#contact"
+         class="inline-flex items-center gap-2 px-6 py-3 rounded-[6px] bg-[#FBFBFA] text-[#111111] text-sm font-medium hover:bg-white transition-colors no-underline">
+        Umów rozmowę 15 min
+      </a>
+    </div>
+  </div>
+</section>
