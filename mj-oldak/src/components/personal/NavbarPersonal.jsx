@@ -25,18 +25,19 @@ export default function NavbarPersonal() {
 
         if (isEn) {
             setNavLinks([
-                { href: `${prefix}/#work`,       label: 'Projects' },
+                { href: `${prefix}/#services`,   label: 'Usługi' },
                 { href: `${prefix}/portfolio/`,  label: 'Portfolio' },
-                { href: `${prefix}/articles/`,   label: 'Texts' },
-                { href: `${prefix}/#about`,      label: 'About' },
-                { href: `${prefix}/#contact`,    label: 'Contact' },
+                { href: `${prefix}/#work`,       label: 'Dowody' },
+                { href: `${prefix}/artykuly/`,   label: 'Teksty' },
+                { href: `${prefix}/#about`,      label: 'O mnie' },
+                { href: `${prefix}/#contact`,    label: 'Kontakt' },
             ]);
         } else {
             setNavLinks([
-                { href: `${prefix}/#work`,       label: 'Projekty' },
+                { href: `${prefix}/#services`,   label: 'Usługi' },
                 { href: `${prefix}/portfolio/`,  label: 'Portfolio' },
+                { href: `${prefix}/#work`,       label: 'Dowody' },
                 { href: `${prefix}/artykuly/`,   label: 'Teksty' },
-                { href: `${prefix}/aktualnosci/`, label: 'Aktualności' },
                 { href: `${prefix}/pnews/`,      label: 'News' },
                 { href: `${prefix}/#about`,      label: 'O mnie' },
                 { href: `${prefix}/#contact`,    label: 'Kontakt' },

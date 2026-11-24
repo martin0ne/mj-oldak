@@ -1,0 +1,127 @@
+---
+// Services — v1 (24.11.2026). NOWA sekcja.
+// Cel: klient biznesowy w 10 sekund wie, co może kupić, w jakiej formie i jak zacząć.
+// Zero cen na stronie (wycena po rozmowie), ale jasny zakres i format pracy.
+const services = [
+  {
+    num: '01',
+    label: 'Konsultacja',
+    title: 'Audyt: gdzie AI realnie oszczędza godziny',
+    time: '1–2 spotkania · 2–5 dni',
+    forWhom: 'Właściciel firmy lub osoba, która „słyszała, że AI może pomóc, ale nie wie od czego zacząć".',
+    what: [
+      'Przechodzimy przez Twoje tygodniowe zadania i zaznaczamy te, które da się oddać maszynie.',
+      'Dla każdego: ile godzin realnie oszczędza, ile kosztuje wdrożenie, czy dane są bezpieczne.',
+      'Dostajesz listę rankingową: co robić najpierw, co odpuścić, czego nie ruszać wcale.',
+    ],
+    out: 'Dokument 3–6 stron + rozmowa, na której tłumaczę każdy punkt. Bez żargonu.',
+  },
+  {
+    num: '02',
+    label: 'Szkolenie',
+    title: 'Warsztat dla zespołu — na Waszych zadaniach',
+    time: '1 dzień (6 h) lub 2 × 3 h online',
+    forWhom: 'Zespoły 3–15 osób: biuro, obsługa klienta, księgowość, sprzedaż.',
+    what: [
+      'Nie uczę „magicznych promptów". Uczymy się na Waszych realnych dokumentach i mailach.',
+      'Każdy uczestnik wychodzi z 2–3 gotowymi narzędziami pod swoją robotę.',
+      'Blok o bezpieczeństwie: czego nie wolno wklejać (RODO, dane klientów, umowy).',
+      'Każdy dostaje jednostronicową „ściągę" — nie 80 slajdów.',
+    ],
+    out: 'Materiały + nagranie (jeśli online) + 2 tygodnie wsparcia mailowego po warsztacie.',
+  },
+  {
+    num: '03',
+    label: 'Wdrożenie',
+    title: 'Agent lub automatyzacja pod jeden proces',
+    time: '2–6 tygodni',
+    forWhom: 'Firmy, które wiedzą już CO chcą odciążyć i potrzebują tego zrobionego.',
+    what: [
+      'Wybór jednego procesu o największym zwrocie (faktury, maile, oferty, raporty).',
+      'Budowa: OCR faktur, klasyfikacja maili, generowanie raportów, agent obsługujący zapytania.',
+      'Człowiek w pętli od pierwszego dnia — maszyna proponuje, Ty zatwierdzasz.',
+      'Dane w UE, model-agnostycznie (Claude / Gemini / lokalne modele).',
+    ],
+    out: 'Działające narzędzie + dokumentacja + szkolenie zespołu z obsługi + 30 dni opieki.',
+  },
+];
+
+const facts = [
+  { k: 'Start', v: 'od jednej rozmowy 15 min' },
+  { k: 'Zasięg', v: 'Warszawa · zdalnie PL/EU' },
+  { k: 'Model', v: 'projekt lub retainer miesięczny' },
+  { k: 'Dane', v: 'przetwarzane w UE' },
+];
+---
+
+<section id="services" class="relative overflow-hidden bg-[#fafafa] dark:bg-[var(--c-page)] text-dark dark:text-[var(--c-ink)] px-8 md:px-16 py-24 md:py-32 border-t border-dark/10 dark:border-[var(--c-line)] transition-colors duration-500">
+  <div class="max-w-5xl mx-auto relative z-10">
+    <p class="font-mono text-xs uppercase tracking-[0.24em] opacity-50 mb-6">
+      <span class="text-accent">—</span> 01 · Co robię
+    </p>
+
+    <h2 class="font-serif text-4xl md:text-5xl leading-[1.02] tracking-[-0.01em] mb-6">
+      Trzy rzeczy, które mogę dla Ciebie zrobić.
+    </h2>
+
+    <p class="font-serif italic text-xl md:text-2xl leading-snug max-w-3xl mb-14 opacity-90">
+      Zaczynam zawsze od pytania „co Ci zjada czas" — nie od „jakie AI jest fajne".
+      Jeśli po audycie wyjdzie, że AI się nie opłaca, powiem to wprost.
+    </p>
+
+    <div class="grid gap-5 mb-14">
+      {services.map((s) => (
+        <article class="rounded-lg border border-dark/15 dark:border-[var(--c-line)] bg-white dark:bg-white/[0.03] p-7 md:p-9">
+          <div class="flex flex-wrap items-baseline gap-x-4 gap-y-2 mb-4">
+            <span class="font-mono text-[11px] tracking-[0.2em] text-accent">{s.num}</span>
+            <span class="font-mono text-[10px] uppercase tracking-[0.18em] opacity-55">{s.label}</span>
+            <span class="font-mono text-[10px] uppercase tracking-[0.14em] opacity-40 ml-auto">{s.time}</span>
+          </div>
+
+          <h3 class="font-serif text-2xl md:text-3xl leading-snug mb-4">{s.title}</h3>
+
+          <p class="font-sans text-sm leading-relaxed opacity-70 mb-5">
+            <span class="font-mono text-[10px] uppercase tracking-[0.16em] opacity-60 mr-2">dla kogo</span>
+            {s.forWhom}
+          </p>
+
+          <ul class="space-y-2.5 mb-5">
+            {s.what.map((w) => (
+              <li class="flex gap-3 font-sans text-[15px] leading-relaxed opacity-85">
+                <span class="text-accent shrink-0 select-none">▸</span>
+                <span>{w}</span>
+              </li>
+            ))}
+          </ul>
+
+          <p class="font-sans text-sm leading-relaxed border-l-2 border-accent/40 pl-4 opacity-80">
+            <span class="font-mono text-[10px] uppercase tracking-[0.16em] opacity-60 block mb-1">co dostajesz</span>
+            {s.out}
+          </p>
+        </article>
+      ))}
+    </div>
+
+    <!-- Fakty operacyjne — krótko, mono -->
+    <div class="border-t border-dark/12 dark:border-[var(--c-line)] pt-8 mb-12">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+        {facts.map((f) => (
+          <div>
+            <p class="font-mono text-[10px] uppercase tracking-[0.2em] opacity-45 mb-1.5">{f.k}</p>
+            <p class="font-sans text-sm opacity-85">{f.v}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <div class="flex flex-wrap items-center gap-4">
+      <a href="#contact"
+         class="inline-flex items-center gap-2 px-6 py-3 rounded-[6px] bg-dark text-primary dark:bg-[var(--c-ink)] dark:text-[var(--c-page)] text-sm font-medium hover:opacity-90 transition-opacity no-underline">
+        Umów bezpłatną rozmowę 15 min
+      </a>
+      <span class="font-mono text-[10px] uppercase tracking-[0.18em] opacity-45">
+        bez zobowiązań · na końcu mówię wprost, ile to potrwa
+      </span>
+    </div>
+  </div>
+</section>

@@ -6,7 +6,7 @@ excerpt: "Nvidia traci 250 miliardów USD w jeden dzień — nie przez bankructw
 publishedAt: 2026-11-10
 author: "Marcin Ołdak"
 category: "esej"
-tags: [esej, nvidia, chipy, finanse]
+tags: [esej, analiza, koszty]
 cover: "/articles/covers/banka-ktora-finansuje-sie-sama.jpg"
 coverAlt: "Okładka: tytuł Bańka, która finansuje się sama — linia jednowłosa, kremowe tło"
 readingTime: 9
@@ -14,7 +14,7 @@ featured: false
 draft: true
 lang: pl
 metaTitle: "Bańka, która finansuje się sama — Nvidia jako centralny bank AI"
-metaDescription: "55% finansowania firm AI pochodzi od innych firm AI. Nvidia finansuje własnych klientów na ponad 200 mld USD i siedzi w dwóch ryzykach naraz. Analiza liczb u źródła."
+metaDescription: "55% finansowania firm AI pochodzi od innych firm AI. Nvidia finansuje własnych klientów na ponad 200 mld USD. Analiza liczb u źródła."
 keywords: ["nvidia", "bańka ai", "bds", "singapur", "coreweave", "finansowanie cyrkularne"]
 ---
 

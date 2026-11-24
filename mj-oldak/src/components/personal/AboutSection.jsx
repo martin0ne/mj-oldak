@@ -60,18 +60,22 @@ export default function AboutSection() {
 
         <div className="max-w-3xl">
           <p className="font-sans text-base md:text-lg leading-relaxed opacity-90 mb-8">
-            Jestem Marcin. MJ.OLDAK to moje nazwisko — nie marka, nie studio, nie agencja. Piszę tom esejów
-            (ostatni rozdział zaakceptowany, w redakcji), prowadzę badanie GUS × Eurostat i buduję narzędzia
-            AI na GitHubie — <strong>13 publicznych repozytoriów</strong>. Używam SQL, LLM-ów i automatyzacji,
-            żeby działały razem; jeśli proste otwarte narzędzie ogarnie robotę, użyję go i powiem o tym.
-            Pracuję z danymi publicznymi — każde źródło ma nazwę i datę. Buduję rozwiązania model-agnostic,
-            z człowiekiem w pętli i z rozumieniem polskich realiów (RODO, KSeF, JPK). Tło jest nietypowe:
-            psychologia w biznesie nauczyła mnie patrzeć na człowieka, nie proces; edukacja prawna sprawiła,
-            że nadzór ludzki jest standardem, nie dodatkiem.
-           Otwarty na rozmowy o AI i automatyzacji.</p>
+            Jestem Marcin. Uczę firmy używać AI tak, żeby realnie odciążało ludzi — nie żeby
+            ładnie wyglądało w prezentacji. Pracuję z mikrofirmami i zespołami biurowymi:
+            audyt, warsztat, wdrożenie jednego procesu. <strong>13 publicznych repozytoriów</strong>{' '}
+            na GitHubie i cztery działające dema są tam po to, żebyś nie musiał wierzyć mi na słowo —
+            możesz kliknąć i sprawdzić.
+          </p>
+          <p className="font-sans text-base md:text-lg leading-relaxed opacity-90 mb-8">
+            Równolegle piszę: tom esejów w redakcji, analizy oparte na danych publicznych (GUS, Eurostat, NIK)
+            i blog o weryfikowaniu źródeł. To nie hobby obok pracy — to drugi warsztat, który nauczył mnie
+            jednej rzeczy: <strong>każda liczba musi mieć nazwę i datę</strong>. Tę samą zasadę stosuję
+            w projektach dla firm.
+          </p>
           <p className="font-sans text-base md:text-lg leading-relaxed opacity-90">
-            Współpraca to jedna z opcji — projekty w AI, analizie danych, automatyzacji. Działam niezależnie:
-            Warszawa lub zdalnie (PL/EU).
+            Tło jest nietypowe: psychologia w biznesie (DSW) nauczyła mnie patrzeć na człowieka, nie proces;
+            edukacja prawna sprawiła, że nadzór ludzki i RODO są standardem, nie dodatkiem. Warsztaty AI
+            prowadzę od 2026 — dla zespołów, które chcą robić to samodzielnie po pierwszym szkoleniu.
           </p>
         </div>
 

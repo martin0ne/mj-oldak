@@ -6,7 +6,7 @@ excerpt: "Agent AI ma czytać pliki, wołać API i używać narzędzi — ale ni
 publishedAt: 2026-11-12
 author: "Marcin Ołdak"
 category: "case-study"
-tags: [ai-security, agenci, nvidia, open-source, tutorial]
+tags: [tutorial]
 cover: "/articles/covers/openshell-nvidia-secure-runtime.png"
 coverAlt: "Okładka: OpenShell — bezpieczny runtime dla agentów AI, test na macOS"
 readingTime: 8
@@ -14,7 +14,7 @@ featured: false
 draft: true
 lang: pl
 metaTitle: "OpenShell (NVIDIA) — test bezpiecznego runtime dla agentów AI"
-metaDescription: "Testujemy OpenShell 0.1.8 na macOS: sandbox microVM, polityki YAML, formalna weryfikacja dostępu i blokowanie ruchu agenta. Czy to fundament pod bezpieczne wdrożenia AI w MSP i biurach rachunkowych?"
+metaDescription: "Testujemy OpenShell 0.1.8 na macOS: sandbox microVM, polityki YAML, formalna weryfikacja dostępu i blokowanie ruchu agenta."
 keywords: ["OpenShell", "NVIDIA", "agent security", "AI governance", "sandbox", "microVM", "policy as code"]
 ---
 
