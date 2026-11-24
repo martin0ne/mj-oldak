@@ -16,6 +16,9 @@ export interface Props {
   lang?: string;
   /** Gdy true, layout nie generuje własnych hreflang — stronа dostarcza je sama (np. artykuły z translationKey). */
   managedAlternates?: boolean;
+  /** Gdy true, strona dostaje <meta name="robots" content="noindex,follow"> — dla cienkiej treści
+   *  i stron filtrujących, które duplikowałyby główny hub. follow zostaje, żeby linki były crawlowane. */
+  noindex?: boolean;
 }
 
 const {
@@ -30,6 +33,7 @@ const {
   includeOrganizationSchema = false,
   lang = 'pl',
   managedAlternates = false,
+  noindex = false,
 } = Astro.props;
 
 const siteURL = 'https://www.mjoldak.pl';
@@ -164,6 +168,7 @@ const websiteSchema = {
 
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="canonical" href={canonicalURL} />
+  {noindex && <meta name="robots" content="noindex,follow" />}
   <link rel="sitemap" href="/sitemap-index.xml" />
   {!managedAlternates && plHref && <link rel="alternate" hreflang="pl" href={plHref} />}
   {!managedAlternates && enHref && <link rel="alternate" hreflang="en" href={enHref} />}

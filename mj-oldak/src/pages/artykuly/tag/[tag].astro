@@ -24,6 +24,7 @@ const fmtDate = (d: Date) => new Intl.DateTimeFormat('pl-PL', { month: 'long', y
 <BaseLayout
   title={`Artykuły · #${tag} — MJ.OLDAK`}
   description={`Wszystkie artykuły z tagiem #${tag} na blogu MJ.OLDAK.`}
+  noindex={true}
 >
   <NavbarPersonal client:load />
 
