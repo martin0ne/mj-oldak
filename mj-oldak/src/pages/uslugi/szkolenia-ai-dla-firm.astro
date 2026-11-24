@@ -1,0 +1,219 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import NavbarPersonal from '../../components/personal/NavbarPersonal.jsx';
+import FooterSlim from '../../components/personal/FooterSlim.astro';
+import ContactPersonal from '../../components/personal/ContactPersonal.jsx';
+
+// Podstrona SEO: „szkolenia AI dla firm" — fraza komercyjna, wysoka intencja zakupowa.
+// Struktura pod featured snippet: pytanie w H2, krótka odpowiedź w pierwszym akapicie.
+
+const title = 'Szkolenia AI dla firm — warsztat na Waszych zadaniach | MJ.OLDAK';
+const description = 'Szkolenia AI dla zespołów 3–15 osób. Warsztat 1 dzień lub 2×3 h online, na Waszych dokumentach. Zespół wychodzi z gotowymi narzędziami. Warszawa i zdalnie.';
+const canonical = 'https://www.mjoldak.pl/uslugi/szkolenia-ai-dla-firm/';
+
+const faq = [
+  {
+    q: 'Ile kosztuje szkolenie AI dla firmy?',
+    a: 'Wycena zależy od liczby osób, formatu i zakresu. Widełki rynkowe w Polsce to 4 900–6 000 zł netto za dzień zamknięty dla grupy do 15 osób. Wycenę podaję po 15-minutowej rozmowie, gdy wiem, czego zespół realnie potrzebuje. Nie pobieram opłat za samą wycenę.',
+  },
+  {
+    q: 'Ile trwa szkolenie i w jakiej formie?',
+    a: 'Do wyboru: jeden dzień (6 h) na miejscu w Warszawie lub online, albo 2 × 3 h online w dwóch tygodniach. Druga opcja daje zespołowi czas na przećwiczenie materiału między sesjami i zwykle daje lepsze efekty.',
+  },
+  {
+    q: 'Czy zespół musi mieć doświadczenie z AI?',
+    a: 'Nie. Warsztat działa od zera — pracujemy na Waszych dokumentach i mailach. Osoby, które już używają ChatGPT, dostają trudniejsze ćwiczenia i blok o weryfikacji odpowiedzi.',
+  },
+  {
+    q: 'Co zespół dostaje po szkoleniu?',
+    a: 'Gotowe narzędzia pod własne zadania (szablony poleceń), jednostronicową ściągę dla każdego uczestnika, nagranie (jeśli online) i 2 tygodnie wsparcia mailowego. Bez 80-slajdowej prezentacji, której nikt nie otworzy.',
+  },
+  {
+    q: 'Czy dane firmowe są bezpieczne?',
+    a: 'Tak. Uczymy pracy na danych, które można przetwarzać — i wyraźnie pokazujemy, czego nie wolno wklejać (dane klientów, umowy, dane osobowe). Blok o RODO i bezpieczeństwie jest częścią każdego warsztatu, nie dodatkiem.',
+  },
+  {
+    q: 'Czy szkolenie jest dofinansowane z KFS lub BUR?',
+    a: 'Szkolenia dla firm mogą być częściowo finansowane z Krajowego Funduszu Szkoleniowego lub Bazy Usług Rozwojowych. Nie jestem jeszcze zarejestrowany jako dostawca w BUR — jeśli zależy Ci na dofinansowaniu, powiedz o tym na rozmowie i sprawdzimy ścieżkę.',
+  },
+];
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Service',
+      name: 'Szkolenia AI dla firm',
+      serviceType: 'Szkolenie z zakresu sztucznej inteligencji',
+      provider: {
+        '@type': 'Person',
+        name: 'Marcin J. Ołdak',
+        url: 'https://www.mjoldak.pl',
+      },
+      areaServed: { '@type': 'Country', name: 'Polska' },
+      audience: { '@type': 'BusinessAudience', name: 'Małe i średnie firmy' },
+      description: 'Warsztat AI dla zespołów 3–15 osób, prowadzony na dokumentach i zadaniach klienta.',
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: faq.map((f) => ({
+        '@type': 'Question',
+        name: f.q,
+        acceptedAnswer: { '@type': 'Answer', text: f.a },
+      })),
+    },
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Strona główna', item: 'https://www.mjoldak.pl/' },
+        { '@type': 'ListItem', position: 2, name: 'Usługi', item: 'https://www.mjoldak.pl/#services' },
+        { '@type': 'ListItem', position: 3, name: 'Szkolenia AI dla firm', item: canonical },
+      ],
+    },
+  ],
+};
+---
+
+<BaseLayout title={title} description={description} canonical={canonical} lang="pl">
+  <NavbarPersonal client:load />
+
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(schema)} />
+
+  <main class="bg-background dark:bg-[var(--c-page)] text-dark dark:text-[var(--c-ink)]">
+    <!-- HERO -->
+    <section class="px-8 md:px-16 pt-32 pb-16 md:pb-20">
+      <div class="max-w-4xl mx-auto">
+        <nav aria-label="Ścieżka nawigacji" class="font-mono text-[10px] uppercase tracking-[0.18em] opacity-45 mb-8">
+          <a href="/" class="hover:opacity-100 no-underline">Start</a>
+          <span class="mx-2">/</span>
+          <a href="/#services" class="hover:opacity-100 no-underline">Usługi</a>
+          <span class="mx-2">/</span>
+          <span>Szkolenia AI dla firm</span>
+        </nav>
+
+        <h1 class="font-serif text-4xl md:text-5xl lg:text-6xl leading-[1.05] tracking-[-0.01em] mb-6">
+          Szkolenia AI dla firm — na Waszych zadaniach, nie na slajdach.
+        </h1>
+
+        <p class="font-sans text-lg md:text-xl leading-relaxed opacity-80 max-w-3xl mb-8">
+          Warsztat dla zespołów 3–15 osób. Jeden dzień (6 h) lub 2 × 3 h online.
+          Pracujemy na Waszych dokumentach i mailach — zespół wychodzi z gotowymi
+          narzędziami, nie z notatkami do odłożenia na półkę.
+        </p>
+
+        <div class="flex flex-wrap gap-3 mb-12">
+          <a href="/#contact" class="px-6 py-3 rounded-[6px] bg-dark text-primary dark:bg-[var(--c-ink)] dark:text-[var(--c-page)] text-sm font-medium hover:opacity-90 transition-opacity no-underline">
+            Zapytaj o termin
+          </a>
+          <a href="/#proof" class="px-6 py-3 rounded-[6px] border border-dark/25 dark:border-[var(--c-line)] text-sm font-medium hover:border-dark/50 transition-colors no-underline">
+            Zobacz dowody
+          </a>
+        </div>
+
+        <dl class="grid grid-cols-2 md:grid-cols-4 gap-6 border-t border-dark/12 dark:border-[var(--c-line)] pt-8">
+          <div><dt class="font-mono text-[10px] uppercase tracking-[0.18em] opacity-45 mb-1">Format</dt><dd class="font-sans text-sm opacity-85">1 dzień lub 2×3 h</dd></div>
+          <div><dt class="font-mono text-[10px] uppercase tracking-[0.18em] opacity-45 mb-1">Grupa</dt><dd class="font-sans text-sm opacity-85">3–15 osób</dd></div>
+          <div><dt class="font-mono text-[10px] uppercase tracking-[0.18em] opacity-45 mb-1">Zasięg</dt><dd class="font-sans text-sm opacity-85">Warszawa + online</dd></div>
+          <div><dt class="font-mono text-[10px] uppercase tracking-[0.18em] opacity-45 mb-1">Wycena</dt><dd class="font-sans text-sm opacity-85">po 15 min rozmowy</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- CO DOSTAJE ZESPÓŁ -->
+    <section class="px-8 md:px-16 py-16 md:py-20 border-t border-dark/10 dark:border-[var(--c-line)]">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="font-serif text-3xl md:text-4xl leading-tight mb-6">Co zespół dostaje po warsztacie</h2>
+        <ul class="space-y-4 max-w-3xl">
+          <li class="flex gap-4"><span class="text-accent shrink-0">▸</span><span class="font-sans leading-relaxed opacity-85"><strong>Gotowe szablony poleceń</strong> pod własne zadania — każdy uczestnik wychodzi z 2–3 narzędziami, które działa nazajutrz w pracy.</span></li>
+          <li class="flex gap-4"><span class="text-accent shrink-0">▸</span><span class="font-sans leading-relaxed opacity-85"><strong>Jednostronicowa ściąga</strong> dla każdego — nie 80 slajdów, których nikt nie otworzy.</span></li>
+          <li class="flex gap-4"><span class="text-accent shrink-0">▸</span><span class="font-sans leading-relaxed opacity-85"><strong>Blok o bezpieczeństwie</strong> — czego nie wolno wklejać, jak rozpoznać zmyśloną odpowiedź, co mówi RODO.</span></li>
+          <li class="flex gap-4"><span class="text-accent shrink-0">▸</span><span class="font-sans leading-relaxed opacity-85"><strong>2 tygodnie wsparcia mailowego</strong> po warsztacie — na pytania, które pojawiają się dopiero w praktyce.</span></li>
+          <li class="flex gap-4"><span class="text-accent shrink-0">▸</span><span class="font-sans leading-relaxed opacity-85"><strong>Nagranie</strong> (jeśli online) — dla osób, które nie mogły być lub chcą wrócić do materiału.</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- PROGRAM -->
+    <section class="px-8 md:px-16 py-16 md:py-20 border-t border-dark/10 dark:border-[var(--c-line)]">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="font-serif text-3xl md:text-4xl leading-tight mb-6">Jak wygląda dzień szkolenia</h2>
+        <div class="space-y-6 max-w-3xl">
+          <div class="grid sm:grid-cols-[100px_1fr] gap-x-6 gap-y-2 border-b border-dark/10 dark:border-[var(--c-line)] pb-5">
+            <span class="font-mono text-[11px] tracking-[0.16em] opacity-50">09:00–10:30</span>
+            <div><h3 class="font-sans font-bold text-base mb-1.5">Fundamenty, ale bez teorii</h3><p class="font-sans text-sm leading-relaxed opacity-75">Dlaczego jedno polecenie działa, a drugie nie. Pięć wzorców, które uczestnicy zastosują od razu na własnym zadaniu.</p></div>
+          </div>
+          <div class="grid sm:grid-cols-[100px_1fr] gap-x-6 gap-y-2 border-b border-dark/10 dark:border-[var(--c-line)] pb-5">
+            <span class="font-mono text-[11px] tracking-[0.16em] opacity-50">10:45–12:30</span>
+            <div><h3 class="font-sans font-bold text-base mb-1.5">Praca na Waszych dokumentach</h3><p class="font-sans text-sm leading-relaxed opacity-75">Każdy uczestnik bierze jedno swoje realne zadanie i rozwiązuje je z pomocą AI. Prowadzący chodzi między stanowiskami.</p></div>
+          </div>
+          <div class="grid sm:grid-cols-[100px_1fr] gap-x-6 gap-y-2 border-b border-dark/10 dark:border-[var(--c-line)] pb-5">
+            <span class="font-mono text-[11px] tracking-[0.16em] opacity-50">13:15–14:45</span>
+            <div><h3 class="font-sans font-bold text-base mb-1.5">Weryfikacja i bezpieczeństwo</h3><p class="font-sans text-sm leading-relaxed opacity-75">Jak rozpoznać, że AI zmyśla (liczby, źródła, nazwiska). Czego nie wolno wklejać. RODO w praktyce, nie w teorii.</p></div>
+          </div>
+          <div class="grid sm:grid-cols-[100px_1fr] gap-x-6 gap-y-2">
+            <span class="font-mono text-[11px] tracking-[0.16em] opacity-50">15:00–16:00</span>
+            <div><h3 class="font-sans font-bold text-base mb-1.5">Budowa własnych narzędzi</h3><p class="font-sans text-sm leading-relaxed opacity-75">Każdy uczestnik buduje 2–3 szablony pod swoją codzienną robotę. Wychodzimy z gotowymi plikami, nie z obietnicą.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DLA KOGO -->
+    <section class="px-8 md:px-16 py-16 md:py-20 border-t border-dark/10 dark:border-[var(--c-line)]">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="font-serif text-3xl md:text-4xl leading-tight mb-6">Dla kogo to jest — i dla kogo nie</h2>
+        <div class="grid md:grid-cols-2 gap-8 max-w-3xl">
+          <div>
+            <h3 class="font-mono text-[11px] uppercase tracking-[0.18em] opacity-50 mb-3">Dla kogo</h3>
+            <ul class="space-y-2.5 font-sans text-sm leading-relaxed opacity-85">
+              <li class="flex gap-3"><span class="text-green-600 shrink-0">✓</span>Zespoły biurowe, obsługa klienta, księgowość, sprzedaż</li>
+              <li class="flex gap-3"><span class="text-green-600 shrink-0">✓</span>Firmy 3–50 osób bez działu IT</li>
+              <li class="flex gap-3"><span class="text-green-600 shrink-0">✓</span>Zespoły, które już używają ChatGPT „na własną rękę" i chcą wspólnych zasad</li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="font-mono text-[11px] uppercase tracking-[0.18em] opacity-50 mb-3">Dla kogo nie</h3>
+            <ul class="space-y-2.5 font-sans text-sm leading-relaxed opacity-85">
+              <li class="flex gap-3"><span class="text-red-600 shrink-0">✗</span>Programiści szukający kursu ML/AI — to nie ten warsztat</li>
+              <li class="flex gap-3"><span class="text-red-600 shrink-0">✗</span>Firmy szukające gotowego szkolenia z pudełka z certyfikatem</li>
+              <li class="flex gap-3"><span class="text-red-600 shrink-0">✗</span>Zespoły, które nie chcą pokazać własnych dokumentów (na nich pracujemy)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="px-8 md:px-16 py-16 md:py-20 border-t border-dark/10 dark:border-[var(--c-line)]">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="font-serif text-3xl md:text-4xl leading-tight mb-8">Pytania, które słyszę najczęściej</h2>
+        <div class="space-y-7 max-w-3xl">
+          {faq.map((f) => (
+            <div>
+              <h3 class="font-sans font-bold text-base mb-2">{f.q}</h3>
+              <p class="font-sans text-sm leading-relaxed opacity-75">{f.a}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="px-8 md:px-16 py-16 md:py-20 border-t border-dark/10 dark:border-[var(--c-line)]">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="font-serif text-3xl md:text-4xl leading-tight mb-4">Zacznijmy od 15 minut</h2>
+        <p class="font-sans text-base leading-relaxed opacity-75 max-w-2xl mb-8">
+          Powiedz mi, ile osób i co robią na co dzień. Po rozmowie podam widełki i powiem wprost,
+          czy warsztat ma sens w Waszym przypadku. Jeśli nie — powiem to.
+        </p>
+        <div class="flex flex-wrap gap-3">
+          <a href="/#contact" class="px-6 py-3 rounded-[6px] bg-dark text-primary dark:bg-[var(--c-ink)] dark:text-[var(--c-page)] text-sm font-medium hover:opacity-90 transition-opacity no-underline">Napisz — odpowiadam tego samego dnia</a>
+          <a href="/uslugi/konsultacja-ai-audyt/" class="px-6 py-3 rounded-[6px] border border-dark/25 dark:border-[var(--c-line)] text-sm font-medium hover:border-dark/50 transition-colors no-underline">Wolisz najpierw audyt?</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <ContactPersonal client:visible />
+  <FooterSlim />
+</BaseLayout>

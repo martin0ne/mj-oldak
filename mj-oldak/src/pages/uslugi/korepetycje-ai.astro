@@ -1,0 +1,197 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import NavbarPersonal from '../../components/personal/NavbarPersonal.jsx';
+import FooterSlim from '../../components/personal/FooterSlim.astro';
+import ContactPersonal from '../../components/personal/ContactPersonal.jsx';
+
+// Podstrona SEO: „korepetycje AI" / „szkolenie ChatGPT" — fraza z ogłoszeń, wysoka intencja.
+const title = 'Korepetycje AI — ChatGPT i Copilot w pracy, 1:1 online | MJ.OLDAK';
+const description = 'Korepetycje z praktycznego używania AI: ChatGPT, Copilot, automatyzacje. 1:1 online, 100 zł/h. Uczę na Twoich zadaniach, nie na przykładach z internetu.';
+const canonical = 'https://www.mjoldak.pl/uslugi/korepetycje-ai/';
+
+const faq = [
+  {
+    q: 'Ile kosztują korepetycje z AI?',
+    a: '100 zł za 60 minut, online. Pakiet 4 sesji to 400 zł. Pierwsza rozmowa 15–30 minut jest bezpłatna — ustalamy na niej, czego potrzebujesz, i mówię wprost, ile sesji realnie potrzeba.',
+  },
+  {
+    q: 'Czy muszę umieć programować?',
+    a: 'Nie. Uczę używania gotowych narzędzi — ChatGPT, Copilot, Gemini — w codziennej pracy biurowej. Programowanie pojawia się tylko wtedy, gdy sam o to zapytasz.',
+  },
+  {
+    q: 'Jakie narzędzia będą potrzebne?',
+    a: 'Zaczynamy od tego, co już masz. Zwykle wystarczy darmowa wersja ChatGPT lub Copilot w pakiecie Office, który już opłacasz. Nie namawiam do kupowania subskrypcji, dopóki darmowa wersja wystarcza.',
+  },
+  {
+    q: 'Czym to się różni od kursu online?',
+    a: 'Kurs pokazuje przykłady. Tu pracujemy na Twoich dokumentach i mailach — wychodzisz z gotowymi rozwiązaniami pod swoją robotę, nie z notatkami. I możesz dopytać, gdy coś nie działa.',
+  },
+  {
+    q: 'Ile sesji potrzebuję?',
+    a: 'Zwykle 2–4, żeby złapać metodę i przestać potrzebować korepetytora. Jeśli po pierwszej sesji uznam, że wystarczy — powiem to, zamiast sprzedawać pakiet.',
+  },
+  {
+    q: 'Czy uczysz bezpiecznego korzystania z AI w pracy?',
+    a: 'Tak, to stały element. Uczę, czego nie wolno wklejać (dane klientów, umowy, dane osobowe), jak rozpoznać zmyśloną odpowiedź i co mówi RODO. Bez tego AI w pracy jest ryzykiem, nie narzędziem.',
+  },
+];
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Service',
+      name: 'Korepetycje AI',
+      serviceType: 'Korepetycje z zakresu sztucznej inteligencji',
+      provider: { '@type': 'Person', name: 'Marcin J. Ołdak', url: 'https://www.mjoldak.pl' },
+      areaServed: { '@type': 'Country', name: 'Polska' },
+      offers: {
+        '@type': 'Offer',
+        price: '100',
+        priceCurrency: 'PLN',
+        description: '60 minut korepetycji online',
+      },
+      description: 'Korepetycje 1:1 z praktycznego używania AI: ChatGPT, Copilot, automatyzacje.',
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: faq.map((f) => ({
+        '@type': 'Question',
+        name: f.q,
+        acceptedAnswer: { '@type': 'Answer', text: f.a },
+      })),
+    },
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Strona główna', item: 'https://www.mjoldak.pl/' },
+        { '@type': 'ListItem', position: 2, name: 'Usługi', item: 'https://www.mjoldak.pl/#services' },
+        { '@type': 'ListItem', position: 3, name: 'Korepetycje AI', item: canonical },
+      ],
+    },
+  ],
+};
+---
+
+<BaseLayout title={title} description={description} canonical={canonical} lang="pl">
+  <NavbarPersonal client:load />
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(schema)} />
+
+  <main class="bg-background dark:bg-[var(--c-page)] text-dark dark:text-[var(--c-ink)]">
+    <section class="px-8 md:px-16 pt-32 pb-16 md:pb-20">
+      <div class="max-w-4xl mx-auto">
+        <nav aria-label="Ścieżka nawigacji" class="font-mono text-[10px] uppercase tracking-[0.18em] opacity-45 mb-8">
+          <a href="/" class="hover:opacity-100 no-underline">Start</a>
+          <span class="mx-2">/</span>
+          <a href="/#services" class="hover:opacity-100 no-underline">Usługi</a>
+          <span class="mx-2">/</span>
+          <span>Korepetycje AI</span>
+        </nav>
+
+        <h1 class="font-serif text-4xl md:text-5xl lg:text-6xl leading-[1.05] tracking-[-0.01em] mb-6">
+          Korepetycje AI: ChatGPT w Twojej pracy, nie w teorii.
+        </h1>
+
+        <p class="font-sans text-lg md:text-xl leading-relaxed opacity-80 max-w-3xl mb-8">
+          Najczęstszy błąd, jaki widzę: ktoś pyta ChatGPT o fakt i dostaje odpowiedź pewnym tonem.
+          Wierzy jej. Potem sprawdza — i okazuje się, że liczba była zmyślona.
+          To nie wina narzędzia, tylko sposobu, w jaki się je traktuje.
+        </p>
+
+        <div class="flex flex-wrap gap-3 mb-12">
+          <a href="/#contact" class="px-6 py-3 rounded-[6px] bg-dark text-primary dark:bg-[var(--c-ink)] dark:text-[var(--c-page)] text-sm font-medium hover:opacity-90 transition-opacity no-underline">
+            Pierwsza rozmowa bezpłatnie
+          </a>
+          <a href="/uslugi/szkolenia-ai-dla-firm/" class="px-6 py-3 rounded-[6px] border border-dark/25 dark:border-[var(--c-line)] text-sm font-medium hover:border-dark/50 transition-colors no-underline">
+            Szukasz szkolenia dla zespołu?
+          </a>
+        </div>
+
+        <dl class="grid grid-cols-2 md:grid-cols-4 gap-6 border-t border-dark/12 dark:border-[var(--c-line)] pt-8">
+          <div><dt class="font-mono text-[10px] uppercase tracking-[0.18em] opacity-45 mb-1">Cena</dt><dd class="font-sans text-sm opacity-85">100 zł / 60 min</dd></div>
+          <div><dt class="font-mono text-[10px] uppercase tracking-[0.18em] opacity-45 mb-1">Pakiet</dt><dd class="font-sans text-sm opacity-85">4 sesje = 400 zł</dd></div>
+          <div><dt class="font-mono text-[10px] uppercase tracking-[0.18em] opacity-45 mb-1">Forma</dt><dd class="font-sans text-sm opacity-85">online 1:1</dd></div>
+          <div><dt class="font-mono text-[10px] uppercase tracking-[0.18em] opacity-45 mb-1">Start</dt><dd class="font-sans text-sm opacity-85">15–30 min gratis</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="px-8 md:px-16 py-16 md:py-20 border-t border-dark/10 dark:border-[var(--c-line)]">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="font-serif text-3xl md:text-4xl leading-tight mb-6">Czego się nauczysz</h2>
+        <ul class="space-y-4 max-w-3xl">
+          <li class="flex gap-4"><span class="text-accent shrink-0">▸</span><span class="font-sans leading-relaxed opacity-85"><strong>Zadawać pytania, które działają</strong> — żeby wynik był użyteczny od pierwszego razu, a nie po pięciu poprawkach.</span></li>
+          <li class="flex gap-4"><span class="text-accent shrink-0">▸</span><span class="font-sans leading-relaxed opacity-85"><strong>Sprawdzać odpowiedzi</strong> — jak rozpoznać, że AI zmyśla liczby, źródła albo nazwiska. To najważniejsza umiejętność i najczęściej pomijana.</span></li>
+          <li class="flex gap-4"><span class="text-accent shrink-0">▸</span><span class="font-sans leading-relaxed opacity-85"><strong>Nie wklejać tego, czego nie wolno</strong> — dane klientów, umowy, dane osobowe. Gdzie jest granica i jak ją obejść bezpiecznie.</span></li>
+          <li class="flex gap-4"><span class="text-accent shrink-0">▸</span><span class="font-sans leading-relaxed opacity-85"><strong>Oddać AI jeden proces</strong> — wybieramy zadanie, które robisz co tydzień, i budujemy rozwiązanie. Liczymy, ile godzin zyskujesz.</span></li>
+          <li class="flex gap-4"><span class="text-accent shrink-0">▸</span><span class="font-sans leading-relaxed opacity-85"><strong>Przestać potrzebować korepetytora</strong> — celem nie jest cykl sesji, tylko to, żebyś po kilku spotkaniach robił to sam.</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="px-8 md:px-16 py-16 md:py-20 border-t border-dark/10 dark:border-[var(--c-line)]">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="font-serif text-3xl md:text-4xl leading-tight mb-6">Dla kogo są te korepetycje</h2>
+        <div class="grid md:grid-cols-2 gap-8 max-w-3xl">
+          <div>
+            <h3 class="font-mono text-[11px] uppercase tracking-[0.18em] opacity-50 mb-3">Dla kogo</h3>
+            <ul class="space-y-2.5 font-sans text-sm leading-relaxed opacity-85">
+              <li class="flex gap-3"><span class="text-green-600 shrink-0">✓</span>Pracownicy biurowi: maile, raporty, notatki, Excel</li>
+              <li class="flex gap-3"><span class="text-green-600 shrink-0">✓</span>Mikroprzedsiębiorcy bez działu IT</li>
+              <li class="flex gap-3"><span class="text-green-600 shrink-0">✓</span>Osoby, które używają ChatGPT, ale bez pewności, czy dobrze</li>
+              <li class="flex gap-3"><span class="text-green-600 shrink-0">✓</span>Każdy, kto boi się wklejać dane firmowe i chce znać granicę</li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="font-mono text-[11px] uppercase tracking-[0.18em] opacity-50 mb-3">Dla kogo nie</h3>
+            <ul class="space-y-2.5 font-sans text-sm leading-relaxed opacity-85">
+              <li class="flex gap-3"><span class="text-red-600 shrink-0">✗</span>Programiści szukający kursu ML / sieci neuronowych</li>
+              <li class="flex gap-3"><span class="text-red-600 shrink-0">✗</span>Osoby szukające „magicznych promptów" bez zmiany sposobu pracy</li>
+              <li class="flex gap-3"><span class="text-red-600 shrink-0">✗</span>Ktoś, kto chce, żeby AI napisało za niego pracę — tego nie robię</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="px-8 md:px-16 py-16 md:py-20 border-t border-dark/10 dark:border-[var(--c-line)]">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="font-serif text-3xl md:text-4xl leading-tight mb-6">Jak wygląda pierwsza sesja</h2>
+        <div class="space-y-5 max-w-3xl font-sans leading-relaxed opacity-85">
+          <p><strong>0–5 min.</strong> Mówisz, co robisz w pracy i jak dziś używasz AI. Jeśli wcale — też dobrze, zaczynamy od zera.</p>
+          <p><strong>5–15 min.</strong> Bierzemy jedno Twoje realne zadanie. Pokazuję, jak je rozwiązać, i tłumaczę, dlaczego to działa.</p>
+          <p><strong>15–25 min.</strong> Robisz to samo na drugim zadaniu, ja patrzę i poprawiam. To najważniejsza część — samodzielność rodzi się tutaj.</p>
+          <p><strong>25–30 min.</strong> Podsumowanie: co już umiesz, czego warto się nauczyć dalej. Mówię wprost, czy potrzebujesz kolejnych sesji.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="px-8 md:px-16 py-16 md:py-20 border-t border-dark/10 dark:border-[var(--c-line)]">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="font-serif text-3xl md:text-4xl leading-tight mb-8">Pytania o korepetycje</h2>
+        <div class="space-y-7 max-w-3xl">
+          {faq.map((f) => (
+            <div>
+              <h3 class="font-sans font-bold text-base mb-2">{f.q}</h3>
+              <p class="font-sans text-sm leading-relaxed opacity-75">{f.a}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="px-8 md:px-16 py-16 md:py-20 border-t border-dark/10 dark:border-[var(--c-line)]">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="font-serif text-3xl md:text-4xl leading-tight mb-4">Zacznij od bezpłatnej rozmowy</h2>
+        <p class="font-sans text-base leading-relaxed opacity-75 max-w-2xl mb-8">
+          15–30 minut, bez zobowiązań. Powiedz, czym się zajmujesz i co Cię najbardziej męczy w tygodniu.
+          Na końcu mówię wprost, ile sesji potrzebujesz — albo że wcale.
+        </p>
+        <a href="/#contact" class="inline-block px-6 py-3 rounded-[6px] bg-dark text-primary dark:bg-[var(--c-ink)] dark:text-[var(--c-page)] text-sm font-medium hover:opacity-90 transition-opacity no-underline">Napisz — odpowiadam tego samego dnia</a>
+      </div>
+    </section>
+  </main>
+
+  <ContactPersonal client:visible />
+  <FooterSlim />
+</BaseLayout>

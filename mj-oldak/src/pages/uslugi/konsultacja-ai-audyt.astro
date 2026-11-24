@@ -1,0 +1,203 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import NavbarPersonal from '../../components/personal/NavbarPersonal.jsx';
+import FooterSlim from '../../components/personal/FooterSlim.astro';
+import ContactPersonal from '../../components/personal/ContactPersonal.jsx';
+
+// Podstrona SEO: „audyt AI" / „konsultacja AI" — fraza o wysokiej intencji, mniejsza konkurencja niż „szkolenia AI".
+const title = 'Audyt AI w firmie — gdzie AI realnie oszczędza godziny | MJ.OLDAK';
+const description = 'Audyt AI: przechodzimy przez Twoje tygodniowe zadania i zaznaczamy te, które da się oddać maszynie. Dla każdego: ile godzin, ile kosztuje, czy dane są bezpieczne.';
+const canonical = 'https://www.mjoldak.pl/uslugi/konsultacja-ai-audyt/';
+
+const faq = [
+  {
+    q: 'Ile trwa audyt AI i jak wygląda?',
+    a: 'Dwa spotkania po 60–90 minut plus praca między nimi. Pierwsze spotkanie: mapowanie Twoich tygodniowych zadań. Drugie: prezentacja rankingu — co robić najpierw, co odpuścić, czego nie ruszać. Cały proces zamyka się w 2–5 dniach roboczych.',
+  },
+  {
+    q: 'Co dokładnie dostaję na koniec audytu?',
+    a: 'Dokument 3–6 stron: lista zadań z oceną (oszczędność godzin, koszt wdrożenia, ryzyko dla danych) plus rekomendacja kolejności. Do tego rozmowa, na której tłumaczę każdy punkt bez żargonu. Dokument jest Twój — możesz z nim iść do dowolnego wykonawcy.',
+  },
+  {
+    q: 'Ile kosztuje audyt AI?',
+    a: 'Wycena po 15-minutowej rozmowie — zależy od liczby procesów do przejrzenia i liczby osób w zespole. Nie pobieram opłat za samą wycenę. Jeśli po rozmowie uznam, że audyt nie ma sensu w Twoim przypadku, powiem to wprost.',
+  },
+  {
+    q: 'Czy audyt zobowiązuje mnie do wdrożenia u Ciebie?',
+    a: 'Nie. Audyt kończy się dokumentem i rozmową. Możesz zrealizować rekomendacje sam, z innym wykonawcą albo ze mną — to Twoja decyzja. Nie uzależniam ceny audytu od późniejszego wdrożenia.',
+  },
+  {
+    q: 'Czy audyt ma sens w mikrofirmie 1–3 osoby?',
+    a: 'Często tak — i zwykle szybciej widać efekt, bo decyzje zapadają od razu. W mikrofirmie audyt dotyczy zwykle 3–5 zadań, nie kilkunastu. Zakres i cena są proporcjonalnie mniejsze.',
+  },
+  {
+    q: 'Jakie dane muszę pokazać?',
+    a: 'Wystarczy opis zadań i przykładowe dokumenty (z danymi zanonimizowanymi, jeśli wolisz). Nie potrzebuję dostępu do systemów ani haseł. Audyt opiera się na rozmowie i tym, co zdecydujesz się pokazać.',
+  },
+];
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Service',
+      name: 'Audyt AI w firmie',
+      serviceType: 'Konsultacja z zakresu sztucznej inteligencji',
+      provider: { '@type': 'Person', name: 'Marcin J. Ołdak', url: 'https://www.mjoldak.pl' },
+      areaServed: { '@type': 'Country', name: 'Polska' },
+      audience: { '@type': 'BusinessAudience', name: 'Małe i średnie firmy' },
+      description: 'Audyt procesów pod kątem wdrożenia AI: które zadania da się oddać maszynie, ile to oszczędza i czy dane są bezpieczne.',
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: faq.map((f) => ({
+        '@type': 'Question',
+        name: f.q,
+        acceptedAnswer: { '@type': 'Answer', text: f.a },
+      })),
+    },
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Strona główna', item: 'https://www.mjoldak.pl/' },
+        { '@type': 'ListItem', position: 2, name: 'Usługi', item: 'https://www.mjoldak.pl/#services' },
+        { '@type': 'ListItem', position: 3, name: 'Audyt AI', item: canonical },
+      ],
+    },
+  ],
+};
+---
+
+<BaseLayout title={title} description={description} canonical={canonical} lang="pl">
+  <NavbarPersonal client:load />
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(schema)} />
+
+  <main class="bg-background dark:bg-[var(--c-page)] text-dark dark:text-[var(--c-ink)]">
+    <section class="px-8 md:px-16 pt-32 pb-16 md:pb-20">
+      <div class="max-w-4xl mx-auto">
+        <nav aria-label="Ścieżka nawigacji" class="font-mono text-[10px] uppercase tracking-[0.18em] opacity-45 mb-8">
+          <a href="/" class="hover:opacity-100 no-underline">Start</a>
+          <span class="mx-2">/</span>
+          <a href="/#services" class="hover:opacity-100 no-underline">Usługi</a>
+          <span class="mx-2">/</span>
+          <span>Audyt AI</span>
+        </nav>
+
+        <h1 class="font-serif text-4xl md:text-5xl lg:text-6xl leading-[1.05] tracking-[-0.01em] mb-6">
+          Audyt AI: które zadania realnie oddasz maszynie — i ile na tym zyskasz.
+        </h1>
+
+        <p class="font-sans text-lg md:text-xl leading-relaxed opacity-80 max-w-3xl mb-8">
+          Zaczynam od pytania „co Ci zjada czas w tygodniu", nie od „jakie AI jest fajne".
+          Przechodzimy przez Twoje zadania i dla każdego liczymy: ile godzin oszczędza,
+          ile kosztuje wdrożenie, czy dane są bezpieczne.
+        </p>
+
+        <div class="flex flex-wrap gap-3 mb-12">
+          <a href="/#contact" class="px-6 py-3 rounded-[6px] bg-dark text-primary dark:bg-[var(--c-ink)] dark:text-[var(--c-page)] text-sm font-medium hover:opacity-90 transition-opacity no-underline">
+            Umów 15 min rozmowy
+          </a>
+          <a href="/uslugi/szkolenia-ai-dla-firm/" class="px-6 py-3 rounded-[6px] border border-dark/25 dark:border-[var(--c-line)] text-sm font-medium hover:border-dark/50 transition-colors no-underline">
+            Wolisz szkolenie dla zespołu?
+          </a>
+        </div>
+
+        <dl class="grid grid-cols-2 md:grid-cols-4 gap-6 border-t border-dark/12 dark:border-[var(--c-line)] pt-8">
+          <div><dt class="font-mono text-[10px] uppercase tracking-[0.18em] opacity-45 mb-1">Czas</dt><dd class="font-sans text-sm opacity-85">2–5 dni roboczych</dd></div>
+          <div><dt class="font-mono text-[10px] uppercase tracking-[0.18em] opacity-45 mb-1">Spotkania</dt><dd class="font-sans text-sm opacity-85">2 × 60–90 min</dd></div>
+          <div><dt class="font-mono text-[10px] uppercase tracking-[0.18em] opacity-45 mb-1">Wynik</dt><dd class="font-sans text-sm opacity-85">dokument 3–6 stron</dd></div>
+          <div><dt class="font-mono text-[10px] uppercase tracking-[0.18em] opacity-45 mb-1">Zobowiązanie</dt><dd class="font-sans text-sm opacity-85">żadne</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="px-8 md:px-16 py-16 md:py-20 border-t border-dark/10 dark:border-[var(--c-line)]">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="font-serif text-3xl md:text-4xl leading-tight mb-6">Jak wygląda audyt krok po kroku</h2>
+        <div class="space-y-6 max-w-3xl">
+          <div class="grid sm:grid-cols-[120px_1fr] gap-x-6 gap-y-2 border-b border-dark/10 dark:border-[var(--c-line)] pb-5">
+            <span class="font-mono text-[11px] tracking-[0.16em] opacity-50">Krok 1</span>
+            <div><h3 class="font-sans font-bold text-base mb-1.5">Rozmowa 15 min — bezpłatnie</h3><p class="font-sans text-sm leading-relaxed opacity-75">Sprawdzamy, czy audyt ma sens w Twoim przypadku. Jeśli nie — mówię to i nie sprzedaję dalej.</p></div>
+          </div>
+          <div class="grid sm:grid-cols-[120px_1fr] gap-x-6 gap-y-2 border-b border-dark/10 dark:border-[var(--c-line)] pb-5">
+            <span class="font-mono text-[11px] tracking-[0.16em] opacity-50">Krok 2</span>
+            <div><h3 class="font-sans font-bold text-base mb-1.5">Mapowanie zadań (60–90 min)</h3><p class="font-sans text-sm leading-relaxed opacity-75">Przechodzimy przez Twój tydzień pracy. Zapisujemy każde powtarzalne zadanie i ile realnie zajmuje.</p></div>
+          </div>
+          <div class="grid sm:grid-cols-[120px_1fr] gap-x-6 gap-y-2 border-b border-dark/10 dark:border-[var(--c-line)] pb-5">
+            <span class="font-mono text-[11px] tracking-[0.16em] opacity-50">Krok 3</span>
+            <div><h3 class="font-sans font-bold text-base mb-1.5">Analiza (2–3 dni)</h3><p class="font-sans text-sm leading-relaxed opacity-75">Dla każdego zadania: czy AI je obsłuży, ile godzin oszczędza, ile kosztuje wdrożenie, jakie ryzyko dla danych. Bez tego kroku audyt byłby listą życzeń.</p></div>
+          </div>
+          <div class="grid sm:grid-cols-[120px_1fr] gap-x-6 gap-y-2">
+            <span class="font-mono text-[11px] tracking-[0.16em] opacity-50">Krok 4</span>
+            <div><h3 class="font-sans font-bold text-base mb-1.5">Prezentacja i dokument (60 min)</h3><p class="font-sans text-sm leading-relaxed opacity-75">Dostajesz ranking i tłumaczę każdy punkt. Dokument jest Twój — możesz zrealizować go sam lub z kimkolwiek.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="px-8 md:px-16 py-16 md:py-20 border-t border-dark/10 dark:border-[var(--c-line)]">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="font-serif text-3xl md:text-4xl leading-tight mb-6">Co dostajesz w dokumencie</h2>
+        <ul class="space-y-4 max-w-3xl">
+          <li class="flex gap-4"><span class="text-accent shrink-0">▸</span><span class="font-sans leading-relaxed opacity-85"><strong>Ranking zadań</strong> — od największego zwrotu do tych, których nie warto ruszać. Z liczbami, nie ogólnikami.</span></li>
+          <li class="flex gap-4"><span class="text-accent shrink-0">▸</span><span class="font-sans leading-relaxed opacity-85"><strong>Oszczędność w godzinach</strong> — policzona na Twoich danych, nie na średnich z raportów.</span></li>
+          <li class="flex gap-4"><span class="text-accent shrink-0">▸</span><span class="font-sans leading-relaxed opacity-85"><strong>Koszt wdrożenia</strong> — widełki i orientacyjny czas realizacji dla każdej pozycji.</span></li>
+          <li class="flex gap-4"><span class="text-accent shrink-0">▸</span><span class="font-sans leading-relaxed opacity-85"><strong>Ryzyko danych</strong> — które zadania można oddać bez obaw, a które wymagają zabezpieczeń (RODO, dane klientów).</span></li>
+          <li class="flex gap-4"><span class="text-accent shrink-0">▸</span><span class="font-sans leading-relaxed opacity-85"><strong>Rekomendacja kolejności</strong> — co zrobić w pierwszym miesiącu, co odłożyć na później i dlaczego.</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="px-8 md:px-16 py-16 md:py-20 border-t border-dark/10 dark:border-[var(--c-line)]">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="font-serif text-3xl md:text-4xl leading-tight mb-6">Dla kogo to jest — i dla kogo nie</h2>
+        <div class="grid md:grid-cols-2 gap-8 max-w-3xl">
+          <div>
+            <h3 class="font-mono text-[11px] uppercase tracking-[0.18em] opacity-50 mb-3">Dla kogo</h3>
+            <ul class="space-y-2.5 font-sans text-sm leading-relaxed opacity-85">
+              <li class="flex gap-3"><span class="text-green-600 shrink-0">✓</span>Właściciele firm 1–50 osób, którzy robią dużo rzeczy ręcznie</li>
+              <li class="flex gap-3"><span class="text-green-600 shrink-0">✓</span>Osoby, które „słyszały o AI", ale nie wiedzą od czego zacząć</li>
+              <li class="flex gap-3"><span class="text-green-600 shrink-0">✓</span>Zespoły, które próbowały AI i porzuciły — chcą wiedzieć dlaczego</li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="font-mono text-[11px] uppercase tracking-[0.18em] opacity-50 mb-3">Dla kogo nie</h3>
+            <ul class="space-y-2.5 font-sans text-sm leading-relaxed opacity-85">
+              <li class="flex gap-3"><span class="text-red-600 shrink-0">✗</span>Firmy szukające gotowego wdrożenia „pod klucz" bez analizy</li>
+              <li class="flex gap-3"><span class="text-red-600 shrink-0">✗</span>Projekty enterprise wymagające zespołu i formalnego przetargu</li>
+              <li class="flex gap-3"><span class="text-red-600 shrink-0">✗</span>Ktoś, kto chce certyfikatu — audyt kończy się dokumentem, nie dyplomem</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="px-8 md:px-16 py-16 md:py-20 border-t border-dark/10 dark:border-[var(--c-line)]">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="font-serif text-3xl md:text-4xl leading-tight mb-8">Pytania o audyt</h2>
+        <div class="space-y-7 max-w-3xl">
+          {faq.map((f) => (
+            <div>
+              <h3 class="font-sans font-bold text-base mb-2">{f.q}</h3>
+              <p class="font-sans text-sm leading-relaxed opacity-75">{f.a}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="px-8 md:px-16 py-16 md:py-20 border-t border-dark/10 dark:border-[var(--c-line)]">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="font-serif text-3xl md:text-4xl leading-tight mb-4">15 minut, żeby wiedzieć, czy to ma sens</h2>
+        <p class="font-sans text-base leading-relaxed opacity-75 max-w-2xl mb-8">
+          Powiedz mi, co robisz w tygodniu i co Cię najbardziej męczy. Po rozmowie powiem,
+          czy audyt ma sens — albo że w Twoim przypadku wystarczy jedna godzina nauki konkretnego narzędzia.
+        </p>
+        <a href="/#contact" class="inline-block px-6 py-3 rounded-[6px] bg-dark text-primary dark:bg-[var(--c-ink)] dark:text-[var(--c-page)] text-sm font-medium hover:opacity-90 transition-opacity no-underline">Napisz — odpowiadam tego samego dnia</a>
+      </div>
+    </section>
+  </main>
+
+  <ContactPersonal client:visible />
+  <FooterSlim />
+</BaseLayout>

@@ -8,6 +8,7 @@ const services = [
     label: 'Konsultacja',
     title: 'Audyt: gdzie AI realnie oszczędza godziny',
     time: '1–2 spotkania · 2–5 dni',
+    href: '/uslugi/konsultacja-ai-audyt/',
     forWhom: 'Właściciel firmy lub osoba, która „słyszała, że AI może pomóc, ale nie wie od czego zacząć".',
     what: [
       'Przechodzimy przez Twoje tygodniowe zadania i zaznaczamy te, które da się oddać maszynie.',
@@ -21,6 +22,7 @@ const services = [
     label: 'Szkolenie',
     title: 'Warsztat dla zespołu — na Waszych zadaniach',
     time: '1 dzień (6 h) lub 2 × 3 h online',
+    href: '/uslugi/szkolenia-ai-dla-firm/',
     forWhom: 'Zespoły 3–15 osób: biuro, obsługa klienta, księgowość, sprzedaż.',
     what: [
       'Nie uczę „magicznych promptów". Uczymy się na Waszych realnych dokumentach i mailach.',
@@ -32,17 +34,18 @@ const services = [
   },
   {
     num: '03',
-    label: 'Wdrożenie',
-    title: 'Agent lub automatyzacja pod jeden proces',
-    time: '2–6 tygodni',
-    forWhom: 'Firmy, które wiedzą już CO chcą odciążyć i potrzebują tego zrobionego.',
+    label: 'Korepetycje',
+    title: 'Indywidualnie: Twoje zadania, Twoje tempo',
+    time: '60 min · online · 100 zł/h',
+    href: '/uslugi/korepetycje-ai/',
+    forWhom: 'Pracownik biurowy lub mikroprzedsiębiorca, który chce opanować AI we własnej pracy.',
     what: [
-      'Wybór jednego procesu o największym zwrocie (faktury, maile, oferty, raporty).',
-      'Budowa: OCR faktur, klasyfikacja maili, generowanie raportów, agent obsługujący zapytania.',
-      'Człowiek w pętli od pierwszego dnia — maszyna proponuje, Ty zatwierdzasz.',
-      'Dane w UE, model-agnostycznie (Claude / Gemini / lokalne modele).',
+      'Zaczynamy od tego, co już masz — ChatGPT, Copilot, Gemini. Bez kupowania subskrypcji.',
+      'Uczysz się na swoich dokumentach, nie na przykładach z internetu.',
+      'Metoda, weryfikacja odpowiedzi i granice bezpieczeństwa w jednym.',
+      'Cel: po kilku sesjach robisz to sam, bez korepetytora.',
     ],
-    out: 'Działające narzędzie + dokumentacja + szkolenie zespołu z obsługi + 30 dni opieki.',
+    out: 'Pakiet 4 sesji: 400 zł. Pierwsza rozmowa 15–30 min bezpłatnie.',
   },
 ];
 
@@ -78,7 +81,9 @@ const facts = [
             <span class="font-mono text-[10px] uppercase tracking-[0.14em] opacity-40 ml-auto">{s.time}</span>
           </div>
 
-          <h3 class="font-serif text-2xl md:text-3xl leading-snug mb-4">{s.title}</h3>
+          <h3 class="font-serif text-2xl md:text-3xl leading-snug mb-4">
+            <a href={s.href} class="no-underline hover:underline decoration-1 underline-offset-4">{s.title}</a>
+          </h3>
 
           <p class="font-sans text-sm leading-relaxed opacity-70 mb-5">
             <span class="font-mono text-[10px] uppercase tracking-[0.16em] opacity-60 mr-2">dla kogo</span>
@@ -94,10 +99,14 @@ const facts = [
             ))}
           </ul>
 
-          <p class="font-sans text-sm leading-relaxed border-l-2 border-accent/40 pl-4 opacity-80">
+          <p class="font-sans text-sm leading-relaxed border-l-2 border-accent/40 pl-4 opacity-80 mb-4">
             <span class="font-mono text-[10px] uppercase tracking-[0.16em] opacity-60 block mb-1">co dostajesz</span>
             {s.out}
           </p>
+
+          <a href={s.href} class="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.16em] text-accent hover:underline no-underline">
+            Szczegóły ↗
+          </a>
         </article>
       ))}
     </div>
