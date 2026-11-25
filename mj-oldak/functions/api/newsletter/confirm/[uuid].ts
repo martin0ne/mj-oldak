@@ -6,6 +6,11 @@ interface Env {
   DB: D1Database;
   RESEND_API_KEY?: string;
   NEWSLETTER_FROM_EMAIL?: string;
+  /** Ścieżka lub pełny URL do PDF-a wysyłanego po potwierdzeniu.
+   *  Współdzielone z panelem /admin/newsletter (resend-pdf.ts) — jedno źródło prawdy. */
+  NEWSLETTER_PDF_URL?: string;
+  /** Nazwa pliku w mailu, np. "slownik-ai.pdf". */
+  NEWSLETTER_PDF_NAME?: string;
 }
 
 export const onRequestGet: PagesFunction<Env, 'uuid'> = async ({ params, env, request }) => {
@@ -56,15 +61,26 @@ export const onRequestGet: PagesFunction<Env, 'uuid'> = async ({ params, env, re
  * Wysyła mail z linkiem do PDF (nie załącznikiem).
  * Link zamiast załącznika: mniejszy mail, brak problemów ze skrzynkami firmowymi
  * blokującymi PDF-y, i plik zawsze w najnowszej wersji (można podmienić bez wysyłki).
+ *
+ * URL i nazwa pliku czytane z NEWSLETTER_PDF_URL / NEWSLETTER_PDF_NAME — te same zmienne
+ * używa panel /admin/newsletter (resend-pdf.ts), więc jest jedno źródło prawdy.
  */
-async function sendDictionaryPdf(env: Env & { RESEND_API_KEY?: string; NEWSLETTER_FROM_EMAIL?: string }, to: string, origin: string) {
+async function sendDictionaryPdf(env: Env, to: string, origin: string) {
   if (!env.RESEND_API_KEY) {
     console.warn('no RESEND_API_KEY, skipping dictionary mail');
     return;
   }
 
-  const pdfUrl = 'https://www.mjoldak.pl/reports/slownik-ai-40-hasel.pdf';
-  const siteUrl = 'https://www.mjoldak.pl/slownik-ai/';
+  const rawPdf = (env.NEWSLETTER_PDF_URL || '').trim();
+  if (!rawPdf) {
+    console.warn('no NEWSLETTER_PDF_URL, skipping dictionary mail');
+    return;
+  }
+
+  const site = 'https://www.mjoldak.pl';
+  const pdfUrl = rawPdf.startsWith('http') ? rawPdf : `${site}${rawPdf.startsWith('/') ? '' : '/'}${rawPdf}`;
+  const pdfName = (env.NEWSLETTER_PDF_NAME || '').trim() || 'slownik-ai.pdf';
+  const siteUrl = `${site}/slownik-ai/`;
 
   const html = `<!DOCTYPE html>
 <html lang="pl">
@@ -75,7 +91,7 @@ async function sendDictionaryPdf(env: Env & { RESEND_API_KEY?: string; NEWSLETTE
   <p style="margin: 0 0 16px; font-size: 16px;">PDF jest gotowy. Czterdzieści haseł w trzech blokach: podstawy, praca biurowa, ryzyka i granice.</p>
 
   <p style="margin: 0 0 28px;">
-    <a href="${pdfUrl}" style="display: inline-block; background: #0a0a0a; color: #ffffff; padding: 13px 26px; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 15px;">Pobierz PDF</a>
+    <a href="${pdfUrl}" style="display: inline-block; background: #0a0a0a; color: #ffffff; padding: 13px 26px; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 15px;">Pobierz ${escapeAttr(pdfName)}</a>
   </p>
 
   <p style="margin: 0 0 8px; font-size: 13px; color: #555;">Lub wklej link:</p>
@@ -121,4 +137,9 @@ biuro@mjoldak.pl`;
     const err = await resp.text();
     throw new Error('Resend dictionary failed ' + resp.status + ': ' + err.slice(0, 200));
   }
+}
+
+/** Minimalne escapowanie do treści HTML — nazwa pliku pochodzi ze zmiennej środowiskowej. */
+function escapeAttr(s: string): string {
+  return s.replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c] as string));
 }
