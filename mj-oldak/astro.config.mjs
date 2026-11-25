@@ -12,7 +12,8 @@ export default defineConfig({
   },
   integrations: [
     react(),
-    sitemap(),
+    // /admin/ poza sitemapą: panel stoi za Cloudflare Access i nie ma czego indeksować.
+    sitemap({ filter: (page) => !new URL(page).pathname.startsWith('/admin') }),
   ],
   vite: {
     plugins: [tailwindcss()],

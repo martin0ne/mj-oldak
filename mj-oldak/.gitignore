@@ -4,6 +4,9 @@ dist/
 .wrangler/
 node_modules/
 
+# lokalny stan D1 do testów panelu (wrangler pages dev --persist-to)
+.devstate/
+
 # logs
 npm-debug.log*
 yarn-debug.log*

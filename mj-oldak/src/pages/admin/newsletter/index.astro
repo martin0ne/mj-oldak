@@ -1,0 +1,291 @@
+---
+// /admin/newsletter/ - panel subskrybentów. Dostęp wyłącznie przez Cloudflare Access.
+// Strona jest statyczna (output: static), dane idą z /admin/api/newsletter/*, które
+// dodatkowo sprawdza podpis JWT Access. noindex, żeby nie trafiło do wyszukiwarek.
+import AdminLayout from '../../../layouts/AdminLayout.astro';
+import NewsletterAdmin from '../../../components/admin/NewsletterAdmin.jsx';
+---
+
+<AdminLayout
+  title="Panel newslettera · MJ.OLDAK"
+  description="Panel administracyjny listy subskrybentów newslettera."
+>
+  <main class="admin-shell">
+    <NewsletterAdmin client:load />
+  </main>
+</AdminLayout>
+
+<style>
+  .admin-shell {
+    min-height: 100vh;
+    padding: 48px 24px 96px;
+    background: var(--c-page, #fbfbfa);
+  }
+  .admin-shell :global(.admin) {
+    max-width: 1180px;
+    margin: 0 auto;
+    font-family: 'Geist', system-ui, -apple-system, sans-serif;
+  }
+
+  .admin-shell :global(.admin-head) {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    align-items: flex-end;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--c-line, rgba(17, 17, 17, 0.12));
+    padding-bottom: 20px;
+    margin-bottom: 28px;
+  }
+  .admin-shell :global(.kicker) {
+    font-family: 'Geist Mono', ui-monospace, monospace;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--c-ink-dim, rgba(47, 52, 55, 0.6));
+    margin: 0 0 6px;
+  }
+  .admin-shell :global(h1) {
+    font-family: 'Newsreader', Georgia, serif;
+    font-weight: 500;
+    font-size: 40px;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: var(--c-ink, #2f3437);
+    margin: 0;
+  }
+  .admin-shell :global(.who) {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Geist Mono', ui-monospace, monospace;
+    font-size: 12px;
+    color: var(--c-ink-dim, rgba(47, 52, 55, 0.6));
+  }
+  .admin-shell :global(.dot) {
+    width: 7px;
+    height: 7px;
+    border-radius: 999px;
+    background: #3f8f5f;
+  }
+
+  .admin-shell :global(.stats) {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+  .admin-shell :global(.stat) {
+    background: var(--c-surface, #fff);
+    border: 1px solid var(--c-line, rgba(17, 17, 17, 0.12));
+    border-radius: 12px;
+    padding: 16px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .admin-shell :global(.stat-label) {
+    font-family: 'Geist Mono', ui-monospace, monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--c-ink-dim, rgba(47, 52, 55, 0.6));
+  }
+  .admin-shell :global(.stat-value) {
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--c-ink, #2f3437);
+  }
+  .admin-shell :global(.stat.ok .stat-value) { color: #2f7d52; }
+  .admin-shell :global(.stat.muted .stat-value) { color: var(--c-ink-dim, rgba(47, 52, 55, 0.6)); }
+
+  .admin-shell :global(.toolbar) {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+    margin-bottom: 18px;
+  }
+  .admin-shell :global(.search) { flex: 1 1 260px; }
+  .admin-shell :global(.sr) {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+  .admin-shell :global(.search input) {
+    width: 100%;
+    padding: 11px 14px;
+    border: 1px solid var(--c-line, rgba(17, 17, 17, 0.16));
+    border-radius: 9px;
+    background: var(--c-surface, #fff);
+    font-family: 'Geist Mono', ui-monospace, monospace;
+    font-size: 13px;
+    color: var(--c-ink, #2f3437);
+  }
+  .admin-shell :global(.search input:focus) {
+    outline: 2px solid rgba(17, 17, 17, 0.25);
+    outline-offset: 1px;
+  }
+  .admin-shell :global(.filters) { display: flex; flex-wrap: wrap; gap: 6px; }
+  .admin-shell :global(.chip) {
+    font-family: 'Geist', system-ui, sans-serif;
+    font-size: 13px;
+    padding: 8px 14px;
+    border-radius: 999px;
+    border: 1px solid var(--c-line, rgba(17, 17, 17, 0.16));
+    background: transparent;
+    color: var(--c-ink, #2f3437);
+    cursor: pointer;
+    transition: background 0.15s, border-color 0.15s;
+  }
+  .admin-shell :global(.chip:hover) { border-color: rgba(17, 17, 17, 0.4); }
+  .admin-shell :global(.chip.on) {
+    background: #111;
+    border-color: #111;
+    color: #fff;
+  }
+  .admin-shell :global(.export) {
+    font-family: 'Geist Mono', ui-monospace, monospace;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 11px 16px;
+    border-radius: 9px;
+    border: 1px solid var(--c-line, rgba(17, 17, 17, 0.2));
+    color: var(--c-ink, #2f3437);
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .admin-shell :global(.export:hover) { background: rgba(17, 17, 17, 0.05); }
+
+  .admin-shell :global(.banner) {
+    margin: 0 0 16px;
+    padding: 11px 14px;
+    border-radius: 9px;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+  .admin-shell :global(.banner.bad) { background: #fdecea; color: #8c2c22; border: 1px solid #e7bdb7; }
+  .admin-shell :global(.banner.good) { background: #eaf4ee; color: #2f6a4a; border: 1px solid #c3ddcd; }
+
+  .admin-shell :global(.table-wrap) {
+    overflow-x: auto;
+    border: 1px solid var(--c-line, rgba(17, 17, 17, 0.12));
+    border-radius: 12px;
+    background: var(--c-surface, #fff);
+  }
+  .admin-shell :global(table) {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+  .admin-shell :global(thead th) {
+    text-align: left;
+    font-family: 'Geist Mono', ui-monospace, monospace;
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--c-ink-dim, rgba(47, 52, 55, 0.6));
+    padding: 12px 14px;
+    border-bottom: 1px solid var(--c-line, rgba(17, 17, 17, 0.12));
+    white-space: nowrap;
+  }
+  .admin-shell :global(tbody td) {
+    padding: 11px 14px;
+    border-bottom: 1px solid rgba(17, 17, 17, 0.07);
+    color: var(--c-ink, #2f3437);
+    vertical-align: middle;
+  }
+  .admin-shell :global(tbody tr:last-child td) { border-bottom: 0; }
+  .admin-shell :global(.email) { font-weight: 600; word-break: break-all; }
+  .admin-shell :global(.mono) {
+    font-family: 'Geist Mono', ui-monospace, monospace;
+    font-size: 12px;
+    white-space: nowrap;
+  }
+  .admin-shell :global(.dim) { color: var(--c-ink-dim, rgba(47, 52, 55, 0.6)); }
+  .admin-shell :global(.empty) {
+    padding: 28px 14px;
+    text-align: center;
+    color: var(--c-ink-dim, rgba(47, 52, 55, 0.6));
+  }
+
+  .admin-shell :global(.pill) {
+    display: inline-block;
+    font-family: 'Geist Mono', ui-monospace, monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 4px 9px;
+    border-radius: 999px;
+    border: 1px solid transparent;
+    white-space: nowrap;
+  }
+  .admin-shell :global(.pill.potwierdzony) { background: #eaf4ee; color: #2f6a4a; border-color: #c3ddcd; }
+  .admin-shell :global(.pill.oczekuje) { background: #fdf5e6; color: #8a6412; border-color: #ecd9ab; }
+  .admin-shell :global(.pill.wypisany) { background: rgba(17, 17, 17, 0.06); color: rgba(47, 52, 55, 0.7); border-color: rgba(17, 17, 17, 0.12); }
+
+  .admin-shell :global(.actions) { display: flex; gap: 6px; white-space: nowrap; }
+  .admin-shell :global(.btn) {
+    font-family: 'Geist', system-ui, sans-serif;
+    font-size: 12px;
+    padding: 7px 12px;
+    border-radius: 7px;
+    border: 1px solid var(--c-line, rgba(17, 17, 17, 0.2));
+    background: transparent;
+    color: var(--c-ink, #2f3437);
+    cursor: pointer;
+    transition: background 0.15s, border-color 0.15s;
+  }
+  .admin-shell :global(.btn:hover:not(:disabled)) { border-color: rgba(17, 17, 17, 0.45); background: rgba(17, 17, 17, 0.04); }
+  .admin-shell :global(.btn:disabled) { opacity: 0.4; cursor: not-allowed; }
+  .admin-shell :global(.btn.danger) { border-color: #d9b7b2; color: #8c2c22; }
+  .admin-shell :global(.btn.danger:hover:not(:disabled)) { background: #fdecea; }
+
+  .admin-shell :global(.pager) {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+    justify-content: space-between;
+    margin: 16px 0 40px;
+    font-size: 13px;
+  }
+  .admin-shell :global(.pager-buttons) { display: flex; gap: 8px; }
+
+  .admin-shell :global(.audit) { border-top: 1px solid var(--c-line, rgba(17, 17, 17, 0.12)); padding-top: 22px; }
+  .admin-shell :global(.audit h2) {
+    font-family: 'Geist Mono', ui-monospace, monospace;
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--c-ink-dim, rgba(47, 52, 55, 0.6));
+    margin: 0 0 12px;
+  }
+  .admin-shell :global(.audit ul) { list-style: none; margin: 0; padding: 0; }
+  .admin-shell :global(.audit li) {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: baseline;
+    font-size: 12px;
+    padding: 7px 0;
+    border-bottom: 1px solid rgba(17, 17, 17, 0.06);
+  }
+  .admin-shell :global(.audit li:last-child) { border-bottom: 0; }
+  .admin-shell :global(.audit li.failed) { background: rgba(140, 44, 34, 0.04); }
+  .admin-shell :global(.tag-bad) { color: #8c2c22; font-size: 11px; }
+  .admin-shell :global(.actor) { font-family: 'Geist Mono', ui-monospace, monospace; }
+  .admin-shell :global(.what) { font-size: 12px; color: var(--c-ink, #2f3437); }
+  .admin-shell :global(.detail) { font-size: 11px; }
+  .admin-shell :global(.small) { font-size: 12px; }
+
+  @media (max-width: 640px) {
+    .admin-shell { padding: 28px 14px 64px; }
+    .admin-shell :global(h1) { font-size: 30px; }
+  }
+</style>

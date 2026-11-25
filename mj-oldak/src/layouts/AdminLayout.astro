@@ -1,0 +1,28 @@
+---
+// Minimalny layout panelu /admin: bez GA4 i bez paska dostępności.
+// Admin nie ma trafiać do analityki ani dokładać sobie nakładek na treść.
+// noindex + brak sitemap wpisu (patrz astro.config.mjs) = strona nieindeksowana.
+import '../styles/global.css';
+
+export interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = 'Panel administracyjny MJ.OLDAK.' } = Astro.props;
+---
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex,nofollow,noarchive" />
+  <meta name="description" content={description} />
+  <meta name="theme-color" content="#fbfbfa" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <title>{title}</title>
+</head>
+<body class="bg-background text-dark font-sans m-0 p-0 min-h-[100dvh]">
+  <slot />
+</body>
+</html>
