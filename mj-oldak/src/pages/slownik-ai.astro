@@ -1,0 +1,314 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import NavbarPersonal from '../components/personal/NavbarPersonal.jsx';
+import FooterSlim from '../components/personal/FooterSlim.astro';
+import NewsletterSignup from '../components/NewsletterSignup.jsx';
+
+// /slownik-ai/ — 12 haseł na stronie, 40 w PDF za zapis.
+// Copy 1:1 z docs/slownik-ai-strona.md (sekcja 2). Nagłówki zostają, jak są.
+// Rejestr: chłodna obserwacja, krótkie zdania, konkret zamiast entuzjazmu.
+
+const title = 'Słownik AI dla pracy biurowej | Marcin Ołdak';
+const description =
+  'Dwanaście pojęć o AI, które słyszysz w pracy. Co znaczą, gdzie bolą i co z nimi zrobić. Bez kursu i bez optymizmu.';
+const canonical = 'https://www.mjoldak.pl/slownik-ai/';
+
+type Term = {
+  num: number;
+  title: string;
+  what: string;
+  hurts: string;
+  example: string;
+  todo: string;
+};
+
+type Block = { id: string; name: string; terms: Term[] };
+
+const blocks: Block[] = [
+  {
+    id: 'podstawy',
+    name: 'Podstawy',
+    terms: [
+      {
+        num: 5,
+        title: 'Okno kontekstu',
+        what: 'Ile tekstu model widzi naraz: polecenie, wklejony materiał, wcześniejsza rozmowa. Poza tym oknem nie ma nic. Model nie pamięta cię między rozmowami, choć pisze tak, jakby pamiętał.',
+        hurts: 'Polecenie bez materiału to prośba o domysł. Model nie przyzna się, że tekstu nie dostał. Napisze coś, co pasuje do każdego maila i do żadnego.',
+        example: 'Piszesz „odpowiedz na tego maila" i nie wklejasz maila. Dostajesz odpowiedź bez kwoty, terminu i nazwiska. Wygląda dobrze.',
+        todo: 'Sprawdź, czy tekst jest w oknie, zanim wyślesz polecenie. Nowa rozmowa to puste okno. To cała wiedza na ten temat.',
+      },
+      {
+        num: 6,
+        title: 'Prompt (polecenie)',
+        what: 'Tekst, który dajesz modelowi. Trzy części: zadanie, dane, oczekiwany efekt. Brakująca część wraca domysłem.',
+        hurts: '„Streść" nie jest poleceniem. Jest życzeniem. Model wypełni lukę po swojemu, a ty dostaniesz wynik, którego nie da się wkleić.',
+        example: '„Streść" daje akapit. „Streść w pięciu punktach, po jednym zdaniu, dla kogoś, kto nie zna projektu" daje tekst gotowy do wysyłki. Różnica to jedno zdanie.',
+        todo: 'Dopisz, dla kogo jest wynik i w jakiej formie ma przyjść. Reszta jest ozdobą.',
+      },
+      {
+        num: 8,
+        title: 'Halucynacja (konfabulacja)',
+        what: 'Odpowiedź wiarygodna i nieprawdziwa: przepis, numer normy, cytat, data. Model nie sygnalizuje niepewności. Z jego strony to zwykły tekst, tak samo płynny jak prawdziwy.',
+        hurts: 'Nie ma sygnału ostrzegawczego. Fałszywy numer artykułu wygląda identycznie jak prawdziwy. Wychodzi z firmy razem z raportem, pod twoim nazwiskiem.',
+        example: 'Model podaje numer artykułu ustawy w przypisie. Numer jest zbudowany poprawnie. Nie istnieje.',
+        todo: 'Każdą liczbę, przypis i nazwę własną sprawdź w źródle. Sprawdzić znaczy otworzyć źródło i znaleźć. Nie przejrzeć.',
+      },
+      {
+        num: 9,
+        title: 'Data odcięcia wiedzy',
+        what: 'Moment, w którym kończą się dane, na których model się uczył. Po tej dacie nic nie wie. Nie mówi tego, kiedy pytasz.',
+        hurts: 'Stawki, przepisy i terminy zmieniają się właśnie tam, gdzie model brzmi najpewniej. Pewność siebie nie jest tu informacją o jakości odpowiedzi.',
+        example: 'Pytasz o stawkę, która zmieniła się w tym roku. Dostajesz zeszłoroczną. Zdanie brzmi tak samo.',
+        todo: 'Wszystko, co zmienia się w czasie, sprawdzaj poza modelem. Model nie jest kalendarzem. Pytanie go o daty to strata czasu.',
+      },
+    ],
+  },
+  {
+    id: 'praca-biurowa',
+    name: 'Praca biurowa',
+    terms: [
+      {
+        num: 15,
+        title: 'Asystent w aplikacji (Copilot i podobne)',
+        what: 'AI w programie, który masz otwarty: Word, Excel, Outlook, Teams. Widzi otwarty plik. Nie widzi nic poza tym, do czego dostał dostęp.',
+        hurts: 'Proponuje odpowiedź, a przycisk wysyłki jest obok. Pod tekstem widnieje twoje nazwisko. Dostępność zależy od planu, więc w firmie asystent pojawia się u tych, którzy mają go w pakiecie, nie u tych, którzy go potrzebują.',
+        example: 'Outlook proponuje odpowiedź na maila od klienta i dopisuje termin, którego nie ustaliłeś. Termin wygląda na uzgodniony.',
+        todo: 'Czytaj wszystko, co wychodzi pod twoim nazwiskiem. Kliknięcie wysyłki nie jest potwierdzeniem, że się zgadzasz.',
+      },
+      {
+        num: 19,
+        title: 'OCR (tekst ze skanu)',
+        what: 'Odczyt znaków ze zdjęcia albo skanu. Czysty druk idzie dobrze. Krzywe zdjęcie, tabela i pismo odręczne idą źle.',
+        hurts: 'Wygląda jak odczyt. Jest odczytem z błędami. Cyfry mylą się pierwsze, bo 1 i 7 oraz 0 i 8 są podobne.',
+        example: 'Wrzucasz skan faktury i dostajesz tabelę. W kwocie stoi 7, na oryginale jest 1. Tabela wygląda na kompletną.',
+        todo: 'Kwoty i daty przepisz z oryginału albo skrzyżuj sumę. Tabela z OCR to szkic, nie dokument księgowy.',
+      },
+      {
+        num: 20,
+        title: 'Klasyfikacja',
+        what: 'Przypisanie tekstu do kategorii, które ustalasz sam. Model nic nie pisze. Sortuje.',
+        hurts: 'Właściwie nie boli, i dlatego jest niedoceniana. Nie wymaga zaufania do treści. Kategorie są twoje, więc błąd widać od razu.',
+        example: 'Wszystkie zgłoszenia od klientów trafiają do trzech skrzynek: reklamacja, pytanie o fakturę, prośba o ofertę. Nikt nie czyta ich dwa razy.',
+        todo: 'Zacznij od sortowania, nie od pisania. Sortowanie sprawdza się wzrokiem, a nie wiarą.',
+      },
+      {
+        num: 23,
+        title: 'Format odpowiedzi',
+        what: 'Polecenie, w jakiej formie ma przyjść wynik: lista, tabela, kroki, plik do arkusza.',
+        hurts: 'Bez tego dostajesz akapity. Akapit nie wkleja się do kolumny. Przepisujesz.',
+        example: 'Prosisz o tabelę z kolumnami data, kwota, kontrahent, komentarz. Wklejasz ją do arkusza. Kolumny są na miejscu.',
+        todo: 'Nazwij kolumny, zanim wyślesz polecenie. Jedno zdanie na wejściu, jedno przepisywanie mniej.',
+      },
+    ],
+  },
+  {
+    id: 'ryzyka',
+    name: 'Ryzyka i granice',
+    terms: [
+      {
+        num: 30,
+        title: 'Gdzie trafiają dane',
+        what: 'Wklejony tekst wychodzi z twojego komputera. Trafia do dostawcy narzędzia, zwykle do innego kraju, i tam jest przetwarzany.',
+        hurts: 'To nie szczegół techniczny. To decyzja, którą podejmujesz kliknięciem. W firmie potrzebna jest podstawa prawna i umowa z dostawcą. Zgoda pracownika zwykle nie wystarcza, bo w relacji z pracodawcą nie jest dobrowolna.',
+        example: 'Wklejasz do darmowego czatu umowę z klientem. Umowa wyszła z firmy. Nie kliknąłeś wyślij.',
+        todo: 'Zapytaj, czy dokument może opuścić firmę, zanim go wkleisz. Jeśli nie znasz odpowiedzi, nie wklejaj. Niewiedza nie jest podstawą prawną.',
+      },
+      {
+        num: 31,
+        title: 'Dane osobowe w poleceniu',
+        what: 'Nazwiska, PESEL, wynagrodzenia, dane zdrowotne, dane klientów. Wrzucenie ich do zewnętrznego narzędzia to przekazanie danych. Nie szybkie pytanie.',
+        hurts: 'Narzędzie prosi o kontekst. Tabela leży pod ręką. Wklejasz całość, bo tak jest szybciej.',
+        example: 'Chcesz posortować pracowników po wynagrodzeniu i wklejasz tabelę z nazwiskami. Do wyniku wystarczyły kwoty.',
+        todo: 'Usuń kolumnę z nazwiskami i numerami przed wklejeniem. Jeśli wynik ma sens bez nich, nie były potrzebne.',
+      },
+      {
+        num: 37,
+        title: 'Phishing wspomagany AI',
+        what: 'Oszustwo mailowe pisane przez model. Poprawne językowo, spersonalizowane, w języku, którego nadawca nie zna.',
+        hurts: 'Literówka i zły polski były sygnałem ostrzegawczym. Ten sygnał przestał działać. Zostaje to, o co mail prosi.',
+        example: 'Mail od kuriera jest bezbłędny, zna twoje imię i numer zamówienia. Podejrzane jest tylko to, o co prosi: link i dane karty.',
+        todo: 'Oceniaj prośbę, nie język. Płatność i dane karty załatwiasz w aplikacji, nie w linku z maila.',
+      },
+      {
+        num: 39,
+        title: 'Nadzór człowieka',
+        what: 'Zasada, że decyzję zatwierdza osoba, a model przygotowuje materiał.',
+        hurts: 'Wszystkie poprzednie punkty sprowadzają się do jednego pytania przed wysyłką. Kto pod tym podpisuje się nazwiskiem.',
+        example: 'Model przygotowuje protokół ze spotkania. Podpisuje go prowadzący. On czyta całość. Model nie czyta nic.',
+        todo: 'Zapytaj siebie, czy podpiszesz się pod tym nazwiskiem. Jeśli nie, nie wysyłaj.',
+      },
+    ],
+  },
+];
+
+const allTerms = blocks.flatMap((b) => b.terms);
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'DefinedTermSet',
+      name: 'Słownik AI dla pracy biurowej',
+      description:
+        'Dwanaście pojęć o AI używanych w pracy biurowej: co znaczą, gdzie bolą i co z nimi zrobić.',
+      url: canonical,
+      inLanguage: 'pl',
+      hasDefinedTerm: allTerms.map((t) => ({
+        '@type': 'DefinedTerm',
+        name: t.title,
+        description: t.what,
+        termCode: String(t.num),
+        url: `${canonical}#haslo-${t.num}`,
+      })),
+    },
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Strona główna', item: 'https://www.mjoldak.pl/' },
+        { '@type': 'ListItem', position: 2, name: 'Słownik AI', item: canonical },
+      ],
+    },
+  ],
+};
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  canonical={canonical}
+  lang="pl"
+  managedAlternates={true}
+>
+  <NavbarPersonal client:load />
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(schema)} />
+
+  <main class="bg-background dark:bg-[var(--c-page)] text-dark dark:text-[var(--c-ink)]">
+    <!-- HERO -->
+    <section class="px-8 md:px-16 pt-32 pb-14 md:pb-16">
+      <div class="max-w-3xl mx-auto">
+        <nav aria-label="Ścieżka nawigacji" class="font-mono text-[10px] uppercase tracking-[0.18em] opacity-45 mb-8">
+          <a href="/" class="hover:opacity-100 no-underline">Start</a>
+          <span class="mx-2">/</span>
+          <span>Słownik AI</span>
+        </nav>
+
+        <h1 class="font-serif text-4xl md:text-5xl lg:text-6xl leading-[1.05] tracking-[-0.01em] mb-6">
+          Słownik AI dla pracy biurowej
+        </h1>
+
+        <p class="font-mono text-[10px] uppercase tracking-[0.18em] opacity-45 mb-8">
+          Aktualne na 25.11.2026
+        </p>
+
+        <p class="font-sans text-lg md:text-xl leading-relaxed opacity-80 max-w-2xl">
+          Na spotkaniach padają słowa, których nikt nie tłumaczy. Kiwasz głową i wracasz do pracy,
+          a potem raport wychodzi z numerem artykułu, który nie istnieje.
+        </p>
+      </div>
+    </section>
+
+    <!-- 12 HASEŁ -->
+    {blocks.map((block) => (
+      <section class="px-8 md:px-16 py-14 md:py-16 border-t border-dark/10 dark:border-[var(--c-line)]">
+        <div class="max-w-3xl mx-auto">
+          <h2 class="font-mono text-[11px] uppercase tracking-[0.24em] opacity-50 mb-10">
+            {block.name}
+          </h2>
+
+          <div class="space-y-14">
+            {block.terms.map((t) => (
+              <article id={`haslo-${t.num}`} class="scroll-mt-24">
+                <div class="flex items-baseline gap-3 mb-4">
+                  <span class="font-mono text-[11px] tracking-[0.18em] opacity-40">{t.num}</span>
+                  <h3 class="font-serif text-2xl md:text-3xl leading-tight">{t.title}</h3>
+                </div>
+
+                <div class="space-y-4 max-w-2xl">
+                  <p class="font-sans text-base leading-relaxed opacity-85">{t.what}</p>
+
+                  <p class="font-sans text-base leading-relaxed">
+                    <span class="font-mono text-[10px] uppercase tracking-[0.16em] opacity-45 block mb-1">
+                      Dlaczego to boli
+                    </span>
+                    <span class="opacity-85">{t.hurts}</span>
+                  </p>
+
+                  <p class="font-sans text-base leading-relaxed pl-4 border-l-2 border-dark/15 dark:border-[var(--c-line)]">
+                    <span class="font-mono text-[10px] uppercase tracking-[0.16em] opacity-45 block mb-1">
+                      Przykład z biura
+                    </span>
+                    <span class="opacity-75 italic">{t.example}</span>
+                  </p>
+
+                  <p class="font-sans text-base leading-relaxed">
+                    <span class="font-mono text-[10px] uppercase tracking-[0.16em] opacity-45 block mb-1">
+                      Co z tym zrobić
+                    </span>
+                    <span class="font-medium">{t.todo}</span>
+                  </p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+    ))}
+
+    <!-- ZASTRZEŻENIE -->
+    <section class="px-8 md:px-16 py-10 border-t border-dark/10 dark:border-[var(--c-line)]">
+      <div class="max-w-3xl mx-auto">
+        <p class="font-sans text-sm leading-relaxed opacity-60 italic">
+          To nie jest porada prawna. Przy umowach, danych osobowych i rekrutacji pytaj prawnika.
+          Prawnik przynajmniej odpowiada za swoją odpowiedź.
+        </p>
+      </div>
+    </section>
+
+    <!-- BLOK NEWSLETTERA -->
+    <section class="px-8 md:px-16 py-16 md:py-20 border-t border-dark/10 dark:border-[var(--c-line)]">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="font-serif text-3xl md:text-4xl leading-tight mb-6">
+          Czterdzieści haseł, z czego dwanaście tutaj
+        </h2>
+
+        <div class="space-y-4 max-w-2xl mb-10">
+          <p class="font-sans text-base leading-relaxed opacity-85">
+            Na stronie jest dwanaście haseł. W słowniku jest czterdzieści. Brakuje dwudziestu ośmiu,
+            i nie są to te najgorsze.
+          </p>
+          <p class="font-sans text-base leading-relaxed opacity-85">
+            PDF ma pełną listę w trzech blokach: podstawy, praca biurowa, ryzyka i granice.
+            Nie jest skrótem tej strony. Jest resztą.
+          </p>
+          <p class="font-sans text-base leading-relaxed opacity-85">
+            Dwanaście haseł zostaje na stronie i nigdzie nie zniknie. Nie chowam ich za formularzem.
+          </p>
+          <p class="font-sans text-base leading-relaxed opacity-85">
+            Zapis na listę jest wymianą. Ty dajesz adres, ja daję plik. Potem piszę rzadko,
+            kiedy zmieni się słownik albo mam nowy materiał. Nie mam dla ciebie serii powitalnej,
+            codziennych wskazówek ani historii o tym, jak AI zmieniło moje życie.
+          </p>
+          <p class="font-sans text-base leading-relaxed opacity-85">
+            Wypisujesz się jednym kliknięciem. Nie dlatego, że jestem uprzejmy. Takie jest prawo.
+          </p>
+        </div>
+
+        <div class="max-w-lg">
+          <NewsletterSignup client:visible />
+        </div>
+      </div>
+    </section>
+
+    <!-- STOPKA OFERTY -->
+    <section class="px-8 md:px-16 py-10 border-t border-dark/10 dark:border-[var(--c-line)]">
+      <div class="max-w-3xl mx-auto">
+        <p class="font-mono text-[10px] uppercase tracking-[0.18em] opacity-45">
+          Marcin Ołdak, korepetycje AI. 100 zł za 60 minut.
+          <a href="/uslugi/korepetycje-ai/" class="underline underline-offset-2 hover:opacity-100">Zobacz ofertę</a>
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <FooterSlim />
+</BaseLayout>
