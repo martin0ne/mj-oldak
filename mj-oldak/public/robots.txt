@@ -3,6 +3,7 @@ Allow: /
 
 # Disallow internal paths
 Disallow: /api/
+Disallow: /admin/
 Disallow: /_astro/
 
 # Sitemap
